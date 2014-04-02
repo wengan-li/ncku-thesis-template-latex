@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       NCKU cover 封面
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\begin{titlepage}
+
+% 判斷是否要浮水印？
+\ifx\mywatermark\undefined 
+  \thispagestyle{empty}  % 無頁碼、無 header (無浮水印)
+\else
+  \thispagestyle{EmptyWaterMarkPage} % 無頁碼、有浮水印
+\fi
+
+% aligned to the center of the page
+\begin{center}
+% font size (relative to 12 pt):
+% \large (14pt) < \Large (18pt) < \LARGE (20pt) < \huge (24pt)< \Huge (24 pt)
+%
+\makebox[9cm][s]{\Huge\univCname}\\  %顯示中文校名
+\vspace{0.5cm}
+\makebox[8cm][s]{\Huge\deptCname}\\ %顯示中文系所名
+\vspace{1cm}
+\makebox[5cm][s]{\Huge\degreeCname 論文}\\ %顯示論文種類 (中文)
+\vspace{1.5cm}
+\vspace{2cm}
+\vspace{3cm}
+
+%
+% Set the line spacing to single for the titles (to compress the lines)
+\renewcommand{\baselinestretch}{1}   %行距 1 倍
+%\large % it needs a font size changing command to be effective
+\Large\cTitle\\  % 中文題目
+%
+\vspace{0.5cm}
+%
+\Large\eTitle\\ %英文題目
+
+\vspace{5cm}
+
+% \makebox is a text box with specified width;
+% option s: stretch; option l: left aligned
+% use \makebox to make sure
+% 「研究生」 與「指導教授」occupy the same width
+% Names are filled in a box with pre-defined width
+% the left and right sides of 「：」occupy the same width (use \hspace{} to fill the short)
+% to guarantee 「：」is at the center
+% assume the width of a Chinese character is 1.2em
+% 4.8em is determined by the length of the longest string "指導教授"
+% 7.2em is determined by the length of the possibly longest name + title "歐陽明志博士"
+\hspace{2.4em}%
+\makebox[4.8em][s]{\Large 研究生}%
+\makebox[1em][c]{\Large ：}%
+\makebox[7.2em][l]{\Large\myCname}\\  % 顯示作者中文名
+
+\vspace{0.5cm}
+
+\hspace{2.4em}%
+\makebox[4.8em][s]{\Large 指導教授}%
+\makebox[1em][c]{\Large ：}%
+\makebox[7.2em][l]{\Large\advisorCnameA}\\  %顯示指導教授A中文名
+%
+% 判斷是否有共同指導的教授 B
+\ifx \advisorCnameB  \itsempty
+\relax % 沒有 B 教授，所以不佔版面，不印任何空白
+\else
+% 共同指導的教授 B
+\hspace{2.4em}%
+\makebox[4.8em][s]{}%
+\makebox[1em][c]{}%
+\makebox[7.2em][l]{\Large\advisorCnameB}\\%顯示指導教授B中文名
+\fi
+%
+% 判斷是否有共同指導的教授 C
+\ifx \advisorCnameC  \itsempty
+\relax % 沒有 C 教授，所以不佔版面，不印任何空白
+\else
+% 共同指導的教授 C
+\hspace{2.4em}%
+\makebox[4.8em][s]{}%
+\makebox[1em][c]{}%
+\makebox[7.2em][l]{\Large\advisorCnameC}\\%顯示指導教授B中文名
+\fi
+%
+\vfill
+
+\vspace{1cm}
+\makebox[10cm][s]{\Large 中華民國\cYear 年\cMonth 月}%
+%
+\end{center}
+
+\end{titlepage}
+%%%%%%%%%%%%%%

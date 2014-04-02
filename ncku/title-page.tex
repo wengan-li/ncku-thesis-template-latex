@@ -1,0 +1,127 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       書名頁 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\newpage
+
+% 判斷是否要浮水印？
+\ifx\mywatermark\undefined 
+  \thispagestyle{empty}  % 無頁碼、無 header (無浮水印)
+\else
+  \thispagestyle{EmptyWaterMarkPage} % 無頁碼、有浮水印
+\fi
+
+
+
+
+% aligned to the center of the page
+\begin{center}
+% font size (relative to 12 pt):
+% \large (14pt) < \Large (18pt) < \LARGE (20pt) < \huge (24pt)< \Huge (24 pt)
+% Set the line spacing to single for the titles (to compress the lines)
+\renewcommand{\baselinestretch}{1}   %行距 1 倍
+% it needs a font size changing command to be effective
+%中文題目
+\Large\cTitle\\ %%%%%
+\vspace{1cm}
+% 英文題目
+\Large\eTitle\\ %%%%%
+%\vspace{1cm}
+\vfill
+% \makebox is a text box with specified width;
+% option s: stretch
+% use \makebox to make sure
+% 「研究生：」 與「指導教授：」occupy the same width
+\large %to have correct em value
+\makebox[4.8em][s]{研究生}%
+\makebox[1em][c]{：}%
+\makebox[7.2em][l]{\myCname}%%%%%
+\hfill%
+\makebox[2cm][l]{Student:}%
+\makebox[5cm][l]{\myEname}\\ %%%%%
+%
+%\vspace{1cm}
+%
+\makebox[4.8em][s]{指導教授}%
+\makebox[1em][c]{：}%
+\makebox[7.2em][l]{\advisorCnameA}%%%%%
+\hfill%
+\makebox[2cm][l]{Advisor:}%
+\makebox[5cm][l]{\advisorEnameA}\\ %%%%%
+%
+% 判斷是否有共同指導的教授 B
+\ifx \advisorCnameB  \itsempty
+\relax % 沒有 B 教授，所以不佔版面，不印任何空白
+\else
+%共同指導的教授B
+\makebox[4.8em][s]{}%
+\makebox[1em][c]{}%
+\makebox[7.2em][l]{\advisorCnameB}%%%%%
+\hfill%
+\makebox[2cm][l]{}%
+\makebox[5cm][l]{\advisorEnameB}\\ %%%%%
+\fi
+%
+% 判斷是否有共同指導的教授 C
+\ifx \advisorCnameC  \itsempty
+\relax % 沒有 C 教授，所以不佔版面，不印任何空白
+\else
+%共同指導的教授C
+\makebox[4.8em][s]{}%
+\makebox[1em][c]{}%
+\makebox[7.2em][l]{\advisorCnameC}%%%%%
+\hfill%
+\makebox[2cm][s]{}%
+\makebox[5cm][l]{\advisorEnameC}\\ %%%%%
+\fi
+%
+% Resume the line spacing to the desired setting
+
+%
+\vfill
+\makebox[4cm][s]{\univCname}\\% 校名
+\makebox[6cm][s]{\deptCname}\\% 系所名
+\makebox[3cm][s]{\degreeCname 論文}\\% 學位名
+%
+%\vspace{1cm}
+\vfill
+\large
+A Thesis\\%
+Submitted to %
+%
+\fulldeptEname\\%系所全名 (英文)
+%
+%
+\ifx \collEname  \itsempty
+\relax % 沒有學院名 (英文)，所以不佔版面，不印任何空白
+\else
+% 有學院名 (英文)
+\collEname\\% 學院名 (英文)
+\fi
+%
+\univEname\\%校名 (英文)
+%
+in Partial Fulfillment of the Requirements\\
+%
+for the Degree of\\
+%
+\degreeEname\\%學位名(英文)
+%
+in\\
+%
+\deptEname\\%系所短名(英文；表明學位領域)
+%
+\eMonth\ \eYear\\%月、年 (英文)
+%
+\ePlace% 學校所在地 (英文)
+\vfill
+中華民國%
+\cYear% %%%%%
+年%
+\cMonth% %%%%%
+月\\
+\end{center}
+% restore the font size to normal
+\normalsize
+\clearpage

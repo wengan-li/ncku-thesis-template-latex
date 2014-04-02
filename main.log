@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2014.2.10)  2 APR 2014 20:43
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2014.2.10)  2 APR 2014 21:19
 entering extended mode
 **main.tex
 ("F:\untitled folder 2\doc\paper-school\main.tex"
@@ -1150,23 +1150,24 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> EU1/lmtt/bx/n on input line 199.
 LaTeX Font Info:    Redeclaring math alphabet \mathrm on input line 199.
 
-("F:\untitled folder 2\doc\paper-school\my_names.tex")
+("F:\untitled folder 2\doc\paper-school\names.tex")
+("F:\untitled folder 2\doc\paper-school\ncku\cover-chi.tex"
 Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 24.88pt
  -> ¯^^D/Windows/Fonts/times.ttf
 Requested font "æ¨^^99æ¥·é«^^94/ICU:script=hani;language=DFLT;" at 24.88pt
  -> ¸^^D/Windows/Fonts/kaiu.ttf
 
-Underfull \hbox (badness 10000) detected at line 269
-\EU1/標楷體(0)/m/n/24.88 成 功 大 學
+Underfull \hbox (badness 10000) detected at line 19
+\EU1/標楷體(0)/m/n/24.88 國 立 成 功 大 學
  []
 
 
-Underfull \hbox (badness 2334) detected at line 271
-\EU1/標楷體(0)/m/n/24.88 製 造 資 訊 與 系 統 研 究 所
+Underfull \hbox (badness 10000) detected at line 21
+\EU1/標楷體(0)/m/n/24.88 資 訊 工 程 系
  []
 
 
-Underfull \hbox (badness 10000) detected at line 273
+Underfull \hbox (badness 6188) detected at line 23
 \EU1/標楷體(0)/m/n/24.88 碩 士 論 文
  []
 
@@ -1175,17 +1176,17 @@ Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 17.28pt
 Requested font "æ¨^^99æ¥·é«^^94/ICU:script=hani;language=DFLT;" at 17.28pt
  -> Ð^^D/Windows/Fonts/kaiu.ttf
 
-Underfull \hbox (badness 10000) detected at line 296
+Underfull \hbox (badness 10000) detected at line 51
 \EU1/標楷體(0)/m/n/17.28 研 究 生
  []
 
 
-Underfull \hbox (badness 1789) detected at line 301
+Underfull \hbox (badness 1789) detected at line 58
 \EU1/標楷體(0)/m/n/17.28 指 導 教 授
  []
 
 
-Underfull \hbox (badness 10000) detected at line 328
+Underfull \hbox (badness 10000) detected at line 87
 \EU1/標楷體(0)/m/n/17.28 中 華 民 國 一 \EU1/TimesNewRoman(0)/m/n/17.28 ○ \EU1/標楷體(0)/m
 /n/17.28 一 年 七 月
  []
@@ -1202,37 +1203,43 @@ Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 
 [1
 
-]
+]) ("F:\untitled folder 2\doc\paper-school\ncku\cover-eng.tex"
 Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 14.4pt
  -> $^^E/Windows/Fonts/times.ttf
- [1]
+)
+("F:\untitled folder 2\doc\paper-school\ncku\title-page.tex" [1]
 Requested font "æ¨^^99æ¥·é«^^94/ICU:script=hani;language=DFLT;" at 14.4pt
  -> ^^9f^^E/Windows/Fonts/kaiu.ttf
 
-Underfull \hbox (badness 10000) detected at line 434
+Underfull \hbox (badness 10000) detected at line 37
 \EU1/標楷體(0)/m/n/14.4 研 究 生
  []
 
 
-Underfull \hbox (badness 1888) detected at line 443
+Underfull \hbox (badness 1888) detected at line 46
 \EU1/標楷體(0)/m/n/14.4 指 導 教 授
  []
 
 
-Underfull \hbox (badness 10000) detected at line 480
-\EU1/標楷體(0)/m/n/14.4 成 功 大 學
+Underfull \hbox (badness 5504) detected at line 83
+\EU1/標楷體(0)/m/n/14.4 國 立 成 功 大 學
  []
 
 
-Underfull \hbox (badness 10000) detected at line 482
+Underfull \hbox (badness 10000) detected at line 84
+\EU1/標楷體(0)/m/n/14.4 資 訊 工 程 系
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 85
 \EU1/標楷體(0)/m/n/14.4 碩 士 論 文
  []
 
-[2]
+[2])
 Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 8.0pt
- -> ^^W^^F/Windows/Fonts/times.ttf
+ -> ^^]^^F/Windows/Fonts/times.ttf
 Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 6.0pt
- -> ^^N^^F/Windows/Fonts/times.ttf
+ -> ^^T^^F/Windows/Fonts/times.ttf
 Requested font "cmmi12" at 12.0pt
 Requested font "cmmi8" at 8.0pt
 Requested font "cmmi6" at 6.0pt
@@ -1240,12 +1247,12 @@ Requested font "cmsy10" at 12.0pt
 Requested font "cmsy8" at 8.0pt
 Requested font "cmsy6" at 6.0pt
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 561.
+(Font)              <12> on input line 316.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 561.
+(Font)              <8> on input line 316.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 561.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 561.
+(Font)              <6> on input line 316.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 316.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
@@ -1257,173 +1264,96 @@ Requested font "cmr6" at 6.0pt
 File: ./ncku/oral-chi.pdf Graphic file (type QTm)
 
 <use  "./ncku/oral-chi.pdf" >
-Overfull \hbox (112.08365pt too wide) in paragraph at lines 561--564
+Overfull \hbox (112.08365pt too wide) in paragraph at lines 316--319
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 125.80746pt on input line 564.
+LaTeX Warning: Float too large for page by 125.80746pt on input line 319.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: ./ncku/oral-eng.pdf Graphic file (type QTm)
 <use  "./ncku/oral-eng.pdf" >
-Overfull \hbox (112.08365pt too wide) in paragraph at lines 571--574
+Overfull \hbox (112.08365pt too wide) in paragraph at lines 326--329
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 124.80748pt on input line 574.
+LaTeX Warning: Float too large for page by 124.80748pt on input line 329.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: ./abstract/ChineseAbstract1.pdf Graphic file (type QTm)
 <use  "./abstract/ChineseAbstract1.pdf" >
-Overfull \hbox (112.08365pt too wide) in paragraph at lines 586--589
+Overfull \hbox (112.08365pt too wide) in paragraph at lines 341--344
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 125.80746pt on input line 589.
+LaTeX Warning: Float too large for page by 125.80746pt on input line 344.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: ./abstract/ChineseAbstract2.pdf Graphic file (type QTm)
 <use  "./abstract/ChineseAbstract2.pdf" >
-Overfull \hbox (112.08365pt too wide) in paragraph at lines 596--599
+Overfull \hbox (112.08365pt too wide) in paragraph at lines 351--354
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 125.80746pt on input line 599.
+LaTeX Warning: Float too large for page by 125.80746pt on input line 354.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [1] [2] [3] [4] ("F:\untitled folder 2\doc\paper-school\abs/abs.tex"
 Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 14.4pt
- -> ^^85^^D/Windows/Fonts/timesbd.ttf
+ -> ^^8b^^D/Windows/Fonts/timesbd.ttf
 Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 12.0pt
- -> ^^9d^^D/Windows/Fonts/timesbd.ttf
+ -> £^^D/Windows/Fonts/timesbd.ttf
+ [5
 
 
-LaTeX Warning: Citation `Ma08' on page v undefined on input line 34.
-
-[5
-
-
-]) [6]
+])
+[6]
 Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 17.28pt
- -> ¶^^F/Windows/Fonts/timesbd.ttf
- ("F:\untitled folder 2\doc\paper-school\main.toc")
+ -> ¼^^F/Windows/Fonts/timesbd.ttf
+ ("F:\untitled folder 2\doc\paper-school\main.toc" [7
+
+
+])
 \tf@toc=\write3
- [7
-
-
-]
+ [8]
 ("F:\untitled folder 2\doc\paper-school\main.lot")
 \tf@lot=\write4
- [8
-
-]
-("F:\untitled folder 2\doc\paper-school\main.lof")
-\tf@lof=\write5
  [9
 
 ]
+("F:\untitled folder 2\doc\paper-school\main.lof"
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 10.95pt
+ -> ¯
+/Windows/Fonts/times.ttf
+ [10
+
+])
+\tf@lof=\write5
+ [11]
 ("F:\untitled folder 2\doc\paper-school\1/intro.tex"
 Chapter 1.
-
-LaTeX Warning: Citation `Rafiq02' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `Xiang03' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `Chen05' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `Law05' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `Xiang07' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `Ma08' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `Kim08_1' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `Kim08_2' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `Sheng10' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `He10' on page 1 undefined on input line 23.
-
-
-LaTeX Warning: Citation `PH10' on page 1 undefined on input line 23.
-
 [1
 
 
 ]
 File: Fig/bus_twisting.pdf Graphic file (type QTm)
- <use  "Fig/bus_twisting.pdf" >
-
-LaTeX Warning: Reference `fig::bus_twisting' on page 2 undefined on input line 
-50.
-
-
-LaTeX Warning: Reference `fig::bus_twisting' on page 2 undefined on input line 
-51.
-
-
-LaTeX Warning: Reference `fig::bus_twisting' on page 2 undefined on input line 
-55.
-
-
-LaTeX Warning: Reference `fig::bus_twisting' on page 2 undefined on input line 
-61.
-
-
-LaTeX Warning: Reference `fig::bus_twisting' on page 2 undefined on input line 
-63.
-
-[2]
+ <use  "Fig/bus_twisting.pdf" > [2]
 File: Fig/introduction_example.pdf Graphic file (type QTm)
  <use  "Fig/introduction_example.pdf" >
 
 LaTeX Warning: Float too large for page by 40.07275pt on input line 76.
-
-
-LaTeX Warning: Reference `fig::introduction_example' on page 3 undefined on inp
-ut line 78.
-
-
-LaTeX Warning: Reference `fig::introduction_example' on page 3 undefined on inp
-ut line 81.
-
-
-LaTeX Warning: Reference `fig::introduction_example' on page 3 undefined on inp
-ut line 85.
-
-
-LaTeX Warning: Reference `fig::introduction_example' on page 3 undefined on inp
-ut line 97.
-
-
-LaTeX Warning: Reference `fig::introduction_example' on page 3 undefined on inp
-ut line 100.
-
-
-LaTeX Warning: Reference `fig::introduction_example' on page 3 undefined on inp
-ut line 108.
 
 
 Overfull \hbox (4.7428pt too wide) in paragraph at lines 89--109
@@ -1431,82 +1361,15 @@ Overfull \hbox (4.7428pt too wide) in paragraph at lines 89--109
 gorithms restrict a bus only bends
  []
 
-[3]
-
-LaTeX Warning: Reference `fig::introduction_example' on page 4 undefined on inp
-ut line 114.
-
-
-LaTeX Warning: Reference `fig::introduction_example' on page 4 undefined on inp
-ut line 117.
-
-
-LaTeX Warning: Citation `Rafiq02' on page 4 undefined on input line 133.
-
-
-LaTeX Warning: Citation `Xiang03' on page 4 undefined on input line 137.
-
-
-LaTeX Warning: Citation `Chen05' on page 4 undefined on input line 140.
-
-
-LaTeX Warning: Citation `Law05' on page 4 undefined on input line 146.
-
-
-LaTeX Warning: Citation `Ma08' on page 4 undefined on input line 148.
-
-[4]
-
-LaTeX Warning: Citation `Kim08_1' on page 5 undefined on input line 158.
-
-
-LaTeX Warning: Citation `Kim08_2' on page 5 undefined on input line 159.
-
-
-LaTeX Warning: Citation `Xiang07' on page 5 undefined on input line 167.
-
-
-LaTeX Warning: Citation `Sheng10' on page 5 undefined on input line 170.
-
-
-LaTeX Warning: Citation `He10' on page 5 undefined on input line 172.
-
-
-LaTeX Warning: Citation `PH10' on page 5 undefined on input line 175.
-
-[5]
+[3] [4] [5]
 Underfull \hbox (badness 10000) in paragraph at lines 181--187
 
  []
 
-[6]
-
-LaTeX Warning: Citation `Ma08' on page 7 undefined on input line 214.
-
-
-LaTeX Warning: Reference `chap::PROBLEM FORMULATION' on page 7 undefined on inp
-ut line 229.
-
-
-LaTeX Warning: Reference `chap::CONSTRAINTS AND TERMINOLOGIES' on page 7 undefi
-ned on input line 232.
-
-
-LaTeX Warning: Reference `chap::ALGORITHM' on page 7 undefined on input line 23
-5.
-
-
-LaTeX Warning: Reference `chap::EXPERIMENTAL RESULTS' on page 7 undefined on in
-put line 239.
-
-
-LaTeX Warning: Reference `chap::CONCLUSIONS' on page 7 undefined on input line 
-242.
-
-[7]) [8] ("F:\untitled folder 2\doc\paper-school\2/problem.tex"
+[6] [7]) [8] ("F:\untitled folder 2\doc\paper-school\2/problem.tex"
 Chapter 2.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 24--646
+Underfull \hbox (badness 10000) in paragraph at lines 24--401
 
  []
 
@@ -1521,212 +1384,62 @@ File: Fig/capacity.pdf Graphic file (type QTm)
 
 LaTeX Warning: Float too large for page by 202.49326pt on input line 21.
 
-
-LaTeX Warning: Reference `fig::capacity' on page 11 undefined on input line 23.
-
-
-
-LaTeX Warning: Reference `fig::capacity' on page 11 undefined on input line 38.
-
-
 File: Fig/vertical_overlapping.pdf Graphic file (type QTm)
-<use  "Fig/vertical_overlapping.pdf" >
-
-LaTeX Warning: Reference `fig::vertical_overlapping' on page 11 undefined on in
-put line 54.
-
-[11
+<use  "Fig/vertical_overlapping.pdf" > [11
 
 
 
 ]
 Requested font "Times New Roman/BI/ICU:script=latn;language=DFLT;" at 12.0pt
- -> °^^O/Windows/Fonts/timesbi.ttf
-
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 12 undefined on input 
-line 71.
-
+ -> à^^C/Windows/Fonts/timesbi.ttf
 File: Fig/bus_pin_flipping.pdf Graphic file (type QTm)
-<use  "Fig/bus_pin_flipping.pdf" >
+ <use  "Fig/bus_pin_flipping.pdf" >
 
 LaTeX Warning: Float too large for page by 562.86475pt on input line 81.
-
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 12 undefined on input 
-line 87.
-
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 12 undefined on input 
-line 93.
-
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 12 undefined on input 
-line 99.
-
-
-LaTeX Warning: Reference `fig::orientation_direction' on page 12 undefined on i
-nput line 101.
 
 File: Fig/orientation_direction.pdf Graphic file (type QTm)
 <use  "Fig/orientation_direction.pdf" >
 
 LaTeX Warning: Float too large for page by 6.11584pt on input line 111.
 
-[12]
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 13 undefined on input 
-line 115.
-
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 13 undefined on input 
-line 122.
-
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 13 undefined on input 
-line 125.
-
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 13 undefined on input 
-line 144.
-
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 13 undefined on input 
-line 146.
-
-
-LaTeX Warning: Reference `fig::bus_pin_flipping' on page 13 undefined on input 
-line 148.
-
-) [13] [14] [15] [16] [17] [18]
+[12]) [13] [14] [15] [16] [17] [18]
 ("F:\untitled folder 2\doc\paper-school\4/algorithm.tex"
 Chapter 4.
 File: Fig/flowchart.pdf Graphic file (type QTm)
-<use  "Fig/flowchart.pdf" >
-
-LaTeX Warning: Reference `fig::flowchart' on page 19 undefined on input line 19
-.
-
-
-LaTeX Warning: Citation `Murata95' on page 19 undefined on input line 21.
-
-
-LaTeX Warning: Reference `sec::Fast Deviation Update Based on Topology Comparis
-on' on page 19 undefined on input line 35.
-
-[19
+<use  "Fig/flowchart.pdf" > [19
 
 
 
 ] [20]
-
-LaTeX Warning: Reference `sec::Fast Deviation Update Based on Topology Comparis
-on' on page 21 undefined on input line 57.
-
 File: Fig/MST.pdf Graphic file (type QTm)
-<use  "Fig/MST.pdf" >
-
-LaTeX Warning: Reference `fig::minimum_spanning_tree' on page 21 undefined on i
-nput line 83.
-
-
-LaTeX Warning: Reference `fig::minimum_spanning_tree' on page 21 undefined on i
-nput line 91.
-
-
-LaTeX Warning: Reference `fig::minimum_spanning_tree' on page 21 undefined on i
-nput line 92.
-
-[21]
+ <use  "Fig/MST.pdf" > [21]
 File: Fig/segment_creation.pdf Graphic file (type QTm)
- <use  "Fig/segment_creation.pdf" >
-Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 10.95pt
- -> ó^^H/Windows/Fonts/times.ttf
 
+<use  "Fig/segment_creation.pdf" >
 
 LaTeX Warning: Float too large for page by 8.278pt on input line 111.
 
-
-LaTeX Warning: Reference `fig::segment_creation' on page 22 undefined on input 
-line 116.
-
-
-LaTeX Warning: Reference `fig::segment_creation' on page 22 undefined on input 
-line 119.
-
 [22]
-
-LaTeX Warning: Citation `Xiang03' on page 23 undefined on input line 127.
-
 File: Fig/bus_ordering.pdf Graphic file (type QTm)
-<use  "Fig/bus_ordering.pdf" >
+ <use  "Fig/bus_ordering.pdf" >
 
 LaTeX Warning: Float too large for page by 638.75648pt on input line 140.
 
-
-LaTeX Warning: Reference `fig::bus_ordering' on page 23 undefined on input line
- 142.
-
-
-LaTeX Warning: Reference `fig::bus_ordering' on page 23 undefined on input line
- 156.
-
-
-LaTeX Warning: Reference `fig::bus_ordering' on page 23 undefined on input line
- 166.
-
 [23]
-
-LaTeX Warning: Citation `Xiang03' on page 24 undefined on input line 187.
-
 File: Fig/bus_overlapping.pdf Graphic file (type QTm)
-<use  "Fig/bus_overlapping.pdf" >
+ <use  "Fig/bus_overlapping.pdf" >
 
 LaTeX Warning: Float too large for page by 526.34804pt on input line 203.
 
-
-LaTeX Warning: Reference `fig::bus_overlapping' on page 24 undefined on input l
-ine 205.
-
 [24]
-
-LaTeX Warning: Reference `fig::bus_overlapping' on page 25 undefined on input l
-ine 216.
-
-
-LaTeX Warning: Reference `fig::bus_overlapping' on page 25 undefined on input l
-ine 221.
-
 File: Fig/overlap_minimization.pdf Graphic file (type QTm)
-<use  "Fig/overlap_minimization.pdf" >
-
-LaTeX Warning: Reference `fig::overlap_minimization' on page 25 undefined on in
-put line 242.
-
-
-LaTeX Warning: Reference `fig::overlap_minimization' on page 25 undefined on in
-put line 244.
-
-
-LaTeX Warning: Reference `fig::overlap_minimization' on page 25 undefined on in
-put line 251.
-
-[25]
+ <use  "Fig/overlap_minimization.pdf" > [25]
 Requested font "Times New Roman/I/ICU:script=latn;language=DFLT;" at 12.0pt
- -> ^^H^^O/Windows/Fonts/timesi.ttf
+ -> ¼^^C/Windows/Fonts/timesi.ttf
 File: Fig/lemma1.pdf Graphic file (type QTm)
  <use  "Fig/lemma1.pdf" >
 
 LaTeX Warning: Float too large for page by 19.60136pt on input line 269.
-
-
-LaTeX Warning: Reference `fig::lemma1' on page 26 undefined on input line 279.
-
-
-LaTeX Warning: Reference `fig::lemma1' on page 26 undefined on input line 280.
-
-
-LaTeX Warning: Reference `fig::lemma1' on page 26 undefined on input line 288.
 
 [26]
 File: Fig/coordinate_adjustment.pdf Graphic file (type QTm)
@@ -1737,22 +1450,6 @@ Overfull \hbox (0.85359pt too wide) in paragraph at lines 303--307
 
 
 LaTeX Warning: Float too large for page by 669.72206pt on input line 309.
-
-
-LaTeX Warning: Reference `fig::coordinate_adjustment' on page 27 undefined on i
-nput line 311.
-
-
-LaTeX Warning: Reference `fig::coordinate_adjustment' on page 27 undefined on i
-nput line 324.
-
-
-LaTeX Warning: Reference `fig::coordinate_adjustment' on page 27 undefined on i
-nput line 326.
-
-
-LaTeX Warning: Reference `fig::coordinate_adjustment' on page 27 undefined on i
-nput line 328.
 
 [27]
 File: Fig/lemma2_1.pdf Graphic file (type QTm)
@@ -1767,34 +1464,6 @@ Overfull \hbox (0.85359pt too wide) in paragraph at lines 359--364
 LaTeX Warning: Float too large for page by 141.33136pt on input line 366.
 
 
-LaTeX Warning: Reference `fig::lemma2_1' on page 28 undefined on input line 368
-.
-
-
-LaTeX Warning: Reference `fig::lemma2_2' on page 28 undefined on input line 368
-.
-
-
-LaTeX Warning: Reference `fig::lemma2_1' on page 28 undefined on input line 370
-.
-
-
-LaTeX Warning: Reference `fig::lemma2_1' on page 28 undefined on input line 377
-.
-
-
-LaTeX Warning: Reference `fig::lemma2_2' on page 28 undefined on input line 379
-.
-
-
-LaTeX Warning: Reference `fig::lemma2_2' on page 28 undefined on input line 382
-.
-
-
-LaTeX Warning: Reference `fig::lemma2_2' on page 28 undefined on input line 385
-.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 368--387
 
  []
@@ -1805,147 +1474,47 @@ File: Fig/layer_assignment.pdf Graphic file (type QTm)
 
 LaTeX Warning: Float too large for page by 162.82207pt on input line 425.
 
-
-LaTeX Warning: Reference `fig::layer_assignment' on page 30 undefined on input 
-line 427.
-
-
-LaTeX Warning: Reference `fig::layer_assignment' on page 30 undefined on input 
-line 428.
-
-
-LaTeX Warning: Reference `fig::layer_assignment' on page 30 undefined on input 
-line 431.
-
-
-LaTeX Warning: Reference `fig::layer_assignment' on page 30 undefined on input 
-line 438.
-
 File: Fig/total_deviation_pattern.pdf Graphic file (type QTm)
 <use  "Fig/total_deviation_pattern.pdf" > [30]
-
-LaTeX Warning: Citation `Mo07_1' on page 31 undefined on input line 460.
-
-
-LaTeX Warning: Citation `Mo07_2' on page 31 undefined on input line 460.
-
 File: Fig/deviation_pattern1.pdf Graphic file (type QTm)
+
 <use  "Fig/deviation_pattern1.pdf" >
 File: Fig/deviation_pattern2.pdf Graphic file (type QTm)
  <use  "Fig/deviation_pattern2.pdf" >
 
 LaTeX Warning: Float too large for page by 387.98515pt on input line 481.
 
-
-LaTeX Warning: Reference `fig::total_deviation_pattern' on page 31 undefined on
- input line 485.
-
-
-LaTeX Warning: Reference `fig::deviation_pattern1' on page 31 undefined on inpu
-t line 493.
-
 File: Fig/deviation_example1.pdf Graphic file (type QTm)
-<use  "Fig/deviation_example1.pdf" >
-
-LaTeX Warning: Reference `fig::deviation_example1' on page 31 undefined on inpu
-t line 508.
-
-[31] [32]
+<use  "Fig/deviation_example1.pdf" > [31] [32]
 File: Fig/deviation_reduced_pattern.pdf Graphic file (type QTm)
- <use  "Fig/deviation_reduced_pattern.pdf" >
 
-LaTeX Warning: Reference `fig::deviation_reduced_pattern' on page 33 undefined 
-on input line 568.
-
+<use  "Fig/deviation_reduced_pattern.pdf" >
 File: Fig/deviation_calculation.pdf Graphic file (type QTm)
-<use  "Fig/deviation_calculation.pdf" >
 
-LaTeX Warning: Reference `fig::deviation_calculation' on page 33 undefined on i
-nput line 584.
-
-[33]
+<use  "Fig/deviation_calculation.pdf" > [33]
 File: Fig/deviation_example2.pdf Graphic file (type QTm)
- <use  "Fig/deviation_example2.pdf" >
 
-LaTeX Warning: Reference `fig::deviation_example2' on page 34 undefined on inpu
-t line 603.
-
+<use  "Fig/deviation_example2.pdf" >
 File: Fig/algorithm_comparison.pdf Graphic file (type QTm)
-<use  "Fig/algorithm_comparison.pdf" >
+ <use  "Fig/algorithm_comparison.pdf" >
 
 LaTeX Warning: Float too large for page by 92.1402pt on input line 632.
 
 [34]
-
-LaTeX Warning: Reference `fig::algorithm_comparison' on page 35 undefined on in
-put line 634.
-
-
-LaTeX Warning: Reference `fig::algorithm_comparison' on page 35 undefined on in
-put line 635.
-
-
-LaTeX Warning: Reference `fig::algorithm_comparison' on page 35 undefined on in
-put line 637.
-
-
-LaTeX Warning: Reference `fig::algorithm_comparison' on page 35 undefined on in
-put line 639.
-
-
-LaTeX Warning: Reference `fig::algorithm_comparison' on page 35 undefined on in
-put line 641.
-
-
-LaTeX Warning: Reference `fig::algorithm_comparison' on page 35 undefined on in
-put line 641.
-
 File: Fig/deviation_driver.pdf Graphic file (type QTm)
-<use  "Fig/deviation_driver.pdf" >
-
-LaTeX Warning: Reference `fig::deviation_driver' on page 35 undefined on input 
-line 662.
-
-
-LaTeX Warning: Reference `fig::deviation_reduced_pattern' on page 35 undefined 
-on input line 670.
-
-[35]
+ <use  "Fig/deviation_driver.pdf" > [35]
 File: Fig/deviation_load.pdf Graphic file (type QTm)
  <use  "Fig/deviation_load.pdf" >
-
-LaTeX Warning: Reference `fig::deviation_load' on page 36 undefined on input li
-ne 702.
-
-[36]
-
-LaTeX Warning: Citation `Xiang03' on page 37 undefined on input line 716.
-
-) [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50]
+[36]) [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50]
 [51] [52] [53] [54] [55]
 ("F:\untitled folder 2\doc\paper-school\5/experiment.tex"
 Chapter 5.
-
-LaTeX Warning: Citation `Ma08' on page 56 undefined on input line 8.
-
-
-LaTeX Warning: Citation `PH10' on page 56 undefined on input line 8.
-
 File: Fig/table_1.pdf Graphic file (type QTm)
 <use  "Fig/table_1.pdf" >
-Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 8.0pt
- -> ù^^B/Windows/Fonts/timesbd.ttf
-
-
-LaTeX Warning: Citation `Ma08' on page 56 undefined on input line 25.
-
-
-LaTeX Warning: Citation `PH10' on page 56 undefined on input line 25.
-
 File: Fig/Table_2.pdf Graphic file (type QTm)
-<use  "Fig/Table_2.pdf" >
+ <use  "Fig/Table_2.pdf" >
 Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 5.0pt
- -> Õ^^B/Windows/Fonts/times.ttf
+ -> e^^C/Windows/Fonts/times.ttf
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 28.
 Requested font "lasy5" at 5.0pt
@@ -1953,102 +1522,33 @@ Requested font "lasy5" at 5.0pt
 
 LaTeX Warning: Float too large for page by 418.15436pt on input line 33.
 
-
-LaTeX Warning: Citation `Ma08' on page 56 undefined on input line 37.
-
-
-LaTeX Warning: Citation `Ma08' on page 56 undefined on input line 41.
-
-
-LaTeX Warning: Citation `Ma08' on page 56 undefined on input line 44.
-
-
-LaTeX Warning: Citation `Ma08' on page 56 undefined on input line 49.
-
 [56
 
 
 
-]
-
-LaTeX Warning: Citation `Ma08' on page 57 undefined on input line 62.
-
-
-LaTeX Warning: Citation `Ma08' on page 57 undefined on input line 66.
-
-
-LaTeX Warning: Citation `Ma08' on page 57 undefined on input line 76.
-
-
-LaTeX Warning: Citation `Ma08' on page 57 undefined on input line 79.
-
-[57]
-
-LaTeX Warning: Citation `Ma08' on page 58 undefined on input line 85.
-
-
-LaTeX Warning: Citation `Ma08' on page 58 undefined on input line 91.
-
-
-LaTeX Warning: Reference `fig::packing_result1' on page 58 undefined on input l
-ine 94.
-
+] [57]
 File: Fig/packing_result1.pdf Graphic file (type QTm)
-<use  "Fig/packing_result1.pdf" >
+ <use  "Fig/packing_result1.pdf" >
 
 LaTeX Warning: Float too large for page by 94.14906pt on input line 107.
-
-
-LaTeX Warning: Citation `PH10' on page 58 undefined on input line 113.
 
 File: Fig/table_3.pdf Graphic file (type QTm)
 <use  "Fig/table_3.pdf" >
 
 LaTeX Warning: Float too large for page by 535.47197pt on input line 121.
 
-
-LaTeX Warning: Citation `PH10' on page 58 undefined on input line 123.
-
-
-LaTeX Warning: Reference `sec::Deviation Minimization with Lookup Table Method'
- on page 58 undefined on input line 128.
-
 [58]
-
-LaTeX Warning: Citation `PH10' on page 59 undefined on input line 139.
-
-
-LaTeX Warning: Reference `sec::Deviation Minimization with Lookup Table Method'
- on page 59 undefined on input line 145.
-
-
-LaTeX Warning: Reference `sec::Fast Deviation Update Based on Topology Comparis
-on' on page 59 undefined on input line 147.
-
-
-LaTeX Warning: Citation `PH10' on page 59 undefined on input line 160.
-
 File: Fig/table_4.pdf Graphic file (type QTm)
-<use  "Fig/table_4.pdf" >
+ <use  "Fig/table_4.pdf" >
 
 LaTeX Warning: Float too large for page by 497.61707pt on input line 165.
 
-
-LaTeX Warning: Citation `PH10' on page 59 undefined on input line 168.
-
 File: Fig/table_5.pdf Graphic file (type QTm)
 <use  "Fig/table_5.pdf" > [59]
-
-LaTeX Warning: Citation `PH10' on page 60 undefined on input line 191.
-
 File: Fig/table_6.pdf Graphic file (type QTm)
-<use  "Fig/table_6.pdf" >
+ <use  "Fig/table_6.pdf" >
 
 LaTeX Warning: Float too large for page by 660.42876pt on input line 196.
-
-
-LaTeX Warning: Reference `fig::packing_result2' on page 60 undefined on input l
-ine 207.
 
 File: Fig/packing_result2.pdf Graphic file (type QTm)
 <use  "Fig/packing_result2.pdf" >
@@ -2058,9 +1558,6 @@ LaTeX Warning: Float too large for page by 279.97342pt on input line 226.
 ) [60] [61] [62] [63] [64] [65] [66] [67]
 ("F:\untitled folder 2\doc\paper-school\6/conclusion.tex"
 Chapter 6.
-
-LaTeX Warning: Citation `Ma08' on page 68 undefined on input line 14.
-
 ) [68
 
 
@@ -2083,21 +1580,14 @@ Chapter 7.
 ("F:\untitled folder 2\doc\paper-school\4/algorithm.aux")
 ("F:\untitled folder 2\doc\paper-school\5/experiment.aux")
 ("F:\untitled folder 2\doc\paper-school\6/conclusion.aux")
-("F:\untitled folder 2\doc\paper-school\ack/ack.aux"))
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+("F:\untitled folder 2\doc\paper-school\ack/ack.aux")) ) 
 Here is how much of TeX's memory you used:
- 17397 strings out of 429025
- 355298 string characters out of 3167800
- 399389 words of memory out of 3000000
- 20379 multiletter control sequences out of 15000+200000
- 7339 words of font info for 57 fonts, out of 3000000 for 9000
+ 17396 strings out of 429025
+ 355359 string characters out of 3167800
+ 398261 words of memory out of 3000000
+ 20370 multiletter control sequences out of 15000+200000
+ 7331 words of font info for 56 fonts, out of 3000000 for 9000
  912 hyphenation exceptions out of 8191
  38i,12n,55p,10398b,403s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (83 pages).
+Output written on main.pdf (85 pages).

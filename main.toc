@@ -1,5 +1,5 @@
-\contentsline {chapter}{List of Tables}{viii}
-\contentsline {chapter}{List of Figures}{ix}
+\contentsline {chapter}{List of Tables}{ix}
+\contentsline {chapter}{List of Figures}{x}
 \contentsline {chapter}{Chapter 1.\hspace *{1em}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Previous Works}{4}
 \contentsline {section}{\numberline {1.2}Our Contributions}{6}
