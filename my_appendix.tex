@@ -1,0 +1,35 @@
+%
+% this file is encoded in utf-8
+% v2.02 (Sep. 12, 2012)
+%%% 每一個附錄 (附錄甲、附錄乙、...) 都要複製此段附錄編排碼做為起頭
+%%% 附錄編排碼 begin >>>
+\newpage 
+\chapter*{附錄 A:　　MATLAB / Octave 程式列表} % 修改附錄編號與你的附錄名
+\phantomsection % for hyperref to register this
+\addcontentsline{toc}{chapter}{附錄 A: MATLAB / Octave 程式列表} %建議此內容應與上行相同
+%\setcounter{chapter}{0}  %如果用的是 TeXLive2007 則打開此行以避免錯誤 
+\setcounter{equation}{0} 
+\setcounter{figure}{0} 
+\setcounter{footnote}{0} 
+\setcounter{section}{0} 
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{table}{0} 
+\renewcommand{\thechapter}{A} % 如果是附錄 B，則內容應為{B}
+%%% <<< 附錄編排碼 end
+
+% 附錄內容開始
+%%% 納入程式源碼
+\lstinputlisting[caption={matlab 程式碼列表範例},
+label=lst:matlab:example,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+{example_prog_list.m}
+
+\begin{equation}\sum_{k=1}^{n} k = \frac{n(n+1)}{2}\end{equation}
+
+%%% 如果有附錄B、C、...，則在此繼續加上「附錄編排」碼
+% 每一個附錄會自動以新頁開始

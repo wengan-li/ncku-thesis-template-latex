@@ -1,0 +1,338 @@
+%% non-float version of table and figure environments
+\makeatletter
+\newenvironment{tablehere}
+  {\def\@captype{table}}
+  {}
+
+\newenvironment{figurehere}
+  {\def\@captype{figure}}
+  {}
+\makeatother
+
+
+% some useful macros
+%
+
+% a single figure
+%
+% usage:
+% \fig{width}
+% {path/filename}
+% {caption}
+% {label}
+\newcommand{\fig}[4]{
+\begin{figure}[tbph]
+{\centering \includegraphics[%
+  width=#1,%
+  keepaspectratio]{#2}
+ \caption{#3}
+ \label{#4}
+ \par
+}
+\end{figure}
+}
+
+% a single figure, with additional text beneath the caption.  Usually the source of the figure.
+%
+% usage:
+% \figt{width}
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+\newcommand{\figt}[5]{
+\begin{figure}[tbph]
+{\centering \includegraphics[%
+  width=#1,%
+  keepaspectratio]{#2}
+ \caption{#3}
+ \label{#4}
+ #5\par
+ }
+\end{figure}
+}
+
+% single figure, additional text below the caption, spacing control between the figure and the caption
+%
+% usage:
+% \figts{width}
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+% {place negative height, say, -4ex to reduce the gap between fig and caption}
+\newcommand{\figts}[6]{
+\begin{figure}[tbph]
+{\centering \includegraphics[%
+  width=#1,%
+  keepaspectratio]{#2}
+  \vspace{#6}\par
+ \caption{#3}
+ \label{#4}
+ #5\par
+ }
+\end{figure}
+}
+
+% single figure, additional text below the caption, spacing control between the figure and the caption, trimming
+%
+% usage:
+% \figtsr{width}
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+% {place negative height, say, -4ex to reduce the gap between fig and caption}
+% {left bottom right top} in unit of bp (=1/72 in)
+\newcommand{\figtsr}[7]{
+\begin{figure}[tbph]
+{\centering \includegraphics[%
+  width=#1,%
+  keepaspectratio,%
+  trim=#7,clip=true]{#2}
+  \vspace{#6}\par
+ \caption{#3}
+ \label{#4}
+ #5\par
+ }
+\end{figure}
+}
+
+% multiple figures and captions in side-by-side arrangement;
+%
+% usage: (must be within figure environment)
+% \mpfig{width}% in terms of \columnwidth
+% {path/filename}
+% {caption}
+% {label}
+\newcommand{\mpfig}[4]{
+\begin{minipage}[b][1\totalheight]{#1\columnwidth}
+\par\vspace{0pt}
+{\centering \includegraphics[width=1\columnwidth,keepaspectratio]{#2}
+\caption{#3}
+\label{#4}\par}
+\end{minipage}
+}
+
+% multiple figures and captions in side-by-side arrangement;
+% each has its own descriptive text beneath the caption.
+%
+% usage: (must be within figure environment)
+% \mpfigt{width}% in terms of \columnwidth
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+\newcommand{\mpfigt}[5]{
+\begin{minipage}[b][1\totalheight]{#1\columnwidth}
+{\centering \includegraphics[width=1\columnwidth,keepaspectratio]{#2}
+\caption{#3}
+\label{#4}
+#5\par}
+\end{minipage}
+}
+
+% multiple figures and captions in side-by-side arrangement, with spacing gap control;
+%
+% usage: (must be within figure environment)
+% \mpfigts{width}% in terms of \columnwidth
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+% {place negative height, say, -4ex to reduce the gap between fig and caption}
+\newcommand{\mpfigts}[6]{
+\begin{minipage}[b][1\totalheight]{#1\columnwidth}
+\par\vspace{0pt}
+{\centering \includegraphics[width=1\columnwidth,keepaspectratio]{#2}
+\vspace{#6}\par
+\caption{#3}
+\label{#4}
+#5\par}
+\end{minipage}
+}
+
+% multiple figures and captions in side-by-side arrangement, with spacing, w/ trim;
+%
+% usage: (must be within figure environment)
+% \mpfigtra{width}% in terms of \columnwidth
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+% {place negative height, say, -4ex to reduce the gap between fig and caption}
+% {left bottom right top} in terms of bp (=1/72 in)
+\newcommand{\mpfigtsr}[7]{
+\begin{minipage}[b][1\totalheight]{#1\columnwidth}
+\par\vspace{0pt}
+{\centering \includegraphics[width=1\columnwidth,keepaspectratio,%
+ trim=#7,clip=true]{#2}
+\vspace{#6}\par
+\caption{#3}
+\label{#4}
+#5\par}
+\end{minipage}
+}
+
+% multiple figures and captions in side-by-side arrangement, w/ spacing, w/ trim, w/ alignment;
+%
+% usage: (must be within figure environment)
+% \mpfigtsra{width}% in terms of \columnwidth
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+% {place negative height, say, -4ex to reduce the gap between fig and caption}
+% {left bottom right top}
+% {alignment}
+\newcommand{\mpfigtsra}[8]{
+\begin{minipage}[#8][1\totalheight]{#1\columnwidth}
+\par\vspace{0pt}
+{\centering \includegraphics[width=1\columnwidth,keepaspectratio,%
+ trim=#7,clip=true]{#2}
+\vspace{#6}\par
+\caption{#3}
+\label{#4}
+#5\par}
+\end{minipage}
+}
+
+% multiple figures in side-by-side arrangement, but with a single caption
+%
+% usage: (must be within figure environment)
+%     the caption capability is not included in this macro
+%
+% \mpfigabc{width}% in terms of \columnwidth
+% {path/filename}
+% {text beneath the figure.  Usually for the numbering of the subfigure}
+\newcommand{\mpfigabc}[3]{
+\begin{minipage}[b][1\totalheight]{#1\columnwidth}
+\par\vspace{0pt}
+{\centering \includegraphics[width=1\columnwidth,keepaspectratio]{#2}
+#3\par}
+\end{minipage}
+}
+
+% multiple figures in side-by-side arrangement, but with a single caption, w/spacing
+%
+% usage: (must be within figure environment)
+%     the caption capability is not included in this macro
+%
+% \mpfigabcs{width}% in terms of \columnwidth
+% {path/filename}
+% {text beneath the figure.  Usually for the numbering of the subfigure}
+% {place negative height, say, -4ex to reduce the gap between fig and caption}
+\newcommand{\mpfigabcs}[4]{
+\begin{minipage}[b][1\totalheight]{#1\columnwidth}
+\par\vspace{0pt}
+{\centering \includegraphics[width=1\columnwidth,keepaspectratio]{#2}\par
+\vspace*{#4}#3\par}
+\end{minipage}
+}
+
+% multiple figures in side-by-side arrangement, but with a single caption, w/spacing, w/trimming
+%
+% usage: (must be within figure environment)
+%     the caption capability is not included in this macro
+%
+% \mpfigabcsr{width}% in terms of \columnwidth
+% {path/filename}
+% {text beneath the figure.  Usually for the numbering of the subfigure}
+% {place negative height, say, -4ex to reduce the gap between fig and caption}
+% {left bottom right top}
+\newcommand{\mpfigabcsr}[5]{
+\begin{minipage}[b][1\totalheight]{#1\columnwidth}
+\par\vspace{0pt}
+{\centering \includegraphics[width=1\columnwidth,keepaspectratio,%
+ trim=#5,clip=true]{#2}\par
+\vspace*{#4}#3\par}
+\end{minipage}
+}
+
+
+
+% a single figure; FIGUREHERE version
+%
+% usage:
+% \hfig{width}
+% {path/filename}
+% {caption}
+% {label}
+\newcommand{\hfig}[4]{
+\begin{figurehere}
+{\centering \includegraphics[%
+  width=#1,%
+  keepaspectratio]{#2}
+\caption{#3}
+\label{#4}
+\par
+}
+\end{figurehere}
+}
+
+% a single figure, with additional text beneath the caption.  Usually the source of the figure. FIGUREHERE version
+%
+% usage:
+% \hfigt{width}
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+\newcommand{\hfigt}[5]{
+\begin{figurehere}
+{\centering \includegraphics[%
+  width=#1,%
+  keepaspectratio]{#2}%
+\caption{#3}
+\label{#4}
+#5\par}
+\end{figurehere}
+}
+
+% controlling the gap between fig and caption
+% FIGUREHERE version
+%
+% usage:
+% \hfigts{width}
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+% {place negative height, say, -4ex to reduce the gap between fig and caption}
+\newcommand{\hfigts}[6]{
+\begin{figurehere}
+{\centering \includegraphics[%
+  width=#1,%
+  keepaspectratio]{#2}
+\vspace{#6}\par
+\caption{#3}
+\label{#4}
+#5\par}
+\end{figurehere}
+}
+
+% single figure, additional text below the caption spacing control between the figure and the caption, trimming
+% FIGUREHERE version
+%
+% usage:
+% \hfigtsr{width}
+% {path/filename}
+% {caption}
+% {label}
+% {additional text beneath the caption.  Usually the source of the figure.}
+% {place negative height, say, -4ex to reduce the gap between fig and caption}
+% {left bottom right top} in unit of bp (= 1/72 in)
+\newcommand{\hfigtsr}[7]{
+\begin{figurehere}
+{\centering \includegraphics[%
+  width=#1,%
+  keepaspectratio,%
+  trim=#7,clip=true]{#2}
+\vspace{#6}\par
+\caption{#3}
+\label{#4}
+#5\par
+}
+\end{figurehere}
+}
+

@@ -1,0 +1,24 @@
+%
+% this file is encoded in utf-8
+% v2.02 (Sep. 12, 2012)
+
+%%% 參考文獻
+\newpage
+\phantomsection % for hyperref to register this
+\addcontentsline{toc}{chapter}{\nameRef}
+\renewcommand{\bibname}{\protect\makebox[5cm][s]{\nameRef}}
+%  \makebox{} is fragile; need protect
+\bibliographystyle{IEEEtran}  % 使用 IEEE Trans 期刊格式
+\bibliography{my_bib}
+
+
+%%% 附錄
+\input{my_appendix.tex}
+
+%%% 自傳
+\newpage
+\chapter*{\protect\makebox[5cm][s]{\nameVita}} % \makebox{} is fragile; need protect
+\phantomsection % for hyperref to register this
+\addcontentsline{toc}{chapter}{\nameVita}
+\input{my_vita.tex}
+

@@ -1,0 +1,22 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces 使用 fig 展示元智校徽}}{5}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces 使用 figt 展示有說明出處的元智校徽}}{6}{figure.1.2}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces 使用 figts 呈現較近的標題文字}}{7}{figure.1.3}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces 使用 figtsr 展示切割後的元智校徽且與標題文字行距較小}}{7}{figure.1.4}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces 使用 mpfig 展示元智校徽 1}}{8}{figure.1.5}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces 使用 mpfig 展示元智校徽 2}}{8}{figure.1.6}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces 使用 mpfigt 展示元智校徽 3}}{9}{figure.1.7}
+\contentsline {figure}{\numberline {1.8}{\ignorespaces 使用 mpfigt 展示元智校徽 4}}{9}{figure.1.8}
+\contentsline {figure}{\numberline {1.9}{\ignorespaces 使用 mpfigts 展示較大的與標題文字間距}}{10}{figure.1.9}
+\contentsline {figure}{\numberline {1.10}{\ignorespaces 使用 mpfigts 展示調整較小的與標題文字間距}}{10}{figure.1.10}
+\contentsline {figure}{\numberline {1.11}{\ignorespaces 使用 mpfigtsr 展示裁切少的校徽}}{12}{figure.1.11}
+\contentsline {figure}{\numberline {1.12}{\ignorespaces 使用 mpfigtsr 展示裁切多的校徽}}{12}{figure.1.12}
+\contentsline {figure}{\numberline {1.13}{\ignorespaces 使用 mpfigtsra 展示對齊以及標題文字間距較大}}{13}{figure.1.13}
+\contentsline {figure}{\numberline {1.14}{\ignorespaces 使用 mpfigtsra 展示裁切、較大的圖、對齊以及標題文字間距較小}}{13}{figure.1.14}
+\contentsline {figure}{\numberline {1.15}{\ignorespaces 使用 mpfigabc 展示不同尺寸的校徽}}{14}{figure.1.15}
+\contentsline {figure}{\numberline {1.16}{\ignorespaces 使用 mpfigabcs 展示不同尺寸的校徽，圖底下的註記文字較靠近}}{15}{figure.1.16}
+\contentsline {figure}{\numberline {1.17}{\ignorespaces 使用 mpfigabcsr 展示不同尺寸的校徽，圖底下的註記文字較靠近，且圖 (b) 四邊有裁切}}{16}{figure.1.17}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

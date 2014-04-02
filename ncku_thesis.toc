@@ -1,0 +1,29 @@
+\contentsline {chapter}{書名頁}{ii}{section*.1}
+\contentsline {chapter}{論文口試委員審定書}{iii}{section*.2}
+\contentsline {chapter}{授權書}{iv}{section*.3}
+\contentsline {chapter}{中文摘要}{v}{section*.4}
+\contentsline {chapter}{英文摘要}{vi}{section*.5}
+\contentsline {chapter}{誌謝}{vii}{section*.7}
+\contentsline {chapter}{目錄}{viii}{section*.8}
+\contentsline {chapter}{表目錄}{x}{section*.10}
+\contentsline {chapter}{圖目錄}{xi}{section*.12}
+\contentsline {chapter}{\numberline {\CJKnumber {1}、}緒論}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}\unhbox \voidb@x \hbox {\LaTeX \ 基本示範}}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}插入表格}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}插入圖檔}{5}{section.1.3}
+\contentsline {section}{\numberline {1.4}程式碼列表}{17}{section.1.4}
+\contentsline {section}{\numberline {1.5}插入參考文獻編號}{18}{section.1.5}
+\contentsline {chapter}{\numberline {\CJKnumber {2}、}數學式子}{20}{chapter.2}
+\contentsline {chapter}{\numberline {\CJKnumber {3}、}靠自己養成的好習慣}{22}{chapter.3}
+\contentsline {chapter}{\numberline {\CJKnumber {4}、}元智大學論文格式規範}{24}{chapter.4}
+\contentsline {section}{\numberline {4.1}規格說明}{24}{section.4.1}
+\contentsline {section}{\numberline {4.2}操作細則}{25}{section.4.2}
+\contentsline {chapter}{\numberline {\CJKnumber {5}、}兩篇短文}{28}{chapter.5}
+\contentsline {section}{\numberline {5.1}南橫上的捍衛戰警—閻驊}{28}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}發生了什麼事?}{28}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}修車方法}{29}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}另一項考驗}{29}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}柯林頓的天誅撤收論—閻驊}{32}{section.5.2}
+\contentsline {chapter}{參考文獻}{36}{section*.14}
+\contentsline {chapter}{附錄 A: MATLAB / Octave 程式列表}{38}{section*.17}
+\contentsline {chapter}{自傳}{39}{section*.19}

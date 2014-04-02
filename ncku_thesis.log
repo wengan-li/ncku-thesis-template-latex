@@ -1,0 +1,2280 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=latex 2013.8.15)  15 DEC 2013 23:01
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**ncku_thesis
+(./ncku_thesis.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
+c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
+h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
+h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
+ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
+rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, 
+kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
+ polish, portuguese, romanian, romansh, russian, sanskrit, serbian, serbianc, s
+lovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian, 
+welsh, loaded.
+(./ncku_report.cls
+Document Class: ncku_report 2008/12/16 v0.3 Modified Standard LaTeX document cl
+ass
+(c:/texlive/2012/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\tocChNumberWidth=\skip43
+\bibindent=\dimen102
+)
+(c:/texlive/2012/texmf-dist/tex/latex/cmap/cmap.sty
+Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
+
+
+Package cmap Warning: pdftex in DVI mode - exiting.
+
+) (c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/CJKutf8.sty
+Package: CJKutf8 2012/05/07 4.8.3
+
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+)
+(c:/texlive/2012/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(c:/texlive/2012/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+
+(c:/texlive/2012/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+
+(c:/texlive/2012/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+)
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+(c:/texlive/2012/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+))
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/CJK.sty
+Package: CJK 2012/05/07 4.8.3
+
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/mule/MULEenc.sty
+Package: MULEenc 2012/05/07 4.8.3
+)
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/CJK.enc
+File: CJK.enc 2012/05/07 4.8.3
+Now handling font encoding C00 ...
+... no UTF-8 mapping file for font encoding C00
+Now handling font encoding C05 ...
+... no UTF-8 mapping file for font encoding C05
+Now handling font encoding C09 ...
+... no UTF-8 mapping file for font encoding C09
+Now handling font encoding C10 ...
+... no UTF-8 mapping file for font encoding C10
+Now handling font encoding C20 ...
+... no UTF-8 mapping file for font encoding C20
+Now handling font encoding C19 ...
+... no UTF-8 mapping file for font encoding C19
+Now handling font encoding C40 ...
+... no UTF-8 mapping file for font encoding C40
+Now handling font encoding C42 ...
+... no UTF-8 mapping file for font encoding C42
+Now handling font encoding C43 ...
+... no UTF-8 mapping file for font encoding C43
+Now handling font encoding C50 ...
+... no UTF-8 mapping file for font encoding C50
+Now handling font encoding C52 ...
+... no UTF-8 mapping file for font encoding C52
+Now handling font encoding C49 ...
+... no UTF-8 mapping file for font encoding C49
+Now handling font encoding C60 ...
+... no UTF-8 mapping file for font encoding C60
+Now handling font encoding C61 ...
+... no UTF-8 mapping file for font encoding C61
+Now handling font encoding C63 ...
+... no UTF-8 mapping file for font encoding C63
+Now handling font encoding C64 ...
+... no UTF-8 mapping file for font encoding C64
+Now handling font encoding C65 ...
+... no UTF-8 mapping file for font encoding C65
+Now handling font encoding C70 ...
+... no UTF-8 mapping file for font encoding C70
+Now handling font encoding C31 ...
+... no UTF-8 mapping file for font encoding C31
+Now handling font encoding C32 ...
+... no UTF-8 mapping file for font encoding C32
+Now handling font encoding C33 ...
+... no UTF-8 mapping file for font encoding C33
+Now handling font encoding C34 ...
+... no UTF-8 mapping file for font encoding C34
+Now handling font encoding C35 ...
+... no UTF-8 mapping file for font encoding C35
+Now handling font encoding C36 ...
+... no UTF-8 mapping file for font encoding C36
+Now handling font encoding C37 ...
+... no UTF-8 mapping file for font encoding C37
+Now handling font encoding C80 ...
+... no UTF-8 mapping file for font encoding C80
+Now handling font encoding C81 ...
+... no UTF-8 mapping file for font encoding C81
+Now handling font encoding C01 ...
+... no UTF-8 mapping file for font encoding C01
+Now handling font encoding C11 ...
+... no UTF-8 mapping file for font encoding C11
+Now handling font encoding C21 ...
+... no UTF-8 mapping file for font encoding C21
+Now handling font encoding C41 ...
+... no UTF-8 mapping file for font encoding C41
+Now handling font encoding C62 ...
+... no UTF-8 mapping file for font encoding C62
+)
+LaTeX Info: Redefining \selectfont on input line 755.
+\CJK@indent=\box26
+)
+(c:/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+))
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/CJKnumb.sty
+Package: CJKnumb 2012/05/07 4.8.3
+\CJK@q=\count88
+\CJK@r=\count89
+)
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/CJKspace.sty
+Package: CJKspace 2012/05/07 3.8.0
+)
+(c:/texlive/2012/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
+(c:/texlive/2012/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(c:/texlive/2012/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count90
+\Gm@cntv=\count91
+\c@Gm@tempcnt=\count92
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks17
+)
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(c:/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvipdfmx.def on input line 91.
+
+(c:/texlive/2012/texmf-dist/tex/latex/dvipdfmx-def/dvipdfmx.def
+File: dvipdfmx.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen111
+\Gin@req@width=\dimen112
+)
+(c:/texlive/2012/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip44
+\f@ncyO@elh=\skip45
+\f@ncyO@erh=\skip46
+\f@ncyO@olh=\skip47
+\f@ncyO@orh=\skip48
+\f@ncyO@elf=\skip49
+\f@ncyO@erf=\skip50
+\f@ncyO@olf=\skip51
+\f@ncyO@orf=\skip52
+)
+(./ncku_watermark.tex
+\mywatermark=\box27
+File: my_watermark.eps Graphic file (type eps)
+ <my_watermark.eps>) (./my_headerfooter.tex)
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip53
+
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks18
+\ex@=\dimen113
+))
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen114
+)
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count93
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count94
+\leftroot@=\count95
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count96
+\DOTSCASE@=\count97
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box28
+\strutbox@=\box29
+\big@size=\dimen115
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count98
+\c@MaxMatrixCols=\count99
+\dotsspace@=\muskip10
+\c@parentequation=\count100
+\dspbrk@lvl=\count101
+\tag@help=\toks19
+\row@=\count102
+\column@=\count103
+\maxfields@=\count104
+\andhelp@=\toks20
+\eqnshift@=\dimen116
+\alignsep@=\dimen117
+\tagshift@=\dimen118
+\tagwidth@=\dimen119
+\totwidth@=\dimen120
+\lineht@=\dimen121
+\@envbody=\toks21
+\multlinegap=\skip54
+\multlinetaggap=\skip55
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(c:/texlive/2012/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(c:/texlive/2012/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(c:/texlive/2012/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+)
+(c:/texlive/2012/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count105
+\lst@gtempboxa=\box30
+\lst@token=\toks23
+\lst@length=\count106
+\lst@currlwidth=\dimen122
+\lst@column=\count107
+\lst@pos=\count108
+\lst@lostspace=\dimen123
+\lst@width=\dimen124
+\lst@newlines=\count109
+\lst@lineno=\count110
+\lst@maxwidth=\dimen125
+
+(c:/texlive/2012/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count111
+\lst@skipnumbers=\count112
+\lst@framebox=\box31
+)
+(c:/texlive/2012/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(c:/texlive/2012/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/CJKfntef.sty
+Package: CJKfntef 2012/05/07 4.8.3
+
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/CJKulem.sty
+Package: CJKulem 2012/05/07 4.8.3
+
+(c:/texlive/2012/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box32
+\UL@hyphenbox=\box33
+\UL@skip=\skip56
+\UL@hook=\toks24
+\UL@height=\dimen126
+\UL@pe=\count113
+\UL@pixel=\dimen127
+\ULC@box=\box34
+Package: ulem 2012/05/18
+\ULdepth=\dimen128
+)
+\UL@lastkern=\dimen129
+\CJK@skip=\skip57
+)
+\CJK@fntefSkip=\skip58
+\CJK@nest=\count114
+\CJK@fntefDimen=\dimen130
+\CJK@underdotBox=\box35
+\CJK@ULbox=\box36
+\CJK@underanyskip=\dimen131
+)
+(c:/texlive/2012/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen132
+)
+(c:/texlive/2012/texmf-dist/tex/latex/multirow/bigstrut.sty)
+(c:/texlive/2012/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen133
+\lightrulewidth=\dimen134
+\cmidrulewidth=\dimen135
+\belowrulesep=\dimen136
+\belowbottomsep=\dimen137
+\aboverulesep=\dimen138
+\abovetopsep=\dimen139
+\cmidrulesep=\dimen140
+\cmidrulekern=\dimen141
+\defaultaddspace=\dimen142
+\@cmidla=\count115
+\@cmidlb=\count116
+\@aboverulesep=\dimen143
+\@belowrulesep=\dimen144
+\@thisruleclass=\count117
+\@lastruleclass=\count118
+\@thisrulewidth=\dimen145
+)
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(c:/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 130.
+
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+)
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+(c:/texlive/2012/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(c:/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Package option `usenames' ignored on input line 216.
+Package xcolor Info: Driver file: dvips.def on input line 225.
+
+(c:/texlive/2012/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+(c:/texlive/2012/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen146
+\extrarowheight=\dimen147
+\NC@list=\toks25
+\extratabsurround=\skip59
+\backup@length=\skip60
+)
+\everycr=\toks26
+\minrowclearance=\skip61
+)
+LaTeX Info: Redefining \color on input line 702.
+\rownum=\count119
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+)
+(c:/texlive/2012/texmf-dist/tex/latex/xcolor/svgnam.def
+File: svgnam.def 2007/01/21 v2.11 Predefined colors according to SVG 1.1 (UK)
+))
+(c:/texlive/2012/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/05/13 v6.82q Hypertext links for LaTeX
+
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(c:/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen148
+\Hy@linkcounter=\count120
+\Hy@pagecounter=\count121
+
+(c:/texlive/2012/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count122
+
+(c:/texlive/2012/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `debug' set `true' on input line 3941.
+Package hyperref Info: Option `colorlinks' set `true' on input line 3941.
+Package hyperref Info: Option `unicode' set `true' on input line 3941.
+
+(c:/texlive/2012/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2012/05/13 v6.82q Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4062.
+Package hyperref Info: Link nesting OFF on input line 4067.
+Package hyperref Info: Hyper index ON on input line 4070.
+Package hyperref Info: Plain pages OFF on input line 4077.
+Package hyperref Info: Backreferencing OFF on input line 4082.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4300.
+\c@Hy@tempcnt=\count123
+LaTeX Info: Redefining \url on input line 4653.
+\Fld@menulength=\count124
+\Field@Width=\dimen149
+\Fld@charsize=\dimen150
+Package hyperref Info: Hyper figures OFF on input line 5773.
+Package hyperref Info: Link nesting OFF on input line 5778.
+Package hyperref Info: Hyper index ON on input line 5781.
+Package hyperref Info: backreferencing OFF on input line 5788.
+Package hyperref Info: Link coloring ON on input line 5791.
+Package hyperref Info: Link coloring with OCG OFF on input line 5798.
+Package hyperref Info: PDF/A mode OFF on input line 5803.
+LaTeX Info: Redefining \ref on input line 5843.
+LaTeX Info: Redefining \pageref on input line 5847.
+\Hy@abspage=\count125
+\c@Item=\count126
+\c@Hfootnote=\count127
+)
+
+Package hyperref Message: Driver: hdvipdfm.
+
+(c:/texlive/2012/texmf-dist/tex/latex/hyperref/hdvipdfm.def
+File: hdvipdfm.def 2012/05/13 v6.82q Hyperref driver for dvipdfm
+\pdfm@box=\box37
+\c@Hy@AnnotLevel=\count128
+\HyField@AnnotCount=\count129
+\Fld@listcount=\count130
+\c@bookmark@seq@number=\count131
+
+(c:/texlive/2012/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip62
+)
+(./ncku_thesis.aux
+
+LaTeX Warning: Label `lst:mpfigabc' multiply defined.
+
+
+LaTeX Warning: Label `lst:mpfigabc' multiply defined.
+
+)
+\openout1 = `ncku_thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+*geometry* verbose mode - [ preamble ] result:
+* driver: dvips
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(113.81102pt, 426.79135pt, 56.9055pt)
+* v-part:(T,H,B)=(99.58464pt, 688.5567pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=426.79135pt
+* \textheight=688.5567pt
+* \oddsidemargin=41.54103pt
+* \evensidemargin=41.54103pt
+* \topmargin=-9.68535pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\c@lstlisting=\count132
+\AtBeginShipoutBox=\box38
+Package hyperref Info: Link coloring ON on input line 157.
+(c:/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count133
+)
+LaTeX Info: Redefining \ref on input line 157.
+LaTeX Info: Redefining \pageref on input line 157.
+LaTeX Info: Redefining \nameref on input line 157.
+
+(./ncku_thesis.out) (./ncku_thesis.out)
+\@outlinefile=\write3
+\openout3 = `ncku_thesis.out'.
+
+Package hyperref Info: Anchor `Doc-Start' on input line 157.
+
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/utf8/UTF8.bdg
+File: UTF8.bdg 2012/05/07 4.8.3
+)
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/utf8/UTF8.enc
+File: UTF8.enc 2012/05/07 4.8.3
+)
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/utf8/UTF8.chr
+File: UTF8.chr 2012/05/07 4.8.3
+)
+LaTeX Font Info:    Try loading font information for C70+bkai on input line 174
+.
+
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/utf8/c70bkai.fd
+File: c70bkai.fd 2012/05/07 4.8.3
+)
+(c:/texlive/2012/texmf-dist/tex/latex/cjk/texinput/utf8/c70bkai.fdx
+File: c70bkai.fdx 2012/05/07 4.8.3
+)
+(./ncku_definitions.tex) (./ncku_chnum.tex) (./my_chapters.tex
+(./ncku_frontpages.tex (./my_names.tex)
+Underfull \hbox (badness 10000) detected at line 69
+\C70/bkai/m/n/24.88/62 ^^P \C70/bkai/m/n/24.88/52 � \C70/bkai/m/n/24.88/59 ' \C
+70/bkai/m/n/24.88/5b x
+ []
+
+
+Underfull \hbox (badness 2334) detected at line 71
+\C70/bkai/m/n/24.88/88 � \C70/bkai/m/n/24.88/90   \C70/bkai/m/n/24.88/8c � \C70
+/bkai/m/n/24.88/8a 
+ \C70/bkai/m/n/24.88/82 ^^G \C70/bkai/m/n/24.88/7c � \C70/bkai/m/n/24.88/7d q \
+C70/bkai/m/n/24.88/78 ^^T \C70/bkai/m/n/24.88/7a v \C70/bkai/m/n/24.88/62 @
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 73
+\C70/bkai/m/n/24.88/78 � \C70/bkai/m/n/24.88/58 � \C70/bkai/m/n/24.88/8a � \C70
+/bkai/m/n/24.88/65 �
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 96
+\C70/bkai/m/n/17.28/78 ^^T \C70/bkai/m/n/17.28/7a v \C70/bkai/m/n/17.28/75 ^^_
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 128
+\C70/bkai/m/n/17.28/4e - \C70/bkai/m/n/17.28/83 � \C70/bkai/m/n/17.28/6c ^^Q \C
+70/bkai/m/n/17.28/57  \C70/bkai/m/n/17.28/4e ^^@ \C70/bkai/m/n/17.28/25 � \C70
+/bkai/m/n/17.28/4e ^^@ \C70/bkai/m/n/17.28/5e t \C70/bkai/m/n/17.28/4e ^^C \C70
+/bkai/m/n/17.28/67 ^^H
+ []
+
+Package hyperref Info: Anchor `page.1' on input line 136.
+[1
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 164.
+
+ (c:/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <14.4> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 164.
+Package hyperref Info: Anchor `page.i' on input line 201.
+ [1]
+Package hyperref Info: Anchor `section*.1' on input line 212.
+Package hyperref Info: bookmark on input line 213:
+(hyperref)             thecounter {0}
+(hyperref)             text {\nameInnerCover }
+(hyperref)             reference {section*.1}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+
+Underfull \hbox (badness 10000) detected at line 235
+\C70/bkai/m/n/14.4/78 ^^T \C70/bkai/m/n/14.4/7a v \C70/bkai/m/n/14.4/75 ^^_
+ []
+
+
+Underfull \hbox (badness 1264) detected at line 244
+\C70/bkai/m/n/14.4/63 ^^G \C70/bkai/m/n/14.4/5c ^^N \C70/bkai/m/n/14.4/65 Y \C7
+0/bkai/m/n/14.4/63 �
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 283
+\C70/bkai/m/n/14.4/62 ^^P \C70/bkai/m/n/14.4/52 � \C70/bkai/m/n/14.4/59 ' \C70/
+bkai/m/n/14.4/5b x
+ []
+
+
+Underfull \hbox (badness 7851) detected at line 285
+\C70/bkai/m/n/14.4/78 � \C70/bkai/m/n/14.4/58 � \C70/bkai/m/n/14.4/8a � \C70/bk
+ai/m/n/14.4/65 �
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package hyperref Info: Anchor `page.ii' on input line 327.
+[2]
+Package hyperref Info: Anchor `section*.2' on input line 338.
+Package hyperref Info: bookmark on input line 339:
+(hyperref)             thecounter {0}
+(hyperref)             text {\nameCommitteeForm }
+(hyperref)             reference {section*.2}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `page.iii' on input line 340.
+ [3
+
+]
+Package hyperref Info: Anchor `section*.3' on input line 352.
+Package hyperref Info: bookmark on input line 353:
+(hyperref)             thecounter {0}
+(hyperref)             text {\nameCopyrightForm }
+(hyperref)             reference {section*.3}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `page.iv' on input line 354.
+ [4
+
+]
+Package hyperref Info: Anchor `section*.4' on input line 363.
+Package hyperref Info: bookmark on input line 364:
+(hyperref)             thecounter {0}
+(hyperref)             text {\nameCabstract }
+(hyperref)             reference {section*.4}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+
+Underfull \hbox (badness 10000) detected at line 415
+\C70/bkai/m/n/14.4/64 X \C70/bkai/m/n/14.4/89 �
+ []
+
+(./my_cabstract.tex)
+Package hyperref Info: Anchor `page.v' on input line 429.
+ [5
+
+]
+Package hyperref Info: Anchor `section*.5' on input line 433.
+Package hyperref Info: bookmark on input line 434:
+(hyperref)             thecounter {0}
+(hyperref)             text {\nameEabstract }
+(hyperref)             reference {section*.5}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+ (./my_eabstract.tex)
+Package hyperref Info: Anchor `page.vi' on input line 510.
+ [6]
+Package hyperref Info: Anchor `chapter*.6' on input line 511.
+
+Underfull \hbox (badness 10000) detected at line 511
+\C70/bkai/bx/n/20.74/8a �[][] \C70/bkai/bx/n/20.74/8b ^^][][]
+ []
+
+Package hyperref Info: Anchor `section*.7' on input line 512.
+Package hyperref Info: bookmark on input line 513:
+(hyperref)             thecounter {0}
+(hyperref)             text {\nameAckn }
+(hyperref)             reference {section*.7}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+(./my_ackn.tex)
+Package hyperref Info: Anchor `page.vii' on input line 521.
+ [7
+
+]
+Package hyperref Info: Anchor `section*.8' on input line 524.
+Package hyperref Info: bookmark on input line 525:
+(hyperref)             thecounter {0}
+(hyperref)             text {\nameToc }
+(hyperref)             reference {section*.8}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `chapter*.9' on input line 526.
+
+Underfull \hbox (badness 10000) detected at line 526
+\C70/bkai/bx/n/20.74/76 �[][] \C70/bkai/bx/n/20.74/93 ^^D[][]
+ []
+
+(./ncku_thesis.toc
+Package hyperref Info: Reference (link) `section*.1' on input line 1.
+LaTeX Font Info:    Try loading font information for U+msa on input line 1.
+ (c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 1.
+
+(c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 1.
+
+(c:/texlive/2012/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+Package hyperref Info: Reference (link) `section*.2' on input line 2.
+Package hyperref Info: Reference (link) `section*.3' on input line 3.
+Package hyperref Info: Reference (link) `section*.4' on input line 4.
+Package hyperref Info: Reference (link) `section*.5' on input line 5.
+Package hyperref Info: Reference (link) `section*.7' on input line 6.
+Package hyperref Info: Reference (link) `section*.8' on input line 7.
+Package hyperref Info: Reference (link) `section*.10' on input line 8.
+Package hyperref Info: Reference (link) `section*.12' on input line 9.
+Package hyperref Info: Reference (link) `chapter.1' on input line 10.
+
+Overfull \hbox (0.50024pt too wide) detected at line 10
+\C70/bkai/m/n/12/4e ^^@\C70/bkai/m/n/12/30 ^^A 
+ []
+
+Package hyperref Info: Reference (link) `section.1.1' on input line 11.
+Package hyperref Info: Reference (link) `section.1.2' on input line 12.
+Package hyperref Info: Reference (link) `section.1.3' on input line 13.
+Package hyperref Info: Reference (link) `section.1.4' on input line 14.
+Package hyperref Info: Reference (link) `section.1.5' on input line 15.
+Package hyperref Info: Reference (link) `chapter.2' on input line 16.
+
+Overfull \hbox (0.50024pt too wide) detected at line 16
+\C70/bkai/m/n/12/4e �\C70/bkai/m/n/12/30 ^^A 
+ []
+
+Package hyperref Info: Reference (link) `chapter.3' on input line 17.
+
+Overfull \hbox (0.50024pt too wide) detected at line 17
+\C70/bkai/m/n/12/4e 	\C70/bkai/m/n/12/30 ^^A 
+ []
+
+Package hyperref Info: Reference (link) `chapter.4' on input line 18.
+
+Overfull \hbox (0.50024pt too wide) detected at line 18
+\C70/bkai/m/n/12/56 �\C70/bkai/m/n/12/30 ^^A 
+ []
+
+Package hyperref Info: Reference (link) `section.4.1' on input line 19.
+Package hyperref Info: Reference (link) `section.4.2' on input line 20.
+Package hyperref Info: Reference (link) `chapter.5' on input line 21.
+
+Overfull \hbox (0.50024pt too wide) detected at line 21
+\C70/bkai/m/n/12/4e �\C70/bkai/m/n/12/30 ^^A 
+ []
+
+Package hyperref Info: Anchor `page.viii' on input line 22.
+[8
+
+]
+Package hyperref Info: Reference (link) `section.5.1' on input line 22.
+Package hyperref Info: Reference (link) `subsection.5.1.1' on input line 23.
+Package hyperref Info: Reference (link) `subsection.5.1.2' on input line 24.
+Package hyperref Info: Reference (link) `subsection.5.1.3' on input line 25.
+Package hyperref Info: Reference (link) `section.5.2' on input line 26.
+Package hyperref Info: Reference (link) `section*.14' on input line 27.
+Package hyperref Info: Reference (link) `section*.17' on input line 28.
+Package hyperref Info: Reference (link) `section*.19' on input line 29.
+)
+\tf@toc=\write4
+\openout4 = `ncku_thesis.toc'.
+
+Package hyperref Info: Anchor `page.ix' on input line 533.
+ [9]
+Package hyperref Info: Anchor `section*.10' on input line 536.
+Package hyperref Info: bookmark on input line 537:
+(hyperref)             thecounter {0}
+(hyperref)             text {\nameLot }
+(hyperref)             reference {section*.10}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `chapter*.11' on input line 538.
+
+Underfull \hbox (badness 10000) detected at line 538
+\C70/bkai/bx/n/20.74/88 h[][] \C70/bkai/bx/n/20.74/76 �[][] \C70/bkai/bx/n/20.7
+4/93 ^^D[][]
+ []
+
+(./ncku_thesis.lot
+Package hyperref Info: Reference (link) `table.1.1' on input line 2.
+Package hyperref Info: Reference (link) `table.1.2' on input line 3.
+Package hyperref Info: Reference (link) `table.1.3' on input line 4.
+Package hyperref Info: Reference (link) `table.1.4' on input line 5.
+Package hyperref Info: Reference (link) `table.2.1' on input line 7.
+)
+\tf@lot=\write5
+\openout5 = `ncku_thesis.lot'.
+
+Package hyperref Info: Anchor `page.x' on input line 545.
+ [10
+
+]
+Package hyperref Info: Anchor `section*.12' on input line 548.
+Package hyperref Info: bookmark on input line 549:
+(hyperref)             thecounter {0}
+(hyperref)             text {\nameTof }
+(hyperref)             reference {section*.12}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `chapter*.13' on input line 550.
+
+Underfull \hbox (badness 10000) detected at line 550
+\C70/bkai/bx/n/20.74/57 ^^V[][] \C70/bkai/bx/n/20.74/76 �[][] \C70/bkai/bx/n/20
+.74/93 ^^D[][]
+ []
+
+(./ncku_thesis.lof
+Package hyperref Info: Reference (link) `figure.1.1' on input line 2.
+Package hyperref Info: Reference (link) `figure.1.2' on input line 3.
+Package hyperref Info: Reference (link) `figure.1.3' on input line 4.
+Package hyperref Info: Reference (link) `figure.1.4' on input line 5.
+Package hyperref Info: Reference (link) `figure.1.5' on input line 6.
+Package hyperref Info: Reference (link) `figure.1.6' on input line 7.
+Package hyperref Info: Reference (link) `figure.1.7' on input line 8.
+Package hyperref Info: Reference (link) `figure.1.8' on input line 9.
+Package hyperref Info: Reference (link) `figure.1.9' on input line 10.
+Package hyperref Info: Reference (link) `figure.1.10' on input line 11.
+Package hyperref Info: Reference (link) `figure.1.11' on input line 12.
+Package hyperref Info: Reference (link) `figure.1.12' on input line 13.
+Package hyperref Info: Reference (link) `figure.1.13' on input line 14.
+Package hyperref Info: Reference (link) `figure.1.14' on input line 15.
+Package hyperref Info: Reference (link) `figure.1.15' on input line 16.
+Package hyperref Info: Reference (link) `figure.1.16' on input line 17.
+Package hyperref Info: Reference (link) `figure.1.17' on input line 18.
+)
+\tf@lof=\write6
+\openout6 = `ncku_thesis.lof'.
+
+Package hyperref Info: Anchor `page.xi' on input line 566.
+ [11
+
+]) (./npc_macros_20120912.tex) (./example_body.tex
+\fmbox=\box39
+Package hyperref Info: Anchor `chapter.1' on input line 12.
+
+Chapter 1.
+Package hyperref Info: bookmark on input line 12:
+(hyperref)             thecounter {1}
+(hyperref)             text {\tocprechaptername \protect \numberline {\counterm
+apping {\arabic {chapter}}\tocpostchaptername }緒論}
+(hyperref)             reference {chapter.1}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 19.
+Package hyperref Info: Anchor `section.1.1' on input line 22.
+Package hyperref Info: bookmark on input line 22:
+(hyperref)             thecounter {1.1}
+(hyperref)             text {\ifnum 1>\c@secnumdepth \else \protect \numberline
+ {\csname thesection\endcsname }\fi \mbox {\LaTeX \ 基本示範}}
+(hyperref)             reference {section.1.1}
+(hyperref)             toclevel {1}
+(hyperref)             type {toc}.
+Package hyperref Info: Reference (link) `table.1.1' on input line 27.
+Package hyperref Info: Reference (link) `table.1.1' on input line 27.
+Package hyperref Info: Reference (link) `table.1.1' on input line 27.
+Package hyperref Info: bookmark on input line 34:
+(hyperref)             thecounter {1.1}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces \label {tb:special_chars}\mbox {無法直接在 \LaTeX \ �
+�稿裏使用的符號字元} }}
+(hyperref)             reference {table.1.1}
+(hyperref)             toclevel {0}
+(hyperref)             type {lot}.
+Package hyperref Info: Anchor `table.1.1' on input line 34.
+Package hyperref Info: Anchor `section.1.2' on input line 114.
+Package hyperref Info: bookmark on input line 114:
+(hyperref)             thecounter {1.2}
+(hyperref)             text {\ifnum 1>\c@secnumdepth \else \protect \numberline
+ {\csname thesection\endcsname }\fi 插入表格}
+(hyperref)             reference {section.1.2}
+(hyperref)             toclevel {1}
+(hyperref)             type {toc}.
+Package hyperref Info: Reference (link) `table.1.1' on input line 117.
+Package hyperref Info: Reference (link) `table.1.1' on input line 117.
+Package hyperref Info: Anchor `page.1' on input line 118.
+[1
+
+]
+Package hyperref Info: Anchor `page.2' on input line 118.
+ [2]
+Package hyperref Info: Reference (link) `table.1.2' on input line 145.
+Package hyperref Info: Reference (link) `table.1.3' on input line 158.
+Package hyperref Info: Reference (link) `table.1.4' on input line 158.
+Package hyperref Info: bookmark on input line 162:
+(hyperref)             thecounter {1.2}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces \label {tb:income_2003}Gross income of the first two quarte
+rs of year 2003}}
+(hyperref)             reference {table.1.2}
+(hyperref)             toclevel {0}
+(hyperref)             type {lot}.
+Package hyperref Info: Anchor `table.1.2' on input line 162.
+Package hyperref Info: bookmark on input line 186:
+(hyperref)             thecounter {1.3}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces \label {tb:income_2003_v2}Gross income of the first two qua
+rters of year 2003. Version 2}}
+(hyperref)             reference {table.1.3}
+(hyperref)             toclevel {0}
+(hyperref)             type {lot}.
+Package hyperref Info: Anchor `table.1.3' on input line 186.
+Package hyperref Info: bookmark on input line 208:
+(hyperref)             thecounter {1.4}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 由 excel2latex 協助產生的表格}}
+(hyperref)             reference {table.1.4}
+(hyperref)             toclevel {0}
+(hyperref)             type {lot}.
+Package hyperref Info: Anchor `table.1.4' on input line 208.
+Package hyperref Info: Anchor `page.3' on input line 225.
+ [3]
+Package hyperref Info: Anchor `page.4' on input line 225.
+ [4]
+Package hyperref Info: Anchor `section.1.3' on input line 227.
+Package hyperref Info: bookmark on input line 227:
+(hyperref)             thecounter {1.3}
+(hyperref)             text {\ifnum 1>\c@secnumdepth \else \protect \numberline
+ {\csname thesection\endcsname }\fi 插入圖檔}
+(hyperref)             reference {section.1.3}
+(hyperref)             toclevel {1}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `Item.1' on input line 239.
+Package hyperref Info: Reference (link) `figure.1.1' on input line 239.
+Package hyperref Info: Anchor `lstlisting.1.1' on input line 248.
+Package hyperref Info: bookmark on input line 248:
+(hyperref)             thecounter {1.1}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.1}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.1.1' on input line 249.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 249.
+Package hyperref Info: Anchor `lstnumber.1.1.2' on input line 250.
+Package hyperref Info: Anchor `lstnumber.1.1.3' on input line 251.
+Package hyperref Info: Anchor `lstnumber.1.1.4' on input line 252.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 263:
+(hyperref)             thecounter {1.1}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 fig 展示元智校徽}}
+(hyperref)             reference {figure.1.1}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.1' on input line 263.
+Package hyperref Info: Anchor `Item.2' on input line 268.
+Package hyperref Info: Reference (link) `figure.1.2' on input line 268.
+Package hyperref Info: Anchor `page.5' on input line 276.
+ [5
+
+]
+Package hyperref Info: Anchor `lstlisting.1.2' on input line 276.
+Package hyperref Info: bookmark on input line 276:
+(hyperref)             thecounter {1.2}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.2}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.2.1' on input line 277.
+Package hyperref Info: Anchor `lstnumber.1.2.2' on input line 278.
+Package hyperref Info: Anchor `lstnumber.1.2.3' on input line 279.
+Package hyperref Info: Anchor `lstnumber.1.2.4' on input line 280.
+Package hyperref Info: Anchor `lstnumber.1.2.5' on input line 281.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 291:
+(hyperref)             thecounter {1.2}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 figt 展示有說明出處的元智校徽}}
+(hyperref)             reference {figure.1.2}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.2' on input line 291.
+Package hyperref Info: Anchor `Item.3' on input line 296.
+Package hyperref Info: Reference (link) `figure.1.3' on input line 296.
+Package hyperref Info: Anchor `lstlisting.1.3' on input line 305.
+Package hyperref Info: bookmark on input line 305:
+(hyperref)             thecounter {1.3}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.3}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.3.1' on input line 306.
+Package hyperref Info: Anchor `lstnumber.1.3.2' on input line 307.
+Package hyperref Info: Anchor `lstnumber.1.3.3' on input line 308.
+Package hyperref Info: Anchor `lstnumber.1.3.4' on input line 309.
+Package hyperref Info: Anchor `lstnumber.1.3.5' on input line 310.
+Package hyperref Info: Anchor `lstnumber.1.3.6' on input line 311.
+File: figs/example_fig.png Graphic file (type eps)
+
+<figs/example_fig.png>
+Package hyperref Info: bookmark on input line 322:
+(hyperref)             thecounter {1.3}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 figts 呈現較近的標題文字}}
+(hyperref)             reference {figure.1.3}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.3' on input line 322.
+Package hyperref Info: Anchor `Item.4' on input line 327.
+Package hyperref Info: Reference (link) `figure.1.4' on input line 328.
+Package hyperref Info: Reference (link) `figure.1.4' on input line 329.
+Package hyperref Info: Anchor `page.6' on input line 331.
+ [6]
+Package hyperref Info: Anchor `lstlisting.1.4' on input line 338.
+Package hyperref Info: bookmark on input line 338:
+(hyperref)             thecounter {1.4}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.4}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.4.1' on input line 339.
+Package hyperref Info: Anchor `lstnumber.1.4.2' on input line 340.
+Package hyperref Info: Anchor `lstnumber.1.4.3' on input line 341.
+Package hyperref Info: Anchor `lstnumber.1.4.4' on input line 342.
+Package hyperref Info: Anchor `lstnumber.1.4.5' on input line 343.
+Package hyperref Info: Anchor `lstnumber.1.4.6' on input line 344.
+Package hyperref Info: Anchor `lstnumber.1.4.7' on input line 345.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 357:
+(hyperref)             thecounter {1.4}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 figtsr 展示切割後的元智校徽且與標題文
+字行距較小}}
+(hyperref)             reference {figure.1.4}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.4' on input line 357.
+Package hyperref Info: Anchor `Item.5' on input line 362.
+Package hyperref Info: Reference (link) `figure.1.5' on input line 362.
+Package hyperref Info: Reference (link) `figure.1.6' on input line 362.
+Package hyperref Info: Anchor `page.7' on input line 371.
+ [7]
+Package hyperref Info: Anchor `lstlisting.1.5' on input line 371.
+Package hyperref Info: bookmark on input line 371:
+(hyperref)             thecounter {1.5}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.5}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.5.1' on input line 372.
+Package hyperref Info: Anchor `lstnumber.1.5.2' on input line 373.
+Package hyperref Info: Anchor `lstnumber.1.5.3' on input line 374.
+Package hyperref Info: Anchor `lstnumber.1.5.4' on input line 375.
+Package hyperref Info: Anchor `lstnumber.1.5.5' on input line 376.
+Package hyperref Info: Anchor `lstnumber.1.5.6' on input line 377.
+Package hyperref Info: Anchor `lstnumber.1.5.7' on input line 378.
+Package hyperref Info: Anchor `lstnumber.1.5.8' on input line 379.
+Package hyperref Info: Anchor `lstnumber.1.5.9' on input line 380.
+Package hyperref Info: Anchor `lstnumber.1.5.10' on input line 381.
+Package hyperref Info: Anchor `lstnumber.1.5.11' on input line 382.
+Package hyperref Info: Anchor `lstnumber.1.5.12' on input line 383.
+Package hyperref Info: Anchor `lstnumber.1.5.13' on input line 384.
+Package hyperref Info: Anchor `lstnumber.1.5.14' on input line 385.
+Package hyperref Info: Anchor `lstnumber.1.5.15' on input line 386.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 399:
+(hyperref)             thecounter {1.5}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfig 展示元智校徽 1}}
+(hyperref)             reference {figure.1.5}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.5' on input line 399.
+Package hyperref Info: Anchor `figure.1.5' on input line 399.
+File: figs/example_fig.png Graphic file (type eps)
+
+<figs/example_fig.png>
+Package hyperref Info: bookmark on input line 406:
+(hyperref)             thecounter {1.6}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfig 展示元智校徽 2}}
+(hyperref)             reference {figure.1.6}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.6' on input line 406.
+Package hyperref Info: Anchor `figure.1.6' on input line 406.
+Package hyperref Info: Anchor `Item.6' on input line 414.
+Package hyperref Info: Reference (link) `figure.1.7' on input line 414.
+Package hyperref Info: Reference (link) `figure.1.8' on input line 414.
+Package hyperref Info: Anchor `lstlisting.1.6' on input line 422.
+Package hyperref Info: bookmark on input line 422:
+(hyperref)             thecounter {1.6}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.6}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.6.1' on input line 423.
+Package hyperref Info: Anchor `lstnumber.1.6.2' on input line 424.
+Package hyperref Info: Anchor `lstnumber.1.6.3' on input line 425.
+Package hyperref Info: Anchor `lstnumber.1.6.4' on input line 426.
+Package hyperref Info: Anchor `page.8' on input line 427.
+ [8]
+Package hyperref Info: Anchor `lstnumber.1.6.5' on input line 427.
+Package hyperref Info: Anchor `lstnumber.1.6.6' on input line 428.
+Package hyperref Info: Anchor `lstnumber.1.6.7' on input line 429.
+Package hyperref Info: Anchor `lstnumber.1.6.8' on input line 430.
+Package hyperref Info: Anchor `lstnumber.1.6.9' on input line 431.
+Package hyperref Info: Anchor `lstnumber.1.6.10' on input line 432.
+Package hyperref Info: Anchor `lstnumber.1.6.11' on input line 433.
+Package hyperref Info: Anchor `lstnumber.1.6.12' on input line 434.
+Package hyperref Info: Anchor `lstnumber.1.6.13' on input line 435.
+Package hyperref Info: Anchor `lstnumber.1.6.14' on input line 436.
+Package hyperref Info: Anchor `lstnumber.1.6.15' on input line 437.
+Package hyperref Info: Anchor `lstnumber.1.6.16' on input line 438.
+Package hyperref Info: Anchor `lstnumber.1.6.17' on input line 439.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 451:
+(hyperref)             thecounter {1.7}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigt 展示元智校徽 3}}
+(hyperref)             reference {figure.1.7}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.7' on input line 451.
+Package hyperref Info: Anchor `figure.1.7' on input line 451.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 459:
+(hyperref)             thecounter {1.8}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigt 展示元智校徽 4}}
+(hyperref)             reference {figure.1.8}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.8' on input line 459.
+Package hyperref Info: Anchor `figure.1.8' on input line 459.
+Package hyperref Info: Anchor `Item.7' on input line 466.
+Package hyperref Info: Reference (link) `figure.1.9' on input line 467.
+Package hyperref Info: Reference (link) `figure.1.10' on input line 467.
+Package hyperref Info: Anchor `lstlisting.1.7' on input line 475.
+Package hyperref Info: bookmark on input line 475:
+(hyperref)             thecounter {1.7}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.7}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.7.1' on input line 476.
+Package hyperref Info: Anchor `lstnumber.1.7.2' on input line 477.
+Package hyperref Info: Anchor `page.9' on input line 478.
+
+[9]
+Package hyperref Info: Anchor `lstnumber.1.7.3' on input line 478.
+Package hyperref Info: Anchor `lstnumber.1.7.4' on input line 479.
+Package hyperref Info: Anchor `lstnumber.1.7.5' on input line 480.
+Package hyperref Info: Anchor `lstnumber.1.7.6' on input line 481.
+Package hyperref Info: Anchor `lstnumber.1.7.7' on input line 482.
+Package hyperref Info: Anchor `lstnumber.1.7.8' on input line 483.
+Package hyperref Info: Anchor `lstnumber.1.7.9' on input line 484.
+Package hyperref Info: Anchor `lstnumber.1.7.10' on input line 485.
+Package hyperref Info: Anchor `lstnumber.1.7.11' on input line 486.
+Package hyperref Info: Anchor `lstnumber.1.7.12' on input line 487.
+Package hyperref Info: Anchor `lstnumber.1.7.13' on input line 488.
+Package hyperref Info: Anchor `lstnumber.1.7.14' on input line 489.
+Package hyperref Info: Anchor `lstnumber.1.7.15' on input line 490.
+Package hyperref Info: Anchor `lstnumber.1.7.16' on input line 491.
+Package hyperref Info: Anchor `lstnumber.1.7.17' on input line 492.
+Package hyperref Info: Anchor `lstnumber.1.7.18' on input line 493.
+Package hyperref Info: Anchor `lstnumber.1.7.19' on input line 494.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 507:
+(hyperref)             thecounter {1.9}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigts 展示較大的與標題文字間距}}
+(hyperref)             reference {figure.1.9}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.9' on input line 507.
+Package hyperref Info: Anchor `figure.1.9' on input line 507.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 516:
+(hyperref)             thecounter {1.10}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigts 展示調整較小的與標題文字間距}}
+
+(hyperref)             reference {figure.1.10}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.10' on input line 516.
+Package hyperref Info: Anchor `figure.1.10' on input line 516.
+Package hyperref Info: Anchor `Item.8' on input line 523.
+Package hyperref Info: Reference (link) `figure.1.11' on input line 524.
+Package hyperref Info: Reference (link) `figure.1.12' on input line 524.
+Package hyperref Info: Anchor `page.10' on input line 525.
+ [10]
+Package hyperref Info: Anchor `lstlisting.1.8' on input line 532.
+Package hyperref Info: bookmark on input line 532:
+(hyperref)             thecounter {1.8}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.8}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.8.1' on input line 533.
+Package hyperref Info: Anchor `lstnumber.1.8.2' on input line 534.
+Package hyperref Info: Anchor `lstnumber.1.8.3' on input line 535.
+Package hyperref Info: Anchor `lstnumber.1.8.4' on input line 536.
+Package hyperref Info: Anchor `lstnumber.1.8.5' on input line 537.
+Package hyperref Info: Anchor `lstnumber.1.8.6' on input line 538.
+Package hyperref Info: Anchor `lstnumber.1.8.7' on input line 539.
+Package hyperref Info: Anchor `lstnumber.1.8.8' on input line 540.
+Package hyperref Info: Anchor `lstnumber.1.8.9' on input line 541.
+Package hyperref Info: Anchor `lstnumber.1.8.10' on input line 542.
+Package hyperref Info: Anchor `lstnumber.1.8.11' on input line 543.
+Package hyperref Info: Anchor `lstnumber.1.8.12' on input line 544.
+Package hyperref Info: Anchor `lstnumber.1.8.13' on input line 545.
+Package hyperref Info: Anchor `lstnumber.1.8.14' on input line 546.
+Package hyperref Info: Anchor `lstnumber.1.8.15' on input line 547.
+Package hyperref Info: Anchor `lstnumber.1.8.16' on input line 548.
+Package hyperref Info: Anchor `lstnumber.1.8.17' on input line 549.
+Package hyperref Info: Anchor `lstnumber.1.8.18' on input line 550.
+Package hyperref Info: Anchor `lstnumber.1.8.19' on input line 551.
+Package hyperref Info: Anchor `lstnumber.1.8.20' on input line 552.
+Package hyperref Info: Anchor `lstnumber.1.8.21' on input line 553.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 567:
+(hyperref)             thecounter {1.11}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigtsr 展示裁切少的校徽}}
+(hyperref)             reference {figure.1.11}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.11' on input line 567.
+Package hyperref Info: Anchor `figure.1.11' on input line 567.
+File: figs/example_fig.png Graphic file (type eps)
+
+<figs/example_fig.png>
+Package hyperref Info: bookmark on input line 577:
+(hyperref)             thecounter {1.12}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigtsr 展示裁切多的校徽}}
+(hyperref)             reference {figure.1.12}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.12' on input line 577.
+Package hyperref Info: Anchor `figure.1.12' on input line 577.
+Package hyperref Info: Anchor `Item.9' on input line 585.
+Package hyperref Info: Reference (link) `figure.1.13' on input line 586.
+Package hyperref Info: Reference (link) `figure.1.14' on input line 586.
+Package hyperref Info: Anchor `page.11' on input line 587.
+ [11]
+Package hyperref Info: Anchor `lstlisting.1.9' on input line 594.
+Package hyperref Info: bookmark on input line 594:
+(hyperref)             thecounter {1.9}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.9}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.9.1' on input line 595.
+Package hyperref Info: Anchor `lstnumber.1.9.2' on input line 596.
+Package hyperref Info: Anchor `lstnumber.1.9.3' on input line 597.
+Package hyperref Info: Anchor `lstnumber.1.9.4' on input line 598.
+Package hyperref Info: Anchor `lstnumber.1.9.5' on input line 599.
+Package hyperref Info: Anchor `lstnumber.1.9.6' on input line 600.
+Package hyperref Info: Anchor `lstnumber.1.9.7' on input line 601.
+Package hyperref Info: Anchor `lstnumber.1.9.8' on input line 602.
+Package hyperref Info: Anchor `lstnumber.1.9.9' on input line 603.
+Package hyperref Info: Anchor `lstnumber.1.9.10' on input line 604.
+Package hyperref Info: Anchor `lstnumber.1.9.11' on input line 605.
+Package hyperref Info: Anchor `lstnumber.1.9.12' on input line 606.
+Package hyperref Info: Anchor `lstnumber.1.9.13' on input line 607.
+Package hyperref Info: Anchor `lstnumber.1.9.14' on input line 608.
+Package hyperref Info: Anchor `lstnumber.1.9.15' on input line 609.
+Package hyperref Info: Anchor `lstnumber.1.9.16' on input line 610.
+Package hyperref Info: Anchor `lstnumber.1.9.17' on input line 611.
+Package hyperref Info: Anchor `page.12' on input line 612.
+ [12]
+Package hyperref Info: Anchor `lstnumber.1.9.18' on input line 612.
+Package hyperref Info: Anchor `lstnumber.1.9.19' on input line 613.
+Package hyperref Info: Anchor `lstnumber.1.9.20' on input line 614.
+Package hyperref Info: Anchor `lstnumber.1.9.21' on input line 615.
+Package hyperref Info: Anchor `lstnumber.1.9.22' on input line 616.
+Package hyperref Info: Anchor `lstnumber.1.9.23' on input line 617.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 632:
+(hyperref)             thecounter {1.13}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigtsra 展示對齊以及標題文字間距較大
+}}
+(hyperref)             reference {figure.1.13}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.13' on input line 632.
+Package hyperref Info: Anchor `figure.1.13' on input line 632.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 643:
+(hyperref)             thecounter {1.14}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigtsra 展示裁切、較大的圖、對齊以及
+標題文字間距較小}}
+(hyperref)             reference {figure.1.14}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.14' on input line 643.
+Package hyperref Info: Anchor `figure.1.14' on input line 643.
+Package hyperref Info: Anchor `Item.10' on input line 650.
+Package hyperref Info: Reference (link) `figure.1.15' on input line 650.
+Package hyperref Info: Anchor `lstlisting.1.10' on input line 658.
+Package hyperref Info: bookmark on input line 658:
+(hyperref)             thecounter {1.10}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.10}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.10.1' on input line 659.
+Package hyperref Info: Anchor `lstnumber.1.10.2' on input line 660.
+Package hyperref Info: Anchor `lstnumber.1.10.3' on input line 661.
+Package hyperref Info: Anchor `lstnumber.1.10.4' on input line 662.
+Package hyperref Info: Anchor `lstnumber.1.10.5' on input line 663.
+Package hyperref Info: Anchor `lstnumber.1.10.6' on input line 664.
+Package hyperref Info: Anchor `lstnumber.1.10.7' on input line 665.
+Package hyperref Info: Anchor `lstnumber.1.10.8' on input line 666.
+Package hyperref Info: Anchor `lstnumber.1.10.9' on input line 667.
+Package hyperref Info: Anchor `page.13' on input line 668.
+
+[13]
+Package hyperref Info: Anchor `lstnumber.1.10.10' on input line 668.
+Package hyperref Info: Anchor `lstnumber.1.10.11' on input line 669.
+Package hyperref Info: Anchor `lstnumber.1.10.12' on input line 670.
+Package hyperref Info: Anchor `lstnumber.1.10.13' on input line 671.
+Package hyperref Info: Anchor `lstnumber.1.10.14' on input line 672.
+Package hyperref Info: Anchor `lstnumber.1.10.15' on input line 673.
+Package hyperref Info: Anchor `lstnumber.1.10.16' on input line 674.
+Package hyperref Info: Anchor `lstnumber.1.10.17' on input line 675.
+Package hyperref Info: Anchor `lstnumber.1.10.18' on input line 676.
+Package hyperref Info: Anchor `lstnumber.1.10.19' on input line 677.
+Package hyperref Info: Anchor `lstnumber.1.10.20' on input line 678.
+Package hyperref Info: Anchor `lstnumber.1.10.21' on input line 679.
+Package hyperref Info: Anchor `lstnumber.1.10.22' on input line 680.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 705:
+(hyperref)             thecounter {1.15}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigabc 展示不同尺寸的校徽}}
+(hyperref)             reference {figure.1.15}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.15' on input line 705.
+Package hyperref Info: Anchor `Item.11' on input line 713.
+Package hyperref Info: Reference (link) `figure.1.16' on input line 713.
+Package hyperref Info: Anchor `lstlisting.1.11' on input line 721.
+Package hyperref Info: bookmark on input line 721:
+(hyperref)             thecounter {1.11}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.11}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.11.1' on input line 722.
+Package hyperref Info: Anchor `lstnumber.1.11.2' on input line 723.
+Package hyperref Info: Anchor `lstnumber.1.11.3' on input line 724.
+Package hyperref Info: Anchor `lstnumber.1.11.4' on input line 725.
+Package hyperref Info: Anchor `lstnumber.1.11.5' on input line 726.
+Package hyperref Info: Anchor `lstnumber.1.11.6' on input line 727.
+Package hyperref Info: Anchor `lstnumber.1.11.7' on input line 728.
+Package hyperref Info: Anchor `page.14' on input line 729.
+
+[14]
+Package hyperref Info: Anchor `lstnumber.1.11.8' on input line 729.
+Package hyperref Info: Anchor `lstnumber.1.11.9' on input line 730.
+Package hyperref Info: Anchor `lstnumber.1.11.10' on input line 731.
+Package hyperref Info: Anchor `lstnumber.1.11.11' on input line 732.
+Package hyperref Info: Anchor `lstnumber.1.11.12' on input line 733.
+Package hyperref Info: Anchor `lstnumber.1.11.13' on input line 734.
+Package hyperref Info: Anchor `lstnumber.1.11.14' on input line 735.
+Package hyperref Info: Anchor `lstnumber.1.11.15' on input line 736.
+Package hyperref Info: Anchor `lstnumber.1.11.16' on input line 737.
+Package hyperref Info: Anchor `lstnumber.1.11.17' on input line 738.
+Package hyperref Info: Anchor `lstnumber.1.11.18' on input line 739.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+Package hyperref Info: bookmark on input line 757:
+(hyperref)             thecounter {1.16}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigabcs 展示不同尺寸的校徽，圖底下的
+註記文字較靠近}}
+(hyperref)             reference {figure.1.16}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.16' on input line 757.
+Package hyperref Info: Anchor `Item.12' on input line 763.
+Package hyperref Info: Reference (link) `figure.1.17' on input line 763.
+Package hyperref Info: Anchor `lstlisting.1.12' on input line 771.
+Package hyperref Info: bookmark on input line 771:
+(hyperref)             thecounter {1.12}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.12}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.12.1' on input line 772.
+Package hyperref Info: Anchor `lstnumber.1.12.2' on input line 773.
+Package hyperref Info: Anchor `lstnumber.1.12.3' on input line 774.
+Package hyperref Info: Anchor `lstnumber.1.12.4' on input line 775.
+Package hyperref Info: Anchor `lstnumber.1.12.5' on input line 776.
+Package hyperref Info: Anchor `lstnumber.1.12.6' on input line 777.
+Package hyperref Info: Anchor `lstnumber.1.12.7' on input line 778.
+Package hyperref Info: Anchor `page.15' on input line 779.
+ [15]
+Package hyperref Info: Anchor `lstnumber.1.12.8' on input line 779.
+Package hyperref Info: Anchor `lstnumber.1.12.9' on input line 780.
+Package hyperref Info: Anchor `lstnumber.1.12.10' on input line 781.
+Package hyperref Info: Anchor `lstnumber.1.12.11' on input line 782.
+Package hyperref Info: Anchor `lstnumber.1.12.12' on input line 783.
+Package hyperref Info: Anchor `lstnumber.1.12.13' on input line 784.
+Package hyperref Info: Anchor `lstnumber.1.12.14' on input line 785.
+Package hyperref Info: Anchor `lstnumber.1.12.15' on input line 786.
+Package hyperref Info: Anchor `lstnumber.1.12.16' on input line 787.
+Package hyperref Info: Anchor `lstnumber.1.12.17' on input line 788.
+Package hyperref Info: Anchor `lstnumber.1.12.18' on input line 789.
+Package hyperref Info: Anchor `lstnumber.1.12.19' on input line 790.
+Package hyperref Info: Anchor `lstnumber.1.12.20' on input line 791.
+File: figs/example_fig.png Graphic file (type eps)
+ <figs/example_fig.png>
+File: figs/example_fig.png Graphic file (type eps)
+
+<figs/example_fig.png>
+Package hyperref Info: bookmark on input line 815:
+(hyperref)             thecounter {1.17}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces 使用 mpfigabcsr 展示不同尺寸的校徽，圖底下�
+�註記文字較靠近，且圖 (b) 四邊有裁切}}
+(hyperref)             reference {figure.1.17}
+(hyperref)             toclevel {0}
+(hyperref)             type {lof}.
+Package hyperref Info: Anchor `figure.1.17' on input line 815.
+Package hyperref Info: Anchor `figure.1.17' on input line 815.
+Package hyperref Info: Anchor `page.16' on input line 823.
+ [16]
+Package hyperref Info: Anchor `section.1.4' on input line 825.
+Package hyperref Info: bookmark on input line 825:
+(hyperref)             thecounter {1.4}
+(hyperref)             text {\ifnum 1>\c@secnumdepth \else \protect \numberline
+ {\csname thesection\endcsname }\fi 程式碼列表}
+(hyperref)             reference {section.1.4}
+(hyperref)             toclevel {1}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `lstlisting.1.13' on input line 835.
+Package hyperref Info: bookmark on input line 835:
+(hyperref)             thecounter {1.13}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.1.13}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+Package hyperref Info: Anchor `lstnumber.1.13.1' on input line 836.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 836.
+
+
+(c:/texlive/2012/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 836.
+Package hyperref Info: Anchor `lstnumber.1.13.2' on input line 838.
+Package hyperref Info: Anchor `lstnumber.1.13.3' on input line 838.
+Package hyperref Info: Anchor `lstnumber.1.13.4' on input line 839.
+Package hyperref Info: Anchor `lstnumber.1.13.5' on input line 840.
+Package hyperref Info: Anchor `lstnumber.1.13.6' on input line 841.
+Package hyperref Info: Anchor `lstnumber.1.13.7' on input line 843.
+Package hyperref Info: Anchor `lstnumber.1.13.8' on input line 843.
+Package hyperref Info: Anchor `lstnumber.1.13.9' on input line 844.
+Package hyperref Info: Anchor `lstnumber.1.13.10' on input line 845.
+Package hyperref Info: Anchor `lstnumber.1.13.11' on input line 846.
+Package hyperref Info: Anchor `lstnumber.1.13.12' on input line 847.
+Package hyperref Info: Anchor `lstnumber.1.13.13' on input line 848.
+Package hyperref Info: Anchor `lstnumber.1.13.14' on input line 849.
+Package hyperref Info: Anchor `lstnumber.1.13.15' on input line 850.
+Package hyperref Info: Anchor `lstnumber.1.13.16' on input line 851.
+Package hyperref Info: Anchor `lstnumber.1.13.17' on input line 852.
+Package hyperref Info: Anchor `lstnumber.1.13.18' on input line 853.
+Package hyperref Info: Anchor `lstnumber.1.13.19' on input line 854.
+Package hyperref Info: Anchor `lstnumber.1.13.20' on input line 855.
+Package hyperref Info: Anchor `lstnumber.1.13.21' on input line 856.
+Package hyperref Info: Reference (link) `lstlisting.1.13' on input line 859.
+Package hyperref Info: Anchor `page.17' on input line 860.
+ [17
+
+]
+Package hyperref Info: Reference (link) `lstlisting.1.13' on input line 861.
+Package hyperref Info: Anchor `section.1.5' on input line 866.
+Package hyperref Info: bookmark on input line 866:
+(hyperref)             thecounter {1.5}
+(hyperref)             text {\ifnum 1>\c@secnumdepth \else \protect \numberline
+ {\csname thesection\endcsname }\fi 插入參考文獻編號}
+(hyperref)             reference {section.1.5}
+(hyperref)             toclevel {1}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `page.18' on input line 880.
+ [18]
+Package hyperref Info: Anchor `page.19' on input line 899.
+ [19]
+Package hyperref Info: Anchor `chapter.2' on input line 899.
+
+Chapter 2.
+Package hyperref Info: bookmark on input line 899:
+(hyperref)             thecounter {2}
+(hyperref)             text {\tocprechaptername \protect \numberline {\counterm
+apping {\arabic {chapter}}\tocpostchaptername }數學式子}
+(hyperref)             reference {chapter.2}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+Package hyperref Info: Reference (link) `section.1.3' on input line 901.
+Package hyperref Info: Reference (link) `section.1.2' on input line 901.
+Package hyperref Info: Anchor `equation.2.0.1' on input line 907.
+Package hyperref Info: Anchor `equation.2.0.1' on input line 907.
+Package hyperref Info: Anchor `equation.2.0.1' on input line 907.
+Package hyperref Info: Anchor `equation.2.0.1' on input line 907.
+Package hyperref Info: Reference (link) `equation.2.0.1' on input line 910.
+Package hyperref Info: bookmark on input line 920:
+(hyperref)             thecounter {2.1}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsn
+ame }{\ignorespaces \label {tb:math_faq}常見的方程式、符號的問題}}
+(hyperref)             reference {table.2.1}
+(hyperref)             toclevel {0}
+(hyperref)             type {lot}.
+Package hyperref Info: Anchor `table.2.1' on input line 920.
+
+Overfull \hbox (54.44366pt too wide) in paragraph at lines 924--1062
+ [] 
+ []
+
+Package hyperref Info: Anchor `page.20' on input line 1068.
+[20
+
+]
+Package hyperref Info: Anchor `page.21' on input line 1068.
+ [21]
+Package hyperref Info: Anchor `chapter.3' on input line 1068.
+
+Chapter 3.
+Package hyperref Info: bookmark on input line 1068:
+(hyperref)             thecounter {3}
+(hyperref)             text {\tocprechaptername \protect \numberline {\counterm
+apping {\arabic {chapter}}\tocpostchaptername }靠自己養成的好習慣}
+(hyperref)             reference {chapter.3}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `Item.13' on input line 1075.
+Package hyperref Info: Anchor `Item.14' on input line 1076.
+Package hyperref Info: Anchor `Item.15' on input line 1077.
+Package hyperref Info: Reference (link) `table.2.1' on input line 1080.
+Package hyperref Info: Anchor `Item.16' on input line 1084.
+Package hyperref Info: Anchor `Item.17' on input line 1086.
+Package hyperref Info: Anchor `Item.18' on input line 1088.
+Package hyperref Info: Anchor `Item.19' on input line 1090.
+Package hyperref Info: Anchor `Item.20' on input line 1092.
+Package hyperref Info: Anchor `page.22' on input line 1098.
+[22
+
+]
+Package hyperref Info: Anchor `equation.3.0.1' on input line 1099.
+Package hyperref Info: Anchor `equation.3.0.1' on input line 1099.
+Package hyperref Info: Anchor `equation.3.0.1' on input line 1099.
+Package hyperref Info: Anchor `equation.3.0.1' on input line 1099.
+Package hyperref Info: Anchor `equation.3.0.2' on input line 1106.
+Package hyperref Info: Anchor `equation.3.0.2' on input line 1106.
+Package hyperref Info: Anchor `equation.3.0.2' on input line 1106.
+Package hyperref Info: Anchor `equation.3.0.2' on input line 1106.
+Package hyperref Info: Anchor `page.23' on input line 1118.
+ [23]
+Package hyperref Info: Anchor `chapter.4' on input line 1118.
+
+Chapter 4.
+Package hyperref Info: bookmark on input line 1118:
+(hyperref)             thecounter {4}
+(hyperref)             text {\tocprechaptername \protect \numberline {\counterm
+apping {\arabic {chapter}}\tocpostchaptername }元智大學論文格式規範}
+(hyperref)             reference {chapter.4}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1121.
+
+
+Overfull \hbox (24.23645pt too wide) in paragraph at lines 1119--1123
+\OML/cmm/m/it/12 <[][]$\OT1/cmtt/m/n/12 http : / / www . yzu . edu . tw / admin
+ / aa / index . php / content / view / 140 / 241 / lang ,[] tw/$[][]\OML/cmm/m/
+it/12 > 
+ []
+
+Package hyperref Info: Anchor `section.4.1' on input line 1124.
+Package hyperref Info: bookmark on input line 1124:
+(hyperref)             thecounter {4.1}
+(hyperref)             text {\ifnum 1>\c@secnumdepth \else \protect \numberline
+ {\csname thesection\endcsname }\fi 規格說明}
+(hyperref)             reference {section.4.1}
+(hyperref)             toclevel {1}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `page.24' on input line 1136.
+[24
+
+]
+Package hyperref Info: Anchor `section.4.2' on input line 1139.
+Package hyperref Info: bookmark on input line 1139:
+(hyperref)             thecounter {4.2}
+(hyperref)             text {\ifnum 1>\c@secnumdepth \else \protect \numberline
+ {\csname thesection\endcsname }\fi 操作細則}
+(hyperref)             reference {section.4.2}
+(hyperref)             toclevel {1}
+(hyperref)             type {toc}.
+Missing character: There is no � in font bkaiu22!
+Missing character: There is no � in font bkaiu22!
+Missing character: There is no � in font bkaiu22!
+Missing character: There is no � in font bkaiu22!
+Package hyperref Info: Anchor `page.25' on input line 1155.
+ [25]
+Package hyperref Info: Anchor `equation.4.2.1' on input line 1159.
+Package hyperref Info: Anchor `equation.4.2.1' on input line 1159.
+Package hyperref Info: Anchor `equation.4.2.1' on input line 1159.
+Package hyperref Info: Anchor `equation.4.2.1' on input line 1159.
+Package hyperref Info: Anchor `equation.4.2.2' on input line 1164.
+Package hyperref Info: Anchor `equation.4.2.2' on input line 1164.
+Package hyperref Info: Anchor `equation.4.2.2' on input line 1164.
+Package hyperref Info: Anchor `equation.4.2.2' on input line 1164.
+Package hyperref Info: Reference (link) `Hfootnote.1' on input line 1174.
+Package hyperref Info: Anchor `Hfootnote.1' on input line 1174.
+Package hyperref Info: Anchor `page.26' on input line 1181.
+ [26]
+Package hyperref Info: Anchor `page.27' on input line 1185.
+ [27]
+Package hyperref Info: Anchor `chapter.5' on input line 1185.
+
+Chapter 5.
+Package hyperref Info: bookmark on input line 1185:
+(hyperref)             thecounter {5}
+(hyperref)             text {\tocprechaptername \protect \numberline {\counterm
+apping {\arabic {chapter}}\tocpostchaptername }兩篇短文}
+(hyperref)             reference {chapter.5}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `section.5.1' on input line 1188.
+Package hyperref Info: bookmark on input line 1188:
+(hyperref)             thecounter {5.1}
+(hyperref)             text {\ifnum 1>\c@secnumdepth \else \protect \numberline
+ {\csname thesection\endcsname }\fi 南橫上的捍衛戰警—閻驊}
+(hyperref)             reference {section.5.1}
+(hyperref)             toclevel {1}
+(hyperref)             type {toc}.
+Missing character: There is no < in font bkaiu22!
+Package hyperref Info: Anchor `subsection.5.1.1' on input line 1194.
+Package hyperref Info: bookmark on input line 1194:
+(hyperref)             thecounter {5.1.1}
+(hyperref)             text {\ifnum 2>\c@secnumdepth \else \protect \numberline
+ {\csname thesubsection\endcsname }\fi 發生了什麼事?}
+(hyperref)             reference {subsection.5.1.1}
+(hyperref)             toclevel {2}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `subsection.5.1.2' on input line 1197.
+Package hyperref Info: bookmark on input line 1197:
+(hyperref)             thecounter {5.1.2}
+(hyperref)             text {\ifnum 2>\c@secnumdepth \else \protect \numberline
+ {\csname thesubsection\endcsname }\fi 修車方法}
+(hyperref)             reference {subsection.5.1.2}
+(hyperref)             toclevel {2}
+(hyperref)             type {toc}.
+Package hyperref Info: Reference (link) `Hfootnote.2' on input line 1199.
+Package hyperref Info: Anchor `Hfootnote.2' on input line 1200.
+Package hyperref Info: Anchor `page.28' on input line 1202.
+[28
+
+]
+Package hyperref Info: Anchor `subsection.5.1.3' on input line 1205.
+Package hyperref Info: bookmark on input line 1205:
+(hyperref)             thecounter {5.1.3}
+(hyperref)             text {\ifnum 2>\c@secnumdepth \else \protect \numberline
+ {\csname thesubsection\endcsname }\fi 另一項考驗}
+(hyperref)             reference {subsection.5.1.3}
+(hyperref)             toclevel {2}
+(hyperref)             type {toc}.
+Missing character: There is no < in font bkaiu22!
+Package hyperref Info: Anchor `page.29' on input line 1213.
+ [29]
+Package hyperref Info: Reference (link) `Hfootnote.3' on input line 1225.
+Package hyperref Info: Anchor `Hfootnote.3' on input line 1225.
+Package hyperref Info: Anchor `page.30' on input line 1229.
+ [30]
+Package hyperref Info: Anchor `page.31' on input line 1229.
+ [31]
+Package hyperref Info: Anchor `section.5.2' on input line 1232.
+Package hyperref Info: bookmark on input line 1232:
+(hyperref)             thecounter {5.2}
+(hyperref)             text {\ifnum 1>\c@secnumdepth \else \protect \numberline
+ {\csname thesection\endcsname }\fi 柯林頓的天誅撤收論—閻驊}
+(hyperref)             reference {section.5.2}
+(hyperref)             toclevel {1}
+(hyperref)             type {toc}.
+Package hyperref Info: Reference (link) `section.5.1' on input line 1233.
+Package hyperref Info: Reference (link) `section.5.1' on input line 1233.
+Missing character: There is no < in font bkaiu22!
+Package hyperref Info: Anchor `page.32' on input line 1250.
+ [32]
+Missing character: There is no < in font bkaiu22!
+Missing character: There is no < in font bkaiu22!
+Missing character: There is no � in font bkaiu22!
+Missing character: There is no � in font bkaiu22!
+Missing character: There is no < in font bkaiu22!
+Missing character: There is no < in font bkaiu22!
+Missing character: There is no < in font bkaiu22!
+Package hyperref Info: Anchor `page.33' on input line 1266.
+ [33]
+Missing character: There is no < in font bkaiu22!
+Package hyperref Info: Anchor `page.34' on input line 1288.
+ [34]
+Missing character: There is no f in font bkaiu30!
+Missing character: There is no c in font bkaiu30!
+Missing character: There is no W in font bkaiu30!
+Missing character: There is no � in font bkaiu30!
+Missing character: There is no F in font bkaiu30!
+Missing character: There is no f in font bkaiu30!
+Missing character: There is no � in font bkaiu30!
+Missing character: There is no W in font bkaiu30!
+Missing character: There is no � in font bkaiu30!
+Missing character: There is no F in font bkaiu30!
+Missing character: There is no f in font bkaiu30!
+Missing character: There is no � in font bkaiu30!
+Missing character: There is no W in font bkaiu30!
+Missing character: There is no � in font bkaiu30!
+Missing character: There is no F in font bkaiu30!
+Missing character: There is no f in font bkaiu30!
+Missing character: There is no c in font bkaiu30!
+Missing character: There is no W in font bkaiu30!
+Missing character: There is no � in font bkaiu30!
+Missing character: There is no F in font bkaiu30!
+) (./ncku_backpages.tex
+Package hyperref Info: Anchor `page.35' on input line 6.
+ [35]
+Package hyperref Info: Anchor `section*.14' on input line 7.
+Package hyperref Info: bookmark on input line 8:
+(hyperref)             thecounter {5}
+(hyperref)             text {\nameRef }
+(hyperref)             reference {section*.14}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+
+(./ncku_thesis.bbl
+Package hyperref Info: Anchor `chapter*.15' on input line 2.
+
+Underfull \hbox (badness 10000) detected at line 2
+\C70/bkai/bx/n/20.74/53 �[][] \C70/bkai/bx/n/20.74/80 ^^C[][] \C70/bkai/bx/n/20
+.74/65 �[][] \C70/bkai/bx/n/20.74/73 {[][]
+ []
+
+Package hyperref Info: Anchor `Item.21' on input line 24.
+Package hyperref Info: Anchor `Item.22' on input line 29.
+Package hyperref Info: Anchor `Item.23' on input line 33.
+Package hyperref Info: Anchor `Item.24' on input line 37.
+Package hyperref Info: Anchor `Item.25' on input line 40.
+Package hyperref Info: Anchor `Item.26' on input line 44.
+Package hyperref Info: Anchor `Item.27' on input line 48.
+Package hyperref Info: Anchor `Item.28' on input line 54.
+Package hyperref Info: Anchor `Item.29' on input line 60.
+Package hyperref Info: Anchor `Item.30' on input line 65.
+Package hyperref Info: Anchor `Item.31' on input line 70.
+Package hyperref Info: Anchor `Item.32' on input line 75.
+Package hyperref Info: Anchor `page.36' on input line 79.
+[36
+
+]
+Package hyperref Info: Anchor `Item.33' on input line 80.
+Package hyperref Info: Anchor `Item.34' on input line 85.
+Package hyperref Info: Anchor `Item.35' on input line 90.
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--95
+[]\OT1/cmr/m/n/12 M. No-mura, K. Fukukawa, Y. Shibasaki, and M. Ueda, ``New
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--95
+\OT1/cmr/m/n/12 amor-phous hole-transporting molec-u-lar ma-te-ri-als: 1,1,1-tr
+is(4-(4-
+ []
+
+Package hyperref Info: Anchor `Item.36' on input line 96.
+
+LaTeX Font Warning: Font shape `C70/bkai/m/it' undefined
+(Font)              using `C70/bkai/m/n' instead on input line 98.
+
+Package hyperref Info: Anchor `Item.37' on input line 101.
+Package hyperref Info: Anchor `Item.38' on input line 105.
+Package hyperref Info: Anchor `Item.39' on input line 109.
+
+Underfull \hbox (badness 4647) in paragraph at lines 110--112
+[]\OT1/cmr/m/n/12 ``L[]T[]X/mathematics in wik-i-book,'' [][]$http : / / en . w
+ikibooks . org / wiki / LaTeX /
+ []
+
+) (./my_appendix.tex
+Package hyperref Info: Anchor `page.37' on input line 6.
+ [37]
+Package hyperref Info: Anchor `chapter*.16' on input line 7.
+Package hyperref Info: Anchor `section*.17' on input line 8.
+Package hyperref Info: bookmark on input line 9:
+(hyperref)             thecounter {5}
+(hyperref)             text {附錄 A: MATLAB / Octave 程式列表}
+(hyperref)             reference {section*.17}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `lstlisting.5.1' on input line 30.
+Package hyperref Info: bookmark on input line 30:
+(hyperref)             thecounter {A.1}
+(hyperref)             text {\protect \numberline {\thelstlisting }\lst@@captio
+n }
+(hyperref)             reference {lstlisting.5.1}
+(hyperref)             toclevel {0}
+(hyperref)             type {lol}.
+ (./example_prog_list.m
+Package hyperref Info: Anchor `lstnumber.A.1.1' on input line 1.
+Package hyperref Info: Anchor `lstnumber.A.1.2' on input line 2.
+Package hyperref Info: Anchor `lstnumber.A.1.3' on input line 3.
+Package hyperref Info: Anchor `lstnumber.A.1.4' on input line 4.
+Package hyperref Info: Anchor `lstnumber.A.1.5' on input line 5.
+)
+Package hyperref Info: Anchor `equation.5.0.1' on input line 32.
+Package hyperref Info: Anchor `equation.5.0.1' on input line 32.
+Package hyperref Info: Anchor `equation.5.0.1' on input line 32.
+Package hyperref Info: Anchor `equation.5.0.1' on input line 32.
+)
+Package hyperref Info: Anchor `page.38' on input line 19.
+ [38
+
+]
+Package hyperref Info: Anchor `chapter*.18' on input line 20.
+
+Underfull \hbox (badness 10000) detected at line 20
+\C70/bkai/bx/n/20.74/81 �[][] \C70/bkai/bx/n/20.74/50 �[][]
+ []
+
+Package hyperref Info: Anchor `section*.19' on input line 21.
+Package hyperref Info: bookmark on input line 22:
+(hyperref)             thecounter {A}
+(hyperref)             text {\nameVita }
+(hyperref)             reference {section*.19}
+(hyperref)             toclevel {0}
+(hyperref)             type {toc}.
+(./my_vita.tex)))
+Package hyperref Info: Anchor `page.39' on input line 193.
+ [39
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 195.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 195.
+ (./ncku_thesis.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 195.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 195.
+Package rerunfilecheck Info: File `ncku_thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 7CC590DBAC2F0A5C8267E4EEBA60FFD6;2750.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 195.
+ ) 
+Here is how much of TeX's memory you used:
+ 14580 strings out of 493489
+ 198746 string characters out of 3144771
+ 341061 words of memory out of 3000000
+ 17518 multiletter control sequences out of 15000+200000
+ 110049 words of font info for 395 fonts, out of 3000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 41i,16n,48p,3656b,2523s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on ncku_thesis.dvi (51 pages, 236652 bytes).

@@ -1,0 +1,1301 @@
+%
+% this file is encoded in big5
+% v2.02 (Sep. 12, 2012)
+
+% 臨時定義了 fmpage: 一個加框的展示區 framed minipage
+% http://brunoj.wordpress.com/2009/10/08/latex-the-framed-minipage/
+\newsavebox{\fmbox}
+\newenvironment{fmpage}[1]
+{\begin{lrbox}{\fmbox}\begin{minipage}{#1}}
+{\end{minipage}\end{lrbox}\fbox{\usebox{\fmbox}}}
+
+\chapter{緒論}
+\label{sec:intro}
+
+這一章目的是一些基本功能的用法。最好是與原始檔案 \verb+example_body.tex+ 一起對照著看。章節標題後之第一段之段首不需要內縮。這自動由格式檔掌控。
+
+這是第二段。第二段的開頭會內縮。這也是自動由格式檔掌控。要如何分段？只要連續鍵入兩個「Enter (return)」，就代表分段。
+
+文稿裡用 \verb+\chapter{}+ 代表某一章的開始，以及章名。每章裡會分幾個節，以 \verb+\section+\{節名\} 指令代表新的一節的開始。\verb+\subsection+\{小節名\} 指令代表新的小節的開始。
+
+%%%%%%%%
+\section{\mbox{\LaTeX\ 基本示範}}
+\label{sec:latex_basic}
+
+所有由 \LaTeX\ 處理編號的地方，如章、節、小節、圖、表、方程式、條列，都可以在文稿裡引用那個編號，只要在章、節、小節、圖、表、方程式、條列產生的地方給予一個標籤 \verb+\label+\{獨特英文字串\}，然後在文稿其他地方要引用它的編號的地方，以 \verb+\ref+\{所對應的標籤字串\} 即可。
+
+\LaTeX\ 指令由倒斜線 \textbackslash\ 起頭，百分號則代表註解文字的起頭。其他還有幾個特別字元不能直接在文稿裡使用。如果要用到，請看在第 \pageref{tb:special_chars} 頁表~\ref{tb:special_chars} 的「文稿上使用」或者「\LaTeX\ 的替代指令」這兩欄，擇一使用。就在前一句，我們用了 \verb+\ref{}+ 代表表格編號，以及它所在的頁碼 \verb+\pageref{}+，這都可由系統查詢後自動填入。更方便的是，前面那句出現的表格編號與頁碼，在 PDF 瀏覽器裡可以直接用滑鼠指標點擊，可以跳躍到那個表格、那頁的所在。類似的功能也在論文一開始的目錄、表目錄、圖目錄那裡可以使用。瀏覽器左側，也有本論文各章節的列表，可以直接點選閱讀。另外，由於表~\ref{tb:special_chars} 所需的頁面較大，系統在排版時會讓它往後「漂浮」到適當的地方排版。如果不希望它浮動，則要使用「固定板塊」的 tablehere 指令 (自創巨集)。
+
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% LaTeX special chars % 
+\begin{table}[htbp] %t: top; b: bottom; p: in a page alone; h: here
+\caption{\label{tb:special_chars}% 
+\mbox{無法直接在 \LaTeX\ 文稿裡使用的符號字元}
+}% 
+\begin{center} \begin{tabular}{llll}% four left-aligned col, no vertical boarders
+\hline 
+符號&
+作用&
+文稿上使用&
+\LaTeX\ 的替代指令\tabularnewline
+\hline
+\textbackslash &
+下排版命令&
+\verb+$\backslash$+&
+\verb+\textbackslash+\tabularnewline
+%
+\%&
+註解&
+\verb+\%+&
+NA\tabularnewline
+%
+\#&
+定義巨集&
+\verb+\#+&
+NA\tabularnewline
+%
+\~{}&
+不斷行空白&
+\verb+\~{}+&
+\verb+\textasciitilde+\tabularnewline
+%
+\$&
+進入 (離開) 數學模式&
+\verb+\$+&
+\verb+\textdollar+\tabularnewline
+%
+\_{}&
+數學模式產生下標字&
+\verb+\_{}+&
+\verb+\textunderscore+\tabularnewline
+%
+\^{}&
+數學模式產生上標字&
+\verb+\^{}+&
+\verb+\textasciicircum+\tabularnewline
+%
+\{&
+標示命令的作用範圍&
+\verb+\{+&
+\verb+\textbraceleft+\tabularnewline
+%
+\}&
+標示命令的作用範圍&
+\verb+\}+&
+\verb+\textbraceright+\tabularnewline
+%
+$<$&
+數學模式中的小於符號&
+\verb+$<$+&
+\verb+\textless+\tabularnewline
+%
+$>$&
+數學模式中的大於符號&
+\verb+$>$+&
+\verb+\textgreater+\tabularnewline
+%
+$|$&
+數學模式中的絕對值符號&
+\verb+$|$+&
+\verb+\textbar+\tabularnewline
+%
+\&&
+表格中的分隔符號&
+\verb+\&+&
+NA\tabularnewline
+%
+\hline
+\end{tabular}\\
+此表擷自文獻\cite{lee_latex123}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%
+
+\section{插入表格}
+\label{sec:table}
+
+在第 \pageref{tb:special_chars} 頁的表~\ref{tb:special_chars} 在文稿裡的原始碼看來有點複雜。其基本架構是這樣的：
+	\begin{center}
+%	\begin{minipage}[t][1\totalheight]{0.3\columnwidth}
+	\begin{fmpage}{0.3\columnwidth}
+		浮動板塊\\
+		\verb+\begin{table}[htbp]+\\
+		\verb+\caption+\{表格標題文字\}\\
+		表格骨架指令 tabular\\
+		\dots\\
+		\verb+\end{table}+
+%	\end{minipage}
+	\end{fmpage}
+	%
+ 	\hspace{3em} %與三個 M 字母同寬的空白
+	%
+%	\begin{minipage}[t][1\totalheight]{0.5\columnwidth}
+	\begin{fmpage}{0.5\columnwidth}
+		固定板塊 (非內建功能，定義於自創巨集)\\
+		\verb+\begin{tablehere}+\\
+		\verb+\caption+\{表格標題文字\}\\
+		表格骨架指令 tabular\\
+		\dots\\
+		\verb+\end{tablehere}+
+%	\end{minipage}
+	\end{fmpage}
+	\end{center}
+表格的標題文字須在表格上方，資料的出處則註記於表格下方。 (元智大學論文規範)
+
+如何建構表格骨架？表~\ref{tb:income_2003} 是示範簡易的 $3\times3$ 的表格。啟用了 tabular 環境指令如下，其中 \verb+{|c|r|r|}+ 以英文字母同時表明了欄位數、欄位對齊方式 (左  l (小寫 L)、中 c、右 r)、以及垂直分隔線 $|$：
+	\begin{center}
+%	\begin{minipage}[t][1\totalheight]{0.5\columnwidth}
+	\begin{fmpage}{0.5\columnwidth}
+		\verb+\begin{tabular}{|c|r|r|}+\\
+		表格內容 \ldots\\
+		\verb+\end{tabular}+
+%	\end{minipage}
+	\end{fmpage}
+	\end{center}
+%
+\verb+{|c|r|r|}+ 有三個英文字母 c, r, r，表示有三欄，除了第一欄是中間對齊以外，第二、三欄是向右對齊，同時有垂直分隔線在左右兩側以及欄與欄之間。表格內容，以一列一列鍵入，列的結尾以斷行符號 \verb+\\+ 或者 \verb+\tabularnewline+ 表示；每一列裡，欄與欄之間以 \&\ 符號隔開。如果需要水平分隔線，則以 \verb+\hline+ 代表。
+
+在專業書籍、期刊的格式，表格只使用橫線，如表~\ref{tb:income_2003_v2}。更複雜的表格製作方法，可以參考文獻\cite{url_latex_wikibook_table}。表格的指令的確複雜，令人眼花撩亂。所幸可以使用 \texttt{excel2latex} 工具直接從 \texttt{Excel} 試算表應用軟體轉換成 \LaTeX\ 表格碼貼入文稿使用\cite{url_excel2latex}，例如表~\ref{tab:excel2latex}。或者直接在網頁上製作表格把所得的表格碼貼入文稿使用\cite{url_table_editor}。
+
+\begin{table}[htbp]
+\caption{\label{tb:income_2003}Gross income of the first two quarters of
+year 2003}
+\begin{center} \begin{tabular}{|c|r|r|}
+\hline 
+&
+Restaurant&
+Store\tabularnewline
+\hline
+\hline 
+Q1&
+\$123,000&
+\$75,000\tabularnewline
+\hline 
+Q2&
+\$45,000&
+\$131,000\tabularnewline
+\hline
+\end{tabular}\\
+(This table is made up for demonstration purpose.)
+\end{center}
+\end{table}%
+%
+
+\begin{table}[htbp]
+\caption{\label{tb:income_2003_v2}Gross income of the first two quarters of
+year 2003. Version 2}
+\begin{center} \begin{tabular}{crr}
+\hline 
+&
+Restaurant&
+Store\tabularnewline
+\hline
+Q1&
+\$123,000&
+\$75,000\tabularnewline
+ Q2&
+\$45,000&
+\$131,000\tabularnewline
+\hline
+\end{tabular}\\
+(This table is made up for demonstration purpose.)
+\end{center}
+\end{table}
+
+% Table generated by Excel2LaTeX from sheet
+\begin{table}[htbp]
+  \centering
+  \caption{由 excel2latex 協助產生的表格}
+  \vspace*{1ex}
+    \begin{tabular}{|r|c|c|c|c|c|c|}
+    \hline
+          & \multicolumn{2}{c|}{Sample 1} & \multicolumn{2}{c|}{Sample 2} & \multicolumn{2}{c|}{Sample 3} \bigstrut\\
+    \hline
+          & $V_L$    & $V_H$    &  $V_L$    & $V_H$     &  $V_L$    & $V_H$  \bigstrut\\
+    \hline
+    Condition 1 & 1.5   & 2.6   & 1.3   & 2.4   & 1.6   & 2.6 \bigstrut\\
+    \hline
+    Condition 2 & 1.4   & 2.6   & 1.2   & 2.4   & 1.5   & 2.6 \bigstrut\\
+    \hline
+    Condition 3 & 1.6   & 2.6   & 1.4   & 2.5   & 1.7   & 2.7 \bigstrut\\
+    \hline
+    \end{tabular}%
+  \label{tab:excel2latex}%
+\end{table}
+\clearpage
+%%%%%%%%%%%%%%
+\section{插入圖檔}
+\label{sec:fig}
+
+論文裡少不了要置放圖片，例如實驗數據趨勢圖，實驗設備示意圖。與一般文書處理器 MS WORD 不同的是，這些圖必須各自獨立為一個檔案。在這一節示範了一些巨集指令。這些巨集指令是為了方便處理插圖而寫，並不是標準內建的。定義於 \verb+npc_macros_20120801.tex+ 裡，可以在文稿內適當的地方加入定義檔，方法如下：\\
+\verb+\input{npc_macros_20120801.tex}+\\
+預設是有加入，在  \verb+my_chapters.tex+ 內。
+
+底下示範了這些自創命令的用法。圖檔是在 \texttt{figs} 子目錄裡，名字是 \verb+example_fig.png+，在以下的指令中，圖的檔名不必包含 \verb+.png+ 這個副檔名。 (這裡也示範了自動編號的條列清單，叫做 \texttt{enumerate} 環境指令，每一項用 \verb+\item+ 起頭)
+
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\fig+ 代表單張圖的指令 (single figure)， 安插一張圖於浮動板塊 (請參考圖~\ref{fig:yzu_logo_1})。
+圖寬度的單位可以自行指定，例如此例的 2~cm，以及常用的頁面可打字區寬度 \verb+\columnwidth+。保持長寬比例，中間對齊顯示。插圖的標題須在圖的下方。如果要用「固定板塊」，則把 \verb+\fig+ 改為 \verb+\hfig+ 意思是 figure here。
+
+{\centering\begin{lstlisting}[caption={fig 使用範例碼},
+label=lst:fig,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\fig{2cm} %width (specify the unit: e.g., 0.75\columnwidth)
+{figs/example_fig} %path/filename (no space)
+{<使用 fig 展示元智校徽>} %caption
+{fig:yzu_logo_1} %label
+\end{lstlisting}\par}
+
+% 
+%
+%%%%%%%%%%%%
+%\hfig %for non-float
+%
+\fig{2cm} %width; specify the unit: e.g., 0.75\columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 fig 展示元智校徽} %caption
+{fig:yzu_logo_1} %label
+%
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\figt+ 代表 single figure with additional text 與 \verb+\fig+ 相同，但是標題底下可以另有文字 (\uline{t}ext) 說明圖的出處說明。(請參考圖~\ref{fig:yzu_logo_2}) 如果要用「固定板塊」，則把 \verb+\figt+ 改為 \verb+\hfigt+ 意思是 figure here 版的 \verb+figt+。
+
+{\centering\begin{lstlisting}[caption={figt 使用範例碼},
+label=lst:figt,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\figt{2cm} %width; specify the unit: e.g., 0.75\columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 figt 展示有說明出處的元智校徽>} %caption
+{fig:yzu_logo_2} %label
+{<擷取自元智大學網頁>} %additional text beneath the caption
+\end{lstlisting}\par}
+
+%%%%%%%%%%%%
+%\hfigt % for non-float
+%
+\figt{2cm} %width (specify the unit: e.g., 0.75\columnwidth)
+{figs/example_fig} %path/filename (no space)
+{使用 figt 展示有說明出處的元智校徽} %caption
+{fig:yzu_logo_2} %label
+{擷取自元智大學網頁} %additional text beneath the caption
+%
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\figts+ 安插一張圖，可含出處文字 (\uline{t}ext)，還可以控制圖與標題文字之間的空隙 (\uline{s}pacing)。新的參數「間距控制」可以調整圖底下與標題說明文字之間的間距。通常是因為間距太大而希望能拉近圖與標題文字。想拉近距離，則用負的高度，例如 $-1$cm，$-4$ex (以英文字母 x 的高度為單位)。如果要以原始間距呈現，則用 0cm, 0ex。請參考圖~\ref{fig:yzu_logo_3}。如果要用「固定板塊」，則把 \verb+\figts+ 改為 \verb+\hfigts+ 意思是 figure here 版的 \verb+figts+。
+
+
+{\centering\begin{lstlisting}[caption={figts 使用範例碼},
+label=lst:figts,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\figts{2cm} %width; specify the unit: e.g., 0.75\columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 figts 呈現較近的標題文字>} %caption
+{fig:yzu_logo_3} %label
+{<擷取自元智大學網頁>} %additional text beneath the caption
+{-2.5ex} %place negative height, say, -4ex to reduce the gap between fig and caption
+\end{lstlisting}\par}
+
+%%%%%%%%%%%%
+%\hfigtr % for non-float
+%
+\figts{2cm} %width (specify the unit: e.g., 0.75\columnwidth)
+{figs/example_fig} %path/filename (no space)
+{使用 figts 呈現較近的標題文字} %caption
+{fig:yzu_logo_3} %label
+{原圖擷取自元智大學網頁} %additional text beneath the caption
+{-2.5ex} %place negative height, say, -4ex to reduce the gap between fig and caption
+%
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\figtsr+ 除了前述的來源文字 (\uline{t}ext), 可以控制圖與標題文字之間的空隙 (\uline{s}pacing)，還有裁切 (t\uline{r}im) 功能。
+圖的四周的空白可以切除。(請參考圖~\ref{fig:yzu_logo_3_2}) 新加入的參數的數字意義如下：左、下、右、上，要切除的長度，以 bp 為單位，1~bp $= \frac{1}{72}$~inch。
+請參考圖~\ref{fig:yzu_logo_3_2}。
+把文字參數空著、間距增量設為 0cm、裁切量 0 0 0 0，則這指令也可以當成功能較少的 \verb+\fig+, \verb+\figt+, \verb+\figts+ 來用。 如果要用「固定板塊」，則把 \verb+\figtsr+ 改為 \verb+\hfigtsr+ 意思是 figure here 版的 \verb+figtsr+。
+
+{\centering\begin{lstlisting}[caption={figtsr 使用範例碼},
+label=lst:figtsr,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\figtsr{2cm} %width; specify the unit
+{figs/example_fig} %path/filename (no space)
+{<使用 figtrs 展示切割後的元智校徽但與標題文字行距較小>} %caption
+{fig:yzu_logo_3_2} %label
+{<原圖擷取自元智大學網頁>} %additional text beneath the caption
+{-2.5ex}% place negative height, say, -4ex to reduce the gap between fig and caption
+{20 20 20 20} %left bottom right top, in units of bp=1/72 in
+\end{lstlisting}\par}
+
+%%%%%%%%%%%%
+%\hfigtr % for non-float
+%
+\figtsr{2cm} %width; specify the unit
+{figs/example_fig} %path/filename (no space)
+{使用 figtsr 展示切割後的元智校徽且與標題文字行距較小} %caption
+{fig:yzu_logo_3_2} %label
+{原圖擷取自元智大學網頁} %additional text beneath the caption
+{-2.5ex}% place negative height, say, -4ex to reduce the gap between fig and caption
+{20 20 20 20} %left bottom right top, in units of bp=1/72 in
+%
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\mpfig+ 多張圖並排 (multiple figures)，每張有各自獨立的圖標題 (caption) (請參考圖~\ref{fig:yzu_logo_4} 與 \ref{fig:yzu_logo_5})。
+圖寬度的單位已內定，以頁面可打字區寬度為 1，例如此例的 0.2 代表此圖寬度是頁面寬的 0.2，即 20\% 頁面可打字區寬。如果要並排更多的圖，只要在 \verb+\end{figure}+ 之前，放入更多的 \verb+\hfill+ 與 \verb+\mpfig+ 即可。當然，各個圖的寬度總和不要超過 1。如果要用「固定板塊」，則把 \verb+\begin{figure}[tbph]+ 與 \verb+\end{figure}+ 改為 \verb+\begin{figurehere}+ 與 \verb+\end{figurehere}+。
+
+{\centering\begin{lstlisting}[caption={mpfig 使用範例碼},
+label=lst:mpfig,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\begin{figure}[tbph]
+%
+\mpfig{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfig 展示元智校徽 1>} %caption
+{fig:yzu_logo_4} %label
+%
+\hfill %flexible gap in-between
+%
+\mpfig{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfig 展示元智校徽 2>} %caption
+{fig:yzu_logo_5} %label
+%
+\end{figure}
+\end{lstlisting}\par}
+
+%\vspace*{5cm}
+
+%%%%%%%%%%
+% \begin{figurehere} % for non-float
+%
+\begin{figure}[tbph]
+%
+\mpfig{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfig 展示元智校徽 1} %caption
+{fig:yzu_logo_4} %label
+%
+\hfill
+%
+\mpfig{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfig 展示元智校徽 2} %caption
+{fig:yzu_logo_5} %label
+%
+\end{figure}
+% \end{figurehere} % for non-float
+%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\mpfigt+ 與前述 \verb+\mpfig+ 相同，但是各自標題底下另有文字 (text) 說明圖的出處說明。 (請參考圖~\ref{fig:yzu_logo_6} 與 \ref{fig:yzu_logo_7})
+
+{\centering\begin{lstlisting}[caption={mpfigt 使用範例碼},
+label=lst:mpfigt,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\begin{figure}[tbph]
+%
+\mpfigt{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfigt 展示元智校徽 3>} %caption
+{fig:yzu_logo_6} %label
+{<擷取自元智大學網頁>} %additional text beneath the caption
+%
+\hfill
+%
+\mpfigt{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfigt 展示元智校徽 4>} %caption
+{fig:yzu_logo_7} %label
+{<擷取自元智大學網頁>} %additional text beneath the caption
+%
+\end{figure}
+\end{lstlisting}\par}
+
+%%%%%%%%%%
+% \begin{figurehere} % for non-float
+%
+\begin{figure}[tbph]
+%
+\mpfigt{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfigt 展示元智校徽 3} %caption
+{fig:yzu_logo_6} %label
+{擷取自元智大學網頁} %additional text beneath the caption
+%
+\hfill
+%
+\mpfigt{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfigt 展示元智校徽 4} %caption
+{fig:yzu_logo_7} %label
+{擷取自元智大學網頁} %additional text beneath the caption
+%
+\end{figure}
+% \end{figurehere} % for non-float
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\mpfigts+ 與前述的 \verb+\mpfigt+ 相同，但是多了調整標題文字與圖的間距調整 (\uline{s}pacing)。新的參數「間距控制」可以調整圖底下與標題說明文字之間的間距。通常是因為間距太大而希望能拉近圖與標題文字。想拉近距離，則用負的高度，例如 $-1$cm，$-4$ex (以英文字母 x 的高度為單位)。如果要以原始間距呈現，則用 0cm, 0ex。
+請參考圖~\ref{fig:yzu_logo_8} 與 \ref{fig:yzu_logo_9}。
+
+{\centering\begin{lstlisting}[caption={mpfigts 使用範例碼},
+label=lst:mpfigts,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\begin{figure}[tbph]
+%
+\mpfigts{0.35} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfigts 展示較大的與標題文字間距>} %caption
+{fig:yzu_logo_8} %label
+{<原圖擷取自元智大學網頁>} %additional text beneath the caption
+{-1ex} %place negative height, say, -4ex to reduce the gap between fig and caption
+%
+\hfill
+%
+\mpfigts{0.35} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfigts 展示調整較小的與標題文字間距>} %caption
+{fig:yzu_logo_9} %label
+{<原圖擷取自元智大學網頁>} %additional text beneath the caption
+{-4ex} %place negative height, say, -4ex to reduce the gap between fig and caption
+%
+\end{figure}
+\end{lstlisting}\par}
+
+%%%%%%%%%%
+% \begin{figurehere} % for non-float
+%
+\begin{figure}[tbph]
+%
+\mpfigts{0.35} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfigts 展示較大的與標題文字間距} %caption
+{fig:yzu_logo_8} %label
+{原圖擷取自元智大學網頁} %additional text beneath the caption
+{-1ex} %place negative height, say, -4ex to reduce the gap between fig and caption
+%
+\hfill
+%
+\mpfigts{0.35} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfigts 展示調整較小的與標題文字間距} %caption
+{fig:yzu_logo_9} %label
+{原圖擷取自元智大學網頁} %additional text beneath the caption
+{-4ex} %place negative height, say, -4ex to reduce the gap between fig and caption
+%
+\end{figure}
+% \end{figurehere} % for non-float
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\mpfigtsr+ 與前述的 \verb+\mpfigts+ 同，但增加了圖的四周空白可以切除 (t\uline{r}im) 的功能。相對應的參數的數字意義如下：左、下、右、上，要切除的長度，以 bp 為單位，1~bp $= \frac{1}{72}$~inch。
+請參考圖~\ref{fig:yzu_logo_10} 與 \ref{fig:yzu_logo_11}。
+
+{\centering\begin{lstlisting}[caption={mpfigtsr 使用範例碼},
+label=lst:mpfigtsr,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\begin{figure}[tbph]
+%
+\mpfigtsr{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfigtsr 展示裁切少的校徽>} %caption
+{fig:yzu_logo_10} %label
+{<原圖擷取自元智大學網頁>} %additional text beneath the caption
+{0ex} % additional spacing between fig and caption
+{5 5 5 5} % left, top, right, bottom trimming, in unit of bp (=1/72 in)
+%
+\hfill
+%
+\mpfigtsr{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfigtsr 展示裁切多的校徽>} %caption
+{fig:yzu_logo_11} %label
+{<原圖擷取自元智大學網頁>} %additional text beneath the caption
+{0ex} % additional spacing between fig and caption
+{20 20 20 20} % left, top, right, bottom trimming, in unit of bp (=1/72 in)
+%
+\end{figure}
+\end{lstlisting}\par}
+
+%%%%%%%%%%
+%\begin{figurehere} % for non-float
+%
+\begin{figure}[tbph]
+%
+\mpfigtsr{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfigtsr 展示裁切少的校徽} %caption
+{fig:yzu_logo_10} %label
+{原圖擷取自元智大學網頁} %additional text beneath the caption
+{0ex} % additional spacing between fig and caption
+{5 5 5 5} % left, top, right, bottom trimming, in unit of bp (=1/72 in)
+%
+\hfill
+%
+\mpfigtsr{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfigtsr 展示裁切多的校徽} %caption
+{fig:yzu_logo_11} %label
+{原圖擷取自元智大學網頁} %additional text beneath the caption
+{0ex} % additional spacing between fig and caption
+{20 20 20 20} % left, top, right, bottom trimming, in unit of bp (=1/72 in)
+%
+\end{figure}
+%\end{figurehere} % for non-float
+%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\mpfigtsra+ 這是功能最完整的多圖並排指令，將基本的 \verb+\mpfig+ 加上「交代來源的文字 (\uline{t}ext)」，「與文字間距 (\uline{s}pacing)」，「裁切 (t\uline{r}im)」，「對齊 (\uline{a}lign)」。這新增的對齊，是為了因應如果要並排的圖大小不同，上述的幾個並排指令都會把圖的底邊與字行對齊 (align)，造成高矮不一的視覺效果。如果你想要的是頂邊 (t) 、腰線 (中線 c)、或底邊 (b) 對齊字行，則可以使用這個指令。
+所需的參數也最多。把文字參數空著、間距增量設為 0cm、裁切量 0 0 0 0，這指令也可以當成功能較少的 \verb+\mpfig+, \verb+\mpfigt+, \verb+\mpfigts+, \verb+\mpfigtsr+ 來用。請參考圖~\ref{fig:yzu_logo_14} 與 \ref{fig:yzu_logo_15}
+
+{\centering\begin{lstlisting}[caption={mpfigtsra 使用範例碼},
+label=lst:mpfigtsra,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\begin{figure}[tbph]
+%
+\mpfigtsra{0.27} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfigtsra 展示對齊以及標題文字間距較大>} %caption
+{fig:yzu_logo_14} %label
+{<原圖擷自元智大學網頁>} %additional text beneath the caption
+{0ex} %additional spacing between fig and caption
+{0 0 0 0} %left bottom right top; in unit of bp (1/72 in)
+{c} %vertical alignment: b, c, t
+%
+\hfill
+%
+\mpfigtsra{0.3} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{<使用 mpfigtsra 展示裁切、較大的圖、對齊以及標題文字間距較小>} %caption
+{fig:yzu_logo_15} %label
+{<原圖擷自元智大學網頁>} %additional text beneath the caption
+{-4ex} %additional spacing between fig and caption
+{10 10 10 10} %left bottom right top; in unit of bp (1/72 in)
+{c} %vertical alignment: b, c, t
+%
+\end{figure}
+\end{lstlisting}\par}
+
+%%%%%%%%%%
+%\begin{figurehere} % for non-float
+%
+\begin{figure}[tbph]
+%
+\mpfigtsra{0.27} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfigtsra 展示對齊以及標題文字間距較大} %caption
+{fig:yzu_logo_14} %label
+{原圖擷自元智大學網頁} %additional text beneath the caption
+{0ex} %additional spacing between fig and caption
+{0 0 0 0} %left bottom right top; in unit of bp (1/72 in)
+{c} %vertical alignment: b, c, t
+%
+\hfill
+%
+\mpfigtsra{0.3} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{使用 mpfigtsra 展示裁切、較大的圖、對齊以及標題文字間距較小} %caption
+{fig:yzu_logo_15} %label
+{原圖擷自元智大學網頁} %additional text beneath the caption
+{-4ex} %additional spacing between fig and caption
+{10 10 10 10} %left bottom right top; in unit of bp (1/72 in)
+{c} %vertical alignment: b, c, t
+%
+\end{figure}
+%\end{figurehere} % for non-float
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\mpfigabc+ 不同於前面幾個並排的指令，這個指令只產生一個標題文字與編號。適合好幾個子圖並排。請看圖~\ref{fig:yzu_logo_16}。
+
+{\centering\begin{lstlisting}[caption={mpfigabc 使用範例碼},
+label=lst:mpfigabc,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\begin{figure}[tbph]
+%
+\mpfigabc{0.15} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(a)} %text; (a) (b) (c)
+%
+\hfill
+%
+\mpfigabc{0.2} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(b)} %text; (a) (b) (c)
+%
+\hfill
+%
+\mpfigabc{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(c)} %text; (a) (b) (c)
+%
+\vspace*{-2ex}
+\caption{<使用 mpfigabc 展示不同尺寸的校徽>} % common caption
+\label{fig:yzu_logo_16}
+\end{figure}
+\end{lstlisting}\par}
+
+%%%%%%%%%%
+% \begin{figurehere} %for non-float
+%
+\begin{figure}[tbph]
+%
+\mpfigabc{0.15} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(a)} %text; (a) (b) (c)
+%
+\hfill
+%
+\mpfigabc{0.2} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(b)} %text; (a) (b) (c)
+%
+\hfill
+%
+\mpfigabc{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(c)} %text; (a) (b) (c)
+%
+\vspace*{-2ex}
+\caption{使用 mpfigabc 展示不同尺寸的校徽} % common caption
+\label{fig:yzu_logo_16}
+\end{figure}
+%  \end{figurehere} %for non-float
+%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\mpfigabcs+ 與前述指令相同，適合好幾個子圖並排，但是可以控制註記文字 (a), (b), (c) 與圖之間的間距。請看圖~\ref{fig:yzu_logo_17}。
+
+{\centering\begin{lstlisting}[caption={mpfigabc 使用範例碼},
+label=lst:mpfigabc,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\begin{figure}[tbph]
+%
+\mpfigabcs{0.15} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(a)} %text; (a) (b) (c)
+{-1ex} %place negative height, say, -4ex to reduce the gap between fig and text
+%
+\hfill
+%
+\mpfigabcs{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(b)} %text; (a) (b) (c)
+{-1ex} %place negative height, say, -4ex to reduce the gap between fig and text
+%
+\vspace*{-2ex} % adjust the gap between (a)(b)(c) text and caption
+\caption{<使用 mpfigabcs 展示不同尺寸的校徽，圖底下的註記文字較靠近>} % common caption
+\label{fig:yzu_logo_17}
+\end{figure}
+\end{lstlisting}\par}
+
+\begin{figure}[tbph]
+%
+\mpfigabcs{0.15} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(a)} %text; (a) (b) (c)
+{-2ex} %place negative height, say, -4ex to reduce the gap between fig and text
+%
+\hfill
+%
+\mpfigabcs{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(b)} %text; (a) (b) (c)
+{-2ex} %place negative height, say, -4ex to reduce the gap between fig and text
+%
+\vspace*{-2ex} % adjust the gap between (a)(b)(c) text and caption
+\caption{使用 mpfigabcs 展示不同尺寸的校徽，圖底下的註記文字較靠近} % common caption
+\label{fig:yzu_logo_17}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item \verb+\mpfigabcsr+ 與前述指令相同，適合好幾個子圖並排，但是可以控制各子圖的四邊裁切。請看圖~\ref{fig:yzu_logo_18}。
+
+{\centering\begin{lstlisting}[caption={mpfigabc 使用範例碼},
+label=lst:mpfigabc,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+%escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+\begin{figure}[tbph]
+%
+\mpfigabcsr{0.15} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(a)} %text; (a) (b) (c)
+{-2ex} %place negative height, say, -4ex to reduce the gap between fig and text
+{0 0 0 0} %left bottom right top; in unit of bp (1/72 in)
+%
+\hfill
+%
+\mpfigabcsr{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(b)} %text; (a) (b) (c)
+{-2ex} %place negative height, say, -4ex to reduce the gap between fig and text
+{10 10 10 10} %left bottom right top; in unit of bp (1/72 in)
+%
+\vspace*{-2ex} % adjust the gap between (a)(b)(c) text and caption
+\caption{使用 mpfigabcsr 展示不同尺寸的校徽，圖底下的註記文字較靠近，且圖 (b) 四邊有裁切} % common caption
+\label{fig:yzu_logo_18}
+\end{figure}
+\end{lstlisting}\par}
+
+%%%%%%%%%%  for npc_macros_20120912
+%%%%%%%%%%
+% \begin{figurehere} %for non-float
+%
+\begin{figure}[tbph]
+%
+\mpfigabcsr{0.15} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(a)} %text; (a) (b) (c)
+{-2ex} %place negative height, say, -4ex to reduce the gap between fig and text
+{0 0 0 0} %left bottom right top; in unit of bp (1/72 in)
+%
+\hfill
+%
+\mpfigabcsr{0.25} %width in terms of \columnwidth
+{figs/example_fig} %path/filename (no space)
+{(b)} %text; (a) (b) (c)
+{-2ex} %place negative height, say, -4ex to reduce the gap between fig and text
+{10 10 10 10} %left bottom right top; in unit of bp (1/72 in)
+%
+\vspace*{-2ex} % adjust the gap between (a)(b)(c) text and caption
+\caption{使用 mpfigabcsr 展示不同尺寸的校徽，圖底下的註記文字較靠近，且圖 (b) 四邊有裁切} % common caption
+\label{fig:yzu_logo_18}
+\end{figure}
+%  \end{figurehere} %for non-float
+%%%%%%%%%%%%
+
+
+\end{enumerate}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{程式碼列表}
+\label{sec:listing}
+你的論文研究也許寫了程式來解決問題。如果要在論文裡解釋程式碼，可以用 \verb+lstlisting+ 環境指令來表現。
+
+{\centering\begin{lstlisting}[caption={一段展示 if-else 用法的 c 程式碼},
+label=lst:c-example,
+numbers=left,
+firstnumber=1,
+frame=ltrb, % single lines for left, top, right, bottom; LTRB for double lines 
+escapeinside={$$}, %如要在列表裡顯示特殊字元/排版效果，要把該文字串用 $$ 包夾住 (適合 C 程式碼)(原預設為 <>)
+]
+#include <stdio.h>	
+
+int main()                            /* Most important part of the program!
+*/
+{
+    int age;                          /* Need a variable... */
+  
+    printf( "Please enter your age" );  /* Asks for age */
+    scanf( "%d", &age );                 /* The input is put in age */
+    if ( age < 100 ) {                  /* If the age is less than 100 */
+     printf ("You are pretty young!\n" ); /* Just to show you it works... */
+  }
+  else if ( age == 100 ) {            /* I use else just to show an example */ 
+     printf( "You are old\n" );       
+  }
+  else {
+    printf( "You are really old\n" );     /* Executed if no other statement is
+    */
+  }
+  return 0;
+}
+\end{lstlisting}\par}
+
+這裡展示的程式碼是從 c 語言教學網頁擷取的\cite{url_c_tutorial}。可以畫框線 (左、頂、右、底)，有編號與標題說明 (這裡的編號是列表~\ref{lst:c-example}, 同樣也是由 \verb+\ref{}+ 取得的)，也有行號，方便在解釋時參考。
+
+通常，與程式有關的變數名稱，不必使用數學模式，反而，因為常常會因為有底線字元而使用 \verb+\verb+ 指令來展示 (以打字機字體)。這個指令，可以用一對沒有用到的字元來當包夾字。例如，在程式列表~\ref{lst:c-example} 第 8 行，使用了一個內建的函式 \verb|printf| 做為顯示字串之用。 
+
+如果論文裡有多個這樣的列表，則可以在 \verb+yzu_frontpages.tex+ 裡把「程式列表目錄」的功能解除封印。如果要呈現的是整個程式的架構，不是要解釋演算法的特別之處，則列表可以放在附錄。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{插入參考文獻編號}
+\label{sec:cite}
+
+現在來示範參考文獻的引用。首先，將等著被引用的文獻資料整理在 Bib\TeX\ 資料庫裡。每一筆參考文獻，可以是期刊文章 (article)、研討會文章 (inproceeding)、書 (book)、畢業論文 (mastersthesis, phdthesis)、技術報告 (techreport)、專利 (patent)、操作手冊 (manual)、雜項 (misc) 等類別。每一筆，都該有一個獨特唯一的標籤字串，稱為 \texttt{bibkey}，只能是英文字母、數字，不可有空白。可以自己命名，也可以由資料庫管理軟體依規則代為命名。至於文獻資料本身，作者、標題等，當然可以用中文，只要確定是以 \texttt{UTF-8} 編碼即可。
+
+資料庫的建立，可以在平時在網路線上資料庫搜尋文獻時，順便下載該筆文獻的 citation 資料，匯入你的管理軟體，如 JabRef, BibDesk, EndNote 等。或者，一個字一個字的鍵入資料庫裡。常見的人為錯誤是：(這裡順便示範無編號條列)
+
+\begin{itemize}
+%
+\item Bibkey 包含了中文
+
+\item 如果作者群是從文獻全文 PDF 檔圈選、複製出來的，很可能會把標記不同作者屬不同單位的註記符號也一起複製進來。另外，會引起 Bib\TeX\ 誤會的逗號也跟著進來；請看下一條。
+
+\item 作者群每個名字之間要以「and」隔開，而不是逗號。逗號只能用在各作者的姓氏、名的分隔，例如，凡得瓦爾力的發現者名叫 Johannes Diderik van der Waals 而其中姓氏為 van der Waals。所以遇此有複姓的仁兄，Bib\TeX\ 資料庫要以「\uline{van der Waals, Johannes Diderik} \textbf{and} \uline{author 2} \textbf{and} \ldots」來鍵入作者群的姓名。
+
+\item 文獻的標題 (title) 裡字母的大小寫會受到所選用的文獻格式 (bst 檔) 的影響而改變。例如，此論文範本選用的是 \texttt{IEEEtran.bst}，它只保留標題第一個字的第一個字母為大寫，其他的都會變小寫。如果文獻標題含有一定要大寫的專有名詞，例如 OLED, GaN 等，請用 \verb+{}+ 把專有名詞包夾，做為保護傘。另外，如果標題裡含有上、下標，例如，SiO$_2$，請用數學模式再加保護傘 \verb+{SiO$_2$}+ 來處理。
+
+\item 期刊名稱不需要全名刊登，而且縮寫要以慣用的方式統一。例如，\emph{Applied Physics Letters} 這期刊，就要以 \emph{Appl.\ Phys.\ Lett.} 這種縮寫放在資料庫裡。可以到 Web of Science 資料庫網站查詢各大期刊的 ISO abbreviation 縮寫方式\cite{url_journal_names}。
+
+\item 要引用網頁，網址放入資料庫時，要以 \verb+\url{}+ 的方式呈現。文獻類型請用「雜項 (misc)」。
+
+\item 期刊文獻不必紀錄「期數 (No.)」。期刊在每一卷 (volume) 裡會出版好幾期，而頁碼不會歸零。也就是說，第二期的頁碼，是從第一期結束的頁碼繼續編下去的。所以，只要標明第幾卷，第幾頁，就可以了。
+\end{itemize}
+
+
+在文稿裡要插入參考文獻編號，請在一句話結束時，標點符號之前加入 \verb+\cite{bibkey}+ 即可。如果同時要引用多篇，可以多個 \texttt{bibkey} 共用一個指令，如 \verb+\cite{key1, key2, ...}+，系統自動會做範圍縮寫的處理，如下一段的第二句。如果文句要以該篇文獻作為主、受詞，則以「文獻」一詞搭配不產生方括號的 \verb+\citen{bibkey}+ 來處理 (這種用法見仁見智，不見得一定要如此)。如下一段第一句。
+
+根據文獻~\citen{ieee_dmr_2_50_2002_chou} 的說法，此實驗必須湊齊五大元素\cite{jap_093_1108_2003_kondakov, ieee_ed_50_1830_2003_oriols, Chem.Mater._8_1365_1996_Papadimitrakopoulos, jap_079_2745_1996_scott, jap_087_8049_2000_adachi, jap_089_1704_2001_brutting, jap_089_4673_2001_popovic, synth.met._132_9_2002_nomura, cjk_book, thinfilm_macleod_2001,url_wiki_cv}，並用天火燒之始能畢其功。
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{數學式子}
+
+我們在第~\ref{sec:fig} 與 \ref{sec:table} 節示範了如何處理插圖以及表格。在這一章，我們來看數學公式的處理。在本文行內要書寫數學符號、式子，可以用錢符號前後包夾住表示式。如 \$ax+b=0\$ 會顯示 $ax+b=0$；如果要單獨展示數學公式，則用 \verb+\[+ 以及 \verb+\]+ 包夾住表示式。如下
+\[
+\sum_{k=1}^{\infty}\frac{1}{n^2}
+\]
+
+如果公式要編號碼，則要用\verb+\begin{equation}+ 以及 \verb+\end{equation}+，並在式子中加上 \verb+\label{}+ 的標籤。如
+\begin{equation}
+  \frac{df}{dx} \equiv \lim_{\Delta x \rightarrow 0} \frac{f(x+\Delta x) - f(x)}{\Delta x}   \label{eq:diff_def}
+\end{equation}
+我們可以在公式 (\ref{eq:diff_def}) 看到微分的定義 (使用 \verb+\ref{}+ 取得公式編號，並且作者自己要加括號；或者，使用 \verb+\eqref{}+ 取得帶有括號的公式編號)。
+
+可以參考李果正先生寫的《大家來學 {\LaTeX}》，學習更多的技巧\cite{lee_latex123}，以及詳盡的 WikiBook 網頁\cite{url_latex_wikibook_math}。請記住，在 \verb+\begin{equation}+ 以及 \verb+\end{equation}+ 方程式指令環境裡，不可有空行。如果要在編輯器裡分隔方程式不同部份的指令，可以用註解符號起頭的空行，在視覺上有同樣的效果。
+
+以下將列舉寫論文時常見關於方程式、符號的問題。
+
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% table name % 
+\begin{table}[tbhp]
+\caption{\label{tb:math_faq}% 
+常見的方程式、符號的問題}% 
+\vspace*{-4ex}
+\begin{center} 
+%\resizebox{0.8\columnwidth}{!} {
+\begin{tabular}{lllll}% left-aligned, no vertical boarders
+\hline 
+描述&
+錯誤的指令&
+錯誤的效果&
+期望的效果&
+正確用法\tabularnewline
+\hline
+{\footnotesize 單位有上標}&
+\verb+cm^3+&
+Error!&
+cm$^3$&
+\verb+cm$^3$+\tabularnewline
+%
+{\footnotesize 單位有上標 (2)}&
+\verb+$W/m^2$+&
+$W/m^2$&
+W/m$^2$&
+\verb+W/m$^2$+\tabularnewline
+%
+{\footnotesize 相乘的單位}&
+\verb+N.m+&
+N.m&
+N$\cdot$m&
+\verb+N$\cdot$m+\tabularnewline
+%
+{\footnotesize 上下標不止一個字}&
+\verb+$10^-5$+&
+$10^-5$&
+$10^{-5}$&
+\verb+$10^{-5}$+\tabularnewline
+%
+{\footnotesize 科學計數法}&
+\verb+6x10$^{23}$+&
+6x10$^{23}$&
+$6 \times 10^{23}$&
+\verb+$6 \times 10^{23}$+\tabularnewline
+%
+{\footnotesize 方程式裡文字說明}&
+\verb+T_{hot}=+&
+$T_{hot} = \dots$&
+$T_\text{hot} = \dots$&
+\verb+T_\text{hot}=+\tabularnewline
+%
+{\footnotesize 多個字母的符號}&
+\verb+$sin(x)$+&
+$sin(x)$&
+$\sin(x)$&
+\verb+$\sin(x)$+\tabularnewline
+%
+{\footnotesize 多個字母的符號}&
+數值孔徑 \verb+$NA=+\ldots\verb+$+&
+$NA = \dots$&
+$\mathrm{NA} = \dots$&
+\verb+$\mathrm{NA}=+\ldots\verb+$+\tabularnewline
+%
+{\footnotesize 角度、溫度}&
+\verb+30$^o$+&
+30$^o$&
+30$^\circ$&
+\verb+30$^\circ$+\tabularnewline
+%
+{\footnotesize 溫度}&
+\verb+$27^{\circ}C$+&
+$27^{\circ}C$&
+$27^{\circ}$C&
+\verb+$27^{\circ}$C+\tabularnewline
+%
+{\footnotesize 表示類似的量}&
+\verb+$V^'=$+&
+Error!&
+$V'=\ldots$&
+\verb+$V'=$+\tabularnewline
+%
+{\footnotesize 任何單位}&
+\verb+5Hz+&
+5Hz&
+5~Hz&
+{\footnotesize\verb+5~Hz+ 或 \verb+\unit[5]{Hz}+}\tabularnewline
+%
+{\footnotesize 任何單位 (遇斷行)}&
+\verb+1.0 eV+&
+\parbox{1cm}{　1.0\\[-2ex] eV}&
+1.0~eV&
+{\footnotesize\verb+1.0~eV+ 或 \verb+\unit[1.0]{eV}+}\tabularnewline
+%
+{\footnotesize 單位「埃」}&
+\verb+5.4~A$^\circ$+&
+5.4~A$^\circ$&
+5.4~\AA&
+\verb+5.4~\AA+\tabularnewline
+%
+{\footnotesize 微米}&
+\verb+1~\mu m+&
+Error!&
+1~$\mu$m&
+\verb+1~$\mu$m+\tabularnewline
+%
+{\footnotesize 負號}&
+\verb+-2.1+&
+-2.1&
+$-2.1$&
+\verb+$-2.1$+\tabularnewline
+%
+{\footnotesize 範圍}&
+\verb+10\~{}20 m+&
+10\~{}20 m&
+10--20~m&
+\verb+10--20~m+\tabularnewline
+%
+{\footnotesize 公式必用數學模式}&
+\verb|ax+b=c|&
+ax+b=c&
+$ax+b=c$&
+\verb|$ax+b=c$|\tabularnewline
+%
+{\footnotesize 錯用全形英數括號}&
+&
+\makebox[0cm][l]{此路３ｋｍ（３，０００ｍ）長}&
+&
+\tabularnewline
+%
+{\footnotesize 半型但無空白 (誤)}&
+&
+\makebox[0cm][l]{此路3km(3,000m)長}&
+&
+\tabularnewline
+%
+{\footnotesize 半型且有空白 (正)}&
+&
+&
+\makebox[0cm][l]{此路 3~km (3,000~m) 長}
+\tabularnewline
+%
+\hline
+\end{tabular}
+%}
+% end of resizebox
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{靠自己養成的好習慣}
+\label{sec:habbit}
+
+有些排版的細節是要靠自己做，\LaTeX\ 沒辦法幫忙的。
+	\begin{itemize}
+	\item 在中文句子裡出現的英、數字、符號，其前後與中文相接的地方請加空白，但是遇到中文標點符號則是例外。使用 \verb+\ref{}+ 代換成編號數字，其前後也是一樣處理。例如：
+		\begin{enumerate}
+		\item 可以控制儀器的電腦軟體是LabView。(誤)\quad$\leftarrow$英文字前方沒有留空白。
+		\item 可以控制儀器的電腦軟體是 LabView 。(誤)\quad$\leftarrow$英文字後方是中文句號，不必留空白。
+		\item 可以控制儀器的電腦軟體是 LabView。 (正確)
+		\end{enumerate}
+
+	\item 在英、數字、符號裡的標點符號用半型，不要用中文全型。例子請看表~\ref{tb:math_faq} 的最後幾則。(這裡表的編號前後有留空白，這本身也是一個例子)
+	
+	\item 不管是中文句子還是英、數字、符號，一律用半型括號。左括號之前，右括號之後，要有空白，除非遇到標點符號。
+		\begin{enumerate}
+		\item 薄膜電晶體液晶顯示器（TFT-LCD）已經是業界的主流。(誤)\quad$\leftarrow$使用了全型括號。
+		
+		\item 薄膜電晶體液晶顯示器(TFT-LCD)已經是業界的主流。(誤)\quad$\leftarrow$左括號之前、右括號之後沒有留空白。
+		
+		\item 薄膜電晶體液晶顯示器 (TFT-LCD) 已經是業界的主流。(正確)
+		
+		\item 這架構是薄膜電晶體液晶顯示器 (TFT-LCD) 。\quad$\leftarrow$右括號之後遇到標點符號，不必留空白。
+		
+		\item 這架構是薄膜電晶體液晶顯示器 (TFT-LCD)。(正確)
+		\end{enumerate}
+
+	\item 數學模式裡的空白會被忽略，所以中文句子裡插入符號時，空白要加在數學模式之外。例如，二次項的係數$ a_2 $與常數項 $a_0$ 的比較，後者的空白才是正確的，雖然前者在原稿裡看起來也有空白，但是 \verb+$ a_2 $+ 空白在數學模式裡，結果是無效的。
+
+	\item 呈現方程式時，應把方程式視為段落的一部分，所以，\verb+\begin{equation}+ 與前面的文字區塊之間不要有空行。方程式之後，如果還有解釋的文字，也應視為同一段落，所以，\verb+\end{equation}+ 與之後的文字區塊也不要有空行。如果需要在編輯器裡能明顯區分這裡是方程式，可以用單一個百分號註解，代替空行。
+	
+		\begin{equation}
+		E = ma^2
+		\label{eq:ma2}
+		\end{equation}
+		
+	這個方程式在原稿裡前後都有空行，造成三個段落，與文章邏輯如果不符則要修改。讀者也可以看到，方程式之上、之下的留白因此變大，造成視覺的錯愕。實際上，原本要表達的是
+%
+		\begin{equation}
+		E = mc^2
+		\label{eq:mc2}
+		\end{equation}
+%
+在原稿裡使用百分號註解在視覺上達到與空行一樣的隔離效果，但是卻保留了與前後文同一段落的邏輯一貫性。
+
+	\item 在文章裡插入圖時，則一律與前後文分段，一定要有空行在插圖指令的前與後。
+	\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{元智大學論文格式規範}
+本文節自《元智大學研究所學位論文格式規範條例》，文中所提之附件，\\
+詳見「首頁 $\rightarrow$ 教務處 $\rightarrow$ 學生專區 $\rightarrow$ 畢業/離校 $\rightarrow$ 學位論文格式規範」\\
+\textless\url{http://www.yzu.edu.tw/admin/aa/index.php/content/view/140/241/lang,tw/}\textgreater\\
+順便示範名詞解釋條列 \verb+\description+ 環境指令。
+
+\section{規格說明}
+\begin{description}
+\item[封面]  教務處統一格式樣本，如附件一，經教育部核可分組者是否加註組別及封面紙由各所自定。
+\item[書名頁] 包括論文中英文名稱，著者及指導教授中英文姓名、校名、所名、學位論文別、提送論文英文說明及地名，提送年月等，如附件二。
+\item[口試委員會審定書] 教務處統一格式樣本，如附件四，正本由各所彙整送交教務處，影本裝訂於論文內。
+\item[授權書] 無論是否同意開放學術利用，本頁均須裝訂，如附件三，並與提要電子檔案開放使用欄表達一致。 (另有國科會授權書) 
+\item[中英文摘要] 內容應說明研究目的，資料來源，研究方法及結果等，約 500--1000 字，並以一頁為限。須有中文摘要及英文摘要，分頁書寫，格式如附件五、六。
+\item[論文尺寸及紙張] 以 $210\,\mathrm{mm} \times 297\,\mathrm{mm}$ 規格 A4 紙張繕製。封面封底採用 150 磅以上布紋紙或卡紙，顏色均由各所指定。
+\item[版面規格] 紙張頂端留邊 3.5~cm，左側留邊 4~cm，右側留邊 2~cm，底端留邊 2~cm，版面底端 1~cm 處文字版面中心線處繕打頁次。
+\item[文字規格] 文章主體以中文為原則，由左至右，橫式打字繕排，文句中引用之外語原文以~(~)~號附註。
+\item[頁次] (1) 中文摘要至圖表目錄等，以 i, ii, iii, \ldots\ 等小寫羅馬數字連續編頁。書名頁、審定書雖無須印出頁碼，但仍應編入同此之頁碼。\\
+(2) 論文中第一章以至附錄，均以 1, 2, 3, \ldots\ 等阿拉伯數字連續編頁。
+\item[裝訂] 自論文本左端裝釘，書背外貼紙邊，打印畢業級別、學位論文別、論文名稱、校、院、所名、著者姓名。 (見附件十八)。
+\end{description}
+
+\section{操作細則}
+
+\begin{description}
+\item[目錄] 按本規範所訂「論文編印項目次序」各項順序，依次編排論文內各項目名稱、章、節編號、頁次等 (見附件九、九－1，請與指導教授討論擇一採用)。
+\item[圖表目錄] 文內表圖，各依應用順序，不分章節連續編號，並表列一頁目次 (見附件十、十一)。
+\item[符號說明] 各章節內所使用之數學及特殊符號，均集中表列一頁說明，以便參閱，表內各符號不須編號 (見附件十二)。
+\item[論文本文章節編號] 章次使用一、二、... (或第一章、第二章...) 等中文數字編號，節段編號則配合使用一、１－１、１－１－１、1.、 (1) 、 (或第一節、第二節、第三節、壹、一、1、(1)) 等層次順序之阿拉伯數字。
+\item[論文本文章節名稱及段落層次] (見附件十三、十三－1，請與指導教授討論擇一採用)\\
+(1) 章次、章名稱位於打字版面頂端中央處。\\
+(2) 節次、段次均自版面左端排起，各空一、二格，繕排名稱。\\
+(3) 小段以下等號次及名稱，均以行首空數格間距表明層次。
+\item[論文本文行距] 中文間隔一行，每頁最少 32 行，英文間隔 1.5 或 2 行 (1.5 space or double space)，每頁最少 28 行，章名下留雙倍行距。
+\item[論文本文字距] 中文為密集字距，如本規範使用字距，每行最少 28 字，英文不拘。
+\item[論文本文文句內數字運用] 有下列注意事項\\
+(1) 描述性、非運算之簡單數字及分數數字，以中文數字表示。例：一百五十人，三萬二仟元，六十分之十七等。\\
+(2) 繁長者視情況使用中文或阿拉伯數字，以簡明為宜。例：美金三十三億元 (不用 3,300,000,000 元)。\$15,349 (不用一萬五千三百四十九美元)。
+\item[論文本文方程式及公式] 有下列注意事項\\
+(1) 方程式及公式應縮格排列，並與正文儘區隔分開。例如：
+\[ x = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}. \]\\
+(2) 方程式及公式不只一個時應編排序號，該序號應以圓括弧標註於最後一行的最右邊。例如：
+\begin{equation}
+E = mc^2.
+\end{equation}\\
+(3) 在正文提到相關之方程式或公式時，須表明該方程式之名稱及序號。\\
+(4) 如果方程式較長需轉行時，只能在加、減、乘、除、大於、小於等運算子符號處轉行。上下式儘可能在等號「=」處對齊。例如：
+\begin{equation}
+\begin{split}
+f(x) &= f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 +\cdots \\
+    &=1+\frac{1}{2}x+\left(-\frac{1}{8}\right)x^{2}+\left(\frac{1}{16}\right)x^{3}+\cdots.
+\end{split}
+\end{equation}\\
+(5) 正文中之分數應使用 ``/'' 以區分分子與分母。例如：1/2。
+\item[論文本文註腳] 有下列注意事項\\
+(1) 特殊事項論點等，可使用註腳 (Footnote) 說明。\\
+(2) 註腳應依順序編號，編號標於相關文右上角%
+\footnote{這是 footnote 的例子。}%
+以備參閱。各章內編號連續，各章之間不相接續。\\
+(3) 註腳號碼及內容繕於同頁底端版面內，與正文之間加劃橫線區隔，頁面不足可延用次頁底端版面。
+\item[論文本文文獻參閱] 文中所有參考之文獻，不分中英文及章節，均依參閱順序連續編號，並將參閱編號，加中括號~[~]~號標明於參閱處。文獻資料另編錄於論文本文之後。
+\item[論文本文圖表編排] 有下列注意事項\\
+(1) 表號及表名列於表上方，圖號及圖名置於圖下方。資料來源及說明，一律置於表圖下方。\\
+(2) 圖表內文數字應予打字或以工程字書寫。
+\item[參考文獻資料編排] 所有參考文獻資料，均置於論文本文之後，獨立另起一頁，按參閱編號依次編錄，頁次仍以本文接續。
+\item[附錄] 凡屬大量數據、推導、註釋有關或其他冗長被參之資料、圖表，均可分別另起一頁，編為各附錄。正文中未引用之參考文獻應列出書目置於附錄之中。
+\end{description}
+
+\chapter{兩篇短文}
+論文格式規範有些要在一章的第二頁之後，有些要在整頁文字的情況下，有些要在多層次分節的情況下才看得出來。所以，附上兩篇輕鬆的短文，來展示前面各章節還沒有遇到的論文規範。
+
+\section{南橫上的捍衛戰警—閻驊}
+\label{speed}
+(原文作者為閻驊，見於 \textless{}\url{http://www.1001yeah.com.tw}\textgreater{})
+
+今年舊曆新年前，我進行了兩年來的第五度環島旅行。不過這次遇上了大麻煩！因為汽車在南橫公路接近最高點的地方拋錨。這次拋錨事件讓我非常尷尬！一、我居然在一個接近三十度的險升坡上拋錨！二、汽車拋錨之處，手機居然無法播通！三、就算手機可以播通，其實也沒啥屁用！因為南橫目前是禁止大型車進入，所以拖吊車根本無法開進來救我。那時我直覺地認為應該是汽車沒電、才會拋錨！所以我就開始裝可愛、站在路旁攔車、幫我接電。但是不知道怎麼搞的！在汽車拋錨之後的半小時，南橫似乎道路封閉似的！居然沒有半台汽車經過？半小時之後，當第一台汽車映入眼簾時，就接連著出現了十幾台汽車魚貫而來，每一位駕駛員對我的反應都是一樣的：放慢車速→拉下車窗→看看我的車子→思索三秒鐘→對我搖搖頭→加速離去。整整一小時之後，才出現了第一台願意停下來、幫我忙的車子。車主熱心地把車頭倒過來、幫我接電。結果～我的笨蛋汽車依然無法發動！我想這下子糟糕了！我可能要宣布棄車逃亡了。
+
+\subsection{發生了什麼事?}
+不過這時奇蹟出現了！接連又來了兩台汽車、自動自發地停下來、加入修車的行列中。場面此時開始熱鬧了起來，狹小的南橫公路上停了四台車、十個人一起七嘴八舌地討論了修車方案。
+
+\subsection{修車方法}
+正好這些好心人裡頭，有兩位剛從軍中退伍的修車兵。根據他們專業的眼光來看，他們一致認為火星塞應該髒掉了！於是大家用一些很「馬蓋先」的克難方式，有說又笑地把我的引擎拆開，用衛生筷子夾著衛生紙，擦拭其中的一個火星塞%
+\footnote{為何會選擇那一個火星塞來修理呢？後來我才知道他們是瞎矇的！因為台南的修車廠老闆告訴我，那一個火星塞是我汽車四個火星塞之中，
+唯一沒有故障的那一個！}%
+，然後我的汽車就這麼神奇地發動成功了！
+
+ 當我的汽車成功發動之後，這些幫我修車的好心人們突然問了我老婆一個問題：「請問你有男友嗎？」。我那誠實的老婆指著我、回答道：「我沒有男友，但是車主是我老公！」。於是這群好心的大男生就長嘆一聲，三台好心車、八位好心人就這麼一瞬間消失無蹤。
+ 
+\subsection{另一項考驗}
+不過我的另一個考驗在汽車發動成功之後才登場。這個考驗就是：我的時速不能低於三十公里、不然就會讓我的引擎再度熄火。況且我拋錨的路段距離台南還有兩百公里。而且接下來的路段可是峰迴路轉、路面狹窄！而且單向通車的路段也是不少！這種考驗幾乎就等於是基努李維所飾演的「捍衛戰警」一樣：就是車速一慢，炸彈立即引爆。
+ 
+所以接下來的山路，我都是馬不停蹄地向前狂奔。遇到前方有車，幾乎都是像流氓一樣地猛按喇叭、狠狠超車。如果看到前方是單向通車的路段，我都是硬踩著油門、用超過一百公里的速度火速通過。
+
+兩個多小時之後，我就成功地飆到台南某修車廠、總計開了兩百公里、下降了兩千九百公尺、平均下山時速約九十公里。我的耳膜與心臟都非常地疼痛！ (因為車速只要低於六十公里，我的笨蛋汽車就會發出一種非常 Weak 的聲響，提醒我：「主人～主人，我又要拋錨囉！趕快跳傘逃生吧！」，讓我心力交瘁！) 
+
+捍衛戰警的故事就講到這裡！不過在這個故事裡頭有一個小插曲，讓我感觸良多！我這些日子以來，午夜夢迴時經常會想起。前述文字不是曾經提到，當我汽車拋錨之後的一個小時內，大約有十幾台汽車經過！但是他們對我不理不睬、也不願意對我伸出援手，讓我充滿了憤慨、大嘆世風日下、人心不古。就這個問題，我當時就問了幫我修車的那幾位年輕人：「為什麼剛才那些車主如此沒有同情心，不願意停下來幫我呢？」在正常的狀況下，這些年輕人應該會回答我：「幹！他們又不認識你，他幹麼要停下來幫你接電呢？你長得比較帥嗎？」。
+
+我邊發問、邊推敲著他們應該會回答我的答案。因為我一直覺得這些善心人士願意停下來幫我接電，應該是看到了我那美麗又可愛的老婆楚楚可憐地站在路旁揮手吧？不過這些年輕人算是有大智慧之人，他們居然回答了一個我意料之外的答案。年輕人嚼著檳榔告訴我說：「你不知道小車幫大車接電，小車除了幫不上大車的忙之外，而且自己的小車可能也會因此沒電呢！」
+
+另外一個年輕人接著說：「並不是別人沒心肝、不願意幫你接電！而是他們看你的汽車這麼大台、親像一艘船！深怕自己的小車不但幫不上你的忙，還會陪著你一起在南橫公路上拋錨呢！」我想了一想！年輕人的邏輯應該是正確的！因為前面那十幾台棄我於不顧的汽車真的都是像 March、Festival 之類的小車，所以我開始露出「偶真的很汗顏！」的尷尬神情。
+
+我端詳著這台讓我出糗的老爺車，我真的認為年輕人所言屬實！因為我這台老爺車，雖然只有 2000~cc，但是外型非常不流線、而且車體奇『肥』無比，似乎是根據我的『無敵肥臉』所量身訂作的！我想大部分的人瞄過我的肥車一眼，應該誤以為那是一台 3000~cc 以上的臃腫大車吧？年輕人看我如此汗顏，就開始妙語如珠了起來：「對啊！別人還以為你是開「林肯 (臃腫大車的代表作) 」呢！就怕自己停下來幫你接電，不但幫不了林肯、還淪落成為「甘乃迪 (台語：『像一隻豬』的諧音) 」。
+
+其實我到現在，還是無法證實「小車幫大車接電，小車不但幫不上忙，而且可能還會害了自己！」的說法是否屬實？好吧！看到這幾位好心年輕人的份上，我就當這個說法為真！
+
+這個「幫不了林肯、反而成為甘乃迪」的理論，讓我真是感觸良多！尤其是在我的慢呆餐廳即將結束之際。
+
+記得去年九月底，當慢呆餐廳發生了可怕的「九二四慘案%
+\footnote{所謂的「九二四慘案」，請見網站！}%
+」之後，我的人生就隨著這樁駭人聽聞的慘案一同 Down 入了深淵。
+
+去年的十月初，當我將這家已經公開宣布畢業、已經被人含淚歡送的慢呆餐廳重新開幕之後。我嚐到了刻骨銘心、讓我永誌難忘的苦果！因為『死而復生』的慢呆餐廳早已經被眾人 (尤其是讀者朋友) 唾棄、業績瓦解了整整七、八成、而且一直在低檔徘徊、毫無復甦的跡象。所以在 2004 年年底的那三個月，我陷入極深的憂鬱中，我靠著高劑量的抗憂鬱藥在過活。那時我總是想著：我明明是『九二四慘案』的最大受害者，但是為何我還要揹著這種「沒有誠信」的罪名、苦苦無法翻身呢？在那段時間，我知道刻意與我疏遠的人非常地多！很多慢呆熟客從此再也不願意踏入慢呆大門！我那個剛成氣候的天方 Yeah 壇，一些能言善道的勇將也紛紛繞跑、造成論壇的大失血。我是一個感覺很細微的人，我可以很清楚地察覺我的人氣、我的形象、我的誠信都已經隨著「九二四慘案」瓦解！所以去年 Q4 的我一直活在無限恐慌與無助的情境下、就像一個溺水的人在水裡浮載浮沉，急迫地揮著手求救！如果用我的南橫故事來解釋我當時的狀況，我想很多人都以為我是期待接電的臃腫大車、深怕自己的小車不但幫不上忙，還要陪著一起拋錨、而得不償失！「不幫你，或許害了你！但是幫你，卻可能害了你跟我！何苦呢？」我想這是當時很多人對我的直覺反應吧？您覺得我在責怪當初棄我而去的廣大人群嗎？錯！我真的不想責怪任何人！而且我也沒有權利責怪！因為我們就將心比心嘛！如果我看到歐尼爾 (體重重我兩倍的 NBA 巨星) 溺水，我想我也不敢伸出援手！如果我看到一台賓士 600 拋錨在南橫、期待我幫忙接電。我大概也會跟賓士車主露出一臉無奈的笑容、心裡想著：「您老師卡好啦！幫你接電，那我的肥車一定會立即拋錨在路旁！願老天保佑你，阿彌陀佛、萬福瑪麗亞、阿門！」，然後加速駛離現場。其實我們一直酷愛告訴別人：「不要管別人怎麼想！做你自己最重要！」。錯！我現在覺得這句話並不對！為何您明明活在這個世界上，您卻可以不要在乎世界上的其他人對你的看法呢？由於大家的厚愛與抬愛，或許很多人都認為我應該是一位跟小甜甜一樣、自立自強有信心、前途光明又燦爛的一號人物。或許我被誤以為是一位體重接近兩百公斤的肥佬、或是一台 cc 數高於 4000 的大車。所以當我溺水、當我沒電的時候，大家是不太敢幫我，深怕幫不上忙、還要一起陪葬。現在的我已經度過了之前憂鬱無比的陰霾，儘管我的慢呆餐廳業績裝死了整整五個月毫無反彈。不過令我振奮無比的好消息是：以後不用再苦苦等待慢呆的業績反彈了，因為慢呆馬上就要下市了！Yeah！至於去年底拋棄我的眾多朋友、讀者與客人，我也在藉著這份公開電子報表達「大赦」之意。不過這個大赦，並不是我要原諒拋棄我的人，而是希望拋棄我的人可以原諒我，原諒我在溺水與拋錨時的不雅醜態。感謝各位把我想成一號人物，所以才會在那時對我選擇「又離又棄」的處置方式。我並不是故意在說反話，而是誠心誠意的感謝各位，因為您對我的想像，是對於我未來發展的最大鼓舞！肛溫啊！
+
+
+
+\section{柯林頓的天誅撤收論—閻驊}
+(在第 \pageref{speed} 頁第 \ref{speed} 節裡我們提到了原文作者與出處。)
+
+
+
+前幾天，美國前總統柯林頓先生來台訪問，各大媒體都不停地報導著「與柯林頓握手，要付台幣一萬元？！」的新聞。而且我們在電視上看到了蕭薔等知名人物夾雜在與柯林頓握手的行列之中。
+
+「握個手要一萬元？那摸個頭是不是要三萬元？那我用力地踢柯林頓的屁股是不是要一百萬元？」曾經看到這段新聞的朋友與客人都七嘴八舌地與我聊著。
+
+當然～事實並不是如此！反正台灣的媒體喜歡簡化標題、觀眾也喜歡跟著斷章取義，才會出現這種「握個手要一萬元？！」之類的新聞標題。
+
+一萬元其實並不是付給柯林頓本人，而是付給XX出版社。因為繳了這一萬元之後，您就可以成為該出版社的尊爵會員，一年可以換得價值一萬六千元的新書。又可以跟柯林頓握手，還可以看到蕭薔等大美女在會場插花。您不覺得這是一個非常划算的商業交易嗎？如果柯林頓來的那一天，我不是正好在忙著搬家，我應該會加入與柯林頓握握手的行列中。
+
+在我的眼裡，柯林頓先生是一位值得大家學習與效法的成功人物，儘管他老兄曾經犯下驚天動地的喇叭事件。但仍然是瑕不掩瑜。
+
+最近我很喜歡跟朋友提起柯林頓的一個故事。這樁故事是發生在柯林頓正在尋求總統連任的1996年，當時有一個造船廠工會邀請柯林頓來訪，順便可以拉拉票！
+
+這家造船廠，在那十幾年來生意一直很差，被南韓的廉價造船廠打得潰不成軍！焦頭爛額的資方很想來個關門大吉，但是廣大的勞方說什麼也不願意！勞方認為他們在這個造船廠打拼了這麼久、資方豈能不體恤他們多年來的辛苦奮鬥、說關就關呢？所以造船廠的工會便找上了尋求連任的柯林頓，希望柯林頓可以幫助他們的忙、別讓造船廠關閉！
+
+以正常的政客邏輯來看，柯林頓大可以非常激動、口沫橫飛地告訴工人們：「各位鄉親啊！如果我連任之後，我可以跟各位保證，柯林頓決定不會讓造船廠關閉，讓各位鄉親可以繼續為造船廠打拼奮鬥，你們說好不好啊！」。然後周圍的幕僚人員就會順便拿起麥克風大喊：「柯林頓～凍蒜 (台語：當選之意) 柯林頓～凍蒜」。
+
+不過柯林頓當時並沒有選擇上演這種激情演出……。
+
+柯林頓當時是這麼說的：「不管我未來當選與否？我必須要坦承地告訴各位鄉親；貴工廠是非關不可！因為貴工廠根本沒有利潤、又沒有前途！各位鄉親待在這家造船廠真的沒啥搞頭！我建議各位鄉親們最好是改行為妙！不要再當造船工人了！」
+
+柯林頓此言一出，台下廣大的勞工朋友自然是噓聲四起、幹譙聲直衝雲霄！代表「老子我～聽得很不爽！」的抗議雞蛋也已經準備好、蓄勢待發！不過柯林頓氣定神閒地繼續說道：「如果我順利當選總統之後，我保證政府一定會搞一家補習學校，免費讓各位鄉親們免費學習新技能。而且還會義務性幫助各位輔導就業。你們說～好不好！鄉親呀～」
+
+後來這群鄉親們到底沒有投票給柯林頓？說真的！我並不太清楚！我只知道當年美國總統大選，柯林頓是勢如破竹地大勝。
+
+這家被柯林頓看衰的造船廠在柯林頓連任之後就關門大吉！不過柯林頓也兌現了他當初對於鄉親的競選承諾，因為美國政府真的免費讓這些造船廠工人去學新技能、而且也輔導他們轉業成功。
+
+我很知道您從這個小故事中獲得了什麼啟示？不過我很想告訴你，最近我之所以愛提起這個故事，並不是想告訴大家柯林頓是個誠實的人 (柯林頓如果真的很誠實，那他的老婆：希拉蕊幹麼這麼賭爛他呢？)。我更不想用此故事來挾洋自重、來暗諷台灣的政治環境。
+
+我從這個故事裡，獲得一個很重要的養分。柯林頓是個絕頂聰明、非常成功的人 (我始終覺得能夠連任美國總統的人都有過人之處，百分之百是極為成功的人！除了現任的小布希之外)。我覺得在柯林頓的人生邏輯中，一定包含了「效率」這兩字，而且效率的重要順位鐵定在柯林頓為人處事的順位前兩名。
+
+造船廠沒有搞頭、打不過南韓！該不該收？柯林頓說：「收！」
+
+造船廠歷史悠久、是這個城市的重要精神象徵，而且這家造船廠以前曾經很賺錢，但是現在已經無絲毫搞頭，您說該不該收？柯林頓說：「媽的！還是要收！」
+
+造船廠雖然沒搞頭！但是再怎麼說她有幾萬名員工，這幾萬名員工的親朋好友少說也有十來萬人，而且多半支持柯林頓所屬的民主黨。大人啊！您說該不該收！柯林頓皺了皺眉頭、嚥了嚥口水，還是會大聲地說：「只要沒有效率、沒有搞頭與前途的事情，都要收！」
+
+美國是世界上非常老字號的頭號資本主義國家，會培養出行事邏輯皆以「效率」為主、「現實」為體的柯林頓，這並不讓人感到意外！而且我覺得就算以宗教眼光來看 (無論是佛教還是基督教)，效率也是極為重要的事情！
+
+一個沒搞頭、沒效率，不賺錢的事業，倘若「放縱」它繼續經營下去，只是讓裡頭的人 (無論老闆與員工) 唉聲嘆氣、對於人生感到絕望。所以這種事業一定要收！免得傷害到無辜的人、無辜的社會與社會。
+
+如果柯林頓先生真的願意跟我展開對話，我猜想我們的對話會是如此。
+
+「柯兄，請問我的慢呆餐廳該不該收？」我虔誠地問道。
+
+「沒搞頭！就收！不賺錢！也收！沒前途！還是收！你經營這家餐廳快樂嗎？如果不快樂！那一定得收！說完了，謝謝，來～下一位！蕭薔小姐是嗎？」重視效率的柯林頓如連珠砲一般地講完。
+
+於是我又繳了一萬元，又重新排了一次隊，又跟他握了一次手，又發問了一個問題。
+
+「請問柯大師，請問你認為的成功定義為何？」我依然虔誠地問，只差沒有雙手合十。
+
+「我個人認為成功的定義就是：『在你喜歡、擅長的事物上，非常辛勤投入、非常聰明有效率地工作著！』。說完了，謝謝，下一位，侯佩岑小姐。」現實的柯林頓依然有效率地把我擺脫了。
+
+接下來我就不願意繼續發問了，因為我擔心我的後頭還有林志玲、姚采穎與田麗等美女們在排隊等著跟柯林頓握手。
+
+我從柯林頓的大小故事中，我得了非常多珍貴的啟發。我並不會一昧地認為柯林頓是那種沒心肝、沒血淚的達爾文「適者生存」派份子。因為我覺得地球最好的運行方式，絕對是最有效率的運行方式。如果我們去放縱一個沒有前途、沒有搞頭與效率的事業在地球上繼續存在，用佛家的詞彙來說，那根本就是一種可惡的造業行為。
+
+在日文裡頭，有兩個字的發音非常相似！一個是撤收 (?????，發音為「tesyu」，意思跟中文的意思完全一樣！在綜藝節目：料理東西軍經常會聽到！) 另外一個字是天誅 (?????，發音為「tensyu」，跟天誅地滅的『天誅』意思一模一樣，就是代表老天爺對你很不爽的意思！)。
+
+我覺得如果我們放縱一個沒有前途、沒有搞頭、沒有效率的事業在世界上繼續存在著，那麼老天爺一定會很生氣！這就是所謂的「天誅」。至於老天爺會給你什麼建議呢？那二話不說，老天爺絕對會告訴你別想太多，就「撤收」吧！
+
+好吧！我就寫到這裡了，這就是閻驊今天要跟大家分享的柯林頓小故事，以及思考許久的「天誅撤收論」。這是我最近思考邏輯上的一個大突破，希望也可以帶給各位讀者朋友一點心靈養分。
+
+至於我那個進行兩年多、既喜歡、也算擅長、而且非常投入，但是不夠聰明、非常沒有智慧的沒效率事業。在柯林頓大師的建議下，我也知道該怎麼做了！總之，我不想被?????！那就只能?????了！
+ 
+ 
