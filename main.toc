@@ -1,0 +1,29 @@
+\contentsline {chapter}{List of Tables}{viii}
+\contentsline {chapter}{List of Figures}{ix}
+\contentsline {chapter}{Chapter 1.\hspace *{1em}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Previous Works}{4}
+\contentsline {section}{\numberline {1.2}Our Contributions}{6}
+\contentsline {chapter}{Chapter 2.\hspace *{1em}Problem Formulation}{9}
+\contentsline {chapter}{Chapter 3.\hspace *{1em}Constraints and Terminologies}{11}
+\contentsline {chapter}{Chapter 4.\hspace *{1em}Algorithm}{19}
+\contentsline {section}{\numberline {4.1}Modified Prim's Algorithm}{21}
+\contentsline {section}{\numberline {4.2}Segment Creation}{22}
+\contentsline {section}{\numberline {4.3}Bus Ordering and Coordinate Determination}{23}
+\contentsline {subsection}{\numberline {4.3.1}Bus Ordering}{23}
+\contentsline {subsection}{\numberline {4.3.2}Coordinate Determination}{24}
+\contentsline {section}{\numberline {4.4}Wirelength Reduction}{25}
+\contentsline {subsection}{\numberline {4.4.1}Overlap Minimization}{25}
+\contentsline {subsection}{\numberline {4.4.2}Coordinate Adjustment}{27}
+\contentsline {section}{\numberline {4.5}Layer Assignment}{29}
+\contentsline {section}{\numberline {4.6}Orientation Determination and Deviation Minimization}{31}
+\contentsline {subsection}{\numberline {4.6.1}Deviation Minimization with Lookup Table Method}{31}
+\contentsline {subsection}{\numberline {4.6.2}Fast Deviation Update Based on Topology Comparison}{33}
+\contentsline {section}{\numberline {4.7}Soft Module Adjustment}{37}
+\contentsline {chapter}{Chapter 5.\hspace *{1em}Experimental results}{56}
+\contentsline {section}{\numberline {5.1}Experiments on Regular Testcases for \cite {Ma08} and \cite {PH10}}{56}
+\contentsline {section}{\numberline {5.2}The Comparison Between \cite {PH10} and This Work}{58}
+\contentsline {section}{\numberline {5.3}The Comparison Between Modified \cite {PH10} and This Work}{59}
+\contentsline {section}{\numberline {5.4}Experiments on Larger Testcases for \cite {PH10} and This Work}{60}
+\contentsline {chapter}{Chapter 6.\hspace *{1em}Conclusions}{68}
+\contentsline {chapter}{Chapter 7.\hspace *{1em}Acknowledge}{69}
+\contentsline {chapter}{Bibliography}{70}

@@ -2,7 +2,26 @@
 % utdiss.doc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[12pt, a4paper]{report}
-\usepackage{sty/psfig, epsfig,latexsym,sty/utdiss,sty/macros,sty/rotating, graphicx}
+
+
+\usepackage{graphicx}
+
+%\usepackage{ncku/pdf}
+
+
+%\usepackage{style/rotating}
+
+\usepackage{style/macros}
+
+%\usepackage{style/psfig}
+
+%\usepackage{epsfig}
+
+\usepackage{latexsym}
+
+\usepackage{style/utdiss}
+
+%\usepackage{hyperref}
 
 
 %加這個就可以設定字體
@@ -171,7 +190,7 @@
 % 如果不需要任何浮水印，則請把下列介於 >>> 與 <<< 之間
 % 的文字行關掉 (行首加上百分號)
 %% 浮水印 >>> 
-\input{ncku_watermark.tex}
+\input{./ncku/watermark.tex}
 %% <<< 浮水印
 
 %\includeonly{tex/finale}
@@ -540,8 +559,7 @@ in\\
 \centering
 \vspace{-29mm}
 \begin{tabular}{c}
-\hspace{-36mm} \includegraphics[]{oral-chi.pdf}
-%\psfig{figure=ChineseAbstract1.eps}
+\hspace{-36mm} \includegraphics[]{./ncku/oral-chi.pdf}
 \end{tabular}
 \end{figure}
 \newpage
@@ -551,20 +569,11 @@ in\\
 \centering
 \vspace{-29mm}
 \begin{tabular}{c}
-\hspace{-36mm} \includegraphics[]{oral-eng.pdf}
-%\psfig{figure=ChineseAbstract2.eps}
+\hspace{-36mm} \includegraphics[]{./ncku/oral-eng.pdf}
 \end{tabular}
 \end{figure}
 \newpage
 \newpage
-
-
-
-
-%% 從摘要到本文之前的部份以小寫羅馬數字印頁碼
-% 但是從「書名頁」(但不印頁碼) 就開始計算
-\setcounter{page}{1}
-\pagenumbering{roman}
 
 %
 % Place your Chinese abstract here. The abstract heading will be
@@ -575,8 +584,7 @@ in\\
 \centering
 \vspace{-29mm}
 \begin{tabular}{c}
-\hspace{-36mm} \includegraphics[]{ChineseAbstract1.pdf}
-%\psfig{figure=ChineseAbstract1.eps}
+\hspace{-36mm} \includegraphics[]{./abstract/ChineseAbstract1.pdf}
 \end{tabular}
 \end{figure}
 \newpage
@@ -586,12 +594,16 @@ in\\
 \centering
 \vspace{-29mm}
 \begin{tabular}{c}
-\hspace{-36mm} \includegraphics[]{ChineseAbstract2.pdf}
-%\psfig{figure=ChineseAbstract2.eps}
+\hspace{-36mm} \includegraphics[]{./abstract/ChineseAbstract2.pdf}
 \end{tabular}
 \end{figure}
 \newpage
 \newpage
+
+%% 從摘要到本文之前的部份以小寫羅馬數字印頁碼
+% 但是從「書名頁」(但不印頁碼) 就開始計算
+\setcounter{page}{1}
+\pagenumbering{roman}
 
 %
 % Place your English abstract here. The abstract heading will be
@@ -610,6 +622,9 @@ in\\
 %
 %%\input{abs/ackno}
 %\doublespacing
+
+%\input{acknowledgments/acknowledgments}
+
 
 
 \setcounter{secnumdepth}{10}
@@ -652,51 +667,6 @@ in\\
 \input{ref/ref}
 \end{thebibliography}
 
-
-%Note: If you use the APA style referencing...
-%      First, you should uncomment the APA style macros
-%      in the end of diss.sty.
-%      Use the following format:
-%
-% \begin{thebibliography}{}    % The second set of braces is empty!!!
-%
-% \bibitem[\citeauthoryear{Authors List}{Short List}{Year}]{Key}
-%          ... ... ...
-%          ... ... ...
-%
-% \bibitem[\citeauthoryear{Apt}{Apt}{1988}]{Apt}
-%  Apt, K.~R. (1988).
-%  Introduction to logic programming.
-%  Technical Report TR-87-35 (Revised and Extended Version),
-%  Department of Computer Science, The University of Texas at Austin.
-%
-% \bibitem[\protect\citeauthoryear{Daft \& Steers}{Daft \& Steers}{1986}]{DS86}
-%  Daft, R.~L. \& Steers, R.~M. (1986).
-%  {\em Organizations: A Micro/Macro Approach}.
-%  Glenview, IL: Scott, Foresman and Compnay.
-%
-% \bibitem[\protect\citeauthoryear{Daft, Steers, \& Wagner}{Daft et~al.}{1987}]{DSW87}
-%  Daft, R.~L., Steers, R.~M., James P. Wanger. (1987).
-%  {\em Organization Design}.
-%  Glenview, IL: Scott, Foresman and Compnay.
-%
-% \end{thebibliography}
-%
-% If it looks too tedious, use newapa.bst with BibTeX.
-% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-% Hopefully, it's available at UT.
-%
-% How to use the APA style:
-%    \cite{Apt}   ==>  (Apt, 1988)
-%    \cite[p.~3]{Apt} ==> (Apt, 1988, p. 3)
-%    \cite{Apt,DS86}  ==>  (Apt, 1988; Daft \& Steers, 1986)
-%    \citeA{Apt}  ==>  Apt (1986)
-%           ^^^ Only one entry in \citeA
-%    \citeA[p.~3]{Apt} ==> Apt (1988, p. 3)
-%    \shortcite{DSW87} ==> (Daft et al., 1987)
-%    \shortciteA{DSW87} ==> Daft et al. (1987)
-%    \citeyear{Apt} ==> (1988)
-%    \citeyear[p.~3]{Apt} ==> (1988, p. 3)
 
 %%%%%%%%%%%%%
 % Vita page %
