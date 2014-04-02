@@ -1,0 +1,729 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Algorithm}
+\label{chap::ALGORITHM}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\baselineskip=26pt
+
+\begin{figure}[htb]
+  \centering
+   \includegraphics[width=15cm]{Fig/flowchart.pdf}
+   %\centerline{\psfig{figure=Fig/flowchart.eps, width=15cm}}
+     \caption{
+      Algorithm overview.
+   }
+  \label{fig::flowchart}
+\end{figure}
+
+The flowchart of our bus-pin-aware bus-driven floorplanning
+algorithm is shown in Figure~\ref{fig::flowchart}.
+In the beginning of our algorithm, it derives a floorplan by using
+the sequence pair representation \cite{Murata95}, then it computes
+the coordinate of each module on the floorplan to obtain the geometric
+relations between modules.
+Next, the modified Prim's algorithm is used to obtain bus routing topologies,
+and it applies the wirelength reduction algorithm to minimize the overlap between
+different bus components in the MST.
+Since some bus pins may not be passed by the buses, it needs to add some buses
+for connecting the bus pins to the MST.
+After the above steps, several horizontal and vertical buses are obtained,
+and their coordinate could be determined. Then, it performs another wirelength reduction algorithm
+to further optimize the wirelength by adjusting the coordinate of each bus.
+Since extra vias are \textbf{\textit{forbidden}}
+at the bend of the diagonal buses, the modified graph coloring algorithm
+is used to assign each bus to different layers.
+
+During perturbation, it has three operations to
+perturb the current floorplan: (1) Rotate. (2) Reverse. (3) Swap.
+The cost function used in this paper is defined as follows:
+\begin{eqnarray}
+Cost = \alpha \cdot \textbf{\textit{A}} + \beta \cdot
+\textbf{\textit{B}} + \gamma \cdot \textbf{\textit{I}}
+\end{eqnarray}
+
+where \textbf{\textit{A}} is the chip area, \textbf{\textit{B}} is
+the bus area, \textbf{\textit{I}} is the number of invalid bus nets,
+$\alpha$, $\beta$, and $\gamma$ are parameters defined by the users.
+For saving runtime, it only performs the bus routing algorithm when
+the current chip area is smaller than the chip area of the best solution.
+Each time a better solution is found, it will check the deviation of
+the best solution and the current solution, the solution
+with best deviation will be stored.
+
+After the simulated annealing stage, the algorithm discussed in
+the Section~\ref{sec::ORIENTATION DETERMINATION} is used to
+determine the position and orientation of each bus pin, meanwhile, it
+minimizes the deviation at each load. Finally, it changes either the
+width or height of the modules lying on the critical path to obtain
+a better chip area.
+
+\section{Modified Prim's Algorithm} \label{sec::MODIFIED
+PRIMs ALGORITHM} To derive the bus
+topologies, it first constructs the MST for connecting the
+bus modules. Moreover, to take the impact of the deviation into
+consideration, we adopt the Prim's algorithm to construct MST from
+the driver. During constructing MST, it checks the capacity
+of each module to avoid violating capacity constraint. If the selected
+edges violate the constraint, then other edges will be chosen to
+connect the MST. The bus is regarded as infeasible if no MST is finally
+constructed.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=10cm]{Fig/MST.pdf}
+    %\centerline{\psfig{figure=Fig/MST.eps, width=10cm}}
+     \caption{
+       (a) Minimum spanning tree. (b) The resulting Routing tree.
+   }
+  \label{fig::minimum_spanning_tree}
+\end{figure}
+
+Figure~\ref{fig::minimum_spanning_tree} (a) is an example of the
+MST. The MST connects the modules $m_1$, $m_2$, $m_3$, $m_7$, and
+$m_8$, the weight of each edge is derived from the distance
+between different modules. For instance, the weight $d_c$ of the diagonal
+bus connecting $m_2$ and $m_7$ is $d_1$ + $d_2$. When determining the
+coordinate of each bus, it only handles the horizontal and vertical
+buses, thus, each diagonal bus in the MST will be split into one
+horizontal and one vertical buses.
+Figure~\ref{fig::minimum_spanning_tree} (b) shows the routing
+result of Figure~\ref{fig::minimum_spanning_tree} (a).
+
+During constructing the MST, it considers the diagonal connection
+between different modules, checks capacity constraint, and
+minimizes the wirelength. Therefore, we modify the Prim's algorithm to
+meet the above requirements.
+
+\section{Segment Creation}
+\label{sec::SEGMENT CREATION}
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=8cm]{Fig/segment_creation.pdf}
+    %\centerline{\psfig{figure=Fig/segment_creation.eps, width=8cm}}
+     \caption{
+      \small
+       (a) Before adding segment. (b) After adding segment.
+   }
+  \label{fig::segment_creation}
+\end{figure}
+
+During constructing the MST, the position of bus pins is ignored,
+as a result, the bus pin of some modules may not be passed by the MST.
+To connect the bus pin to the MST, some segments must be added to meet the
+requirement. Figure~\ref{fig::segment_creation} (a) is an example, the bus connects the four modules $m_1$,
+$m_4$, $m_5$, and $m_7$, and the bus pin on module $m_5$ is not passed by the MST.
+To solve this problem, one horizontal segment is added for connecting the bus pin on the module $m_5$ to the MST.
+The result of segment addition is shown in Figure~\ref{fig::segment_creation} (b).
+
+\section{Bus Ordering and Coordinate Determination}
+\label{sec::BUS ORDERING AND COORDINATEDETERMINATION}
+\subsection{Bus Ordering} \label{subsec::BUS ORDERING}
+Since the coordinate of each bus is determined in non-decreasing
+order, it finds the bus ordering of all horizontal (vertical)
+buses and determines the coordinate of each bus according to the
+bus ordering \cite{Xiang03}. Given a sequence pair, it can obtain the relative
+position of any two modules, and the ordering of any two buses is
+derived from the relative position of those modules passed by the
+buses.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=12cm]{Fig/bus_ordering.pdf}
+    %\centerline{\psfig{figure=Fig/bus_ordering.eps, width=12cm}}
+     \caption{
+       (a) Bus ordering. (b) Bus crossing. (c) Ordering constraint graph.
+   }
+  \label{fig::bus_ordering}
+\end{figure}
+
+Figure~\ref{fig::bus_ordering} (a) gives an example. The sequence
+pair of the floorplan is (1243, 2314), two buses $B_1$ = \{$m_2$,
+$m_3$\} and $B_2$ = \{$m_1$, $m_4$\} are placed on the floorplan.
+The module $m_1$ is placed above the module $m_2$ according to the
+sequence pair, thus, the bus $B_2$ passing through the module
+$m_1$ has to be placed above the bus $B_1$ passing through the
+module $m_2$. This condition is called bus ordering constraint. In
+order to obtain the bus ordering between any two buses, it
+constructs the ordering constraint graph (OCG) by performing the
+above steps on any two horizontal (vertical) buses. The buses are
+represented as the nodes in the OCG, and the edges represent the
+ordering between any two buses.
+
+During determining the bus ordering, different buses may conflict
+with each other. In Figure~\ref{fig::bus_ordering} (b), two buses
+$B_1$ = \{$m_2$, $m_3$, $m_5$\} and $B_2$ = \{$m_1$, $m_4$,
+$m_6$\} are placed on the floorplan. Based on the sequence
+pair, the module $m_2$ is placed above the module $m_1$, and the
+module $m_6$ is placed above the module $m_5$. Since the modules
+$m_1$ and $m_2$ are passed by the buses $B_2$ and $B_1$,
+respectively, an edge from the node $B_1$ to the node $B_2$ is
+inserted into the OCG. Besides, the modules $m_5$ and $m_6$
+are passed by the buses $B_1$ and $B_2$, respectively, an edge
+from node $B_2$ to node $B_1$ is inserted into the OCG. Thus, the OCG
+contains a cycle as shown in Figure~\ref{fig::bus_ordering} (c).
+It means that the two buses conflict with each other, and one of the
+two buses is regarded as infeasible. This situation is called bus
+crossing.
+
+To determine the bus ordering of all horizontal (vertical) buses
+from the OCG, we first set the nodes with zero out-degree in the
+OCG the highest priority comparing with remaining horizontal
+(vertical) buses. By this property, it determines the bus ordering
+by deleting the nodes and edges from the OCG iteratively. In each
+iteration, it removes the node with zero out-degree and deletes
+the edges connecting to it from the OCG. If no such node in the
+OCG, it means that the cycle is contained in the OCG and one of the
+minimum out-degree nodes is regarded as infeasible. Then the
+invalid node and the edges connecting to it will be deleted from
+the OCG. The above steps are repeated until all nodes are removed
+from the OCG. Finally, the bus ordering of all feasible horizontal
+(vertical) buses can be obtained.
+\subsection{Coordinate Determination} \label{subsec::COORDINATE
+DETERMINATION} After determining the bus ordering, it
+starts to determine the coordinate of all horizontal (vertical)
+buses \cite{Xiang03}. Without loss of generality, we take the horizontal buses
+for example. The coordinate of each horizontal bus $B_i$ is
+$y_{max}$ = max\{$y_i$ $|$ $i$ = 1, 2, ..., k\}, where k is the
+number of the modules passed by the bus, and $y_i$ is the y
+coordinate of each module. If some modules are not passed by the bus $B_i$.
+It adjusts the coordinate of each module slightly
+such that all modules can be passed by the bus $B_i$.
+
+ \begin{figure}[htb]
+  \centering
+    \includegraphics[width=12cm]{Fig/bus_overlapping.pdf}
+    %\centerline{\psfig{figure=Fig/bus_overlapping.eps, width=12cm}}
+     \caption{
+       (a) Module Moving. (b) Bus overlapping. (c) No Bus overlapping.
+   }
+  \label{fig::bus_overlapping}
+\end{figure}
+
+In Figure~\ref{fig::bus_overlapping} (a), the bus $B_1$ goes
+through the modules in \{$m_1$, $m_2$, $m_3$, $m_4$\}, the bus
+width of $B_1$ is $bw$, the height of the module $m_i$ is $h_i$.
+In this figure, the coordinate of $B_1$ is $y_{max}$ = max\{$y_i$
+$|$ $i$ = 1, 2, 3, 4\}. Since the module $m_3$ is not passed by the
+bus $B_1$, it changes the coordinate of the module $m_3$
+slightly such that it can be passed by $B_1$, the new coordinate
+of $m_3$ is $y_{max}$ + $bw$ - $h_3$.
+
+When considering multiple horizontal (vertical) buses, different
+horizontal (vertical) buses may overlap with each other. In
+Figure~\ref{fig::bus_overlapping} (b), the buses $B_1$ = \{$m_1$,
+$m_5$\} and $B_2$ = \{$m_2$, $m_3$\} are placed on the floorplan.
+The bus $B_2$ overlaps with the bus $B_1$ on the floorplan, this
+situation is called bus overlapping. Therefore, the bus $B_2$ has
+to be moved up until there is no overlap with the buses below. The result is shown in
+Figure~\ref{fig::bus_overlapping} (c).
+
+\section{Wirelength Reduction}
+\subsection{Wirelength Reduction1}
+\label{subsec::WIRELENGTH REDUCTION1}
+Since the width and height of each module is not considered during constructing the MST,
+the bus wirelength may be further optimized. In this paper,
+we propose an algorithm to reduce the overlap in MST such that
+the better bus wirelength could be obtained.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=10cm]{Fig/wirelength_reduction1.pdf}
+    %\centerline{\psfig{figure=Fig/wirelength_reduction1.eps, width=10cm}}
+     \caption{
+      \small
+       (a) Before wirelength reduction. (b) After wirelength reduction.
+   }
+  \label{fig::wirelength_reduction1_example}
+\end{figure}
+
+Figure~\ref{fig::wirelength_reduction1_example} illustrates how
+the algorithm works. The bus connects the five modules $m_1$,
+$m_2$, $m_3$, $m_7$, and $m_8$. In Figure~\ref{fig::wirelength_reduction1_example} (a),
+there are three bus components which form the U-shaped pattern --- one vertical bus
+connects modules $m_1$ and $m_3$, another vertical bus connects
+modules $m_2$ and $m_8$, and the horizontal bus connects modules
+$m_1$ and $m_2$. If the overlap in the U-shaped pattern can be minimized, then
+the total bus wirelength can be further optimized.
+Thus, the horizontal bus component is shifted down to minimize the overlap between the buses.
+Figure~\ref{fig::wirelength_reduction1_example} (b) demonstrates the
+result of wirelength reduction. All the above steps are repeated until all horizontal and vertical
+bus components are searched.
+
+\begin{Lemma}
+Minimize the overlap in the obtained MST will further decrease the
+total bus wirelength of the MST.
+\end{Lemma}
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=12cm]{Fig/lemma1.pdf}
+    %\centerline{\psfig{figure=Fig/lemma1.eps, width=12cm}}
+     \caption{
+      \small
+       (a) Reduction rule for horizontal bus. (b) Reduction rule for vertical bus.
+   }
+  \label{fig::lemma1}
+\end{figure}
+
+During constructing the MST for each bus, it ignores the actual information
+on the width and height of the module, as a result, the wirelength of the obtained MST may
+be further optimized.
+For each bus, it will construct a MST.
+In each MST, the bus modules are represented as nodes, and the buses are represented as edges.
+If one MST contains the U-shaped bus pattern, it means that
+there is a overlap in the MST. Therefore, the bus wirelength can be minimized by minimizing the overlap in the MST.
+
+Figure~\ref{fig::lemma1} shows the reduction rule.
+In Figure~\ref{fig::lemma1} (a), it shows the reduction rule for the horizontal buses.
+Each time a matched U-shaped patten is found, it will check either if the node 2 in the pattern
+is horizontal with node 4 or the node 1 is horizontal with node 3 is true.
+If the node 2 in the pattern is horizontal with node 4, then the horizontal bus connecting
+the node 1 and 4 is changed to connect the node 2 and node 4.
+If the node 1 in the pattern is horizontal with node 3, then the horizontal bus connecting
+the node 1 and 4 is changed to connect the node 1 and node 3.
+Then, the overlap is minimized to improve the bus wirelength.
+Figure~\ref{fig::lemma1} (b) shows the reduction rule for the vertical buses.
+The rule can be derived similarly.
+
+\subsection{Wirelength Reduction2}
+\label{subsec::WIRELENGTH REDUCTION2}
+%Wirelength reduction
+When determining the coordinate of each bus, it only focuses on
+making each horizontal (vertical) buses feasible but not on
+minimizing the wirelength. In this stage, it optimizes the
+wirelength by moving each horizontal (vertical) bus toward the
+direction with the maximum number of vertical (horizontal) buses
+intersecting with it.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=14cm]{Fig/wirelength_reduction2.pdf}
+    %\centerline{\psfig{figure=Fig/wirelength_reduction2.eps, width=14cm}}
+     \caption{
+       (a) Wirelength reduction rule. (b) Before wirelength reduction. (c) After wirelength reduction.
+   }
+  \label{fig::wirelength_reduction2}
+\end{figure}
+
+Figure~\ref{fig::wirelength_reduction2}
+(a) illustrates how it works, the horizontal bus is the target to
+be reduced its wirelength. In the first row, the number of the
+vertical buses intersecting with the horizontal bus in upper side is
+more than in lower side. Thus, it moves the horizontal bus toward
+the upper side to improve its wirelength. In the second row, the
+number of the vertical buses intersecting with the horizontal bus in
+lower side are more than in upper side. Thus, it moves the
+horizontal bus toward the lower side to improve its wirelength. In
+the third row, the number of the vertical buses intersecting with the
+horizontal bus are equal on both side, thus, the coordinate of the horizontal
+buses are not changed.
+
+In Figure~\ref{fig::wirelength_reduction2} (b), the bus = \{$m_2$, $m_3$, $m_4$, $m_5$, $m_7$\}
+is placed on the floorplan. Assume we first checks the horizontal bus \{$m_3$, $m_4$\}.
+According to the rule as shown in Figure~\ref{fig::wirelength_reduction2} (a), it reduces the wirelength by
+moving the bus toward the upper side of the floorplan. The above steps are repeated until all horizontal
+and vertical buses are applied, the optimized result is demonstrated in Figure~\ref{fig::wirelength_reduction2} (c).
+
+
+\begin{Lemma}
+Under some specific bus topologies, different position of each horizontal (vertical) bus
+would result in different bus wirelength.
+\end{Lemma}
+
+As mentioned earlier, the coordinate of each horizontal bus is assigned to the highest y-coordinate
+of all connected bus modules, and the coordinate of each vertical bus is assigned to the highest
+x-coordinate of all connected bus modules. However, different coordinate of the buses
+result in different interconnect wirelength between the horizontal and vertical buses.
+If the bus position is not carefully assigned,
+then the total bus wirelength will be increased dramatically. Nevertheless,
+the task will become more complicated if it determines the best position of all
+horizontal (vertical) buses simultaneously. Therefore, a better approach is to
+decide an initial position for each horizontal (vertical) bus, then it adjusts
+the coordinate of each bus such that the better bus wirelength can be achieved.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=10cm]{Fig/lemma2_1.pdf}
+    %\centerline{\psfig{figure=Fig/lemma2_1.eps, width=10cm}}
+     \caption{
+      \small
+       The original bus topology.
+   }
+  \label{fig::lemma2_1}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=13cm]{Fig/lemma2_2.pdf}
+    %\centerline{\psfig{figure=Fig/lemma2_2.eps, width=13cm}}
+     \caption{
+      \small
+       The rules for wirelength reduction.
+   }
+  \label{fig::lemma2_2}
+\end{figure}
+
+In this paper, we explore all possible connective situations between different horizontal and vertical
+buses, parts of the possible connective situations are shown in Figure~\ref{fig::lemma2_1}. In the first row,
+there is no any vertical buses intersecting with the horizontal bus on its upper and lower sides.
+In the second row, one vertical bus is connected with the horizontal bus on one side and one
+vertical bus at most is connected with the horizontal bus on the other side.
+In the third row, two vertical buss are connected with the horizontal bus on one side and two
+vertical buses at most are connected with the horizontal bus on the other side,
+the possible situations in other rows can be derived similarly.
+All the above situations in Figure~\ref{fig::lemma2_1} can be categorized into three cases as shown in Figure~\ref{fig::lemma2_2}.\\
+\indent $Case1$: the number of intersecting vertical buses on upper side of the horizontal bus
+is more than on lower side as shown in Figure~\ref{fig::lemma2_2} (a), thus, the total bus wirelength
+will be improved by moving the horizontal bus toward the upper side.\\
+\indent $Case2$: the number of intersecting vertical buses on lower side of the horizontal bus
+is more than on upper side as shown in Figure~\ref{fig::lemma2_2} (b), thus, the total bus wirelength
+will be optimized by moving the horizontal bus toward the lower side.\\
+\indent $Case3$: the number of intersecting vertical buses are equal on both sides of the horizontal bus
+as shown in Figure~\ref{fig::lemma2_2} (c). No matter how the coordinate of the buses are adjusted,
+the total bus wirelength remains unchanged.\\
+
+Therefore, each time one horizontal bus is given, the best bus position can be determined by the
+interconnect condition between the horizontal and vertical buses. For any vertical buses, the rule can be derived similarly.
+
+\section{Layer Assignment} \label{sec::LAYER ASSIGNMENT}
+In this paper, we explore the diagonal connection
+that makes the bus shape more flexible to increase the success rate.
+Since extra vias are \textbf{\textit{forbidden}} at the bend of the diagonal
+buses, we develop an algorithm based on the graph coloring
+algorithm to assign the components of the diagonal buses to the
+same layer. However, graph coloring is computationally hard. It is
+an NP-complete problem if a given graph admits a k-coloring for k
+$>=$ 3. In our formulation, it only reserves two layers for bus
+routing, then the layer assignment becomes 2-coloring problem and
+it can be solved in polynomial time. To obtain the overlapped
+information between the horizontal and vertical buses, it first
+constructs the conflict graph by comparing the boundary and
+coordinate of each bus. Each bus is represented as a node in the
+graph, and the edges indicate two buses overlaps with each other.
+For minimizing the conflict between different buses, it chooses the node that
+has the maximum degree to assign it to layer one, and all its
+neighbors in the graph are assigned to layer two. Then it
+continues another iteration by selecting one of the neighbors as
+the starting point. All the neighbors of the new starting point
+are assigned to the opposite layer. The above steps are repeated
+until all buses are assigned to one of the two layers. If odd
+cycle occurs in the conflict graph, it means that some neighbors can
+not be assigned to the opposite layer of the starting point, then one
+of the buses is regarded as infeasible.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=10cm]{Fig/layer_assignment.pdf}
+    %\centerline{\psfig{figure=Fig/layer_assignment.eps, width=10cm}}
+     \caption{
+      Layer assignment.
+   }
+  \label{fig::layer_assignment}
+\end{figure}
+
+Figure~\ref{fig::layer_assignment} illustrates how the
+algorithm works. In Figure~\ref{fig::layer_assignment}
+(a), there are three buses and the modules passed by those
+buses are shown in the brace. The conflict graph is given in
+Figure~\ref{fig::layer_assignment} (b).
+Due to the bend of diagonal bus $B_3$ occurs at the module which is
+not a bus module, it must assign the bus components of the bus $B_3$
+to the same layer. Thus, the diagonal bus $B_3$ is represented as the node $B_3$ in the graph.
+Initially, the node $B_3$ has the maximum degree in the conflict graph.
+We assign it to layer one, and all its neighbors $B_1$ and $B_2$ are assigned
+to layer two. Then it terminates because all buses are assigned to one of the two layers.
+Figure~\ref{fig::layer_assignment}(c) is the result of layer
+assignment, the nodes in layer one are marked with white color,
+and the nodes in layer two are marked with black color.
+
+\section{Orientation Determination
+and Deviation Minimization}
+\label{sec::ORIENTATION DETERMINATION}
+\subsection{Algorithm1}
+\label{subsec::ALGORITHM1}
+%deviation optimization
+The bus routing problem has attracted much attention recently, and
+one of the popular problems is to determine the bus orientation
+and minimize the deviation at each load \cite {Mo07_1, Mo07_2}.
+However, these works mainly consider the impact of the blockages
+during bus routing that have different objective with ours.
+Besides, the horizontal and vertical buses at the bend of each bus
+can be connected with the vias in the above works, but it is \textbf{\textit{forbidden}} under
+our problem formulation.
+Therefore, we develop a new algorithm that can be integrated into
+our bus-driven floorplanner.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=13cm]{Fig/total_deviation_pattern.pdf}
+    %\centerline{\psfig{figure=Fig/total_deviation_pattern.eps, width=13cm}
+     \caption{
+      Total possible bus shapes between any two modules.
+   }
+  \label{fig::total_deviation_pattern}
+\end{figure}
+
+In this paper, we explore the relation including the position of the bus pin
+between any two modules, and obtain total 150 possible bus shapes,
+part of the total possible bus shapes are illustrated in Figure~\ref{fig::total_deviation_pattern}.
+The bus shapes can be mapped to some general patterns by mirroring or rotating,
+finally, total 24 bus patterns are concluded. Given the initial position
+of the bus pins on the modules, it can obtain the possible
+patterns. Next, according to the accumulated deviation at previous
+module, it chooses the pattern holding the best accumulated
+deviation at the module. Finally, the accumulated deviation at the
+module, the orientation of the bus pin, and the position of the bus pin
+can be determined. Figure~\ref{fig::deviation_pattern1} shows the
+24 concluded patterns. The arrows represent the position and
+orientation of the bus pins at the turning
+nodes and the modules. Different cases can contribute different deviations.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=11cm]{Fig/deviation_pattern1.pdf}
+    %\centerline{\psfig{figure=Fig/deviation_pattern1.eps, width=6.4cm}}
+  \centering
+    \includegraphics[width=13cm]{Fig/deviation_pattern2.pdf}
+    %\centerline{\psfig{figure=Fig/deviation_pattern2.eps, width=8.4cm}}
+     \caption{
+      The deviation patterns derived from the horizontal, vertical, and diagonal connections.
+   }
+  \label{fig::deviation_pattern1}
+\end{figure}
+
+Figure~\ref{fig::deviation_example1} illustrates how the
+algorithm works. There is a bus which passes through the modules in
+\{$m_1$, $m_2$, $m_7$, $m_8$\}, each module holds the initial
+position of the bus pins, and their orientation is not determined yet.
+We assume that $m_1$ is the driver, the searching order obtained from
+performing depth first search (DFS) on the MST is $m_1 \rightarrow m_2
+\rightarrow m_7 \rightarrow m_8$. The deviation of the driver $m_1$ is 0.
+First, the module $m_2$ is picked as the candidate.
+The modules $m_1$ and $m_2$ are connected with
+a horizontal bus passing through the bus pins on the modules, so
+it can obtain one possible pattern from the 24 concluded patterns.
+The obtained pattern contributes 0 at the accumulated deviation, so the
+accumulated deviation from the driver to module $m_2$ is still 0, then the
+orientation of the bus pin on module $m_2$ is obtained.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=12cm]{Fig/deviation_example1.pdf}
+    %\centerline{\psfig{figure=Fig/deviation_example1.eps, width=8cm}}
+     \caption{
+      Determine the orientation and deviation for all bus pins and turning nodes.
+   }
+  \label{fig::deviation_example1}
+\end{figure}
+
+Next, the module $m_7$ is chosen as the candidate. The modules $m_2$ and $m_7$
+are connected with the diagonal bus passing through the bus pin on
+the modules, so it can obtain one possible pattern from the
+24 concluded patterns. The obtained pattern contributes $-$D at the
+accumulated deviation, so the accumulated deviation from the
+driver to the module $m_7$ is $-$D, then the orientation of the bus
+pin on the module $m_7$ and the turning node are obtained.
+
+Finally, the module $m_8$ is selected as the candidate. The modules $m_2$
+and $m_8$ are connected with only one vertical bus. However, the
+position of the bus pin on the module $m_2$ is not passed by the
+vertical bus, so it can obtain two possible patterns from the
+24 concluded patterns. One pattern contributes 0 at the
+accumulated deviation of the module, and another pattern contributed $-$D at the
+accumulated deviation of the module. Since the accumulated deviation from the
+driver to the previous module $m_2$ is 0, the pattern contributing
+0 at the accumulated deviation of the module is selected. Then the accumulated
+deviation from the driver to the module $m_8$ is 0, the orientation of
+the bus pin on the module $m_8$ and the turning
+node are obtained.
+Now the algorithm terminates because the
+position and orientation of all bus pins are determined.
+
+\subsection{Algorithm2}
+\label{subsec::ALGORITHM2}
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=12cm]{Fig/deviation_reduced_pattern.pdf}
+    %\centerline{\psfig{figure=Fig/deviation_reduced_pattern.eps, width=7.4cm}}
+     \caption{
+      The reduced deviation patterns derived.
+   }
+  \label{fig::deviation_reduced_pattern}
+\end{figure}
+To decrease the time for searching possible patterns, we propose another approach
+which divides the procedure of determining the deviation of each
+module into two steps --- deviation determination and accumulated deviation (AD) update.
+In each iteration, the AD can be quickly updated after the deviation of the candidate is determined.
+Since the process of determining the deviation of each
+module is split, the shorter segment is needed for each comparison during searching the best pattern, then
+total 24 bus patterns can be further reduced to 10 types.
+Figure~\ref{fig::deviation_reduced_pattern} gives total 10 concluded
+deviation patterns. The deviation of each candidate is determined from the inter-module pattern, and the update patterns
+are used to update the AD of its neighbors.
+If the bus pin of the modules can be connected by one straight line, then its deviation is equal to its AD,
+therefore, the types of the bus shape are unnecessary kept in the bus patterns.
+In this algorithm, the candidate is chosen based on the searching order which is obtained by performing
+breadth first search (BDF) on the MST, if a module has at least two neighbors, the neighbors are selected clockwise from its upper side.
+
+Figure~\ref{fig::deviation_calculation} shows how the algorithm works.
+We assume that the bus pin of the candidate is placed on the upper side of the candidate.
+First, segment 1 and segment 2 are
+chosen to determine the deviation of the candidate. Based on different AD on the module, the best deviation and orientation can be obtained from the inter-module patterns.
+Next, it finds the matched pattern with segment 1, segment 3, and segment4 from the update patterns,
+then the AD of its neighbors can be obtained.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=11cm]{Fig/deviation_calculation.pdf}
+    %\centerline{\psfig{figure=Fig/deviation_calculation.eps, width=11cm}}
+     \caption{
+      The procedure of deviation determination and AD update.
+   }
+  \label{fig::deviation_calculation}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=14cm]{Fig/deviation_example2.pdf}
+    %\centerline{\psfig{figure=Fig/deviation_example2.eps, width=14cm}}
+     \caption{
+      Determine the orientation and deviation for all bus pins and turning nodes.
+   }
+  \label{fig::deviation_example2}
+\end{figure}
+
+Figure~\ref{fig::deviation_example2} gives an example to illustrate how the algorithm works.
+There is a bus which passes through the modules in
+\{$m_2$, $m_4$, $m_5$, $m_8$, $m_9$\}, each module holds the initial
+position of the bus pins, and their orientation is not determined yet. We assume that $m_5$ is
+the driver, the searching order obtained from performing BFS on the MST is $m_5 \rightarrow m_4
+\rightarrow m_8 \rightarrow m_2 \rightarrow m_9$. First, the module $m_5$ is
+picked as the candidate. Since $m_5$ is the driver, its deviation is 0, then the AD of its neighbors
+will be updated. Due to the orientation at the corner point in the driver is still not determined,
+it will find the best pattern from the update patterns.
+Then the best orientation of the corner point, the orientation and position of the bus pin on module $m_4$,
+the deviation of the module $m_4$ could be obtained.
+Next, it updates the AD for module $m_8$ and $m_2$, the AD of $m_8$ and $m_2$
+are 0 and the deviation of $m_4$ is 0. In next iteration, the module $m_4$ is selected as the candidate,
+however, the deviation of the module $m_4$ is obtained, and it has no neighbor.
+The next module in the searching order is chosen to continue the procedure.
+In next iteration, the module $m_8$ is selected as the candidate.
+It first finds the best pattern from the inter-module patterns to determine its deviation.
+Then it updates AD for its neighbors $m_9$. In next iteration, the module $m_2$ is chosen as the candidate.
+Since the bus pin of $m_2$ is connected by one horizontal bus, its deviation is equal to
+its AD. Finally, it selects the module $m_9$ as the candidate, the deviation of the module $m_9$ is equal to
+its AD because the bus pin is connected by one vertical bus.
+Now the algorithm terminates because the position and orientation of all bus pins are determined.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=13cm]{Fig/algorithm_comparison.pdf}
+    %\centerline{\psfig{figure=Fig/algorithm_comparison.eps, width=13cm}}
+     \caption{
+      The difference between algorithm1 and algorithm2.
+   }
+  \label{fig::algorithm_comparison}
+\end{figure}
+
+We use Figure~\ref{fig::algorithm_comparison} to demonstrate the difference between algorithm1 and algorithm2.
+In Figure~\ref{fig::algorithm_comparison} (a), there are five modules connected with one bus and each bus segment is marked as one number.
+The module $m_1$ is the driver. For algorithm1, we assume the searching order is $m_1 \rightarrow m_2 \rightarrow m_3 \rightarrow m_4 \rightarrow m_5$,
+the sequence of the bus segments which is processed during the algorithm is shown in Figure~\ref{fig::algorithm_comparison} (b).
+First, the segment 1 and segment 3 are chosen to deal with, followed by segment 1, segment 2, segment 4, and segment 5, then segment 6, segment 7, and segment 8,
+finally, segment 7 and segment 9.
+
+As for algorithm2, the searching order is $m_1 \rightarrow m_3 \rightarrow m_4 \rightarrow m_2 \rightarrow m_5$,
+the sequence of the bus segments which is processed during the algorithm is shown in Figure~\ref{fig::algorithm_comparison} (c).
+Since the module $m_1$ is the driver, its deviation is 0, then it updates the AD for its neighbors $m_3, m_4, m_2$.
+When updating the AD of the module $m_3$ segment 1 and segment 2 are processed, then
+segment 6 is selected to update the AD of the module $m_4$, finally,
+segment 1 and segment 3 are picked to update the AD of the module $m_2$.
+After that, the module $m_3$ is picked as the candidate, the segment 4 and segment 5 are chosen to decide its deviation. Next,
+the module $m_4$ is chosen as the candidate, the segment 7 and segment 8 are picked to determine its deviation.
+Then, the segment 7 and segment 9 are selected to update the AD for its neighbor $m_5$.
+
+As given in Figure~\ref{fig::algorithm_comparison} (b) and Figure~\ref{fig::algorithm_comparison} (c),
+it shows that the bus pattern is more complicated in algorithm1 than in algorithm2, thus,
+the number of the possible bus patterns in algorithm1 are more than the number of the possible bus patterns in algorithm2,
+and it will spend more time to search for a best pattern.
+
+\begin{Lemma}
+For some specific bus topologies in the candidate, the AD of its neighbors can be
+directly calculated without searching for the best pattern.
+\end{Lemma}
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=12cm]{Fig/deviation_driver.pdf}
+    %\centerline{\psfig{figure=Fig/deviation_driver.eps, width=12cm}}
+     \caption{
+      All possible topologies in driver.
+   }
+  \label{fig::deviation_driver}
+\end{figure}
+
+In the following, several cases will be analyzed under different conditions.
+As shown in Figure~\ref{fig::deviation_driver}, there are total six possible topologies
+in the driver, all other topologies can be mapped to these six cases by rotating or mirroring.
+In case 1, the driver has four neighbors.
+Since the modules at the direction 1 and direction 3 are connected by one straight line to
+the bus pin of the driver. There is no deviation contributed by the driver.
+The AD of the module at the direction 1 and direction 3 is determined by the relation position between the driver and it.
+If the modules at the direction 1 and direction 3 are connected by one diagonal bus with the driver, then it will contribute D or -D to the AD of the module.
+The deviation of the modules at the direction 2 will be determined by finding the best
+pattern from the update patterns as shown in Figure~\ref{fig::deviation_reduced_pattern},
+then the best orientation at the crossing point can be obtained.
+Since the orientation at the crossing point have been obtained, the AD of the module at the direction 4
+can be calculated based on the orientation at the crossing point
+and the relation position between the driver and it.
+The directions are attached a tick mark if it needs to search the best bus pattern,
+and the directions are attached a cross mark if the AD of the module can be directly calculated.
+All other cases can be derived similarly.
+
+Through the above cases, it can get the following conclusion:
+since the neighbors of the candidate are processed in the clockwise from the north side,
+if the bus pin on the driver is oriented horizontally and has a right neighbor,
+then the deviation of the right neighbor is obtained by searching the best pattern from the update patterns,
+or the bus pin on the driver is oriented horizontally and only has a left neighbor,
+then the deviation of the left neighbor is obtained by searching the best pattern from the update patterns.
+However, if the bus pin on the driver is oriented vertically and has a upper neighbor,
+then the deviation of the upper neighbor is obtained by searching the best pattern from the update patterns,
+or the bus pin on the driver is oriented vertically and only has a lower neighbor,
+then the deviation of the lower neighbor is obtained by searching the best pattern from the update patterns.
+After obtaining the orientation of the corner point, the modules at other directions can be directly calculated
+based on the obtained orientation and the relative position between the driver and it.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=12cm]{Fig/deviation_load.pdf}
+    %\centerline{\psfig{figure=Fig/deviation_load.eps, width=12cm}}
+     \caption{
+      All possible topologies in load.
+   }
+  \label{fig::deviation_load}
+\end{figure}
+
+In Figure~\ref{fig::deviation_load}, there are total six possible topologies
+in the load. The $``$\textbf{\textit{S}}$"$ stands for the accumulated direction of the deviation
+from the driver.
+The rule can be derived in the same way when the candidate is the driver.
+If one neighbor of the candidate is at the first orthogonal direction compared with the accumulated direction
+and the orientation of the corner point is still not determined,
+then the deviation of the neighbor is obtained by searching the best pattern from the update patterns,
+the modules at other directions will be directly calculated based on the obtained orientation and the
+relative position between the driver and it.
+According to the above rules, it will avoid unnecessary comparison, then the time for searching the best deviation will be minimized.
+
+\section{Soft Module Adjustment} \label{subsec::SOFT MODULE ADJUSTMENT}
+In order to minimize the chip area, it adjusts the
+dimension of some modules such that a better chip area can be
+obtained. The adjustment is the same as that in \cite{Xiang03}.
+The step is processed with another simulated annealing
+process with the same cost function. In
+each iteration of the annealing process, it chooses the module
+lying on the critical path to change either its width or height a
+little bit. However, if any feasible bus become invalid after
+the adjustment, the candidate solution will be discarded.
+

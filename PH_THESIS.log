@@ -1,0 +1,695 @@
+This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=pdflatex 2010.5.12)  1 AUG 2010 16:25
+entering extended mode
+**PH_THESIS.TEX
+(PH_THESIS.TEX
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2008-06-18, ngerman-x-2008-06-18, french, loaded.
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\report.cls"
+Document Class: report 2005/09/16 v1.4f Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\size12.clo"
+File: size12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (sty/psfig.sty
+\@unused=\write3
+
+psfig/tex 1.9
+\ps@stream=\read1
+\p@intvaluex=\dimen103
+\p@intvaluey=\dimen104
+) ("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\epsfig.sty"
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphics.sty"
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2008/09/08 v0.04l Graphics/color for pdfTeX
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen105
+\Gin@req@width=\dimen106
+)
+\epsfxsize=\dimen107
+\epsfysize=\dimen108
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\latexsym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+) (sty/utdiss.sty
+*
+* U.T. Austin Doctoral Dissertation Format - Verson 2.1.1
+* by Young. U. Ryu - April 1992
+* Dept. of MSIS, Grad. School of Business
+* Modified by Glenn G. Lai, May 1995
+*
+\my@head@width=\skip43
+\regular@textheight=\skip44
+\short@textheight=\skip45
+\c@regular@short=\count89
+\one@num=\skip46
+\two@num=\skip47
+\three@num=\skip48
+\four@num=\skip49
+\five@num=\skip50
+\six@num=\skip51
+\c@onenum=\skip52
+\c@twonum=\skip53
+\c@threenum=\skip54
+\c@fournum=\skip55
+\c@fivenum=\skip56
+\toc@chap@indent=\skip57
+\chap@or@app=\count90
+\super@visor@no=\count91
+\@committee@size=\count92
+\super@visorno@ctr=\count93
+\committee@size@ctr=\count94
+) (sty/macros.sty
+\c@Definition=\count95
+\c@Problem=\count96
+\c@Theorem=\count97
+\c@theorem=\count98
+\c@example=\count99
+\c@Remark=\count100
+\c@Property=\count101
+\c@property=\count102
+\c@lemma=\count103
+\c@Fact=\count104
+\c@Corollary=\count105
+\c@corollary=\count106
+\c@Observation=\count107
+\c@leftindent=\count108
+) (sty/rotating.sty
+Style option: rotating.sty, v1.9 <93/11/1> (SPQR / LMB)
+\rot@box=\box26
+\rot@tempbox=\box27
+\rot@temp=\dimen109
+\rot@width=\dimen110
+\rot@height=\dimen111
+\rot@depth=\dimen112
+\rot@right=\dimen113
+\rot@left=\dimen114
+\rot@angle=\count109
+\rot@count=\count110
+\rot@circle=\count111
+) (PH_THESIS.aux (abs/abs.aux) (1/intro.aux) (2/problem.aux) (3/constraints.aux
+) (4/algorithm.aux) (5/experiment.aux) (6/conclusion.aux) (ack/ack.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+
+("C:\Program Files\MiKTeX 2.7\tex\context\base\supp-pdf.tex"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count112
+\scratchdimen=\dimen115
+\scratchbox=\box28
+\nofMPsegments=\count113
+\nofMParguments=\count114
+\everyMPshowfont=\toks15
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen116
+\MPnumerator=\count116
+\everyMPtoPDFconversion=\toks16
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 165.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 165.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 165.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 165.
+ ("C:\Program Files\MiKTeX 2.7\tex\latex\base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+<ChineseAbstract1.pdf, id=1, 597.45204pt x 845.1575pt>
+File: ChineseAbstract1.pdf Graphic file (type pdf)
+
+<use ChineseAbstract1.pdf>
+Overfull \hbox (113.4523pt too wide) in paragraph at lines 165--169
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 123.78995pt on input line 169.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<ChineseAbstract2.pdf, id=2, 597.45204pt x 845.1575pt>
+File: ChineseAbstract2.pdf Graphic file (type pdf)
+
+<use ChineseAbstract2.pdf>
+Overfull \hbox (113.4523pt too wide) in paragraph at lines 176--180
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 123.78995pt on input line 180.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[1{C:/Documents and Settings/All Users/Application Data/MiKTeX/2.7/pdftex/confi
+g/pdftex.map} <ChineseAbstract1.pdf>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[2 <ChineseAbstract2.pdf>] (abs/abs.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 41.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[3
+
+
+])
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[4] (PH_THESIS.toc
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[5
+
+
+])
+\tf@toc=\write4
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[6] (PH_THESIS.lot)
+\tf@lot=\write5
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[7
+
+] (PH_THESIS.lof
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[8
+
+])
+\tf@lof=\write6
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[9] (1/intro.tex
+Chapter 1.
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[1
+
+
+] <Fig/bus_twisting.pdf, id=59, 413.72566pt x 308.84583pt>
+File: Fig/bus_twisting.pdf Graphic file (type pdf)
+
+<use Fig/bus_twisting.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[2 <Fig/bus_twisting.pdf, page is rotated 90 degrees>]
+Overfull \hbox (0.21063pt too wide) in paragraph at lines 65--67
+[]\OT1/cmr/m/n/12 Therefore, an over-simplified bus-driven floor-plan-ning for-
+mu-la-tion will make
+ []
+
+<Fig/introduction_example.pdf, id=71, 673.67186pt x 480.64278pt>
+File: Fig/introduction_example.pdf Graphic file (type pdf)
+
+<use Fig/introduction_example.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[3 <Fig/introduction_example.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[4]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 181--187
+
+ []
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[6]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[7]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[8]) (2/problem.tex
+Chapter 2.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 24--219
+
+ []
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[9
+
+
+
+]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[10] (3/constraints.tex
+Chapter 3.
+<Fig/capacity.pdf, id=111, 660.97202pt x 310.15976pt>
+File: Fig/capacity.pdf Graphic file (type pdf)
+ <use Fig/capacity.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[11
+
+
+
+ <Fig/capacity.pdf, page is rotated 90 degrees>]
+<Fig/vertical_overlapping.pdf, id=125, 327.88197pt x 124.71292pt>
+File: Fig/vertical_overlapping.pdf Graphic file (type pdf)
+
+<use Fig/vertical_overlapping.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[12 <Fig/vertical_overlapping.pdf, page is rotated 90 degrees>]
+<Fig/bus_pin_flipping.pdf, id=136, 712.9573pt x 238.39063pt>
+File: Fig/bus_pin_flipping.pdf Graphic file (type pdf)
+
+<use Fig/bus_pin_flipping.pdf>
+<Fig/orientation_direction.pdf, id=137, 381.55347pt x 138.98123pt>
+File: Fig/orientation_direction.pdf Graphic file (type pdf)
+
+<use Fig/orientation_direction.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[13 <Fig/bus_pin_flipping.pdf, page is rotated 90 degrees>])
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[14 <Fig/orientation_direction.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[15] (4/algorithm.tex
+Chapter 4.
+<Fig/flowchart.pdf, id=159, 561.07114pt x 528.25633pt>
+File: Fig/flowchart.pdf Graphic file (type pdf)
+ <use Fig/flowchart.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[16
+
+
+
+ <Fig/flowchart.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[17] <Fig/MST.pdf, id=173, 441.25653pt x 364.1615pt>
+File: Fig/MST.pdf Graphic file (type pdf)
+ <use Fig/MST.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[18 <Fig/MST.pdf, page is rotated 90 degrees>]
+<Fig/segment_creation.pdf, id=183, 366.7552pt x 166.6486pt>
+File: Fig/segment_creation.pdf Graphic file (type pdf)
+
+<use Fig/segment_creation.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[19 <Fig/segment_creation.pdf, page is rotated 90 degrees>]
+<Fig/bus_ordering.pdf, id=193, 703.83405pt x 203.62273pt>
+File: Fig/bus_ordering.pdf Graphic file (type pdf)
+
+<use Fig/bus_ordering.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[20 <Fig/bus_ordering.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[21] <Fig/bus_overlapping.pdf, id=206, 702.92703pt x 224.48367pt>
+File: Fig/bus_overlapping.pdf Graphic file (type pdf)
+
+<use Fig/bus_overlapping.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[22 <Fig/bus_overlapping.pdf, page is rotated 90 degrees>]
+<Fig/overlap_minimization.pdf, id=219, 457.10674pt x 354.12201pt>
+File: Fig/overlap_minimization.pdf Graphic file (type pdf)
+
+<use Fig/overlap_minimization.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[23 <Fig/overlap_minimization.pdf, page is rotated 90 degrees>]
+<Fig/lemma1.pdf, id=229, 638.53056pt x 400.44164pt>
+File: Fig/lemma1.pdf Graphic file (type pdf)
+ <use Fig/lemma1.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[24 <Fig/lemma1.pdf, page is rotated 90 degrees>]
+<Fig/coordinate_adjustment.pdf, id=245, 706.55539pt x 236.27472pt>
+File: Fig/coordinate_adjustment.pdf Graphic file (type pdf)
+
+<use Fig/coordinate_adjustment.pdf>
+Overfull \hbox (0.85359pt too wide) in paragraph at lines 303--307
+ [][] 
+ []
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[25 <Fig/coordinate_adjustment.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[26] <Fig/lemma2_1.pdf, id=258, 453.61873pt x 462.62625pt>
+File: Fig/lemma2_1.pdf Graphic file (type pdf)
+
+<use Fig/lemma2_1.pdf> <Fig/lemma2_2.pdf, id=259, 700.6958pt x 407.29175pt>
+File: Fig/lemma2_2.pdf Graphic file (type pdf)
+
+<use Fig/lemma2_2.pdf>
+Overfull \hbox (0.85359pt too wide) in paragraph at lines 359--364
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--387
+
+ []
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[27 <Fig/lemma2_1.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[28 <Fig/lemma2_2.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[29] <Fig/layer_assignment.pdf, id=282, 526.21796pt x 233.37288pt>
+File: Fig/layer_assignment.pdf Graphic file (type pdf)
+
+<use Fig/layer_assignment.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[30 <Fig/layer_assignment.pdf, page is rotated 90 degrees>]
+Overfull \hbox (4.35614pt too wide) in paragraph at lines 443--443
+[]\OT1/cmr/bx/n/14.4 Orientation De-ter-mi-na-tion and De-vi-a-tion Min-i-miza-
+
+ []
+
+<Fig/total_deviation_pattern.pdf, id=292, 610.61523pt x 470.3473pt>
+File: Fig/total_deviation_pattern.pdf Graphic file (type pdf)
+
+<use Fig/total_deviation_pattern.pdf>
+<Fig/deviation_pattern1.pdf, id=293, 541.47595pt x 354.99826pt>
+File: Fig/deviation_pattern1.pdf Graphic file (type pdf)
+
+<use Fig/deviation_pattern1.pdf>
+<Fig/deviation_pattern2.pdf, id=294, 722.51308pt x 474.63713pt>
+File: Fig/deviation_pattern2.pdf Graphic file (type pdf)
+
+<use Fig/deviation_pattern2.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[31 <Fig/total_deviation_pattern.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[32 <Fig/deviation_pattern1.pdf, page is rotated 90 degrees> <Fig/deviation_pat
+tern2.pdf, page is rotated 90 degrees>]
+<Fig/deviation_example1.pdf, id=331, 629.38335pt x 446.26523pt>
+File: Fig/deviation_example1.pdf Graphic file (type pdf)
+
+<use Fig/deviation_example1.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[33 <Fig/deviation_example1.pdf, page is rotated 90 degrees>]
+<Fig/deviation_reduced_pattern.pdf, id=341, 586.16489pt x 523.75195pt>
+File: Fig/deviation_reduced_pattern.pdf Graphic file (type pdf)
+
+<use Fig/deviation_reduced_pattern.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[34]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[35 <Fig/deviation_reduced_pattern.pdf, page is rotated 90 degrees>]
+<Fig/deviation_calculation.pdf, id=359, 464.5566pt x 273.45764pt>
+File: Fig/deviation_calculation.pdf Graphic file (type pdf)
+
+<use Fig/deviation_calculation.pdf>
+<Fig/deviation_example2.pdf, id=360, 696.1992pt x 504.08133pt>
+File: Fig/deviation_example2.pdf Graphic file (type pdf)
+
+<use Fig/deviation_example2.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[36 <Fig/deviation_calculation.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[37 <Fig/deviation_example2.pdf, page is rotated 90 degrees>]
+<Fig/algorithm_comparison.pdf, id=381, 600.32037pt x 349.3833pt>
+File: Fig/algorithm_comparison.pdf Graphic file (type pdf)
+
+<use Fig/algorithm_comparison.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[38 <Fig/algorithm_comparison.pdf, page is rotated 90 degrees>]
+<Fig/deviation_driver.pdf, id=398, 686.5405pt x 458.12283pt>
+File: Fig/deviation_driver.pdf Graphic file (type pdf)
+
+<use Fig/deviation_driver.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[39 <Fig/deviation_driver.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[40] <Fig/deviation_load.pdf, id=419, 685.25371pt x 457.47943pt>
+File: Fig/deviation_load.pdf Graphic file (type pdf)
+
+<use Fig/deviation_load.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[41 <Fig/deviation_load.pdf, page is rotated 90 degrees>])
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[42] (5/experiment.tex
+Chapter 5.
+<Fig/table_1.pdf, id=439, 377.04965pt x 259.94617pt>
+File: Fig/table_1.pdf Graphic file (type pdf)
+ <use Fig/table_1.pdf>
+<Fig/Table_2.pdf, id=440, 726.91393pt x 383.03pt>
+File: Fig/Table_2.pdf Graphic file (type pdf)
+ <use Fig/Table_2.pdf>
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 28.
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[43
+
+
+
+ <Fig/table_1.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[44 <Fig/Table_2.pdf, page is rotated 90 degrees>]
+<Fig/packing_result1.pdf, id=460, 591.31314pt x 323.00174pt>
+File: Fig/packing_result1.pdf Graphic file (type pdf)
+
+<use Fig/packing_result1.pdf>
+<Fig/table_3.pdf, id=461, 725.1072pt x 335.45226pt>
+File: Fig/table_3.pdf Graphic file (type pdf)
+ <use Fig/table_3.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[45]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[46 <Fig/packing_result1.pdf, page is rotated 90 degrees>]
+<Fig/table_4.pdf, id=497, 724.50496pt x 328.22523pt>
+File: Fig/table_4.pdf Graphic file (type pdf)
+ <use Fig/table_4.pdf>
+<Fig/table_5.pdf, id=498, 377.69307pt x 245.14786pt>
+File: Fig/table_5.pdf Graphic file (type pdf)
+ <use Fig/table_5.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[47 <Fig/table_3.pdf, page is rotated 90 degrees>]
+<Fig/table_6.pdf, id=510, 725.70947pt x 285.46548pt>
+File: Fig/table_6.pdf Graphic file (type pdf)
+ <use Fig/table_6.pdf>
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[48 <Fig/table_4.pdf, page is rotated 90 degrees> <Fig/table_5.pdf, page is rot
+ated 90 degrees>] <Fig/packing_result2.pdf, id=528, 664.66347pt x 378.97986pt>
+File: Fig/packing_result2.pdf Graphic file (type pdf)
+
+<use Fig/packing_result2.pdf>)
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[49 <Fig/table_6.pdf, page is rotated 90 degrees>]
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[50 <Fig/packing_result2.pdf, page is rotated 90 degrees>] (6/conclusion.tex
+Chapter 6.
+)
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[51
+
+
+
+] (ack/ack.tex
+Chapter 7.
+)
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[52
+
+
+
+] (ref/ref.tex
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[53
+
+
+])
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+
+[54] (PH_THESIS.aux (abs/abs.aux) (1/intro.aux) (2/problem.aux)
+(3/constraints.aux) (4/algorithm.aux) (5/experiment.aux) (6/conclusion.aux)
+(ack/ack.aux)) ) 
+Here is how much of TeX's memory you used:
+ 1885 strings out of 95304
+ 24485 string characters out of 1183032
+ 80063 words of memory out of 1500000
+ 4994 multiletter control sequences out of 110000
+ 9324 words of font info for 35 fonts, out of 3000000 for 5000
+ 14 hyphenation exceptions out of 8191
+ 32i,11n,22p,932b,274s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmbx12.pfb>
+<C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmbxti10.pfb><C:/Program Fi
+les/MiKTeX 2.7/fonts/type1/bluesky/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.7/f
+onts/type1/bluesky/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesk
+y/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmr12.pfb><C
+:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmr8.pfb><C:/Program Files/Mi
+KTeX 2.7/fonts/type1/bluesky/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.7/fonts/t
+ype1/bluesky/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/c
+mti12.pfb>
+Output written on PH_THESIS.pdf (63 pages, 925421 bytes).
+PDF statistics:
+ 610 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,52 @@
+This is TeX, Version 3.14159 (MiKTeX 1.20a) (preloaded format=latex 1999.7.23)  17 JUN 2002 17:00
+**utdiss.sty
+(utdiss.sty
+LaTeX2e <1998/12/01> patch level 1
+Babel <v3.6x> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+*
+* U.T. Austin Doctoral Dissertation Format - Verson 2.1.1
+* by Young. U. Ryu - April 1992
+* Dept. of MSIS, Grad. School of Business
+* Modified by Glenn G. Lai, May 1995
+*
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                      
+                                          
+l.67 \newlength{\my@head@width}
+                               
+? 
+Missing character: There is no @ in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no @ in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+\my=\skip41
+Missing character: There is no @ in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no @ in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+! Missing number, treated as zero.
+<to be read again> 
+                   @
+l.68 ...length{\my@head@width}{\textwidth}
+                                          
+? x
+No pages of output.

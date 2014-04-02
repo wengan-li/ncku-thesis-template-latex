@@ -1,0 +1,18 @@
+This is TeX, Version 3.14159 (MiKTeX 1.20a) (preloaded format=latex 1999.7.23)  31 MAR 2002 12:11
+**macros.sty
+(macros.sty
+LaTeX2e <1998/12/01> patch level 1
+Babel <v3.6x> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+\c@Definition=\count79
+
+! LaTeX Error: No counter 'chapter' defined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                      
+                                          
+l.3 ...em{Definition}{Definition}[chapter]
+                                          
+? x
+No pages of output.
