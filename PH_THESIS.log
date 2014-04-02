@@ -1,58 +1,68 @@
-This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=pdflatex 2010.5.12)  1 AUG 2010 16:25
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2014.2.10)  2 APR 2014 20:02
 entering extended mode
-**PH_THESIS.TEX
-(PH_THESIS.TEX
-LaTeX2e <2005/12/01>
-Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
-rman, ngerman, german-x-2008-06-18, ngerman-x-2008-06-18, french, loaded.
-("C:\Program Files\MiKTeX 2.7\tex\latex\base\report.cls"
-Document Class: report 2005/09/16 v1.4f Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.7\tex\latex\base\size12.clo"
-File: size12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+**PH_THESIS.tex
+("F:\untitled folder 2\doc\paper-school\PH_THESIS.tex"
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+Requested font "cmr12" at 12.0pt
 )
-\c@part=\count79
-\c@chapter=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (sty/psfig.sty
+)
+("F:\untitled folder 2\doc\paper-school\sty/psfig.sty"
 \@unused=\write3
 
 psfig/tex 1.9
 \ps@stream=\read1
 \p@intvaluex=\dimen103
 \p@intvaluey=\dimen104
-) ("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\epsfig.sty"
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
-("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphicx.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\keyval.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphics.sty"
-Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\trig.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.7\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: pdftex.def on input line 90.
+Package graphics Info: Driver file: xetex.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.7\tex\latex\pdftex-def\pdftex.def"
-File: pdftex.def 2008/09/08 v0.04l Graphics/color for pdfTeX
-\Gread@gobject=\count88
+("C:\Program Files\MiKTeX 2.9\tex\xelatex\xetex-def\xetex.def"
+File: xetex.def 2013/04/29 v0.96 LaTeX color/graphics driver for XeTeX (RRM/JK)
+
 ))
 \Gin@req@height=\dimen105
 \Gin@req@width=\dimen106
@@ -60,12 +70,13 @@ File: pdftex.def 2008/09/08 v0.04l Graphics/color for pdfTeX
 \epsfxsize=\dimen107
 \epsfysize=\dimen108
 )
-("C:\Program Files\MiKTeX 2.7\tex\latex\base\latexsym.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latexsym.sty"
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
-) (sty/utdiss.sty
+)
+("F:\untitled folder 2\doc\paper-school\sty/utdiss.sty"
 *
 * U.T. Austin Doctoral Dissertation Format - Verson 2.1.1
 * by Young. U. Ryu - April 1992
@@ -88,12 +99,13 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 \c@fournum=\skip55
 \c@fivenum=\skip56
 \toc@chap@indent=\skip57
+Requested font "cmbx12" at 12.0pt
 \chap@or@app=\count90
 \super@visor@no=\count91
 \@committee@size=\count92
 \super@visorno@ctr=\count93
 \committee@size@ctr=\count94
-) (sty/macros.sty
+) ("F:\untitled folder 2\doc\paper-school\sty/macros.sty"
 \c@Definition=\count95
 \c@Problem=\count96
 \c@Theorem=\count97
@@ -108,7 +120,8 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 \c@corollary=\count106
 \c@Observation=\count107
 \c@leftindent=\count108
-) (sty/rotating.sty
+)
+("F:\untitled folder 2\doc\paper-school\sty/rotating.sty"
 Style option: rotating.sty, v1.9 <93/11/1> (SPQR / LMB)
 \rot@box=\box26
 \rot@tempbox=\box27
@@ -121,575 +134,1478 @@ Style option: rotating.sty, v1.9 <93/11/1> (SPQR / LMB)
 \rot@angle=\count109
 \rot@count=\count110
 \rot@circle=\count111
-) (PH_THESIS.aux (abs/abs.aux) (1/intro.aux) (2/problem.aux) (3/constraints.aux
-) (4/algorithm.aux) (5/experiment.aux) (6/conclusion.aux) (ack/ack.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\fontspec\fontspec.sty"
+Package: fontspec 2013/05/20 v2.3c Font selection for XeLaTeX and LuaLaTeX
 
-("C:\Program Files\MiKTeX 2.7\tex\context\base\supp-pdf.tex"
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count112
-\scratchdimen=\dimen115
-\scratchbox=\box28
-\nofMPsegments=\count113
-\nofMParguments=\count114
-\everyMPshowfont=\toks15
-\MPscratchCnt=\count115
-\MPscratchDim=\dimen116
-\MPnumerator=\count116
-\everyMPtoPDFconversion=\toks16
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3names.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3bootstrap.sty"
+Package: l3bootstrap 2014/01/04 v4640 L3 Experimental bootstrap code
 )
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 165.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 165.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 165.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 165.
- ("C:\Program Files\MiKTeX 2.7\tex\latex\base\ulasy.fd"
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+Package: l3names 2014/01/04 v4640 L3 Namespace for primitives
 )
-<ChineseAbstract1.pdf, id=1, 597.45204pt x 845.1575pt>
-File: ChineseAbstract1.pdf Graphic file (type pdf)
+("C:\Program Files\MiKTeX 2.9\tex\latex\misc\etex.sty"
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count112
+)
+Package: expl3 2014/01/07 v4646 L3 Experimental code bundle wrapper
 
-<use ChineseAbstract1.pdf>
-Overfull \hbox (113.4523pt too wide) in paragraph at lines 165--169
- [][] 
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3basics.sty"
+Package: l3basics 2014/01/04 v4642 L3 Basic definitions
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3expan.sty"
+Package: l3expan 2014/01/04 v4642 L3 Argument expansion
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3tl.sty"
+Package: l3tl 2013/12/27 v4625 L3 Token lists
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3seq.sty"
+Package: l3seq 2013/12/14 v4623 L3 Sequences and stacks
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3int.sty"
+Package: l3int 2013/08/02 v4583 L3 Integers
+\c_max_int=\count113
+\l_tmpa_int=\count114
+\l_tmpb_int=\count115
+\g_tmpa_int=\count116
+\g_tmpb_int=\count117
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3quark.sty"
+Package: l3quark 2013/12/14 v4623 L3 Quarks
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3prg.sty"
+Package: l3prg 2014/01/04 v4642 L3 Control structures
+\g__prg_map_int=\count118
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3clist.sty"
+Package: l3clist 2013/07/28 v4581 L3 Comma separated lists
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3token.sty"
+Package: l3token 2013/08/25 v4587 L3 Experimental token manipulation
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3prop.sty"
+Package: l3prop 2013/12/14 v4623 L3 Property lists
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3msg.sty"
+Package: l3msg 2013/07/28 v4581 L3 Messages
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3file.sty"
+Package: l3file 2013/10/13 v4596 L3 File and I/O operations
+\l_iow_line_count_int=\count119
+\l__iow_target_count_int=\count120
+\l__iow_current_line_int=\count121
+\l__iow_current_word_int=\count122
+\l__iow_current_indentation_int=\count123
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3skip.sty"
+Package: l3skip 2013/07/28 v4581 L3 Dimensions and skips
+\c_zero_dim=\dimen115
+\c_max_dim=\dimen116
+\l_tmpa_dim=\dimen117
+\l_tmpb_dim=\dimen118
+\g_tmpa_dim=\dimen119
+\g_tmpb_dim=\dimen120
+\c_zero_skip=\skip58
+\c_max_skip=\skip59
+\l_tmpa_skip=\skip60
+\l_tmpb_skip=\skip61
+\g_tmpa_skip=\skip62
+\g_tmpb_skip=\skip63
+\c_zero_muskip=\muskip10
+\c_max_muskip=\muskip11
+\l_tmpa_muskip=\muskip12
+\l_tmpb_muskip=\muskip13
+\g_tmpa_muskip=\muskip14
+\g_tmpb_muskip=\muskip15
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3keys.sty"
+Package: l3keys 2013/12/08 v4614 L3 Experimental key-value interfaces
+\g__keyval_level_int=\count124
+\l_keys_choice_int=\count125
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3fp.sty"
+Package: l3fp 2014/01/04 v4642 L3 Floating points
+\c__fp_leading_shift_int=\count126
+\c__fp_middle_shift_int=\count127
+\c__fp_trailing_shift_int=\count128
+\c__fp_big_leading_shift_int=\count129
+\c__fp_big_middle_shift_int=\count130
+\c__fp_big_trailing_shift_int=\count131
+\c__fp_Bigg_leading_shift_int=\count132
+\c__fp_Bigg_middle_shift_int=\count133
+\c__fp_Bigg_trailing_shift_int=\count134
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3box.sty"
+Package: l3box 2013/07/28 v4581 L3 Experimental boxes
+\c_empty_box=\box28
+\l_tmpa_box=\box29
+\l_tmpb_box=\box30
+\g_tmpa_box=\box31
+\g_tmpb_box=\box32
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3coffins.sty"
+Package: l3coffins 2013/12/14 v4624 L3 Coffin code layer
+\l__coffin_internal_box=\box33
+\l__coffin_internal_dim=\dimen121
+\l__coffin_offset_x_dim=\dimen122
+\l__coffin_offset_y_dim=\dimen123
+\l__coffin_x_dim=\dimen124
+\l__coffin_y_dim=\dimen125
+\l__coffin_x_prime_dim=\dimen126
+\l__coffin_y_prime_dim=\dimen127
+\c_empty_coffin=\box34
+\l__coffin_aligned_coffin=\box35
+\l__coffin_aligned_internal_coffin=\box36
+\l_tmpa_coffin=\box37
+\l_tmpb_coffin=\box38
+\l__coffin_display_coffin=\box39
+\l__coffin_display_coord_coffin=\box40
+\l__coffin_display_pole_coffin=\box41
+\l__coffin_display_offset_dim=\dimen128
+\l__coffin_display_x_dim=\dimen129
+\l__coffin_display_y_dim=\dimen130
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3color.sty"
+Package: l3color 2012/08/29 v4156 L3 Experimental color support
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3luatex.sty"
+Package: l3luatex 2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+\g__cctab_allocate_int=\count135
+\g__cctab_stack_int=\count136
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3candidates.sty"
+Package: l3candidates 2014/01/06 v4643 L3 Experimental additions to l3kernel
+\l__box_top_dim=\dimen131
+\l__box_bottom_dim=\dimen132
+\l__box_left_dim=\dimen133
+\l__box_right_dim=\dimen134
+\l__box_top_new_dim=\dimen135
+\l__box_bottom_new_dim=\dimen136
+\l__box_left_new_dim=\dimen137
+\l__box_right_new_dim=\dimen138
+\l__box_internal_box=\box42
+\l__coffin_bounding_shift_dim=\dimen139
+\l__coffin_left_corner_dim=\dimen140
+\l__coffin_right_corner_dim=\dimen141
+\l__coffin_bottom_corner_dim=\dimen142
+\l__coffin_top_corner_dim=\dimen143
+\l__coffin_scaled_total_height_dim=\dimen144
+\l__coffin_scaled_width_dim=\dimen145
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty"
+Package: xparse 2013/12/31 v4634 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count137
+\l__xparse_m_args_int=\count138
+\l__xparse_mandatory_args_int=\count139
+\l__xparse_processor_int=\count140
+\l__xparse_v_nesting_int=\count141
+)
+\l_fontspec_script_int=\count142
+\l_fontspec_language_int=\count143
+\l_fontspec_strnum_int=\count144
+\l_fontspec_tmpa_dim=\dimen146
+\l_fontspec_tmpb_dim=\dimen147
+\l_fontspec_tmpc_dim=\dimen148
+Variant \tl_gset:cV already defined; not changing it on line 69
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\fontspec\fontspec-patches.sty"
+Package: fontspec-patches 2013/05/20 v2.3c Font selection for XeLaTeX and LuaLa
+TeX
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\fixltx2e.sty"
+Package: fixltx2e 2006/09/13 v1.1m fixes to LaTeX
+LaTeX Info: Redefining \em on input line 420.
+)
+LaTeX Info: Redefining \em on input line 22.
+LaTeX Info: Redefining \emph on input line 30.
+LaTeX Info: Redefining \- on input line 33.
+
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \oldstylenums with arg. spec. 'm' on line 128.
+*************************************************
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \liningnums with arg. spec. 'm' on line 132.
+.................................................
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\fontspec\fontspec-xetex.sty"
+Package: fontspec-xetex 2013/05/20 v2.3c Font selection for XeLaTeX and LuaLaTe
+X
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\euenc\eu1enc.def"
+File: eu1enc.def 2010/05/27 v0.1h Experimental Unicode font encodings
+)
+LaTeX Font Info:    Try loading font information for EU1+lmr on input line 100.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\euenc\eu1lmr.fd"
+File: eu1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Requested font "[lmroman10-regular]:mapping=tex-text" at 10.0pt
+ -> C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman10-regular.otf
+)
+("C:\Program Files\MiKTeX 2.9\tex\xelatex\xunicode\xunicode.sty"
+File: xunicode.sty 2011/09/09 v0.981 provides access to latin accents and many 
+other characters in Unicode lower plane
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tipa\t3enc.def"
+File: t3enc.def 2001/12/31 T3 encoding
+Requested font "[lmromanslant10-regular]:mapping=tex-text" at 10.0pt
+ -> C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmromanslant10-regular
+.otf
+Requested font "[lmroman10-italic]:mapping=tex-text" at 10.0pt
+ -> C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman10-italic.otf
+Requested font "[lmroman10-bold]:mapping=tex-text" at 10.0pt
+ -> C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmroman10-bold.otf
+LaTeX Font Info:    Try loading font information for EU1+lmss on input line 357
+.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\euenc\eu1lmss.fd"
+File: eu1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Requested font "[lmsans10-regular]:mapping=tex-text" at 10.0pt
+ -> C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm/lmsans10-regular.otf
+)
+\tipaTiiicode=\count145
+\tipasavetokens=\toks15
+\tipachecktokens=\toks16
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \fontspec with arg. spec. 'O{}m' on line 41.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmainfont with arg. spec. 'O{}m' on line 46.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setsansfont with arg. spec. 'O{}m' on line 51.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmonofont with arg. spec. 'O{}m' on line 56.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmathrm with arg. spec. 'O{}m' on line 65.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setboldmathrm with arg. spec. 'O{}m' on line 69.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmathsf with arg. spec. 'O{}m' on line 73.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmathtt with arg. spec. 'O{}m' on line 77.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontfamily with arg. spec. 'mO{}m' on line 96.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontface with arg. spec. 'mO{}m' on line 100.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \defaultfontfeatures with arg. spec. 'om' on line
+. 108.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \addfontfeatures with arg. spec. 'm' on line 144.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontfeature with arg. spec. 'mm' on line 156.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newAATfeature with arg. spec. 'mmmm' on line 164.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newICUfeature with arg. spec. 'mmm' on line 172.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \aliasfontfeature with arg. spec. 'mm' on line
+. 201.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \aliasfontfeatureoption with arg. spec. 'mmm' on
+. line 203.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontscript with arg. spec. 'mm' on line 208.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontlanguage with arg. spec. 'mm' on line 235.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareFontsExtensions with arg. spec. 'm' on
+. line 256.
+.................................................
+Variant \prop_gput:cnV already defined; not changing it on line 582
+Variant \prop_gput:cnx already defined; not changing it on line 583
+\l_fontspec_tmp_int=\count146
+LaTeX Info: Redefining \itshape on input line 2087.
+LaTeX Info: Redefining \slshape on input line 2092.
+LaTeX Info: Redefining \scshape on input line 2097.
+LaTeX Info: Redefining \upshape on input line 2102.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\fontspec\fontspec.cfg")))
+("C:\Program Files\MiKTeX 2.9\tex\xelatex\xecjk\xeCJK.sty"
+Package: xeCJK 2013/12/08 v3.2.9 Typesetting CJK scripts with XeLaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\xtemplate\xtemplate.sty"
+Package: xtemplate 2013/12/31 v4634 L3 Experimental prototype document function
+s
+\l__xtemplate_tmp_dim=\dimen149
+\l__xtemplate_tmp_int=\count147
+\l__xtemplate_tmp_muskip=\muskip16
+\l__xtemplate_tmp_skip=\skip64
+Variant \prop_get:NoNTF already defined; not changing it on line 106
+Variant \prop_get:NoNT already defined; not changing it on line 107
+Variant \prop_get:NoNF already defined; not changing it on line 108
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\l3keys2e\l3keys2e.sty"
+Package: l3keys2e 2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\everypage\everypage.sty"
+Package: everypage 2007/06/20 1.1 Hooks to run on every page
+)
+\l__xeCJK_tmp_int=\count148
+\l__xeCJK_tmp_box=\box43
+\l__xeCJK_tmp_dim=\dimen150
+\l__xeCJK_tmp_skip=\skip65
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKShipoutHook with arg. spec. '' on line 145.
+.................................................
+\g__xeCJK_spacefactor_int=\count149
+\l__xeCJK_begin_int=\count150
+\l__xeCJK_end_int=\count151
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \makexeCJKactive with arg. spec. '' on line 363.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \makexeCJKinactive with arg. spec. '' on line 364.
+.................................................
+\c__xeCJK_HalfLeft_class_int=\XeTeXintercharclass4
+\c__xeCJK_HalfRight_class_int=\XeTeXintercharclass5
+\c__xeCJK_NormalSpace_class_int=\XeTeXintercharclass6
+\c__xeCJK_IVS_class_int=\XeTeXintercharclass7
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKDeclareCharClass with arg. spec.
+. 's>{\TrimSpaces }mm' on line 518.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \__xeCJK_set_char_class_aux:Nnw with arg. spec.
+. 'm>{\SplitArgument {1}{->}}m' on line 535.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \normalspacedchars with arg. spec. 'm' on line
+. 577.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKResetPunctClass with arg. spec. '' on line
+. 584.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKResetCharClass with arg. spec. '' on line
+. 591.
+.................................................
+\c__xeCJK_CJK_node_dim=\dimen151
+\c__xeCJK_CJK-space_node_dim=\dimen152
+\c__xeCJK_default_node_dim=\dimen153
+\c__xeCJK_default-space_node_dim=\dimen154
+\c__xeCJK_CJK-nobreak_node_dim=\dimen155
+\c__xeCJK_normalspace_node_dim=\dimen156
+\l__xeCJK_ccglue_skip=\skip66
+\l__xeCJK_ecglue_skip=\skip67
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKnobreak with arg. spec. '' on line 1306.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKDeclareSubCJKBlock with arg. spec.
+. 's>{\TrimSpaces }m>{\TrimSpaces }m' on line 1495.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKCancelSubCJKBlock with arg. spec. 'sm' on
+. line 1506.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKRestoreSubCJKBlock with arg. spec. 'sm' on
+. line 1515.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKsetwidth with arg. spec. 'smm' on line 1613.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKsetkern with arg. spec. 'mmm' on line 1617.
+.................................................
+.................................................
+. xtemplate info: "declare-object-type"
+. 
+. Declaring object type 'xeCJK/punctuation' taking \c_zero  argument(s) on
+. line 1712.
+.................................................
+\l__xeCJK_fixed_punct_width_dim=\dimen157
+\l__xeCJK_mixed_punct_width_dim=\dimen158
+\l__xeCJK_middle_punct_width_dim=\dimen159
+\l__xeCJK_fixed_margin_width_dim=\dimen160
+\l__xeCJK_mixed_margin_width_dim=\dimen161
+\l__xeCJK_middle_margin_width_dim=\dimen162
+\l__xeCJK_bound_punct_width_dim=\dimen163
+\l__xeCJK_bound_margin_width_dim=\dimen164
+\l__xeCJK_margin_minimum_dim=\dimen165
+\l__xeCJK_kerning_total_width_dim=\dimen166
+\l__xeCJK_same_align_margin_dim=\dimen167
+\l__xeCJK_different_align_margin_dim=\dimen168
+\l__xeCJK_kerning_margin_width_dim=\dimen169
+\l__xeCJK_kerning_margin_minimum_dim=\dimen170
+\l__xeCJK_bound_dim=\dimen171
+\l__xeCJK_reverse_bound_dim=\dimen172
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKDeclarePunctStyle with arg. spec.
+. '>{\TrimSpaces }mm' on line 2197.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKEditPunctStyle with arg. spec.
+. '>{\TrimSpaces }mm' on line 2210.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setCJKfallbackfamilyfont with arg. spec. 'mO{}m'
+. on line 2297.
+.................................................
+\g__xeCJK_family_int=\count152
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \CJKfamily with arg. spec. 't+t-m' on line 2724.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \__xeCJK_gobble_CJKfamily:wn with arg. spec.
+. 't+t-m' on line 2737.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setCJKmainfont with arg. spec. 'O{}m' on line
+. 2787.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setCJKsansfont with arg. spec. 'O{}m' on line
+. 2793.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setCJKmonofont with arg. spec. 'O{}m' on line
+. 2798.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setCJKfamilyfont with arg. spec. 'mO{}m' on line
+. 2805.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newCJKfontfamily with arg. spec. 'omO{}m' on line
+. 2811.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \CJKfontspec with arg. spec. 'O{}m' on line 2816.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \defaultCJKfontfeatures with arg. spec. 'm' on
+. line 2839.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \addCJKfontfeatures with arg. spec. 'sO{}m' on
+. line 2845.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setCJKmathfont with arg. spec. 'O{}m' on line
+. 2987.
+.................................................
+\l__xeCJK_verb_case_int=\count153
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKVerbAddon with arg. spec. '' on line 3142.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKOffVerbAddon with arg. spec. '' on line
+. 3146.
+.................................................
+\l__xeCJK_verb_exspace_skip=\skip68
+
+("C:\Program Files\MiKTeX 2.9\tex\xelatex\xecjk\xunicode-addon.sty"
+Package: xunicode-addon 2013/12/08 v3.2.9 addon file for xunicode
+
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \ReloadXunicode with arg. spec. 'm' on line 89.
+*************************************************
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \DeclareUTFmathsymbols with arg. spec. 'm' on
+* line 124.
+*************************************************
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \UseMathAsText with arg. spec. '' on line 133.
+*************************************************
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \UndeclareUTFcharacter with arg. spec.
+* 'O{\UTFencname }mm' on line 168.
+*************************************************
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \UndeclareUTFcomposite with arg. spec.
+* 'O{\UTFencname }mmm' on line 175.
+*************************************************
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \DeclareUTFcharacter with arg. spec.
+* 'O{\UTFencname }mm' on line 202.
+*************************************************
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareUTFSymbol with arg. spec. 'mO{\UTFencname
+. }m' on line 228.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareUTFCommand with arg. spec. 'mO{\UTFencname
+. }m' on line 230.
+.................................................
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \DeclareUTFcomposite with arg. spec.
+* 'O{\UTFencname }mmm' on line 273.
+*************************************************
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareUTFCompositeCommand with arg. spec.
+. 'mO{\UTFencname }mm' on line 286.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareUTFCompositeSymbol with arg. spec.
+. 'mO{\UTFencname }mm' on line 291.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareUTFComposite with arg. spec.
+. 'mO{\UTFencname }' on line 293.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareUTFEncodedAccent with arg. spec.
+. 'mO{\UTFencname }mm' on line 295.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareUTFEncodedAccents with arg. spec.
+. 'mO{\UTFencname }mm' on line 297.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareUTFEncodedSymbol with arg. spec.
+. 'mO{\UTFencname }mm' on line 299.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareUTFEncodedCircle with arg. spec.
+. 'mO{\UTFencname }mm' on line 301.
+.................................................
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \DeclareEncodedCompositeCharacter with arg.
+* spec. 'mmmm' on line 303.
+*************************************************
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \DeclareEncodedCompositeAccents with arg. spec.
+* 'mmmm' on line 305.
+*************************************************
+\l__xunadd_circle_width_dim=\dimen173
+\l__xunadd_tmp_coffin=\box44
+\l__xunadd_circle_coffin=\box45
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \settextcircledratio with arg. spec. 'm' on line
+. 455.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \AtBeginUTFCommand with arg. spec. 'sO{}+m' on
+. line 467.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \AtEndUTFCommand with arg. spec. 'sO{}+m' on line
+. 477.
+.................................................
+)
+\g__file_internal_ior=\read2
+ ("C:\Program Files\MiKTeX 2.9\tex\xelatex\xunicode\xunicode.sty"
+File: xunicode.sty 2011/09/09 v0.981 provides access to latin accents and many 
+other characters in Unicode lower plane
+
+*** Reloading Xunicode for encoding 'EU1' ***
+) ("C:\Program Files\MiKTeX 2.9\tex\xelatex\xecjk\xunicode-extra.def"
+File: xeCJK.def 2013/12/08 v3.2.9 extra definition for xunicode
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKsetup with arg. spec. '+m' on line 3438.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKsetemboldenfactor with arg. spec. 'm' on
+. line 3440.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKsetslantfactor with arg. spec. 'm' on line
+. 3442.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \punctstyle with arg. spec. 'm' on line 3443.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKplainchr with arg. spec. '' on line 3444.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \CJKsetecglue with arg. spec. 'm' on line 3445.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \CJKspace with arg. spec. '' on line 3447.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \CJKnospace with arg. spec. '' on line 3448.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKallowbreakbetweenpuncts with arg. spec. ''
+. on line 3450.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKnobreakbetweenpuncts with arg. spec. '' on
+. line 3452.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKenablefallback with arg. spec. '' on line
+. 3454.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKdisablefallback with arg. spec. '' on line
+. 3456.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKsetcharclass with arg. spec. 'mmm' on line
+. 3461.
+.................................................
+
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \nobreakspace with arg. spec. '' on line 3544.
+*************************************************
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \fontfamily with arg. spec. 'm' on line 3590.
+*************************************************
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \xeCJKcaption with arg. spec. 'om' on line 3780.
+.................................................
+("C:\Program Files\MiKTeX 2.9\tex\xelatex\xecjk\config\xeCJK.cfg"
+File: xeCJK.cfg 2013/12/08 v3.2.9 Configuration file for xeCJK package
+))
+Requested font "Times New Roman" at 10.0pt
+ -> ç^^B/Windows/Fonts/times.ttf
+Requested font "Times New Roman/ICU" at 10.0pt
+ -> Þ^^B/Windows/Fonts/times.ttf
+\g_fontspec_family_Times New Roman_int=\count154
+Requested font "Times New Roman/ICU" at 10.0pt
+ -> ^^\^^D/Windows/Fonts/times.ttf
+Requested font "Times New Roman/ICU" at 10.0pt
+ -> ^^\^^D/Windows/Fonts/times.ttf
+Requested font "Times New Roman/B/ICU" at 10.0pt
+ -> ^^\^^D/Windows/Fonts/timesbd.ttf
+Requested font "Times New Roman/B/ICU" at 10.0pt
+ -> \^^C/Windows/Fonts/timesbd.ttf
+Requested font "Times New Roman/ICU" at 10.0pt
+ -> \^^C/Windows/Fonts/times.ttf
+Requested font "Times New Roman/I/ICU" at 10.0pt
+ -> \^^C/Windows/Fonts/timesi.ttf
+Requested font "Times New Roman/I/ICU" at 10.0pt
+ -> ^^9e^^C/Windows/Fonts/timesi.ttf
+Requested font "Times New Roman/ICU" at 10.0pt
+ -> ^^9e^^C/Windows/Fonts/times.ttf
+Requested font "Times New Roman/BI/ICU" at 10.0pt
+ -> ^^9e^^C/Windows/Fonts/timesbi.ttf
+Requested font "Times New Roman/BI/ICU" at 10.0pt
+ -> I^^D/Windows/Fonts/timesbi.ttf
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'TimesNewRoman(0)' created for font 'Times New Roman' with
+. options [].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->"Times New Roman/ICU:script=latn;language=DFLT;"
+. 
+. * 'bold' with NFSS spec.:
+. <->"Times New Roman/B/ICU:script=latn;language=DFLT;"
+. 
+. * 'italic' with NFSS spec.:
+. <->"Times New Roman/I/ICU:script=latn;language=DFLT;"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->"Times New Roman/BI/ICU:script=latn;language=DFLT;"
+.................................................
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 10.0pt
+ -> R^^D/Windows/Fonts/times.ttf
+Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
+ -> v^^D/Windows/Fonts/kaiu.ttf
+Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
+ -> ^^85^^D/Windows/Fonts/kaiu.ttf
+\g_fontspec_family_標楷體_int=\count155
+Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
+ -> ^^8b^^D/Windows/Fonts/kaiu.ttf
+Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
+ -> ^^8e^^D/Windows/Fonts/kaiu.ttf
+Requested font "æ¨^^99æ¥·é«^^94/B/ICU" at 10.0pt
+ -> ^^91^^D/Windows/Fonts/kaiu.ttf
+.................................................
+. fontspec info: "no-font-shape"
+. 
+. Could not resolve font 標楷體/B (it probably doesn't exist).
+.................................................
+Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
+ -> ^^94^^D/Windows/Fonts/kaiu.ttf
+Requested font "æ¨^^99æ¥·é«^^94/I/ICU" at 10.0pt
+ -> ^^97^^D/Windows/Fonts/kaiu.ttf
+.................................................
+. fontspec info: "no-font-shape"
+. 
+. Could not resolve font 標楷體/I (it probably doesn't exist).
+.................................................
+Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
+ -> ^^9a^^D/Windows/Fonts/kaiu.ttf
+Requested font "æ¨^^99æ¥·é«^^94/BI/ICU" at 10.0pt
+ -> ^^9d^^D/Windows/Fonts/kaiu.ttf
+.................................................
+. fontspec info: "no-font-shape"
+. 
+. Could not resolve font 標楷體/BI (it probably doesn't exist).
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family '標楷體(0)' created for font '標楷體' with options [Script={CJK}].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->"標楷體/ICU:script=hani;language=DFLT;"
+.................................................
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
+\fancy@headwidth=\skip69
+\f@ncyO@elh=\skip70
+\f@ncyO@erh=\skip71
+\f@ncyO@olh=\skip72
+\f@ncyO@orh=\skip73
+\f@ncyO@elf=\skip74
+\f@ncyO@erf=\skip75
+\f@ncyO@olf=\skip76
+\f@ncyO@orf=\skip77
+)
+("F:\untitled folder 2\doc\paper-school\ncku_watermark.tex"
+\mywatermark=\box46
+File: watersymbol.jpg Graphic file (type QTm)
+
+<use  "watersymbol.jpg" >) ("F:\untitled folder 2\doc\paper-school\PH_THESIS.au
+x" ("F:\untitled folder 2\doc\paper-school\abs/abs.aux")
+("F:\untitled folder 2\doc\paper-school\1/intro.aux")
+("F:\untitled folder 2\doc\paper-school\2/problem.aux")
+("F:\untitled folder 2\doc\paper-school\3/constraints.aux")
+("F:\untitled folder 2\doc\paper-school\4/algorithm.aux")
+("F:\untitled folder 2\doc\paper-school\5/experiment.aux")
+("F:\untitled folder 2\doc\paper-school\6/conclusion.aux")
+("F:\untitled folder 2\doc\paper-school\ack/ack.aux"))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 180.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 180.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tipa\t3cmr.fd"
+File: t3cmr.fd 2001/12/31 TIPA font definitions
+)
+LaTeX Font Info:    ... okay on input line 180.
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 12.0pt
+ -> ^^85^^D/Windows/Fonts/times.ttf
+.................................................
+. fontspec info: "setup-math"
+. 
+. Adjusting the maths setup (use [no-math] to avoid this).
+.................................................
+\symlegacymaths=\mathgroup5
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 180.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 180.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 180.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 180.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 180.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 180.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 180.
+LaTeX Font Info:    Redeclaring math accent \check on input line 180.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 180.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 180.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 180.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 180.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 180.
+LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 180.
+
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> EU1/TimesNewRoman(0)/m/n on input line 
+180.
+LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 180.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> EU1/TimesNewRoman(0)/m/n on input line
+ 180.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  EU1/TimesNewRoman(0)/m/n --> EU1/TimesNewRoman(0)/m/n o
+n input line 180.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  EU1/TimesNewRoman(0)/m/n --> EU1/TimesNewRoman(0)/m/n o
+n input line 180.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> EU1/TimesNewRoman(0)/m/it on input lin
+e 180.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> EU1/TimesNewRoman(0)/bx/n on input lin
+e 180.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> EU1/lmss/m/n on input line 180.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> EU1/lmtt/m/n on input line 180.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  EU1/TimesNewRoman(0)/m/n --> EU1/TimesNewRoman(0)/bx/n 
+on input line 180.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
+(Font)                  EU1/TimesNewRoman(0)/m/n --> EU1/TimesNewRoman(0)/bx/n 
+on input line 180.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> EU1/TimesNewRoman(0)/bx/it on input l
+ine 180.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> EU1/lmss/bx/n on input line 180.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> EU1/lmtt/bx/n on input line 180.
+LaTeX Font Info:    Redeclaring math alphabet \mathrm on input line 180.
+
+("F:\untitled folder 2\doc\paper-school\my_names.tex")
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 24.88pt
+ -> ²^^D/Windows/Fonts/times.ttf
+Requested font "æ¨^^99æ¥·é«^^94/ICU:script=hani;language=DFLT;" at 24.88pt
+ -> »^^D/Windows/Fonts/kaiu.ttf
+
+Underfull \hbox (badness 10000) detected at line 250
+\EU1/標楷體(0)/m/n/24.88 成 功 大 學
  []
 
 
-LaTeX Warning: Float too large for page by 123.78995pt on input line 169.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<ChineseAbstract2.pdf, id=2, 597.45204pt x 845.1575pt>
-File: ChineseAbstract2.pdf Graphic file (type pdf)
-
-<use ChineseAbstract2.pdf>
-Overfull \hbox (113.4523pt too wide) in paragraph at lines 176--180
- [][] 
+Underfull \hbox (badness 2334) detected at line 252
+\EU1/標楷體(0)/m/n/24.88 製 造 資 訊 與 系 統 研 究 所
  []
 
 
-LaTeX Warning: Float too large for page by 123.78995pt on input line 180.
+Underfull \hbox (badness 10000) detected at line 254
+\EU1/標楷體(0)/m/n/24.88 碩 士 論 文
+ []
+
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 17.28pt
+ -> Ê^^D/Windows/Fonts/times.ttf
+Requested font "æ¨^^99æ¥·é«^^94/ICU:script=hani;language=DFLT;" at 17.28pt
+ -> Ó^^D/Windows/Fonts/kaiu.ttf
+
+Underfull \hbox (badness 10000) detected at line 277
+\EU1/標楷體(0)/m/n/17.28 研 究 生
+ []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Underfull \hbox (badness 1789) detected at line 282
+\EU1/標楷體(0)/m/n/17.28 指 導 教 授
+ []
 
 
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+Underfull \hbox (badness 10000) detected at line 309
+\EU1/標楷體(0)/m/n/17.28 中 華 民 國 一 \EU1/TimesNewRoman(0)/m/n/17.28 ○ \EU1/標楷體(0)/m
+/n/17.28 一 年 七 月
+ []
 
 
-[1{C:/Documents and Settings/All Users/Application Data/MiKTeX/2.7/pdftex/confi
-g/pdftex.map} <ChineseAbstract1.pdf>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+Package Fancyhdr Warning: \headheight is too small (-14.45377pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
-
-[2 <ChineseAbstract2.pdf>] (abs/abs.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 41.
-
-("C:\Program Files\MiKTeX 2.7\tex\latex\base\omscmr.fd"
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
-
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[3
-
-
-])
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[4] (PH_THESIS.toc
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[5
-
-
-])
-\tf@toc=\write4
-
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[6] (PH_THESIS.lot)
-\tf@lot=\write5
-
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[7
-
-] (PH_THESIS.lof
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[8
-
-])
-\tf@lof=\write6
-
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[9] (1/intro.tex
-Chapter 1.
 
 Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 
 
 [1
 
+]
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 14.4pt
+ -> '^^E/Windows/Fonts/times.ttf
+ [1]
+Requested font "æ¨^^99æ¥·é«^^94/ICU:script=hani;language=DFLT;" at 14.4pt
+ -> ¢^^E/Windows/Fonts/kaiu.ttf
 
-] <Fig/bus_twisting.pdf, id=59, 413.72566pt x 308.84583pt>
-File: Fig/bus_twisting.pdf Graphic file (type pdf)
-
-<use Fig/bus_twisting.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[2 <Fig/bus_twisting.pdf, page is rotated 90 degrees>]
-Overfull \hbox (0.21063pt too wide) in paragraph at lines 65--67
-[]\OT1/cmr/m/n/12 Therefore, an over-simplified bus-driven floor-plan-ning for-
-mu-la-tion will make
+Underfull \hbox (badness 10000) detected at line 414
+\EU1/標楷體(0)/m/n/14.4 研 究 生
  []
 
-<Fig/introduction_example.pdf, id=71, 673.67186pt x 480.64278pt>
-File: Fig/introduction_example.pdf Graphic file (type pdf)
 
-<use Fig/introduction_example.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[3 <Fig/introduction_example.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+Underfull \hbox (badness 1888) detected at line 423
+\EU1/標楷體(0)/m/n/14.4 指 導 教 授
+ []
 
 
-[4]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+Underfull \hbox (badness 10000) detected at line 460
+\EU1/標楷體(0)/m/n/14.4 成 功 大 學
+ []
 
 
-[5]
+Underfull \hbox (badness 10000) detected at line 462
+\EU1/標楷體(0)/m/n/14.4 碩 士 論 文
+ []
+
+[2]
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 8.0pt
+ -> ^^Z^^F/Windows/Fonts/times.ttf
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 6.0pt
+ -> ^^Q^^F/Windows/Fonts/times.ttf
+Requested font "cmmi12" at 12.0pt
+Requested font "cmmi8" at 8.0pt
+Requested font "cmmi6" at 6.0pt
+Requested font "cmsy10" at 12.0pt
+Requested font "cmsy8" at 8.0pt
+Requested font "cmsy6" at 6.0pt
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 541.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 541.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 541.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 541.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+Requested font "lasy10" at 12.0pt
+Requested font "lasy8" at 8.0pt
+Requested font "lasy6" at 6.0pt
+Requested font "cmr8" at 8.0pt
+Requested font "cmr6" at 6.0pt
+File: oral-chi.pdf Graphic file (type QTm)
+
+<use  "oral-chi.pdf" >
+Overfull \hbox (112.08365pt too wide) in paragraph at lines 541--545
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 125.80746pt on input line 545.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: oral-eng.pdf Graphic file (type QTm)
+<use  "oral-eng.pdf" >
+Overfull \hbox (112.08365pt too wide) in paragraph at lines 552--556
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 124.80748pt on input line 556.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: ChineseAbstract1.pdf Graphic file (type QTm)
+<use  "ChineseAbstract1.pdf" >
+Overfull \hbox (112.08365pt too wide) in paragraph at lines 576--580
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 125.80746pt on input line 580.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: ChineseAbstract2.pdf Graphic file (type QTm)
+<use  "ChineseAbstract2.pdf" >
+Overfull \hbox (112.08365pt too wide) in paragraph at lines 587--591
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 125.80746pt on input line 591.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1] [2] [3] [4] ("F:\untitled folder 2\doc\paper-school\abs/abs.tex"
+Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 14.4pt
+ -> ^^88^^D/Windows/Fonts/timesbd.ttf
+Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 12.0pt
+ ->  ^^D/Windows/Fonts/timesbd.ttf
+ [5
+
+
+])
+[6]
+Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 17.28pt
+ -> ¹^^F/Windows/Fonts/timesbd.ttf
+ ("F:\untitled folder 2\doc\paper-school\PH_THESIS.toc" [7
+
+
+])
+\tf@toc=\write4
+ [8]
+("F:\untitled folder 2\doc\paper-school\PH_THESIS.lot")
+\tf@lot=\write5
+ [9
+
+]
+("F:\untitled folder 2\doc\paper-school\PH_THESIS.lof"
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 10.95pt
+ -> ¬
+/Windows/Fonts/times.ttf
+ [10
+
+])
+\tf@lof=\write6
+ [11]
+("F:\untitled folder 2\doc\paper-school\1/intro.tex"
+Chapter 1.
+[1
+
+
+]
+File: Fig/bus_twisting.pdf Graphic file (type QTm)
+ <use  "Fig/bus_twisting.pdf" > [2]
+File: Fig/introduction_example.pdf Graphic file (type QTm)
+ <use  "Fig/introduction_example.pdf" >
+
+LaTeX Warning: Float too large for page by 40.07275pt on input line 76.
+
+
+Overfull \hbox (4.7428pt too wide) in paragraph at lines 89--109
+[]\EU1/TimesNewRoman(0)/m/n/12 Furthermore, current bus-driven floorplanning al
+gorithms restrict a bus only bends
+ []
+
+[3] [4] [5]
 Underfull \hbox (badness 10000) in paragraph at lines 181--187
 
  []
 
-
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[6]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[7]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[8]) (2/problem.tex
+[6] [7]) [8] ("F:\untitled folder 2\doc\paper-school\2/problem.tex"
 Chapter 2.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 24--219
+Underfull \hbox (badness 10000) in paragraph at lines 24--630
 
  []
-
-
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
 
 [9
 
 
 
-]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[10] (3/constraints.tex
+] [10] ("F:\untitled folder 2\doc\paper-school\3/constraints.tex"
 Chapter 3.
-<Fig/capacity.pdf, id=111, 660.97202pt x 310.15976pt>
-File: Fig/capacity.pdf Graphic file (type pdf)
- <use Fig/capacity.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+File: Fig/capacity.pdf Graphic file (type QTm)
+<use  "Fig/capacity.pdf" >
+
+LaTeX Warning: Float too large for page by 202.49326pt on input line 21.
+
+File: Fig/vertical_overlapping.pdf Graphic file (type QTm)
+<use  "Fig/vertical_overlapping.pdf" > [11
 
 
-[11
 
+]
+Requested font "Times New Roman/BI/ICU:script=latn;language=DFLT;" at 12.0pt
+ -> Ý^^C/Windows/Fonts/timesbi.ttf
+File: Fig/bus_pin_flipping.pdf Graphic file (type QTm)
+ <use  "Fig/bus_pin_flipping.pdf" >
 
+LaTeX Warning: Float too large for page by 562.86475pt on input line 81.
 
- <Fig/capacity.pdf, page is rotated 90 degrees>]
-<Fig/vertical_overlapping.pdf, id=125, 327.88197pt x 124.71292pt>
-File: Fig/vertical_overlapping.pdf Graphic file (type pdf)
+File: Fig/orientation_direction.pdf Graphic file (type QTm)
+<use  "Fig/orientation_direction.pdf" >
 
-<use Fig/vertical_overlapping.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+LaTeX Warning: Float too large for page by 6.11584pt on input line 111.
 
-
-[12 <Fig/vertical_overlapping.pdf, page is rotated 90 degrees>]
-<Fig/bus_pin_flipping.pdf, id=136, 712.9573pt x 238.39063pt>
-File: Fig/bus_pin_flipping.pdf Graphic file (type pdf)
-
-<use Fig/bus_pin_flipping.pdf>
-<Fig/orientation_direction.pdf, id=137, 381.55347pt x 138.98123pt>
-File: Fig/orientation_direction.pdf Graphic file (type pdf)
-
-<use Fig/orientation_direction.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[13 <Fig/bus_pin_flipping.pdf, page is rotated 90 degrees>])
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[14 <Fig/orientation_direction.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[15] (4/algorithm.tex
+[12]) [13] [14] [15] [16] [17] [18]
+("F:\untitled folder 2\doc\paper-school\4/algorithm.tex"
 Chapter 4.
-<Fig/flowchart.pdf, id=159, 561.07114pt x 528.25633pt>
-File: Fig/flowchart.pdf Graphic file (type pdf)
- <use Fig/flowchart.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[16
+File: Fig/flowchart.pdf Graphic file (type QTm)
+<use  "Fig/flowchart.pdf" > [19
 
 
 
- <Fig/flowchart.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+] [20]
+File: Fig/MST.pdf Graphic file (type QTm)
+ <use  "Fig/MST.pdf" > [21]
+File: Fig/segment_creation.pdf Graphic file (type QTm)
 
+<use  "Fig/segment_creation.pdf" >
 
-[17] <Fig/MST.pdf, id=173, 441.25653pt x 364.1615pt>
-File: Fig/MST.pdf Graphic file (type pdf)
- <use Fig/MST.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+LaTeX Warning: Float too large for page by 8.278pt on input line 111.
 
+[22]
+File: Fig/bus_ordering.pdf Graphic file (type QTm)
+ <use  "Fig/bus_ordering.pdf" >
 
-[18 <Fig/MST.pdf, page is rotated 90 degrees>]
-<Fig/segment_creation.pdf, id=183, 366.7552pt x 166.6486pt>
-File: Fig/segment_creation.pdf Graphic file (type pdf)
+LaTeX Warning: Float too large for page by 638.75648pt on input line 140.
 
-<use Fig/segment_creation.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+[23]
+File: Fig/bus_overlapping.pdf Graphic file (type QTm)
+ <use  "Fig/bus_overlapping.pdf" >
 
+LaTeX Warning: Float too large for page by 526.34804pt on input line 203.
 
-[19 <Fig/segment_creation.pdf, page is rotated 90 degrees>]
-<Fig/bus_ordering.pdf, id=193, 703.83405pt x 203.62273pt>
-File: Fig/bus_ordering.pdf Graphic file (type pdf)
+[24]
+File: Fig/overlap_minimization.pdf Graphic file (type QTm)
+ <use  "Fig/overlap_minimization.pdf" > [25]
+Requested font "Times New Roman/I/ICU:script=latn;language=DFLT;" at 12.0pt
+ -> ¿^^C/Windows/Fonts/timesi.ttf
+File: Fig/lemma1.pdf Graphic file (type QTm)
+ <use  "Fig/lemma1.pdf" >
 
-<use Fig/bus_ordering.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+LaTeX Warning: Float too large for page by 19.60136pt on input line 269.
 
-
-[20 <Fig/bus_ordering.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[21] <Fig/bus_overlapping.pdf, id=206, 702.92703pt x 224.48367pt>
-File: Fig/bus_overlapping.pdf Graphic file (type pdf)
-
-<use Fig/bus_overlapping.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[22 <Fig/bus_overlapping.pdf, page is rotated 90 degrees>]
-<Fig/overlap_minimization.pdf, id=219, 457.10674pt x 354.12201pt>
-File: Fig/overlap_minimization.pdf Graphic file (type pdf)
-
-<use Fig/overlap_minimization.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[23 <Fig/overlap_minimization.pdf, page is rotated 90 degrees>]
-<Fig/lemma1.pdf, id=229, 638.53056pt x 400.44164pt>
-File: Fig/lemma1.pdf Graphic file (type pdf)
- <use Fig/lemma1.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[24 <Fig/lemma1.pdf, page is rotated 90 degrees>]
-<Fig/coordinate_adjustment.pdf, id=245, 706.55539pt x 236.27472pt>
-File: Fig/coordinate_adjustment.pdf Graphic file (type pdf)
-
-<use Fig/coordinate_adjustment.pdf>
+[26]
+File: Fig/coordinate_adjustment.pdf Graphic file (type QTm)
+ <use  "Fig/coordinate_adjustment.pdf" >
 Overfull \hbox (0.85359pt too wide) in paragraph at lines 303--307
  [][] 
  []
 
 
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+LaTeX Warning: Float too large for page by 669.72206pt on input line 309.
 
-
-[25 <Fig/coordinate_adjustment.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[26] <Fig/lemma2_1.pdf, id=258, 453.61873pt x 462.62625pt>
-File: Fig/lemma2_1.pdf Graphic file (type pdf)
-
-<use Fig/lemma2_1.pdf> <Fig/lemma2_2.pdf, id=259, 700.6958pt x 407.29175pt>
-File: Fig/lemma2_2.pdf Graphic file (type pdf)
-
-<use Fig/lemma2_2.pdf>
+[27]
+File: Fig/lemma2_1.pdf Graphic file (type QTm)
+ <use  "Fig/lemma2_1.pdf" >
+File: Fig/lemma2_2.pdf Graphic file (type QTm)
+ <use  "Fig/lemma2_2.pdf" >
 Overfull \hbox (0.85359pt too wide) in paragraph at lines 359--364
  [][] 
  []
+
+
+LaTeX Warning: Float too large for page by 141.33136pt on input line 366.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 368--387
 
  []
 
+[28] [29]
+File: Fig/layer_assignment.pdf Graphic file (type QTm)
+ <use  "Fig/layer_assignment.pdf" >
 
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+LaTeX Warning: Float too large for page by 162.82207pt on input line 425.
 
+File: Fig/total_deviation_pattern.pdf Graphic file (type QTm)
+<use  "Fig/total_deviation_pattern.pdf" > [30]
+File: Fig/deviation_pattern1.pdf Graphic file (type QTm)
 
-[27 <Fig/lemma2_1.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+<use  "Fig/deviation_pattern1.pdf" >
+File: Fig/deviation_pattern2.pdf Graphic file (type QTm)
+ <use  "Fig/deviation_pattern2.pdf" >
 
+LaTeX Warning: Float too large for page by 387.98515pt on input line 481.
 
-[28 <Fig/lemma2_2.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+File: Fig/deviation_example1.pdf Graphic file (type QTm)
+<use  "Fig/deviation_example1.pdf" > [31] [32]
+File: Fig/deviation_reduced_pattern.pdf Graphic file (type QTm)
 
+<use  "Fig/deviation_reduced_pattern.pdf" >
+File: Fig/deviation_calculation.pdf Graphic file (type QTm)
 
-[29] <Fig/layer_assignment.pdf, id=282, 526.21796pt x 233.37288pt>
-File: Fig/layer_assignment.pdf Graphic file (type pdf)
+<use  "Fig/deviation_calculation.pdf" > [33]
+File: Fig/deviation_example2.pdf Graphic file (type QTm)
 
-<use Fig/layer_assignment.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+<use  "Fig/deviation_example2.pdf" >
+File: Fig/algorithm_comparison.pdf Graphic file (type QTm)
+ <use  "Fig/algorithm_comparison.pdf" >
 
-
-[30 <Fig/layer_assignment.pdf, page is rotated 90 degrees>]
-Overfull \hbox (4.35614pt too wide) in paragraph at lines 443--443
-[]\OT1/cmr/bx/n/14.4 Orientation De-ter-mi-na-tion and De-vi-a-tion Min-i-miza-
-
- []
-
-<Fig/total_deviation_pattern.pdf, id=292, 610.61523pt x 470.3473pt>
-File: Fig/total_deviation_pattern.pdf Graphic file (type pdf)
-
-<use Fig/total_deviation_pattern.pdf>
-<Fig/deviation_pattern1.pdf, id=293, 541.47595pt x 354.99826pt>
-File: Fig/deviation_pattern1.pdf Graphic file (type pdf)
-
-<use Fig/deviation_pattern1.pdf>
-<Fig/deviation_pattern2.pdf, id=294, 722.51308pt x 474.63713pt>
-File: Fig/deviation_pattern2.pdf Graphic file (type pdf)
-
-<use Fig/deviation_pattern2.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[31 <Fig/total_deviation_pattern.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[32 <Fig/deviation_pattern1.pdf, page is rotated 90 degrees> <Fig/deviation_pat
-tern2.pdf, page is rotated 90 degrees>]
-<Fig/deviation_example1.pdf, id=331, 629.38335pt x 446.26523pt>
-File: Fig/deviation_example1.pdf Graphic file (type pdf)
-
-<use Fig/deviation_example1.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[33 <Fig/deviation_example1.pdf, page is rotated 90 degrees>]
-<Fig/deviation_reduced_pattern.pdf, id=341, 586.16489pt x 523.75195pt>
-File: Fig/deviation_reduced_pattern.pdf Graphic file (type pdf)
-
-<use Fig/deviation_reduced_pattern.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
+LaTeX Warning: Float too large for page by 92.1402pt on input line 632.
 
 [34]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[35 <Fig/deviation_reduced_pattern.pdf, page is rotated 90 degrees>]
-<Fig/deviation_calculation.pdf, id=359, 464.5566pt x 273.45764pt>
-File: Fig/deviation_calculation.pdf Graphic file (type pdf)
-
-<use Fig/deviation_calculation.pdf>
-<Fig/deviation_example2.pdf, id=360, 696.1992pt x 504.08133pt>
-File: Fig/deviation_example2.pdf Graphic file (type pdf)
-
-<use Fig/deviation_example2.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[36 <Fig/deviation_calculation.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[37 <Fig/deviation_example2.pdf, page is rotated 90 degrees>]
-<Fig/algorithm_comparison.pdf, id=381, 600.32037pt x 349.3833pt>
-File: Fig/algorithm_comparison.pdf Graphic file (type pdf)
-
-<use Fig/algorithm_comparison.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[38 <Fig/algorithm_comparison.pdf, page is rotated 90 degrees>]
-<Fig/deviation_driver.pdf, id=398, 686.5405pt x 458.12283pt>
-File: Fig/deviation_driver.pdf Graphic file (type pdf)
-
-<use Fig/deviation_driver.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[39 <Fig/deviation_driver.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[40] <Fig/deviation_load.pdf, id=419, 685.25371pt x 457.47943pt>
-File: Fig/deviation_load.pdf Graphic file (type pdf)
-
-<use Fig/deviation_load.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[41 <Fig/deviation_load.pdf, page is rotated 90 degrees>])
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[42] (5/experiment.tex
+File: Fig/deviation_driver.pdf Graphic file (type QTm)
+ <use  "Fig/deviation_driver.pdf" > [35]
+File: Fig/deviation_load.pdf Graphic file (type QTm)
+ <use  "Fig/deviation_load.pdf" >
+[36]) [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50]
+[51] [52] [53] [54] [55]
+("F:\untitled folder 2\doc\paper-school\5/experiment.tex"
 Chapter 5.
-<Fig/table_1.pdf, id=439, 377.04965pt x 259.94617pt>
-File: Fig/table_1.pdf Graphic file (type pdf)
- <use Fig/table_1.pdf>
-<Fig/Table_2.pdf, id=440, 726.91393pt x 383.03pt>
-File: Fig/Table_2.pdf Graphic file (type pdf)
- <use Fig/Table_2.pdf>
+File: Fig/table_1.pdf Graphic file (type QTm)
+<use  "Fig/table_1.pdf" >
+File: Fig/Table_2.pdf Graphic file (type QTm)
+ <use  "Fig/Table_2.pdf" >
+Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 5.0pt
+ -> e^^C/Windows/Fonts/times.ttf
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 28.
-
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[43
+Requested font "lasy5" at 5.0pt
 
 
+LaTeX Warning: Float too large for page by 418.15436pt on input line 33.
 
- <Fig/table_1.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[44 <Fig/Table_2.pdf, page is rotated 90 degrees>]
-<Fig/packing_result1.pdf, id=460, 591.31314pt x 323.00174pt>
-File: Fig/packing_result1.pdf Graphic file (type pdf)
-
-<use Fig/packing_result1.pdf>
-<Fig/table_3.pdf, id=461, 725.1072pt x 335.45226pt>
-File: Fig/table_3.pdf Graphic file (type pdf)
- <use Fig/table_3.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+[56
 
 
-[45]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 
+] [57]
+File: Fig/packing_result1.pdf Graphic file (type QTm)
+ <use  "Fig/packing_result1.pdf" >
 
-[46 <Fig/packing_result1.pdf, page is rotated 90 degrees>]
-<Fig/table_4.pdf, id=497, 724.50496pt x 328.22523pt>
-File: Fig/table_4.pdf Graphic file (type pdf)
- <use Fig/table_4.pdf>
-<Fig/table_5.pdf, id=498, 377.69307pt x 245.14786pt>
-File: Fig/table_5.pdf Graphic file (type pdf)
- <use Fig/table_5.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+LaTeX Warning: Float too large for page by 94.14906pt on input line 107.
 
+File: Fig/table_3.pdf Graphic file (type QTm)
+<use  "Fig/table_3.pdf" >
 
-[47 <Fig/table_3.pdf, page is rotated 90 degrees>]
-<Fig/table_6.pdf, id=510, 725.70947pt x 285.46548pt>
-File: Fig/table_6.pdf Graphic file (type pdf)
- <use Fig/table_6.pdf>
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+LaTeX Warning: Float too large for page by 535.47197pt on input line 121.
 
+[58]
+File: Fig/table_4.pdf Graphic file (type QTm)
+ <use  "Fig/table_4.pdf" >
 
-[48 <Fig/table_4.pdf, page is rotated 90 degrees> <Fig/table_5.pdf, page is rot
-ated 90 degrees>] <Fig/packing_result2.pdf, id=528, 664.66347pt x 378.97986pt>
-File: Fig/packing_result2.pdf Graphic file (type pdf)
+LaTeX Warning: Float too large for page by 497.61707pt on input line 165.
 
-<use Fig/packing_result2.pdf>)
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+File: Fig/table_5.pdf Graphic file (type QTm)
+<use  "Fig/table_5.pdf" > [59]
+File: Fig/table_6.pdf Graphic file (type QTm)
+ <use  "Fig/table_6.pdf" >
 
+LaTeX Warning: Float too large for page by 660.42876pt on input line 196.
 
-[49 <Fig/table_6.pdf, page is rotated 90 degrees>]
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+File: Fig/packing_result2.pdf Graphic file (type QTm)
+<use  "Fig/packing_result2.pdf" >
 
+LaTeX Warning: Float too large for page by 279.97342pt on input line 226.
 
-[50 <Fig/packing_result2.pdf, page is rotated 90 degrees>] (6/conclusion.tex
+) [60] [61] [62] [63] [64] [65] [66] [67]
+("F:\untitled folder 2\doc\paper-school\6/conclusion.tex"
 Chapter 6.
-)
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[51
+) [68
 
 
 
-] (ack/ack.tex
+] ("F:\untitled folder 2\doc\paper-school\ack/ack.tex"
 Chapter 7.
-)
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[52
+) [69
 
 
 
-] (ref/ref.tex
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+] ("F:\untitled folder 2\doc\paper-school\ref/ref.tex" [70
 
 
-[53
-
-
-])
-Overfull \vbox (14.45377pt too high) has occurred while \output is active []
-
-
-[54] (PH_THESIS.aux (abs/abs.aux) (1/intro.aux) (2/problem.aux)
-(3/constraints.aux) (4/algorithm.aux) (5/experiment.aux) (6/conclusion.aux)
-(ack/ack.aux)) ) 
+]) [71]
+("F:\untitled folder 2\doc\paper-school\PH_THESIS.aux"
+("F:\untitled folder 2\doc\paper-school\abs/abs.aux")
+("F:\untitled folder 2\doc\paper-school\1/intro.aux")
+("F:\untitled folder 2\doc\paper-school\2/problem.aux")
+("F:\untitled folder 2\doc\paper-school\3/constraints.aux")
+("F:\untitled folder 2\doc\paper-school\4/algorithm.aux")
+("F:\untitled folder 2\doc\paper-school\5/experiment.aux")
+("F:\untitled folder 2\doc\paper-school\6/conclusion.aux")
+("F:\untitled folder 2\doc\paper-school\ack/ack.aux")) ) 
 Here is how much of TeX's memory you used:
- 1885 strings out of 95304
- 24485 string characters out of 1183032
- 80063 words of memory out of 1500000
- 4994 multiletter control sequences out of 110000
- 9324 words of font info for 35 fonts, out of 3000000 for 5000
- 14 hyphenation exceptions out of 8191
- 32i,11n,22p,932b,274s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmbx12.pfb>
-<C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmbxti10.pfb><C:/Program Fi
-les/MiKTeX 2.7/fonts/type1/bluesky/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.7/f
-onts/type1/bluesky/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesk
-y/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmr12.pfb><C
-:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmr8.pfb><C:/Program Files/Mi
-KTeX 2.7/fonts/type1/bluesky/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.7/fonts/t
-ype1/bluesky/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/c
-mti12.pfb>
-Output written on PH_THESIS.pdf (63 pages, 925421 bytes).
-PDF statistics:
- 610 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 131072)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 17684 strings out of 429025
+ 358203 string characters out of 3167800
+ 405349 words of memory out of 3000000
+ 20660 multiletter control sequences out of 15000+200000
+ 7331 words of font info for 56 fonts, out of 3000000 for 9000
+ 912 hyphenation exceptions out of 8191
+ 38i,12n,55p,10403b,403s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+Output written on PH_THESIS.pdf (85 pages).

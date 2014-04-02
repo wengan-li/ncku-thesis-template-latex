@@ -232,6 +232,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \begin{titlepage}
+\newpage
 
 % 判斷是否要浮水印？
 \ifx\mywatermark\undefined 
@@ -316,10 +317,7 @@
 %%---------------------------------------------------------------------------
 %% 英文封面
 %%---------------------------------------------------------------------------
-
-    \newpage
-    \thispagestyle{empty}%
-
+\newpage
 
 % 判斷是否要浮水印？
 \ifx\mywatermark\undefined 
@@ -327,6 +325,8 @@
 \else
   \thispagestyle{EmptyWaterMarkPage} % 無頁碼、有浮水印
 \fi
+
+    \thispagestyle{empty}%
     \null\vskip0.5in
     \begin{center}
         \hyphenpenalty=10000\Large\uppercase\expandafter{\eTitle}
