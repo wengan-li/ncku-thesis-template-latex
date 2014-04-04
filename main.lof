@@ -8,7 +8,7 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Bus pin flipping. }}{17}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces The possible orientation directions. }}{18}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Algorithm overview. }}{20}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Algorithm overview. }}{19}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces (a) Minimum spanning tree. (b) The resulting routing tree. }}{22}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces \relax \fontsize {10.95}{13.6}\selectfont \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip (a) Before adding segment. (b) After adding segment. }}{38}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces (a) Bus ordering. (b) Bus crossing. (c) Ordering constraint graph. }}{39}

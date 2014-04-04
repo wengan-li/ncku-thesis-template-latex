@@ -1,5 +1,23 @@
 %
 % this file is encoded in utf-8
+
+
+% 增強功能型頁楣 / 頁腳套件
+\usepackage{fancyhdr}  % 借用此套件來擺放浮水印 
+% (佔用了 central header)
+% 不需要浮水印的使用者仍可利用此套件，產生所需的 header, footer
+%
+% 啟動 fancy header/footer 套件
+\pagestyle{fancy}
+\fancyhead{}  % reset left, central, right header to empty
+\fancyfoot[C]{\thepage} %中間 footer 擺放頁碼
+\renewcommand{\headrulewidth}{0pt} % header 的直線; 0pt 則無線
+
+
+
+
+
+
 % v2.02 (Sep. 12, 2012)
 % 如果浮水印不是全篇需要，請把下列介於 >>> 與 <<<
 % 的「全篇浮水印專用碼」關掉 (行首加百分號)

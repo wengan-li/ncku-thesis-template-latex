@@ -1,29 +1,10 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% utdiss.doc
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[12pt, a4paper]{report}
 
+% ------------------------------------------------
 
-\usepackage{graphicx}
+% XeLaTex 的設定
 
-%\usepackage{ncku/pdf}
-
-
-%\usepackage{style/rotating}
-
-\usepackage{style/macros}
-
-%\usepackage{style/psfig}
-
-%\usepackage{epsfig}
-
-\usepackage{latexsym}
-
-\usepackage{style/utdiss}
-
-%\usepackage{hyperref}
-
-
+% --------------------------
 %加這個就可以設定字體
 \usepackage{fontspec}
 %使用xeCJK，其他的還有CJK或是xCJK
@@ -48,152 +29,27 @@
 
 %設定行距
 \linespread{1.5}\selectfont
+% ------------------------------------------------
 
+% LaTex package
 
+% --------------------------
+\usepackage{graphicx}
+%\usepackage{ncku/pdf}
+%\usepackage{style/rotating}
+\usepackage{style/macros}
+%\usepackage{style/psfig}
+%\usepackage{epsfig}
+\usepackage{latexsym}
+\usepackage{style/utdiss}
+%\usepackage{hyperref}
 
+% ------------------------------------------------
 
-
-
-
-%\newtheorem{theorem}{Theorem}
-%\newtheorem{lemma}{Lemma}
-%\newtheorem{example}{Example}
-%\newtheorem{corollary}{Corollary}
-
-%%%%%%%%%%%
-% Spacing %
-%%%%%%%%%%%
-
-% According to the Dissertation Preparation Guideline,
-% the main texts should be either doublespaced or
-% one-&-half-spaced. Quoted texts may be either
-% doublespaced, one-half-spaced, or singlespaced.
-%
-% Main Text Spacing: Default = \doublespacing
-%
-%    One-&-Half-Spacing (Main Text)
-%          \onehalfspacing
-%
-%    Single-Spacing (Main Text)
-%          \singlespacing
-%
-% Quoted Text Spacing: Default = doublespacing
-%
-%    One-&-Half-Spacing (Quoted Text)
-%          \onehalfspacequote
-%
-%    Single-Spacing (Quoted Text)
-%          \singlespacequote
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Table of Contents Table Adjustment %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \longtocentry         % Only if there are 10 or more sections,
-            % 10 or more subsections for a section,
-            % etc. etc.
-            % Usually, NOT required.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DATA OF AUTHOR AND DISSERTATION %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Bus-Pin-Aware Bus-Driven Floorplanning} % Required
-
-\author{Po-Hsun Wu}            % Required
-%
-% Replace the dots in the command by your full name.
-% Make it combination of lower and uppercases
-% e.g., \author{Dorothy Kay Shoemaker}
-
-%
-% Replace the dots in the above command by your thesis title,
-% e.g., `\title{A Take of Gnus, Gnats and \\ Armadillos}'.
-% If the title consists of more than one line,
-% it should be in inverted pyramid form. You have to specify the
-% line breakings by \\ commands.
-
-\previousdegrees{B.S, M.S.}      % Optional if use default
-%
-% The abbreviated form of your previous degree(s).
-% e.g., \previousdegrees{B.S., MBA}
-% The default value is `B.S., M.S.'
-
-\degree{DOCTOR OF PHILOSOPHY} % Optional if use default
-%
-% The degree sought as given in the Graduate Catalogue.
-% Capital letters are recommended.
-% e.g., `\degree{DOCTOR OF BUSINESS ADMINISTRATION}'
-% The default value is `DOCTOR OF PHILOSOPHY' for dissertation.
-
-\degreeabbr{PH.D.}       % Optional if use default
-%
-% The abbreviated form of your degree sought.
-% e.g., `\degreeabbr{DBA}'
-% The default is `Ph.D.'
-% Note: the abbreviated form is not automatically
-%       generated from \degree{...}.
-%       If you enter \degree{...}, you should enter
-%   \degreeabbr{...}, too.
-
-\graduationmonth{June}        % Optional if let the system generate
-%
-% Graduation month, in the form as `\graduationmonth{May}'.
-% The default value (either May, August, or December)
-% is guessed according to the time of running LaTeX
-% Do not abbreviate.
-% Note: either May, August, or December
-%              ^^^  ^^^^^^     ^^^^^^^^
-
-\graduationyear{2010}       % Optional if let the system generate
-%
-% Graduation year, in the form as `\graduationyear{1991}'.
-% The default value is guessed according to the time of running LaTeX.
-% 4 (not 2) digit number
-
-\address{No.60-1, Aly. 5, Ln. 88, Min¡Šan W. Rd., Xinzhuang City, Taipei County 242, Taiwan (R.O.C.)} % Required
-%
-% Your *permanent* (not local) address.
-% Use \\ to separate address lines.
-% e.g., `\address{4533 Avenue A\\ Austin, Texas 78751}'.
-
-%\typist{the author}            % Optional if use default
-%
-% The name(s) of typist(s), put `the author' if you do it yourself.
-% E.g., `\typist{Maryann Hersey and the author}'.
-% The default value is `the author'.
-
-% The name(s) of your supervising professor(s). Up to 3
-% List the first/second one in []'s and the last one in {}
-%\supervisor[first][second]{third}
-
-\supervisor{Tsung-Yi Ho}      % Required
-
-\committeesize{3}
-%
-% x = The number of supervisors
-% y = The size of your supervising committee including supervisor(s)
-% e.g., `\committeesize{6}'.              ^^^^^^^^^^^^^^^^^^^^^^^
-% The default values -- x = 1; y = 5
-% Note: x <= 3
-
-% 增強功能型頁楣 / 頁腳套件
-\usepackage{fancyhdr}  % 借用此套件來擺放浮水印 
-% (佔用了 central header)
-% 不需要浮水印的使用者仍可利用此套件，產生所需的 header, footer
-%
-% 啟動 fancy header/footer 套件
-\pagestyle{fancy}
-\fancyhead{}  % reset left, central, right header to empty
-\fancyfoot[C]{\thepage} %中間 footer 擺放頁碼
-\renewcommand{\headrulewidth}{0pt} % header 的直線; 0pt 則無線
-
-% 如果不需要任何浮水印，則請把下列介於 >>> 與 <<< 之間
-% 的文字行關掉 (行首加上百分號)
-%% 浮水印 >>> 
+% 學校浮水印 Watemark
 \input{./ncku/watermark.tex}
-%% <<< 浮水印
 
-%\includeonly{tex/finale}
+% ------------------------------------------------
 
 
 \begin{document}
@@ -203,33 +59,8 @@
 
 
 
+\input{./ncku/cmd-define.tex}
 
-% default variables definitions
-% 此處只是預設值，不需更改此處
-% 請更改 my_names.tex 內容
-\newcommand\cTitle{論文題目}
-\newcommand\eTitle{MY THESIS TITLE}
-\newcommand\myCname{胡庭瑜}
-\newcommand\myEname{Ting-Yu Hu}
-\newcommand\advisorCnameA{陳朝鈞博士}
-\newcommand\advisorEnameA{Dr.~Chao-Chun~Chen}
-\newcommand\advisorCnameB{莊坤達博士}
-\newcommand\advisorEnameB{Dr.~Kun-Da~Chuang}
-\newcommand\advisorCnameC{王鼎超博士}
-\newcommand\advisorEnameC{Dr.~Ding-Chau~Wang}
-\newcommand\univCname{成功大學}
-\newcommand\univEname{National Cheng Kung University}
-\newcommand\deptCname{製造資訊與系統研究所}
-\newcommand\fulldeptEname{Institue of Manufacturing Information and Systems}
-\newcommand\deptEname{Inst. of Manuf. Info. \& Sys.}
-\newcommand\collEname{College of Electrical Engineering and Computer Science}
-\newcommand\degreeCname{碩士}
-\newcommand\degreeEname{Master of Engineering}
-\newcommand\cYear{一○一}
-\newcommand\cMonth{七}
-\newcommand\eYear{2012}
-\newcommand\eMonth{June}
-\newcommand\ePlace{Tainan, Taiwan}
 
 
  % user's names; to replace those default variable definitions
@@ -254,7 +85,7 @@
 
 \input{./ncku/cover-eng.tex}
 
-\input{./ncku/title-page.tex}
+%\input{./ncku/title-page.tex}
 
 
 
