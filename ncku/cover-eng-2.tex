@@ -1,0 +1,39 @@
+%%---------------------------------------------------------------------------
+%% 英文封面
+%%---------------------------------------------------------------------------
+
+    \newpage
+    \thispagestyle{empty}%
+
+
+% 判斷是否要浮水印？
+\ifx\mywatermark\undefined 
+  \thispagestyle{empty}  % 無頁碼、無 header (無浮水印)
+\else
+  \thispagestyle{EmptyWaterMarkPage} % 無頁碼、有浮水印
+\fi
+    \null\vskip0.5in
+    \begin{center}
+        \hyphenpenalty=10000\Large\uppercase\expandafter{\eTitle}
+    \end{center}
+    \vfill
+    \begin{center}
+        \large\rm By \\
+        {\large\rm \myEname}
+    \end{center}
+    \vfill
+    \begin{center}
+        \footnotesize SUBMITTED IN PARTIAL FULFILLMENT OF THE \\
+        REQUIREMENTS FOR THE DEGREE OF \\
+        MASTER OF SCIENCE IN \\
+        DEPARTMENT OF COMPUTER SCIENCE AND INFORMATION ENGINEERING \\
+        NATIONAL CHENG-KUNG UNIVERSITY \\
+        TAINAN, TAIWAN, R.O.C. \\
+        {\eMonth \ \eYear}
+    \end{center}
+    \vskip0.75in
+    \begin{center}
+        \rm \copyright\ Copyright by {\myEname}, \eYear
+    \end{center}
+%\newpage
+
