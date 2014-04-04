@@ -44,7 +44,7 @@
 %\usepackage{epsfig}
 \usepackage{latexsym}
 \usepackage{./ncku/style/utdiss}
-%\usepackage{hyperref}
+\usepackage{hyperref}
 
 % ------------------------------------------------
 
@@ -53,7 +53,8 @@
 % --------------------------
 
 % 學校浮水印 Watermark
-\input{./ncku/watermark.tex}
+\usepackage{draftwatermark}
+\SetWatermarkText{\includegraphics[angle=-45]{./ncku/watersymbol.jpg}}
 
 % --------------------------
 
