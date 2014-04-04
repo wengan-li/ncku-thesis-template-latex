@@ -46,6 +46,11 @@
 \usepackage{./ncku/style/utdiss}
 \usepackage{hyperref}
 
+\usepackage{pdfpages}
+
+%preamble
+\usepackage[nottoc]{tocbibind}
+
 % ------------------------------------------------
 
 % 有關學校對論文要求的設定
@@ -53,8 +58,18 @@
 % --------------------------
 
 % 學校浮水印 Watermark
-\usepackage{draftwatermark}
-\SetWatermarkText{\includegraphics[angle=-45]{./ncku/watersymbol.jpg}}
+%\usepackage{draftwatermark}
+%\SetWatermarkText{}
+
+\AddToShipoutPicture{
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill
+\centering
+\includegraphics[]{./ncku/watersymbol.jpg}
+\vfill
+}}}
+
 
 % --------------------------
 

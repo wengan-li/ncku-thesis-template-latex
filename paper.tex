@@ -14,6 +14,13 @@
 
 % --------------------------
 
+%% 從摘要到本文之前的部份以小寫羅馬數字印頁碼
+% 但是從「書名頁」(但不印頁碼) 就開始計算
+%\setcounter{page}{1}
+%\pagenumbering{roman}
+
+% ------------------------------------------------
+
 % 封面 Cover
 % 請根據你的需求去選用中文或英文封面
 % 活在全球化, 使用英文封面是優先推薦
@@ -21,20 +28,19 @@
 \input{./ncku/cover-chi.tex}
 \input{./ncku/cover-eng.tex}
 
+
 % --------------------------
 
-
-
-% 口試証明文件
+% 口試証明文件 Document of oral presentation
 \input{./oral/oral.tex}
 
-% 口試証明文件
-\input{./abstract/abstract.tex}
+% ------------------------------------------------
 
-%% 從摘要到本文之前的部份以小寫羅馬數字印頁碼
-% 但是從「書名頁」(但不印頁碼) 就開始計算
-\setcounter{page}{1}
-\pagenumbering{roman}
+% 摘要 Abstract
+%\addcontentsline{toc}{chapter}{Abstract}
+%\input{./abstract/abstract.tex}
+
+% ------------------------------------------------
 
 %\specialspacing
 %acknowledgements
@@ -51,14 +57,26 @@
 
 
 
-\setcounter{secnumdepth}{10}
-\tableofcontents    % Table of Contents will be automatically
-                    % generated and placed here.
-
-\listoftables       % List of Tables and List of Figures will be placed
-\listoffigures      % here, if applicable.
+%\setcounter{secnumdepth}{10}
+\newpage
+\cleardoublepage
+\phantomsection
+%\addcontentsline{toc}{section}{Table of Contents}
+\tableofcontents
 
 \newpage
+\cleardoublepage
+\phantomsection
+%\addcontentsline{toc}{section}{List of Tables}
+\listoftables
+
+\newpage
+\cleardoublepage
+\phantomsection
+%\addcontentsline{toc}{section}{List of Figures} 
+\listoffigures
+
+%\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Actual text starts here %
