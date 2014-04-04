@@ -1,0 +1,99 @@
+% ------------------------------------------------
+
+% Basic configure
+% 基本設定
+
+% --------------------------
+
+\input{./ncku/header.tex}
+
+% ------------------------------------------------
+
+% Start of paper
+\begin{document}
+
+% --------------------------
+
+% 封面 Cover
+% 請根據你的需求去選用中文或英文封面
+% 活在全球化, 使用英文封面是優先推薦
+
+\input{./ncku/cover-chi.tex}
+\input{./ncku/cover-eng.tex}
+
+% --------------------------
+
+
+
+% 口試証明文件
+\input{./oral/oral.tex}
+
+% 口試証明文件
+\input{./abstract/abstract.tex}
+
+%% 從摘要到本文之前的部份以小寫羅馬數字印頁碼
+% 但是從「書名頁」(但不印頁碼) 就開始計算
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+%\specialspacing
+%acknowledgements
+%
+% Place the text of your acknowledgments here. Your name and
+% graduation date will appear automatically. If this is the preface
+% instead of acknowledgments, use \preface.
+% Note: do NOT use \begin{acknowledgements} ... \end{acknowledgements}
+%
+%%\input{abs/ackno}
+%\doublespacing
+
+%\input{acknowledgments/acknowledgments}
+
+
+
+\setcounter{secnumdepth}{10}
+\tableofcontents    % Table of Contents will be automatically
+                    % generated and placed here.
+
+\listoftables       % List of Tables and List of Figures will be placed
+\listoffigures      % here, if applicable.
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Actual text starts here %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\onehalfspacing
+
+%\include{1/intro}
+%\include{2/problem}
+%\include{3/constraints}
+%\include{4/algorithm}
+%\include{5/experiment}
+%\include{6/conclusion}
+%\include{ack/ack}
+
+%\appendix          % Appendix begins here
+%\appendices            % If more than one appendix chapters,
+%\appendices            % If more than one appendix chapters,
+
+%\include{tex/appendix1}
+%\include{tex/appendix2}
+
+                                % use \appendices instead of \appendix
+%\chapter{...}          % First appendix chapter, i.e., Appendix A.
+
+%\section{...}          % This is appendix section A.1.
+
+
+%\begin{thebibliography}{200}
+%\input{ref/ref}
+%\end{thebibliography}
+
+% --------------------------
+
+% End of paper
+\end{document}
+
+% ------------------------------------------------

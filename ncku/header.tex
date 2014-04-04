@@ -1,0 +1,77 @@
+\documentclass[12pt, a4paper]{report}
+
+% ------------------------------------------------
+
+% XeLaTex 的設定
+
+% --------------------------
+%加這個就可以設定字體
+\usepackage{fontspec}
+
+%使用xeCJK，其他的還有CJK或是xCJK
+\usepackage{xeCJK}
+
+% Set english font
+\setmainfont{Times New Roman} % In Windows
+%\usepackage{times} % In *nix 
+
+%設定中英文的字型
+%字型的設定可以使用系統內的字型，而不用像以前一樣另外安裝
+\setCJKmainfont{標楷體}
+
+%中文自動換行
+\XeTeXlinebreaklocale "zh"
+
+%文字的彈性間距
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+%設定段落之間的距離
+\setlength{\parskip}{0.3cm}
+
+%設定行距
+\linespread{1.5}\selectfont
+
+% ------------------------------------------------
+
+% LaTex package
+
+% --------------------------
+\usepackage{graphicx}
+%\usepackage{ncku/pdf}
+%\usepackage{style/rotating}
+\usepackage{style/macros}
+%\usepackage{style/psfig}
+%\usepackage{epsfig}
+\usepackage{latexsym}
+\usepackage{style/utdiss}
+%\usepackage{hyperref}
+
+% ------------------------------------------------
+
+% 有關學校對論文要求的設定
+
+% --------------------------
+
+% 學校浮水印 Watermark
+\input{./ncku/watermark.tex}
+
+% --------------------------
+
+\input{./ncku/cmd-define.tex}
+
+% 論文有關資料
+\input{./names.tex}
+
+% 使用 hyperref 在 pdf 簡介欄裡填入相關資料
+\ifx\hypersetup\undefined
+	\relax  % do nothing
+\else
+	\hypersetup{
+	pdftitle=\cTitle,
+	pdfauthor=\myCname}
+\fi
+
+
+
+
+% ------------------------------------------------
