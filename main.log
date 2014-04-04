@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2014.2.10)  2 APR 2014 21:19
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2014.2.10)  2 APR 2014 21:28
 entering extended mode
 **main.tex
 ("F:\untitled folder 2\doc\paper-school\main.tex"
@@ -1163,7 +1163,7 @@ Underfull \hbox (badness 10000) detected at line 19
 
 
 Underfull \hbox (badness 10000) detected at line 21
-\EU1/標楷體(0)/m/n/24.88 資 訊 工 程 系
+\EU1/標楷體(0)/m/n/24.88 資 訊 工 程 學 系
  []
 
 
@@ -1186,7 +1186,7 @@ Underfull \hbox (badness 1789) detected at line 58
  []
 
 
-Underfull \hbox (badness 10000) detected at line 87
+Underfull \hbox (badness 3229) detected at line 89
 \EU1/標楷體(0)/m/n/17.28 中 華 民 國 一 \EU1/TimesNewRoman(0)/m/n/17.28 ○ \EU1/標楷體(0)/m
 /n/17.28 一 年 七 月
  []
@@ -1227,7 +1227,7 @@ Underfull \hbox (badness 5504) detected at line 83
 
 
 Underfull \hbox (badness 10000) detected at line 84
-\EU1/標楷體(0)/m/n/14.4 資 訊 工 程 系
+\EU1/標楷體(0)/m/n/14.4 資 訊 工 程 學 系
  []
 
 

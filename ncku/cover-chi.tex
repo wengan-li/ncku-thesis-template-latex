@@ -16,14 +16,14 @@
 % font size (relative to 12 pt):
 % \large (14pt) < \Large (18pt) < \LARGE (20pt) < \huge (24pt)< \Huge (24 pt)
 %
-\makebox[9cm][s]{\Huge\univCname}\\  %顯示中文校名
-\vspace{0.5cm}
+\makebox[10cm][s]{\Huge\univCname}\\  %顯示中文校名
+\vspace{1cm}
 \makebox[8cm][s]{\Huge\deptCname}\\ %顯示中文系所名
 \vspace{1cm}
 \makebox[5cm][s]{\Huge\degreeCname 論文}\\ %顯示論文種類 (中文)
 \vspace{1.5cm}
 \vspace{2cm}
-\vspace{3cm}
+\vspace{2.5cm}
 
 %
 % Set the line spacing to single for the titles (to compress the lines)
@@ -35,7 +35,7 @@
 %
 \Large\eTitle\\ %英文題目
 
-\vspace{5cm}
+\vspace{3.5cm}
 
 % \makebox is a text box with specified width;
 % option s: stretch; option l: left aligned
@@ -63,6 +63,7 @@
 \ifx \advisorCnameB  \itsempty
 \relax % 沒有 B 教授，所以不佔版面，不印任何空白
 \else
+\vspace{0.1cm}
 % 共同指導的教授 B
 \hspace{2.4em}%
 \makebox[4.8em][s]{}%
@@ -74,6 +75,7 @@
 \ifx \advisorCnameC  \itsempty
 \relax % 沒有 C 教授，所以不佔版面，不印任何空白
 \else
+\vspace{0.1cm}
 % 共同指導的教授 C
 \hspace{2.4em}%
 \makebox[4.8em][s]{}%
@@ -84,7 +86,7 @@
 \vfill
 
 \vspace{1cm}
-\makebox[10cm][s]{\Large 中華民國\cYear 年\cMonth 月}%
+\makebox[8cm][s]{\Large 中華民國\cYear 年\cMonth 月}%
 %
 \end{center}
 
