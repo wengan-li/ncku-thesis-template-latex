@@ -60,7 +60,12 @@
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
 
 \usepackage[sort&compress, sectionbib, super]{natbib}
-
+%\usepackage[backend=biber]{biblatex}
+%\usepackage{biblatex}
+%\usepackage{biblatex}
+%\bibliography{ref}
+%\addbibresource{./references/paper.bib}
+%\usepackage{cite}
 %\usepackage{graphicx}
 %\usepackage{caption}
 %\usepackage{enumitem}
