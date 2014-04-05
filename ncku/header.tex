@@ -9,11 +9,17 @@
 \usepackage{fontspec}
 
 %使用xeCJK，其他的還有CJK或是xCJK
-\usepackage{xeCJK}
+\usepackage[BoldFont]{xeCJK} 
 
-% Set english font
-\setmainfont{Times New Roman} % In Windows
-%\usepackage{times} % In *nix 
+% Set english font (Use package <ifplatform> to check)
+\usepackage{ifplatform}
+\ifwindows
+    % In Windows
+    \setmainfont{Times New Roman}
+\else
+    % In *nix
+    \usepackage{times}
+\fi 
 
 %設定中英文的字型
 %字型的設定可以使用系統內的字型，而不用像以前一樣另外安裝
