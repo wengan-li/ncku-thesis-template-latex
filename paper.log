@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.19)  5 APR 2014 08:57
+This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.19)  5 APR 2014 09:12
 entering extended mode
 **paper.tex
 ("Z:\Project\Li's Hash\doc\paper-school\paper.tex"
@@ -1142,7 +1142,6 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 
 ))
 ("Z:\Project\Li's Hash\doc\paper-school\paper.aux"
-("Z:\Project\Li's Hash\doc\paper-school\abs\abs.aux")
 ("Z:\Project\Li's Hash\doc\paper-school\1/intro.aux")
 ("Z:\Project\Li's Hash\doc\paper-school\ack/ack.aux"))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -1367,7 +1366,6 @@ File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 File: ./oral/oral-eng.pdf Graphic file (type QTm)
  <use  "./oral/oral-eng.pdf"  page1> [4])
 ("Z:\Project\Li's Hash\doc\paper-school\abstract\abstract.tex"
-("Z:\Project\Li's Hash\doc\paper-school\abs\abs.tex"
 Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 14.4pt
  -> C:/Windows/Fonts/times.ttf
 Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 14.4pt
@@ -1376,7 +1374,7 @@ Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 12.0pt
  -> C:/Windows/Fonts/timesbd.ttf
 
 
-LaTeX Warning: Citation `Ma08' on page v undefined on input line 34.
+LaTeX Warning: Citation `Ma08' on page v undefined on input line 44.
 
 Requested font "Times New Roman/ICU:script=latn;language=DFLT;" at 8.0pt
  -> C:/Windows/Fonts/times.ttf
@@ -1395,12 +1393,12 @@ Requested font "cmsy8" at 8.0pt
 Requested font "cmsy6" at 6.0pt
  -> cmsy6
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 35.
+(Font)              <12> on input line 45.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 35.
+(Font)              <8> on input line 45.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 35.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 35.
+(Font)              <6> on input line 45.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 45.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
@@ -1419,10 +1417,7 @@ Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 
 File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 
-<use  "./ncku/watersymbol.jpg" > [5
-
-
-])
+<use  "./ncku/watersymbol.jpg" > [5]
 Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 17.28pt
  -> C:/Windows/Fonts/timesbd.ttf
 
@@ -1434,7 +1429,6 @@ Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 
 <use  "./ncku/watersymbol.jpg" > [6
-
 
 ]
 ("Z:\Project\Li's Hash\doc\paper-school\paper.lot")
@@ -1630,7 +1624,6 @@ Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
 
 ("Z:\Project\Li's Hash\doc\paper-school\paper.aux"
-("Z:\Project\Li's Hash\doc\paper-school\abs\abs.aux")
 ("Z:\Project\Li's Hash\doc\paper-school\1/intro.aux")
 ("Z:\Project\Li's Hash\doc\paper-school\ack/ack.aux"))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 114.
@@ -1642,10 +1635,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
  ) 
 Here is how much of TeX's memory you used:
- 22728 strings out of 429035
- 418057 string characters out of 3167908
- 490968 words of memory out of 3000000
- 25699 multiletter control sequences out of 15000+200000
+ 22719 strings out of 429035
+ 417850 string characters out of 3167908
+ 490384 words of memory out of 3000000
+ 25698 multiletter control sequences out of 15000+200000
  7254 words of font info for 52 fonts, out of 3000000 for 9000
  912 hyphenation exceptions out of 8191
  48i,18n,55p,583b,467s stack positions out of 5000i,500n,10000p,200000b,50000s

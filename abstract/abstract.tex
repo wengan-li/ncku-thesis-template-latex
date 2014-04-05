@@ -1,38 +1,59 @@
 
+% ----------------------------------------------------------------------------
+%                                Chinese abstract
+%                                   中文摘要
+% ----------------------------------------------------------------------------
+
+% Set the line spacing
+\baselineskip = 26pt
+
+% ------------------------------------------------
+
 % Page start
 \newpage
-\cleardoublepage
+%\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Abstract}
 
-%
-% Place your Chinese abstract here. The abstract heading will be
-% generated automatically.
-% Note: do NOT use \begin{abstract} ... \end{abstract}
-%
-%\begin{figure}[h]
-%\centering
-%\vspace{-29mm}
-%\begin{tabular}{c}
-%\hspace{-36mm} \includegraphics[]{./abstract/ChineseAbstract1.pdf}
-%\end{tabular}
-%\end{figure}
+% ------------------------------------------------
 
+\begin{center}
+\large \textbf{Abstract}
+%\label{abstract}
+\end{center}
 
-%\begin{figure}[h]
-%\centering
-%\vspace{-29mm}
-%\begin{tabular}{c}
-%\hspace{-36mm} \includegraphics[]{./abstract/ChineseAbstract2.pdf}
-%\end{tabular}
-%\end{figure}
+% ------------------------------------------------
 
+As the number of buses increase substantially in multi-core SoC
+designs, the bus planning problem has become the dominant factor
+in determining the performance and power consumption of SoC
+designs. To cope with the bus planning problem, it is desirable to
+consider this issue in early floorplanning stage. Recently,
+bus-driven floorplanning problem has attracted much attention in
+the literature. However, current algorithms adopt an
+over-simplified formulation ignoring the position and
+orientation of the bus pins, the chip performance may be deteriorated.
+In this paper, we propose the bus-driven
+floorplanning algorithm that fully considers the impacts of the bus
+pins. By fully utilizing the position and orientation of the bus pins,
+bus bendings are not restricted to occur at the modules on the bus,
+then it has more flexibility during bus routing. With more
+flexibility on the bus shape, the size of the solution
+space is increased and a better bus-driven floorplanning solution
+can be obtained. Compared with the bus-driven
+floorplanner \cite{Ma08}, the experimental results show that our
+algorithm performs better in runtime by 3.5$\times$, success rate
+by 1.2$\times$, wirelength by 1.8$\times$, and reduced the
+deadspace by 1.2$\times$.
 
-%
-% Place your English abstract here. The abstract heading will be
-% generated automatically.
-% Note: do NOT use \begin{abstract} ... \end{abstract}
-%
-\include{./abs/abs}               % English Abstract
+% ------------------------------------------------
 
-%\clearpage
+\begin{itemize}
+\item {\bf Keywords:} Floorplanning, Bus planning
+\end{itemize}
+
+% ------------------------------------------------
+
+% End of page
+
+% ------------------------------------------------
