@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.19)  5 APR 2014 19:09
+This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.19)  5 APR 2014 19:18
 entering extended mode
 **paper.tex
 ("Z:\Project\Li's Hash\doc\paper-school\paper.tex"
@@ -1156,29 +1156,19 @@ File: ppxetex.def 2013/08/25 v0.4v Pdfpages driver for XeTeX (AM)
 \c@AM@survey=\count168
 \AM@templatesizebox=\box44
 )
-(C:\Users\Einstein\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
-LaTeX Info: Redefining \cite on input line 302.
-LaTeX Info: Redefining \nocite on input line 373.
-Package: cite 2010/09/10  v 5.3
-)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
 \bigstrutjot=\dimen169
 )
 (C:\Users\Einstein\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-
-
-Package natbib Warning: The `cite' package should not be used
-(natbib)                with natbib. Use option `sort' instead.
-
 \bibhang=\skip73
 \bibsep=\skip74
 LaTeX Info: Redefining \cite on input line 694.
-LaTeX Info: Redefining \citenum on input line 708.
 \c@NAT@ctr=\count169
-) ("Z:\Project\Li's Hash\doc\paper-school\ncku\cmd-define.tex")
+)
+("Z:\Project\Li's Hash\doc\paper-school\ncku\cmd-define.tex")
 ("Z:\Project\Li's Hash\doc\paper-school\names.tex")
-Package hyperref Info: Option `unicode' set `true' on input line 121.
+Package hyperref Info: Option `unicode' set `true' on input line 102.
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\se-ascii-print.def"
 File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
@@ -1761,10 +1751,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
  ) 
 Here is how much of TeX's memory you used:
- 23249 strings out of 429035
- 425683 string characters out of 3167908
- 498752 words of memory out of 3000000
- 26178 multiletter control sequences out of 15000+200000
+ 23168 strings out of 429035
+ 424702 string characters out of 3167908
+ 497731 words of memory out of 3000000
+ 26099 multiletter control sequences out of 15000+200000
  7286 words of font info for 56 fonts, out of 3000000 for 9000
  912 hyphenation exceptions out of 8191
  48i,18n,55p,622b,468s stack positions out of 5000i,500n,10000p,200000b,50000s

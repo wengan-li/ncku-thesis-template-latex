@@ -43,36 +43,21 @@
 
 % --------------------------
 \usepackage{graphicx}
-%\usepackage{ncku/pdf}
-%\usepackage{style/rotating}
 \usepackage{./ncku/style/macros}
-%\usepackage{style/psfig}
-%\usepackage{epsfig}
 \usepackage{latexsym}
 \usepackage{./ncku/style/utdiss}
 \usepackage{hyperref}
-%\usepackage{hyperxmp}
 \usepackage{pdfpages}
 
 \usepackage{url}
-\usepackage[nospace]{cite}  % for smart citation
 \usepackage{multirow}
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
 
 \usepackage[sort&compress, sectionbib, super]{natbib}
-%\usepackage[backend=biber]{biblatex}
-%\usepackage{biblatex}
-%\usepackage{biblatex}
-%\bibliography{ref}
-%\addbibresource{./references/paper.bib}
-%\usepackage{cite}
-%\usepackage{graphicx}
+
 %\usepackage{caption}
 %\usepackage{enumitem}
 %\usepackage{subcaption}
-
-%preamble
-%\usepackage[nottoc]{tocbibind}
 
 % ------------------------------------------------
 
@@ -81,9 +66,6 @@
 % --------------------------
 
 % 學校浮水印 Watermark
-%\usepackage{draftwatermark}
-%\SetWatermarkText{}
-
 \AddToShipoutPicture{
 \put(0,0){
 \parbox[b][\paperheight]{\paperwidth}{
@@ -92,7 +74,6 @@
 \includegraphics[]{./ncku/watersymbol.jpg}
 \vfill
 }}}
-
 
 % --------------------------
 
