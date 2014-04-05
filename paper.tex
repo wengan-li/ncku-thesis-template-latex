@@ -1,10 +1,7 @@
 % ------------------------------------------------
 
-% Basic configure
+% Basic configuration
 % 基本設定
-
-% --------------------------
-
 \input{./ncku/header.tex}
 
 % ------------------------------------------------
@@ -12,24 +9,15 @@
 % Start of paper
 \begin{document}
 
-% --------------------------
-
-%% 從摘要到本文之前的部份以小寫羅馬數字印頁碼
-% 但是從「書名頁」(但不印頁碼) 就開始計算
-%\setcounter{page}{1}
-%\pagenumbering{roman}
-
 % ------------------------------------------------
 
 % 封面 Cover
 % 請根據你的需求去選用中文或英文封面
 % 活在全球化, 使用英文封面是優先推薦
-
 \input{./ncku/cover-chi.tex}
 \input{./ncku/cover-eng.tex}
 
-
-% --------------------------
+% ------------------------------------------------
 
 % 口試証明文件 Document of oral presentation
 \input{./oral/oral.tex}
@@ -37,25 +25,24 @@
 % ------------------------------------------------
 
 % 摘要 Abstract
+% 請根據你的需求去選用中文或英文版
+%
+% 學校要求如果是寫中文版的話
+% 則要同時交出英文版
+%
+% 只交英文版就不用交中文版
+%
+% 詳細學校的要求可去附件看
 \input{./abstract/abstract.tex}
 \input{./abstract/abstract-chi.tex}
 
 % ------------------------------------------------
 
-%\specialspacing
-%acknowledgements
-%
-% Place the text of your acknowledgments here. Your name and
-% graduation date will appear automatically. If this is the preface
-% instead of acknowledgments, use \preface.
-% Note: do NOT use \begin{acknowledgements} ... \end{acknowledgements}
-%
-%%\input{abs/ackno}
-%\doublespacing
+% 致謝 Acknowledgments
+\input{./acknowledgments/acknowledgments}
+\input{./acknowledgments/acknowledgments-chi}
 
-%\input{acknowledgments/acknowledgments}
-
-
+% ------------------------------------------------
 
 %\setcounter{secnumdepth}{10}
 \newpage
