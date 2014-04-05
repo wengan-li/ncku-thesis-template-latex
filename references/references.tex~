@@ -12,7 +12,7 @@
 \addcontentsline{toc}{chapter}{References}
 
 % Change the title of bibliography
-\renewcommand\bibname{\centerline{\Large References}}
+\renewcommand\bibname{\centerline{\large References}}
 
 % ------------------------------------------------
 

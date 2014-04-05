@@ -1,0 +1,44 @@
+\contentsline {chapter}{Cover}{i}{section*.1}
+\contentsline {chapter}{Cover}{ii}{section*.2}
+\contentsline {chapter}{Document of oral presentation - Chinese}{iii}{section*.3}
+\contentsline {chapter}{Document of oral presentation - English}{iv}{section*.4}
+\contentsline {chapter}{Abstract}{v}{section*.5}
+\contentsline {chapter}{Abstract}{vi}{section*.6}
+\contentsline {chapter}{Acknowledgments}{vii}{section*.7}
+\contentsline {chapter}{Acknowledgments}{viii}{section*.8}
+\contentsline {chapter}{Table of Contents}{ix}{section*.9}
+\contentsline {chapter}{List of Tables}{xii}{chapter*.12}
+\contentsline {chapter}{List of Figures}{xiii}{chapter*.14}
+\contentsline {chapter}{Chapter 1.\hspace *{1em}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Previous Works}{4}{section.1.1}
+\contentsline {section}{\numberline {1.2}Our Contributions}{6}{section.1.2}
+\contentsline {chapter}{Chapter 2.\hspace *{1em}Problem Formulation}{9}{chapter.2}
+\contentsline {chapter}{Chapter 3.\hspace *{1em}Constraints and Terminologies}{11}{chapter.3}
+\contentsline {chapter}{Chapter 4.\hspace *{1em}Algorithm}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Modified Prim's Algorithm}{21}{section.4.1}
+\contentsline {section}{\numberline {4.2}Segment Creation}{22}{section.4.2}
+\contentsline {section}{\numberline {4.3}Bus Ordering and Coordinate Determination}{23}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Bus Ordering}{23}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Coordinate Determination}{24}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Wirelength Reduction}{25}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Overlap Minimization}{25}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Coordinate Adjustment}{26}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}Layer Assignment}{29}{section.4.5}
+\contentsline {section}{\numberline {4.6}Orientation Determination and Deviation Minimization}{30}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Deviation Minimization with Lookup Table Method}{30}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Fast Deviation Update Based on Topology Comparison}{32}{subsection.4.6.2}
+\contentsline {section}{\numberline {4.7}Soft Module Adjustment}{37}{section.4.7}
+\contentsline {chapter}{Chapter 5.\hspace *{1em}Experimental results}{56}{chapter.5}
+\contentsline {section}{\numberline {5.1}Experiments on Regular Testcases for \cite {Ma08} and \cite {PH10}}{56}{section.5.1}
+\contentsline {section}{\numberline {5.2}The Comparison Between \cite {PH10} and This Work}{58}{section.5.2}
+\contentsline {section}{\numberline {5.3}The Comparison Between Modified \cite {PH10} and This Work}{59}{section.5.3}
+\contentsline {section}{\numberline {5.4}Experiments on Larger Testcases for \cite {PH10} and This Work}{59}{section.5.4}
+\contentsline {chapter}{Chapter 6.\hspace *{1em}Conclusions}{68}{chapter.6}
+\contentsline {chapter}{Appendix}{69}{section*.15}
+\contentsline {chapter}{Appendix A.\hspace *{1em}Appendix Chap. 1}{70}{appendix.A}
+\contentsline {section}{\numberline {A.1}Appendix First}{70}{section.A.1}
+\contentsline {section}{\numberline {A.2}Appendix Second}{70}{section.A.2}
+\contentsline {chapter}{Appendix B.\hspace *{1em}Appendix Chap. 2}{71}{appendix.B}
+\contentsline {section}{\numberline {B.1}Appendix First}{71}{section.B.1}
+\contentsline {section}{\numberline {B.2}Appendix Second}{71}{section.B.2}
+\contentsline {chapter}{References}{72}{section*.18}
