@@ -5,11 +5,11 @@
 % XeLaTex 的設定
 
 % --------------------------
-%加這個就可以設定字體
+% 加這個就可以設定字體
 \usepackage{fontspec}
 
-%使用xeCJK，其他的還有CJK或是xCJK
-\usepackage[BoldFont]{xeCJK} 
+% 使用xeCJK，其他的還有CJK或是xCJK
+\usepackage[BoldFont]{xeCJK}
 
 % Set english font (Use package <ifplatform> to check)
 \usepackage{ifplatform}
@@ -21,20 +21,20 @@
     \usepackage{times}
 \fi 
 
-%設定中英文的字型
-%字型的設定可以使用系統內的字型，而不用像以前一樣另外安裝
+% 設定中英文的字型
+% 字型的設定可以使用系統內的字型，而不用像以前一樣另外安裝
 \setCJKmainfont{標楷體}
 
-%中文自動換行
+% 中文自動換行
 \XeTeXlinebreaklocale "zh"
 
-%文字的彈性間距
+% 文字的彈性間距
 \XeTeXlinebreakskip = 0pt plus 1pt
 
-%設定段落之間的距離
+% 設定段落之間的距離
 \setlength{\parskip}{0.3cm}
 
-%設定行距
+% 設定行距
 \linespread{1.5}\selectfont
 
 % ------------------------------------------------
@@ -51,7 +51,7 @@
 
 \usepackage{url}
 \usepackage{multirow}
-\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 
 \usepackage[sort&compress, sectionbib, super]{natbib}
 
@@ -88,7 +88,8 @@
 
 % 使用 hyperref 在 pdf 簡介欄裡填入相關資料
 \ifx \hypersetup \undefined
-	\relax  % do nothing
+    % do nothing
+	\relax
 \else
 	\hypersetup
     {

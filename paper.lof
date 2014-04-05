@@ -1,4 +1,0 @@
-\addvspace {10pt}
-\contentsline {figure}{\numberline {1.1}{\ignorespaces (a) One horizontal bus connects two bus pins. (b) Bus routing without considering the effect of the bus pin. (c) Bus twisting. (d) No bus twisting after flipping the bus pin. }}{2}{figure.1.1}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces (a) Simplified bus routing. (b) Bus routing considering the bus pin. (c) Bus routing with the diagonal connection between the modules. (d) Via-aware bus routing with the diagonal connection between modules. (e) Bus routing considering both vias and wirelength deviation. }}{8}{figure.1.2}
-\addvspace {10pt}
