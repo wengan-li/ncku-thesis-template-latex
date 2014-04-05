@@ -1,0 +1,37 @@
+
+% ----------------------------------------------------------------------------
+%                            Chinese acknowledgments
+%                                   中文致謝
+% ----------------------------------------------------------------------------
+
+% Set the line spacing
+%\baselineskip = 26pt
+
+% ------------------------------------------------
+
+% Page start
+\newpage
+%\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Acknowledgments}
+
+% ------------------------------------------------
+
+\begin{center}
+\large \textbf{Acknowledgments}
+%\label{abstract}
+\end{center}
+
+% ------------------------------------------------
+
+"我思故我在, 我做故我存."\\
+"I think, therefore I am. I do, that become valuable."\\
+
+"別人笑我太瘋癲，我笑他人看不穿."\\
+"People laugh at me for my insane, but I laugh them because they don't see the truth."\\
+
+% ------------------------------------------------
+
+% End of page
+
+% ------------------------------------------------
