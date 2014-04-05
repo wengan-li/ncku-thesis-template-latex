@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.19)  5 APR 2014 09:12
+This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.19)  5 APR 2014 09:42
 entering extended mode
 **paper.tex
 ("Z:\Project\Li's Hash\doc\paper-school\paper.tex"
@@ -819,6 +819,44 @@ Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 g
 File: xeCJK.cfg 2013/11/11 v3.2.7 Configuration file for xeCJK package
 ))
+(C:\Users\Einstein\AppData\Roaming\MiKTeX\2.9\tex\latex\ifplatform\ifplatform.s
+ty
+Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
+ ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\catchfile.sty"
+Package: catchfile 2011/03/01 v1.6 Catch the contents of a file (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))
+
+Package ifplatform Warning: 
+    shell escape is disabled, so I can only detect \ifwindows.
+
+)
 Requested font "Times New Roman" at 10.0pt
  -> C:/Windows/Fonts/times.ttf
 Requested font "Times New Roman/ICU" at 10.0pt
@@ -867,13 +905,6 @@ Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
  -> C:/Windows/Fonts/kaiu.ttf
 Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
  -> C:/Windows/Fonts/kaiu.ttf
-Requested font "æ¨^^99æ¥·é«^^94/B/ICU" at 10.0pt
- -> C:/Windows/Fonts/kaiu.ttf
-.................................................
-. fontspec info: "no-font-shape"
-. 
-. Could not resolve font 標楷體/B (it probably doesn't exist).
-.................................................
 Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
  -> C:/Windows/Fonts/kaiu.ttf
 Requested font "æ¨^^99æ¥·é«^^94/I/ICU" at 10.0pt
@@ -885,23 +916,26 @@ Requested font "æ¨^^99æ¥·é«^^94/I/ICU" at 10.0pt
 .................................................
 Requested font "æ¨^^99æ¥·é«^^94/ICU" at 10.0pt
  -> C:/Windows/Fonts/kaiu.ttf
-Requested font "æ¨^^99æ¥·é«^^94/BI/ICU" at 10.0pt
+Requested font "æ¨^^99æ¥·é«^^94/I/ICU" at 10.0pt
  -> C:/Windows/Fonts/kaiu.ttf
 .................................................
 . fontspec info: "no-font-shape"
 . 
-. Could not resolve font 標楷體/BI (it probably doesn't exist).
+. Could not resolve font 標楷體/I (it probably doesn't exist).
 .................................................
 .................................................
 . fontspec info: "defining-font"
 . 
-. Font family '標楷體(0)' created for font '標楷體' with options [Script=
-{CJK}].
+. Font family '標楷體(0)' created for font '標楷體' with options
+. [Script={CJK},AutoFakeBold={4}].
 . 
 . This font family consists of the following shapes:
 . 
 . * 'normal' with NFSS spec.:
 . <->"標楷體/ICU:script=hani;language=DFLT;"
+. 
+. * 'bold' with NFSS spec.:
+. <->"標楷體/ICU:script=hani;language=DFLT;embolden=4;"
 .................................................
  ("Z:\Project\Li's Hash\doc\paper-school\ncku\style\macros.sty"
 \c@Definition=\count133
@@ -965,28 +999,17 @@ Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
 Package hobsub Info: Skipping package `ifpdf' (already loaded).
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
 Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode not found.
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
 Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
 )
@@ -1135,7 +1158,7 @@ File: ppxetex.def 2013/08/25 v0.4v Pdfpages driver for XeTeX (AM)
 )
 ("Z:\Project\Li's Hash\doc\paper-school\ncku\cmd-define.tex")
 ("Z:\Project\Li's Hash\doc\paper-school\names.tex")
-Package hyperref Info: Option `unicode' set `true' on input line 98.
+Package hyperref Info: Option `unicode' set `true' on input line 102.
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\se-ascii-print.def"
 File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
@@ -1413,11 +1436,27 @@ Requested font "cmr8" at 8.0pt
 Requested font "cmr6" at 6.0pt
  -> cmr6
 )
+("Z:\Project\Li's Hash\doc\paper-school\abstract\abstract-chi.tex"
 Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 
 File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 
 <use  "./ncku/watersymbol.jpg" > [5]
+Requested font "æ¨^^99æ¥·é«^^94/ICU:script=hani;language=DFLT;embolden=4
+;" at 14.4pt
+ -> C:/Windows/Fonts/kaiu.ttf
+Requested font "æ¨^^99æ¥·é«^^94/ICU:script=hani;language=DFLT;" at 12.0p
+t
+ -> C:/Windows/Fonts/kaiu.ttf
+Requested font "æ¨^^99æ¥·é«^^94/ICU:script=hani;language=DFLT;embolden=4
+;" at 12.0pt
+ -> C:/Windows/Fonts/kaiu.ttf
+)
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [6]
 Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;" at 17.28pt
  -> C:/Windows/Fonts/timesbd.ttf
 
@@ -1428,7 +1467,7 @@ Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 
 File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 
-<use  "./ncku/watersymbol.jpg" > [6
+<use  "./ncku/watersymbol.jpg" > [7
 
 ]
 ("Z:\Project\Li's Hash\doc\paper-school\paper.lot")
@@ -1438,7 +1477,7 @@ Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 
 File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 
-<use  "./ncku/watersymbol.jpg" > [7
+<use  "./ncku/watersymbol.jpg" > [8
 
 ]
 ("Z:\Project\Li's Hash\doc\paper-school\paper.lof")
@@ -1448,7 +1487,7 @@ Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 
 File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 
-<use  "./ncku/watersymbol.jpg" > [8
+<use  "./ncku/watersymbol.jpg" > [9
 
 ]
 ("Z:\Project\Li's Hash\doc\paper-school\1/intro.tex"
@@ -1620,27 +1659,27 @@ File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 115.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 115.
 
 ("Z:\Project\Li's Hash\doc\paper-school\paper.aux"
 ("Z:\Project\Li's Hash\doc\paper-school\1/intro.aux")
 ("Z:\Project\Li's Hash\doc\paper-school\ack/ack.aux"))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 114.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 114.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 115.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 115.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 115.
  ) 
 Here is how much of TeX's memory you used:
- 22719 strings out of 429035
- 417850 string characters out of 3167908
- 490384 words of memory out of 3000000
- 25698 multiletter control sequences out of 15000+200000
- 7254 words of font info for 52 fonts, out of 3000000 for 9000
+ 22815 strings out of 429035
+ 419967 string characters out of 3167908
+ 491668 words of memory out of 3000000
+ 25767 multiletter control sequences out of 15000+200000
+ 7278 words of font info for 55 fonts, out of 3000000 for 9000
  912 hyphenation exceptions out of 8191
- 48i,18n,55p,583b,467s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,18n,55p,622b,467s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on paper.pdf (17 pages).
+Output written on paper.pdf (18 pages).
