@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.19)  5 APR 2014 01:19
+This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.19)  5 APR 2014 08:57
 entering extended mode
 **paper.tex
 ("Z:\Project\Li's Hash\doc\paper-school\paper.tex"
@@ -1133,20 +1133,18 @@ File: ppxetex.def 2013/08/25 v0.4v Pdfpages driver for XeTeX (AM)
 \c@AM@survey=\count168
 \AM@templatesizebox=\box44
 )
-(C:\Users\Einstein\AppData\Roaming\MiKTeX\2.9\tex\latex\tocbibind\tocbibind.sty
-Package: tocbibind 2010/10/13 v1.5k extra ToC listings
-Package tocbibind Info: The document has chapter divisions on input line 50.
-
-Package tocbibind Note: Using chapter style headings, unless overridden.
-
-) ("Z:\Project\Li's Hash\doc\paper-school\ncku\cmd-define.tex")
+("Z:\Project\Li's Hash\doc\paper-school\ncku\cmd-define.tex")
 ("Z:\Project\Li's Hash\doc\paper-school\names.tex")
+Package hyperref Info: Option `unicode' set `true' on input line 98.
+
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\se-ascii-print.def"
 File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 
 ))
 ("Z:\Project\Li's Hash\doc\paper-school\paper.aux"
-("Z:\Project\Li's Hash\doc\paper-school\abs\abs.aux"))
+("Z:\Project\Li's Hash\doc\paper-school\abs\abs.aux")
+("Z:\Project\Li's Hash\doc\paper-school\1/intro.aux")
+("Z:\Project\Li's Hash\doc\paper-school\ack/ack.aux"))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
@@ -1451,7 +1449,6 @@ File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 ]
 ("Z:\Project\Li's Hash\doc\paper-school\paper.lof")
 \tf@lof=\write6
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
 
 Overfull \vbox (14.45377pt too high) has occurred while \output is active []
 
@@ -1460,10 +1457,182 @@ File: ./ncku/watersymbol.jpg Graphic file (type QTm)
 <use  "./ncku/watersymbol.jpg" > [8
 
 ]
+("Z:\Project\Li's Hash\doc\paper-school\1/intro.tex"
+Chapter 1.
+
+LaTeX Warning: Citation `Rafiq02' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `Xiang03' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `Chen05' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `Law05' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `Xiang07' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `Ma08' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `Kim08_1' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `Kim08_2' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `Sheng10' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `He10' on page 1 undefined on input line 23.
+
+
+LaTeX Warning: Citation `PH10' on page 1 undefined on input line 23.
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [1
+
+
+]
+File: Fig/bus_twisting.pdf Graphic file (type QTm)
+ <use  "Fig/bus_twisting.pdf" >
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [2]
+File: Fig/introduction_example.pdf Graphic file (type QTm)
+ <use  "Fig/introduction_example.pdf" >
+
+LaTeX Warning: Float too large for page by 11.07275pt on input line 76.
+
+
+Overfull \hbox (4.7428pt too wide) in paragraph at lines 89--109
+[]\EU1/TimesNewRoman(0)/m/n/12 Furthermore, current bus-driven floorplanning al
+gorithms restrict a bus only bends
+ []
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [3]
+
+LaTeX Warning: Citation `Rafiq02' on page 4 undefined on input line 133.
+
+
+LaTeX Warning: Citation `Xiang03' on page 4 undefined on input line 137.
+
+
+LaTeX Warning: Citation `Chen05' on page 4 undefined on input line 140.
+
+
+LaTeX Warning: Citation `Law05' on page 4 undefined on input line 146.
+
+
+LaTeX Warning: Citation `Ma08' on page 4 undefined on input line 148.
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [4]
+
+LaTeX Warning: Citation `Kim08_1' on page 5 undefined on input line 158.
+
+
+LaTeX Warning: Citation `Kim08_2' on page 5 undefined on input line 159.
+
+
+LaTeX Warning: Citation `Xiang07' on page 5 undefined on input line 167.
+
+
+LaTeX Warning: Citation `Sheng10' on page 5 undefined on input line 170.
+
+
+LaTeX Warning: Citation `He10' on page 5 undefined on input line 172.
+
+
+LaTeX Warning: Citation `PH10' on page 5 undefined on input line 175.
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [5]
+Underfull \hbox (badness 10000) in paragraph at lines 181--187
+
+ []
+
+
+LaTeX Warning: Citation `Ma08' on page 6 undefined on input line 214.
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [6]
+
+LaTeX Warning: Reference `chap::PROBLEM FORMULATION' on page 7 undefined on inp
+ut line 229.
+
+
+LaTeX Warning: Reference `chap::CONSTRAINTS AND TERMINOLOGIES' on page 7 undefi
+ned on input line 232.
+
+
+LaTeX Warning: Reference `chap::ALGORITHM' on page 7 undefined on input line 23
+5.
+
+
+LaTeX Warning: Reference `chap::EXPERIMENTAL RESULTS' on page 7 undefined on in
+put line 239.
+
+
+LaTeX Warning: Reference `chap::CONCLUSIONS' on page 7 undefined on input line 
+242.
+
+
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [7])
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [8]
+("Z:\Project\Li's Hash\doc\paper-school\ack/ack.tex"
+Chapter 2.
+)
+Overfull \vbox (14.45377pt too high) has occurred while \output is active []
+
+File: ./ncku/watersymbol.jpg Graphic file (type QTm)
+
+<use  "./ncku/watersymbol.jpg" > [9
+
+
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
 
 ("Z:\Project\Li's Hash\doc\paper-school\paper.aux"
-("Z:\Project\Li's Hash\doc\paper-school\abs\abs.aux"))
+("Z:\Project\Li's Hash\doc\paper-school\abs\abs.aux")
+("Z:\Project\Li's Hash\doc\paper-school\1/intro.aux")
+("Z:\Project\Li's Hash\doc\paper-school\ack/ack.aux"))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 114.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 114.
 
@@ -1473,12 +1642,12 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
  ) 
 Here is how much of TeX's memory you used:
- 22763 strings out of 429035
- 418319 string characters out of 3167908
- 486705 words of memory out of 3000000
- 25750 multiletter control sequences out of 15000+200000
+ 22728 strings out of 429035
+ 418057 string characters out of 3167908
+ 490968 words of memory out of 3000000
+ 25699 multiletter control sequences out of 15000+200000
  7254 words of font info for 52 fonts, out of 3000000 for 9000
  912 hyphenation exceptions out of 8191
  48i,18n,55p,583b,467s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on paper.pdf (8 pages).
+Output written on paper.pdf (17 pages).

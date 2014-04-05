@@ -6,3 +6,7 @@
 \contentsline {chapter}{Table of Contents}{vi}{section*.6}
 \contentsline {chapter}{List of Tables}{vii}{chapter*.9}
 \contentsline {chapter}{List of Figures}{viii}{chapter*.11}
+\contentsline {chapter}{Chapter 1.\hspace *{1em}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Previous Works}{4}{section.1.1}
+\contentsline {section}{\numberline {1.2}Our Contributions}{6}{section.1.2}
+\contentsline {chapter}{Chapter 2.\hspace *{1em}Acknowledge}{9}{chapter.2}

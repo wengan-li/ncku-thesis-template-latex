@@ -45,11 +45,11 @@
 \usepackage{latexsym}
 \usepackage{./ncku/style/utdiss}
 \usepackage{hyperref}
-
+%\usepackage{hyperxmp}
 \usepackage{pdfpages}
 
 %preamble
-\usepackage[nottoc]{tocbibind}
+%\usepackage[nottoc]{tocbibind}
 
 % ------------------------------------------------
 
@@ -75,19 +75,27 @@
 
 \input{./ncku/cmd-define.tex}
 
+% --------------------------
+
 % 論文有關資料
 \input{./names.tex}
 
+% --------------------------
+
 % 使用 hyperref 在 pdf 簡介欄裡填入相關資料
-\ifx\hypersetup\undefined
+\ifx \hypersetup \undefined
 	\relax  % do nothing
 \else
-	\hypersetup{
-	pdftitle=\cTitle,
-	pdfauthor=\myCname}
+	\hypersetup
+    {
+        unicode     = true,
+	    pdftitle    = {\eTitle (\cTitle)},
+	    pdfauthor   = {\myEname (\myCname)},
+        pdfcreator  = {\univEname},
+%        pdfproducer = {\univEname},
+        pdfsubject  = {},
+        pdfkeywords = {},
+    }
 \fi
-
-
-
 
 % ------------------------------------------------
