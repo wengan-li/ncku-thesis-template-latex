@@ -1,0 +1,153 @@
+\subsubsection{Selection}
+
+The follow operations will use figure \ref{fig:algorithm:real:modification:example} as the example.
+
+% Selection section enumerate
+\begin{enumerate}
+
+% --------------------------------------------------------
+
+% Equal
+\item \textbf{Equal}
+
+If search \textit{0.0}, then convert it into three part: \textit{"Sign"}, \textit{"Integer"} and \textit{"Decimal"}, which means $'$+$\backslash0\backslash\_\backslash0'$ and use this as key to get the result, this should take $O(1)$.
+
+% --------------------------------------------------------
+
+% Not equal
+\item \textbf{Not equal}
+
+If searching the result which is not equal \textit{0.0}, strat of convert it into key, then start from root, then recursively to find the data nodes and only skip the key of input. This operation should take $O(b)$.
+
+% --------------------------------------------------------
+
+% Less than
+\item \textbf{Less than}
+
+When comparing the \emph{"Less than"} or \emph{"Greater}, the flow is way different as the other because of the dynamic byte design.
+
+For example searching \textit{300.0} in table, then convert into string $'$+$\backslash44\backslash1\_\backslash0'$ which the length of \textit{"Integer"} is \textit{2} and \textit{1} for \textit{"Decimal"} that the two value is use to let the compare function know how deep of the byte need to search.
+
+% Less than section enumerate
+\begin{enumerate}
+
+% Input value is a negative value
+\item \textbf{Input value is a negative value}
+
+\begin{enumerate}
+
+\item Start from root and only get the nodes which the \textit{"Sign"} are \textit{'-'}.
+
+\item When searching \textit{"Integer"} part, recursively to search the element node contain \textit{decimal} with the length is \textit{"longer than or equal to"} to the \textit{"Integer"} length of input (in this case is \textit{2}). Then only remain the nodes that the value of \textit{"Integer"} is \textit{"larger than or equal to"} the value in \textit{"Integer"} part of input.
+
+\item Searching in \textit{"Decimal"} part:
+\begin{enumerate}
+
+\item If the length of \textit{"Integer"} part is \textit{"longer than"} the input, then get all the data nodes.
+
+\item If the length of \textit{"Integer"} part is \textit{"equal to"} the input, then recursively and only get the element nodes that the length is \textit{"greater than or equal to"} the length of \textit{"Decimal"} of input. And check the value of \textit{"Decimal"} is \textit{"larger than"} the value in \textit{"Decimal"} part of input.
+\end{enumerate}
+
+\end{enumerate}
+
+% Input value is a positive value
+\item \textbf{Input value is a positive value}
+
+\begin{enumerate}
+
+\item Get all the data nodes start from root which the \textit{"Sign"} are \textit{'-'}.
+
+\item Next start from root and get the nodes which the \textit{"Sign"} are \textit{'+'}.
+
+\item When searching \textit{"Integer"} part, recursively to search the element node contain \textit{decimal} with the length is \textit{"shorter than or equal to"} to the \textit{"Integer"} length of input (in this case is \textit{2}). Then only remain the nodes that the value of \textit{"Integer"} is \textit{"smaller than or equal to"} than the value in \textit{"Integer"} part of input.
+
+\item Searching in \textit{"Decimal"} part:
+\begin{enumerate}
+
+\item If the length of \textit{"Integer"} part is \textit{"shorter than"} the input, then get all the data nodes.
+
+\item If the length of \textit{"Integer"} part is \textit{"equal to"} the input, then recursively and only get the element nodes that the length is \textit{"shorter than or equal to"} the length of \textit{"Decimal"} of input. And check the value of \textit{"Decimal"} is \textit{"smaller than"} the value in \textit{"Decimal"} part of input.
+\end{enumerate}
+
+\end{enumerate}
+
+% Input value is equal to 0.0
+\item \textbf{Input value is equal to \textit{0.0}}
+
+Get all the data nodes start from root which the \textit{"Sign"} are \textit{'-'}.
+
+% End Less than section enumerate
+\end{enumerate}
+
+The \emph{"Less than or equal to"} comparison is just do the \emph{"Less than"} and \emph{"Equal"} operation and then combine both result for ouput. The time complexity is $O(b)$ for both operation.
+
+% --------------------------------------------------------
+
+% Greater than
+\item \textbf{Greater than}
+
+This comparison flow is similar as \emph{"Less than"}.
+
+% Greater than section enumerate
+\begin{enumerate}
+
+% Input value is a negative value
+\item \textbf{Input value is a negative value}
+
+\begin{enumerate}
+
+\item Get all the data nodes start from root which the \textit{"Sign"} are \textit{'+'}.
+
+\item Next start from root and get the nodes which the \textit{"Sign"} are \textit{'-'}.
+
+\item When searching \textit{"Integer"} part, recursively to search the element node contain \textit{decimal} with the length is \textit{"shorter than or equal to"} to the \textit{"Integer"} length of input. Then only remain the nodes that the value of \textit{"Integer"} is \textit{"larger than or equal to"} than the value in \textit{"Integer"} part of input.
+
+\item Searching in \textit{"Decimal"} part:
+\begin{enumerate}
+
+\item If the length of \textit{"Integer"} part is \textit{"shorter than"} the input, then get all the data nodes.
+
+\item If the length of \textit{"Integer"} part is \textit{"equal to"} the input, then recursively and only get the element nodes that the length is \textit{"shorter than or equal to"} the length of \textit{"Decimal"} of input. And check the value of \textit{"Decimal"} is \textit{"larger than"} the value in \textit{"Decimal"} part of input.
+\end{enumerate}
+
+\end{enumerate}
+
+% Input value is a positive value
+\item \textbf{Input value is a positive value}
+
+\begin{enumerate}
+
+\item Start from root and only get the nodes which the \textit{"Sign"} are \textit{'+'}.
+
+\item When searching \textit{"Integer"} part, recursively to search the element node contain \textit{decimal} with the length is \textit{"longer than or equal to"} to the \textit{"Integer"} length of input. Then only remain the nodes that the value of \textit{"Integer"} is \textit{"larger than or equal to"} the value in \textit{"Integer"} part of input.
+
+\item Searching in \textit{"Decimal"} part:
+\begin{enumerate}
+
+\item If the length of \textit{"Integer"} part is \textit{"longer than"} the input, then get all the data nodes.
+
+\item If the length of \textit{"Integer"} part is \textit{"equal to"} the input, then recursively and only get the element nodes that the length is \textit{"greater than or equal to"} the length of \textit{"Decimal"} of input. And check the value of \textit{"Decimal"} is \textit{"larger than"} the value in \textit{"Decimal"} part of input.
+\end{enumerate}
+
+\end{enumerate}
+
+% Input value is equal to 0.0
+\item \textbf{Input value is equal to \textit{0.0}}
+
+Get all the data nodes start from root which the \textit{"Sign"} are \textit{'+'} but skip the key of \textit{+0.0}.
+
+% End Greater than section enumerate
+\end{enumerate}
+
+The \emph{"Greater than or equal to"} comparison is just do the \emph{"Greater than"} and \emph{"Equal"} operation and then combine both result for ouput. The time complexity is $O(b)$ for both operation.
+
+% --------------------------------------------------------
+
+% Between
+\item \textbf{Between}
+
+The \textit{between} operation of \textit{REAL} is as same as the \textit{between} operation of the \textit{signed INTEGER}, so skip the description of this part. The time complexity is $O(b)$.
+
+% --------------------------------------------------------
+
+\end{enumerate}

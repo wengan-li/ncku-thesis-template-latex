@@ -1,0 +1,37 @@
+\subsection{INTEGER type}
+
+The \textit{INTEGER} type is design as 8 bytes $({b} = 8)$, but for easy to explain the \textit{INTEGER} type design in Li's Hash, so the example below which will explain in 4 bytes $(b = 4)$.\\
+
+As normal integer, the \textit{INTEGER} type can be also signed and unsigned, this information will record in the metadata, so this will not show in index table, the different between them is the operation have a little bit different, but they share the same index table. Same as the \textit{BOOLEAN} type, the invert index table is not needed. Because of the inverted index table cost spaces but don't provide a significant speed up for the operation.\\
+
+We use figure \ref{fig:algorithm:integer:example_1} to explain these operations below:
+
+\begin{figure}[h]
+\centering
+%\includegraphics[scale=0.45]{./algorithm/integer/pic/example_1_v3.pdf}
+\includegraphics[width=0.8\textwidth]{./algorithm/integer/pic/example_1_v3.pdf}
+\caption{The indexing tables of \textit{INTEGER} type.}
+\label{fig:algorithm:integer:example_1}
+\end{figure}
+
+The index table is start with a root key \textit{'root'}. The root key is use to record the first byte of the data, so it will point to the range of 0 to 255.\\
+
+In figure \ref{fig:algorithm:integer:example_1}, there are two data in the table. The four bytes of \textit{1} is \textit{0-0-0-1}, and \textit{167904506} is \textit{10-2-4-250} in byte. So in the table, the \textit{'root'} is pointing to \textit{'$\backslash0$'} and \textit{'$\backslash10$'}. After root key is finish its' indexing, the next step is just using n-gram indexing to index remain bytes to store data in the table.\\
+
+
+% Insertion section
+\input{./algorithm/integer/insertion.tex}
+
+% Deletion section
+\input{./algorithm/integer/deletion.tex}
+
+% Modification section
+\input{./algorithm/integer/modification.tex}
+
+% Selection section
+\input{./algorithm/integer/selection.tex}
+
+% Summary section
+\input{./algorithm/integer/summary.tex}
+
+\clearpage

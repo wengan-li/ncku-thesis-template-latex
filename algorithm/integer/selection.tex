@@ -1,0 +1,156 @@
+\subsubsection{Selection}
+
+Normally the database proves some function for compare the value of searching, so the Li's Hash musts also can do the same thing.
+
+We use figure \ref{fig:algorithm:integer:modification:example_1} as example to demo the selection.
+
+% Selection section enumerate
+\begin{enumerate}
+
+% --------------------------------------------------------
+
+% Equal section
+\item \textbf{Equal}
+
+Compare the value is very simple. For example if we want to find data is equal to \textit{1 (0-0-0-1)}, we just need to use the key as $'\backslash0\backslash0\backslash0\backslash1'$ to search the index table. This should only take the time as $O(1)$.
+
+% --------------------------------------------------------
+
+% Not equal section
+\item \textbf{Not equal}
+
+Because it can't directly use the input value as key. So in this operation, it will start with the root key and parse all the result to find these element node until find the data node, but skip checking the key is as same as the input value. The time complexity be $O(b)$.
+
+% --------------------------------------------------------
+
+% Less than section
+\item \textbf{Less than}
+
+The \emph{"Less than"} comparison is similar as \emph{"Not equal"} comparison.
+
+% Less than section description
+\begin{description}
+
+% Unsigned section
+\item \textbf{Unsigned}
+
+Start from root key, skip all the value which is \textit{"greater than"} the input value of the first byte, for example if the table contain \textit{10-X-X-X}, \textit{15-X-X-X} and \textit{20-X-X-X}, then if the input value is \textit{15-X-X-X}, the result will remain \textit{10-X-X-X} and \textit{15-X-X-X}. After that, search until to the last byte, then check the first byte if it is equal to the first byte of input value, and skip all the last byte which is \textit{"greater than or equal to"} the last byte of input value, otherwise keep all the result.
+
+% Signed section
+\item \textbf{Signed}
+
+% Signed section enumerate
+\begin{enumerate}
+
+% Input value is a negative value
+\item \textbf{Input value is a negative value}
+
+If the input is a negative, then only start from the first byte is \textit{"greater than or equal to"} the inputs' first byte, and skip the key as same as the input.
+
+% Input value is a positive value
+\item \textbf{Input value is a positive value}
+
+If the input is a positive, then start from the first byte is \textit{"less than or equal to"} the inputs' first byte and also skip the first byte is \textit{"greater than or equal to"} $\backslash128$ and the key as same as the input.
+
+% Input value is equal to 0.0
+\item \textbf{Input value is equal to 0.0}
+
+If the input is zero, then then start from the first byte is \textit{"greater than or equal to"} $\backslash128$.
+
+% End Signed section enumerate
+\end{enumerate}
+
+% End Less than section description
+\end{description}
+
+The \emph{"Less than or equal to"} comparison is just do the \emph{"Less than"} and \emph{"Equal"} operation and then combine both result for ouput. The time complexity is $O(b)$ for both operation.
+
+% --------------------------------------------------------
+
+% Greater than section
+\item \textbf{Greater than}
+
+This comparison flow is same as \emph{"Less than"}, and just need to convert all the \textit{"greater than"} to \textit{"less than"} and \textit{"less than"} to \textit{"greater than"}, the \emph{"Greater than or equal to"} will do the same thing. So time complexities are the same.
+
+% --------------------------------------------------------
+
+% Between section
+\item \textbf{Between}
+
+The \emph{"Between"} comparison is combining \emph{"Less than or equal to"} and \emph{"Greater than or equal to"} operation.
+
+% Between section description
+\begin{description}
+
+% Unsigned section
+\item \textbf{Unsigned}
+
+Start with root key, but only keep the first byte which is only between and equal with the first byte of $minimum$ and $maximum$ input value.
+
+For example if the table contain \textit{5-X-X-X}, \textit{10-X-X-X}, \textit{15-X-X-X}, \textit{20-X-X-X} and \textit{25-X-X-X}, and the input values are \textit{6-X-X-X} and \textit{20-X-X-X}, so \textit{10-X-X-X}, \textit{15-X-X-X} and \textit{20-X-X-X} are the result.
+
+After that, search until to the last byte. Check the first byte if it is equal to the first byte of input value:
+
+% Unsigned section enumerate
+\begin{enumerate}[label=\bfseries \arabic*)]
+
+\item When it is equal to the byte of $maximum$ input value, then skip all the last byte which is \textit{"greater than or equal to"} the last byte of $maximum$ input value.
+
+\item When it is equal to the byte of $minimum$ input value, then skip all the last byte which is \textit{"less than or equal to"} the last byte of $minimum$ input value.
+
+\item Otherwise keep all the result.
+
+% End Unsigned section enumerate
+\end{enumerate}
+
+
+% Signed section
+\item \textbf{Signed}
+
+In signed integer, there are six cases for the \textbf{Between} operation:
+
+% Signed section enumerate
+\begin{enumerate}[label=\bfseries (\arabic*)]
+
+% Case 1
+\item \textbf{$minimum$ and $maximum$ are positive}
+
+Use $minimum$ to do the \emph{"Greater than or equal to"}, and do \emph{"Less than or equal to"} by inputting the $maximum$. After that find the common result.
+
+% Case 2
+\item \textbf{$minimum$ and $maximum$ are negative}
+
+As same as case \textbf{(1)}.
+
+% Case 3
+\item \textbf{$minimum$ is zero and $maximum$ is positive}
+
+Use zero to do the \emph{"Greater than or equal to"}, and do \emph{"Less than or equal to"} by inputting the $maximum$. After that find the common result.
+
+% Case 4
+\item \textbf{$minimum$ is negative and $maximum$ is zero}
+
+Use $minimum$ to do the \emph{"Greater than or equal to"}, and do \emph{"Less than or equal to"} by inputting the zero. After that find the common result.
+
+% Case 5
+\item \textbf{$minimum$ is negative and $maximum$ is positive}
+
+Cut this into two part, the negative to zero part will do the \textbf{(4)}, another part will do \textbf{(3)}, after that find the common result.
+
+% Case 6
+\item \textbf{$minimum$ is positive value and $maximum$ are negative value}
+
+This case should never happend because of the program should show warning message if the user really inputed like this.
+
+% End Signed section enumerate
+\end{enumerate}
+
+The time complexity is $O(b)$.
+
+% End Between section description
+\end{description}
+% --------------------------------------------------------
+
+% End Selection section enumerate
+\end{enumerate}
+

@@ -1,0 +1,114 @@
+\subsubsection{Summary}
+
+Table \ref{table:algorithm:real:summary:time_complexity} is a summary the time complexity of each opration in \textit{REAL} type.
+
+\begin{table}[h]
+\centering
+\caption{Time complexity for \textit{REAL} type.}
+\label{table:algorithm:real:summary:time_complexity}
+\begin{tabular}{|c|c|}
+
+\hline
+\multicolumn{1}{|c|}{Operation} &
+\multicolumn{1}{c|}{\tabincell{c}{
+Time complexity \\ ($b$: The byte length of data)
+}} \\
+
+\hline
+\multicolumn{1}{|c|}{Insert} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\multicolumn{1}{|c|}{Modify} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\multicolumn{1}{|c|}{Delete} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\multicolumn{1}{|c|}{Equal} &
+\multicolumn{1}{c|}{$O(1)$} \\
+
+\hline
+\multicolumn{1}{|c|}{\tabincell{c}{Equal (muti-value)}} &
+\multicolumn{1}{c|}{$O(1)$} \\
+
+\hline
+\multicolumn{1}{|c|}{Not equal} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\multicolumn{1}{|c|}{\tabincell{c}{Not equal (muti-value)}} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\multicolumn{1}{|c|}{Less than} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\multicolumn{1}{|c|}{Less than or equal} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\multicolumn{1}{|c|}{Greater than} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\multicolumn{1}{|c|}{Greater than or equal} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\multicolumn{1}{|c|}{Between} &
+\multicolumn{1}{c|}{$O(b)$} \\
+
+\hline
+\end{tabular}
+\end{table}
+
+\textit{REAL} is target for the data type of \textit{"long double"}, the only disadvantage that it will need more byte to store the value compare with \textit{"long double"}. From table \ref{table:algorithm:real:design_data_type} shows that the \textit{"float"} can store the range beyond the \textit{"Bigint"}, so that this mean it will need many \textit{"Bigint"} to store the value in \textit{"long double"}.
+
+\begin{table}[h]
+\centering
+\caption{Information about data type.}
+\label{table:algorithm:real:design_data_type}
+\begin{tabular}{|c|c|c|}
+
+\hline
+\multicolumn{1}{|c|}{Data type} &
+\multicolumn{1}{c|}{Range} &
+\multicolumn{1}{c|}{Bytes} \\
+
+\hline
+\multicolumn{1}{|c|}{float} &
+\multicolumn{1}{c|}{$3.40282e^{+038}$ $\thicksim$ $1.17549e^{-038}$} &
+\multicolumn{1}{c|}{4} \\
+
+\hline
+\multicolumn{1}{|c|}{double} &
+\multicolumn{1}{c|}{$1.79769e^{+308}$ $\thicksim$ $2.22507e^{-308}$} &
+\multicolumn{1}{c|}{8} \\
+
+\hline
+\multicolumn{1}{|c|}{long double} &
+\multicolumn{1}{c|}{$1.18973e^{+4932}$ $\thicksim$ $3.3621e^{-4932}$} &
+\multicolumn{1}{c|}{16} \\
+
+\hline
+\multicolumn{1}{|c|}{unsigned int} &
+\multicolumn{1}{c|}{0 $\thicksim$ 4294697295} &
+\multicolumn{1}{c|}{4} \\
+
+\hline
+\multicolumn{1}{|c|}{\tabincell{c}{
+unsigned long long int \\ (Bigint)
+}} &
+\multicolumn{1}{c|}{0 $\thicksim$ 18446744073709551615} &
+\multicolumn{1}{c|}{8} \\
+
+\hline
+\end{tabular}
+\end{table}
+
+But the advantage of \textit{REAL} that it can store the value with 100\% accuracy, also provide comparison and sorting, and it can store limitless data range. So no matter the basic use of the floating point such as Financial or Basic operations, these usage is hard to use more than five digital in \textit{"Decimal"} part. Also \textit{REAL} can store special data like science data such as the value in physics, this kind of usage may need to use up to thousand digital in \textit{"Decimal"} part, this is a normal range of \textit{"long double"}.\\
+

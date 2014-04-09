@@ -1,0 +1,75 @@
+
+% Index layer test
+\begin{table*}[width=\textwidth]
+\centering
+\caption{Example code that to test STRING type in \textit{Index layer}}
+\label{table:performance:index-layer:code-example}
+\begin{tabular}{|c|c|c|}
+
+\hline
+\multicolumn{1}{|c|}{} &
+\multicolumn{1}{c|}{\textbf{Li's Hash}} &
+\multicolumn{1}{c|}{\textbf{Relational database}} \\
+
+\hline
+\multicolumn{1}{|c|}{Create table} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+create\_table('table', 'value', STRING\_TYPE)
+}} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+CREATE TABLE table(id INT, value TEXT) ; \\
+CREATE INDEX idx\_value ON table (value) ;
+}} \\
+
+\hline
+\multicolumn{1}{|c|}{Insert} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+insert('table', 'value-\textit{i}')
+}} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+INSERT INTO table('value') VALUES ('value-\textit{i}') ;
+}} \\
+
+\hline
+\multicolumn{1}{|c|}{Select} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+select('table', 'value', 'value-\textit{i}')
+}} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+SELECT value FROM table \\
+WHERE value = 'value-\textit{i}' ;
+}} \\
+
+\hline
+\multicolumn{1}{|c|}{Update} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+update('table', 'value', 'value-\textit{i}', 'value-\textit{i}-')
+}} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+UPDATE table SET 'value' = 'value-\textit{i}-' \\
+WHERE value = 'value-\textit{i}' ;
+}} \\
+
+\hline
+\multicolumn{1}{|c|}{Remove} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+remove('table', 'value', 'value-\textit{i}-')
+}} &
+\multicolumn{1}{l|}
+{\tabincell{l}{
+DELETE FROM table WHERE value = 'value-\textit{i}' ;
+}} \\
+
+\hline
+\end{tabular}
+\end{table*}
+

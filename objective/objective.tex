@@ -1,0 +1,34 @@
+% ------------------------------------------------
+% Page start
+% ------------------------------------------------
+\chapter{Objective}
+\label{chapter:objective}
+
+\baselineskip=26pt
+\thispagestyle{empty}
+% ------------------------------------------------
+
+So here is the objective of Li's Hash:
+
+\begin{enumerate}
+
+\item Create index table(s) to provide the query operation.
+
+\item Time complexity should be close as $O(1)$ (key-value search time), but also need faster than $O(\log(n))$ (Indexed relational database search time) and $O(n)$ (The full table search time of non-relational database and relational database), which means the target time $\textit{T}$ need to:\\
+$O(1) \leqslant \textit{T} < O(\log(n)) < O(n)$.
+
+\item User can keep the relational database concept to use non-relational database without need to learn any new concept.
+
+\item Fellow KISS (Keep It Simple \& Stupid) principle for user, so Li's Hash only provide few simple data type rather than many data type in relational database, to decrease the time that user need to understand all kind of data type, to let them focus on their system design. And the provided data type are \textit{STRING}, \textit{BLOB}, \textit{REAL}, \textit{BOOLEAN} or \textit{INTEGER}.
+
+\item Every data type will do the indexing, except \textit{BLOB} type. Which can convert into \textit{STRING} type if needed.
+
+\item Using modularized design for swappable the back-end database (The back-end can be an embedded database or the client side of a database server) for the user needed, this makes Li's Hash more flexibility and can focus on the algorithm design.
+
+\end{enumerate}
+
+\clearpage
+
+% ------------------------------------------------
+% End of page
+% ------------------------------------------------

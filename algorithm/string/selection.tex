@@ -1,0 +1,52 @@
+\subsubsection{Selection}
+
+The selection is the main core of Li's Hash, because the purposes of the index tables is to design for high-speed searching operation which means the Li's Hash can do the searching operation for key-value store.
+
+Using the same example of figure \ref{fig:algorithm:string:insertion:example_2} from insertion section.
+
+% Operation
+\begin{enumerate}
+
+% --------------------------------------------------------
+
+\item \textbf{Exact matching}
+
+As normal key-value store, if searching the data as \textit{"book"}, which convert into the key as \textit{"'b':r1-'o':r2-'k':r1"} and search in index table, and return the result of data node \textit{"\_d\_1\_"} in $O(1)$.
+
+% --------------------------------------------------------
+
+\item \textbf{Prefix matching}
+
+If searching \textit{"bo"} as prefix which as same as \textit{"LIKE 'bo\%'"} in SQL. Using the key as \textit{"'b':r1"} from index table, will get the metadata that can know the next keys \textit{"'b':r1$-$'o':r1"} and \textit{"'b':r1$-$'o':r2"}. So fellow these two keys will get \textit{"'b':r1-'o':r1-'x':r1"} and \textit{"'b':r1-'o':r2-'k':r1"}, and using this two keys will get the data node \textit{"\_d\_1\_"} and \textit{"\_d\_2\_"}.
+
+So the concept of search is fellow the metadata if get an element node, and add the data into the return list if pointing to a data node. Repeat search in table with this way until there is no element node can fellow.
+
+And the time complexity should be $O(b)$.
+
+% --------------------------------------------------------
+
+\item \textbf{Suffix matching}
+
+Similar as prefix matching, the different is using inverted index table rather than index table. So if try to search \textit{'x'} as suffix which as same as \textit{"LIKE '\%x'"} in SQL, using the key \textit{'x'} and get \textit{"'x':r1"} as return, and the remain is as same as the searching in prefix matching which will get the data node \textit{"\_d\_2\_"} in final. The time complexity is $O(b)$.
+
+% --------------------------------------------------------
+
+\item \textbf{Partial matching}
+
+Partial matching is combining the prefix and suffix matching. For example if search \textit{'o'} for result which as same as using \textit{"LIKE '\%o\%'"} in SQL, then reassign as \textit{'o'} for prefix matching (\textit{"LIKE 'o\%'"} in SQL) and suffix matching (\textit{"LIKE '\%o'"} in SQL), and the last step is to do intersection to both result.
+
+The reason of existing the special keys is to record the repeat time like\textit{'o'-\textgreater1} or \textit{2}, or some keys like \textit{"'o':r1}-\textit{'x':r1"} which are target on this operation.
+
+If these keys are not created, the search like above wouldn't be searchable because the \textit{'o'} is middle of the keys, it can't be found unless there is some query function provided by non-relational database where are  range scan or full scan, but we have already mentioned before.
+
+And the time complexity should be $O(b) + O(b)$ that domain as $O(b)$.
+
+% --------------------------------------------------------
+
+\item \textbf{Retrieve all}
+
+Using the key of \textit{"root"} in index table will get all the prefix byte of all result, this can simple retrieve all data in the database which the time complexity be $O(b)$.
+
+% --------------------------------------------------------
+
+\end{enumerate}

@@ -1,0 +1,33 @@
+% ------------------------------------------------
+% Page start
+% ------------------------------------------------
+\chapter{Conclusion and future work}
+\label{chapter:conclusion_future-work}
+
+\baselineskip=26pt
+\thispagestyle{empty}
+% ------------------------------------------------
+
+\minisec{Conclusion}
+In big data, the meaning of owning one petabyte or ten petabyte are the same --- meaningless. The true is hiding inside the data, this means how fast can the data retrieval from database and process it to become an information we need that is the major question in this field, and normally the bottleneck is the query operation that between the database \cite{paper:nodb} and the program.\\
+
+So this paper is try to propose Li's Hash (an indexing algorithm) to provide query mechanism on key-value database, the non-relational database which the performance is more suitable on big data area rather than relational database. Li's Hash is to help people use the same concept in relational database but using non-relational database as the back-end.\\
+
+Li's Hash is try to replace some of the work which original need done by MapReduce, because the result can searching on single server, and don't need to write the code of MapReduce or install the platform of MapReduce. So that this can decrease the development cost, lower the conditions for programmer to start writing the program, also accelerate the speed of development.\\
+
+Also because the design, that is using modularized design which can swappable the back-end database, so it is suitable for all key-value stores. Such as Project Voldemort \cite{web:voldemort:home-page} which develop by LinkedIn, or the LevelDB from Google \cite{web:wiki:leveldb}, they do not limits too much to key-value, so that both of them are very suitable as the back-end of Li's Hash.\\
+
+Alough the testing is not so well, but the main point of this paper is not to test how good as the Li's Hash compare to a well-known embedded relational database, but to test it that is workable or not.\\
+
+\minisec{Future work}
+The next step of Li's Hash is focus on the improvement and the application extension (such as graph database, base on the same table design) to provide different angle and usage.\\
+
+Later on, by adding the SQL parser into the library for handle SQL as the input, which should let the people more comfortable to use it like the normally SQL database. Also provide some more feature for the library is needed, such as multi-table joining operation in SQL, graph database (like Neo4j\cite{web:neo4j:home-page}, by using different back-end database rather than a fixed storage engine), decision tree, similarity (like Lucene \cite{web:wiki:lucene}), etc. These feature are very basic and common that should become very useful in many field, such as information retrieval and data mining.\\
+
+At last, all source code and related data are open-source on \cite{web:lishash:home-page} that hope Li's Hash can provide useful on people's work.\\
+
+%\clearpage
+
+% ------------------------------------------------
+% End of page
+% ------------------------------------------------

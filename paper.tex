@@ -14,13 +14,13 @@
 % 封面 Cover
 % 請根據你的需求去選用中文或英文封面
 % 活在全球化, 使用英文封面是優先推薦
-\input{./ncku/cover-chi.tex}
+%\input{./ncku/cover-chi.tex}
 \input{./ncku/cover-eng.tex}
 
 % ------------------------------------------------
 
 % 口試証明文件 Document of oral presentation
-\input{./oral/oral.tex}
+%\input{./oral/oral.tex}
 
 % ------------------------------------------------
 
@@ -34,13 +34,13 @@
 %
 % 詳細學校的要求可去附件看
 \input{./abstract/abstract.tex}
-\input{./abstract/abstract-chi.tex}
+%\input{./abstract/abstract-chi.tex}
 
 % ------------------------------------------------
 
 % 致謝 Acknowledgments
 \input{./acknowledgments/acknowledgments}
-\input{./acknowledgments/acknowledgments-chi}
+%\input{./acknowledgments/acknowledgments-chi}
 
 % ------------------------------------------------
 
@@ -62,19 +62,34 @@
 % ------------------------------------------------
 
 
-%\onehalfspacing
+% Introduction section
+\input{./introduction/introduction.tex}
 
-\include{1/intro}
-\include{2/problem}
-\include{3/constraints}
-\include{4/algorithm}
-\include{5/experiment}
-\include{6/conclusion}
+% Objective section
+\input{./objective/objective.tex}
+
+% Related Work section
+\input{./related-work/related-work.tex}
+
+% Algorithm  section
+\input{./algorithm/algorithm.tex}
+
+% Table design section
+\input{./table-design/table-design.tex}
+
+% Performance section
+\input{./performance/performance.tex}
+
+% Requirement section
+\input{./requirement/requirement.tex}
+
+% Conclusion and future work section
+\input{./conclusion_future-work/conclusion_future-work.tex}
 
 % ------------------------------------------------
 
 % 附錄 Appendix
-\input{./appendix/appendix}
+%\input{./appendix/appendix}
 
 % ------------------------------------------------
 

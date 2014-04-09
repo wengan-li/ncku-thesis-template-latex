@@ -1,0 +1,35 @@
+
+% Database layer test
+\begin{table*}
+\centering
+\caption{Example code that to test STRING type in \textit{Database layer}}
+\label{table:performance:database-layer:code-example}
+\begin{tabular}{|c|c|c|}
+
+\hline
+\multicolumn{1}{|c|}{} &
+\multicolumn{1}{c|}{\textbf{Li's Hash}} &
+\multicolumn{1}{c|}{\textbf{Relational database}} \\
+
+\hline
+\multicolumn{1}{|c|}{Create table} &
+\multicolumn{1}{c|}
+{\tabincell{c}{
+X \\ (Key-value store don't need table)
+}} &
+\multicolumn{1}{l|}{CREATE TABLE table(value TEXT) ;} \\
+
+\hline
+\multicolumn{1}{|c|}{Insert} &
+\multicolumn{1}{l|}{put('key-\textit{i}', 'value-\textit{i}')} &
+\multicolumn{1}{l|}{INSERT INTO table('value') VALUES ('value-\textit{i}') ;} \\
+
+\hline
+\multicolumn{1}{|c|}{Select} &
+\multicolumn{1}{l|}{get('key-\textit{i}')} &
+\multicolumn{1}{l|}{SELECT value FROM table LIMIT \textit{i}, 1 ;} \\
+
+\hline
+\end{tabular}
+\end{table*}
+
