@@ -1,0 +1,18 @@
+% ------------------------------------------------
+% Page start
+\newpage
+\phantomsection
+% ------------------------------------------------
+
+%\chapter{Appendix Chap. 1}
+%\label{appendix:chap1}
+
+\section{Li's Hash Project}
+
+All source code and related data are open-source on \cite{web:lishash:home-page}.\\
+
+This project will continuous to maintenance for any future work that basic on this design, so they can rely on it to do more and more research and development.\\
+
+% ------------------------------------------------
+% End of page
+% ------------------------------------------------

@@ -1,0 +1,33 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Problem Formulation}
+\label{chap::PROBLEM FORMULATION}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\baselineskip=26pt
+
+\hspace{5mm}Since long or timing
+critical buses are normally assigned to a pair of high metal
+layers, one horizontal and one vertical, we only consider the
+two-layer bus routing problem. The horizontal and vertical buses
+can be routed in either layer. In the bus-pin-aware bus-driven
+floorplanning problem, we are given the following:
+
+1. A set of $n$ modules $M =$ \{$m_1$, $m_2,..., m_n$\}, each module $m_i$
+is associated with height $h_i$ and width $w_i$, where $h_i, w_i \in$
+$R^+$.
+
+2. A set of $m$ buses $B =$ \{$b_1$, $b_2,..., b_m$\}, each bus $b_j$ has a
+width $t_j$ and goes through a set of modules. Moreover, the
+position of each bus pin is also defined in each bus, where
+$t_j \in R^+$.
+
+Our goal is to determine the orientation and position of the bus pins
+on each module and decide the routing path for each bus such
+that no overlapping occurs between different horizontal (vertical)
+bus components.
+Moreover, no overlapping is allowed between different modules.
+The objectives of the bus-pin-aware bus-driven floorplanning problem are:\\
+(1) to {\bf minimize the chip area},\\
+(2) to {\bf minimize the bus area},\\
+(3) to {\bf minimize the number of infeasible buses},\\
+(4) to {\bf minimize the deviation of each bus}.\\

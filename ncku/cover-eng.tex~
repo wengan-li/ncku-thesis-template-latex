@@ -1,0 +1,104 @@
+
+% ----------------------------------------------------------------------------
+%                                English cover
+%                                   英文封面
+% ----------------------------------------------------------------------------
+
+% Set the line spacing to single for the titles (to compress the lines)
+\renewcommand{\baselinestretch}{1}   %行距 1 倍
+
+% ------------------------------------------------
+
+% Page start
+\newpage
+\phantomsection
+
+% Add to "Table of Contents"
+\addcontentsline{toc}{chapter}{Cover}
+
+% 設定使用 無頁碼, 有浮水印
+\thispagestyle{empty}
+
+% Aligned to the center of the page
+\begin{center}
+
+% ------------------------------------------------
+
+% 顯示 校名, 系所名, 論文種類
+\makebox[10cm][c]{\Huge\univEname}\\
+\vspace{0.5cm}
+\makebox[8cm][c]{\LARGE\fulldeptEname}\\
+\vspace{0.5cm}
+\makebox[5cm][c]{\LARGE Master's Thesis}\\
+
+% ------------------------------------------------
+
+% Space
+\vspace{7cm}
+
+% ------------------------------------------------
+
+% English title 英文題目
+\LARGE\eTitle\\
+\vspace{4.5cm}
+
+% ------------------------------------------------
+
+% 顯示學生和老師的名字
+
+% --------------------------
+
+% 顯示 學生 的名字
+\makebox[4.8em][r]{\Large Student}
+\makebox[1em][c]{\Large:}
+\makebox[7.2em][l]{\Large\myEname}\\
+
+\vspace{0.5cm}
+
+% --------------------------
+
+% 顯示 老師 (指導老師 A) 的名字
+\makebox[4.8em][r]{\Large Advisor}
+\makebox[1em][c]{\Large:}
+\makebox[7.2em][l]{\Large\advisorEnameA}\\
+
+% --------------------------
+
+% 指導老師 B
+\ifx \advisorEnameB  \itsempty
+    % 沒有 老師B 的話, 不佔版面和不印任何空白
+    \relax
+\else
+    % 顯示 老師B 的名字
+    \vspace{0.1cm}
+    \hspace{6.3em}
+    \makebox[7.2em][l]{\Large\advisorEnameB}\\
+\fi
+
+% --------------------------
+
+% 指導老師 C
+\ifx \advisorEnameC  \itsempty
+    % 沒有 老師C 的話, 不佔版面和不印任何空白
+    \relax
+\else
+    % 顯示 老師C 的名字
+    \vspace{0.1cm}
+    \hspace{6.3em}
+    \makebox[7.2em][l]{\Large\advisorEnameC}\\
+\fi
+
+% ------------------------------------------------
+
+% Date 日期
+\vspace{1.1cm}
+\makebox[8cm][c]{\Large \eMonth\ \ \eYear}
+
+% ------------------------------------------------
+
+% End of alignment
+\end{center}
+
+% End of page
+
+% ------------------------------------------------
