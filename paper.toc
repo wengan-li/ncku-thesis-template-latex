@@ -1,7 +1,0 @@
-\contentsline {chapter}{Cover}{ii}{section*.1}
-\contentsline {chapter}{Abstract}{iii}{section*.2}
-\contentsline {chapter}{Acknowledgments}{iv}{section*.3}
-\contentsline {chapter}{Table of Contents}{v}{section*.4}
-\contentsline {chapter}{List of Tables}{viii}{chapter*.7}
-\contentsline {chapter}{List of Figures}{ix}{chapter*.9}
-\contentsline {chapter}{References}{xi}{section*.10}
