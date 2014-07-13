@@ -1,43 +1,36 @@
 
 % ----------------------------------------------------------------------------
 %                           Document of oral presentation
-%                                         口試証明文件
-% ----------------------------------------------------------------------------
-
-% ----------------------------------------------------------------------------
-%                                Chinese version
-%                                        中文版本
+%                                   口試証明文件
 % ----------------------------------------------------------------------------
 
 % Page start
 \newpage
-%\cleardoublepage
 \phantomsection
-% 設定顯示在目錄
-\addcontentsline{toc}{chapter}
-	{Document of oral presentation - Chinese}
 
-% 設定使用 無頁碼, 有浮水印
+% 設定顯示在目錄
+\addcontentsline{toc}{chapter}{Document of oral presentation}
+
+% ----------------------------------------------------------------------------
+
+% Chinese version 中文版本
+\phantomsection
+\addcontentsline{toc}{section}{Chinese version}
 \thispagestyle{empty}
+
+% Image of document
 \includepdf{./oral/oral-chi.pdf}
 
-% End of page
-
-% ----------------------------------------------------------------------------
-%                                English version
-%                                      英文版本
 % ----------------------------------------------------------------------------
 
-% Page start
-\newpage
-%\cleardoublepage
+% English version 英文版本
 \phantomsection
-% 設定顯示在目錄
-\addcontentsline{toc}{chapter}
-	{Document of oral presentation - English}
-
-% 設定使用 無頁碼, 有浮水印
+\addcontentsline{toc}{section}{English version}
 \thispagestyle{empty}
+
+% Image of document
 \includepdf{./oral/oral-eng.pdf}
+
+% ----------------------------------------------------------------------------
 
 % End of page
