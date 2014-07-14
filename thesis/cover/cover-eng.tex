@@ -29,7 +29,7 @@
 \vspace{0.5cm}
 \makebox[8cm][c]{\LARGE\fulldeptEname}\\
 \vspace{0.5cm}
-\makebox[5cm][c]{\LARGE Master's Thesis}\\
+\makebox[5cm][c]{\LARGE\degreeEname}\\
 
 % ------------------------------------------------
 
@@ -65,7 +65,7 @@
 % --------------------------
 
 % 指導老師 B
-\ifx \advisorEnameB  \itsempty
+\ifx \advisorEnameB \itsempty
     % 沒有 老師B 的話, 不佔版面和不印任何空白
     \relax
 \else
@@ -78,7 +78,7 @@
 % --------------------------
 
 % 指導老師 C
-\ifx \advisorEnameC  \itsempty
+\ifx \advisorEnameC \itsempty
     % 沒有 老師C 的話, 不佔版面和不印任何空白
     \relax
 \else
@@ -92,7 +92,7 @@
 
 % Date 日期
 \vspace{1.1cm}
-\makebox[8cm][c]{\Large \eMonth\ \ \eYear}
+\makebox[8cm][c]{\Large \eMonth , \eYear}
 
 % ------------------------------------------------
 

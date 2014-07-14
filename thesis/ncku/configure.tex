@@ -45,8 +45,6 @@
 
 % --------------------------
 
-%\usepackage{./ncku/style/macros}
-\usepackage{./ncku/style/utdiss}
 \usepackage{graphicx}
 \usepackage{latexsym}
 \usepackage{hyperref}
@@ -54,9 +52,7 @@
 \usepackage{url}
 \usepackage{multirow}
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
-
 \usepackage[sort&compress, sectionbib, super]{natbib}
-
 %\usepackage{caption}
 %\usepackage{enumitem}
 %\usepackage{subcaption}
@@ -64,6 +60,12 @@
 % ------------------------------------------------
 
 % 有關學校對論文要求的設定
+
+% --------------------------
+
+% 學校排版 Arrangement style
+\usepackage{./ncku/style/macros}
+\usepackage{./ncku/style/utdiss}
 
 % --------------------------
 
@@ -79,25 +81,26 @@
 
 % --------------------------
 
-\input{./ncku/cmd-define.tex}
+% 一些用來設定用的function和variable
+\input{./ncku/command.tex}
 
 % --------------------------
 
 % 論文有關資料
-\input{./conf/names.tex}
+\input{./conf/conf.tex}
 
 % --------------------------
 
 % 使用 hyperref 在 pdf 簡介欄裡填入相關資料
 \ifx \hypersetup \undefined
     % do nothing
-	\relax
+    \relax
 \else
-	\hypersetup
+    \hypersetup
     {
         unicode     = true,
-	    pdftitle    = {\eTitle (\cTitle)},
-	    pdfauthor   = {\myEname (\myCname)},
+        pdftitle    = {\eTitle (\cTitle)},
+        pdfauthor   = {\myEname (\myCname)},
         pdfcreator  = {\univEname},
 %        pdfproducer = {\univEname},
         pdfsubject  = {},
