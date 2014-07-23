@@ -1,0 +1,42 @@
+﻿電子檔案規格、轉檔與上傳作業說明
+http://etds.lib.ncku.edu.tw/files/2012050007.pdf
+
+研究生畢業繳交論文全文電子檔案說明
+http://etds.lib.ncku.edu.tw/files/2012050004.pdf
+
+電子學位論文服務流程說明圖
+http://etds.lib.ncku.edu.tw/files/2012050006.pdf
+
+2014論文提交說明簡報檔
+http://etds.lib.ncku.edu.tw/files/2012050003.ppt
+
+
+國立成功大學各系（所）博碩士撰寫論文須知
+http://cid.acad.ncku.edu.tw/ezfiles/56/1056/img/730/degree4-1.pdf
+
+電子論文上傳前檢查事項
+http://etds.lib.ncku.edu.tw/files/2012090001.pdf
+
+
+國立成功大學生物科技研究所
+碩、博士學位論文格式規範
+www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc
+
+國立成功大學體育健康與休閒研究所
+www.ncku.edu.tw/~deprb/docs/Thesis%20Regulation%20.doc
+
+
+
+
+之前我一直不了解為什麼學校的畢業論文格式不一, 直到後來去爬學校圖書館的'成功大學電子學位論文服務', 理解他們提供了什麼資料後, 我就發現了原因:
+    學校沒有提供任何一個統一模版, 不論Microsoft Word或是Latex.
+
+
+使用Latex，跨行、跨列複雜表格的撰寫方法，使用\multicolumn和\multirow
+http://jhengjyun.blogspot.tw/2011/01/latexmulticolumnmultirow.html
+
+LaTable 方便Latex畫表格的圖形化工具
+http://jhengjyun.blogspot.tw/2011/01/latable-latex.html
+
+Create LaTeX tables online
+http://www.tablesgenerator.com/
