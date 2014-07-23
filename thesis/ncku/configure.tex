@@ -96,13 +96,25 @@
   % do nothing
   \relax
 \else
+  \ifx \cTitle \undefined
+    \hypersetup
+    {
+      pdftitle  = {\eTitle},
+      pdfauthor = {\myEname},
+    }
+  \else
+    \hypersetup
+    {
+      pdftitle  = {\eTitle (\cTitle)},
+      pdfauthor = {\myEname (\myCname)},
+    }
+  \fi
+
   \hypersetup
   {
     unicode     = true,
-    pdftitle    = {\eTitle (\cTitle)},
-    pdfauthor   = {\myEname (\myCname)},
     pdfcreator  = {\univEname},
-%    pdfproducer = {\univEname},
+    pdfproducer = {\univEname},
     pdfsubject  = {},
     pdfkeywords = {},
   }
