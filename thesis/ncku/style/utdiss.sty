@@ -269,12 +269,12 @@
 \newcounter{AppendixCounter}
 
 \def\appendix{\clearpage
-    \typeout{Appendix.}
-    \thispagestyle{plain}
-    \vspace*{\fill}
-    \centerline{\large\bf Appendix}
-    \vspace*{\fill}
-    \addcontentsline{toc}{chapter}{Appendix}
+%    \typeout{Appendix.}
+%    \thispagestyle{plain}
+%    \vspace*{\fill}
+%    \centerline{\large\bf Appendix}
+%    \vspace*{\fill}
+%    \addcontentsline{toc}{chapter}{Appendix}
 %    \setcounter{chapter}{0}
 %    \setcounter{section}{0}
     \setcounter{AppendixCounter}{0}
@@ -283,12 +283,12 @@
     \def\thechapter{\Alph{AppendixCounter}}}
 
 \def\appendices{\clearpage
-    \typeout{Appendices.}
-    \thispagestyle{plain}
-    \vspace*{\fill}
-    \centerline{\large\bf Appendices}
-    \vspace*{\fill}
-    \nopage@addcontentsline{toc}{chapter}{Appendices}
+%    \typeout{Appendices.}
+%    \thispagestyle{plain}
+%    \vspace*{\fill}
+%    \centerline{\large\bf Appendices}
+%    \vspace*{\fill}
+%    \nopage@addcontentsline{toc}{chapter}{Appendices}
 %    \setcounter{chapter}{0}
 %    \setcounter{section}{0}
     \setcounter{AppendixCounter}{0}
@@ -341,8 +341,10 @@
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}%
     {3.25ex plus -1ex minus -.2ex}{.1ex plus .2ex}{\normalsize\it}}
 
-\def\thebibliography#1{\chapter*{Bibliography}
-    \addcontentsline{toc}{chapter}{Bibliography}
+%\def\thebibliography#1{\chapter*{Bibliography}
+%    \addcontentsline{toc}{chapter}{Bibliography}
+\def\thebibliography#1{\chapter*{References}
+    \addcontentsline{toc}{chapter}{References}
     \list
     {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
     \advance\leftmargin\labelsep
