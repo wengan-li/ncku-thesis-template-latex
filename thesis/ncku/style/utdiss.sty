@@ -249,6 +249,7 @@
 
 \def\chapter{%
     \clearpage
+    \stepcounter{AppendixCounter}
     \short@page \setcounter{regular@short}{0} %<<--
     \default@spacing
     \global\@topnum\z@ \@afterindentfalse %\@afterindenttrue
@@ -265,6 +266,8 @@
 
 \def\appendixname{Appendix}
 
+\newcounter{AppendixCounter}
+
 \def\appendix{\clearpage
     \typeout{Appendix.}
     \thispagestyle{plain}
@@ -272,24 +275,26 @@
     \centerline{\large\bf Appendix}
     \vspace*{\fill}
     \addcontentsline{toc}{chapter}{Appendix}
-    \setcounter{chapter}{0}
-    \setcounter{section}{0}
+%    \setcounter{chapter}{0}
+%    \setcounter{section}{0}
+    \setcounter{AppendixCounter}{0}
     \def\@chapapp{\appendixname}
     \chap@or@app=2
-    \def\thechapter{\Alph{chapter}}}
+    \def\thechapter{\Alph{AppendixCounter}}}
 
 \def\appendices{\clearpage
     \typeout{Appendices.}
-   \thispagestyle{plain}
+    \thispagestyle{plain}
     \vspace*{\fill}
     \centerline{\large\bf Appendices}
     \vspace*{\fill}
     \nopage@addcontentsline{toc}{chapter}{Appendices}
-    \setcounter{chapter}{0}
-    \setcounter{section}{0}
+%    \setcounter{chapter}{0}
+%    \setcounter{section}{0}
+    \setcounter{AppendixCounter}{0}
     \def\@chapapp{\appendixname}
     \chap@or@app=2
-    \def\thechapter{\Alph{chapter}}}
+    \def\thechapter{\Alph{AppendixCounter}}}
 
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
     \refstepcounter{chapter}
