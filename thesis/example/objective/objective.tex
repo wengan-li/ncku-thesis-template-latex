@@ -13,27 +13,27 @@
 做這個模板的原因其實很簡單:
 
 \begin{enumerate}
-    \item 去投國外paper時, 對方可能會要求使用LaTeX, 所以未來要懂LaTeX是不意外的.
+  \item 去投國外paper時, 對方可能會要求使用LaTeX, 所以未來要懂LaTeX是不意外的.
 
-    \item 想拿LaTeX來寫畢業論文, 卻發現學校只提供Mircosoft Word模板, 但卻沒有提供LaTeX的, 所以證明這模板對學校是有存在價值的.
+  \item 想拿LaTeX來寫畢業論文, 卻發現學校只提供Mircosoft Word模板, 但卻沒有提供LaTeX的, 所以證明這模板對學校是有存在價值的.
 
-    \item 因為看到發現台灣科技大學\cite{web:latex:template:ntust}, 台灣大學\cite{web:latex:template:ntu}, 元智大學\cite{web:latex:template:ntust}都能找到LaTeX的模板, 連大陸那邊都有一些學校有在提供. 那些學校的畢業論文模板不只提供是Mircosoft Word版本(.doc), 是會連Latex(.tex)版本都有, 而我們學校卻沒有. 唯一我們學校在Google上找到的有提到的卻是數學系系網頁上的功能\cite{web:latex:ncku_math_introduction}和建在數學系上的一個討論區\cite{web:latex:ncku_math_forum}.
+  \item 因為看到發現台灣科技大學\cite{web:latex:template:ntust}, 台灣大學\cite{web:latex:template:ntu}, 元智大學\cite{web:latex:template:ntust}都能找到LaTeX的模板, 連大陸那邊都有一些學校有在提供. 那些學校的畢業論文模板不只提供是Mircosoft Word版本(.doc), 是會連Latex(.tex)版本都有, 而我們學校卻沒有. 唯一我們學校在Google上找到的有提到的卻是數學系系網頁上的功能\cite{web:latex:ncku_math_introduction}和建在數學系上的一個討論區\cite{web:latex:ncku_math_forum}.
 
-    \item 因為學校對Phd跟Master的畢業論文要求是一樣格式, 所以這樣對學校任何學生應該都有其好處. 對大家都有多一個選擇來寫畢業論文, 而不是被限在使用Mircosoft Word來寫.
+  \item 因為學校對Phd跟Master的畢業論文要求是一樣格式, 所以這樣對學校任何學生應該都有其好處. 對大家都有多一個選擇來寫畢業論文, 而不是被限在使用Mircosoft Word來寫.
 
-    \item 經過詢問我們資訊工程系(CSIE)的系上一些老師後, 意外發現原來某些實驗室其實已經有各自的版本存在(參考: Acknowledgment P.\pageref{acknowledgments-chi}), 但每個版本都有各自的優缺點. E.g :
+  \item 經過詢問我們資訊工程系(CSIE)的系上一些老師後, 意外發現原來某些實驗室其實已經有各自的版本存在(參考: Acknowledgment P.\pageref{acknowledgments-chi}), 但每個版本都有各自的優缺點. E.g :
 
-        \begin{enumerate}
+    \begin{enumerate}
 
-            \item 新的使用者或接手的人不容易修改或使用.
+      \item 新的使用者或接手的人不容易修改或使用.
 
-            \item 或是需要安裝的步驟十分麻煩 (e.g cwTeX\cite{web:latex:cwtex}).
+      \item 或是需要安裝的步驟十分麻煩 (e.g cwTeX\cite{web:latex:cwtex}).
 
-            \item 另外有一些因為是只針對英文版本, 沒有考量在編寫或初稿時會有中英混雜的時候(同時因學校奇怪的要求, 例如英文內容的論文卻要寫中文論文名字等), 所以需要把整個論文分開成不同格式的檔案.
+      \item 另外有一些因為是只針對英文版本, 沒有考量在編寫或初稿時會有中英混雜的時候(同時因學校奇怪的要求, 例如英文內容的論文卻要寫中文論文名字等), 所以需要把整個論文分開成不同格式的檔案.
 
-            \item etc.
+      \item etc.
 
-        \end{enumerate}
+    \end{enumerate}
 
 \end{enumerate}
 
@@ -42,11 +42,11 @@
 
 \begin{enumerate}
 
-    \item 把這模板做到連笨蛋都可以很快懂得使用(所謂的Books for Dummies), 所以只留下使用者要填寫的部份外, 其他都交由模板去負責.
+  \item 把這模板做到連笨蛋都可以很快懂得使用(所謂的Books for Dummies), 所以只留下使用者要填寫的部份外, 其他都交由模板去負責.
 
-    \item 希望做到使用者只讀這份模板, 就會懂得去修改和寫自己所需的內容(所謂的Self-contained. 其實是很難的, 因為Latex的使用手冊就算寫成一本幾百頁的書, 都可以缺少很多東西), 所以會同時提供很基本使用Latex的方式, 和填寫這模板步驟.
+  \item 希望做到使用者只讀這份模板, 就會懂得去修改和寫自己所需的內容(所謂的Self-contained. 其實是很難的, 因為Latex的使用手冊就算寫成一本幾百頁的書, 都可以缺少很多東西), 所以會同時提供很基本使用Latex的方式, 和填寫這模板步驟.
 
-    \item 希望同一份的模板, 能用在中文或是英文版本, 只修改內容而不用重新修改任何設定. (在這邊曾考量過cwTeX, 但由於它的寫法太糟, 而且安裝複雜\cite{web:latex:cwtex}; 而CJK有一定程度的設定才能在整個論文中自由使用, 因設定麻煩而沒法笨蛋化來用, 所以放棄選用; 故最後選用最簡單加一些包裝, 就可以簡單使用中英混合的XeLaTex.)
+  \item 希望同一份的模板, 能用在中文或是英文版本, 只修改內容而不用重新修改任何設定. (在這邊曾考量過cwTeX, 但由於它的寫法太糟, 而且安裝複雜\cite{web:latex:cwtex}; 而CJK有一定程度的設定才能在整個論文中自由使用, 因設定麻煩而沒法笨蛋化來用, 所以放棄選用; 故最後選用最簡單加一些包裝, 就可以簡單使用中英混合的XeLaTex.)
 
 \end{enumerate}
 
@@ -55,11 +55,11 @@
 
 \begin{enumerate}
 
-    \item 這模板是以台灣國立成功大學所最新訂下的畢業論文要求(參考: 附錄 - 撰寫論文須知 P.\pageref{appendix:thesis-spec})來設計, 所以不一定能對非本校的人有用.
+  \item 這模板是以台灣國立成功大學所最新訂下的畢業論文要求(參考: 附錄 - 撰寫論文須知 P.\pageref{appendix:thesis-spec})來設計, 所以不一定能對非本校的人有用.
 
-    \item 對沒有程式基礎, 只會用Mircosoft Word的人來講, 可能會在修改或使用上會十分吃力.
+  \item 對沒有程式基礎, 只會用Mircosoft Word的人來講, 可能會在修改或使用上會十分吃力.
 
-    \item 這模板是跟系上老師的一些對話和上課所聽得出的結論而寫出, 所以某些說話會帶有我們濃郁的資工系味道, 所以可能會有一些人不懂; 故如果有任何的老師能提供一些意見或想法的話, 會十分感謝的.
+  \item 這模板是跟系上老師的一些對話和上課所聽得出的結論而寫出, 所以某些說話會帶有我們濃郁的資工系味道, 所以可能會有一些人不懂; 故如果有任何的老師能提供一些意見或想法的話, 會十分感謝的.
 
 \end{enumerate}
 

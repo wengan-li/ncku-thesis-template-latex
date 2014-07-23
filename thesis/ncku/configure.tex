@@ -16,11 +16,11 @@
 % Set english font (Use package <ifplatform> to check)
 \usepackage{ifplatform}
 \ifwindows
-    % In Windows
-    \setmainfont{Times New Roman}
+  % In Windows
+  \setmainfont{Times New Roman}
 \else
-    % In *nix
-    \usepackage{times}
+  % In *nix
+  \usepackage{times}
 \fi 
 
 % 設定中英文的字型
@@ -46,13 +46,13 @@
 % --------------------------
 
 \usepackage{graphicx}
-\usepackage{latexsym}
+%\usepackage{latexsym}
 \usepackage{hyperref}
 \usepackage{pdfpages}
 \usepackage{url}
 \usepackage{multirow}
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
-\usepackage[sort&compress, sectionbib, super]{natbib}
+%\usepackage[sort&compress, sectionbib, super]{natbib}
 %\usepackage{caption}
 %\usepackage{enumitem}
 %\usepackage{subcaption}
@@ -93,19 +93,19 @@
 
 % 使用 hyperref 在 pdf 簡介欄裡填入相關資料
 \ifx \hypersetup \undefined
-    % do nothing
-    \relax
+  % do nothing
+  \relax
 \else
-    \hypersetup
-    {
-        unicode     = true,
-        pdftitle    = {\eTitle (\cTitle)},
-        pdfauthor   = {\myEname (\myCname)},
-        pdfcreator  = {\univEname},
-%        pdfproducer = {\univEname},
-        pdfsubject  = {},
-        pdfkeywords = {},
-    }
+  \hypersetup
+  {
+    unicode     = true,
+    pdftitle    = {\eTitle (\cTitle)},
+    pdfauthor   = {\myEname (\myCname)},
+    pdfcreator  = {\univEname},
+%    pdfproducer = {\univEname},
+    pdfsubject  = {},
+    pdfkeywords = {},
+  }
 \fi
 
 % ------------------------------------------------
