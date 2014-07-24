@@ -67,23 +67,30 @@
 % 但是一般博士論文都會說   Doctoral dissertation
 
 \newcommand{\degreeCname}{碩士/博士} % Default
+\newcommand{\degreeThesisEname}{Master's / Doctoral dissertation} % Default
 \newcommand{\degreeEname}{Master's / Doctoral dissertation} % Default
+
 \newcommand{\SetChiDegree}[1]{\renewcommand{\degreeCname}{#1}}
 \newcommand{\SetEngDegree}[1]{\renewcommand{\degreeEname}{#1}}
+\newcommand{\SetEngDegreeThesis}[1]{\renewcommand{\degreeThesisEname}{#1}}
+
 \newcommand{\PhdDegree}[0]
 {
   \SetChiDegree{博士}
-  \SetEngDegree{Doctoral dissertation}
+  \SetEngDegree{Doctor}
+  \SetEngDegreeThesis{Doctoral dissertation}
 } % End of \newcommand{}
 
 \newcommand{\MasterDegree}[0]
 {
   \SetChiDegree{碩士}
-  \SetEngDegree{Master's dissertation}
+  \SetEngDegree{Master}
+  \SetEngDegreeThesis{Master's dissertation}
 } % End of \newcommand{}
 
 \newcommand{\GetChiDegree}[0]{\degreeCname}
 \newcommand{\GetEngDegree}[0]{\degreeEname}
+\newcommand{\GetEngDegreeThesis}[0]{\degreeThesisEname}
 % ----------------------------------------------------------------------------
 
 % --- Date 日期 ---
@@ -156,7 +163,7 @@
 
 \newcommand{\deptCname}{A系}
 %\newcommand{\deptEname}{DeptA} % Short form of department
-\newcommand{\fulldeptEname}{Department A} % Full name of department
+\newcommand{\fulldeptEname}{Department / Insitute A} % Full name of department
 \newcommand{\SetDeptChiName}[1]{\renewcommand{\deptCname}{#1}}
 %\newcommand{\SetDeptEngShortName}[1]{\renewcommand{\deptEname}{#1}}
 \newcommand{\SetDeptEngName}[1]{\renewcommand{\fulldeptEname}{#1}}
@@ -166,6 +173,9 @@
 %  \SetDeptEngShortName{#2}
   \SetDeptEngName{#2}
 } % End of \newcommand{}
+
+\newcommand{\GetDeptChiName}[0]{\deptCname}
+\newcommand{\GetDeptEngName}[0]{\fulldeptEname}
 
 % ----------------------------------------------------------------------------
 
@@ -283,4 +293,25 @@
 } % End of \newcommand{}
 
 \newcommand{\ClearWatermark}[0]{\ClearShipoutPicture}
+
+% ----------------------------------------------------------------------------
+
+% 口試委員 Committee member(s)
+\newcommand{\CommitteeSize}{8} % Default
+\newcommand{\GetCommitteeSize}[0]{\CommitteeSize}
+\newcommand{\SetCommitteeSize}[1]
+{
+  \ifthenelse{#1 < 4}
+  {\renewcommand{\CommitteeSize}{4}}
+  {
+    \ifthenelse{#1 > 8}
+    {\renewcommand{\CommitteeSize}{8}}
+    {\renewcommand{\CommitteeSize}{#1}}
+  }
+}
+
+% Signature line
+\newcommand{\namesigdate}[0]{\rule{5.5cm}{1pt}}
+
+% ----------------------------------------------------------------------------
 
