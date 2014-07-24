@@ -25,11 +25,11 @@
 % ------------------------------------------------
 
 % 顯示 校名, 系所名, 論文種類
-\makebox[10cm][c]{\Huge\univEname}\\
+\makebox[10cm][c]{\Huge\GetSchoolEngName}\\
 \vspace{0.5cm}
 \makebox[8cm][c]{\LARGE\fulldeptEname}\\
 \vspace{0.5cm}
-\makebox[5cm][c]{\LARGE\degreeEname}\\
+\makebox[5cm][c]{\LARGE\GetEngDegree}\\
 
 % ------------------------------------------------
 
@@ -51,7 +51,7 @@
 % 顯示 學生 的名字
 \makebox[4.8em][r]{\Large Student}
 \makebox[1em][c]{\Large:}
-\makebox[7.2em][l]{\Large\myEname}\\
+\makebox[7.2em][l]{\Large\GetAuthorEngName}\\
 
 \vspace{0.5cm}
 
@@ -92,7 +92,12 @@
 
 % Date 日期
 \vspace{1.1cm}
-\makebox[8cm][c]{\Large \eMonth , \eYear}
+
+\begin{minipage}{\textwidth}
+  \begin{center}
+    \Large \GetThesisMonthInEng \thinspace \GetThesisYear
+  \end{center}
+\end{minipage}
 
 % ------------------------------------------------
 

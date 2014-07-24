@@ -25,11 +25,11 @@
 % ------------------------------------------------
 
 % 顯示 校名, 系所名, 論文種類
-\makebox[10cm][s]{\Huge\univCname}\\
+\makebox[10cm][s]{\Huge\GetSchoolChiName}\\
 \vspace{1cm}
 \makebox[8cm][s]{\Huge\deptCname}\\
 \vspace{1cm}
-\makebox[5cm][s]{\Huge\degreeCname 論文}\\
+\makebox[5cm][s]{\Huge\GetChiDegree 論文}\\
 
 % ------------------------------------------------
 
@@ -56,7 +56,7 @@
 \hspace{2.4em}
 \makebox[4.8em][s]{\Large 學生}
 \makebox[1em][c]{\Large ：}
-\makebox[7.2em][l]{\Large\myCname}\\
+\makebox[7.2em][l]{\Large\GetAuthorChiName}\\
 
 \vspace{0.5cm}
 
@@ -102,7 +102,7 @@
 
 % Date 日期
 \vspace{1.5cm}
-\makebox[8cm][s]{\Large 中華民國\cYear 年\cMonth 月}
+\makebox[8cm][s]{\Large 中華民國 \GetThesisYearInTaiwanYear 年 \GetThesisMonth 月}
 
 % ------------------------------------------------
 

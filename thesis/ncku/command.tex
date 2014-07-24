@@ -94,16 +94,13 @@
 
 \newcommand{\SetThesisDate}[2]
 {
+  \SetThesisTaiwanYear{#1}
   \renewcommand{\ThesisYear}{#1}
   \renewcommand{\ThesisMonth}{#2}
 } % End of \newcommand{}
 
 \newcommand{\GetThesisYear}[0]{\ThesisYear}
-\newcommand{\GetThesisYearInTaiwanYear}[0]
-{
-  \SetTaiwanYear{#1}
-  \TaiwanYearResult
-}
+\newcommand{\GetThesisYearInTaiwanYear}[0]{\ThesisTaiwanYearResult}
 \newcommand{\GetThesisMonth}[0]{\ThesisMonth}
 \newcommand{\GetThesisMonthInEng}[0]{\GetMonthInEng{\ThesisMonth}}
 
@@ -124,8 +121,8 @@
 
 \newcommand{\SetOralChiDate}[3]
 {
-  \SetTaiwanYear{#1}
-  \renewcommand{\OralChiYear}{\TaiwanYearResult}
+  \SetOralTaiwanYear{#1}
+  \renewcommand{\OralChiYear}{\OralTaiwanYearResult}
   \renewcommand{\OralChiMonth}{#2}
   \renewcommand{\OralChiDay}{#3}
 } % End of \newcommand{}
@@ -243,7 +240,13 @@
 } % End of \newcommand{}
 
 % Get the year using Taiwans' year
-\newcommand{\SetTaiwanYear}[1]
+\newcommand{\SetOralTaiwanYear}[1]
 {
-  \FPeval{\TaiwanYearResult}{clip(#1 - 1911)}
+  \FPeval{\OralTaiwanYearResult}{clip(#1 - 1911)}
+} % End of \newcommand{}
+
+% Get the year using Taiwans' year
+\newcommand{\SetThesisTaiwanYear}[1]
+{
+  \FPeval{\ThesisTaiwanYearResult}{clip(#1 - 1911)}
 } % End of \newcommand{}
