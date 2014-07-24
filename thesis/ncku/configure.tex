@@ -50,6 +50,8 @@
 \usepackage{pdfpages}
 \usepackage{url}
 \usepackage{multirow}
+\usepackage{fp}
+\usepackage{siunitx}
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 
 % ------------------------------------------------
@@ -91,25 +93,25 @@
   % do nothing
   \relax
 \else
-  \ifx \cTitle \undefined
+  \ifx \GetChiTitle \undefined
     \hypersetup
     {
-      pdftitle  = {\eTitle},
-      pdfauthor = {\myEname},
+      pdftitle  = {\GetEngTitle},
+      pdfauthor = {\GetAuthorEngName},
     }
   \else
     \hypersetup
     {
-      pdftitle  = {\eTitle (\cTitle)},
-      pdfauthor = {\myEname (\myCname)},
+      pdftitle  = {\GetEngTitle (\GetChiTitle)},
+      pdfauthor = {\GetAuthorEngName (\GetAuthorChiName)},
     }
   \fi
 
   \hypersetup
   {
     unicode     = true,
-    pdfcreator  = {\univEname},
-    pdfproducer = {\univEname},
+    pdfcreator  = {\GetSchoolEngName},
+    pdfproducer = {\GetSchoolEngName},
     pdfsubject  = {},
     pdfkeywords = {},
   }
