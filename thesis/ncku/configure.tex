@@ -66,18 +66,6 @@
 
 % --------------------------
 
-% 學校浮水印 Watermark
-\AddToShipoutPicture{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{
-\vfill
-\centering
-\includegraphics[]{./ncku/watersymbol.jpg}
-\vfill
-}}}
-
-% --------------------------
-
 % 一些用來設定用的function和variable
 \input{./ncku/command.tex}
 
@@ -85,6 +73,11 @@
 
 % 論文有關資料
 \input{./conf/conf.tex}
+
+% --------------------------
+
+% 設定學校浮水印 Watermark
+\UseSchoolWatermark
 
 % --------------------------
 

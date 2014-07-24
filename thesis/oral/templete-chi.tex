@@ -1,11 +1,14 @@
 
 % ----------------------------------------------------------------------------
-%                Chinese cover
-%                   中文封面
+%   Document of oral presentation (Chinese version)
+%                   中文版口試証明文件
 % ----------------------------------------------------------------------------
 
 % Set the line spacing to single for the titles (to compress the lines)
 \renewcommand{\baselinestretch}{1}   %行距 1 倍
+
+% 由於中文版的watermark是用文字, 所以先把Logo版關掉
+\ClearWatermark
 
 % ------------------------------------------------
 
@@ -17,25 +20,33 @@
 \addcontentsline{toc}{section}{Chinese version}
 \thispagestyle{empty}
 
+% 使用文字版watermark
+\UseSchoolTextWatermark
+
 % Aligned to the center of the page
 \begin{center}
 
 % ------------------------------------------------
 
 % 顯示 校名, 論文種類
-\makebox[\textwidth][c]{\Huge \univCname}\\
+\makebox[\textwidth][c]{\Huge \GetSchoolChiName}\\
 \vspace{0.5cm}
-\makebox[\textwidth][c]{\Huge \degreeCname 論文}\\
+\makebox[\textwidth][c]{\Huge \GetChiDegree 論文}\\
 
 % Chinese and English title 中英文題目
-\vspace{0.2cm}
-\Large \cTitle
-\Large \eTitle
+\vspace{0.5cm}
+
+\begin{minipage}[c][3cm][t]{\textwidth}
+  \begin{center}
+    \Large \GetChiTitle \\
+    \Large \GetEngTitle
+  \end{center}
+\end{minipage}
 
 % ------------------------------------------------
 
 % Space
-\vspace{3.5cm}
+\vspace{3.7cm}
 
 % ------------------------------------------------
 
@@ -46,7 +57,7 @@
 % 顯示 學生 的名字
 \hspace{2.4em}
 \makebox[4.8em][r]{\LARGE 研究生：}
-\makebox[7.2em][l]{\LARGE \myCname} \\
+\makebox[7.2em][l]{\LARGE \GetAuthorChiName} \\
 
 % --------------------------
 \vspace{1cm}
@@ -56,13 +67,13 @@
 \makebox[11.6cm][l]{\LARGE 論文考試委員：} \\
 % --------------------------
 
-\vspace{5.0cm}
+\vspace{4.8cm}
 
 \hspace{2.4em}
 \makebox[4.8em][r]{\LARGE 指導教授：}
 \makebox[7.2em][l]{}
 
-\vspace{1.0cm}
+\vspace{0.8cm}
 
 \hspace{2.4em}
 \makebox[4.8em][r]{\LARGE 系(所)主管：}
@@ -71,8 +82,8 @@
 % --------------------------
 
 % Date 日期
-\vspace{1.0cm}
-\makebox[\textwidth][s]{\LARGE 中華民國 \cYear 年 \cMonth 月 00 日}
+\vspace{0.8cm}
+\makebox[\textwidth][s]{\LARGE 中華民國 \GetOralChiYear 年 \GetOralChiMonth 月 \GetOralChiDay 日}
 
 % ------------------------------------------------
 
@@ -80,5 +91,10 @@
 \end{center}
 
 % End of page
+\clearpage
+
+% 重新使用學校浮水印 Watermark
+\UseSchoolWatermark
 
 % ------------------------------------------------
+
