@@ -1,0 +1,84 @@
+
+% ----------------------------------------------------------------------------
+%                Chinese cover
+%                   中文封面
+% ----------------------------------------------------------------------------
+
+% Set the line spacing to single for the titles (to compress the lines)
+\renewcommand{\baselinestretch}{1}   %行距 1 倍
+
+% ------------------------------------------------
+
+% Page start
+% Add to "Table of Contents"
+% 設定使用 無頁碼, 有浮水印
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Chinese version}
+\thispagestyle{empty}
+
+% Aligned to the center of the page
+\begin{center}
+
+% ------------------------------------------------
+
+% 顯示 校名, 論文種類
+\makebox[\textwidth][c]{\Huge \univCname}\\
+\vspace{0.5cm}
+\makebox[\textwidth][c]{\Huge \degreeCname 論文}\\
+
+% Chinese and English title 中英文題目
+\vspace{0.2cm}
+\Large \cTitle
+\Large \eTitle
+
+% ------------------------------------------------
+
+% Space
+\vspace{3.5cm}
+
+% ------------------------------------------------
+
+% 顯示學生和老師的名字
+
+% --------------------------
+
+% 顯示 學生 的名字
+\hspace{2.4em}
+\makebox[4.8em][r]{\LARGE 研究生：}
+\makebox[7.2em][l]{\LARGE \myCname} \\
+
+% --------------------------
+\vspace{1cm}
+\makebox[\textwidth][c]{\LARGE 本論文業經審查及口試合格特此證明} \\
+% --------------------------
+\vspace{1cm}
+\makebox[11.6cm][l]{\LARGE 論文考試委員：} \\
+% --------------------------
+
+\vspace{5.0cm}
+
+\hspace{2.4em}
+\makebox[4.8em][r]{\LARGE 指導教授：}
+\makebox[7.2em][l]{}
+
+\vspace{1.0cm}
+
+\hspace{2.4em}
+\makebox[4.8em][r]{\LARGE 系(所)主管：}
+\makebox[7.2em][l]{}
+
+% --------------------------
+
+% Date 日期
+\vspace{1.0cm}
+\makebox[\textwidth][s]{\LARGE 中華民國 \cYear 年 \cMonth 月 00 日}
+
+% ------------------------------------------------
+
+% End of alignment
+\end{center}
+
+% End of page
+
+% ------------------------------------------------
