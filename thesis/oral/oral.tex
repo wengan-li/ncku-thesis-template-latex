@@ -13,24 +13,31 @@
 
 % ----------------------------------------------------------------------------
 
-% Chinese version 中文版本
-%\phantomsection
-%\addcontentsline{toc}{section}{Chinese version}
-%\thispagestyle{empty}
+\ifthenelse{\OralDocument = \OralDocumentTemplete}
+{
+  % 顯示範本
+  \ifthenelse{\OralDocumentEngOnly = 0}
+  {\input{./oral/templete-chi.tex}}{}
 
-% Image of document
-%\includepdf{./oral/oral-chi.pdf}
-\input{./oral/templete-chi.tex}
-% ----------------------------------------------------------------------------
+  \input{./oral/templete-eng.tex}
+}
+{
+  % 顯示圖片, PDF format
 
-% English version 英文版本
-\phantomsection
-\addcontentsline{toc}{section}{English version}
-\thispagestyle{empty}
+  \phantomsection
+  \thispagestyle{empty}
 
-% Image of document
-\includepdf{./oral/oral-eng.pdf}
-%\put{./oral/oral-eng.pdf}
+  % Image of document
+  \ifthenelse{\OralDocumentEngOnly = 0}
+  {
+    \addcontentsline{toc}{section}{Chinese version}
+    \includepdf{./oral/oral-chi.pdf}
+  }
+  {}
+
+  \addcontentsline{toc}{section}{English version}
+  \includepdf{./oral/oral-eng.pdf}
+}
 
 % ----------------------------------------------------------------------------
 

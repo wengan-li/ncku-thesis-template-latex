@@ -67,8 +67,8 @@
 % 但是一般博士論文都會說   Doctoral dissertation
 
 \newcommand{\degreeCname}{碩士/博士} % Default
+\newcommand{\degreeEname}{Master / Doctor} % Default
 \newcommand{\degreeThesisEname}{Master's / Doctoral dissertation} % Default
-\newcommand{\degreeEname}{Master's / Doctoral dissertation} % Default
 
 \newcommand{\SetChiDegree}[1]{\renewcommand{\degreeCname}{#1}}
 \newcommand{\SetEngDegree}[1]{\renewcommand{\degreeEname}{#1}}
@@ -310,8 +310,22 @@
   }
 }
 
+% ----------------------------------------------------------------------------
+
 % Signature line
 \newcommand{\namesigdate}[0]{\rule{5.5cm}{1pt}}
 
+% ----------------------------------------------------------------------------
+
+% 口試証明文件 Document of oral presentation
+% 要顯示圖片還是範例
+
+\newcommand{\OralDocumentPhoto}{0}
+\newcommand{\OralDocumentTemplete}{1}
+\newcommand{\OralDocumentEngOnly}{0}
+\newcommand{\OralDocument}{\OralDocumentTemplete} % Default
+\newcommand{\DisplayOralDocumentTemplete}[0]{\renewcommand{\OralDocument}{\OralDocumentTemplete}}
+\newcommand{\DisplayOralDocumentPhoto}[0]{\renewcommand{\OralDocument}{\OralDocumentPhoto}}
+\newcommand{\DisplayOralDocumentEngOnly}[0]{\renewcommand{\OralDocumentEngOnly}{1}}
 % ----------------------------------------------------------------------------
 
