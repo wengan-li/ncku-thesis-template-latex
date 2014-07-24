@@ -1,0 +1,145 @@
+
+% ----------------------------------------------------------------------------
+%   Document of oral presentation (English version)
+%                   英文版口試証明文件
+% ----------------------------------------------------------------------------
+
+% Set the line spacing to single for the titles (to compress the lines)
+\renewcommand{\baselinestretch}{1}   %行距 1 倍
+
+% ------------------------------------------------
+
+% Page start
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{English version}
+\thispagestyle{empty}
+
+% Aligned to the center of the page
+\begin{center}
+
+% ------------------------------------------------
+
+\begin{minipage}[c][5cm][t]{\textwidth}
+  \begin{center}
+    % English title 英文題目
+    \Large \GetEngTitle \\
+
+    \vspace{0.5cm}
+    \Large by \\
+
+    % 顯示學生名字
+    \vspace{0.5cm}
+    \Large \GetAuthorEngName \\
+  \end{center}
+\end{minipage}
+
+% ------------------------------------------------
+
+% 顯示 校名, 系所名, 論文種類
+\begin{minipage}[c][5cm][t]{\textwidth}
+\ifthenelse{\equal{\GetEngDegree}{Master}}
+{
+  % Master
+  \makebox[\textwidth][c]{\Large A thesis submitted to the graduate division in}
+  \makebox[\textwidth][c]{\Large partial fulfillment of the requirements for the}
+  \makebox[\textwidth][c]{\Large degree of Master of Science in}
+} % End of if{}
+{
+  % Phd
+  \makebox[\textwidth][c]{\Large Submitted in partial fulfillment of the requirements for the}
+  \makebox[\textwidth][c]{\Large degree of Doctor of Philosophy in}
+} % End of else{}
+  \makebox[\textwidth][c]{\Large \GetDeptEngName ,}
+  \makebox[\textwidth][c]{\Large \GetSchoolEngName ,}
+  \makebox[\textwidth][c]{\Large Taiwan, Taiwan, R.O.C.}
+
+  \begin{center}
+    \Large \GetOralEngMonth \GetOralEngDay, \GetOralEngYear \\
+  \end{center}
+\end{minipage}
+
+% ------------------------------------------------
+
+\vspace{1.0cm}
+\begin{minipage}[c][8.0cm][t]{\textwidth}
+  \makebox[\textwidth][l]{\Large Approved by:} \\
+
+  % 口試委員 至少4位
+  \begin{minipage}[c][1.6cm][c]{\textwidth}
+    \makebox[0.5\textwidth][c]{\namesigdate}
+    \makebox[0.5\textwidth][c]{\namesigdate}
+  \end{minipage}
+
+  \begin{minipage}[c][1.6cm][c]{\textwidth}
+    \makebox[0.5\textwidth][c]{\namesigdate}
+    \makebox[0.5\textwidth][c]{\namesigdate}
+  \end{minipage}
+
+  \ifthenelse{\CommitteeSize = 4}{}
+  {
+    % Size > 4
+
+    \ifthenelse{\CommitteeSize = 5}
+    {
+      % Size == 5
+      \begin{minipage}[c][1.6cm][c]{\textwidth}
+        \makebox[\textwidth][c]{\namesigdate}
+      \end{minipage}
+    } % End of if{}
+    {
+      % Size >= 6
+      \begin{minipage}[c][1.6cm][c]{\textwidth}
+        \makebox[0.5\textwidth][c]{\namesigdate}
+        \makebox[0.5\textwidth][c]{\namesigdate}
+      \end{minipage}
+
+      \ifthenelse{\CommitteeSize = 6}{}
+      {
+        % Check size == 8
+        \ifthenelse{\CommitteeSize = 8}
+        {
+          % Size == 8
+          \begin{minipage}[c][1.6cm][c]{\textwidth}
+            \makebox[0.5\textwidth][c]{\namesigdate}
+            \makebox[0.5\textwidth][c]{\namesigdate}
+          \end{minipage}
+        } % End of if{}
+        {
+          % Size == 7
+          \begin{minipage}[c][1.6cm][c]{\textwidth}
+            \makebox[\textwidth][c]{\namesigdate}
+          \end{minipage}
+        } % End of else{}
+      } % End of else{}
+    } % End of else{}
+  } % End of else{}
+\end{minipage}
+
+% ------------------------------------------------
+
+% Space
+\vspace{0.8cm}
+
+% ------------------------------------------------
+
+\makebox[4.8em][r]{\Large Advisor}
+\makebox[1em][c]{\Large:}
+\makebox[7.2em][l]{\namesigdate}\\
+
+\vspace{0.8cm}
+
+\makebox[4.8em][r]{\Large Chairman}
+\makebox[1em][c]{\Large:}
+\makebox[7.2em][l]{\namesigdate}\\
+
+% ------------------------------------------------
+
+% End of alignment
+\end{center}
+
+% End of page
+\clearpage
+
+% ------------------------------------------------
+
