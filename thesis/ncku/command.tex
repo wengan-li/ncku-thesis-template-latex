@@ -183,12 +183,19 @@
 % 在封面上預算了最多3位的空間
 % 英文名字固定以Prof.開頭
 
-\newcommand{\advisorCnameA}{}
-\newcommand{\advisorEnameA}{}
+\newcommand{\advisorCnameA}{X 教授}
+\newcommand{\advisorEnameA}{Professor X}
 \newcommand{\advisorCnameB}{}
 \newcommand{\advisorEnameB}{}
 \newcommand{\advisorCnameC}{}
 \newcommand{\advisorEnameC}{}
+
+\newcommand{\GetAdvisorChiNameA}{\advisorCnameA}
+\newcommand{\GetAdvisorEngNameA}{\advisorEnameA}
+\newcommand{\GetAdvisorChiNameB}{\advisorCnameB}
+\newcommand{\GetAdvisorEngNameB}{\advisorEnameB}
+\newcommand{\GetAdvisorChiNameC}{\advisorCnameC}
+\newcommand{\GetAdvisorEngNameC}{\advisorEnameC}
 
 \newcommand{\SetAdvisorChiNameA}[1]{\renewcommand{\advisorCnameA}{#1}}
 \newcommand{\SetAdvisorEngNameA}[1]{\renewcommand{\advisorEnameA}{#1}}
@@ -249,12 +256,14 @@
   \ifthenelse{\equal{#1}{12}}{December}{}
 } % End of \newcommand{}
 
+% 計算出台灣民國幾年
 % Get the year using Taiwans' year
 \newcommand{\SetOralTaiwanYear}[1]
 {
   \FPeval{\OralTaiwanYearResult}{clip(#1 - 1911)}
 } % End of \newcommand{}
 
+% 計算出台灣民國幾年
 % Get the year using Taiwans' year
 \newcommand{\SetThesisTaiwanYear}[1]
 {

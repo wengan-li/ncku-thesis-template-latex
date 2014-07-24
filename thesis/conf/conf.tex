@@ -15,9 +15,11 @@
 
 \SetTitle
 {國立成功大學碩博士用畢業論文XeLaTex模板}
-{National Cheng Kung University (NCKU) \\ Thesis/Dissertation Template in XeLaTex}
+{National Cheng Kung University (NCKU)\\
+ Thesis/Dissertation Template in XeLaTex}
 % \SetChiTitle{國立成功大學碩博士用畢業論文XeLaTex模板}
-% \SetEngTitle{National Cheng Kung University (NCKU) \\ Thesis/Dissertation Template in XeLaTex}
+% \SetEngTitle{National Cheng Kung University (NCKU)\\
+% Thesis/Dissertation Template in XeLaTex}
 
 % ----------------------------------------------------------------------------
 
@@ -50,6 +52,7 @@
 % --- 論文封面上的日期 ---
 % 設定西元的年月日, 會自動計算出民國的年份, 和英文的月份轉換
 % 次序: {年份}{月份}
+
 \SetThesisDate{2014}{12}
 
 %--------------------------------------------------
@@ -58,6 +61,7 @@
 % 設定西元的年月日, 會自動計算出民國的年份, 和英文的月份轉換
 % 次序: {年份}{月份}{日}
 % \SetOralDate{2014}{12}{31}
+
 \SetOralDate{2014}{12}{31}
 
 % ----------------------------------------------------------------------------
@@ -69,6 +73,7 @@
 % \SetDeptName{系所中文名字}{Department english name} % 同時設定中英文系所名字
 % \SetDeptChiName{系所中文名字}                       % 只設定系所中文名字
 % \SetDeptEngName{Department english name}          % 只設定系所英文名字
+
 \SetDeptName
 {資訊工程學系}
 {Insitute of Computer Science and Information Engineering}
@@ -77,7 +82,8 @@
 
 % --- 指導老師 Advisor(s) ---
 % 在封面上預算了最多3位的空間
-% 英文名字固定以Prof.開頭
+% 中文名字固定以 教授  為結尾
+% 英文名字固定以 Prof. 為開頭
 
 % 有3種可使用, 用來設定3位老師的名字
 % \SetAdvisorNameX{老師的名字}{Professor's name} % 同時設定中英文名字
@@ -87,13 +93,17 @@
 
 % 使用\SetAdvisorNameA是必須的, 而如果你的指導教授有2或3位,
 % 那只要增加\SetAdvisorNameB和\SetAdvisorNameC則可
-\SetAdvisorNameA{X 教授}{Professor X}
+
+\SetAdvisorNameA{A}{A}
+%\SetAdvisorNameB{B}{B}
+%\SetAdvisorNameC{C}{C}
 
 % ----------------------------------------------------------------------------
 
 % --- 口試委員 Committee member(s) ---
 % 口試委員 至少4位, 最多8位
 % 設定在英文版的有多少個簽名位置給口試委員 (預設為8位)
+
 \SetCommitteeSize{8}
 
 % ----------------------------------------------------------------------------
@@ -101,11 +111,13 @@
 % --- 口試証明文件 Document of oral presentation ---
 
 % 要顯示 圖片 / 範例
+
 \DisplayOralDocumentTemplete % 顯示範例
 %\DisplayOralDocumentPhoto    % 顯示圖片
 
 % 要顯示 中英 / 英文
-% 如果中英都要則把這個註解掉
+% 如果選擇中英, 則把\DisplayOralDocumentEngOnly註解掉
+
 %\DisplayOralDocumentEngOnly
 
 % ----------------------------------------------------------------------------

@@ -25,83 +25,106 @@
 % ------------------------------------------------
 
 % 顯示 校名, 系所名, 論文種類
-\makebox[10cm][s]{\Huge\GetSchoolChiName}\\
-\vspace{1cm}
-\makebox[8cm][s]{\Huge\deptCname}\\
-\vspace{1cm}
-\makebox[5cm][s]{\Huge\GetChiDegree 論文}\\
+\begin{minipage}[c][5cm][t]{\textwidth}
+  \begin{center}
+    \makebox[10cm][s]{\Huge \GetSchoolChiName} \\
+
+    \vspace{1cm}
+    \makebox[8cm][s]{\Huge \deptCname} \\
+
+    \vspace{1cm}
+    \makebox[5cm][s]{\Huge \GetChiDegree 論文} \\
+  \end{center}
+\end{minipage}
+% ------------------------------------------------
+
+\vspace{5cm}
 
 % ------------------------------------------------
 
-% Space
-\vspace{6cm}
+% Chinese and English title 中英文題目
+\begin{minipage}[c][5cm][t]{\textwidth}
+  \begin{center}
+    \Large \GetChiTitle \\
+
+    \vspace{0.5cm}
+    \Large \GetEngTitle
+  \end{center}
+\end{minipage}
 
 % ------------------------------------------------
 
-% Chinese title 中文題目
-\Large\cTitle\\
-\vspace{0.5cm}
-
-% English title 英文題目
-\Large\eTitle\\
-\vspace{3.5cm}
+\vspace{1.5cm}
 
 % ------------------------------------------------
 
 % 顯示學生和老師的名字
 
-% --------------------------
+\begin{minipage}[c][4.5cm][t]{\textwidth}
+  \begin{center}
 
-% 顯示 學生 的名字
-\hspace{2.4em}
-\makebox[4.8em][s]{\Large 學生}
-\makebox[1em][c]{\Large ：}
-\makebox[7.2em][l]{\Large\GetAuthorChiName}\\
+  % --------------------------
 
-\vspace{0.5cm}
+  % 顯示 學生 的名字
+  \hspace{3.2em}
+  \makebox[6em][s]{\Large 學生}
+  \makebox[1em][c]{\Large ：}
+  \makebox[10.0em][l]{\Large \GetAuthorChiName}\\
 
-% --------------------------
+  % --------------------------
 
-% 顯示 老師 (指導老師 A) 的名字
-\hspace{2.4em}
-\makebox[4.8em][s]{\Large 指導老師}
-\makebox[1em][c]{\Large ：}
-\makebox[7.2em][l]{\Large\advisorCnameA}\\
+  \vspace{0.5cm}
 
-% --------------------------
+  % --------------------------
 
-% 指導老師 B
-\ifx \advisorCnameB  \itsempty
-  % 沒有 老師B 的話, 不佔版面和不印任何空白
-  \relax
-\else
-  % 顯示 老師B 的名字
+  % 顯示 指導老師 A 的名字
+  \hspace{3.2em}
+  \makebox[6em][s]{\Large 指導老師}
+  \makebox[1em][c]{\Large ：}
+  \makebox[10.0em][l]{\Large \GetAdvisorChiNameA \enspace 教授} \\
+
+  % --------------------------
+
   \vspace{0.1cm}
-  \hspace{2.4em}
-  \makebox[4.8em][s]{}
+
+  % --------------------------
+
+  % 顯示 指導老師 B 的名字
+  \hspace{2.7em}
+  \makebox[6em][s]{}
   \makebox[1em][c]{}
-  \makebox[7.2em][l]{\Large\advisorCnameB}\\
-\fi
+  \makebox[10.0em][l]
+  {
+    \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}
+      {}
+      {\Large \GetAdvisorChiNameB \enspace 教授}
+  } \\
 
-% --------------------------
+  % --------------------------
 
-% 指導老師 C
-\ifx \advisorCnameC  \itsempty
-  % 沒有 老師C 的話, 不佔版面和不印任何空白
-  \relax
-\else
-  % 顯示 老師C 的名字
   \vspace{0.1cm}
-  \hspace{2.4em}
-  \makebox[4.8em][s]{}
-  \makebox[1em][c]{}
-  \makebox[7.2em][l]{\Large\advisorCnameC}\\
-\fi
 
+  % --------------------------
+
+  % 顯示 指導老師 C 的名字
+  \hspace{2.7em}
+  \makebox[6em][s]{}
+  \makebox[1em][c]{}
+  \makebox[10.0em][l]
+  {
+    \ifthenelse{\equal{\GetAdvisorChiNameC}{\empty}}
+      {}
+      {\Large \GetAdvisorChiNameC \enspace 教授}
+  } \\
+
+  % --------------------------
+
+  \end{center}
+\end{minipage}
 % ------------------------------------------------
 
 % Date 日期
-\vspace{1.5cm}
+\vspace{0.5cm}
 \makebox[8cm][s]{\Large 中華民國 \GetThesisYearInTaiwanYear 年 \GetThesisMonth 月}
 
 % ------------------------------------------------
@@ -110,5 +133,5 @@
 \end{center}
 
 % End of page
-
+\clearpage
 % ------------------------------------------------
