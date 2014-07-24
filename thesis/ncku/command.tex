@@ -21,6 +21,8 @@
   \SetSchoolEngName{#2}
 } % End of \newcommand{}
 
+\newcommand{\GetSchoolChiName}[0]{\univCname}
+\newcommand{\GetSchoolEngName}[0]{\univEname}
 % ----------------------------------------------------------------------------
 
 % --- Chinese / English title 中英文論文題目 ---
@@ -34,10 +36,12 @@
   \SetEngTitle{#2}
 } % End of \newcommand{}
 
+\newcommand{\GetChiTitle}[0]{\cTitle}
+\newcommand{\GetEngTitle}[0]{\eTitle}
 % ----------------------------------------------------------------------------
 
 % --- User's name 使用者名字 ---
-\newcommand{\myCname}{你的名字}   % Default
+\newcommand{\myCname}{你的名字}     % Default
 \newcommand{\myEname}{Your name}   % Default
 \newcommand{\SetMyChiName}[1]{\renewcommand{\myCname}{#1}}
 \newcommand{\SetMyEngName}[1]{\renewcommand{\myEname}{#1}}
@@ -47,18 +51,22 @@
   \SetMyEngName{#2}
 } % End of \newcommand{}
 
+\newcommand{\GetAuthorChiName}[0]{\myCname}
+\newcommand{\GetAuthorEngName}[0]{\myEname}
+
 % ----------------------------------------------------------------------------
 
 % --- Degree name 學位 ---
 % thesis 是指論文的通稱
 % dissertation 指的是博士的論文
 
-% 碩士論文是       master's thesis
-% 但是一般碩士論文都會說   master's dissertation
-% 博士論文也可以說是    doctoral thesis
-% 但是一般博士論文都會說   doctoral dissertation
+% 碩士論文是             Master's thesis
+% 但是一般碩士論文都會說   Master's dissertation
 
-\newcommand{\degreeCname}{碩士/博士}             % Default
+% 博士論文也可以說是      Doctoral thesis
+% 但是一般博士論文都會說   Doctoral dissertation
+
+\newcommand{\degreeCname}{碩士/博士} % Default
 \newcommand{\degreeEname}{Master's / Doctoral dissertation} % Default
 \newcommand{\SetChiDegree}[1]{\renewcommand{\degreeCname}{#1}}
 \newcommand{\SetEngDegree}[1]{\renewcommand{\degreeEname}{#1}}
@@ -74,56 +82,65 @@
   \SetEngDegree{Master's dissertation}
 } % End of \newcommand{}
 
+\newcommand{\GetChiDegree}[0]{\degreeCname}
+\newcommand{\GetEngDegree}[0]{\degreeEname}
 % ----------------------------------------------------------------------------
 
 % --- Date 日期 ---
 
 % --- 論文的日期 ---
-\newcommand{\cYear}{101}      % Default
-\newcommand{\cMonth}{1}       % Default
-\newcommand{\eYear}{1970}       % Default
-\newcommand{\eMonth}{January}     % Default
+\newcommand{\ThesisYear}{2014}  % Default
+\newcommand{\ThesisMonth}{1}    % Default
 
-\newcommand{\SetThesisChiDate}[2]
+\newcommand{\SetThesisDate}[2]
 {
-  \renewcommand{\cYear}{#1}
-  \renewcommand{\cMonth}{#2}
+  \renewcommand{\ThesisYear}{#1}
+  \renewcommand{\ThesisMonth}{#2}
 } % End of \newcommand{}
 
-\newcommand{\SetThesisEngDate}[2]
+\newcommand{\GetThesisYear}[0]{\ThesisYear}
+\newcommand{\GetThesisYearInTaiwanYear}[0]
 {
-  \renewcommand{\eYear}{#1}
-  \renewcommand{\eMonth}{#2}
-} % End of \newcommand{}
-
-\newcommand{\SetThesisDate}[4]
-{
-  \SetThesisChiDate{#1}{#2}
-  \SetThesisEngDate{#3}{#4}
-} % End of \newcommand{}
+  \SetTaiwanYear{#1}
+  \TaiwanYearResult
+}
+\newcommand{\GetThesisMonth}[0]{\ThesisMonth}
+\newcommand{\GetThesisMonthInEng}[0]{\GetMonthInEng{\ThesisMonth}}
 
 % ---  口試的日期 ---
-\newcommand{\OralChiYear}{101}    % Default
-\newcommand{\OralChiMonth}{1}     % Default
-\newcommand{\OralEngYear}{1970}   % Default
+\newcommand{\OralChiYear}{101}      % Default
+\newcommand{\OralChiMonth}{1}       % Default
+\newcommand{\OralChiDay}{1}         % Default
+\newcommand{\OralEngYear}{2014}     % Default
 \newcommand{\OralEngMonth}{January} % Default
+\newcommand{\OralEngDay}{1}         % Default
 
-\newcommand{\SetOralChiDate}[2]
+\newcommand{\GetOralChiYear}[0]{\OralChiYear}
+\newcommand{\GetOralChiMonth}[0]{\OralChiMonth}
+\newcommand{\GetOralChiDay}[0]{\OralChiDay}
+\newcommand{\GetOralEngYear}[0]{\OralEngYear}
+\newcommand{\GetOralEngMonth}[0]{\OralEngMonth}
+\newcommand{\GetOralEngDay}[0]{\OralEngDay}
+
+\newcommand{\SetOralChiDate}[3]
 {
-  \renewcommand{\OralChiYear}{#1}
+  \SetTaiwanYear{#1}
+  \renewcommand{\OralChiYear}{\TaiwanYearResult}
   \renewcommand{\OralChiMonth}{#2}
+  \renewcommand{\OralChiDay}{#3}
 } % End of \newcommand{}
 
-\newcommand{\SetOralEngDate}[2]
+\newcommand{\SetOralEngDate}[3]
 {
   \renewcommand{\OralEngYear}{#1}
-  \renewcommand{\OralEngMonth}{#2}
+  \renewcommand{\OralEngMonth}{\GetMonthInEng{#2}}
+  \renewcommand{\OralEngDay}{#3}
 } % End of \newcommand{}
 
-\newcommand{\SetOralDate}[4]
+\newcommand{\SetOralDate}[3]
 {
-  \SetOralChiDate{#1}{#2}
-  \SetOralEngDate{#3}{#4}
+  \SetOralChiDate{#1}{#2}{#3}
+  \SetOralEngDate{#1}{#2}{#3}
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
@@ -203,4 +220,30 @@
 {
   % End of paper
   \end{document}
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
+% Some helper functions
+
+\newcommand{\GetMonthInEng}[1]
+{
+  \ifthenelse{\equal{#1}{1}}{January}{}
+  \ifthenelse{\equal{#1}{2}}{February}{}
+  \ifthenelse{\equal{#1}{3}}{March}{}
+  \ifthenelse{\equal{#1}{4}}{April}{}
+  \ifthenelse{\equal{#1}{5}}{May}{}
+  \ifthenelse{\equal{#1}{6}}{June}{}
+  \ifthenelse{\equal{#1}{7}}{July}{}
+  \ifthenelse{\equal{#1}{8}}{August}{}
+  \ifthenelse{\equal{#1}{9}}{September}{}
+  \ifthenelse{\equal{#1}{10}}{October}{}
+  \ifthenelse{\equal{#1}{11}}{November}{}
+  \ifthenelse{\equal{#1}{12}}{December}{}
+} % End of \newcommand{}
+
+% Get the year using Taiwans' year
+\newcommand{\SetTaiwanYear}[1]
+{
+  \FPeval{\TaiwanYearResult}{clip(#1 - 1911)}
 } % End of \newcommand{}
