@@ -20,7 +20,7 @@
   {\input{./oral/templete-chi.tex}}{}
 
   \input{./oral/templete-eng.tex}
-}
+} % End of if{}
 {
   % 顯示圖片, PDF format
 
@@ -32,12 +32,12 @@
   {
     \addcontentsline{toc}{section}{Chinese version}
     \includepdf{./oral/oral-chi.pdf}
-  }
-  {}
+  } % End of if{}
+  {} % End of else{}
 
   \addcontentsline{toc}{section}{English version}
   \includepdf{./oral/oral-eng.pdf}
-}
+} % End of else{}
 
 % ----------------------------------------------------------------------------
 

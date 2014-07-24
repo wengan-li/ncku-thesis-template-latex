@@ -302,13 +302,15 @@
 \newcommand{\SetCommitteeSize}[1]
 {
   \ifthenelse{#1 < 4}
-  {\renewcommand{\CommitteeSize}{4}}
+  {
+    \renewcommand{\CommitteeSize}{4}
+  } % End of if{}
   {
     \ifthenelse{#1 > 8}
     {\renewcommand{\CommitteeSize}{8}}
     {\renewcommand{\CommitteeSize}{#1}}
-  }
-}
+  } % End of else{}
+} % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
 
@@ -324,8 +326,11 @@
 \newcommand{\OralDocumentTemplete}{1}
 \newcommand{\OralDocumentEngOnly}{0}
 \newcommand{\OralDocument}{\OralDocumentTemplete} % Default
-\newcommand{\DisplayOralDocumentTemplete}[0]{\renewcommand{\OralDocument}{\OralDocumentTemplete}}
-\newcommand{\DisplayOralDocumentPhoto}[0]{\renewcommand{\OralDocument}{\OralDocumentPhoto}}
-\newcommand{\DisplayOralDocumentEngOnly}[0]{\renewcommand{\OralDocumentEngOnly}{1}}
+\newcommand{\DisplayOralDocumentTemplete}[0]
+  {\renewcommand{\OralDocument}{\OralDocumentTemplete}}
+\newcommand{\DisplayOralDocumentPhoto}[0]
+  {\renewcommand{\OralDocument}{\OralDocumentPhoto}}
+\newcommand{\DisplayOralDocumentEngOnly}[0]
+  {\renewcommand{\OralDocumentEngOnly}{1}}
 % ----------------------------------------------------------------------------
 
