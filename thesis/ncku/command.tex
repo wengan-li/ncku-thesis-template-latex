@@ -224,20 +224,6 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\BeginThesis}[0]
-{
-  % Start of paper
-  \begin{document}
-} % End of \newcommand{}
-
-\newcommand{\EndThesis}[0]
-{
-  % End of paper
-  \end{document}
-} % End of \newcommand{}
-
-% ----------------------------------------------------------------------------
-
 % Some helper functions
 
 \newcommand{\GetMonthInEng}[1]
@@ -341,5 +327,58 @@
   {\renewcommand{\OralDocument}{\OralDocumentPhoto}}
 \newcommand{\DisplayOralDocumentEngOnly}[0]
   {\renewcommand{\OralDocumentEngOnly}{1}}
+% ----------------------------------------------------------------------------
+
+\newcommand{\BeginThesis}[0]
+{
+  % Start of paper
+  \begin{document}
+
+  % Set the line spacing for whole thesis
+  \baselineskip = 26pt
+} % End of \newcommand{}
+
+\newcommand{\EndThesis}[0]
+{
+  % End of paper
+  \end{document}
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
+% Abstract
+\newcommand{\StartAbstract}
+{
+  % Page start
+  \newpage
+  \phantomsection
+
+  % Add to "Table of Contents"
+  \addcontentsline{toc}{chapter}{Abstract}
+
+  % Title
+  \centerline{\Large \textbf{Abstract}}
+} % End of \newcommand{}
+
+\newcommand{\EndAbstract}
+{
+  % End of page
+  \clearpage
+} % End of \newcommand{}
+
+% Chapters
+\DeclareDocumentCommand\StartChapter{ m g }
+{
+  \chapter{#1}
+  \IfNoValueF{#2}{\label{#2}}
+%  \baselineskip=26pt
+%  \thispagestyle{empty}
+} % End of \newcommand{}
+
+\newcommand{\EndChapter}
+{
+  % End of page
+  \clearpage
+} % End of \newcommand{}
 % ----------------------------------------------------------------------------
 
