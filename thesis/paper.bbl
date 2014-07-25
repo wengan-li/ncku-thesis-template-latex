@@ -8,6 +8,11 @@
 {數學討論區}.
 \newblock \url{http://math3.math.ncku.edu.tw/phpBB3/viewtopic.php?f=14&t=21}.
 
+\bibitem{web:ncku:thesis-need-to-know}
+{電機工程系辦 - 論文撰寫須知.pdf}.
+\newblock
+  \url{"http://office.ee.ncku.edu.tw/uploads/\%E8\%AB\%96\%E6\%96\%87\%E6\%92\%B0\%E5\%AF\%AB\%E9\%A0\%88\%E7\%9F\%A5.pdf}.
+
 \bibitem{web:latex:template:ntu}
 {臺灣大學碩博士論文 XeLaTeX 模版}.
 \newblock \url{https://github.com/tzhuan/ntu-thesis/wiki}.
