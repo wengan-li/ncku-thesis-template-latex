@@ -346,12 +346,23 @@
 
 % ----------------------------------------------------------------------------
 
-% Abstract
-\newcommand{\StartAbstract}
+\newcommand{\StartNewPage}
 {
   % Page start
   \newpage
   \phantomsection
+} % End of \newcommand{}
+
+\newcommand{\EndOfPage}
+{
+  % End of page
+  \clearpage
+} % End of \newcommand{}
+
+% Abstract
+\newcommand{\StartAbstract}
+{
+  \StartNewPage
 
   % Add to "Table of Contents"
   \addcontentsline{toc}{chapter}{Abstract}
@@ -360,11 +371,7 @@
   \centerline{\Large \textbf{Abstract}}
 } % End of \newcommand{}
 
-\newcommand{\EndAbstract}
-{
-  % End of page
-  \clearpage
-} % End of \newcommand{}
+\def \EndAbstract {\EndOfPage}
 
 % Chapters
 \DeclareDocumentCommand\StartChapter{ m g }
@@ -375,10 +382,21 @@
 %  \thispagestyle{empty}
 } % End of \newcommand{}
 
-\newcommand{\EndChapter}
+\def \EndChapter {\EndOfPage}
+
+% Acknowledgments
+\newcommand{\StartAcknowledgments}
 {
-  % End of page
-  \clearpage
+  \StartNewPage
+
+  % Add to "Table of Contents"
+  \addcontentsline{toc}{chapter}{Acknowledgments}
+
+  % Title
+  \centerline{\Large \textbf{Acknowledgments}}
 } % End of \newcommand{}
+
+\def \EndAcknowledgments {\EndOfPage}
+
 % ----------------------------------------------------------------------------
 
