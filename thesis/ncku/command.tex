@@ -373,6 +373,13 @@
 
 \def \EndAbstract {\EndOfPage}
 
+\newcommand{\AbstractKeyword}[1]
+{
+  % Keyword
+  \par
+  {\bf 關鍵字:} #1
+} % End of \newcommand{}
+
 % Chapters
 \DeclareDocumentCommand\StartChapter{ m g }
 {
@@ -385,7 +392,7 @@
 \def \EndChapter {\EndOfPage}
 
 % Acknowledgments
-\newcommand{\StartAcknowledgments}
+\newcommand{\StartAcknowledgments}[1]
 {
   \StartNewPage
 
@@ -394,6 +401,8 @@
 
   % Title
   \centerline{\Large \textbf{Acknowledgments}}
+
+  \IfNoValueF{#1}{\label{#1}}
 } % End of \newcommand{}
 
 \def \EndAcknowledgments {\EndOfPage}
