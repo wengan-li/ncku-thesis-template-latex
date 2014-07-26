@@ -1,0 +1,147 @@
+% ------------------------------------------------
+\StartChapter{Insert Image}{chapter:how-to:write:image}
+% ------------------------------------------------
+\section{介紹}
+
+插入圖片其實有很多的玩法, 但是在畢業論文中, 它的放置位置則是非常固定的, 都是以中間為主, 之後就是插多張圖片. 因為它很固定, 所以我針對了插入單張或多張, 分別提供了以下的指令.
+
+要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.
+
+% ------------------------------------------------
+\section{單張}
+
+  \begin{framed}
+  \begin{verbatim}
+    Scale:   比例 (1.0/不填: 原大小, 0~1: 縮小, >1: 放大)
+    Path:    位置
+    Caption: 標題 (可空掉或不填)
+    Label:   標簽 (可空掉或不填)
+
+    插入圖片
+    \InsertImage{Scale}{Path}{Caption}{Label}
+
+    插入圖片並置中
+    \InsertCenterImage{Scale}{Path}{Caption}{Label}
+  \end{verbatim}
+  \end{framed}
+
+  \newpage
+
+  {\bf 效果:}
+  \begin{enumerate}
+    \item
+    {
+      只填了比例和圖片位置\begin{verbatim}\InsertImage{1.0}{./image.png}\end{verbatim}
+      \InsertImage{1.0}{./example/how-to/write/pic/Cc-by_new.svg.png}
+    } % End of \item{}
+
+    \item
+    {
+      使用置中的版本\begin{verbatim}\InsertCenterImage{1.0}{./image.png}\end{verbatim}
+      \InsertCenterImage{1.0}{./example/how-to/write/pic/Cc-by_new.svg.png}
+    } % End of \item{}
+
+    \item
+    {
+      放大比例\begin{verbatim}\InsertCenterImage{1.5}{./image.png}\end{verbatim}
+      \InsertCenterImage{1.5}{./example/how-to/write/pic/Cc-by_new.svg.png}
+    } % End of \item{}
+
+    \newpage
+
+    \item
+    {
+      縮小比例\begin{verbatim}\InsertCenterImage{0.5}{./image.png}\end{verbatim}
+      \InsertCenterImage{0.5}{./example/how-to/write/pic/Cc-by_new.svg.png}
+    } % End of \item{}
+
+    \item
+    {
+      增加標題並去掉比例的數字\begin{verbatim}\InsertCenterImage{}{./image.png}{Little man}\end{verbatim}
+      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{Little man}
+    } % End of \item{}
+
+    \item
+    {
+      增加標簽\begin{verbatim}\InsertCenterImage{}{./image.png}{Little man No.1}{fig:little-man-no.1}\end{verbatim}
+      之後可以使用cite去引用\begin{verbatim}\ref{fig:little-man-no.1}\end{verbatim}
+      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{Little man No.1}{fig:little-man-no.1}
+
+      e.g: 文中所指的人物一號 (Fig. \ref{fig:little-man-no.1}).
+    } % End of \item{}
+
+    \newpage
+
+    \item
+    {
+      使用標簽, 但不需要標題\begin{verbatim}\InsertCenterImage{}{./image.png}{}{fig:little-man-no.2}\end{verbatim}
+      使用cite去引用\begin{verbatim}\ref{fig:little-man-no.2}\end{verbatim}
+      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{}{fig:little-man-no.2}
+
+      e.g: 文中所指的人物二號 (在第\ref{fig:little-man-no.2}頁中曾提過). \\
+
+      不使用標題但使用標簽有一個很大的分別是: 如果有標題的話, 那指向的是第幾個chapter的第幾張圖; 但如果沒有的話, 那指向的是出現那一張圖的頁碼.
+    } % End of \item{}
+  \end{enumerate}
+
+% ------------------------------------------------
+\newpage
+\section{多張}
+
+  如果要插入多張的話, 因為要能版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 理論上4張都已經算多的了. 所以多張的話, 分別放同不到頁面會比較好.
+
+  插入多張的話, 設計上只能放8張, 同時會自動置中, 而且寫法會跟插入單張有點不一樣.
+
+  \begin{framed}
+  \begin{verbatim}
+    Table:    放置多張圖片的表格的設定
+    Image1~8: 各張圖片的設定
+    \InsertMultiImages{Table}{Image1}{Image2}{Image3}{Image4}{Image5}{Image6}{Image7}{Image8}
+    (注意: 由於Latex語法的設計上, 2個'}{'之間不能斷行, 否則會被判斷成其他的語法)
+
+
+    (因底層Latex的工具設計, 圖片的路徑不能使用包含底線的"_",
+     如 ./a_b/ab.jpg 或 ./ab/a_b.jpg)
+
+    Scale:   比例 (1.0/不填: 原大小, 0~1: 縮小, >1: 放大)
+    Path:    位置
+    Caption: 標題 (可空掉或不填)
+    Label:   標簽 (可空掉或不填)
+
+    插入圖片
+    \InsertMultiImages{Scale}{Path}{Caption}{Label}
+
+    插入圖片並置中
+    \InsertCenterImage{Scale}{Path}{Caption}{Label}
+  \end{verbatim}
+  \end{framed}
+
+  \newpage
+
+  {\bf 效果:}
+  \begin{enumerate}
+    \item
+    {
+      插入2張圖片
+      \InsertMultiImages%
+      {%
+        {2} %
+        {Test Caption} %
+        {Test Label} %
+      }%
+      {%
+        {./example/how-to/write/pic/Cc-sa.svg} %
+        {Little man No.1} %
+        {fig:little-man-no.2} %
+      }%
+      {%
+        {./example/how-to/write/pic/Cc-sa.svg} %
+        {Little man No.1} %
+        {fig:little-man-no.2} %
+      }%
+    } % End of \item{}
+  \end{enumerate}
+
+% ------------------------------------------------
+\EndChapter
+% ------------------------------------------------
