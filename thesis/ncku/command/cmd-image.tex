@@ -75,11 +75,10 @@
 } % End of \newcommand{}
 
 % Confingure the main image
-\newcommand{\SetMultiImageRoot}[1]
+\newcommand{\SetMultiImageRoot}[3]
 {
-  \getargsC{#1} %
   % Set per row
-  \FPeval{\MultiImagesPerRow}{clip(\argi)} %
+  \FPeval{\MultiImagesPerRow}{clip(#1)} %
 
   \ifthenelse{\equal{\GetMultiImagesPerRow}{1}}%
   {%
@@ -90,11 +89,10 @@
   } % End of else{}
 } % End of \newcommand{}
 
-\newcommand{\SetMultiImageRootCaptionAndLabel}[1]
+\newcommand{\SetMultiImageRootCaptionAndLabel}[3]
 {
-  \getargsC{#1} %
-  \SetImageCaption{\argii} %
-  \SetImageLabel{\argiii} %
+  \SetImageCaption{#2} %
+  \SetImageLabel{#3} %
 } % End of \newcommand{}
 
 \newcommand{\InsertSubfigureImage}[3]
@@ -108,69 +106,76 @@
 } % End of \newcommand{}
 
 % Low-level insert image
-\newcommand{\InsertMultiImageLL}[1]
+\newcommand{\InsertMultiImageLL}[3]
 {
-  \getargsC{#1}%
-  \InsertSubfigureImage{\argi}{\argii}{\argiii}%
+  \InsertSubfigureImage{#1}{#2}{#3}%
 } % End of \newcommand{}
 
 % Insert multi-image
-% Arg: 1st: Image per row
+% Arg: 1st: Configure
 % Max 8 Image
+%
+% ---------------------------------------
+% 使用 \InsertMultiImageLL#2
+% 是跟 \InsertMultiImageLL{#2} 不一樣的
+% 直接連接#2是指把#2整個當成function的所有參數
+% 而{#2}是指把#2當成單一個參數傳給function
+% ---------------------------------------
+%
 \DeclareDocumentCommand{\InsertMultiImages}{m g g g g g g g g}
 {
   \begin{figure}[hbtp]
     \centering
 
-    \SetMultiImageRoot{#1}
-
+    \SetMultiImageRoot#1
     % Image 1
-    \InsertMultiImageLL{#2}%
+    \InsertMultiImageLL#2
     % Image 2
     \IfNoValueF{#3}%
     {%
       \SubfigureBreakSpaceLine{2}%
-      \InsertMultiImageLL{#3}%
+      \InsertMultiImageLL#3%
     } % End of if{}
     % Image 3
     \IfNoValueF{#4}%
     {%
       \SubfigureBreakSpaceLine{3}%
-      \InsertMultiImageLL{#4}%
+      \InsertMultiImageLL#4%
     } % End of if{}
     % Image 4
     \IfNoValueF{#5}
     {
       \SubfigureBreakSpaceLine{4}
-      \InsertMultiImageLL{#5}
+      \InsertMultiImageLL#5
     } % End of if{}
     % Image 5
     \IfNoValueF{#6}
     {
       \SubfigureBreakSpaceLine{5}
-      \InsertMultiImageLL{#6}
+      \InsertMultiImageLL#6
     } % End of if{}
     % Image 6
     \IfNoValueF{#7}
     {
       \SubfigureBreakSpaceLine{6}
-      \InsertMultiImageLL{#7}
+      \InsertMultiImageLL#7
     } % End of if{}
     % Image 7
     \IfNoValueF{#8}
     {
       \SubfigureBreakSpaceLine{7}
-      \InsertMultiImageLL{#8}
+      \InsertMultiImageLL#8
     } % End of if{}
     % Image 8
     \IfNoValueF{#9}
     {
       \SubfigureBreakSpaceLine{8}
-      \InsertMultiImageLL{#9}
+      \InsertMultiImageLL#9
     } % End of if{}
-    \SetMultiImageRootCaptionAndLabel{#1}
+    \SetMultiImageRootCaptionAndLabel#1
   \end{figure}
 } % End of \DeclareDocumentCommand{}
 
 % ----------------------------------------------------------------------------
+
 

@@ -100,9 +100,6 @@
     (注意: 由於Latex語法的設計上, 2個'}{'之間不能斷行, 否則會被判斷成其他的語法)
 
 
-    (因底層Latex的工具設計, 圖片的路徑不能使用包含底線的"_",
-     如 ./a_b/ab.jpg 或 ./ab/a_b.jpg)
-
     Scale:   比例 (1.0/不填: 原大小, 0~1: 縮小, >1: 放大)
     Path:    位置
     Caption: 標題 (可空掉或不填)
@@ -125,19 +122,24 @@
       插入2張圖片
       \InsertMultiImages%
       {%
-        {2} %
-        {Test Caption} %
-        {Test Label} %
+        {2} 
+        {Test Caption}
+        {Test Label}
       }%
       {%
-        {./example/how-to/write/pic/Cc-sa.svg} %
-        {Little man No.1} %
-        {fig:little-man-no.2} %
+        {./example/how-to/write/pic/Cc-by_new.svg.png}
+        {Little man No.1}
+        {fig:little-man-no.2}
       }%
       {%
-        {./example/how-to/write/pic/Cc-sa.svg} %
-        {Little man No.1} %
-        {fig:little-man-no.2} %
+        {./example/how-to/write/pic/Cc-sa.svg}
+        {Little man No.1}
+        {fig:little-man-no.2}
+      }%
+      {%
+        {./example/how-to/write/pic/Cc-sa.svg}
+        {Little man No.1}
+        {fig:little-man-no.2}
       }%
     } % End of \item{}
   \end{enumerate}
