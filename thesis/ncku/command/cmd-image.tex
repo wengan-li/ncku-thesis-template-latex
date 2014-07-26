@@ -1,15 +1,56 @@
 
 % Some helper function about insert image
 
+% 用\begin{figure} .. \end{figure}
+% 可能會出現問題
+% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=ouparmd
+
+\newcommand{\SetImageCaption}[1]
+{
+  \IfNoValueF{#1}
+  {
+    \ifthenelse{\equal{#1}{\empty}}
+    {}
+    {\caption{#1}}
+  } % End of IfNoValueF{}
+} % End of \newcommand{}
+
+\newcommand{\SetImageLabel}[1]
+{
+  \IfNoValueF{#1}
+  {
+    \ifthenelse{\equal{#1}{\empty}}
+    {}
+    {\label{#1}}
+  } % End of IfNoValueF{}
+} % End of \newcommand{}
+
 % Insert a single image
-\DeclareDocumentCommand{\InsertImage}{m m o o}
+\DeclareDocumentCommand{\InsertImage}{m m G{\empty} G{\empty}}
 {
   \begin{figure}[hbtp]
+
     \ifthenelse{\equal{#1}{\empty}}
       {\includegraphics[scale=1.0]{#2}}
       {\includegraphics[scale=#1]{#2}}
-    \IfNoValueF{#3}{\caption{#3}}
-    \IfNoValueF{#4}{\label{#4}}
+
+    \SetImageCaption{#3}
+    \SetImageLabel{#4}
+  \end{figure}
+} % End of \DeclareDocumentCommand{}
+
+% Insert a single image, put place it in center
+\DeclareDocumentCommand{\InsertCenterImage}{m m G{\empty} G{\empty}}
+{
+  \begin{figure}[hbtp]
+    \center
+
+    \ifthenelse{\equal{#1}{\empty}}
+      {\includegraphics[scale=1.0]{#2}}
+      {\includegraphics[scale=#1]{#2}}
+
+    \SetImageCaption{#3}
+    \SetImageLabel{#4}
   \end{figure}
 } % End of \DeclareDocumentCommand{}
 
@@ -23,46 +64,60 @@
 %(or a blank line to force the subfigure onto a new line)
 \newcommand{\SubfigureBreakSpaceLine}[1]
 {
-  \ifthenelse{\equal{\intcalcMod{\GetMultiImagesPerRow}{#1}}{0}}
-  {
+  \ifthenelse{\equal{\intcalcMod{\GetMultiImagesPerRow}{#1}}{0}}%
+  {%
     % Echo blank line
-
+    %
   } % End of if{}
-  {
-    ~
+  {%
+    \hfill
   } % End of else{}
-} % End of \newcommand{}
-
-\newcommand{\InsertSubfigureImage}[3]
-{
-  \begin{subfigure}[b]{\WidthOfImagePerRow\textwidth}
-    \includegraphics[width=\textwidth]{#1}
-    \IfNoValueF{#2}{\caption{#2}}
-    \IfNoValueF{#3}{\label{#3}}
-  \end{subfigure}
 } % End of \newcommand{}
 
 % Confingure the main image
 \newcommand{\SetMultiImageRoot}[1]
 {
-  \getargsC{#1}
-  \SetMultiImagesPerRow{\argi}
-  \FPeval{\WidthOfImagePerRow}{\num[round-precision=1]{1 / \argi})}
-  \IfNoValueF{\argii}{\caption{\argii}}
-  \IfNoValueF{\argiii}{\label{\argiii}}
+  \getargsC{#1} %
+  % Set per row
+  \FPeval{\MultiImagesPerRow}{clip(\argi)} %
+
+  \ifthenelse{\equal{\GetMultiImagesPerRow}{1}}%
+  {%
+    \FPeval{\WidthOfImagePerRow}{1} %
+  } % End of if{}
+  {%
+    \FPeval{\WidthOfImagePerRow}{clip(clip(1 / \GetMultiImagesPerRow) - 0.1)} %
+  } % End of else{}
+} % End of \newcommand{}
+
+\newcommand{\SetMultiImageRootCaptionAndLabel}[1]
+{
+  \getargsC{#1} %
+  \SetImageCaption{\argii} %
+  \SetImageLabel{\argiii} %
+} % End of \newcommand{}
+
+\newcommand{\InsertSubfigureImage}[3]
+{%
+  \begin{subfigure}[b]{\WidthOfImagePerRow\textwidth}%
+    \center%
+    \includegraphics[scale=1.0]{#1}%
+    \SetImageCaption{#2}%
+    \SetImageLabel{#3}%
+  \end{subfigure}%
 } % End of \newcommand{}
 
 % Low-level insert image
 \newcommand{\InsertMultiImageLL}[1]
 {
-  \getargsC{#1}
-  \InsertSubfigureImage{\argi}{\argii}{\argiii}
+  \getargsC{#1}%
+  \InsertSubfigureImage{\argi}{\argii}{\argiii}%
 } % End of \newcommand{}
 
 % Insert multi-image
 % Arg: 1st: Image per row
 % Max 8 Image
-\DeclareDocumentCommand{\InsertMultiImages}{m m g g g g g g g}
+\DeclareDocumentCommand{\InsertMultiImages}{m g g g g g g g g}
 {
   \begin{figure}[hbtp]
     \centering
@@ -70,18 +125,18 @@
     \SetMultiImageRoot{#1}
 
     % Image 1
-    \InsertMultiImageLL{#2}
+    \InsertMultiImageLL{#2}%
     % Image 2
-    \IfNoValueF{#3}
-    {
-      \SubfigureBreakSpaceLine{2}
-      \InsertMultiImageLL{#3}
+    \IfNoValueF{#3}%
+    {%
+      \SubfigureBreakSpaceLine{2}%
+      \InsertMultiImageLL{#3}%
     } % End of if{}
     % Image 3
-    \IfNoValueF{#4}
-    {
-      \SubfigureBreakSpaceLine{3}
-      \InsertMultiImageLL{#4}
+    \IfNoValueF{#4}%
+    {%
+      \SubfigureBreakSpaceLine{3}%
+      \InsertMultiImageLL{#4}%
     } % End of if{}
     % Image 4
     \IfNoValueF{#5}
@@ -113,6 +168,7 @@
       \SubfigureBreakSpaceLine{8}
       \InsertMultiImageLL{#9}
     } % End of if{}
+    \SetMultiImageRootCaptionAndLabel{#1}
   \end{figure}
 } % End of \DeclareDocumentCommand{}
 
