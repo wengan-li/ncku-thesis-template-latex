@@ -7,21 +7,24 @@
 
 要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.
 
+注意: 由於Latex語法的設計上, 在2個'{}'之間不能斷行或出現空格, 否則會被判斷成其他的語法
+
 % ------------------------------------------------
 \section{單張}
 
   \begin{framed}
   \begin{verbatim}
-    Scale:   比例 (1.0/不填: 原大小, 0~1: 縮小, >1: 放大)
-    Path:    位置
-    Caption: 標題 (可空掉或不填)
-    Label:   標簽 (可空掉或不填)
+   Scale:   比例 (1.0/空掉: 原大小, 0~1: 縮小, >1: 放大)
+   Path:    位置
+   Caption: 標題 (可空掉或不填)
+   Label:   標簽 (可空掉或不填, 要使用標簽前必須同時使用標題)
+   Angle:   角度 (可不填)
 
-    插入圖片
-    \InsertImage{Scale}{Path}{Caption}{Label}
+   插入圖片
+   \InsertImage{Scale}{Path}{Caption}{Label}{Angle}
 
-    插入圖片並置中
-    \InsertCenterImage{Scale}{Path}{Caption}{Label}
+   插入圖片並置中
+   \InsertCenterImage{Scale}{Path}{Caption}{Label}{Angle}
   \end{verbatim}
   \end{framed}
 
@@ -76,12 +79,23 @@
     {
       使用標簽, 但不需要標題\begin{verbatim}\InsertCenterImage{}{./image.png}{}{fig:little-man-no.2}\end{verbatim}
       使用cite去引用\begin{verbatim}\ref{fig:little-man-no.2}\end{verbatim}
-      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{}{fig:little-man-no.2}
+      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{Little man No.2}{fig:little-man-no.2}
 
       e.g: 文中所指的人物二號 (在第\ref{fig:little-man-no.2}頁中曾提過). \\
 
       不使用標題但使用標簽有一個很大的分別是: 如果有標題的話, 那指向的是第幾個chapter的第幾張圖; 但如果沒有的話, 那指向的是出現那一張圖的頁碼.
     } % End of \item{}
+
+    \item
+    {
+      使用角度去轉45度\begin{verbatim}\InsertCenterImage{}{./image.png}{Little man No.3}{fig:little-man-no.3}{45}\end{verbatim}
+      使用cite去引用\begin{verbatim}\ref{fig:little-man-no.3}\end{verbatim}
+
+      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{Little man No.3}{fig:little-man-no.3}{45}
+
+      e.g: 文中所指的人物三號 (Fig. \ref{fig:little-man-no.3}).
+    } % End of \item{}
+
   \end{enumerate}
 
 % ------------------------------------------------
@@ -90,26 +104,37 @@
 
   如果要插入多張的話, 因為要能版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 理論上4張都已經算多的了. 所以多張的話, 分別放同不到頁面會比較好.
 
-  插入多張的話, 設計上只能放8張, 同時會自動置中, 而且寫法會跟插入單張有點不一樣.
+  設計上可插入1~8張的圖片, 同時會自動置中, 而且寫法會跟插入單張相近.
 
   \begin{framed}
   \begin{verbatim}
-    Table:    放置多張圖片的表格的設定
-    Image1~8: 各張圖片的設定
+  Table:    設定放置多張圖片的表格
+    ImagePerRow: 每一列多少張圖片
+    Caption:     標題 (可空掉)
+    Label:       標簽 (可空掉, 要使用標簽前必須同時使用標題)
+
+  Image 1~8: 各張圖片的設定
+    設定方式跟使用\InsertImage和\InsertCenterImage是
+    幾乎一樣的, 但是沒了比例去設定, 會自動使用每一列算出的比例.
+
+  插入多張圖片
     \InsertMultiImages{Table}{Image1}{Image2}{Image3}{Image4}{Image5}{Image6}{Image7}{Image8}
-    (注意: 由於Latex語法的設計上, 2個'}{'之間不能斷行, 否則會被判斷成其他的語法)
 
-
-    Scale:   比例 (1.0/不填: 原大小, 0~1: 縮小, >1: 放大)
-    Path:    位置
-    Caption: 標題 (可空掉或不填)
-    Label:   標簽 (可空掉或不填)
-
-    插入圖片
-    \InsertMultiImages{Scale}{Path}{Caption}{Label}
-
-    插入圖片並置中
-    \InsertCenterImage{Scale}{Path}{Caption}{Label}
+  同時可接受這種使用方式 ('%'是必須存在的,
+  以防止被認為這是新段落, 而且不要有空格在當中)
+    \InsertMultiImages%
+    {%
+      {ImagePerRow}{Caption}{Label}
+    }%
+    {%
+      {Path}{Caption}{Label}{Angle}
+    }%
+    {%
+      ...
+    }%
+    {%
+      {Path}{Caption}{Label}{Angle}
+    }%
   \end{verbatim}
   \end{framed}
 
@@ -119,29 +144,81 @@
   \begin{enumerate}
     \item
     {
-      插入2張圖片
+      插入2張圖片, 以1張圖為一列
+      \begin{verbatim}
       \InsertMultiImages%
       {%
-        {2} 
-        {Test Caption}
-        {Test Label}
+        {1}{2 images, 1 image per row}{}
       }%
       {%
-        {./example/how-to/write/pic/Cc-by_new.svg.png}
-        {Little man No.1}
-        {fig:little-man-no.2}
+        {./image.png}
       }%
       {%
-        {./example/how-to/write/pic/Cc-sa.svg}
-        {Little man No.1}
-        {fig:little-man-no.2}
+        {./image.png}
+      }%
+      \end{verbatim}
+      \InsertMultiImages%
+      {%
+        {1}{2 images, 1 image per row}{}
       }%
       {%
-        {./example/how-to/write/pic/Cc-sa.svg}
-        {Little man No.1}
-        {fig:little-man-no.2}
+        {./example/how-to/write/pic/CC-BY-NC.png}
+      }%
+      {%
+        {./example/how-to/write/pic/CC-BY-NC-ND.png}
       }%
     } % End of \item{}
+
+    \newpage
+
+    \item
+    {
+      插入5張圖片, 以2張圖為一列, 並有2張圖轉變角度, 同時有3張圖片做了標簽
+      \begin{verbatim}
+      \InsertMultiImages%
+      {%
+        {2}{5 images, 2 images per row}{fig:example:mi2:fig1}
+      }%
+      {%
+        {./image.png}{Image 1}
+      }%
+      {%
+        {./image.png}{Image 2}{fig:example:mi2:fig2}{-20}
+      }%
+      {%
+        {./image.png}{Image 3}
+      }%
+      {%
+        {./image.png}{Image 4}{fig:example:mi2:fig3}
+      }%
+      {%
+        {./image.png}{Image 5}{}{45}
+      }%
+      \end{verbatim}
+      \InsertMultiImages%
+      {%
+        {2}{5 images, 2 images per row}{fig:example:mi2:fig1}
+      }%
+      {%
+        {./example/how-to/write/pic/CC-BY-NC.png}{Image 1}
+      }%
+      {%
+        {./example/how-to/write/pic/CC-BY-NC-ND.png}{Image 2}{fig:example:mi2:fig2}{-20}
+      }%
+      {%
+        {./example/how-to/write/pic/CC-BY-NC-SA.png}{Image 3}
+      }%
+      {%
+        {./example/how-to/write/pic/CC-BY-ND.png}{Image 4}{fig:example:mi2:fig3}
+      }%
+      {%
+        {./example/how-to/write/pic/CC-BY-SA.png}{Image 5}{}{45}
+      }%
+    } % End of \item{}
+
+      e.g: 
+      引用大圖 (Fig.\ref{fig:example:mi2:fig1}) ,
+      引用小圖 (fig.\ref{fig:example:mi2:fig2}, fig.\ref{fig:example:mi2:fig3}).
   \end{enumerate}
 
 % ------------------------------------------------

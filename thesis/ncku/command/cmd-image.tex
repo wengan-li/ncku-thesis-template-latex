@@ -9,14 +9,14 @@
 {
   \ifthenelse{\equal{#1}{\empty}}
   {}
-  {\caption{#1}}
+  {\IfNoValueF{#1}{\caption{#1}}}
 } % End of \newcommand{}
 
 \DeclareDocumentCommand{\SetImageLabel}{G{\empty}}
 {
   \ifthenelse{\equal{#1}{\empty}}
   {}
-  {\label{#1}}
+  {\IfNoValueF{#1}{\label{#1}}}
 } % End of \newcommand{}
 
 % Insert a single image
@@ -54,19 +54,19 @@
 %(or a blank line to force the subfigure onto a new line)
 \newcommand{\SubfigureBreakSpaceLine}[1]
 {
-    \ifthenelse{\equal{\intcalcMod{#1}{\GetMultiImagesPerRow}}{1}}%
-    {%
-      % Echo blank line
-      %
+  \ifthenelse{\equal{\intcalcMod{#1 - 1}{\GetMultiImagesPerRow}}{0}}%
+  {%
+    % Echo blank line
+    %
 
-    } % End of if{}
-    {%
-      ~~~~~~~
-    } % End of else{}
+  } % End of if{}
+  {%
+    ~
+  } % End of else{}
 } % End of \newcommand{}
 
 % Confingure the main image
-\DeclareDocumentCommand{\SetMultiImageRoot}{m m m}
+\DeclareDocumentCommand{\SetMultiImageRoot}{m g g}
 {
   % Set per row
   \FPeval{\MultiImagesPerRow}{clip(#1)} %
@@ -76,11 +76,11 @@
     \FPeval{\WidthOfImagePerRow}{1} %
   } % End of if{}
   {%
-    \FPeval{\WidthOfImagePerRow}{clip(clip(1 / \GetMultiImagesPerRow) - 0.1)} %
+    \FPeval{\WidthOfImagePerRow}{clip(clip(1 / \GetMultiImagesPerRow) - 0.05)} %
   } % End of else{}
 } % End of \newcommand{}
 
-\DeclareDocumentCommand{\SetMultiImageRootCaptionAndLabel}{m m m}
+\DeclareDocumentCommand{\SetMultiImageRootCaptionAndLabel}{m g g}
 {
   \SetImageCaption{#2} %
   \SetImageLabel{#3} %
@@ -112,15 +112,11 @@
     } % End of else{}
 } % End of \newcommand{}
 
-\DeclareDocumentCommand{\InsertMultiImageLL}{m m m m}
+\DeclareDocumentCommand{\InsertMultiImageLL}{m g g g}
 {
-  \IfNoValueF{#4}
-  {
-    \ifthenelse{\equal{#4}{\empty}}
-      {\SetImageRotateAngle{0}}
-      {\SetImageRotateAngle{#4}}
-  } % End of IfNoValueF{}
-  \InsertSubfigureImage{#1}{#2}{#3}{\GetImageRotateAngle}%
+  \SetImageRotateAngle{0}
+  \IfNoValueF{#4}{\SetImageRotateAngle{#4}}
+  \InsertSubfigureImage{#1}{#2}{#3}{\ImageRotateAngle}%
 } % End of \DeclareDocumentCommand{}
 
 % Insert multi-image
@@ -134,8 +130,10 @@
 % 而{#2}是指把#2當成單一個參數傳給function
 % ---------------------------------------
 %
-\DeclareDocumentCommand{\InsertMultiImages} %
-  {m m G{\empty} G{\empty} G{\empty} G{\empty} G{\empty} G{\empty} G{\empty}}
+\DeclareDocumentCommand{\InsertMultiImages}{%
+  G{\empty} G{\empty} G{\empty} %
+  G{\empty} G{\empty} G{\empty} %
+  G{\empty} G{\empty} G{\empty}}
 {
   \begin{figure}[hbtp]
     \centering
