@@ -5,53 +5,43 @@
 % 可能會出現問題
 % http://www.tex.ac.uk/cgi-bin/texfaq2html?label=ouparmd
 
-\newcommand{\SetImageCaption}[1]
+\DeclareDocumentCommand{\SetImageCaption}{G{\empty}}
 {
-  \IfNoValueF{#1}
-  {
-    \ifthenelse{\equal{#1}{\empty}}
-    {}
-    {\caption{#1}}
-  } % End of IfNoValueF{}
+  \ifthenelse{\equal{#1}{\empty}}
+  {}
+  {\caption{#1}}
 } % End of \newcommand{}
 
-\newcommand{\SetImageLabel}[1]
+\DeclareDocumentCommand{\SetImageLabel}{G{\empty}}
 {
-  \IfNoValueF{#1}
-  {
-    \ifthenelse{\equal{#1}{\empty}}
-    {}
-    {\label{#1}}
-  } % End of IfNoValueF{}
+  \ifthenelse{\equal{#1}{\empty}}
+  {}
+  {\label{#1}}
 } % End of \newcommand{}
 
 % Insert a single image
-\DeclareDocumentCommand{\InsertImage}{m m G{\empty} G{\empty}}
+\DeclareDocumentCommand{\InsertImage}
+  {G{1.0} m G{\empty} G{\empty} G{0} G{\empty}}
 {
   \begin{figure}[hbtp]
 
-    \ifthenelse{\equal{#1}{\empty}}
-      {\includegraphics[scale=1.0]{#2}}
-      {\includegraphics[scale=#1]{#2}}
+    % Do center if needed
+    \ifthenelse{\equal{#6}{\empty}}{}{\center}
 
+    % Insert image
+    \includegraphics[scale=#1, angle=#5]{#2}
+
+    % Set other thing
     \SetImageCaption{#3}
     \SetImageLabel{#4}
   \end{figure}
 } % End of \DeclareDocumentCommand{}
 
-% Insert a single image, put place it in center
-\DeclareDocumentCommand{\InsertCenterImage}{m m G{\empty} G{\empty}}
+% Insert a single image, but place it in center
+\DeclareDocumentCommand{\InsertCenterImage}
+  {G{1.0} m G{\empty} G{\empty} G{0}}
 {
-  \begin{figure}[hbtp]
-    \center
-
-    \ifthenelse{\equal{#1}{\empty}}
-      {\includegraphics[scale=1.0]{#2}}
-      {\includegraphics[scale=#1]{#2}}
-
-    \SetImageCaption{#3}
-    \SetImageLabel{#4}
-  \end{figure}
+  \InsertImage{#1}{#2}{#3}{#4}{#5}{center}
 } % End of \DeclareDocumentCommand{}
 
 % For multi images
@@ -64,18 +54,19 @@
 %(or a blank line to force the subfigure onto a new line)
 \newcommand{\SubfigureBreakSpaceLine}[1]
 {
-  \ifthenelse{\equal{\intcalcMod{\GetMultiImagesPerRow}{#1}}{0}}%
-  {%
-    % Echo blank line
-    %
-  } % End of if{}
-  {%
-    \hfill
-  } % End of else{}
+    \ifthenelse{\equal{\intcalcMod{#1}{\GetMultiImagesPerRow}}{1}}%
+    {%
+      % Echo blank line
+      %
+
+    } % End of if{}
+    {%
+      ~~~~~~~
+    } % End of else{}
 } % End of \newcommand{}
 
 % Confingure the main image
-\newcommand{\SetMultiImageRoot}[3]
+\DeclareDocumentCommand{\SetMultiImageRoot}{m m m}
 {
   % Set per row
   \FPeval{\MultiImagesPerRow}{clip(#1)} %
@@ -89,31 +80,52 @@
   } % End of else{}
 } % End of \newcommand{}
 
-\newcommand{\SetMultiImageRootCaptionAndLabel}[3]
+\DeclareDocumentCommand{\SetMultiImageRootCaptionAndLabel}{m m m}
 {
   \SetImageCaption{#2} %
   \SetImageLabel{#3} %
 } % End of \newcommand{}
 
-\newcommand{\InsertSubfigureImage}[3]
+% Low-level insert image
+\newcommand\ImageRotateAngle{0}
+\newcommand{\SetImageRotateAngle}[1]
+  {\renewcommand{\ImageRotateAngle}{#1}}
+\newcommand{\GetImageRotateAngle}[0]{\ImageRotateAngle}
+
+\newcommand{\InsertSubfigureImage}[4]
 {%
   \begin{subfigure}[b]{\WidthOfImagePerRow\textwidth}%
-    \center%
-    \includegraphics[scale=1.0]{#1}%
-    \SetImageCaption{#2}%
-    \SetImageLabel{#3}%
+    \center
+    \includegraphics[scale=1.0, angle=#4]{#1}
+    \SetImageCaption{#2}
+    \SetImageLabel{#3}
   \end{subfigure}%
 } % End of \newcommand{}
 
-% Low-level insert image
-\newcommand{\InsertMultiImageLL}[3]
+\newcommand{\InsertMultiImageInterface}[2]
 {
-  \InsertSubfigureImage{#1}{#2}{#3}%
+  \ifthenelse{\equal{#2}{\empty}}
+    {}
+    {
+      \SubfigureBreakSpaceLine{#1}
+      \InsertMultiImageLL#2
+    } % End of else{}
 } % End of \newcommand{}
 
+\DeclareDocumentCommand{\InsertMultiImageLL}{m m m m}
+{
+  \IfNoValueF{#4}
+  {
+    \ifthenelse{\equal{#4}{\empty}}
+      {\SetImageRotateAngle{0}}
+      {\SetImageRotateAngle{#4}}
+  } % End of IfNoValueF{}
+  \InsertSubfigureImage{#1}{#2}{#3}{\GetImageRotateAngle}%
+} % End of \DeclareDocumentCommand{}
+
 % Insert multi-image
-% Arg: 1st: Configure
-% Max 8 Image
+% Arg: 1st: Table configure
+%      2~9th: Images (Max 8 Images)
 %
 % ---------------------------------------
 % 使用 \InsertMultiImageLL#2
@@ -122,60 +134,31 @@
 % 而{#2}是指把#2當成單一個參數傳給function
 % ---------------------------------------
 %
-\DeclareDocumentCommand{\InsertMultiImages}{m g g g g g g g g}
+\DeclareDocumentCommand{\InsertMultiImages} %
+  {m m G{\empty} G{\empty} G{\empty} G{\empty} G{\empty} G{\empty} G{\empty}}
 {
   \begin{figure}[hbtp]
     \centering
-
     \SetMultiImageRoot#1
     % Image 1
-    \InsertMultiImageLL#2
+    \InsertMultiImageInterface{1}{#2}
     % Image 2
-    \IfNoValueF{#3}%
-    {%
-      \SubfigureBreakSpaceLine{2}%
-      \InsertMultiImageLL#3%
-    } % End of if{}
+    \InsertMultiImageInterface{2}{#3}
     % Image 3
-    \IfNoValueF{#4}%
-    {%
-      \SubfigureBreakSpaceLine{3}%
-      \InsertMultiImageLL#4%
-    } % End of if{}
+    \InsertMultiImageInterface{3}{#4}
     % Image 4
-    \IfNoValueF{#5}
-    {
-      \SubfigureBreakSpaceLine{4}
-      \InsertMultiImageLL#5
-    } % End of if{}
+    \InsertMultiImageInterface{4}{#5}
     % Image 5
-    \IfNoValueF{#6}
-    {
-      \SubfigureBreakSpaceLine{5}
-      \InsertMultiImageLL#6
-    } % End of if{}
+    \InsertMultiImageInterface{5}{#6}
     % Image 6
-    \IfNoValueF{#7}
-    {
-      \SubfigureBreakSpaceLine{6}
-      \InsertMultiImageLL#7
-    } % End of if{}
+    \InsertMultiImageInterface{6}{#7}
     % Image 7
-    \IfNoValueF{#8}
-    {
-      \SubfigureBreakSpaceLine{7}
-      \InsertMultiImageLL#8
-    } % End of if{}
+    \InsertMultiImageInterface{7}{#8}
     % Image 8
-    \IfNoValueF{#9}
-    {
-      \SubfigureBreakSpaceLine{8}
-      \InsertMultiImageLL#9
-    } % End of if{}
+    \InsertMultiImageInterface{8}{#9}
     \SetMultiImageRootCaptionAndLabel#1
   \end{figure}
 } % End of \DeclareDocumentCommand{}
 
 % ----------------------------------------------------------------------------
-
 
