@@ -1,0 +1,36 @@
+
+% Some helper function about watermark
+
+% ----------------------------------------------------------------------------
+
+% 學校Logo watermark
+\newcommand{\UseSchoolWatermark}[0]
+{
+  \AddToShipoutPicture{
+  \put(0,0){
+  \parbox[b][\paperheight]{\paperwidth}{
+  \vfill
+  \centering
+  \includegraphics[]{./ncku/watersymbol.jpg}
+  \vfill
+  }}}
+} % End of \newcommand{}
+
+% 學校文字的watermark
+\newcommand{\UseSchoolTextWatermark}[0]
+{
+  \AddToShipoutPicture*{
+  \put(0,0){
+  \parbox[b][\paperheight]{\paperwidth}{
+  \vfill
+  \centering
+   \makebox(0,0){\rotatebox{45}{\textcolor[gray]{0.75}%
+          {\fontsize{2.0cm}{2.0cm}\selectfont{\GetSchoolChiName}}}}
+  \vfill
+  }}}
+} % End of \newcommand{}
+
+\newcommand{\ClearWatermark}[0]{\ClearShipoutPicture}
+
+% ----------------------------------------------------------------------------
+

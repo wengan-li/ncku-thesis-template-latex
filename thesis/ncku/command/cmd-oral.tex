@@ -1,0 +1,43 @@
+
+% Some helper function use in oral templete
+
+% ----------------------------------------------------------------------------
+
+% 口試委員 Committee member(s)
+\newcommand{\CommitteeSize}{8} % Default
+\newcommand{\GetCommitteeSize}[0]{\CommitteeSize}
+\newcommand{\SetCommitteeSize}[1]
+{
+  \ifthenelse{#1 < 4}
+  {
+    \renewcommand{\CommitteeSize}{4}
+  } % End of if{}
+  {
+    \ifthenelse{#1 > 8}
+    {\renewcommand{\CommitteeSize}{8}}
+    {\renewcommand{\CommitteeSize}{#1}}
+  } % End of else{}
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
+% Signature line
+\newcommand{\namesigdate}[0]{\rule{5.5cm}{1pt}}
+
+% ----------------------------------------------------------------------------
+
+% 口試証明文件 Document of oral presentation
+% 要顯示圖片還是範例
+
+\newcommand{\OralDocumentPhoto}{0}
+\newcommand{\OralDocumentTemplete}{1}
+\newcommand{\OralDocumentEngOnly}{0}
+\newcommand{\OralDocument}{\OralDocumentTemplete} % Default
+\newcommand{\DisplayOralDocumentTemplete}[0]
+  {\renewcommand{\OralDocument}{\OralDocumentTemplete}}
+\newcommand{\DisplayOralDocumentPhoto}[0]
+  {\renewcommand{\OralDocument}{\OralDocumentPhoto}}
+\newcommand{\DisplayOralDocumentEngOnly}[0]
+  {\renewcommand{\OralDocumentEngOnly}{1}}
+% ----------------------------------------------------------------------------
+

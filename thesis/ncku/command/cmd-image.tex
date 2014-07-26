@@ -1,0 +1,120 @@
+
+% Some helper function about insert image
+
+% Insert a single image
+\DeclareDocumentCommand{\InsertImage}{m m o o}
+{
+  \begin{figure}[hbtp]
+    \ifthenelse{\equal{#1}{\empty}}
+      {\includegraphics[scale=1.0]{#2}}
+      {\includegraphics[scale=#1]{#2}}
+    \IfNoValueF{#3}{\caption{#3}}
+    \IfNoValueF{#4}{\label{#4}}
+  \end{figure}
+} % End of \DeclareDocumentCommand{}
+
+% For multi images
+\newcommand\MultiImagesPerRow{1}
+\newcommand{\SetMultiImagesPerRow}[1]
+  {\renewcommand{\MultiImagesPerRow}{#1}}
+\newcommand{\GetMultiImagesPerRow}[0]{\MultiImagesPerRow}
+
+%add desired spacing between images, e. g. ~, \quad, \qquad etc.
+%(or a blank line to force the subfigure onto a new line)
+\newcommand{\SubfigureBreakSpaceLine}[1]
+{
+  \ifthenelse{\equal{\intcalcMod{\GetMultiImagesPerRow}{#1}}{0}}
+  {
+    % Echo blank line
+
+  } % End of if{}
+  {
+    ~
+  } % End of else{}
+} % End of \newcommand{}
+
+\newcommand{\InsertSubfigureImage}[3]
+{
+  \begin{subfigure}[b]{\WidthOfImagePerRow\textwidth}
+    \includegraphics[width=\textwidth]{#1}
+    \IfNoValueF{#2}{\caption{#2}}
+    \IfNoValueF{#3}{\label{#3}}
+  \end{subfigure}
+} % End of \newcommand{}
+
+% Confingure the main image
+\newcommand{\SetMultiImageRoot}[1]
+{
+  \getargsC{#1}
+  \SetMultiImagesPerRow{\argi}
+  \FPeval{\WidthOfImagePerRow}{\num[round-precision=1]{1 / \argi})}
+  \IfNoValueF{\argii}{\caption{\argii}}
+  \IfNoValueF{\argiii}{\label{\argiii}}
+} % End of \newcommand{}
+
+% Low-level insert image
+\newcommand{\InsertMultiImageLL}[1]
+{
+  \getargsC{#1}
+  \InsertSubfigureImage{\argi}{\argii}{\argiii}
+} % End of \newcommand{}
+
+% Insert multi-image
+% Arg: 1st: Image per row
+% Max 8 Image
+\DeclareDocumentCommand{\InsertMultiImages}{m m g g g g g g g}
+{
+  \begin{figure}[hbtp]
+    \centering
+
+    \SetMultiImageRoot{#1}
+
+    % Image 1
+    \InsertMultiImageLL{#2}
+    % Image 2
+    \IfNoValueF{#3}
+    {
+      \SubfigureBreakSpaceLine{2}
+      \InsertMultiImageLL{#3}
+    } % End of if{}
+    % Image 3
+    \IfNoValueF{#4}
+    {
+      \SubfigureBreakSpaceLine{3}
+      \InsertMultiImageLL{#4}
+    } % End of if{}
+    % Image 4
+    \IfNoValueF{#5}
+    {
+      \SubfigureBreakSpaceLine{4}
+      \InsertMultiImageLL{#5}
+    } % End of if{}
+    % Image 5
+    \IfNoValueF{#6}
+    {
+      \SubfigureBreakSpaceLine{5}
+      \InsertMultiImageLL{#6}
+    } % End of if{}
+    % Image 6
+    \IfNoValueF{#7}
+    {
+      \SubfigureBreakSpaceLine{6}
+      \InsertMultiImageLL{#7}
+    } % End of if{}
+    % Image 7
+    \IfNoValueF{#8}
+    {
+      \SubfigureBreakSpaceLine{7}
+      \InsertMultiImageLL{#8}
+    } % End of if{}
+    % Image 8
+    \IfNoValueF{#9}
+    {
+      \SubfigureBreakSpaceLine{8}
+      \InsertMultiImageLL{#9}
+    } % End of if{}
+  \end{figure}
+} % End of \DeclareDocumentCommand{}
+
+% ----------------------------------------------------------------------------
+

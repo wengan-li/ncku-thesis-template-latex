@@ -1,0 +1,131 @@
+
+% Some common helper function
+
+% ----------------------------------------------------------------------------
+
+% Some helper functions
+
+\newcommand{\GetMonthInEng}[1]
+{
+  \ifthenelse{\equal{#1}{1}}{January}{}
+  \ifthenelse{\equal{#1}{2}}{February}{}
+  \ifthenelse{\equal{#1}{3}}{March}{}
+  \ifthenelse{\equal{#1}{4}}{April}{}
+  \ifthenelse{\equal{#1}{5}}{May}{}
+  \ifthenelse{\equal{#1}{6}}{June}{}
+  \ifthenelse{\equal{#1}{7}}{July}{}
+  \ifthenelse{\equal{#1}{8}}{August}{}
+  \ifthenelse{\equal{#1}{9}}{September}{}
+  \ifthenelse{\equal{#1}{10}}{October}{}
+  \ifthenelse{\equal{#1}{11}}{November}{}
+  \ifthenelse{\equal{#1}{12}}{December}{}
+} % End of \newcommand{}
+
+% 計算出台灣民國幾年
+% Get the year using Taiwans' year
+\newcommand{\SetOralTaiwanYear}[1]
+{
+  \FPeval{\OralTaiwanYearResult}{clip(#1 - 1911)}
+} % End of \newcommand{}
+
+% 計算出台灣民國幾年
+% Get the year using Taiwans' year
+\newcommand{\SetThesisTaiwanYear}[1]
+{
+  \FPeval{\ThesisTaiwanYearResult}{clip(#1 - 1911)}
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
+
+\newcommand{\BeginThesis}[0]
+{
+  % Start of paper
+  \begin{document}
+
+  % Set the line spacing for whole thesis
+  \baselineskip = 26pt
+} % End of \newcommand{}
+
+\newcommand{\EndThesis}[0]
+{
+  % End of paper
+  \end{document}
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
+\newcommand{\StartNewPage}
+{
+  % Page start
+  \newpage
+  \phantomsection
+} % End of \newcommand{}
+
+\newcommand{\EndOfPage}
+{
+  % End of page
+  \clearpage
+} % End of \newcommand{}
+
+% Abstract
+\newcommand{\StartAbstract}
+{
+  \StartNewPage
+
+  % Add to "Table of Contents"
+  \addcontentsline{toc}{chapter}{Abstract}
+
+  % Title
+  \centerline{\Large \textbf{Abstract}}
+} % End of \newcommand{}
+
+\def \EndAbstract {\EndOfPage}
+
+\newcommand{\AbstractKeyword}[1]
+{
+  % Keyword
+  \par
+  {\bf 關鍵字:} #1
+} % End of \newcommand{}
+
+% Chapters
+\DeclareDocumentCommand{\StartChapter}{m g}
+{
+  \chapter{#1}
+  \IfNoValueF{#2}{\label{#2}}
+%  \baselineskip=26pt
+%  \thispagestyle{empty}
+} % End of \DeclareDocumentCommand{}
+
+\def \EndChapter {\EndOfPage}
+
+% Acknowledgments
+\newcommand{\StartAcknowledgments}[1]
+{
+  \StartNewPage
+
+  % Add to "Table of Contents"
+  \addcontentsline{toc}{chapter}{Acknowledgments}
+
+  % Title
+  \centerline{\Large \textbf{Acknowledgments}}
+
+  \IfNoValueF{#1}{\label{#1}}
+} % End of \newcommand{}
+
+\def \EndAcknowledgments {\EndOfPage}
+
+\def \StartAppendix
+{
+  \StartNewPage
+  % Appendix begins here (For one appendix chapter only)
+  %\cleardoublepage
+  \appendix
+  %\clearpage
+  %\setcounter{page}{\thepage}
+  % If more than one appendix chapters
+  %\appendices
+}
+
+\def \EndAppendix {\EndOfPage}
