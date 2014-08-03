@@ -54,7 +54,8 @@
 %(or a blank line to force the subfigure onto a new line)
 \newcommand{\SubfigureBreakSpaceLine}[1]
 {
-  \ifthenelse{\equal{\intcalcMod{#1 - 1}{\GetMultiImagesPerRow}}{0}}%
+  \ifthenelse{\equal{\intcalcMod{
+    \GetMultiImageId - 1}{\GetMultiImagesPerRow}}{0}}%
   {%
     % Echo blank line
     %
@@ -70,14 +71,6 @@
 {
   % Set per row
   \FPeval{\MultiImagesPerRow}{clip(#1)} %
-
-  \ifthenelse{\equal{\GetMultiImagesPerRow}{1}}%
-  {%
-    \FPeval{\WidthOfImagePerRow}{1} %
-  } % End of if{}
-  {%
-    \FPeval{\WidthOfImagePerRow}{clip(clip(1 / \GetMultiImagesPerRow) - 0.05)} %
-  } % End of else{}
 } % End of \newcommand{}
 
 \DeclareDocumentCommand{\SetMultiImageRootCaptionAndLabel}{m g g}
@@ -107,7 +100,21 @@
   \ifthenelse{\equal{#2}{\empty}}
     {}
     {
+      \SetMultiImageId{#1}
       \SubfigureBreakSpaceLine{#1}
+      \ifthenelse{\equal{\GetMultiImagesPerRow}{1}}%
+      {%
+        \FPeval{\WidthOfImagePerRow}{1.0} %
+      } % End of if{}
+      {%
+        \ifthenelse{\equal{\GetMultiImageId}{\GetMultiImageTotalValue}}%
+        {%
+          \FPeval{\WidthOfImagePerRow}{1.0} %
+        } % End of if{}
+        {%
+          \FPeval{\WidthOfImagePerRow}{clip(clip(1 / \GetMultiImagesPerRow) - 0.1)} %
+        } % End of else{}
+      } % End of else{}
       \InsertMultiImageLL#2
     } % End of else{}
 } % End of \newcommand{}
@@ -118,6 +125,16 @@
   \IfNoValueF{#4}{\SetImageRotateAngle{#4}}
   \InsertSubfigureImage{#1}{#2}{#3}{\ImageRotateAngle}%
 } % End of \DeclareDocumentCommand{}
+
+\newcommand\MultiImageTotalValue{0}
+\newcommand{\SetMultiImageTotalValue}[1]
+  {\renewcommand{\MultiImageTotalValue}{#1}}
+\newcommand{\GetMultiImageTotalValue}[0]{\MultiImageTotalValue}
+
+\newcommand\MultiImageId{0}
+\newcommand{\SetMultiImageId}[1]
+  {\renewcommand{\MultiImageId}{#1}}
+\newcommand{\GetMultiImageId}[0]{\MultiImageId}
 
 % Insert multi-image
 % Arg: 1st: Table configure
@@ -135,6 +152,16 @@
   G{\empty} G{\empty} G{\empty} %
   G{\empty} G{\empty} G{\empty}}
 {
+  %Set Multi Image Total
+  \ifthenelse{\equal{#2}{\empty}}{}{\SetMultiImageTotalValue{1}}
+  \ifthenelse{\equal{#3}{\empty}}{}{\SetMultiImageTotalValue{2}}
+  \ifthenelse{\equal{#4}{\empty}}{}{\SetMultiImageTotalValue{3}}
+  \ifthenelse{\equal{#5}{\empty}}{}{\SetMultiImageTotalValue{4}}
+  \ifthenelse{\equal{#6}{\empty}}{}{\SetMultiImageTotalValue{5}}
+  \ifthenelse{\equal{#7}{\empty}}{}{\SetMultiImageTotalValue{6}}
+  \ifthenelse{\equal{#8}{\empty}}{}{\SetMultiImageTotalValue{7}}
+  \ifthenelse{\equal{#9}{\empty}}{}{\SetMultiImageTotalValue{8}}
+
   \begin{figure}[hbtp]
     \centering
     \SetMultiImageRoot#1
