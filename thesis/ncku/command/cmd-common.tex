@@ -82,11 +82,36 @@
 
 \def \EndAbstract {\EndOfPage}
 
-\newcommand{\AbstractKeyword}[1]
+\DeclareDocumentCommand{\AbstractKeyword}{m G{\empty} G{\empty} G{\empty} G{\empty}}
 {
   % Keyword
   \par
-  {\bf 關鍵字:} #1
+
+  \ifthenelse{\equal{#5}{\empty}}
+  {
+    \ifthenelse{\equal{#4}{\empty}}
+    {
+      \ifthenelse{\equal{#3}{\empty}}
+      {
+        \ifthenelse{\equal{#2}{\empty}}
+        {
+          {\bf 關鍵字:} #1
+        } % End of if{}
+        {
+          {\bf 關鍵字:} #1, #2
+        } % End of else{}
+      } % End of if{}
+      {
+        {\bf 關鍵字:} #1, #2, #3
+      } % End of else{}
+    } % End of if{}
+    {
+      {\bf 關鍵字:} #1, #2, #3, #4
+    } % End of else{}
+  } % End of if{}
+  {
+    {\bf 關鍵字:} #1, #2, #3, #4, #5
+  } % End of else{}
 } % End of \newcommand{}
 
 % Chapters
