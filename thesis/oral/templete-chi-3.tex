@@ -7,9 +7,6 @@
 % Set the line spacing to single for the titles (to compress the lines)
 \renewcommand{\baselinestretch}{1}   %行距 1 倍
 
-% 由於中文版的watermark是用文字, 所以先把Logo版關掉
-\ClearWatermark
-
 % ------------------------------------------------
 
 % Page start
@@ -17,11 +14,8 @@
 % 設定使用 無頁碼, 有浮水印
 \newpage
 \phantomsection
-\addcontentsline{toc}{section}{Chinese version}
+\addcontentsline{toc}{section}{Chinese version 3}
 \thispagestyle{empty}
-
-% 使用文字版watermark
-\UseSchoolTextWatermark
 
 % Aligned to the center of the page
 \begin{center}
@@ -35,7 +29,7 @@
 
 % ------------------------------------------------
 
-\vspace{0.5cm}
+\vspace{2.0cm}
 
 % ------------------------------------------------
 
@@ -44,44 +38,44 @@
   \begin{center}
     \Large \GetChiTitle \\
     \Large \GetEngTitle \\
-    (口試文件版本1)
+    (口試文件版本3)
   \end{center}
 \end{minipage}
 
 % ------------------------------------------------
 
-\vspace{3.7cm}
+\vspace{2.2cm}
 
 % ------------------------------------------------
 
 % 顯示 學生 的名字
 \hspace{2.4em}
-\makebox[4.8em][r]{\LARGE 研究生：}
-\makebox[7.2em][l]{\LARGE \GetAuthorChiName} \\
+\makebox[4.8em][r]{\Large 研究生：}
+\makebox[7.2em][l]{\Large \GetAuthorChiName} \\
 
 % --------------------------
 \vspace{1cm}
-\makebox[\textwidth][c]{\LARGE 本論文業經審查及口試合格特此證明} \\
+\makebox[\textwidth][c]{\Large 本論文業經審查及口試合格特此證明} \\
 % --------------------------
 \vspace{1cm}
-\makebox[11.6cm][l]{\LARGE 論文考試委員：} \\
+\makebox[11.6cm][l]{\Large 論文考試委員：} \\
 % --------------------------
 
 \vspace{4.5cm}
 \hspace{2.4em}
-\makebox[4.8em][r]{\LARGE 指導教授：}
+\makebox[4.8em][r]{\Large 指導教授：}
 \makebox[7.2em][l]{}
 
 \vspace{0.5cm}
 \hspace{2.4em}
-\makebox[4.8em][r]{\LARGE 系(所)主管：}
+\makebox[4.8em][r]{\Large 系(所)主管：}
 \makebox[7.2em][l]{}
 
 % --------------------------
 
 % Date 日期
 \vspace{0.5cm}
-\makebox[\textwidth][s]{\LARGE 中華民國 \GetOralChiYear 年 \GetOralChiMonth 月 \GetOralChiDay 日}
+\makebox[\textwidth][s]{\Large 中華民國 \GetOralChiYear 年 \GetOralChiMonth 月 \GetOralChiDay 日}
 
 % ------------------------------------------------
 
@@ -90,9 +84,5 @@
 
 % End of page
 \clearpage
-
-% 重新使用學校浮水印 Watermark
-\UseSchoolWatermark
-
 % ------------------------------------------------
 
