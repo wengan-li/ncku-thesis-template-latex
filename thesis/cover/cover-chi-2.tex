@@ -1,0 +1,154 @@
+
+% ----------------------------------------------------------------------------
+%                Chinese cover
+%                   中文封面
+% ----------------------------------------------------------------------------
+
+% Set the line spacing to single for the titles (to compress the lines)
+\renewcommand{\baselinestretch}{1}   %行距 1 倍
+
+% ------------------------------------------------
+
+% Page start
+\newpage
+\phantomsection
+
+% Add to "Table of Contents"
+\addcontentsline{toc}{chapter}{Cover version 2}
+
+% 設定使用 無頁碼, 有浮水印
+\thispagestyle{empty}
+
+% Aligned to the center of the page
+\begin{center}
+
+% ------------------------------------------------
+
+% 顯示 校名, 系所名, 論文種類
+\begin{minipage}[c][5cm][t]{\textwidth}
+  \begin{center}
+    \makebox[10cm][s]{\Huge \GetSchoolChiName} \\
+
+    \vspace{1cm}
+    \makebox[8cm][s]{\Huge \deptCname} \\
+
+    \vspace{1cm}
+    \makebox[5cm][s]{\Huge \GetChiDegree 論文} \\
+  \end{center}
+\end{minipage}
+% ------------------------------------------------
+
+\vspace{5cm}
+
+% ------------------------------------------------
+
+% Chinese and English title 中英文題目
+\begin{minipage}[c][5cm][t]{\textwidth}
+  \begin{center}
+    \Large \GetChiTitle \\
+
+    \vspace{0.5cm}
+    \Large \GetEngTitle \\
+    (封面版本2 - 等待認可)
+  \end{center}
+\end{minipage}
+
+% ------------------------------------------------
+
+\vspace{1.5cm}
+
+% ------------------------------------------------
+
+% 顯示學生和老師的名字
+
+\begin{minipage}[c][4.5cm][t]{\textwidth}
+  \begin{center}
+
+  % --------------------------
+
+  % 顯示 學生 的名字
+  \hspace{2.0em}
+  \makebox[4.0em][r]{\Large 學生：}
+  \makebox[6.0em][l]{\Large \GetAuthorChiName}
+  \makebox[5.0em][c]{}
+  \makebox[4.0em][r]{\Large Student \thinspace :}
+  \makebox[8.0em][l]{\Large \GetAuthorEngName}\\
+  % --------------------------
+
+  \vspace{0.5cm}
+
+  % --------------------------
+
+  % 顯示 指導老師 A 的名字
+  \hspace{2.0em}
+  \makebox[4.0em][r]{\Large 指導老師：}
+  \makebox[6.0em][l]{\Large \GetAdvisorChiNameA \thinspace 教授}
+  \makebox[5.0em][c]{}
+  \makebox[4.0em][r]{\Large Advisor \thinspace :}
+  \makebox[8.0em][l]{\Large Prof. \thinspace \GetAdvisorEngNameA}\\
+  % --------------------------
+
+  \vspace{0.1cm}
+
+  % --------------------------
+
+  % 顯示 指導老師 B 的名字
+  \hspace{1.5em}
+  \makebox[4.0em][r]{}
+  \makebox[6.0em][l]
+  {
+    \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}
+      {}
+      {\Large \GetAdvisorChiNameB \thinspace 教授}
+  }
+  \makebox[5.0em][c]{}
+  \makebox[4.0em][r]{}
+  \makebox[8.0em][l]
+  {
+    \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}
+      {}
+      {\Large Prof. \thinspace \GetAdvisorEngNameB}
+  } \\
+
+  % --------------------------
+
+  \vspace{0.1cm}
+
+  % --------------------------
+
+  % 顯示 指導老師 C 的名字
+  \hspace{1.5em}
+  \makebox[4.0em][r]{}
+  \makebox[6.0em][l]
+  {
+    \ifthenelse{\equal{\GetAdvisorChiNameC}{\empty}}
+      {}
+      {\Large \GetAdvisorChiNameC \thinspace 教授}
+  }
+  \makebox[5.0em][c]{}
+  \makebox[4.0em][r]{}
+  \makebox[8.0em][l]
+  {
+    \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}
+      {}
+      {\Large Prof. \thinspace \GetAdvisorEngNameC}
+  } \\
+
+  % --------------------------
+
+  \end{center}
+\end{minipage}
+% ------------------------------------------------
+
+% Date 日期
+\vspace{0.5cm}
+\makebox[8cm][s]{\Large 中華民國 \GetThesisYearInTaiwanYear 年 \GetThesisMonth 月}
+
+% ------------------------------------------------
+
+% End of alignment
+\end{center}
+
+% End of page
+\clearpage
+% ------------------------------------------------
