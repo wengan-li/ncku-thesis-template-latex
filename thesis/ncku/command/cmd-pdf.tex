@@ -1,0 +1,73 @@
+
+% Some common helper function
+
+% ----------------------------------------------------------------------------
+
+% 使用 hyperref 在 pdf 簡介欄裡填入相關資料
+\newcommand{\FillInPDFData}[0]
+{
+  \ifx \hypersetup \undefined
+    % do nothing
+    \relax
+  \else
+    \ifx \GetChiTitle \undefined
+      \hypersetup
+      {
+        pdftitle  = {\GetEngTitle},
+        pdfauthor = {\GetAuthorEngName},
+      }
+    \else
+      \hypersetup
+      {
+        pdftitle  = {\GetEngTitle \enspace (\GetChiTitle)},
+        pdfauthor = {\GetAuthorEngName \enspace (\GetAuthorChiName)},
+      }
+    \fi
+
+    \hypersetup
+    {
+      unicode     = true,
+      pdfcreator  = {\GetSchoolEngName},
+      pdfproducer = {\GetSchoolEngName},
+      pdfsubject  = {},
+    }
+
+    \ifthenelse{\equal{\GetKeywordsE}{\empty}}
+    {
+      \ifthenelse{\equal{\GetKeywordsD}{\empty}}
+      {
+        \ifthenelse{\equal{\GetKeywordsC}{\empty}}
+        {
+          \ifthenelse{\equal{\GetKeywordsB}{\empty}}
+          {
+            \ifthenelse{\equal{\GetKeywordsA}{\empty}}
+            {}
+            {
+              \hypersetup
+              {pdfkeywords = {\GetKeywordsA}}
+            } % End of else{}
+          } % End of if{}
+          {
+            \hypersetup
+            {pdfkeywords = {\GetKeywordsA, \GetKeywordsB}}
+          } % End of else{}
+        } % End of if{}
+        {
+          \hypersetup
+          {pdfkeywords = {\GetKeywordsA, \GetKeywordsB, \GetKeywordsC}}
+        } % End of else{}
+      } % End of if{}
+      {
+        \hypersetup
+        {pdfkeywords = {\GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD}}
+      } % End of else{}
+    } % End of if{}
+    {
+      \hypersetup
+      {pdfkeywords = {\GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD, \GetKeywordsE}}
+    } % End of else{}
+  \fi
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
