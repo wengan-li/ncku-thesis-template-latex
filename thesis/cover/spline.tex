@@ -1,0 +1,47 @@
+
+% ----------------------------------------------------------------------------
+%                side page, used for printing on spline
+%                   書背
+% ----------------------------------------------------------------------------
+
+% Set the line spacing to single for the titles (to compress the lines)
+\renewcommand{\baselinestretch}{0}   %行距 1 倍
+
+% ------------------------------------------------
+
+% Page start
+\newpage
+\phantomsection
+
+% 設定使用 無頁碼, 有浮水印
+\thispagestyle{empty}
+{
+  \CJKfamily{vertsongcp}
+
+  \fbox{\rotatebox{-90}{
+    \begin{minipage}[c][1.4cm][c]{0.97\textheight}
+      \parbox{0.98\textheight}{
+        \parbox{0.15\textheight}{%
+          \GetSchoolChiName \\
+          \GetDeptChiName
+        } % End of \parbox{}
+        \parbox{0.10\textheight}{%
+          \GetChiDegree 論文
+        } % End of \parbox{}
+        \parbox{0.40\textheight}{%
+          \GetChiTitle
+        } % End of \parbox{}
+        \parbox{0.15\textheight}{%
+          \GetAuthorChiName \enspace 撰
+        } % End of \parbox{}
+        \parbox{0.15\textheight}{%
+          \GetThesisYearInTaiwanYear 年
+        } % End of \parbox{}
+      } % End of \parbox{}
+    \end{minipage}
+  }} % End of \fbox{}
+} % End of {}
+
+% End of page
+\clearpage
+% ------------------------------------------------
