@@ -39,6 +39,9 @@
 % 設定行距
 \linespread{1.5}\selectfont
 
+% Set style
+\pagestyle{plain}
+
 % ------------------------------------------------
 
 % LaTex package
@@ -88,34 +91,8 @@
 
 % --------------------------
 
-% 使用 hyperref 在 pdf 簡介欄裡填入相關資料
-\ifx \hypersetup \undefined
-  % do nothing
-  \relax
-\else
-  \ifx \GetChiTitle \undefined
-    \hypersetup
-    {
-      pdftitle  = {\GetEngTitle},
-      pdfauthor = {\GetAuthorEngName},
-    }
-  \else
-    \hypersetup
-    {
-      pdftitle  = {\GetEngTitle \enspace (\GetChiTitle)},
-      pdfauthor = {\GetAuthorEngName \enspace (\GetAuthorChiName)},
-    }
-  \fi
-
-  \hypersetup
-  {
-    unicode     = true,
-    pdfcreator  = {\GetSchoolEngName},
-    pdfproducer = {\GetSchoolEngName},
-    pdfsubject  = {},
-    pdfkeywords = {},
-  }
-\fi
+% 在 pdf 簡介欄裡填入相關資料
+\FillInPDFData
 
 % --------------------------
 
