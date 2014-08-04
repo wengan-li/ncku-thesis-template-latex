@@ -9,39 +9,68 @@
 
 % ------------------------------------------------
 
+% 由於中文版的watermark是用文字, 所以先把Logo版關掉
+\ClearWatermark
+
 % Page start
 \newpage
 \phantomsection
 
 % 設定使用 無頁碼, 有浮水印
 \thispagestyle{empty}
-{
-  \CJKfamily{vertsongcp}
 
-  \fbox{\rotatebox{-90}{
-    \begin{minipage}[c][1.4cm][c]{0.97\textheight}
-      \parbox{0.98\textheight}{
-        \parbox{0.15\textheight}{%
+% ------------------------------------------------
+
+{
+  \CJKfamily{vchifont}
+  \fontsize{12}{12}\selectfont
+
+  \fbox{
+    \parbox[c][0.97\textheight][c]{1.5cm}{
+      \rotatebox{-90}{
+        \begin{minipage}[c][1.7cm][c]{3.0cm}
           \GetSchoolChiName \\
           \GetDeptChiName
-        } % End of \parbox{}
-        \parbox{0.10\textheight}{%
+        \end{minipage}
+        %
+        \begin{minipage}[c][1.7cm][c]{2.5cm}
           \GetChiDegree 論文
-        } % End of \parbox{}
-        \parbox{0.40\textheight}{%
-          \GetChiTitle
-        } % End of \parbox{}
-        \parbox{0.15\textheight}{%
-          \GetAuthorChiName \enspace 撰
-        } % End of \parbox{}
-        \parbox{0.15\textheight}{%
-          \GetThesisYearInTaiwanYear 年
-        } % End of \parbox{}
-      } % End of \parbox{}
-    \end{minipage}
-  }} % End of \fbox{}
+        \end{minipage}
+        %
+        \begin{minipage}[c][1.7cm][c]{11.0cm}
+        {
+%          \vspace{0.1cm}
+%          \CJKmove \GetChiTitle
+          \vspace{0.4cm}
+          \GetEngTitle
+        }
+        \end{minipage}
+        %
+        \begin{minipage}[c][1.7cm][c]{2.5cm}
+          \begin{center}
+            \GetAuthorChiName \enspace 撰
+          \end{center}
+        \end{minipage}
+        %
+        \begin{minipage}[c][1.7cm][c]{2.5cm}
+          \begin{center}
+          {
+            \fontspec[RawFeature={vertical}]{Times New Roman}
+            \GetThesisYearInTaiwanYear
+          }
+          年
+          \end{center}
+        \end{minipage}
+      } % End of \rotatebox{}
+    } % End of \parbox{}
+  } % End of \fbox{}
 } % End of {}
+
+% ------------------------------------------------
 
 % End of page
 \clearpage
+
+% 重新使用學校浮水印 Watermark
+\UseSchoolWatermark
 % ------------------------------------------------

@@ -26,6 +26,8 @@
 % 設定中英文的字型
 % 字型的設定可以使用系統內的字型，而不用像以前一樣另外安裝
 \setCJKmainfont{標楷體}
+\newfontlanguage{Chinese}{CHN}
+\setCJKfamilyfont{vchifont}[Script=CJK,Language=Chinese,Vertical=RotatedGlyphs]{標楷體}
 
 % 中文自動換行
 \XeTeXlinebreaklocale "zh"
@@ -63,6 +65,10 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsmath}
+
+\def\CJKmovesymbol#1{\raise.35em\hbox{#1}}
+\def\CJKmove{\let\CJKsymbol\CJKmovesymbol
+             \let\CJKpunctsymbol\CJKmovesymbol}
 
 % ------------------------------------------------
 
