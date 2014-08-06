@@ -1,0 +1,23 @@
+
+% Some helper function about acknowledgments
+
+% ----------------------------------------------------------------------------
+
+% Acknowledgments
+\newcommand{\StartAcknowledgments}[1]
+{
+  \StartNewPage
+
+  % Add to "Table of Contents"
+  \addcontentsline{toc}{chapter}{Acknowledgments}
+
+  % Title
+  \centerline{\Large \textbf{Acknowledgments}}
+
+  \IfNoValueF{#1}{\label{#1}}
+} % End of \newcommand{}
+
+\def \EndAcknowledgments {\EndOfPage}
+
+% ----------------------------------------------------------------------------
+

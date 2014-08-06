@@ -1,0 +1,187 @@
+
+% Some helper function use in abstract
+
+% ----------------------------------------------------------------------------
+
+% Abstract
+\newcommand{\StartAbstract}
+{
+  \StartNewPage
+
+  % Add to "Table of Contents"
+  \addcontentsline{toc}{chapter}{Abstract}
+
+  % Title
+  \centerline{\Large \textbf{Abstract}}
+} % End of \newcommand{}
+
+\def \EndChiAbstract
+{
+  % Keyword
+  \AbstractKeyword
+
+  \EndOfPage
+} % End of \def{}
+
+\def \EndAbstract
+{
+  % Keyword
+  \ExtendedAbstractKeyword
+
+  \EndOfPage
+} % End of \def{}
+
+% Extended Abstract
+\newcommand{\StartExtendedAbstract}
+{
+  \StartNewPage
+
+  % Set page
+  \baselineskip=20pt
+  \setlength{\parindent}{0.0pt}
+
+  % Set style
+  \pagestyle{empty}
+
+  % 設定段落之間的距離
+  \setlength{\parskip}{0.5cm}
+
+  % Add to "Table of Contents"
+  \addcontentsline{toc}{chapter}{Extended Abstract}
+
+  % Add title
+  \centerline{\large \textbf{\eTitle}}
+  \vspace{0.5cm}
+
+  % Add name
+  \centerline{\large \GetAuthorEngName}
+
+  % Add names
+  \centerline{Prof. \thinspace \GetAdvisorEngNameA}
+  \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}
+    {}
+    {\centerline{Prof. \thinspace \GetAdvisorEngNameB}}
+
+  \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}
+    {}
+    {\centerline{Prof. \thinspace \GetAdvisorEngNameC}}
+
+  % Add department
+  \centerline{\GetDeptEngName}
+  \centerline{\GetCollEngName}
+} % End of \newcommand{}
+
+\def \EndExtendedAbstract
+{
+  \EndOfPage
+
+  % 設定段落之間的距離
+  \setlength{\parskip}{0.3cm}
+
+  % Reset page
+  \setlength{\parindent}{1.5em}
+  \baselineskip=26pt
+
+  % Re-set style
+  \pagestyle{plain}
+} % End of \def{}
+
+% Summary in Extended Abstract
+\newcommand{\ExtAbstractSummary}[1]{
+  \begin{framed}
+    \ExtAbstractChapter{SUMMARY}{#1}
+
+    % Keyword
+    \ExtendedAbstractKeyword
+  \end{framed}
+} % End of \newcommand{}
+
+% Chapter in Extended Abstract
+\newcommand{\ExtAbstractChapter}[2]
+{
+  \vspace{0.4cm}
+  \centerline{\textbf{#1}}
+
+  #2
+} % End of \newcommand{}
+
+% Sub-chapter in Extended Abstract
+\newcommand{\ExtAbstractSubChapter}[2]
+{
+  \textbf{#1}
+
+  #2
+} % End of \newcommand{}
+
+\newcommand{\AbstractKeyword}[0]
+{
+  % Keyword
+  \par
+  \ifthenelse{\equal{\GetKeywordsE}{\empty}}
+  {
+    \ifthenelse{\equal{\GetKeywordsD}{\empty}}
+    {
+      \ifthenelse{\equal{\GetKeywordsC}{\empty}}
+      {
+        \ifthenelse{\equal{\GetKeywordsB}{\empty}}
+        {
+          \ifthenelse{\equal{\GetKeywordsA}{\empty}}
+          {}
+          {
+            {\noindent \bf 關鍵字:} \GetKeywordsA
+          } % End of else{}
+        } % End of if{}
+        {
+          {\noindent \bf 關鍵字:} \GetKeywordsA, \GetKeywordsB
+        } % End of else{}
+      } % End of if{}
+      {
+        {\noindent \bf 關鍵字:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC
+      } % End of else{}
+    } % End of if{}
+    {
+      {\noindent \bf 關鍵字:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD
+    } % End of else{}
+  } % End of if{}
+  {
+    {\noindent\bf 關鍵字:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD, \GetKeywordsE
+  } % End of else{}
+} % End of \newcommand{}
+
+\newcommand{\ExtendedAbstractKeyword}[0]
+{
+  % Keyword
+  \par
+  \ifthenelse{\equal{\GetKeywordsE}{\empty}}
+  {
+    \ifthenelse{\equal{\GetKeywordsD}{\empty}}
+    {
+      \ifthenelse{\equal{\GetKeywordsC}{\empty}}
+      {
+        \ifthenelse{\equal{\GetKeywordsB}{\empty}}
+        {
+          \ifthenelse{\equal{\GetKeywordsA}{\empty}}
+          {}
+          {
+            {\noindent \bf Key words:} \GetKeywordsA
+          } % End of else{}
+        } % End of if{}
+        {
+          {\noindent \bf Key words:} \GetKeywordsA, \GetKeywordsB
+        } % End of else{}
+      } % End of if{}
+      {
+        {\noindent \bf Key words:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC
+      } % End of else{}
+    } % End of if{}
+    {
+      {\noindent \bf Key words:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD
+    } % End of else{}
+  } % End of if{}
+  {
+    {\noindent\bf Key words:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD, \GetKeywordsE
+  } % End of else{}
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+

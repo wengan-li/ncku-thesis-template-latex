@@ -1,0 +1,18 @@
+
+% Some helper function about chapter
+
+% ----------------------------------------------------------------------------
+
+% Chapters
+\DeclareDocumentCommand{\StartChapter}{m g}
+{
+  \chapter{#1}
+  \IfNoValueF{#2}{\label{#2}}
+%  \baselineskip=26pt
+%  \thispagestyle{empty}
+} % End of \DeclareDocumentCommand{}
+
+\def \EndChapter {\EndOfPage}
+
+% ----------------------------------------------------------------------------
+
