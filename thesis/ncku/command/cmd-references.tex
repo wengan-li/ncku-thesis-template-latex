@@ -1,0 +1,87 @@
+
+% Some helper function about references and bibliography
+% 參考文獻或資料
+
+% ----------------------------------------------------------------------------
+
+\DeclareDocumentCommand{\ReferencesFiles}{%
+  G{\empty} G{\empty} G{\empty} %
+  G{\empty} G{\empty} G{\empty} %
+  G{\empty} G{\empty} G{\empty}}
+{
+  \StartNewPage
+
+  % Add to "Table of Contents"
+  %\addcontentsline{toc}{chapter}{References}
+
+  % Change the title of bibliography
+  %\renewcommand\bibname{\centerline{\Large References}}
+
+  % ------------------------------------------------
+
+  %Style Name | Author Name Format | Reference Format | Sorting
+  %  abbrv    | H. J. Simpson      |        #ID#      | by author
+  \bibliographystyle{abbrv}
+
+  % ------------------------------------------------
+
+  % Bib files
+  \ifthenelse{\equal{#9}{\empty}}
+  {
+    \ifthenelse{\equal{#8}{\empty}}
+    {
+      \ifthenelse{\equal{#7}{\empty}}
+      {
+        \ifthenelse{\equal{#6}{\empty}}
+        {
+          \ifthenelse{\equal{#5}{\empty}}
+          {
+            \ifthenelse{\equal{#4}{\empty}}
+            {
+              \ifthenelse{\equal{#3}{\empty}}
+              {
+                \ifthenelse{\equal{#2}{\empty}}
+                {
+                  \ifthenelse{\equal{#1}{\empty}}
+                  {} % End of if{}
+                  {\bibliography{#1}} % End of else{}
+                } % End of if{}
+                {
+                  \bibliography{#1,#2}
+                } % End of else{}
+              } % End of if{}
+              {
+                \bibliography{#1,#2,#3}
+              } % End of else{}
+            } % End of if{}
+            {
+              \bibliography{#1,#2,#3,#4}
+            } % End of else{}
+          } % End of if{}
+          {
+            \bibliography{#1,#2,#3,#4,#5}
+          } % End of else{}
+        } % End of if{}
+        {
+          \bibliography{#1,#2,#3,#4,#5,#6}
+        } % End of else{}
+      } % End of if{}
+      {
+        \bibliography{#1,#2,#3,#4,#5,#6,#7}
+      } % End of else{}
+    } % End of if{}
+    {
+      \bibliography{#1,#2,#3,#4,#5,#6,#7,#8}
+    } % End of else{}
+  } % End of if{}
+  {
+    \bibliography{#1,#2,#3,#4,#5,#6,#7,#8,#9}
+  } % End of else{}
+
+  % ------------------------------------------------
+
+  \EndOfPage
+
+} % End of \DeclareDocumentCommand{}
+% ----------------------------------------------------------------------------
+
