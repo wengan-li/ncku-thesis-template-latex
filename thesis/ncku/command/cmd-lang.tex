@@ -1,0 +1,29 @@
+
+% Some helper function about language
+
+% ----------------------------------------------------------------------------
+
+% Flag
+\newcommand\LangEnableChi{0} % Default
+\newcommand\LangEnableEng{0} % Default
+\newcommand\LangEnableDemo{0} % Default
+\newcommand{\SetLangEnableChi}[0]{\renewcommand{\LangEnableChi}{1}}
+\newcommand{\SetLangEnableEng}[0]{\renewcommand{\LangEnableEng}{1}}
+\newcommand{\SetLangEnableDemo}[0]{\renewcommand{\LangEnableDemo}{1}}
+\newcommand{\SetLangEnableAll}[0]
+{
+  \SetLangEnableChi
+  \SetLangEnableEng
+  \SetLangEnableDemo
+} % End of \newcommand{}
+\newcommand{\GetLangEnableChi}[0]{\LangEnableChi}
+\newcommand{\GetLangEnableEng}[0]{\LangEnableEng}
+\newcommand{\GetLangEnableDemo}[0]{\LangEnableDemo}
+
+% APIs for user to do configure
+\newcommand{\LangChi}{\SetLangEnableChi}
+\newcommand{\LangEng}{\SetLangEnableEng}
+\newcommand{\LangDemo}{\SetLangEnableAll}
+
+% ----------------------------------------------------------------------------
+
