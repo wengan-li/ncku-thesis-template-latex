@@ -1,9 +1,13 @@
 % ------------------------------------------------
-\StartAcknowledgments{chapter:acknowledgments}
-% ------------------------------------------------
 
-Thanks someone you want here.
+\ifthenelse{\GetLangEnableChi = 1}
+{
+  \input{./example/acknowledgments/acknowledgments-chi.tex}
+}{}
 
-% ------------------------------------------------
-\EndAcknowledgments
+\ifthenelse{\GetLangEnableEng = 1}
+{
+  \input{./example/acknowledgments/acknowledgments-eng.tex}
+}{}
+
 % ------------------------------------------------

@@ -1,11 +1,14 @@
 % ------------------------------------------------
-\StartAbstract
-% ------------------------------------------------
 
-Write your abstract here.
+\ifthenelse{\GetLangEnableChi = 1}
+{
+  \input{./example/abstract/abstract-chi.tex}
+  \input{./example/abstract/abstract-chi-extended-abstract.tex}
+}{}
 
-Enjoy this templete.
+\ifthenelse{\GetLangEnableEng = 1}
+{
+  \input{./example/abstract/abstract-eng.tex}
+}{}
 
-% ------------------------------------------------
-\EndAbstract
 % ------------------------------------------------

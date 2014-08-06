@@ -1,5 +1,5 @@
 
-% Some helper function use in oral templete
+% Some helper function use for oral document
 
 % ----------------------------------------------------------------------------
 
@@ -27,17 +27,34 @@
 % ----------------------------------------------------------------------------
 
 % 口試証明文件 Document of oral presentation
-% 要顯示圖片還是範例
 
-\newcommand{\OralDocumentPhoto}{0}
+% 要顯示圖片還是範例
+\newcommand{\OralDocumentImage}{0}
 \newcommand{\OralDocumentTemplete}{1}
 \newcommand{\OralDocumentEngOnly}{0}
 \newcommand{\OralDocument}{\OralDocumentTemplete} % Default
-\newcommand{\DisplayOralDocumentTemplete}[0]
+
+\newcommand{\DisplayOralTemplete}[0]
   {\renewcommand{\OralDocument}{\OralDocumentTemplete}}
-\newcommand{\DisplayOralDocumentPhoto}[0]
-  {\renewcommand{\OralDocument}{\OralDocumentPhoto}}
-\newcommand{\DisplayOralDocumentEngOnly}[0]
+\newcommand{\DisplayOralImage}[0]
+  {\renewcommand{\OralDocument}{\OralDocumentImage}}
+\newcommand{\DisplayOralEngOnly}[0]
   {\renewcommand{\OralDocumentEngOnly}{1}}
+
+% The path of the image that the oral document
+\newcommand\OralDocumentImageChiPath{./oral/example/oral-chi.pdf} % Default
+\newcommand\OralDocumentImageEngPath{./oral/example/oral-eng.pdf} % Default
+\newcommand{\SetOralImageChi}[1]{\renewcommand{\OralDocumentImageChiPath}{#1}}
+\newcommand{\SetOralImageEng}[1]{\renewcommand{\OralDocumentImageEngPath}{#1}}
+
+\newcommand{\SetOralImage}[2]
+{
+  \SetOralImageChi{#1}
+  \SetOralImageEng{#2}
+} % End of \newcommand{}
+
+\newcommand{\GetOralImageChiPath}[0]{\OralDocumentImageChiPath}
+\newcommand{\GetOralImageEngPath}[0]{\OralDocumentImageEngPath}
+
 % ----------------------------------------------------------------------------
 

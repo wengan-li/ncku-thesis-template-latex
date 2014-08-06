@@ -8,70 +8,83 @@
 
 \ifthenelse{\OralDocument = \OralDocumentTemplete}
 {
-  % 顯示範本
-  \ifthenelse{\OralDocumentEngOnly = 0}
+  % -------------------------- 顯示範本 --------------------------
+  \ifthenelse{\LangEnableChi = 1}
   {
-    % Page start
-    \newpage
-    \phantomsection
+    \StartNewPage
 
     % 設定顯示在目錄
-    \addcontentsline{toc}{chapter}{Document of oral presentation}
+    % If combine with english version
+    \ifthenelse{\GetLangEnableEng = 1}
+    {
+      \addcontentsline{toc}{chapter}{Document of oral presentation}
+    }{}
 
     % Chinese version
-    \input{./oral/templete-chi.tex}
-    \input{./oral/templete-chi-2.tex}
-    \input{./oral/templete-chi-3.tex}
-    \input{./oral/templete-chi-4.tex}
-
+    \input{./oral/templete/templete-chi.tex}
 
     % ------------------------------------------------
+    \ifthenelse{\GetLangEnableDemo = 1}
+    {
+      \input{./oral/templete/templete-chi-2.tex}
+      \input{./oral/templete/templete-chi-3.tex}
+      \input{./oral/templete/templete-chi-4.tex}
+    }{}
+    % ------------------------------------------------
+  }{}
 
-    % English page start
-    \newpage
-    \phantomsection
-    \addcontentsline{toc}{section}{English version}
-  } % End of if{}
+  % English page start
+  \ifthenelse{\GetLangEnableEng = 1}
   {
-    % English page start
-    \newpage
-    \phantomsection
-    \addcontentsline{toc}{chapter}{Document of oral presentation}
-  } % End of else{}
+    \StartNewPage
 
-  \thispagestyle{empty}
-  \input{./oral/templete-eng.tex}
+    % 設定顯示在目錄
+    % If combine with chinese version
+    \ifthenelse{\LangEnableChi = 1}
+    {
+      \addcontentsline{toc}{section}{English version}
+    } % End of if{}
+    {
+      \addcontentsline{toc}{chapter}{Document of oral presentation}
+    } % End of else{}
+
+    \thispagestyle{empty}
+    \input{./oral/templete/templete-eng.tex}
+  }{}
 } % End of if{}
 {
-  % 顯示圖片, PDF format
+  % ---------------------- 顯示圖片, Image in PDF format ----------------------
 
   % Page start
-  \newpage
-  \phantomsection
+  \StartNewPage
+  \thispagestyle{empty}
 
   % 設定顯示在目錄
   \addcontentsline{toc}{chapter}{Document of oral presentation}
 
-  \thispagestyle{empty}
-
-  % Image of document
-  \ifthenelse{\OralDocumentEngOnly = 0}
+  % Chinese page start
+  \ifthenelse{\LangEnableChi = 1}
   {
     \addcontentsline{toc}{section}{Chinese version}
-    \includepdf{./oral/oral-chi.pdf}
+    \includepdf{\GetOralImageChiPath}
+  }{}
 
-    % ------------------------------------------------
+  % English page start
 
-    % English page start
-    \newpage
-    \phantomsection
+  % If combine with chinese version
+  \ifthenelse{\LangEnableChi = 1}
+  {
+    \StartNewPage
+    \thispagestyle{empty}
     \addcontentsline{toc}{section}{English version}
-  } % End of if{}
-  {} % End of else{}
+  }{}
 
-  \includepdf{./oral/oral-eng.pdf}
+  \includepdf{\GetOralImageEngPath}
 } % End of else{}
 
 % ----------------------------------------------------------------------------
 
 % End of page
+\EndOfPage
+
+% ----------------------------------------------------------------------------

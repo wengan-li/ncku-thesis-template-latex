@@ -1,9 +1,22 @@
 % ------------------------------------------------
 
-% 請根據你的需求去選用中文或英文封面
-\input{./cover/cover-chi.tex}
-\input{./cover/cover-chi-2.tex}
-\input{./cover/cover-eng.tex}
+% 根據user的需求去選用中文或英文封面
+
+\ifthenelse{\GetLangEnableChi = 1}
+{
+  \input{./cover/cover-chi.tex}
+}{}
+
+\ifthenelse{\GetLangEnableDemo = 1}
+{
+  \input{./cover/cover-chi-2.tex}
+}{}
+
+\ifthenelse{\GetLangEnableEng = 1}
+{
+  \input{./cover/cover-eng.tex}
+}{}
+
 \input{./cover/spline.tex}
 
 % ------------------------------------------------
