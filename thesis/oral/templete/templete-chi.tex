@@ -43,8 +43,14 @@
 \begin{minipage}[c][3cm][t]{\textwidth}
   \begin{center}
     \Large \GetChiTitle \\
-    \Large \GetEngTitle \\
-    (口試文件版本1 - 圖書館現用版)
+    \ifthenelse{\GetLangEnableDemo = 0}
+    {
+      \Large \GetEngTitle
+    } % End of if{}
+    {
+      \Large \GetEngTitle \\
+      (口試文件版本1 - 圖書館現用版)
+    } % End of else{}
   \end{center}
 \end{minipage}
 
