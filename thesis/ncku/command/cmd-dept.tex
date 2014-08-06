@@ -1,165 +1,151 @@
-% ----------------------------------------------------------------
-% -------------------------- UNFINISH ----------------------------
-% ----------------------------------------------------------------
-% ----------------------------------------------------------------------------
-% The list of all college and department in school (NCKU)
+% ----------------------------------------------------------------------
+% -------------------------- 未完成 UNFINISH ----------------------------
+% ----------------------------------------------------------------------
 
-% Fellow the list from:
+% ----------------------------------------------------------------------------
+% The list of all department in NCKU
+
+% Use the list from:
 %   http://web.ncku.edu.tw/files/11-1000-182.php
 
-% 所有學院跟系所的設定
-% 縮寫是靠學校給的Domain name所得出的, 故可能會有錯誤的時候
+% 所有學院跟系所的設定.
+%
+% 縮寫是靠學校給的Domain name所得出的, 故可能會有錯誤的時候.
+% 所以如果錯了的話, 就請告知真正的寫法(或縮寫)是什麼.
+%
 % ----------------------------------------------------------------------------
 
 % ----------------------------------------------------------------------------
-% 學院 College
+%                       系所 Department and Institute 
 % ----------------------------------------------------------------------------
 
-% 文學院 College of Liberal Arts
-\newcommand{\CollLiberalArts}[0]
-{
-  \SetCollName{文學院}{College of Liberal Arts}
-} % End of \newcommand{}
-
-% 理學院 College of Liberal Arts
-\newcommand{\CollSciences}[0]
-{
-  \SetCollName{理學院}{College of Sciences}
-} % End of \newcommand{}
-
-% 工學院 College of Engineering
-\newcommand{\CollEngineering}[0]
-{
-  \SetCollName{工學院}{College of Engineering}
-} % End of \newcommand{}
-
-% 電機資訊學院 College of Electrical Engineering & Computer Science
-\newcommand{\CollElectricalEngineeringAndComputerScience}[0]
-{
-  \SetCollName{電機資訊學院}{College of Electrical Engineering \\ and Computer Science}
-} % End of \newcommand{}
-
-% 管理學院 College of Management
-\newcommand{\CollManagement}[0]
-{
-  \SetCollName{管理學院}{College of Management}
-} % End of \newcommand{}
-
-% 社會科學院 College of Social Science
-\newcommand{\CollSocialScience}[0]
-{
-  \SetCollName{社會科學院}{College of Social Science}
-} % End of \newcommand{}
-
-% 規劃與設計學院 College of Planning & Design
-\newcommand{\CollPlanningAndDesign}[0]
-{
-  \SetCollName{規劃與設計學院}{College of Planning and Design}
-} % End of \newcommand{}
-
-% 生物科學與科技學院 College of Bioscience & Biotechnology
-\newcommand{\CollBioscienceAndBiotechnology}[0]
-{
-  \SetCollName{生物科學與科技學院}{College of Bioscience and Biotechnology}
-} % End of \newcommand{}
-
-% 醫學院 College of Medicine
-\newcommand{\CollMedicine}[0]
-{
-  \SetCollName{醫學院}{College of Medicine}
-} % End of \newcommand{}
-
 % ----------------------------------------------------------------------------
-% 系所 Department and Institute 
-% ----------------------------------------------------------------------------
+
+% --------------------- 文學院 College of Liberal Arts ---------------------
 
 % 中國文學系 Department of Chinese Literature
 \newcommand{\SetDeptChinese}[0]
 {
   \SetDeptName{中國文學系}{Chinese}{Department of Chinese Literature}
+  \CollLiberalArts
 } % End of \newcommand{}
 
 % 藝術研究所 Institute of Art
 \newcommand{\SetDeptArt}[0]
 {
   \SetDeptName{藝術研究所}{Art}{Institute of Art}
-} % End of \newcommand{}
-
-% 數學系 Department of Mathematics
-\newcommand{\SetDeptMath}[0]
-{
-  \SetDeptName{數學系}{Math}{Department of Mathematics}
+  \CollLiberalArts
 } % End of \newcommand{}
 
 % 閩南文化研究中心 Min-Nan Culture Studies Center
 \newcommand{\SetDeptMinNan}[0]
 {
   \SetDeptName{閩南文化研究中心}{MinNan}{Min-Nan Culture Studies Center}
+  \CollLiberalArts
 } % End of \newcommand{}
 
 % 外國語文學系 Department of Foreign Languages and Literature
 \newcommand{\SetDeptFLLD}[0]
 {
   \SetDeptName{外國語文學系}{FLLD}{Department of Foreign \\ Languages and Literature}
+  \CollLiberalArts
 } % End of \newcommand{}
 
 % 臺灣文學系 Department of Taiwanese Literature
 \newcommand{\SetDeptTWL}[0]
 {
   \SetDeptName{臺灣文學系}{TWL}{Department of Taiwanese Literature}
-} % End of \newcommand{}
-
-% 光電科學與工程學系 Departmment of Photonics
-\newcommand{\SetDeptDPS}[0]
-{
-  \SetDeptName{光電科學與工程學系}{DPS}{Departmment of Photonics}
+  \CollLiberalArts
 } % End of \newcommand{}
 
 % 華語中心 Chinese Language Center
 \newcommand{\SetDeptKCLC}[0]
 {
   \SetDeptName{華語中心}{KCLC}{Chinese Language Center}
-} % End of \newcommand{}
-
-% 物理學系 Department of Physics
-\newcommand{\SetDeptPhys}[0]
-{
-  \SetDeptName{物理學系}{Phys}{Department of Physics}
-} % End of \newcommand{}
-
-% 化學系 Department of Chemistry
-\newcommand{\SetDeptCh}[0]
-{
-  \SetDeptName{化學系}{Ch}{Department of Chemistry}
-} % End of \newcommand{}
-
-% 地球科學系 Department of Earth Sciences
-\newcommand{\SetDeptEarth}[0]
-{
-  \SetDeptName{地球科學系}{Earth}{Department of Earth Sciences}
+  \CollLiberalArts
 } % End of \newcommand{}
 
 % 外語中心 Foreign Language Center
 \newcommand{\SetDeptLang}[0]
 {
   \SetDeptName{外語中心}{Lang}{Foreign Language Center}
+  \CollLiberalArts
 } % End of \newcommand{}
 
 % 歷史學系 Department of History
 \newcommand{\SetDeptHis}[0]
 {
   \SetDeptName{歷史學系}{His}{Department of History}
+  \CollLiberalArts
+} % End of \newcommand{}
+
+% --------------------- 理學院 College of Sciences ---------------------
+
+% 數學系 Department of Mathematics
+\newcommand{\SetDeptMath}[0]
+{
+  \SetDeptName{數學系}{Math}{Department of Mathematics}
+  \CollSciences
+} % End of \newcommand{}
+
+% 光電科學與工程學系 Departmment of Photonics
+\newcommand{\SetDeptDPS}[0]
+{
+  \SetDeptName{光電科學與工程學系}{DPS}{Departmment of Photonics}
+  \CollSciences
+} % End of \newcommand{}
+
+% 物理學系 Department of Physics
+\newcommand{\SetDeptPhys}[0]
+{
+  \SetDeptName{物理學系}{Phys}{Department of Physics}
+  \CollSciences
+} % End of \newcommand{}
+
+% 化學系 Department of Chemistry
+\newcommand{\SetDeptCh}[0]
+{
+  \SetDeptName{化學系}{Ch}{Department of Chemistry}
+  \CollSciences
+} % End of \newcommand{}
+
+% 地球科學系 Department of Earth Sciences
+\newcommand{\SetDeptEarth}[0]
+{
+  \SetDeptName{地球科學系}{Earth}{Department of Earth Sciences}
+  \CollSciences
 } % End of \newcommand{}
 
 % 太空與電漿科學研究所 Institute of Space and Plasma Sciences
 \newcommand{\SetDeptPSSC}[0]
 {
   \SetDeptName{太空與電漿科學研究所}{PSSC}{Institute of Space and \\ Plasma Sciences}
+  \CollSciences
 } % End of \newcommand{}
 
 % 國家理論科學研究中心 National Center for Theoretical Sciences (South)
 \newcommand{\SetDeptNCTS}[0]
 {
   \SetDeptName{國家理論科學研究中心}{NCTS}{National Center for Theoretical Sciences (South)}
+  \CollSciences
 } % End of \newcommand{}
 
+% --------------------- 工學院 College of Engineering ---------------------
+
+% ------ 電機資訊學院 College of Electrical Engineering & Computer Science ------
+
+% --------------------- 管理學院 College of Management ---------------------
+
+% ------------------- 社會科學院 College of Social Science -------------------
+
+% ---------------- 規劃與設計學院 College of Planning & Design ----------------
+
+% ---------- 生物科學與科技學院 College of Bioscience & Biotechnology ----------
+
+% --------------------- 醫學院 College of Medicine ---------------------
+
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------
+% -------------------------- 未完成 UNFINISH ----------------------------
+% ----------------------------------------------------------------------
