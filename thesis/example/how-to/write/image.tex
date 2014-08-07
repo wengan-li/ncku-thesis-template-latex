@@ -7,7 +7,7 @@
 
 要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.
 
-\textbf{注意}: 由於Latex語法的設計上, 在2個'$\lbrace\rbrace$'之間不能斷行或出現空格, 否則會被判斷成其他的語法
+%\textbf{注意}: 由於Latex語法的設計上, 在2個'$\lbrace\rbrace$'之間不能斷行或出現空格, 否則會被判斷成其他的語法
 
 % ------------------------------------------------
 \newpage
@@ -15,17 +15,35 @@
 
   \begin{framed}
   \begin{verbatim}
-   Scale:   比例 (1.0/空掉: 原大小, 0~1: 縮小, >1: 放大)
-   Path:    位置
-   Caption: 標題 (可空掉或不填)
-   Label:   標簽 (可空掉或不填, 要使用標簽前必須同時使用標題)
-   Angle:   角度 (可不填)
+    Path:   圖片位置 (必填)
 
-   插入圖片
-   \InsertImage{Scale}{Path}{Caption}{Label}{Angle}
+    Options 設定 (使用','來分隔, 不分先後順序)
+      scale:   比例 (選填)
+        (1.0/不填: 原大小; 0.x ~ < 1.0: 縮小; > 1.0: 放大)
+      caption: 標題 (選填)
+      label:   標簽 (選填, 必須要配合Caption使用, 否則無效)
+      angle:   角度 (選填)
 
-   插入圖片並置中
-   \InsertCenterImage{Scale}{Path}{Caption}{Label}{Angle}
+    插入圖片
+    \InsertImage[Options]{Path}
+
+    插入圖片並置中
+    \InsertCenterImage[Options]{Path}
+
+    E.g
+      \InsertImage
+        [caption={這 是 標 題}]
+          {./image.png}
+
+      \InsertCenterImage
+        [scale=0.5,
+          angle=45,
+          caption={這 是 標 題},
+          label={this:is:label}]
+          {./image.png}
+
+      每一項資料可以使用斷行來分隔以保持可讀性.
+      caption和label必須要使用'{}'才能有空格的句子.
   \end{verbatim}
   \end{framed}
 
@@ -35,66 +53,107 @@
   \begin{enumerate}
     \item
     {
-      只填了比例和圖片位置\begin{verbatim}\InsertImage{1.0}{./image.png}\end{verbatim}
-      \InsertImage{1.0}{./example/how-to/write/pic/image/Cc-by_new.svg.png}
+      只填了比例和圖片位置
+      \begin{verbatim}
+        \InsertImage
+          {./image.png}
+      \end{verbatim}
+      \InsertImage
+        {./example/how-to/write/pic/image/Cc-by_new.svg.png}
     } % End of \item{}
 
     \item
     {
-      使用置中的版本\begin{verbatim}\InsertCenterImage{1.0}{./image.png}\end{verbatim}
-      \InsertCenterImage{1.0}{./example/how-to/write/pic/image/Cc-by_new.svg.png}
+      使用置中的版本
+      \begin{verbatim}
+        \InsertCenterImage
+          {./image.png}
+      \end{verbatim}
+      \InsertCenterImage
+        {./example/how-to/write/pic/image/Cc-by_new.svg.png}
     } % End of \item{}
 
     \item
     {
-      放大比例\begin{verbatim}\InsertCenterImage{1.5}{./image.png}\end{verbatim}
-      \InsertCenterImage{1.5}{./example/how-to/write/pic/image/Cc-by_new.svg.png}
+      放大比例
+      \begin{verbatim}
+        \InsertCenterImage
+          [scale=1.5]
+            {./image.png}
+      \end{verbatim}
+      \InsertCenterImage
+        [scale=1.5]
+          {./example/how-to/write/pic/image/Cc-by_new.svg.png}
     } % End of \item{}
 
     \newpage
 
     \item
     {
-      縮小比例\begin{verbatim}\InsertCenterImage{0.5}{./image.png}\end{verbatim}
-      \InsertCenterImage{0.5}{./example/how-to/write/pic/image/Cc-by_new.svg.png}
+      縮小比例
+      \begin{verbatim}
+        \InsertCenterImage
+          [scale=0.5]
+            {./image.png}
+      \end{verbatim}
+      \InsertCenterImage
+        [scale=0.5]
+          {./example/how-to/write/pic/image/Cc-by_new.svg.png}
     } % End of \item{}
 
     \item
     {
-      增加標題並去掉比例的數字\begin{verbatim}\InsertCenterImage{}{./image.png}{Little man}\end{verbatim}
-      \InsertCenterImage{}{./example/how-to/write/pic/image/Cc-by_new.svg.png}{Little man}
+      增加標題並去掉比例的數字
+      \begin{verbatim}
+        \InsertCenterImage
+          [caption={Little man}]
+            {./image.png}
+      \end{verbatim}
+      \InsertCenterImage
+        [caption={Little man}]
+          {./example/how-to/write/pic/image/Cc-by_new.svg.png}
     } % End of \item{}
 
+    \newpage
     \item
     {
-      增加標簽\begin{verbatim}\InsertCenterImage{}{./image.png}{Little man No.1}{fig:little-man-no.1}\end{verbatim}
-      之後可以使用ref去引用\begin{verbatim}\ref{fig:little-man-no.1}\end{verbatim}
-      \InsertCenterImage{}{./example/how-to/write/pic/image/Cc-by_new.svg.png}{Little man No.1}{fig:little-man-no.1}
+      增加標簽
+      \begin{verbatim}
+        \InsertCenterImage
+        [caption={Little man No.1},
+          label={fig:little-man-no.1}]
+            {./image.png}
+      \end{verbatim}
+
+      之後可以使用ref去引用 \verb| \ref{fig:little-man-no.1} |
+      \InsertCenterImage
+        [caption={Little man No.1},
+          label={fig:little-man-no.1}]
+          {./example/how-to/write/pic/image/Cc-by_new.svg.png}
 
       e.g: 文中所指的人物一號 (Fig. \ref{fig:little-man-no.1}).
     } % End of \item{}
 
-    \newpage
-
+%    \newpage
     \item
     {
-      使用標簽, 但不需要標題\begin{verbatim}\InsertCenterImage{}{./image.png}{}{fig:little-man-no.2}\end{verbatim}
-      使用ref去引用\begin{verbatim}\ref{fig:little-man-no.2}\end{verbatim}
-      \InsertCenterImage{}{./example/how-to/write/pic/image/Cc-by_new.svg.png}{Little man No.2}{fig:little-man-no.2}
+      使用角度去轉45度
+      \begin{verbatim}
+        \InsertCenterImage
+          [angle=45,
+            caption={Little man No.2},
+            label={fig:little-man-no.2}]
+              {./image.png}
+      \end{verbatim}
 
-      e.g: 文中所指的人物二號 (在第\ref{fig:little-man-no.2}頁中曾提過). \\
+      使用ref去引用 \verb| \ref{fig:little-man-no.2} |
+      \InsertCenterImage
+        [angle=45,
+          caption={Little man No.2},
+          label={fig:little-man-no.2}]
+            {./example/how-to/write/pic/image/Cc-by_new.svg.png}
 
-      不使用標題但使用標簽有一個很大的分別是: 如果有標題的話, 那指向的是第幾個chapter的第幾張圖; 但如果沒有的話, 那指向的是出現那一張圖的頁碼.
-    } % End of \item{}
-
-    \item
-    {
-      使用角度去轉45度\begin{verbatim}\InsertCenterImage{}{./image.png}{Little man No.3}{fig:little-man-no.3}{45}\end{verbatim}
-      使用ref去引用\begin{verbatim}\ref{fig:little-man-no.3}\end{verbatim}
-
-      \InsertCenterImage{}{./example/how-to/write/pic/image/Cc-by_new.svg.png}{Little man No.3}{fig:little-man-no.3}{45}
-
-      e.g: 文中所指的人物三號 (Fig. \ref{fig:little-man-no.3}).
+      e.g: 文中所指的人物二號 (Fig. \ref{fig:little-man-no.2}).
     } % End of \item{}
 
   \end{enumerate}
