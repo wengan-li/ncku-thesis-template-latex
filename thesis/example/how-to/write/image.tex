@@ -1,5 +1,5 @@
 % ------------------------------------------------
-\StartChapter{Insert Image}{chapter:how-to:write:image}
+\StartChapter{圖片 Image}{chapter:how-to:write:image}
 % ------------------------------------------------
 \section{介紹}
 
@@ -36,19 +36,19 @@
     \item
     {
       只填了比例和圖片位置\begin{verbatim}\InsertImage{1.0}{./image.png}\end{verbatim}
-      \InsertImage{1.0}{./example/how-to/write/pic/Cc-by_new.svg.png}
+      \InsertImage{1.0}{./example/how-to/write/pic/image/Cc-by_new.svg.png}
     } % End of \item{}
 
     \item
     {
       使用置中的版本\begin{verbatim}\InsertCenterImage{1.0}{./image.png}\end{verbatim}
-      \InsertCenterImage{1.0}{./example/how-to/write/pic/Cc-by_new.svg.png}
+      \InsertCenterImage{1.0}{./example/how-to/write/pic/image/Cc-by_new.svg.png}
     } % End of \item{}
 
     \item
     {
       放大比例\begin{verbatim}\InsertCenterImage{1.5}{./image.png}\end{verbatim}
-      \InsertCenterImage{1.5}{./example/how-to/write/pic/Cc-by_new.svg.png}
+      \InsertCenterImage{1.5}{./example/how-to/write/pic/image/Cc-by_new.svg.png}
     } % End of \item{}
 
     \newpage
@@ -56,20 +56,20 @@
     \item
     {
       縮小比例\begin{verbatim}\InsertCenterImage{0.5}{./image.png}\end{verbatim}
-      \InsertCenterImage{0.5}{./example/how-to/write/pic/Cc-by_new.svg.png}
+      \InsertCenterImage{0.5}{./example/how-to/write/pic/image/Cc-by_new.svg.png}
     } % End of \item{}
 
     \item
     {
       增加標題並去掉比例的數字\begin{verbatim}\InsertCenterImage{}{./image.png}{Little man}\end{verbatim}
-      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{Little man}
+      \InsertCenterImage{}{./example/how-to/write/pic/image/Cc-by_new.svg.png}{Little man}
     } % End of \item{}
 
     \item
     {
       增加標簽\begin{verbatim}\InsertCenterImage{}{./image.png}{Little man No.1}{fig:little-man-no.1}\end{verbatim}
       之後可以使用ref去引用\begin{verbatim}\ref{fig:little-man-no.1}\end{verbatim}
-      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{Little man No.1}{fig:little-man-no.1}
+      \InsertCenterImage{}{./example/how-to/write/pic/image/Cc-by_new.svg.png}{Little man No.1}{fig:little-man-no.1}
 
       e.g: 文中所指的人物一號 (Fig. \ref{fig:little-man-no.1}).
     } % End of \item{}
@@ -80,7 +80,7 @@
     {
       使用標簽, 但不需要標題\begin{verbatim}\InsertCenterImage{}{./image.png}{}{fig:little-man-no.2}\end{verbatim}
       使用ref去引用\begin{verbatim}\ref{fig:little-man-no.2}\end{verbatim}
-      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{Little man No.2}{fig:little-man-no.2}
+      \InsertCenterImage{}{./example/how-to/write/pic/image/Cc-by_new.svg.png}{Little man No.2}{fig:little-man-no.2}
 
       e.g: 文中所指的人物二號 (在第\ref{fig:little-man-no.2}頁中曾提過). \\
 
@@ -92,7 +92,7 @@
       使用角度去轉45度\begin{verbatim}\InsertCenterImage{}{./image.png}{Little man No.3}{fig:little-man-no.3}{45}\end{verbatim}
       使用ref去引用\begin{verbatim}\ref{fig:little-man-no.3}\end{verbatim}
 
-      \InsertCenterImage{}{./example/how-to/write/pic/Cc-by_new.svg.png}{Little man No.3}{fig:little-man-no.3}{45}
+      \InsertCenterImage{}{./example/how-to/write/pic/image/Cc-by_new.svg.png}{Little man No.3}{fig:little-man-no.3}{45}
 
       e.g: 文中所指的人物三號 (Fig. \ref{fig:little-man-no.3}).
     } % End of \item{}
@@ -103,9 +103,9 @@
 \newpage
 \section{多張}
 
-  如果要插入多張的話, 因為要能版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 理論上4張都已經算多的了. 所以多張的話, 分別放同不到頁面會比較好.
+  如果要插入多張的話, 因為要能一頁版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 理論上4張都已經算多的了. 所以多張的話, 分別放同不到頁面會比較好.
 
-  設計上可插入最多8張的圖片, 同時會自動置中, 而且寫法會跟插入單張相近.
+  設計上可插入1$\sim$8張的圖片, 同時會自動置中, 而且寫法會跟插入單張相近.
 
   \begin{framed}
   \begin{verbatim}
@@ -163,10 +163,10 @@
         {1}{2 images, 1 image per row}{}
       }%
       {%
-        {./example/how-to/write/pic/CC-BY-NC.png}
+        {./example/how-to/write/pic/image/CC-BY-NC.png}
       }%
       {%
-        {./example/how-to/write/pic/CC-BY-NC-ND.png}
+        {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
       }%
     } % End of \item{}
 
@@ -201,19 +201,19 @@
         {2}{5 images, 2 images per row}{fig:example:mi2:fig1}
       }%
       {%
-        {./example/how-to/write/pic/CC-BY-NC.png}{Image 1}
+        {./example/how-to/write/pic/image/CC-BY-NC.png}{Image 1}
       }%
       {%
-        {./example/how-to/write/pic/CC-BY-NC-ND.png}{Image 2}{fig:example:mi2:fig2}{-20}
+        {./example/how-to/write/pic/image/CC-BY-NC-ND.png}{Image 2}{fig:example:mi2:fig2}{-20}
       }%
       {%
-        {./example/how-to/write/pic/CC-BY-NC-SA.png}{Image 3}
+        {./example/how-to/write/pic/image/CC-BY-NC-SA.png}{Image 3}
       }%
       {%
-        {./example/how-to/write/pic/CC-BY-ND.png}{Image 4}{fig:example:mi2:fig3}
+        {./example/how-to/write/pic/image/CC-BY-ND.png}{Image 4}{fig:example:mi2:fig3}
       }%
       {%
-        {./example/how-to/write/pic/CC-BY-SA.png}{Image 5}{}{45}
+        {./example/how-to/write/pic/image/CC-BY-SA.png}{Image 5}{}{45}
       }%
     } % End of \item{}
 
