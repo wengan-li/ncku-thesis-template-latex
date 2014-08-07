@@ -241,6 +241,67 @@
 
 % ----------------------------------------------------------------------------
 
+
+
+\pgfkeys
+{
+  /InsertMultiImagesTest/.is family, /InsertMultiImagesTest,
+  default/.style = 
+  {
+    perrow = 1,
+    caption = \empty,
+    label = \empty,
+  },
+  perrow/.estore in = \InsertMultiImagesTestValueImagePerRow,
+  caption/.estore in = \InsertMultiImagesTestValueCaption,
+  label/.estore in = \InsertMultiImagesTestValueLabel,
+} % End of \pgfkeys{}
+
+\newcommand{\InsertMultiImagesTest}[3][\empty]
+%\DeclareDocumentCommand{\InsertMultiImagesTest}{
+%  o g g}
+{
+  % Parse the input
+  \pgfkeys{/InsertMultiImagesTest, default, #1}
+%  perrow: \InsertMultiImagesTestValueImagePerRow\\
+%  caption: \InsertMultiImagesTestValueCaption\\
+%  label: \InsertMultiImagesTestValueLabel\\
+
+  %\#2: #2\\
+  \ifthenelse{\equal{#2}{\empty}}
+    {}{\InsertMultiImagesTestSubfigure#2}
+%  \ifthenelse{\equal{#3}{\empty}}
+%    {}{\InsertMultiImagesTestSubfigure#3}
+} % End of \newcommand{}
+
+\pgfkeys
+{
+  /InsertMultiImagesTestSubfigure/.is family, /InsertMultiImagesTestSubfigure,
+  default/.style = 
+  {
+    scale = 1.0,
+    angle = 0,
+    caption = \empty,
+    label = \empty,
+    align = \empty,
+  },
+  scale/.estore in = \InsertMultiImagesTestSubfigureValueScale,
+  angle/.estore in = \InsertMultiImagesTestSubfigureValueAngle,
+  caption/.estore in = \InsertMultiImagesTestSubfigureValueCaption,
+  label/.estore in = \InsertMultiImagesTestSubfigureValueLabel,
+  align/.estore in = \InsertMultiImagesTestSubfigureValueAlign,
+} % End of \pgfkeys{}
+
+\newcommand{\InsertMultiImagesTestSubfigure}[2][\empty]
+{
+  % Parse the input
+  \pgfkeys{/InsertMultiImagesTestSubfigure, default, #1}
+  #2\\
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
+
 \DeclareDocumentCommand{\TestImages}{%
   O{1.0} O{0} m}
 {
