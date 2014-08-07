@@ -187,3 +187,64 @@
 
 % ----------------------------------------------------------------------------
 
+\DeclareDocumentCommand{\TestImages}{%
+  O{1.0} O{0} m}
+{
+        #1 \\
+        #2 \\
+        #3 \\
+} % End of \DeclareDocumentCommand{}
+
+% http://tex.stackexchange.com/questions/34312/how-to-create-a-command-with-key-values
+
+\pgfkeys
+{
+  /InsertImageB/.is family, /InsertImageB,
+  default/.style = 
+  {
+    scale = 1.0,
+    angle = 0,
+    caption = \empty,
+    label = \empty
+  },
+  scale/.estore in = \InsertImageBScale,
+  angle/.estore in = \InsertImageBAngle,
+  caption/.estore in = \InsertImageBCaption,
+  label/.estore in = \InsertImageBLabel,
+} % End of \pgfkeys{}
+
+\pgfkeys
+{
+  /InsertImageCD/.is family, /InsertImageCD,
+  default/.style = 
+  {
+    scale = 1.0,
+    angle = 0,
+    caption = \empty,
+    label = \empty
+  },
+  scale/.estore in = \InsertImageCDScale,
+  angle/.estore in = \InsertImageCDAngle,
+  caption/.estore in = \InsertImageCDCaption,
+  label/.estore in = \InsertImageCDLabel,
+} % End of \pgfkeys{}
+
+\newcommand\InsertImageB[2][\empty]
+{
+  \pgfkeys{/InsertImageB, default, #1}%
+  Scale: \InsertImageBScale\\
+  Angle: \InsertImageBAngle\\
+  caption: \InsertImageBCaption\\
+  label: \InsertImageBLabel\\
+  Path: #2\\
+}
+
+\newcommand\InsertImageCD[2][\empty]
+{
+  \pgfkeys{/InsertImageCD, default, #1}%
+  Scale: \InsertImageCDScale\\
+  Angle: \InsertImageCDAngle\\
+  caption: \InsertImageCDCaption\\
+  label: \InsertImageCDLabel\\
+  Path: #2\\
+}
