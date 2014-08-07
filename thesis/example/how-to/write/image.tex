@@ -115,8 +115,7 @@
     Label:       標簽 (可空掉, 要使用標簽前必須同時使用標題)
 
   Image 1~8: 各張圖片的設定
-    設定方式跟使用\InsertImage和\InsertCenterImage是
-    幾乎一樣的, 但是沒了比例去設定, 會自動使用每一列算出的比例.
+    設定方式跟使用\InsertImage和\InsertCenterImage是一樣的
 
   插入多張圖片
     \InsertMultiImages{Table}{Image1}{Image2}{Image3}{Image4}{Image5}{Image6}{Image7}{Image8}
@@ -152,10 +151,10 @@
         {1}{2 images, 1 image per row}{}
       }%
       {%
-        {./image.png}
+        {1.0}{./image.png}
       }%
       {%
-        {./image.png}
+        {1.0}{./image.png}
       }%
       \end{verbatim}
       \InsertMultiImages%
@@ -163,10 +162,10 @@
         {1}{2 images, 1 image per row}{}
       }%
       {%
-        {./example/how-to/write/pic/image/CC-BY-NC.png}
+        {1.0}{./example/how-to/write/pic/image/CC-BY-NC.png}
       }%
       {%
-        {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
+        {1.0}{./example/how-to/write/pic/image/CC-BY-NC-ND.png}
       }%
     } % End of \item{}
 
@@ -181,19 +180,20 @@
         {2}{5 images, 2 images per row}{fig:example:mi2:fig1}
       }%
       {%
-        {./image.png}{Image 1}
+        {1.0}{./image.png}{Image 1}
       }%
       {%
-        {./image.png}{Image 2}{fig:example:mi2:fig2}{-20}
+        {1.0}{./image.png}{Image 2}{
+          fig:example:mi2:fig2}{-20}
       }%
       {%
-        {./image.png}{Image 3}
+        {1.0}{./image.png}{Image 3}
       }%
       {%
-        {./image.png}{Image 4}{fig:example:mi2:fig3}
+        {1.0}{./image.png}{Image 4}{fig:example:mi2:fig3}
       }%
       {%
-        {./image.png}{Image 5}{}{45}
+        {1.0}{./image.png}{Image 5}{}{45}
       }%
       \end{verbatim}
       \InsertMultiImages%
@@ -201,19 +201,19 @@
         {2}{5 images, 2 images per row}{fig:example:mi2:fig1}
       }%
       {%
-        {./example/how-to/write/pic/image/CC-BY-NC.png}{Image 1}
+        {1.0}{./example/how-to/write/pic/image/CC-BY-NC.png}{Image 1}
       }%
       {%
-        {./example/how-to/write/pic/image/CC-BY-NC-ND.png}{Image 2}{fig:example:mi2:fig2}{-20}
+        {1.0}{./example/how-to/write/pic/image/CC-BY-NC-ND.png}{Image 2}{fig:example:mi2:fig2}{-20}
       }%
       {%
-        {./example/how-to/write/pic/image/CC-BY-NC-SA.png}{Image 3}
+        {1.0}{./example/how-to/write/pic/image/CC-BY-NC-SA.png}{Image 3}
       }%
       {%
-        {./example/how-to/write/pic/image/CC-BY-ND.png}{Image 4}{fig:example:mi2:fig3}
+        {1.0}{./example/how-to/write/pic/image/CC-BY-ND.png}{Image 4}{fig:example:mi2:fig3}
       }%
       {%
-        {./example/how-to/write/pic/image/CC-BY-SA.png}{Image 5}{}{45}
+        {1.0}{./example/how-to/write/pic/image/CC-BY-SA.png}{Image 5}{}{45}
       }%
     } % End of \item{}
 
