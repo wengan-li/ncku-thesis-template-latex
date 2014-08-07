@@ -85,13 +85,13 @@
   {\renewcommand{\ImageRotateAngle}{#1}}
 \newcommand{\GetImageRotateAngle}[0]{\ImageRotateAngle}
 
-\newcommand{\InsertSubfigureImage}[4]
+\newcommand{\InsertSubfigureImage}[5]
 {%
   \begin{subfigure}[b]{\WidthOfImagePerRow\textwidth}%
     \center
-    \includegraphics[scale=1.0, angle=#4]{#1}
-    \SetImageCaption{#2}
-    \SetImageLabel{#3}
+    \includegraphics[scale=#1, angle=#5]{#2}
+    \SetImageCaption{#3}
+    \SetImageLabel{#4}
   \end{subfigure}%
 } % End of \newcommand{}
 
@@ -119,11 +119,11 @@
     } % End of else{}
 } % End of \newcommand{}
 
-\DeclareDocumentCommand{\InsertMultiImageLL}{m g g g}
+\DeclareDocumentCommand{\InsertMultiImageLL}{m m g g g}
 {
   \SetImageRotateAngle{0}
-  \IfNoValueF{#4}{\SetImageRotateAngle{#4}}
-  \InsertSubfigureImage{#1}{#2}{#3}{\ImageRotateAngle}%
+  \IfNoValueF{#5}{\SetImageRotateAngle{#5}}
+  \InsertSubfigureImage{#1}{#2}{#3}{#4}{\ImageRotateAngle}%
 } % End of \DeclareDocumentCommand{}
 
 \newcommand\MultiImageTotalValue{0}
