@@ -1,9 +1,243 @@
 % ------------------------------------------------
-\StartChapter{Insert Table}{chapter:how-to:write:image}
+\StartChapter{表格 Table}{chapter:how-to:write:image}
 % ------------------------------------------------
 \section{介紹}
 
-% http://www.tablesgenerator.com/
+表格(Table)在任何情況下都是一個常用的顯示方式, 所以如何設計它都會有大量的玩法. 在正常Mircosoft Word這種有畫面的情況下, 可以慢慢拉出一個比較適合自己的, 但是在Latex中這個過程會是十分的痛苦, 因為你沒法馬上知道修改後的畫面, 故要不斷測試才知道效果, 這樣會大大減低選用table的使用次數.
+
+在一般任何的Latex教學上, 如何編寫一個table出來都會是其中一項, 了解任何一個部份的寫法, 位置, 設定等. 但是由於那些資料十分的巨量 (不同寫法有不同效果), 所以這絕對不是使用本模板的大家想知道的東西, 故本模板不使用過往的方式, 而且直接教大家怎樣使用現有的online tool去處理掉這個問題.
+
+以下的說明都是針對LaTeX Table Generator (\url{http://www.tablesgenerator.com/})\cite{web:latex:table-generator}來進行說明.
+
+LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非常明瞭和簡陋, 只要有過Mircosoft Word中的table設計的經驗, 應該要上手這個東西絕對不會很難.
+
+\newpage
+\InsertCenterImage{0.45}{./example/how-to/write/pic/table/table-generator.png}{LaTeX Table Generator頁面}{fig:how-to:table:table-generator}
+
+% ------------------------------------------------
+\newpage
+\section{產生Latex}
+
+  我們使用這工具就是要去產生Latex用在論文當中, 所以這一步比其他的知識更為重要. 記得使用以下的步驟:
+
+  \begin{enumerate}
+    \item
+    {
+      使用畫面來設計table.
+      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/table-view.png}{}{}
+    } % End of \item{}
+
+    \item
+    {
+      按Generate去產生Latex.
+     \InsertCenterImage{1.0}{./example/how-to/write/pic/table/generate.png}{}{}
+    } % End of \item{}
+
+    \item
+    {
+      複製Latex放到論文的".tex"中.
+     \InsertCenterImage{1.0}{./example/how-to/write/pic/table/latex-code.png}{}{}
+    } % End of \item{}
+
+    \item
+    {
+      執行XeLaTeX去產生效果.
+    } % End of \item{}
+  \end{enumerate}
+
+  第1$\sim$3步會在整個設計table中常常都會使用, 所以會熟能生巧的. 而有經驗的人都知道, 第1步是最需要時間, 而第2$\sim$4步不用幾分鐘就能做完了, 所以只要用心的話, 多漂亮的table都是能弄出來的.
+
+% ------------------------------------------------
+\newpage
+\section{功能}
+
+要設計一個複雜的table就需要足夠的功能才能慢慢弄, 所以在這邊介紹一些算是非常有用的功能.
+
+\subsection{File}
+
+  在"File"中有幾個很有用的功能.
+  \InsertCenterImage{1.0}{./example/how-to/write/pic/table/menu-file.png}{}{}
+
+  \begin{enumerate}
+
+    % ------------------------------------------------
+    \item
+    {
+      Import CSV file
+
+      你可以直接upload一個CSV format的檔案之後弄table的外觀.
+      \InsertCenterImage{0.7}{./example/how-to/write/pic/table/csv.png}{}{}
+    } % End of \item{}
+
+    % ------------------------------------------------
+    \newpage
+    \item
+    {
+      Paste table data
+
+      可以把Microsoft Excel的table直接做Copy \& Paste到這一邊來.
+      \InsertCenterImage{0.45}{./example/how-to/write/pic/table/paste.png}{}{}
+
+      或是可以直接輸入資料來建立, 但要注意的是它只能接受CSV的寫法, 即是每一筆資料都是以","來分隔. 所以如果使用Fig \ref{fig:csv:enter-example-data}的寫法的話:
+      \InsertCenterImage{0.65}{./example/how-to/write/pic/table/paste-data.png}{Enter example data}{fig:csv:enter-example-data}
+
+      會出現Fig \ref{fig:csv:result-example-data}的效果:
+      \InsertCenterImage{0.65}{./example/how-to/write/pic/table/paste-data-result.png}{Result of example data}{fig:csv:result-example-data}
+    } % End of \item{}
+
+    % ------------------------------------------------
+    \newpage
+    \item
+    {
+      Save table
+
+      這online tool有一個十分有用的功能就是能把所做的table save下來, 只要輸入名字後再按download就會得到一個".tgn"檔案.
+      \InsertCenterImage{0.8}{./example/how-to/write/pic/table/save-table.png}{}{}
+
+      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/save-tgn.png}{}{}
+    } % End of \item{}
+
+    % ------------------------------------------------
+    \item
+    {
+      Load table
+
+      在"Save table"中得到的".tgn"檔案就是使用這邊來重新讀取table.
+      \InsertCenterImage{0.8}{./example/how-to/write/pic/table/load-table.png}{}{}
+    } % End of \item{}
+  \end{enumerate}
+
+\newpage
+\subsection{Edit}
+
+  在"Edit"中有2個常用的功能
+
+  \InsertCenterImage{1.0}{./example/how-to/write/pic/table/menu-edit.png}{}{}
+
+  \begin{enumerate}
+
+    \item
+    {
+      Undo / Repeat
+
+      很基本的重做上一步/下一步所做過的行為, 故不用解釋什麼.
+    } % End of \item{}
+
+    \item
+    {
+      Autosave
+
+      這功能十分有用, 因為這tool是網頁tool, 所以正常重開網頁時會令到資料不見. 所以如果有把"Autosave"開啟的話, 那table就算接了"F5"都不會不見. (預設上應該會自動有開啟)
+      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/edit-autosave.png}{}{}
+    } % End of \item{}
+
+  \end{enumerate}
+
+% ------------------------------------------------
+\newpage
+\subsection{Table}
+
+  \begin{enumerate}
+
+    \item
+    {
+      Set size
+
+      這是table最基本的功能, 在Mircosoft Word時要插入多大的table時, 都要設定table的大小, 這邊正是那一個功能.
+      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/table-set-size.png}{}{}
+    } % End of \item{}
+
+    \item
+    {
+      Clear table
+
+      如果想把弄出來的table重新清掉所有設定和資料, 就是使用這一個.
+      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/table-clear-table.png}{}{}
+    } % End of \item{}
+
+  \end{enumerate}
+
+% ------------------------------------------------
+\newpage
+\subsection{Extra options}
+
+  在下方的"Extra options"有幾個基本的功能
+  \InsertCenterImage{0.5}{./example/how-to/write/pic/table/options.png}{}{}
+
+\begin{enumerate}
+
+  \item
+  {
+    Center table horizontally
+
+    把整個table置中在頁面
+    \InsertCenterImage{0.5}{./example/how-to/write/pic/table/options-table-center.png}{}{}
+  } % End of \item{}
+
+  \newpage
+  \item
+  {
+    Caption above / below
+
+    把圖表的標題要放在上方還是下方
+
+    \InsertCenterImage{0.4}{./example/how-to/write/pic/table/caption/above.png}{標題放在上方}{}
+
+    \InsertCenterImage{0.4}{./example/how-to/write/pic/table/caption/below.png}{標題放在下方}{}
+  } % End of \item{}
+\end{enumerate}
+
+
+% ------------------------------------------------
+\newpage
+\subsection{Style}
+
+  在右邊可以設定table的style.
+  \InsertCenterImage{1.0}{./example/how-to/write/pic/table/style/style.png}{}{}
+
+   正常在書本, 科學文章(如論文)和新聞中, table都是用三線式的方式, 因為這種的table簡單明瞭. 主要特點為整個table只有三條橫線, 上下兩端的線條較粗, 中間一條較細, 一般不使用分隔號.
+
+  以下2個是2個是使用Latex原版table的顯示方式 (Fig \ref{table:style:default-1}, \ref{table:style:default-2}).
+
+  \InsertCenterImage{0.4}{./example/how-to/write/pic/table/style/default-1.png}{Default style 1}{table:style:default-1}
+
+  \InsertCenterImage{0.4}{./example/how-to/write/pic/table/style/default-2.png}{Default style 2}{table:style:default-2}
+
+  \newpage
+  以下2個是2個是使用三線式的顯示方式 (Fig \ref{table:style:booktabs-1}, \ref{table:style:booktabs-2}).
+
+  \InsertCenterImage{0.4}{./example/how-to/write/pic/table/style/booktabs-1.png}{Booktabs style 1}{table:style:booktabs-1}
+
+  \InsertCenterImage{0.4}{./example/how-to/write/pic/table/style/booktabs-2.png}{Booktabs style 2}{table:style:booktabs-2}
+
+  就會發現中間的橫線比較細.
+
+  這些都是一些細節問題, 如果想做簡單明瞭一些, 可以採用三線式表格, 但是不是說只要是表格就必須使用三線式.
+
+
+
+% ------------------------------------------------
+\newpage
+\subsection{其他}
+
+  \begin{enumerate}
+
+    \item
+    {
+      功能
+
+      其他功能都很好理解的, 只要嘗試過就會明白, 所以不再作詳細解釋.
+    } % End of \item{}
+
+    \item
+    {
+      備註
+
+      而在產生出來的Latex中, 可以看到這類的文字(Fig \ref{table:package:comment}). 在注解中所講的, 是指所產生出來的Latex需要使用一些Latex的工具, 但這些工具已被包在本模板中, 所以可以無視的.
+
+      \InsertCenterImage{0.7}{./example/how-to/write/pic/table/table-comment.png}{Package remain}{table:package:comment}
+    } % End of \item{}
+  \end{enumerate}
 
 % ------------------------------------------------
 \EndChapter
