@@ -12,7 +12,11 @@
 LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非常明瞭和簡陋, 只要有過Mircosoft Word中的table設計的經驗, 應該要上手這個東西絕對不會很難.
 
 \newpage
-\InsertCenterImage{0.45}{./example/how-to/write/pic/table/table-generator.png}{LaTeX Table Generator頁面}{fig:how-to:table:table-generator}
+\InsertCenterImage
+  [scale=0.4,
+    caption={LaTeX Table Generator頁面},
+    label={fig:how-to:table:table-generator}]
+    {./example/how-to/write/pic/table/table-generator.png}
 
 % ------------------------------------------------
 \newpage
@@ -24,19 +28,22 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
     \item
     {
       使用畫面來設計table.
-      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/table-view.png}{}{}
+      \InsertCenterImage
+        {./example/how-to/write/pic/table/table-view.png}
     } % End of \item{}
 
     \item
     {
       按Generate去產生Latex.
-     \InsertCenterImage{1.0}{./example/how-to/write/pic/table/generate.png}{}{}
+      \InsertCenterImage
+        {./example/how-to/write/pic/table/generate.png}
     } % End of \item{}
 
     \item
     {
       複製Latex放到論文的".tex"中.
-     \InsertCenterImage{1.0}{./example/how-to/write/pic/table/latex-code.png}{}{}
+      \InsertCenterImage
+        {./example/how-to/write/pic/table/latex-code.png}
     } % End of \item{}
 
     \item
@@ -56,7 +63,8 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 \subsection{File}
 
   在"File"中有幾個很有用的功能.
-  \InsertCenterImage{1.0}{./example/how-to/write/pic/table/menu-file.png}{}{}
+  \InsertCenterImage
+    {./example/how-to/write/pic/table/menu-file.png}
 
   \begin{enumerate}
 
@@ -66,7 +74,9 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
       Import CSV file
 
       你可以直接upload一個CSV format的檔案之後弄table的外觀.
-      \InsertCenterImage{0.7}{./example/how-to/write/pic/table/csv.png}{}{}
+      \InsertCenterImage
+        [scale=0.7]
+        {./example/how-to/write/pic/table/csv.png}
     } % End of \item{}
 
     % ------------------------------------------------
@@ -76,13 +86,24 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
       Paste table data
 
       可以把Microsoft Excel的table直接做Copy \& Paste到這一邊來.
-      \InsertCenterImage{0.45}{./example/how-to/write/pic/table/paste.png}{}{}
+      \InsertCenterImage
+        [scale=0.45]
+        {./example/how-to/write/pic/table/paste.png}
 
       或是可以直接輸入資料來建立, 但要注意的是它只能接受CSV的寫法, 即是每一筆資料都是以","來分隔. 所以如果使用Fig \ref{fig:csv:enter-example-data}的寫法的話:
-      \InsertCenterImage{0.65}{./example/how-to/write/pic/table/paste-data.png}{Enter example data}{fig:csv:enter-example-data}
+      \InsertCenterImage
+        [scale=0.65,
+          caption={Enter example data},
+          label={fig:csv:enter-example-data}]
+        {./example/how-to/write/pic/table/paste-data.png}
 
       會出現Fig \ref{fig:csv:result-example-data}的效果:
-      \InsertCenterImage{0.65}{./example/how-to/write/pic/table/paste-data-result.png}{Result of example data}{fig:csv:result-example-data}
+      \InsertCenterImage
+        [scale=0.65,
+          caption={Result of example data},
+          label={fig:csv:result-example-data}]
+        {./example/how-to/write/pic/table/paste-data-result.png}
+
     } % End of \item{}
 
     % ------------------------------------------------
@@ -92,9 +113,13 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
       Save table
 
       這online tool有一個十分有用的功能就是能把所做的table save下來, 只要輸入名字後再按download就會得到一個".tgn"檔案.
-      \InsertCenterImage{0.8}{./example/how-to/write/pic/table/save-table.png}{}{}
+      \InsertCenterImage
+        [scale=0.8]
+        {./example/how-to/write/pic/table/save-table.png}
 
-      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/save-tgn.png}{}{}
+      \InsertCenterImage
+        {./example/how-to/write/pic/table/save-tgn.png}
+
     } % End of \item{}
 
     % ------------------------------------------------
@@ -103,7 +128,9 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
       Load table
 
       在"Save table"中得到的".tgn"檔案就是使用這邊來重新讀取table.
-      \InsertCenterImage{0.8}{./example/how-to/write/pic/table/load-table.png}{}{}
+      \InsertCenterImage
+        [scale=0.8]
+        {./example/how-to/write/pic/table/load-table.png}
     } % End of \item{}
   \end{enumerate}
 
@@ -112,7 +139,8 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
   在"Edit"中有2個常用的功能
 
-  \InsertCenterImage{1.0}{./example/how-to/write/pic/table/menu-edit.png}{}{}
+  \InsertCenterImage
+    {./example/how-to/write/pic/table/menu-edit.png}
 
   \begin{enumerate}
 
@@ -128,7 +156,8 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
       Autosave
 
       這功能十分有用, 因為這tool是網頁tool, 所以正常重開網頁時會令到資料不見. 所以如果有把"Autosave"開啟的話, 那table就算接了"F5"都不會不見. (預設上應該會自動有開啟)
-      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/edit-autosave.png}{}{}
+      \InsertCenterImage
+        {./example/how-to/write/pic/table/edit-autosave.png}
     } % End of \item{}
 
   \end{enumerate}
@@ -144,7 +173,8 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
       Set size
 
       這是table最基本的功能, 在Mircosoft Word時要插入多大的table時, 都要設定table的大小, 這邊正是那一個功能.
-      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/table-set-size.png}{}{}
+      \InsertCenterImage
+        {./example/how-to/write/pic/table/table-set-size.png}
     } % End of \item{}
 
     \item
@@ -152,7 +182,8 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
       Clear table
 
       如果想把弄出來的table重新清掉所有設定和資料, 就是使用這一個.
-      \InsertCenterImage{1.0}{./example/how-to/write/pic/table/table-clear-table.png}{}{}
+      \InsertCenterImage
+        {./example/how-to/write/pic/table/table-clear-table.png}
     } % End of \item{}
 
   \end{enumerate}
@@ -162,7 +193,9 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 \subsection{Extra options}
 
   在下方的"Extra options"有幾個基本的功能
-  \InsertCenterImage{0.5}{./example/how-to/write/pic/table/options.png}{}{}
+  \InsertCenterImage
+    [scale=0.5]
+    {./example/how-to/write/pic/table/options.png}
 
 \begin{enumerate}
 
@@ -171,19 +204,30 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
     Center table horizontally
 
     把整個table置中在頁面
-    \InsertCenterImage{0.5}{./example/how-to/write/pic/table/options-table-center.png}{}{}
+    \InsertCenterImage
+      [scale=0.5]
+      {./example/how-to/write/pic/table/options-table-center.png}
+
   } % End of \item{}
 
   \newpage
   \item
   {
-    Caption above / below
+    Caption above / below, Label
 
     把圖表的標題要放在上方還是下方
 
-    \InsertCenterImage{0.4}{./example/how-to/write/pic/table/caption/above.png}{標題放在上方}{}
+    \InsertCenterImage
+      [scale=0.4,
+        caption={標題放在上方}]
+      {./example/how-to/write/pic/table/caption/above.png}
 
-    \InsertCenterImage{0.4}{./example/how-to/write/pic/table/caption/below.png}{標題放在下方}{}
+    \InsertCenterImage
+      [scale=0.4,
+        caption={標題放在下方}]
+      {./example/how-to/write/pic/table/caption/below.png}
+
+    {\bf 注意:} 由於它沒有位置去修改標題和label, 所以要手動把caption和label中的內容修改.
   } % End of \item{}
 \end{enumerate}
 
@@ -193,28 +237,43 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 \subsection{Style}
 
   在右邊可以設定table的style.
-  \InsertCenterImage{1.0}{./example/how-to/write/pic/table/style/style.png}{}{}
+  \InsertCenterImage
+    {./example/how-to/write/pic/table/style/style.png}
 
    正常在書本, 科學文章(如論文)和新聞中, table都是用三線式的方式, 因為這種的table簡單明瞭. 主要特點為整個table只有三條橫線, 上下兩端的線條較粗, 中間一條較細, 一般不使用分隔號.
 
   以下2個是2個是使用Latex原版table的顯示方式 (Fig \ref{table:style:default-1}, \ref{table:style:default-2}).
 
-  \InsertCenterImage{0.4}{./example/how-to/write/pic/table/style/default-1.png}{Default style 1}{table:style:default-1}
+  \InsertCenterImage
+    [scale=0.4,
+      caption={Default style 1},
+      label={table:style:default-1}]
+    {./example/how-to/write/pic/table/style/default-1.png}
 
-  \InsertCenterImage{0.4}{./example/how-to/write/pic/table/style/default-2.png}{Default style 2}{table:style:default-2}
+  \InsertCenterImage
+    [scale=0.4,
+      caption={Default style 2},
+      label={table:style:default-2}]
+    {./example/how-to/write/pic/table/style/default-2.png}
 
   \newpage
   以下2個是2個是使用三線式的顯示方式 (Fig \ref{table:style:booktabs-1}, \ref{table:style:booktabs-2}).
 
-  \InsertCenterImage{0.4}{./example/how-to/write/pic/table/style/booktabs-1.png}{Booktabs style 1}{table:style:booktabs-1}
+  \InsertCenterImage
+    [scale=0.4,
+      caption={Booktabs style 1},
+      label={table:style:booktabs-1}]
+    {./example/how-to/write/pic/table/style/booktabs-1.png}
 
-  \InsertCenterImage{0.4}{./example/how-to/write/pic/table/style/booktabs-2.png}{Booktabs style 2}{table:style:booktabs-2}
+  \InsertCenterImage
+    [scale=0.4,
+      caption={Booktabs style 2},
+      label={table:style:booktabs-2}]
+    {./example/how-to/write/pic/table/style/booktabs-2.png}
 
   就會發現中間的橫線比較細.
 
   這些都是一些細節問題, 如果想做簡單明瞭一些, 可以採用三線式表格, 但是不是說只要是表格就必須使用三線式.
-
-
 
 % ------------------------------------------------
 \newpage
@@ -231,14 +290,24 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
     \item
     {
+      圖片
+
+      這tool沒法插入圖片, 所以有關圖片的部份要自己加在table中, 請使用\begin{verbatim}\InsertCenterImage和\InsertImage\end{verbatim}, 但是在table中的image是不能加標題和label.
+    } % End of \item{}
+
+    \item
+    {
       備註
 
       而在產生出來的Latex中, 可以看到這類的文字(Fig \ref{table:package:comment}). 在注解中所講的, 是指所產生出來的Latex需要使用一些Latex的工具, 但這些工具已被包在本模板中, 所以可以無視的.
 
-      \InsertCenterImage{0.7}{./example/how-to/write/pic/table/table-comment.png}{Package remain}{table:package:comment}
+      \InsertCenterImage
+        [scale=0.7,
+          caption={Package remain},
+          label={table:package:comment}]
+        {./example/how-to/write/pic/table/table-comment.png}
     } % End of \item{}
   \end{enumerate}
-
 % ------------------------------------------------
 \EndChapter
 % ------------------------------------------------

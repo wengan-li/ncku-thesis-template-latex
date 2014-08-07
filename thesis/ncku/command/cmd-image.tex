@@ -10,39 +10,93 @@
   \ifthenelse{\equal{#1}{\empty}}
   {}
   {\IfNoValueF{#1}{\caption{#1}}}
-} % End of \newcommand{}
+} % End of \DeclareDocumentCommand{}
 
 \DeclareDocumentCommand{\SetImageLabel}{G{\empty}}
 {
   \ifthenelse{\equal{#1}{\empty}}
   {}
   {\IfNoValueF{#1}{\label{#1}}}
-} % End of \newcommand{}
+} % End of \DeclareDocumentCommand{}
+
+\pgfkeys
+{
+  /InsertImage/.is family, /InsertImage,
+  default/.style = 
+  {
+    scale = 1.0,
+    angle = 0,
+    caption = \empty,
+    label = \empty,
+    align = \empty,
+  },
+  scale/.estore in = \InsertImageValueScale,
+  angle/.estore in = \InsertImageValueAngle,
+  caption/.estore in = \InsertImageValueCaption,
+  label/.estore in = \InsertImageValueLabel,
+  align/.estore in = \InsertImageValueAlign,
+} % End of \pgfkeys{}
 
 % Insert a single image
-\DeclareDocumentCommand{\InsertImage}
-  {G{1.0} m G{\empty} G{\empty} G{0} G{\empty}}
+\newcommand{\InsertImage}[2][\empty]
 {
-  \begin{figure}[h]
-
-    % Do center if needed
-    \ifthenelse{\equal{#6}{\empty}}{}{\center}
-
+  % Parse the input
+  \pgfkeys{/InsertImage, default, #1}
+  %
+  % Debug if needed
+%  Scale: \InsertImageValueScale\\
+%  Angle: \InsertImageValueAngle\\
+%  Caption: \InsertImageValueCaption\\
+%  Label: \InsertImageValueLabel\\
+%  Align: \InsertImageValueAlign\\
+%  \ifthenelse{\equal{#2}{\empty}}
+%    {Path: -EMPTY-\\}{Path: #2\\}
+%  \IfNoValueF{#2}{Path: #2\\}
+  %
+  %
+  % Check any caption first
+  \ifthenelse{\equal{\InsertImageValueCaption}{\empty}}
+  { %
+    %
+    %No Caption
+    %
+    % Align
+    \ifthenelse{\equal{\InsertImageValueAlign}{center}}
+      {\begin{center}}{}
     % Insert image
-    \includegraphics[scale=#1, angle=#5]{#2}
-
-    % Set other thing
-    \SetImageCaption{#3}
-    \SetImageLabel{#4}
-  \end{figure}
-} % End of \DeclareDocumentCommand{}
+    \includegraphics
+      [scale=\InsertImageValueScale,
+        angle=\InsertImageValueAngle]{#2}
+    % Align
+    \ifthenelse{\equal{\InsertImageValueAlign}{center}}
+      {\end{center}}{}
+  } % End of if{}
+  { %
+    %
+    %Have Caption
+    %
+    \begin{figure}[h]
+      % Do center if needed
+      \ifthenelse{\equal{\InsertImageValueAlign}{center}}
+        {\center}{}
+      % Insert image
+      \includegraphics
+        [scale=\InsertImageValueScale,
+          angle=\InsertImageValueAngle]{#2}
+      % Set Caption
+      \SetImageCaption{\InsertImageValueCaption}
+      % Set Label
+      \ifthenelse{\equal{\InsertImageValueCaption}{\empty}}
+        {}{\SetImageLabel{\InsertImageValueLabel}}
+    \end{figure}
+  } % End of else{}
+} % End of \newcommand{}
 
 % Insert a single image, but place it in center
-\DeclareDocumentCommand{\InsertCenterImage}
-  {G{1.0} m G{\empty} G{\empty} G{0}}
+\newcommand{\InsertCenterImage}[2][\empty]
 {
-  \InsertImage{#1}{#2}{#3}{#4}{#5}{center}
-} % End of \DeclareDocumentCommand{}
+  \InsertImage[#1, align=center]{#2}
+} % End of \newcommand{}
 
 % For multi images
 \newcommand\MultiImagesPerRow{1}

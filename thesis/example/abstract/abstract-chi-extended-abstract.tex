@@ -44,8 +44,15 @@ Captions should be placed directly above the relevant table and beneath the rele
 } % End of \ExtAbstractSubChapter{}
 
 % ------------------------------------------------
-\InsertCenterImage{0.5}{./example/abstract/pic/extended-abstract-1.jpg}{Specifications of the engine}
-\InsertCenterImage{0.5}{./example/abstract/pic/extended-abstract-2.jpg}{HC emission as a function of equivalence ratio}
+\InsertCenterImage
+  [scale=0.5,
+    caption={Specifications of the engine}]
+  {./example/abstract/pic/extended-abstract-1.jpg}
+
+\InsertCenterImage
+  [scale=0.5,
+    caption={HC emission as a function of equivalence ratio}]
+  {./example/abstract/pic/extended-abstract-2.jpg}
 % ------------------------------------------------
 \ExtAbstractChapter{CONCLUSION}{
 This section should include (1) the main points of your paper and why they are significant, (2) any exceptions to, problems with, or limitations to your argument, (3) agreements or disagreements with previously published work, (4) theoretical and practical implications of the work, and (5) conclusions drawn.
