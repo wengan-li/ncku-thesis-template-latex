@@ -75,7 +75,7 @@
     %
     %Have Caption
     %
-    \begin{figure}[h]
+    \begin{figure*}[h]
       % Do center if needed
       \ifthenelse{\equal{\InsertImageValueAlign}{center}}
         {\center}{}
@@ -88,7 +88,7 @@
       % Set Label
       \ifthenelse{\equal{\InsertImageValueCaption}{\empty}}
         {}{\SetImageLabel{\InsertImageValueLabel}}
-    \end{figure}
+    \end{figure*}
   } % End of else{}
 } % End of \newcommand{}
 
@@ -149,6 +149,24 @@
   \end{subfigure}%
 } % End of \newcommand{}
 
+\newcommand{\SetWidthOfImagePerRow}
+{
+  % Default
+  \FPeval{
+    \WidthOfImagePerRow}{clip(clip(1 / \GetMultiImagesPerRow) - 0.1)}
+
+  % If perrow = 1
+  \ifthenelse{\equal{\GetMultiImagesPerRow}{1}}
+  {
+    \FPeval{\WidthOfImagePerRow}{1.0}
+  }{}
+
+  \ifthenelse{\equal{\GetMultiImageId}{\GetMultiImageTotalValue}}%
+  {
+    \FPeval{\WidthOfImagePerRow}{1.0}
+  }{}
+} % End of \newcommand{}
+
 \newcommand{\InsertMultiImageInterface}[2]
 {
   \ifthenelse{\equal{#2}{\empty}}
@@ -156,19 +174,7 @@
     {
       \SetMultiImageId{#1}
       \SubfigureBreakSpaceLine{#1}
-      \ifthenelse{\equal{\GetMultiImagesPerRow}{1}}%
-      {%
-        \FPeval{\WidthOfImagePerRow}{1.0} %
-      } % End of if{}
-      {%
-        \ifthenelse{\equal{\GetMultiImageId}{\GetMultiImageTotalValue}}%
-        {%
-          \FPeval{\WidthOfImagePerRow}{1.0} %
-        } % End of if{}
-        {%
-          \FPeval{\WidthOfImagePerRow}{clip(clip(1 / \GetMultiImagesPerRow) - 0.1)} %
-        } % End of else{}
-      } % End of else{}
+      %\SetWidthOfImagePerRow
       \InsertMultiImageLL#2
     } % End of else{}
 } % End of \newcommand{}
@@ -241,7 +247,7 @@
 
 % ----------------------------------------------------------------------------
 
-
+\newcommand\WidthOfImagePerRow{0}
 
 \pgfkeys
 {
@@ -257,21 +263,131 @@
   label/.estore in = \InsertMultiImagesTestValueLabel,
 } % End of \pgfkeys{}
 
-\newcommand{\InsertMultiImagesTest}[3][\empty]
-%\DeclareDocumentCommand{\InsertMultiImagesTest}{
-%  o g g}
+%\newcommand{\InsertMultiImagesTest}[2][\empty]
+%\newcommand{\InsertMultiImagesTest}[2][\empty]
+\DeclareDocumentCommand{\InsertMultiImagesTest}{
+  +O{\empty} +m +G{\empty} +G{\empty} +G{\empty}
+  +G{\empty} +G{\empty} +G{\empty} +G{\empty}}
 {
   % Parse the input
   \pgfkeys{/InsertMultiImagesTest, default, #1}
 %  perrow: \InsertMultiImagesTestValueImagePerRow\\
 %  caption: \InsertMultiImagesTestValueCaption\\
 %  label: \InsertMultiImagesTestValueLabel\\
-
-  %\#2: #2\\
-  \ifthenelse{\equal{#2}{\empty}}
-    {}{\InsertMultiImagesTestSubfigure#2}
-%  \ifthenelse{\equal{#3}{\empty}}
-%    {}{\InsertMultiImagesTestSubfigure#3}
+  %
+  %Set Multi Image Total
+  \ifthenelse{\equal{#2}{\empty}}{}{\SetMultiImageTotalValue{1}}
+  \ifthenelse{\equal{#3}{\empty}}{}{\SetMultiImageTotalValue{2}}
+  \ifthenelse{\equal{#4}{\empty}}{}{\SetMultiImageTotalValue{3}}
+  \ifthenelse{\equal{#5}{\empty}}{}{\SetMultiImageTotalValue{4}}
+  \ifthenelse{\equal{#6}{\empty}}{}{\SetMultiImageTotalValue{5}}
+  \ifthenelse{\equal{#7}{\empty}}{}{\SetMultiImageTotalValue{6}}
+  \ifthenelse{\equal{#8}{\empty}}{}{\SetMultiImageTotalValue{7}}
+  \ifthenelse{\equal{#9}{\empty}}{}{\SetMultiImageTotalValue{8}}
+  %
+  % Set per row
+  \FPeval{\MultiImagesPerRow}{clip(
+    \InsertMultiImagesTestValueImagePerRow)} %
+  %
+  \begin{figure*}[h]
+    %
+    % Image 1
+    %\#2: P #2 P\\
+    \ifthenelse{\equal{#2}{\empty}}
+      {}
+      {
+        \SetMultiImageId{1}
+        \SubfigureBreakSpaceLine{1}
+        \SetWidthOfImagePerRow
+        \WidthOfImagePerRow
+        \InsertMultiImagesTestSubfigure#2
+      } % End of else{}
+    %
+    % Image 2
+    %\#3: P #3 P\\
+    \ifthenelse{\equal{#3}{\empty}}
+      {}
+      {
+        \SetMultiImageId{2}
+        \SubfigureBreakSpaceLine{2}
+        \SetWidthOfImagePerRow
+        \WidthOfImagePerRow
+        \InsertMultiImagesTestSubfigure#3
+      } % End of else{}
+    %
+    % Image 3
+    %\#4: P #4 P\\
+    \ifthenelse{\equal{#4}{\empty}}
+      {}
+      {
+        \SetMultiImageId{3}
+        \SubfigureBreakSpaceLine{3}
+        \SetWidthOfImagePerRow
+        \InsertMultiImagesTestSubfigure#4
+      } % End of else{}
+    %
+    % Image 4
+    %\#5: P #5 P\\
+    \ifthenelse{\equal{#5}{\empty}}
+      {}
+      {
+        \SetMultiImageId{4}
+        \SubfigureBreakSpaceLine{4}
+        \SetWidthOfImagePerRow
+        \InsertMultiImagesTestSubfigure#5
+      } % End of else{}
+    %
+    % Image 5
+    %\#6: P #6 P\\
+    \ifthenelse{\equal{#6}{\empty}}
+      {}
+      {
+        \SetMultiImageId{5}
+        \SubfigureBreakSpaceLine{5}
+        \SetWidthOfImagePerRow
+        \InsertMultiImagesTestSubfigure#6
+      } % End of else{}
+    %
+    % Image 6
+    %\#7: P #7 P\\
+    \ifthenelse{\equal{#7}{\empty}}
+      {}
+      {
+        \SetMultiImageId{6}
+        \SubfigureBreakSpaceLine{6}
+        \SetWidthOfImagePerRow
+        \InsertMultiImagesTestSubfigure#7
+      } % End of else{}
+    %
+    % Image 7
+    %\#8: P #8 P\\
+    \ifthenelse{\equal{#8}{\empty}}
+      {}
+      {
+        \SetMultiImageId{7}
+        \SubfigureBreakSpaceLine{7}
+        \SetWidthOfImagePerRow
+        \InsertMultiImagesTestSubfigure#8
+      } % End of else{}
+    %
+    % Image 8
+    %\#9: P #9 P\\
+    \ifthenelse{\equal{#9}{\empty}}
+      {}
+      {
+        \SetMultiImageId{8}
+        \SubfigureBreakSpaceLine{8}
+        \SetWidthOfImagePerRow
+        \InsertMultiImagesTestSubfigure#9
+      } % End of else{}
+    %
+    % Set Caption
+    \SetImageCaption{\InsertMultiImagesTestValueCaption}
+    % Set Label
+    \ifthenelse{\equal{\InsertMultiImagesTestValueCaption}{\empty}}
+      {}{\SetImageLabel{\InsertMultiImagesTestValueLabel}}
+    %
+  \end{figure*}
 } % End of \newcommand{}
 
 \pgfkeys
@@ -296,70 +412,24 @@
 {
   % Parse the input
   \pgfkeys{/InsertMultiImagesTestSubfigure, default, #1}
-  #2\\
+  %
+  \begin{subfigure}[b]{\WidthOfImagePerRow\textwidth}
+    %
+    \center
+    %
+    \includegraphics[
+      scale=\InsertMultiImagesTestSubfigureValueScale,
+      angle=\InsertMultiImagesTestSubfigureValueAngle]
+      {#2}
+    %
+    % Set Caption
+    \SetImageCaption{\InsertMultiImagesTestSubfigureValueCaption}
+    % Set Label
+    \ifthenelse{\equal{\InsertMultiImagesTestSubfigureValueCaption}{\empty}}
+      {}{\SetImageLabel{\InsertMultiImagesTestSubfigureValueLabel}}
+  \end{subfigure}%
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
 
-
-\DeclareDocumentCommand{\TestImages}{%
-  O{1.0} O{0} m}
-{
-        #1 \\
-        #2 \\
-        #3 \\
-} % End of \DeclareDocumentCommand{}
-
 % http://tex.stackexchange.com/questions/34312/how-to-create-a-command-with-key-values
-
-\pgfkeys
-{
-  /InsertImageB/.is family, /InsertImageB,
-  default/.style = 
-  {
-    scale = 1.0,
-    angle = 0,
-    caption = \empty,
-    label = \empty
-  },
-  scale/.estore in = \InsertImageBScale,
-  angle/.estore in = \InsertImageBAngle,
-  caption/.estore in = \InsertImageBCaption,
-  label/.estore in = \InsertImageBLabel,
-} % End of \pgfkeys{}
-
-\pgfkeys
-{
-  /InsertImageCD/.is family, /InsertImageCD,
-  default/.style = 
-  {
-    scale = 1.0,
-    angle = 0,
-    caption = \empty,
-    label = \empty
-  },
-  scale/.estore in = \InsertImageCDScale,
-  angle/.estore in = \InsertImageCDAngle,
-  caption/.estore in = \InsertImageCDCaption,
-  label/.estore in = \InsertImageCDLabel,
-} % End of \pgfkeys{}
-
-\newcommand\InsertImageB[2][\empty]
-{
-  \pgfkeys{/InsertImageB, default, #1}%
-  Scale: \InsertImageBScale\\
-  Angle: \InsertImageBAngle\\
-  caption: \InsertImageBCaption\\
-  label: \InsertImageBLabel\\
-  Path: #2\\
-}
-
-\newcommand\InsertImageCD[2][\empty]
-{
-  \pgfkeys{/InsertImageCD, default, #1}%
-  Scale: \InsertImageCDScale\\
-  Angle: \InsertImageCDAngle\\
-  caption: \InsertImageCDCaption\\
-  label: \InsertImageCDLabel\\
-  Path: #2\\
-}
