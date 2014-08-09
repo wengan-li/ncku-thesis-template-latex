@@ -205,79 +205,147 @@
     {
       插入2張圖片, 以1張圖為一列
       \begin{verbatim}
-      \InsertMultiImages%
-      {%
-        {1}{2 images, 1 image per row}{}
+      \InsertMultiImagesTest
+        [perrow = 1,
+          caption = {2 images and 1 image per row}]
+      {
+        {./image.png}
       }%
-      {%
-        {1.0}{./image.png}
-      }%
-      {%
-        {1.0}{./image.png}
-      }%
+      {
+        {./image.png}
+      }
       \end{verbatim}
       \InsertMultiImagesTest
         [perrow = 1,
-          caption = {2 images, 1 image per row}]
+          caption = {2 images and 1 image per row}]
       {
-        [scale = 1.0]{./image-1}
+        [scale = 1.0]{./example/how-to/write/pic/image/CC-BY-NC.png}
+      }%
+      {
+        [scale = 1.0]{./example/how-to/write/pic/image/CC-BY-NC-ND.png}
       }
+    } % End of \item{}
+
+    \item
+    {
+      插入2張圖片, 以1張圖為一列
+      \begin{verbatim}
+      \InsertMultiImagesTest
+        [perrow = 2,
+          caption = {2 images and 2 images per row}]
       {
-        [scale = 2.0]{./image-2}
+        {./image.png}
+      }%
+      {
+        {./image.png}
+      }
+      \end{verbatim}
+      \InsertMultiImagesTest
+        [perrow = 2,
+          caption = {2 images and 2 images per row}]
+      {
+        [scale = 1.0]{./example/how-to/write/pic/image/CC-BY-NC.png}
+      }%
+      {
+        [scale = 1.0]{./example/how-to/write/pic/image/CC-BY-NC-ND.png}
       }
     } % End of \item{}
 
     \newpage
-
     \item
     {
       插入5張圖片, 以2張圖為一列, 並有2張圖轉變角度, 同時有3張圖片做了標簽
       \begin{verbatim}
-      \InsertMultiImages%
-      {%
-        {2}{5 images, 2 images per row}{fig:example:mi2:fig1}
-      }%
-      {%
-        {1.0}{./image.png}{Image 1}
-      }%
-      {%
-        {1.0}{./image.png}{Image 2}{
-          fig:example:mi2:fig2}{-20}
-      }%
-      {%
-        {1.0}{./image.png}{Image 3}
-      }%
-      {%
-        {1.0}{./image.png}{Image 4}{fig:example:mi2:fig3}
-      }%
-      {%
-        {1.0}{./image.png}{Image 5}{}{45}
-      }%
+      \InsertMultiImagesTest
+        [perrow = 2,
+          caption = {5 images and 2 image per row},
+          label = {fig:example:mi2:fig1}]
+        {
+          [caption = {Image 1},
+            label = {fig:example:mi2:fig1}]
+            {./image.png}
+        }%
+        {
+          [caption = {Image 2},
+            label = {fig:example:mi2:fig2},
+            angle = -20]
+            {./image.png}
+        }%
+        {
+          [caption = {Image 3}]
+            {./image.png}
+        }%
+        {
+          [caption = {Image 4},
+            label = {fig:example:mi2:fig3}]
+            {./image.png}
+        }%
+        {
+          [angle = 45]
+            {./image.png}
+        }
       \end{verbatim}
-      \InsertMultiImages%
-      {%
-        {2}{5 images, 2 images per row}{fig:example:mi2:fig1}
-      }%
-      {%
-        {1.0}{./example/how-to/write/pic/image/CC-BY-NC.png}{Image 1}
-      }%
-      {%
-        {1.0}{./example/how-to/write/pic/image/CC-BY-NC-ND.png}{Image 2}{fig:example:mi2:fig2}{-20}
-      }%
-      {%
-        {1.0}{./example/how-to/write/pic/image/CC-BY-NC-SA.png}{Image 3}
-      }%
-      {%
-        {1.0}{./example/how-to/write/pic/image/CC-BY-ND.png}{Image 4}{fig:example:mi2:fig3}
-      }%
-      {%
-        {1.0}{./example/how-to/write/pic/image/CC-BY-SA.png}{Image 5}{}{45}
-      }%
+
+      \newpage
+      效果會是這樣:
+      \InsertMultiImagesTest
+        [perrow = 2,
+          caption = {5 images and 2 images per row},
+          label = {fig:example:mi2:fig1}]
+        {
+          [caption = {Image 1},
+            label = {fig:example:mi2:fig1}]
+            {./example/how-to/write/pic/image/CC-BY-NC.png}
+        }%
+        {
+          [caption = {Image 2},
+            label = {fig:example:mi2:fig2},
+            angle = -20]
+            {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
+        }%
+        {
+          [caption = {Image 3}]
+            {./example/how-to/write/pic/image/CC-BY-NC-SA.png}
+        }%
+        {
+          [caption = {Image 4},
+            label = {fig:example:mi2:fig3}]
+            {./example/how-to/write/pic/image/CC-BY-ND.png}
+        }%
+        {
+          [angle = 45]
+            {./example/how-to/write/pic/image/CC-BY-SA.png}
+        }
     } % End of \item{}
 
       e.g: 
       引用大圖 (Fig.\ref{fig:example:mi2:fig1}) ,
-      引用小圖 (fig.\ref{fig:example:mi2:fig2}, fig.\ref{fig:example:mi2:fig3}).
+      引用小圖 (Fig.\ref{fig:example:mi2:fig2}, Fig.\ref{fig:example:mi2:fig3}).
+
+
+    \newpage
+
+      \InsertMultiImagesTest
+        [perrow = 2,
+          caption = {Test}]
+        {
+          {./example/how-to/write/pic/image/CC-BY-NC.png}
+        }%
+        {
+          {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
+        }%
+        {
+          {./example/how-to/write/pic/image/CC-BY-NC-SA.png}
+        }%
+        {
+          {./example/how-to/write/pic/image/CC-BY-ND.png}
+        }%
+        {
+          {./example/how-to/write/pic/image/CC-BY-SA.png}
+        }%
+        {
+          {./example/how-to/write/pic/image/CC-BY-SA.png}
+        }
   \end{enumerate}
 
 % ------------------------------------------------
