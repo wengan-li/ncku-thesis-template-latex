@@ -7,6 +7,15 @@
 
 要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.
 
+留意的是, 圖片的路徑跟正常日常使用的路徑會不一樣, 是使用所謂的"相對路徑", 而起點是使用論文主檔案(paper.tex).
+
+\noindent 例如 (以Windows的路徑為例子):\\
+主檔案paper.tex在: "\verb|C:\thesis\paper.tex|"\\
+圖片A: "\verb|C:\thesis\some_dir\A.png|"\\
+圖片B: "\verb|C:\thesis\some_dir\B.png|"\\
+使用時以"\verb|./some_dir/A.png|", "\verb|./some_dir/B.png|"的方式來使用, 注意是"$/$"而不是"$\backslash$".
+
+%而要使用的圖片位置就
 %\textbf{注意}: 由於Latex語法的設計上, 在2個'$\lbrace\rbrace$'之間不能斷行或出現空格, 否則會被判斷成其他的語法
 
 % ------------------------------------------------
@@ -48,7 +57,6 @@
   \end{framed}
 
   \newpage
-
   {\bf 效果:}
   \begin{enumerate}
     \item
@@ -131,10 +139,9 @@
           label={fig:little-man-no.1}]
           {./example/how-to/write/pic/image/Cc-by_new.svg.png}
 
-      e.g: 文中所指的人物一號 (Fig. \ref{fig:little-man-no.1}).
+      e.g: 文中所指的人物一號 (Fig  \ref{fig:little-man-no.1}).
     } % End of \item{}
 
-%    \newpage
     \item
     {
       使用角度去轉45度
@@ -153,16 +160,64 @@
           label={fig:little-man-no.2}]
             {./example/how-to/write/pic/image/Cc-by_new.svg.png}
 
-      e.g: 文中所指的人物二號 (Fig. \ref{fig:little-man-no.2}).
+      e.g: 文中所指的人物二號 (Fig  \ref{fig:little-man-no.2}).
     } % End of \item{}
 
+    \newpage
+    \item
+    {
+      把圖放在表格中, 這時候是使用\verb|\InsertImage{}|(如要置中則設定table就可), 而且不能使用caption和label (正常寫法應該用不到, 例如出現'Fig X.X'這種字在table中). (有關表格table的使用, 請參考Chap \ref{chapter:how-to:write:table})
+
+      \begin{verbatim}
+      \begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|}
+      \hline
+        \textbf{\underline{Website}} &
+          \textbf{\underline{URL}} \\ \hline
+
+        \begin{tabular}[c]{@{}c@{}}
+        \InsertImage[scale=0.1]
+          {./apple.png} \\ Apple
+        \end{tabular} & \url{www.apple.com}  \\ \hline
+
+        \begin{tabular}[c]{@{}c@{}}
+        \InsertImage[scale=0.1]
+          {./google.png} \\ Google
+        \end{tabular} & \url{www.google.com} \\ \hline
+
+      \end{tabular}
+      \end{table}
+      \end{verbatim}
+
+      \begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|}
+      \hline
+        \textbf{\underline{Website}} &
+          \textbf{\underline{URL}} \\ \hline
+
+        \begin{tabular}[c]{@{}c@{}}
+        \InsertImage[scale=0.1]
+          {./example/how-to/write/pic/image/apple.jpg} \\ Apple
+        \end{tabular} & \url{www.apple.com}  \\ \hline
+
+        \begin{tabular}[c]{@{}c@{}}
+        \InsertImage[scale=0.1]
+          {./example/how-to/write/pic/image/google.png} \\ Google
+        \end{tabular} & \url{www.google.com} \\ \hline
+
+      \end{tabular}
+      \end{table}
+
+    } % End of \item{}
   \end{enumerate}
 
 % ------------------------------------------------
 \newpage
 \section{多張}
 
-  如果要插入多張的話, 因為要能一頁版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 理論上4張都已經算多的了. 所以多張的話, 分別放同不到頁面會比較好.
+  如果要插入多張的話, 因為要能一頁版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 理論上4張都已經算多的了. 所以真的數量比較多的話, 分別放同不到頁面會比較好閱讀.
 
   設計上可插入1$\sim$8張的圖片, 同時會自動置中, 而且寫法會跟插入單張相近.
 
@@ -276,7 +331,7 @@
       \InsertMultiImages
         [perrow = 2,
           caption = {3 images and 2 images per row},
-          label = {fig:example:mi2:fig1}]
+          label = {fig:example:mi2:mfig}]
         {
           [caption = {Image 1},
             label = {fig:example:mi2:fig1}]
@@ -294,8 +349,8 @@
         }
 
       e.g: 
-      引用主圖 (Fig.\ref{fig:example:mi2:fig1}) ,
-      引用子圖片 (Fig.\ref{fig:example:mi2:fig1}, Fig.\ref{fig:example:mi2:fig2}).
+      引用主圖 (Fig \ref{fig:example:mi2:mfig}) ,
+      引用子圖片 (Fig \ref{fig:example:mi2:fig1}, Fig \ref{fig:example:mi2:fig2}).
     } % End of \item{}
 
     \newpage
@@ -352,11 +407,11 @@
         }
 
       可以看得出圖片的編號不一樣了\\
-      引用主圖 (Fig.\ref{fig:example:mi3:mfig})\\
-      引用子圖片(a) (Fig.\ref{fig:example:mi3:fig1})\\
+      引用主圖 (Fig \ref{fig:example:mi3:mfig})\\
+      引用子圖片(a) (Fig \ref{fig:example:mi3:fig1})\\
       引用子圖片(b) (由於這張圖的caption是沒設定, 所以label無效)\\
-      引用子圖片(c) (Fig.\ref{fig:example:mi3:fig3})\\
-      引用子圖片(d) (Fig.\ref{fig:example:mi3:fig4})
+      引用子圖片(c) (Fig \ref{fig:example:mi3:fig3})\\
+      引用子圖片(d) (Fig \ref{fig:example:mi3:fig4})
     } % End of \item{}
 
     % 最後一張圖位置怪怪
