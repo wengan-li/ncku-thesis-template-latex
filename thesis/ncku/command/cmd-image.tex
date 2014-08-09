@@ -19,6 +19,8 @@
   {\IfNoValueF{#1}{\label{#1}}}
 } % End of \DeclareDocumentCommand{}
 
+% -----------------------------------------------------------------
+
 \pgfkeys
 {
   /InsertImage/.is family, /InsertImage,
@@ -98,6 +100,8 @@
   \InsertImage[#1, align=center]{#2}
 } % End of \newcommand{}
 
+% -----------------------------------------------------------------
+
 % For multi images
 \newcommand\MultiImagesPerRow{1}
 \newcommand{\SetMultiImagesPerRow}[1]
@@ -121,23 +125,8 @@
 } % End of \newcommand{}
 
 % Confingure the main image
-\DeclareDocumentCommand{\SetMultiImageRoot}{m g g}
-{
-  % Set per row
-  \FPeval{\MultiImagesPerRow}{clip(#1)} %
-} % End of \newcommand{}
-
-\DeclareDocumentCommand{\SetMultiImageRootCaptionAndLabel}{m g g}
-{
-  \SetImageCaption{#2} %
-  \SetImageLabel{#3} %
-} % End of \newcommand{}
 
 % Low-level insert image
-\newcommand\ImageRotateAngle{0}
-\newcommand{\SetImageRotateAngle}[1]
-  {\renewcommand{\ImageRotateAngle}{#1}}
-\newcommand{\GetImageRotateAngle}[0]{\ImageRotateAngle}
 
 \newcommand{\InsertSubfigureImage}[5]
 {%
@@ -151,40 +140,71 @@
 
 \newcommand{\SetWidthOfImagePerRow}
 {
-  % Default
-  \FPeval{
-    \WidthOfImagePerRow}{clip(clip(1 / \GetMultiImagesPerRow) - 0.1)}
-
-  % If perrow = 1
+  %
+%  GetMultiImagesPerRow: \GetMultiImagesPerRow\\
+%  GetMultiImageTotalValue: \GetMultiImageTotalValue\\
+  %
   \ifthenelse{\equal{\GetMultiImagesPerRow}{1}}
   {
+    %perrow = 1
     \FPeval{\WidthOfImagePerRow}{1.0}
-  }{}
-
-  \ifthenelse{\equal{\GetMultiImageId}{\GetMultiImageTotalValue}}%
+  } % End of if{}
   {
-    \FPeval{\WidthOfImagePerRow}{1.0}
-  }{}
-} % End of \newcommand{}
-
-\newcommand{\InsertMultiImageInterface}[2]
-{
-  \ifthenelse{\equal{#2}{\empty}}
+    %perrow > 1
+    %
+    % Flag
+    \provideboolean{WidthOfImagePerRowTmpIsDone}
+    \setboolean{WidthOfImagePerRowTmpIsDone}{false}
+    %
+    % Calc remain
+    \FPeval{\TmpRemain}{
+      clip((\GetMultiImageTotalValue) - (\GetMultiImageId))}
+    %TmpRemain: \TmpRemain\\
+    %
+    % Get mod
+    \modulo{\GetMultiImageTotalValue}{\GetMultiImagesPerRow}
+    %mod: \result\\
+    %
+    \FPiflt{\TmpRemain}{\GetMultiImagesPerRow}
+    \else
+      % Gt
+      \setboolean{WidthOfImagePerRowTmpIsDone}{true}
+      %
+      % Default
+      \FPeval{
+        \WidthOfImagePerRow}{
+          clip(clip(1 / (\GetMultiImagesPerRow)) - 0.1)}
+    \fi % End of \FPiflt
+    %
+    \ifthenelse{\boolean{WidthOfImagePerRowTmpIsDone}}
     {}
     {
-      \SetMultiImageId{#1}
-      \SubfigureBreakSpaceLine{#1}
-      %\SetWidthOfImagePerRow
-      \InsertMultiImageLL#2
+      % Lt
+      \ifthenelse{\result = 0}
+      {
+        % Last row
+        %
+        \FPeval{
+          \WidthOfImagePerRow}{
+            clip(clip(1 / (\GetMultiImagesPerRow)) - 0.1)}
+      } % End of if{}
+      {
+        % Diff row
+        %
+        \FPifeq{\TmpRemain}{0}
+          \FPeval{\WidthOfImagePerRow}{1.0}
+        \else
+          \FPeval{
+            \WidthOfImagePerRow}{
+              clip(clip(1 / (\GetMultiImagesPerRow)) - 0.1)}
+        \fi % End of \FPiflt
+      } % End of else{}
     } % End of else{}
+  } % End of else{}
+  %
+%  \WidthOfImagePerRow
+  %
 } % End of \newcommand{}
-
-\DeclareDocumentCommand{\InsertMultiImageLL}{m m g g g}
-{
-  \SetImageRotateAngle{0}
-  \IfNoValueF{#5}{\SetImageRotateAngle{#5}}
-  \InsertSubfigureImage{#1}{#2}{#3}{#4}{\ImageRotateAngle}%
-} % End of \DeclareDocumentCommand{}
 
 \newcommand\MultiImageTotalValue{0}
 \newcommand{\SetMultiImageTotalValue}[1]
@@ -207,46 +227,6 @@
 % 而{#2}是指把#2當成單一個參數傳給function
 % ---------------------------------------
 %
-\DeclareDocumentCommand{\InsertMultiImages}{%
-  G{\empty} G{\empty} G{\empty} %
-  G{\empty} G{\empty} G{\empty} %
-  G{\empty} G{\empty} G{\empty}}
-{
-  %Set Multi Image Total
-  \ifthenelse{\equal{#2}{\empty}}{}{\SetMultiImageTotalValue{1}}
-  \ifthenelse{\equal{#3}{\empty}}{}{\SetMultiImageTotalValue{2}}
-  \ifthenelse{\equal{#4}{\empty}}{}{\SetMultiImageTotalValue{3}}
-  \ifthenelse{\equal{#5}{\empty}}{}{\SetMultiImageTotalValue{4}}
-  \ifthenelse{\equal{#6}{\empty}}{}{\SetMultiImageTotalValue{5}}
-  \ifthenelse{\equal{#7}{\empty}}{}{\SetMultiImageTotalValue{6}}
-  \ifthenelse{\equal{#8}{\empty}}{}{\SetMultiImageTotalValue{7}}
-  \ifthenelse{\equal{#9}{\empty}}{}{\SetMultiImageTotalValue{8}}
-
-  \begin{figure}[hbtp]
-    \centering
-    \SetMultiImageRoot#1
-    % Image 1
-    \InsertMultiImageInterface{1}{#2}
-    % Image 2
-    \InsertMultiImageInterface{2}{#3}
-    % Image 3
-    \InsertMultiImageInterface{3}{#4}
-    % Image 4
-    \InsertMultiImageInterface{4}{#5}
-    % Image 5
-    \InsertMultiImageInterface{5}{#6}
-    % Image 6
-    \InsertMultiImageInterface{6}{#7}
-    % Image 7
-    \InsertMultiImageInterface{7}{#8}
-    % Image 8
-    \InsertMultiImageInterface{8}{#9}
-    \SetMultiImageRootCaptionAndLabel#1
-  \end{figure}
-} % End of \DeclareDocumentCommand{}
-
-% ----------------------------------------------------------------------------
-
 \newcommand\WidthOfImagePerRow{0}
 
 \pgfkeys
@@ -298,8 +278,6 @@
       {
         \SetMultiImageId{1}
         \SubfigureBreakSpaceLine{1}
-        \SetWidthOfImagePerRow
-        \WidthOfImagePerRow
         \InsertMultiImagesTestSubfigure#2
       } % End of else{}
     %
@@ -310,8 +288,6 @@
       {
         \SetMultiImageId{2}
         \SubfigureBreakSpaceLine{2}
-        \SetWidthOfImagePerRow
-        \WidthOfImagePerRow
         \InsertMultiImagesTestSubfigure#3
       } % End of else{}
     %
@@ -322,7 +298,6 @@
       {
         \SetMultiImageId{3}
         \SubfigureBreakSpaceLine{3}
-        \SetWidthOfImagePerRow
         \InsertMultiImagesTestSubfigure#4
       } % End of else{}
     %
@@ -333,7 +308,6 @@
       {
         \SetMultiImageId{4}
         \SubfigureBreakSpaceLine{4}
-        \SetWidthOfImagePerRow
         \InsertMultiImagesTestSubfigure#5
       } % End of else{}
     %
@@ -344,7 +318,6 @@
       {
         \SetMultiImageId{5}
         \SubfigureBreakSpaceLine{5}
-        \SetWidthOfImagePerRow
         \InsertMultiImagesTestSubfigure#6
       } % End of else{}
     %
@@ -355,7 +328,6 @@
       {
         \SetMultiImageId{6}
         \SubfigureBreakSpaceLine{6}
-        \SetWidthOfImagePerRow
         \InsertMultiImagesTestSubfigure#7
       } % End of else{}
     %
@@ -366,7 +338,6 @@
       {
         \SetMultiImageId{7}
         \SubfigureBreakSpaceLine{7}
-        \SetWidthOfImagePerRow
         \InsertMultiImagesTestSubfigure#8
       } % End of else{}
     %
@@ -377,7 +348,6 @@
       {
         \SetMultiImageId{8}
         \SubfigureBreakSpaceLine{8}
-        \SetWidthOfImagePerRow
         \InsertMultiImagesTestSubfigure#9
       } % End of else{}
     %
@@ -410,9 +380,13 @@
 
 \newcommand{\InsertMultiImagesTestSubfigure}[2][\empty]
 {
+  % Set width
+  \SetWidthOfImagePerRow
+  %
   % Parse the input
   \pgfkeys{/InsertMultiImagesTestSubfigure, default, #1}
   %
+  \WidthOfImagePerRow
   \begin{subfigure}[b]{\WidthOfImagePerRow\textwidth}
     %
     \center

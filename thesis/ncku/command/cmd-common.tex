@@ -65,3 +65,7 @@
 
 % ----------------------------------------------------------------------------
 
+% In the minimal example below the macro \modulo{<a>}{<b>} stores the result of <a> mod <b> in the macro \result
+\newcommand{\modulo}[2]{%
+  \FPeval{\result}{trunc(#1-(#2*trunc(#1/#2,0)),0)}%
+}
