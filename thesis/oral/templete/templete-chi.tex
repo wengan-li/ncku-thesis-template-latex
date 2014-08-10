@@ -42,14 +42,14 @@
 % Chinese and English title 中英文題目
 \begin{minipage}[c][3cm][t]{\textwidth}
   \begin{center}
-    \Large \GetChiTitle \\
+    \parbox{\textwidth}{\center \Large \GetChiTitle}
     \ifthenelse{\GetLangEnableDemo = 0}
     {
-      \Large \GetEngTitle
+      \parbox{\textwidth}{\center \Large \GetEngTitle}
     } % End of if{}
     {
-      \Large \GetEngTitle \\
-      (口試文件版本1 - 圖書館現用版)
+      \parbox{\textwidth}{\center \Large \GetEngTitle}
+      {\Large (口試文件版本1 - 圖書館現用版)}
     } % End of else{}
   \end{center}
 \end{minipage}
