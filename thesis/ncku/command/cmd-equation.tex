@@ -1,0 +1,25 @@
+
+% Some helper function about equation
+
+% ----------------------------------------------------------------------------
+
+\newcommand{\SetEquationLabel}[1]
+{
+  \SetImageLabel{#1}
+} % End of \newcommand{}
+
+\DeclareDocumentCommand{\EquationBegin}{G{\empty}}
+{
+  \begin{equation}
+  \SetEquationLabel{#1}
+  \begin{aligned}
+} % End of \newcommand{}
+
+\newcommand{\EquationEnd}
+{
+  \end{aligned}
+  \end{equation}
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
