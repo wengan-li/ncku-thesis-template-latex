@@ -28,25 +28,33 @@ The results and discussion sections present your research findings and your anal
 } % End of \ExtAbstractChapter{}
 
 % ------------------------------------------------
-\ExtAbstractSubChapter{Figures and Tables}{
+\ExtAbstractSection{Figures and Tables}{
 Figures may be integrated within the results section of the extended abstract, or they can be appended to the end of the written text. Figures should be black \& white. They should be no wider than the width of the A4 page.
 
 Tables can be created within Word. As noted for figures above, if a table is to be placed within the text, it can be no wider than the width of the A4 page. Larger tables will need to be placed at the end of the abstract.
 
 Figures and tables should be numbered according to the order they are referenced in the paper. Figures and tables should be referred to by their number in the text. When referring to figures and tables in the text, spell out and capitalize the word Figure or Table. All figures and tables must have captions.
-} % End of \ExtAbstractSubChapter{}
+} % End of \ExtAbstractSection{}
 
 % ------------------------------------------------
-\ExtAbstractSubChapter{Captions}{
+\ExtAbstractSection{Captions}{
 Captions should clearly explain the significance of the figure or table without reference to the text. Details in captions should not be restated in the text. Parameters in figure captions should be included and presented in words rather than symbols.
 
 Captions should be placed directly above the relevant table and beneath the relevant figure. The caption should be typed in 12 pt Times New Roman Bold font. Spell out the word 'Table' or 'Figure' in full. An example table and a figure follow.
-} % End of \ExtAbstractSubChapter{}
+} % End of \ExtAbstractSection{}
 
 % ------------------------------------------------
-\InsertCenterImage{0.5}{./example/abstract/pic/extended-abstract-1.jpg}{Specifications of the engine}
-\InsertCenterImage{0.5}{./example/abstract/pic/extended-abstract-2.jpg}{HC emission as a function of equivalence ratio}
+\InsertCenterImage
+  [scale=0.5,
+    caption={Specifications of the engine}]
+  {./example/abstract/pic/extended-abstract-1.jpg}
+
+\InsertCenterImage
+  [scale=0.5,
+    caption={HC emission as a function of equivalence ratio}]
+  {./example/abstract/pic/extended-abstract-2.jpg}
 % ------------------------------------------------
+
 \ExtAbstractChapter{CONCLUSION}{
 This section should include (1) the main points of your paper and why they are significant, (2) any exceptions to, problems with, or limitations to your argument, (3) agreements or disagreements with previously published work, (4) theoretical and practical implications of the work, and (5) conclusions drawn.
 } % End of \ExtAbstractChapter{}
