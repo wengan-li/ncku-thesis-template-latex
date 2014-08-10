@@ -27,18 +27,20 @@
           \GetDeptChiName
         \end{minipage}
         %
-        \begin{minipage}[c][1.7cm][c]{2.5cm}
+        \begin{minipage}[c][1.7cm][c]{1.7cm}
           \GetChiDegree 論文
         \end{minipage}
         %
-        \begin{minipage}[c][1.7cm][c]{11.0cm}
+        \hspace{0.5cm}
+        \begin{minipage}[c][1.7cm][c]{10.0cm}
         {
 %          \vspace{0.1cm}
 %          \CJKmove \GetChiTitle
           \vspace{0.4cm}
-          \GetEngTitle
+          \parbox{\textwidth}{\GetEngTitle}
         }
         \end{minipage}
+        \hspace{0.5cm}
         %
         \begin{minipage}[c][1.7cm][c]{2.5cm}
           \begin{flushleft}
@@ -46,13 +48,13 @@
           \end{flushleft}
         \end{minipage}
         %
-        \begin{minipage}[c][1.7cm][c]{2.5cm}
+        \begin{minipage}[c][1.7cm][c]{3.0cm}
           \begin{center}
           {
             \fontspec[RawFeature={vertical}]{Times New Roman}
             \GetThesisYearInTaiwanYear
           }
-          年
+          學年度
           \end{center}
         \end{minipage}
       } % End of \rotatebox{}
