@@ -14,14 +14,15 @@
 \usepackage[BoldFont]{xeCJK}
 
 % Set english font (Use package <ifplatform> to check)
-\usepackage{ifplatform}
-\ifwindows
+%\usepackage{ifplatform}
+%\ifwindows
   % In Windows
   \setmainfont{Times New Roman}
-\else
+%\else
   % In *nix
-  \usepackage{times}
-\fi 
+%  \usepackage{times}
+%  \usepackage[T1]{fontenc}
+%\fi 
 
 % 設定中英文的字型
 % 字型的設定可以使用系統內的字型，而不用像以前一樣另外安裝
@@ -68,6 +69,7 @@
 \usepackage{amsmath}
 \usepackage{booktabs}
 
+% Use in side page
 \def\CJKmovesymbol#1{\raise.35em\hbox{#1}}
 \def\CJKmove{\let\CJKsymbol\CJKmovesymbol
              \let\CJKpunctsymbol\CJKmovesymbol}
