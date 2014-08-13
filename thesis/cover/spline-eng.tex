@@ -24,26 +24,28 @@
       \begin{tabular}{c}
         \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.2\textheight}
           }{\vspace{0.2cm}
-          \scriptsize \GetSchoolEngName \\ \GetDeptEngName}}
-        \\
-        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.15\textheight}
-          }{\vspace{0.2cm}
-          \centering \makebox{\footnotesize \GetEngDegreeThesis}}}
-        \\
-        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.33\textheight}
-          }{\vspace{0.2cm}
-          \centering
-          \parbox{0.33\textheight}{\footnotesize \GetEngTitle}
+          \scriptsize \GetSchoolEngName \\ \GetDeptEngName
         }}
         \\
         \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.15\textheight}
           }{\vspace{0.2cm}
-          \centering \makebox{\footnotesize \GetAuthorEngName}}}
+          \centering \makebox{\footnotesize \GetEngDegreeThesis}
+        }}
+        \\
+        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.33\textheight}
+          }{\vspace{0.2cm}
+          \centering \parbox{0.33\textheight}{\footnotesize \GetEngTitle}
+        }}
+        \\
+        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.15\textheight}
+          }{\vspace{0.2cm}
+          \centering \makebox{\footnotesize \GetAuthorEngName}
+        }}
         \\
         \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.07\textheight}
           }{\vspace{0.2cm}
-          \centering \footnotesize \GetThesisMonthInEng \\
-          \GetThesisYear}}
+          \centering \footnotesize \GetThesisMonthInEng \\ \GetThesisYear
+        }}
       \end{tabular}
     } % End of \parbox{}
   } % End of \fbox{}
