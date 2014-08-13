@@ -3,29 +3,44 @@
 
 % ----------------------------------------------------------------------------
 
+% For equation
 \newcommand{\RefEquation}[1]
 {
   \ref{#1}
 } % End of \newcommand{}
 
+% For equation
 \newcommand{\RefEquationB}[1]
 {
   \eqref{#1}
 } % End of \newcommand{}
 
+% For bib
 \newcommand{\RefBib}[1]
 {
   \cite{#1}
 } % End of \newcommand{}
 
-\newcommand{\RefFigure}[1]
+% For figure, table, chapter, section, subsection, .etc
+\newcommand{\RefTo}[1]
 {
   \ref{#1}
 } % End of \newcommand{}
 
+\newcommand{\RefFigure}[1]
+{
+  \RefTo{#1}
+} % End of \newcommand{}
+
 \newcommand{\RefTable}[1]
 {
-  \ref{#1}
+  \RefTo{#1}
+} % End of \newcommand{}
+
+% For page
+\newcommand{\RefPage}[1]
+{
+  \pageref{#1}
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
