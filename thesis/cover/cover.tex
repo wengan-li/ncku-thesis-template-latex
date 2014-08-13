@@ -17,6 +17,14 @@
   \input{./cover/cover-eng.tex}
 }{}
 
-\input{./cover/spline.tex}
+\ifthenelse{\GetLangEnableChi = 1}
+{
+  \input{./cover/spline-chi.tex}
+}{}
+
+\ifthenelse{\GetLangEnableEng = 1}
+{
+  \input{./cover/spline-eng.tex}
+}{}
 
 % ------------------------------------------------

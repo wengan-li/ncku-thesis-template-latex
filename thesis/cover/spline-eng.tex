@@ -1,0 +1,58 @@
+
+% ----------------------------------------------------------------------------
+%    Side page, used for printing on spline
+%                   書背
+% ----------------------------------------------------------------------------
+
+% 先把Logo版關掉
+\ClearWatermark
+
+\StartNewPage
+
+% 設定使用 無頁碼, 有浮水印
+\thispagestyle{empty}
+
+% ------------------------------------------------
+
+{
+  \CJKfamily{vchifont}
+  \fontsize{12}{12}\selectfont
+
+  \fbox{
+    \parbox[c][0.99\textheight][c]{1.5cm}
+    {
+      \begin{tabular}{c}
+        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.2\textheight}
+          }{\vspace{0.2cm}
+          \scriptsize \GetSchoolEngName \\ \GetDeptEngName}}
+        \\
+        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.15\textheight}
+          }{\vspace{0.2cm}
+          \centering \makebox{\footnotesize \GetEngDegreeThesis}}}
+        \\
+        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.33\textheight}
+          }{\vspace{0.2cm}
+          \centering
+          \parbox{0.33\textheight}{\footnotesize \GetEngTitle}
+        }}
+        \\
+        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.15\textheight}
+          }{\vspace{0.2cm}
+          \centering \makebox{\footnotesize \GetAuthorEngName}}}
+        \\
+        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.07\textheight}
+          }{\vspace{0.2cm}
+          \centering \footnotesize \GetThesisMonthInEng \\
+          \GetThesisYear}}
+      \end{tabular}
+    } % End of \parbox{}
+  } % End of \fbox{}
+} % End of {}
+
+% ------------------------------------------------
+
+\EndOfPage
+
+% 重新使用學校浮水印 Watermark
+\UseSchoolWatermark
+% ------------------------------------------------
