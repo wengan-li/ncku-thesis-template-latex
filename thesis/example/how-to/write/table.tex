@@ -210,22 +210,26 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
   } % End of \item{}
 
-  \newpage
+  %\newpage
   \item
   {
     Caption above / below, Label
 
     把圖表的標題要放在上方還是下方
 
-    \InsertCenterImage
+  \InsertMultiImages
+    [perrow = 2,
+      caption = {Option of caption}]
+    {
       [scale=0.4,
-        caption={標題放在上方}]
+      caption={標題放在上方}]
       {./example/how-to/write/pic/table/caption/above.png}
-
-    \InsertCenterImage
+    }%
+    {
       [scale=0.4,
         caption={標題放在下方}]
       {./example/how-to/write/pic/table/caption/below.png}
+    }
 
     {\bf 注意:} 由於它沒有位置去修改標題和label, 所以要手動把caption和label中的內容修改.
   } % End of \item{}
@@ -242,41 +246,49 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
    正常在書本, 科學文章(如論文)和新聞中, table都是用三線式的方式, 因為這種的table簡單明瞭. 主要特點為整個table只有三條橫線, 上下兩端的線條較粗, 中間一條較細, 一般不使用分隔號.
 
-  以下2個是2個是使用Latex原版table的顯示方式 (Fig \ref{table:style:default-1}, \ref{table:style:default-2}).
+  Fig \ref{table:style:sample-1}是一個例子分別是使用Latex原版的顯示方式(Fig \ref{table:style:default-1})或是使用booktabs版的顯示方式(Fig \ref{table:style:booktabs-1}).
 
-  \InsertCenterImage
-    [scale=0.4,
-      caption={Default style 1},
+  \InsertMultiImages
+    [perrow = 2,
+      caption = {A sample between Latex style and Booktabs style},
+      label={table:style:sample-1}]
+    {
+      [scale=0.3,
+      caption={Default style},
       label={table:style:default-1}]
-    {./example/how-to/write/pic/table/style/default-1.png}
+      {./example/how-to/write/pic/table/style/default-1.png}
+    }%
+    {
+      [scale=0.2,
+        caption={Booktabs style},
+        label={table:style:booktabs-1}]
+      {./example/how-to/write/pic/table/style/booktabs-1.png}
+    }
 
-  \InsertCenterImage
-    [scale=0.4,
-      caption={Default style 2},
-      label={table:style:default-2}]
-    {./example/how-to/write/pic/table/style/default-2.png}
+  %\newpage
+  而Fig \ref{table:style:sample-2}是2個版本都加上垂直線時候的樣子.
 
-  \newpage
-  以下2個是2個是使用三線式的顯示方式 (Fig \ref{table:style:booktabs-1}, \ref{table:style:booktabs-2}).
+  \InsertMultiImages
+    [perrow = 2,
+      caption = {Table with horizontal line},
+      label={table:style:sample-2}]
+    {
+      [scale=0.3,
+      caption={Default style}]
+      {./example/how-to/write/pic/table/style/default-2.png}
+    }%
+    {
+      [scale=0.25,
+        caption={Booktabs style}]
+      {./example/how-to/write/pic/table/style/booktabs-2.png}
+    }
 
-  \InsertCenterImage
-    [scale=0.4,
-      caption={Booktabs style 1},
-      label={table:style:booktabs-1}]
-    {./example/how-to/write/pic/table/style/booktabs-1.png}
+  就會發現booktabs版的中間的橫線比較細.
 
-  \InsertCenterImage
-    [scale=0.4,
-      caption={Booktabs style 2},
-      label={table:style:booktabs-2}]
-    {./example/how-to/write/pic/table/style/booktabs-2.png}
-
-  就會發現中間的橫線比較細.
-
-  這些都是一些細節問題, 如果想做簡單明瞭一些, 可以採用三線式表格, 但是不是說只要是表格就必須使用三線式.
+  這些都是一些細節問題, 如果想做簡單明瞭一些, 可以採用三線式表格, 但不是說只要是表格就必須使用三線式.
 
 % ------------------------------------------------
-\newpage
+%\newpage
 \subsection{其他}
 
   \begin{enumerate}
@@ -295,19 +307,20 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
       這tool沒法插入圖片, 所以有關圖片的部份要自己加在table中, 請參考Chap \ref{chapter:how-to:write:image}, 但是在table中的image是不能加標題和label.
     } % End of \item{}
 
-    \item
-    {
-      備註
-
-      而在產生出來的Latex中, 可以看到這類的文字(Fig \ref{table:package:comment}). 在注解中所講的, 是指所產生出來的Latex需要使用一些Latex的工具, 但這些工具已被包在本模板中, 所以可以無視的.
-
       \InsertCenterImage
         [scale=0.7,
           caption={Package remain},
           label={table:package:comment}]
         {./example/how-to/write/pic/table/table-comment.png}
+
+    \item
+    {
+      備註
+
+      而在產生出來的Latex中, 可以看到這類的文字(Fig \ref{table:package:comment}). 在注解中所講的, 是指所產生出來的Latex需要使用一些Latex的工具, 但這些工具已被包在本模板中, 所以可以無視的.
     } % End of \item{}
   \end{enumerate}
+
 % ------------------------------------------------
 \EndChapter
 % ------------------------------------------------
