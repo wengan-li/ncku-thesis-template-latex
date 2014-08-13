@@ -19,30 +19,35 @@
   \fontsize{12}{12}\selectfont
 
   \fbox{
-    \parbox[c][0.99\textheight][c]{1.5cm}
+    \parbox[c][0.99\textheight][c]{\GetSpineWidth cm}
     {
       \begin{tabular}{c}
-        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.2\textheight}
+        \rotatebox{-90}{
+          \parbox[c][\GetSpineColWidth cm][c]{{0.2\textheight}
           }{%\vspace{0.1cm}
           \scriptsize \GetSchoolEngName \\ \GetDeptEngName
         }}
         \\
-        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.15\textheight}
+        \rotatebox{-90}{
+          \parbox[c][\GetSpineColWidth cm][c]{{0.15\textheight}
           }{%\vspace{0.1cm}
           \centering \makebox{\footnotesize \GetEngDegreeThesis}
         }}
         \\
-        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.33\textheight}
+        \rotatebox{-90}{
+          \parbox[c][\GetSpineColWidth cm][c]{{0.33\textheight}
           }{%\vspace{0.26cm}
           \centering \parbox{0.33\textheight}{\footnotesize \GetEngTitle}
         }}
         \\
-        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.15\textheight}
-          }{%\vspace{-0.05cm}
+        \rotatebox{-90}{
+          \parbox[c][\GetSpineColWidth cm][c]{{0.15\textheight}
+          }{%\vspace{0.05cm}
           \centering \makebox{\footnotesize \GetAuthorEngName}
         }}
         \\
-        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.07\textheight}
+        \rotatebox{-90}{
+          \parbox[c][\GetSpineColWidth cm][c]{{0.07\textheight}
           }{%\vspace{0.2cm}
           \centering \footnotesize \GetThesisMonthInEng \\ \GetThesisYear
         }}
