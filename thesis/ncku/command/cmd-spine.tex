@@ -3,24 +3,41 @@
 
 % ----------------------------------------------------------------------------
 
+% Set width of the Spine
+% (Default: 1.5cm, minmum: 1.5cm, maximum: 2.5cm)
+%\SetSpineWidth{3.0}
+
 % 書脊 Spine
 \newcommand{\SpineWidth}{1.5} % Default
 \newcommand{\SpineColWidth}{1.0} % Default
+\newcommand{\SpineEngColWidth}{1.0} % Default
 \newcommand{\GetSpineWidth}[0]{\SpineWidth}
 \newcommand{\GetSpineColWidth}[0]{\SpineColWidth}
+\newcommand{\GetSpineEngColWidth}[0]{\SpineEngColWidth}
 \newcommand{\SetSpineWidth}[1]
 {
-  % Update the width
-  \ifthenelse{#1 < 1.0}
-  {
-    \renewcommand{\SpineWidth}{1.0}
-  } % End of if{}
-  {
-    \renewcommand{\SpineWidth}{#1}
-  } % End of else{}
+  % Update the width (Maximum)
+  \FPifgt{#1}{2.5}
+    \FPeval{\SpineWidth}{clip(2.5)}
+  \else
+%    \renewcommand{\SpineWidth}{#1}
+    \FPeval{\SpineWidth}{clip(#1)}
+  \fi
+  %
+  % Update the width (Minimum)
+  \FPiflt{#1}{1.0}
+    \FPeval{\SpineWidth}{clip(1.0)}
+  \else
+%    \renewcommand{\SpineWidth}{#1}
+    \FPeval{\SpineWidth}{clip(#1)}
+  \fi
   %
   % Update the column width
-  \FPeval{\SpineColWidth}{clip(#1 / 3)}
+%  \FPeval{\SpineColWidth}{clip((#1 * 2) / 3) + clip(#1 / 5)}
+  \FPeval{\SpineColWidth}{
+    clip(\GetSpineWidth / 2) + clip(\GetSpineWidth / 5)}
+  \FPeval{\SpineEngColWidth}{
+    clip(\GetSpineWidth / 2) + clip(\GetSpineWidth / 7)}
 } % End of \newcommand{}
 
 % Title
