@@ -1,0 +1,252 @@
+% ------------------------------------------------
+\newpage
+\section{清單 List Structures}
+
+  日常的清單主要有3種:
+
+\begin{itemize}
+  \item
+  {
+  數字
+
+  可以有2種寫法, 使用\verb|\item xxxx|來只寫一行, 或是用\verb|{...}|可把內容包起來.
+  \begin{framed}
+  \begin{verbatim}
+    \begin{enumerate}
+    \item Item1
+
+    \item Item2
+
+    \item
+    {
+      Item3
+
+      Item3's context
+    }
+
+    \item
+    {
+      Item4
+
+      Item4's context
+    }
+    \end{enumerate}
+  \end{verbatim}
+  \end{framed}
+
+  效果:
+  \begin{enumerate}
+    \item Item1
+
+    \item Item2
+
+    \item
+    {
+      Item3
+
+      Item3's context
+    }
+
+    \item
+    {
+      Item4
+
+      Item4's context
+    }
+  \end{enumerate}
+  } % End of \item{}
+
+  \newpage
+  \item
+  {
+  符號
+
+  \begin{framed}
+  \begin{verbatim}
+    \begin{itemize}
+    \item Item1
+
+    \item Item2
+
+    \item
+    {
+      Item3
+
+      Item3's context
+    }
+
+    \item
+    {
+      Item4
+
+      Item4's context
+    }
+    \end{itemize}
+  \end{verbatim}
+  \end{framed}
+
+  效果:
+  \begin{itemize}
+    \item Item1
+
+    \item Item2
+
+    \item
+    {
+      Item3
+
+      Item3's context
+    }
+
+    \item
+    {
+      Item4
+
+      Item4's context
+    }
+  \end{itemize}
+  } % End of \item{}
+
+  \newpage
+  \item
+  {
+  文字
+
+  可以有2種寫法, 使用\verb|\item[xxxx] xxxx|來只寫一行, \\
+  或是用\verb|\hfill \\|把內容放到第2行才開始.
+
+  \begin{framed}
+  \begin{verbatim}
+    \begin{description}
+    \item[Item1] Item1's context
+    \item[Item2] Item2's context
+    \item[Item3] \hfill \\
+      Item3's context
+    \end{description}
+  \end{verbatim}
+  \end{framed}
+
+  效果:
+  \begin{description}
+    \item[Item1] Item1's context
+    \item[Item2] Item2's context
+    \item[Item3] \hfill \\
+    Item3's context
+  \end{description}
+  } % End of \item{}
+
+  \newpage
+  \item
+  {
+  巢狀表單
+
+  表單應該最多只會用到第4層, 但是其實當你需要用到第3層時, 這時候你應該考慮的不是怎使用表單, 而是要怎換另外一種寫法了.
+
+  \begin{framed}
+  \begin{verbatim}
+    \begin{enumerate}
+    \item
+    {
+      Level-1 Item 1
+      \begin{enumerate}
+      \item Nested Item 1
+
+      \item
+      {
+      Level-2 Item 2
+
+      \begin{enumerate}
+      \item
+      {
+        Level-3 Item 1
+
+        \begin{enumerate}
+        \item Level-4 Item 1
+        \item Level-4 Item 2
+        \end{enumerate}
+      }
+
+      \item Level-3 Item 2
+      \end{enumerate}
+      }
+      \end{enumerate}
+    }
+    \end{enumerate}
+
+    \begin{itemize}
+    \item
+    {
+      Level-1 Item 1
+
+      \begin{itemize}
+      \item
+      {
+        Level-2 Item 2
+
+        \begin{itemize}
+        \item Level-3 Item 1
+        \item Level-3 Item 2
+        \end{itemize}
+      }
+
+      \item Level-2 Item 2
+      \end{itemize}
+    }
+    \end{itemize}
+  \end{verbatim}
+  \end{framed}
+
+  效果:
+  \begin{enumerate}
+    \item
+    {
+    Level-1 Item 1
+    \begin{enumerate}
+    \item Nested Item 1
+
+    \item
+    {
+      Level-2 Item 2
+
+      \begin{enumerate}
+      \item
+      {
+        Level-3 Item 1
+
+        \begin{enumerate}
+        \item Level-4 Item 1
+        \item Level-4 Item 2
+        \end{enumerate}
+      }
+
+      \item Level-3 Item 2
+      \end{enumerate}
+    }
+    \end{enumerate}
+    }
+  \end{enumerate}
+
+  \begin{itemize}
+    \item
+    {
+    Level-1 Item 1
+
+    \begin{itemize}
+    \item
+    {
+      Level-2 Item 2
+
+      \begin{itemize}
+      \item Level-3 Item 1
+      \item Level-3 Item 2
+      \end{itemize}
+    }
+
+    \item Level-2 Item 2
+    \end{itemize}
+    }
+  \end{itemize}
+
+  } % End of \item{}
+\end{itemize}
+% ------------------------------------------------
