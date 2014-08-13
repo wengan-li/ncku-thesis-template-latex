@@ -7,16 +7,17 @@
 
 在一般任何的Latex教學上, 如何編寫一個table出來都會是其中一項, 了解任何一個部份的寫法, 位置, 設定等. 但是由於那些資料十分的巨量 (不同寫法有不同效果), 所以這絕對不是使用本模板的大家想知道的東西, 故本模板不使用過往的方式, 而且直接教大家怎樣使用現有的online tool去處理掉這個問題.
 
-以下的說明都是針對LaTeX Table Generator (\url{http://www.tablesgenerator.com/})\cite{web:latex:table-generator}來進行說明.
+以下的說明都是針對LaTeX Table Generator (\url{http://www.tablesgenerator.com/})\RefBib{web:latex:table-generator}來進行說明.
 
-LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非常明瞭和簡單, 只要有過Mircosoft Word中的table設計的經驗, 應該要上手這個東西絕對不會很難.
+LaTeX Table Generator (Fig. \RefTo{fig:how-to:table:table-generator})的頁面非常明瞭和簡單, 只要有過Mircosoft Word中的table設計的經驗, 應該要上手這個東西絕對不會很難.
 
+% ------------------------------------------------
 \newpage
 \InsertCenterImage
   [scale=0.4,
-    caption={LaTeX Table Generator頁面},
-    label={fig:how-to:table:table-generator}]
-    {./example/how-to/write/pic/table/table-generator.png}
+  caption={LaTeX Table Generator頁面},
+  label={fig:how-to:table:table-generator}]
+  {./example/how-to/write/pic/table/table-generator.png}
 
 % ------------------------------------------------
 \newpage
@@ -25,31 +26,31 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
   我們使用這工具就是要去產生Latex用在論文當中, 所以這一步比其他的知識更為重要. 記得使用以下的步驟:
 
   \begin{enumerate}
-    \item
-    {
-      使用畫面來設計table.
-      \InsertCenterImage
-        {./example/how-to/write/pic/table/table-view.png}
-    } % End of \item{}
+  \item
+  {
+    使用畫面來設計table.
+    \InsertCenterImage
+      {./example/how-to/write/pic/table/table-view.png}
+  } % End of \item{}
 
-    \item
-    {
-      按Generate去產生Latex.
-      \InsertCenterImage
-        {./example/how-to/write/pic/table/generate.png}
-    } % End of \item{}
+  \item
+  {
+    按Generate去產生Latex.
+    \InsertCenterImage
+      {./example/how-to/write/pic/table/generate.png}
+  } % End of \item{}
 
-    \item
-    {
-      複製Latex放到論文的".tex"中.
-      \InsertCenterImage
-        {./example/how-to/write/pic/table/latex-code.png}
-    } % End of \item{}
+  \item
+  {
+    複製Latex放到論文的".tex"中.
+    \InsertCenterImage
+      {./example/how-to/write/pic/table/latex-code.png}
+  } % End of \item{}
 
-    \item
-    {
-      執行XeLaTeX去產生效果.
-    } % End of \item{}
+  \item
+  {
+    執行XeLaTeX去產生效果.
+  } % End of \item{}
   \end{enumerate}
 
   第1$\sim$3步會在整個設計table中常常都會使用, 所以會熟能生巧的. 而有經驗的人都知道, 第1步是最需要時間, 而第2$\sim$4步不用幾分鐘就能做完了, 所以只要用心的話, 多漂亮的table都是能弄出來的.
@@ -68,70 +69,70 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
   \begin{enumerate}
 
-    % ------------------------------------------------
-    \item
-    {
-      Import CSV file
+  % ------------------------------------------------
+  \item
+  {
+    Import CSV file
 
-      你可以直接upload一個CSV format的檔案之後弄table的外觀.
-      \InsertCenterImage
-        [scale=0.7]
-        {./example/how-to/write/pic/table/csv.png}
-    } % End of \item{}
+    你可以直接upload一個CSV format的檔案之後弄table的外觀.
+    \InsertCenterImage
+      [scale=0.7]
+      {./example/how-to/write/pic/table/csv.png}
+  } % End of \item{}
 
-    % ------------------------------------------------
-    \newpage
-    \item
-    {
-      Paste table data
+  % ------------------------------------------------
+  \newpage
+  \item
+  {
+    Paste table data
 
-      可以把Microsoft Excel的table直接做Copy \& Paste到這一邊來.
-      \InsertCenterImage
-        [scale=0.45]
-        {./example/how-to/write/pic/table/paste.png}
+    可以把Microsoft Excel的table直接做Copy \& Paste到這一邊來.
+    \InsertCenterImage
+      [scale=0.45]
+      {./example/how-to/write/pic/table/paste.png}
 
-      或是可以直接輸入資料來建立, 但要注意的是它只能接受CSV的寫法, 即是每一筆資料都是以","來分隔. 所以如果使用Fig \ref{fig:csv:enter-example-data}的寫法的話:
-      \InsertCenterImage
-        [scale=0.65,
-          caption={Enter example data},
-          label={fig:csv:enter-example-data}]
-        {./example/how-to/write/pic/table/paste-data.png}
+    或是可以直接輸入資料來建立, 但要注意的是它只能接受CSV的寫法, 即是每一筆資料都是以","來分隔. 所以如果使用Fig \RefTo{fig:csv:enter-example-data}的寫法的話:
+    \InsertCenterImage
+      [scale=0.65,
+        caption={Enter example data},
+        label={fig:csv:enter-example-data}]
+      {./example/how-to/write/pic/table/paste-data.png}
 
-      會出現Fig \ref{fig:csv:result-example-data}的效果:
-      \InsertCenterImage
-        [scale=0.65,
-          caption={Result of example data},
-          label={fig:csv:result-example-data}]
-        {./example/how-to/write/pic/table/paste-data-result.png}
+    會出現Fig \RefTo{fig:csv:result-example-data}的效果:
+    \InsertCenterImage
+      [scale=0.65,
+        caption={Result of example data},
+        label={fig:csv:result-example-data}]
+      {./example/how-to/write/pic/table/paste-data-result.png}
 
-    } % End of \item{}
+  } % End of \item{}
 
-    % ------------------------------------------------
-    \newpage
-    \item
-    {
-      Save table
+  % ------------------------------------------------
+  \newpage
+  \item
+  {
+    Save table
 
-      這online tool有一個十分有用的功能就是能把所做的table save下來, 只要輸入名字後再按download就會得到一個".tgn"檔案.
-      \InsertCenterImage
-        [scale=0.8]
-        {./example/how-to/write/pic/table/save-table.png}
+    這online tool有一個十分有用的功能就是能把所做的table save下來, 只要輸入名字後再按download就會得到一個".tgn"檔案.
+    \InsertCenterImage
+      [scale=0.8]
+      {./example/how-to/write/pic/table/save-table.png}
 
-      \InsertCenterImage
-        {./example/how-to/write/pic/table/save-tgn.png}
+    \InsertCenterImage
+      {./example/how-to/write/pic/table/save-tgn.png}
 
-    } % End of \item{}
+  } % End of \item{}
 
-    % ------------------------------------------------
-    \item
-    {
-      Load table
+  % ------------------------------------------------
+  \item
+  {
+    Load table
 
-      在"Save table"中得到的".tgn"檔案就是使用這邊來重新讀取table.
-      \InsertCenterImage
-        [scale=0.8]
-        {./example/how-to/write/pic/table/load-table.png}
-    } % End of \item{}
+    在"Save table"中得到的".tgn"檔案就是使用這邊來重新讀取table.
+    \InsertCenterImage
+      [scale=0.8]
+      {./example/how-to/write/pic/table/load-table.png}
+  } % End of \item{}
   \end{enumerate}
 
 \newpage
@@ -144,21 +145,21 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
   \begin{enumerate}
 
-    \item
-    {
-      Undo / Repeat
+  \item
+  {
+    Undo / Repeat
 
-      很基本的重做上一步/下一步所做過的行為, 故不用解釋什麼.
-    } % End of \item{}
+    很基本的重做上一步/下一步所做過的行為, 故不用解釋什麼.
+  } % End of \item{}
 
-    \item
-    {
-      Autosave
+  \item
+  {
+    Autosave
 
-      這功能十分有用, 因為這tool是網頁tool, 所以正常重開網頁時會令到資料不見. 所以如果有把"Autosave"開啟的話, 那table就算接了"F5"都不會不見. (預設上應該會自動有開啟)
-      \InsertCenterImage
-        {./example/how-to/write/pic/table/edit-autosave.png}
-    } % End of \item{}
+    這功能十分有用, 因為這tool是網頁tool, 所以正常重開網頁時會令到資料不見. 所以如果有把"Autosave"開啟的話, 那table就算接了"F5"都不會不見. (預設上應該會自動有開啟)
+    \InsertCenterImage
+      {./example/how-to/write/pic/table/edit-autosave.png}
+  } % End of \item{}
 
   \end{enumerate}
 
@@ -168,23 +169,23 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
   \begin{enumerate}
 
-    \item
-    {
-      Set size
+  \item
+  {
+    Set size
 
-      這是table最基本的功能, 在Mircosoft Word時要插入多大的table時, 都要設定table的大小, 這邊正是那一個功能.
-      \InsertCenterImage
-        {./example/how-to/write/pic/table/table-set-size.png}
-    } % End of \item{}
+    這是table最基本的功能, 在Mircosoft Word時要插入多大的table時, 都要設定table的大小, 這邊正是那一個功能.
+    \InsertCenterImage
+      {./example/how-to/write/pic/table/table-set-size.png}
+  } % End of \item{}
 
-    \item
-    {
-      Clear table
+  \item
+  {
+    Clear table
 
-      如果想把弄出來的table重新清掉所有設定和資料, 就是使用這一個.
-      \InsertCenterImage
-        {./example/how-to/write/pic/table/table-clear-table.png}
-    } % End of \item{}
+    如果想把弄出來的table重新清掉所有設定和資料, 就是使用這一個.
+    \InsertCenterImage
+      {./example/how-to/write/pic/table/table-clear-table.png}
+  } % End of \item{}
 
   \end{enumerate}
 
@@ -201,21 +202,22 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
   \item
   {
-    Center table horizontally
+  Center table horizontally
 
-    把整個table置中在頁面
-    \InsertCenterImage
-      [scale=0.5]
-      {./example/how-to/write/pic/table/options-table-center.png}
+  把整個table置中在頁面
+  \InsertCenterImage
+    [scale=0.5]
+    {./example/how-to/write/pic/table/options-table-center.png}
 
   } % End of \item{}
 
   %\newpage
+  \label{chapter:how-to:write:table:label-example}
   \item
   {
-    Caption above / below, Label
+  Caption above / below, Label
 
-    把圖表的標題要放在上方還是下方
+  把圖表的標題要放在上方還是下方
 
   \InsertMultiImages
     [perrow = 2,
@@ -227,11 +229,11 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
     }%
     {
       [scale=0.4,
-        caption={標題放在下方}]
+      caption={標題放在下方}]
       {./example/how-to/write/pic/table/caption/below.png}
     }
 
-    {\bf 注意:} 由於它沒有位置去修改標題和label, 所以要手動把caption和label中的內容修改.
+  {\bf 注意:} 由於它沒有位置去修改caption和label, 所以要手動把caption和label中的內容修改.
   } % End of \item{}
 \end{enumerate}
 
@@ -246,7 +248,7 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
    正常在書本, 科學文章(如論文)和新聞中, table都是用三線式的方式, 因為這種的table簡單明瞭. 主要特點為整個table只有三條橫線, 上下兩端的線條較粗, 中間一條較細, 一般不使用分隔號.
 
-  Fig \ref{table:style:sample-1}是一個例子分別是使用Latex原版的顯示方式(Fig \ref{table:style:default-1})或是使用booktabs版的顯示方式(Fig \ref{table:style:booktabs-1}).
+  Fig \RefTo{table:style:sample-1}是一個例子分別是使用Latex原版的顯示方式(Fig \RefTo{table:style:default-1})或是使用booktabs版的顯示方式(Fig \RefTo{table:style:booktabs-1}).
 
   \InsertMultiImages
     [perrow = 2,
@@ -260,13 +262,13 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
     }%
     {
       [scale=0.2,
-        caption={Booktabs style},
-        label={table:style:booktabs-1}]
+      caption={Booktabs style},
+      label={table:style:booktabs-1}]
       {./example/how-to/write/pic/table/style/booktabs-1.png}
     }
 
   %\newpage
-  而Fig \ref{table:style:sample-2}是2個版本都加上垂直線時候的樣子.
+  而Fig \RefTo{table:style:sample-2}是2個版本都加上垂直線時候的樣子.
 
   \InsertMultiImages
     [perrow = 2,
@@ -279,7 +281,7 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
     }%
     {
       [scale=0.25,
-        caption={Booktabs style}]
+      caption={Booktabs style}]
       {./example/how-to/write/pic/table/style/booktabs-2.png}
     }
 
@@ -293,32 +295,32 @@ LaTeX Table Generator (Fig. \ref{fig:how-to:table:table-generator})的頁面非�
 
   \begin{enumerate}
 
-    \item
-    {
-      功能
+  \item
+  {
+    功能
 
-      其他功能都很好理解的, 只要嘗試過就會明白, 所以不再作詳細解釋.
-    } % End of \item{}
+    其他功能都很好理解的, 只要嘗試過就會明白, 所以不再作詳細解釋.
+  } % End of \item{}
 
-    \item
-    {
-      圖片
+  \item
+  {
+    圖片
 
-      這tool沒法插入圖片, 所以有關圖片的部份要自己加在table中, 請參考Chap \ref{chapter:how-to:write:image}, 但是在table中的image是不能加標題和label.
-    } % End of \item{}
+    這tool沒法插入圖片, 所以有關圖片的部份要自己加在table中, 請參考Chap \RefTo{chapter:how-to:write:image}, 但是在table中的image是不能加標題和label.
+  } % End of \item{}
 
-      \InsertCenterImage
-        [scale=0.7,
-          caption={Package remain},
-          label={table:package:comment}]
-        {./example/how-to/write/pic/table/table-comment.png}
+    \InsertCenterImage
+      [scale=0.7,
+        caption={Package remain},
+        label={table:package:comment}]
+      {./example/how-to/write/pic/table/table-comment.png}
 
-    \item
-    {
-      備註
+  \item
+  {
+    備註
 
-      而在產生出來的Latex中, 可以看到這類的文字(Fig \ref{table:package:comment}). 在注解中所講的, 是指所產生出來的Latex需要使用一些Latex的工具, 但這些工具已被包在本模板中, 所以可以無視的.
-    } % End of \item{}
+    而在產生出來的Latex中, 可以看到這類的文字(Fig \RefTo{table:package:comment}). 在注解中所講的, 是指所產生出來的Latex需要使用一些Latex的工具, 但這些工具已被包在本模板中, 所以可以無視的.
+  } % End of \item{}
   \end{enumerate}
 
 % ------------------------------------------------

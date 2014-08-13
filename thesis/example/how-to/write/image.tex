@@ -24,193 +24,193 @@
 
   \begin{framed}
   \begin{verbatim}
-    Path:   圖片位置 (必填)
+  Path:   圖片位置 (必填)
 
-    Options 設定 (使用','來分隔, 不分先後順序)
-      scale:   比例 (選填, 預設: 1.0)
-        (1.0: 原大小; 0.x ~ < 1.0: 縮小; > 1.0: 放大)
-      caption: 標題 (選填)
-      label:   標簽 (選填, 必須要配合caption使用, 否則無效)
-      angle:   角度 (選填, 預設: 90)
+  Options 設定 (使用','來分隔, 不分先後順序)
+    scale:   比例 (選填, 預設: 1.0)
+    (1.0: 原大小; 0.x ~ < 1.0: 縮小; > 1.0: 放大)
+    caption: 標題 (選填)
+    label:   標簽 (選填, 必須要配合caption使用, 否則無效)
+    angle:   角度 (選填, 預設: 90)
 
-    插入圖片
-    \InsertImage[Options]{Path}
+  插入圖片
+  \InsertImage[Options]{Path}
 
-    插入圖片並置中
-    \InsertCenterImage[Options]{Path}
+  插入圖片並置中
+  \InsertCenterImage[Options]{Path}
 
-    E.g
-      \InsertImage
-        [caption={這 是 標 題}]
-          {./image.png}
+  E.g
+    \InsertImage
+    [caption={這 是 標 題}]
+      {./image.png}
 
-      \InsertCenterImage
-        [scale=0.5,
-          angle=45,
-          caption={這 是 標 題},
-          label={this:is:label}]
-          {./image.png}
+    \InsertCenterImage
+    [scale=0.5,
+      angle=45,
+      caption={這 是 標 題},
+      label={this:is:label}]
+      {./image.png}
 
-      每一項資料可以使用斷行來分隔以保持可讀性.
-      caption和label必須要使用'{}'才能有空格的句子.
+    每一項資料可以使用斷行來分隔以保持可讀性.
+    caption和label必須要使用'{}'才能有空格的句子.
   \end{verbatim}
   \end{framed}
 
   \newpage
   {\bf 效果:}
   \begin{enumerate}
-    \item
-    {
-      只填了比例和圖片位置
-      \begin{verbatim}
-        \InsertImage
-          {./image.png}
-      \end{verbatim}
-      \InsertImage
-        {./example/how-to/write/pic/image/Cc-by_new.svg.png}
-    } % End of \item{}
+  \item
+  {
+    只填了比例和圖片位置
+    \begin{verbatim}
+    \InsertImage
+      {./image.png}
+    \end{verbatim}
+    \InsertImage
+    {./example/how-to/write/pic/image/Cc-by_new.svg.png}
+  } % End of \item{}
 
-    \item
-    {
-      使用置中的版本
-      \begin{verbatim}
-        \InsertCenterImage
-          {./image.png}
-      \end{verbatim}
-      \InsertCenterImage
-        {./example/how-to/write/pic/image/Cc-by_new.svg.png}
-    } % End of \item{}
+  \item
+  {
+    使用置中的版本
+    \begin{verbatim}
+    \InsertCenterImage
+      {./image.png}
+    \end{verbatim}
+    \InsertCenterImage
+    {./example/how-to/write/pic/image/Cc-by_new.svg.png}
+  } % End of \item{}
 
-    \item
-    {
-      放大比例
-      \begin{verbatim}
-        \InsertCenterImage
-          [scale=1.5]
-            {./image.png}
-      \end{verbatim}
-      \InsertCenterImage
-        [scale=1.5]
-          {./example/how-to/write/pic/image/Cc-by_new.svg.png}
-    } % End of \item{}
+  \item
+  {
+    放大比例
+    \begin{verbatim}
+    \InsertCenterImage
+      [scale=1.5]
+      {./image.png}
+    \end{verbatim}
+    \InsertCenterImage
+    [scale=1.5]
+      {./example/how-to/write/pic/image/Cc-by_new.svg.png}
+  } % End of \item{}
 
-    \newpage
+  \newpage
 
-    \item
-    {
-      縮小比例
-      \begin{verbatim}
-        \InsertCenterImage
-          [scale=0.5]
-            {./image.png}
-      \end{verbatim}
-      \InsertCenterImage
-        [scale=0.5]
-          {./example/how-to/write/pic/image/Cc-by_new.svg.png}
-    } % End of \item{}
+  \item
+  {
+    縮小比例
+    \begin{verbatim}
+    \InsertCenterImage
+      [scale=0.5]
+      {./image.png}
+    \end{verbatim}
+    \InsertCenterImage
+    [scale=0.5]
+      {./example/how-to/write/pic/image/Cc-by_new.svg.png}
+  } % End of \item{}
 
-    \item
-    {
-      增加標題並去掉比例的數字
-      \begin{verbatim}
-        \InsertCenterImage
-          [caption={Little man}]
-            {./image.png}
-      \end{verbatim}
-      \InsertCenterImage
-        [caption={Little man}]
-          {./example/how-to/write/pic/image/Cc-by_new.svg.png}
-    } % End of \item{}
+  \item
+  {
+    增加標題並去掉比例的數字
+    \begin{verbatim}
+    \InsertCenterImage
+      [caption={Little man}]
+      {./image.png}
+    \end{verbatim}
+    \InsertCenterImage
+    [caption={Little man}]
+      {./example/how-to/write/pic/image/Cc-by_new.svg.png}
+  } % End of \item{}
 
-    \newpage
-    \item
-    {
-      增加標簽
-      \begin{verbatim}
-        \InsertCenterImage
-        [caption={Little man No.1},
-          label={fig:little-man-no.1}]
-            {./image.png}
-      \end{verbatim}
+  \newpage
+  \item
+  {
+    增加標簽
+    \begin{verbatim}
+    \InsertCenterImage
+    [caption={Little man No.1},
+      label={fig:little-man-no.1}]
+      {./image.png}
+    \end{verbatim}
 
-      之後可以使用ref去引用 \verb| \ref{fig:little-man-no.1} |
-      \InsertCenterImage
-        [caption={Little man No.1},
-          label={fig:little-man-no.1}]
-          {./example/how-to/write/pic/image/Cc-by_new.svg.png}
+    之後可以使用ref去引用 \verb| \RefTo{fig:little-man-no.1} |
+    \InsertCenterImage
+    [caption={Little man No.1},
+      label={fig:little-man-no.1}]
+      {./example/how-to/write/pic/image/Cc-by_new.svg.png}
 
-      e.g: 文中所指的人物一號 (Fig  \ref{fig:little-man-no.1}).
-    } % End of \item{}
+    e.g: 文中所指的人物一號 (Fig \RefTo{fig:little-man-no.1}).
+  } % End of \item{}
 
-    \item
-    {
-      使用角度去轉45度
-      \begin{verbatim}
-        \InsertCenterImage
-          [angle=45,
-            caption={Little man No.2},
-            label={fig:little-man-no.2}]
-              {./image.png}
-      \end{verbatim}
+  \item
+  {
+    使用角度去轉45度
+    \begin{verbatim}
+    \InsertCenterImage
+      [angle=45,
+      caption={Little man No.2},
+      label={fig:little-man-no.2}]
+        {./image.png}
+    \end{verbatim}
 
-      使用ref去引用 \verb| \ref{fig:little-man-no.2} |
-      \InsertCenterImage
-        [angle=45,
-          caption={Little man No.2},
-          label={fig:little-man-no.2}]
-            {./example/how-to/write/pic/image/Cc-by_new.svg.png}
+    使用ref去引用 \verb| \RefTo{fig:little-man-no.2} |
+    \InsertCenterImage
+    [angle=45,
+      caption={Little man No.2},
+      label={fig:little-man-no.2}]
+      {./example/how-to/write/pic/image/Cc-by_new.svg.png}
 
-      e.g: 文中所指的人物二號 (Fig  \ref{fig:little-man-no.2}).
-    } % End of \item{}
+    e.g: 文中所指的人物二號 (Fig \RefTo{fig:little-man-no.2}).
+  } % End of \item{}
 
-    \newpage
-    \item
-    {
-      把圖放在表格中, 這時候是使用\verb|\InsertImage{}|(如要置中則設定table就可), 而且不能使用caption和label (正常寫法應該用不到, 例如出現'Fig X.X'這種字在table中). (有關表格table的使用, 請參考Chap \ref{chapter:how-to:write:table})
+  \newpage
+  \item
+  {
+    把圖放在表格中, 這時候是使用\verb|\InsertImage{}|(如要置中則設定table就可), 而且不能使用caption和label (正常寫法應該用不到, 例如出現'Fig X.X'這種字在table中). (有關表格table的使用, 請參考Chap \RefTo{chapter:how-to:write:table})
 
-      \begin{verbatim}
-      \begin{table}[h]
-      \centering
-      \begin{tabular}{|c|c|}
-      \hline
-        \textbf{\underline{Website}} &
-          \textbf{\underline{URL}} \\ \hline
+    \begin{verbatim}
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{\underline{Website}} &
+      \textbf{\underline{URL}} \\ \hline
 
-        \begin{tabular}[c]{@{}c@{}}
-        \InsertImage[scale=0.1]
-          {./apple.png} \\ Apple
-        \end{tabular} & \url{www.apple.com}  \\ \hline
+    \begin{tabular}[c]{@{}c@{}}
+    \InsertImage[scale=0.1]
+      {./apple.png} \\ Apple
+    \end{tabular} & \url{www.apple.com}  \\ \hline
 
-        \begin{tabular}[c]{@{}c@{}}
-        \InsertImage[scale=0.1]
-          {./google.png} \\ Google
-        \end{tabular} & \url{www.google.com} \\ \hline
+    \begin{tabular}[c]{@{}c@{}}
+    \InsertImage[scale=0.1]
+      {./google.png} \\ Google
+    \end{tabular} & \url{www.google.com} \\ \hline
 
-      \end{tabular}
-      \end{table}
-      \end{verbatim}
+    \end{tabular}
+    \end{table}
+    \end{verbatim}
 
-      \begin{table}[h]
-      \centering
-      \begin{tabular}{|c|c|}
-      \hline
-        \textbf{\underline{Website}} &
-          \textbf{\underline{URL}} \\ \hline
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{\underline{Website}} &
+      \textbf{\underline{URL}} \\ \hline
 
-        \begin{tabular}[c]{@{}c@{}}
-        \InsertImage[scale=0.1]
-          {./example/how-to/write/pic/image/apple.jpg} \\ Apple
-        \end{tabular} & \url{www.apple.com}  \\ \hline
+    \begin{tabular}[c]{@{}c@{}}
+    \InsertImage[scale=0.1]
+      {./example/how-to/write/pic/image/apple.jpg} \\ Apple
+    \end{tabular} & \url{www.apple.com}  \\ \hline
 
-        \begin{tabular}[c]{@{}c@{}}
-        \InsertImage[scale=0.1]
-          {./example/how-to/write/pic/image/google.png} \\ Google
-        \end{tabular} & \url{www.google.com} \\ \hline
+    \begin{tabular}[c]{@{}c@{}}
+    \InsertImage[scale=0.1]
+      {./example/how-to/write/pic/image/google.png} \\ Google
+    \end{tabular} & \url{www.google.com} \\ \hline
 
-      \end{tabular}
-      \end{table}
+    \end{tabular}
+    \end{table}
 
-    } % End of \item{}
+  } % End of \item{}
   \end{enumerate}
 
 % ------------------------------------------------
@@ -223,28 +223,28 @@
 
   \begin{framed}
   \begin{verbatim}
-    Options 主圖的設定 (使用','來分隔, 不分先後順序)
-      perrow:  每一列多少張圖片 (選填, 預設: 1)
-      caption: 標題 (選填)
-      label:   標簽 (選填, 必須要配合caption使用, 否則無效)
+  Options 主圖的設定 (使用','來分隔, 不分先後順序)
+    perrow:  每一列多少張圖片 (選填, 預設: 1)
+    caption: 標題 (選填)
+    label:   標簽 (選填, 必須要配合caption使用, 否則無效)
 
-    Image 1~8: 各張圖片的設定
-      設定方式跟使用\InsertImage和\InsertCenterImage是一樣的
-      [Image options] -> [Options]
-      {Image path}    -> {Path}
+  Image 1~8: 各張圖片的設定
+    設定方式跟使用\InsertImage和\InsertCenterImage是一樣的
+    [Image options] -> [Options]
+    {Image path}  -> {Path}
 
-    插入多張圖片
-      \InsertMultiImages[Options]
-      {
-        [Image options]{Image path}
-      }%
-      {
-        ...
-      }%
-      {
-        [Image options]{Image path}
-      }
-    ('%'是必須存在的, 以防止被Latex認為這是新段落)
+  插入多張圖片
+    \InsertMultiImages[Options]
+    {
+      [Image options]{Image path}
+    }%
+    {
+      ...
+    }%
+    {
+      [Image options]{Image path}
+    }
+  ('%'是必須存在的, 以防止被Latex認為這是新段落)
   \end{verbatim}
   \end{framed}
 
@@ -252,197 +252,197 @@
 
   {\bf 效果:}
   \begin{enumerate}
-    \item
+  \item
+  {
+    插入2張圖片, 以1張圖為一列
+    \begin{verbatim}
+    \InsertMultiImages
+    [caption = {2 images and 1 image per row}]
     {
-      插入2張圖片, 以1張圖為一列
-      \begin{verbatim}
-      \InsertMultiImages
-        [caption = {2 images and 1 image per row}]
-        {
-          {./image.png}
-        }%
-        {
-          {./image.png}
-        }
-      \end{verbatim}
-      \InsertMultiImages
-        [caption = {2 images and 1 image per row}]
-        {
-          {./example/how-to/write/pic/image/CC-BY-NC.png}
-        }%
-        {
-          {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
-        }
-    } % End of \item{}
-
-    \item
+      {./image.png}
+    }%
     {
-      插入2張圖片, 以2張圖為一列
-      \begin{verbatim}
-      \InsertMultiImages
-        [perrow = 2,
-          caption = {2 images and 2 images per row}]
-        {
-          {./image.png}
-        }%
-        {
-          {./image.png}
-        }
-      \end{verbatim}
-      \InsertMultiImages
-        [perrow = 2,
-          caption = {2 images and 2 images per row}]
-        {
-          {./example/how-to/write/pic/image/CC-BY-NC.png}
-        }%
-        {
-          {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
-        }
-    } % End of \item{}
-
-    \newpage
-    \item
+      {./image.png}
+    }
+    \end{verbatim}
+    \InsertMultiImages
+    [caption = {2 images and 1 image per row}]
     {
-      插入3張圖片, 2張圖一列, 並有1張圖轉變角度, 同時主圖跟2張子圖片做了標簽
-      \begin{verbatim}
-      \InsertMultiImages
-        [perrow = 2,
-          caption = {5 images and 2 image per row},
-          label = {fig:example:mi2:fig1}]
-        {
-          [caption = {Image 1},
-            label = {fig:example:mi2:fig1}]
-            {./image.png}
-        }%
-        {
-          [caption = {Image 2},
-            label = {fig:example:mi2:fig2},
-            angle = -20]
-            {./image.png}
-        }%
-        {
-          [caption = {Image 3}]
-            {./image.png}
-        }
-      \end{verbatim}
-
-%      \newpage
-      效果會是這樣: \\
-      \InsertMultiImages
-        [perrow = 2,
-          caption = {3 images and 2 images per row},
-          label = {fig:example:mi2:mfig}]
-        {
-          [caption = {Image 1},
-            label = {fig:example:mi2:fig1}]
-            {./example/how-to/write/pic/image/CC-BY-NC.png}
-        }%
-        {
-          [caption = {Image 2},
-            label = {fig:example:mi2:fig2},
-            angle = -20]
-            {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
-        }%
-        {
-          [caption = {Image 3}]
-            {./example/how-to/write/pic/image/CC-BY-NC-SA.png}
-        }
-
-      e.g: 
-      引用主圖 (Fig \ref{fig:example:mi2:mfig}) ,
-      引用子圖片 (Fig \ref{fig:example:mi2:fig1}, Fig \ref{fig:example:mi2:fig2}).
-    } % End of \item{}
-
-    \newpage
-    \item
+      {./example/how-to/write/pic/image/CC-BY-NC.png}
+    }%
     {
-      插入4張圖片, 2張圖一列, 只有主圖做了標簽.\\
-      如果需要不填內容, 但需要圖片的編號的話, 就在caption填寫'{ }'(有空格在中間), 而'{}'則會被認為沒有填寫.
-      \begin{verbatim}
-      \InsertMultiImages
-        [perrow = 2,
-          caption = {4 images and 2 image per row},
-          label = {fig:example:mi3:mfig}]
-        {
-          [caption = { }, label = {fig:example:mi3:fig1}]
-            {./image.png}
-        }%
-        {
-          [caption = {}, label = {fig:example:mi3:fig2}]
-            {./image.png}
-        }%
-        {
-          [caption = { }, label = {fig:example:mi3:fig3}]
-            {./image.png}
-        }%
-        {
-          [caption = { }, label = {fig:example:mi3:fig4}]
-            {./image.png}
-        }
-      \end{verbatim}
+      {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
+    }
+  } % End of \item{}
 
-      \InsertMultiImages
-        [perrow = 2,
-          caption = {4 images and 2 image per row},
-          label = {fig:example:mi3:mfig}]
-        {
-          [caption = { },
-          label = {fig:example:mi3:fig1}]
-            {./example/how-to/write/pic/image/CC-BY-NC.png}
-        }%
-        {
-          [caption = {},
-          label = {fig:example:mi3:fig2}]
-            {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
-        }%
-        {
-          [caption = { },
-          label = {fig:example:mi3:fig3}]
-            {./example/how-to/write/pic/image/CC-BY-NC-SA.png}
-        }%
-        {
-          [caption = { },
-          label = {fig:example:mi3:fig4}]
-            {./example/how-to/write/pic/image/CC-BY-ND.png}
-        }
+  \item
+  {
+    插入2張圖片, 以2張圖為一列
+    \begin{verbatim}
+    \InsertMultiImages
+    [perrow = 2,
+      caption = {2 images and 2 images per row}]
+    {
+      {./image.png}
+    }%
+    {
+      {./image.png}
+    }
+    \end{verbatim}
+    \InsertMultiImages
+    [perrow = 2,
+      caption = {2 images and 2 images per row}]
+    {
+      {./example/how-to/write/pic/image/CC-BY-NC.png}
+    }%
+    {
+      {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
+    }
+  } % End of \item{}
 
-      可以看得出圖片的編號不一樣了\\
-      引用主圖 (Fig \ref{fig:example:mi3:mfig})\\
-      引用子圖片(a) (Fig \ref{fig:example:mi3:fig1})\\
-      引用子圖片(b) (由於這張圖的caption是沒設定, 所以label無效)\\
-      引用子圖片(c) (Fig \ref{fig:example:mi3:fig3})\\
-      引用子圖片(d) (Fig \ref{fig:example:mi3:fig4})
-    } % End of \item{}
+  \newpage
+  \item
+  {
+    插入3張圖片, 2張圖一列, 並有1張圖轉變角度, 同時主圖跟2張子圖片做了標簽
+    \begin{verbatim}
+    \InsertMultiImages
+    [perrow = 2,
+      caption = {5 images and 2 image per row},
+      label = {fig:example:mi2:fig1}]
+    {
+      [caption = {Image 1},
+      label = {fig:example:mi2:fig1}]
+      {./image.png}
+    }%
+    {
+      [caption = {Image 2},
+      label = {fig:example:mi2:fig2},
+      angle = -20]
+      {./image.png}
+    }%
+    {
+      [caption = {Image 3}]
+      {./image.png}
+    }
+    \end{verbatim}
 
-    % 最後一張圖位置怪怪
-    \newpage
-%    \item
-%    {
-%      插入8張圖片, 2張圖一列, 只有主圖填了標題.\\
-%      \begin{verbatim}
-%      \InsertMultiImages
-%        [perrow = 2, caption = {8 images and 2 image per row}]
-%        {[caption = { }]{./image.png}}%
-%        {[caption = { }]{./image.png}}%
-%        {[caption = { }]{./image.png}}%
-%        {[caption = { }]{./image.png}}%
-%        {[caption = { }]{./image.png}}%
-%        {[caption = { }]{./image.png}}%
-%        {[caption = { }]{./image.png}}%
-%        {[caption = { }]{./image.png}}
-%      \end{verbatim}
+%    \newpage
+    效果會是這樣: \\
+    \InsertMultiImages
+    [perrow = 2,
+      caption = {3 images and 2 images per row},
+      label = {fig:example:mi2:mfig}]
+    {
+      [caption = {Image 1},
+      label = {fig:example:mi2:fig1}]
+      {./example/how-to/write/pic/image/CC-BY-NC.png}
+    }%
+    {
+      [caption = {Image 2},
+      label = {fig:example:mi2:fig2},
+      angle = -20]
+      {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
+    }%
+    {
+      [caption = {Image 3}]
+      {./example/how-to/write/pic/image/CC-BY-NC-SA.png}
+    }
+
+    e.g: 
+    引用主圖 (Fig \RefTo{fig:example:mi2:mfig}) ,
+    引用子圖片 (Fig \RefTo{fig:example:mi2:fig1}, Fig \RefTo{fig:example:mi2:fig2}).
+  } % End of \item{}
+
+  \newpage
+  \item
+  {
+    插入4張圖片, 2張圖一列, 只有主圖做了標簽.\\
+    如果需要不填內容, 但需要圖片的編號的話, 就在caption填寫'{ }'(有空格在中間), 而'{}'則會被認為沒有填寫.
+    \begin{verbatim}
+    \InsertMultiImages
+    [perrow = 2,
+      caption = {4 images and 2 image per row},
+      label = {fig:example:mi3:mfig}]
+    {
+      [caption = { }, label = {fig:example:mi3:fig1}]
+      {./image.png}
+    }%
+    {
+      [caption = {}, label = {fig:example:mi3:fig2}]
+      {./image.png}
+    }%
+    {
+      [caption = { }, label = {fig:example:mi3:fig3}]
+      {./image.png}
+    }%
+    {
+      [caption = { }, label = {fig:example:mi3:fig4}]
+      {./image.png}
+    }
+    \end{verbatim}
+
+    \InsertMultiImages
+    [perrow = 2,
+      caption = {4 images and 2 image per row},
+      label = {fig:example:mi3:mfig}]
+    {
+      [caption = { },
+      label = {fig:example:mi3:fig1}]
+      {./example/how-to/write/pic/image/CC-BY-NC.png}
+    }%
+    {
+      [caption = {},
+      label = {fig:example:mi3:fig2}]
+      {./example/how-to/write/pic/image/CC-BY-NC-ND.png}
+    }%
+    {
+      [caption = { },
+      label = {fig:example:mi3:fig3}]
+      {./example/how-to/write/pic/image/CC-BY-NC-SA.png}
+    }%
+    {
+      [caption = { },
+      label = {fig:example:mi3:fig4}]
+      {./example/how-to/write/pic/image/CC-BY-ND.png}
+    }
+
+    可以看得出圖片的編號不一樣了\\
+    引用主圖 (Fig \RefTo{fig:example:mi3:mfig})\\
+    引用子圖片(a) (Fig \RefTo{fig:example:mi3:fig1})\\
+    引用子圖片(b) (由於這張圖的caption是沒設定, 所以label無效)\\
+    引用子圖片(c) (Fig \RefTo{fig:example:mi3:fig3})\\
+    引用子圖片(d) (Fig \RefTo{fig:example:mi3:fig4})
+  } % End of \item{}
+
+  % 最後一張圖位置怪怪
+%  \newpage
+%  \item
+%  {
+%    插入8張圖片, 2張圖一列, 只有主圖填了標題.\\
+%    \begin{verbatim}
+%    \InsertMultiImages
+%    [perrow = 2, caption = {8 images and 2 image per row}]
+%    {[caption = { }]{./image.png}}%
+%    {[caption = { }]{./image.png}}%
+%    {[caption = { }]{./image.png}}%
+%    {[caption = { }]{./image.png}}%
+%    {[caption = { }]{./image.png}}%
+%    {[caption = { }]{./image.png}}%
+%    {[caption = { }]{./image.png}}%
+%    {[caption = { }]{./image.png}}
+%    \end{verbatim}
 %
-%      \InsertMultiImages
-%        [perrow = 2, caption = {8 images and 2 image per row}]
-%        {[caption = { }]{./example/how-to/write/pic/image/CC-BY.png}}%
-%        {[caption = { }]{./example/how-to/write/pic/image/CC-BY-NC.png}}%
-%        {[caption = { }]{./example/how-to/write/pic/image/CC-BY-ND.png}}%
-%        {[caption = { }]{./example/how-to/write/pic/image/CC-BY-SA.png}}%
-%        {[caption = { }]{./example/how-to/write/pic/image/CC-BY.png}}%
-%        {[caption = { }]{./example/how-to/write/pic/image/CC-BY-NC.png}}%
-%        {[caption = { }]{./example/how-to/write/pic/image/CC-BY-ND.png}}%
-%        {[caption = { }]{./example/how-to/write/pic/image/CC-BY-SA.png}}
-%    } % End of \item{}
+%    \InsertMultiImages
+%    [perrow = 2, caption = {8 images and 2 image per row}]
+%    {[caption = { }]{./example/how-to/write/pic/image/CC-BY.png}}%
+%    {[caption = { }]{./example/how-to/write/pic/image/CC-BY-NC.png}}%
+%    {[caption = { }]{./example/how-to/write/pic/image/CC-BY-ND.png}}%
+%    {[caption = { }]{./example/how-to/write/pic/image/CC-BY-SA.png}}%
+%    {[caption = { }]{./example/how-to/write/pic/image/CC-BY.png}}%
+%    {[caption = { }]{./example/how-to/write/pic/image/CC-BY-NC.png}}%
+%    {[caption = { }]{./example/how-to/write/pic/image/CC-BY-ND.png}}%
+%    {[caption = { }]{./example/how-to/write/pic/image/CC-BY-SA.png}}
+%  } % End of \item{}
   \end{enumerate}
 
 % ------------------------------------------------
