@@ -19,45 +19,61 @@
   \fontsize{12}{12}\selectfont
 
   \fbox{
-    \parbox[c][0.97\textheight][c]{1.5cm}{
-      \vspace{0.3cm}
-      \rotatebox{-90}{
-        \begin{minipage}[c][1.7cm][c]{3.0cm}
-          \GetSchoolChiName \\
-          \GetDeptChiName
-        \end{minipage}
-        %
-        \begin{minipage}[c][1.7cm][c]{1.7cm}
-          \GetChiDegree 論文
-        \end{minipage}
-        %
-        \hspace{0.5cm}
-        \begin{minipage}[c][1.7cm][c]{10.0cm}
+    \parbox[c][0.99\textheight][c]{1.5cm}
+    {
+      \begin{tabular}{c}
+        \rotatebox{-90}{\parbox[c][1.2cm][c]{{0.2\textheight}
+          }{%\vspace{0.4cm}
+          \GetSchoolChiName \\ \GetDeptChiName
+        }}
+        \\
+        \rotatebox{-90}{\parbox[c][1.2cm][c]{{0.1\textheight}
+          }{%\vspace{0.4cm}
+          \centering \makebox{\GetChiDegree 論文}
+        }}
+        \\
+        \ifthenelse{\GetLangEnableDemo = 1}
         {
-%          \vspace{0.1cm}
-%          \CJKmove \GetChiTitle
-          \vspace{0.4cm}
-          \parbox{\textwidth}{\GetEngTitle}
-        }
-        \end{minipage}
-        \hspace{0.5cm}
-        %
-        \begin{minipage}[c][1.7cm][c]{2.5cm}
-          \begin{flushleft}
-            \GetAuthorChiName \enspace 撰
-          \end{flushleft}
-        \end{minipage}
-        %
-        \begin{minipage}[c][1.7cm][c]{3.0cm}
-          \begin{center}
+          \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.35\textheight}
+            }{\vspace{0.4cm}%\vspace{0.8cm}
+            \centering \parbox{0.33\textheight}{\footnotesize \GetEngTitle}
+          }}
+        } % End of if{}
+        {
+          \ifthenelse{\GetLangEnableEng = 1}
           {
+            \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.35\textheight}
+              }{\vspace{0.4cm}%\vspace{0.8cm}
+              \centering \parbox{0.33\textheight}{
+              \footnotesize \GetEngTitle}
+            }}
+          } % End of if{}
+          {
+            \CJKfamily{normalchifont}
+            \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.35\textheight}
+              }{\vspace{0.4cm}%\vspace{0.8cm}
+              \centering \parbox{0.33\textheight}{
+              \footnotesize \GetChiTitle}
+            }}
+            \CJKfamily{vchifont}
+          } % End of else{}
+        } % End of else{}
+        \\
+        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.12\textheight}
+          }{%\vspace{0.4cm}
+          \centering \makebox{\GetAuthorChiName \enspace 撰}
+        }}
+        \\
+        \rotatebox{-90}{\parbox[c][1.0cm][c]{{0.12\textheight}
+          }{
+          \centering
+          {%\vspace{0.4cm}
             \fontspec[RawFeature={vertical}]{Times New Roman}
             \GetThesisYearInTaiwanYear
           }
           學年度
-          \end{center}
-        \end{minipage}
-      } % End of \rotatebox{}
+        }}
+      \end{tabular}
     } % End of \parbox{}
   } % End of \fbox{}
 } % End of {}
