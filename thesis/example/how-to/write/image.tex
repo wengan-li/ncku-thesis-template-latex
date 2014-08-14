@@ -133,7 +133,7 @@
       {./image.png}
     \end{verbatim}
 
-    之後可以使用ref去引用 \verb| \RefTo{fig:little-man-no.1} |
+    之後可以使用\verb| \RefTo |去引用 \verb| \RefTo{fig:little-man-no.1} |
     \InsertCenterImage
     [caption={Little man No.1},
       label={fig:little-man-no.1}]
@@ -153,7 +153,7 @@
         {./image.png}
     \end{verbatim}
 
-    使用ref去引用 \verb| \RefTo{fig:little-man-no.2} |
+    使用\verb| \RefTo |去引用 \verb| \RefTo{fig:little-man-no.2} |
     \InsertCenterImage
     [angle=45,
       caption={Little man No.2},
@@ -172,41 +172,40 @@
     \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|}
-    \hline
-    \textbf{\underline{Website}} &
-      \textbf{\underline{URL}} \\ \hline
+      \hline
+      \textbf{\underline{Website}} &
+        \textbf{\underline{URL}} \\ \hline
 
-    \begin{tabular}[c]{@{}c@{}}
-    \InsertImage[scale=0.1]
-      {./apple.png} \\ Apple
-    \end{tabular} & \url{www.apple.com}  \\ \hline
+      \begin{tabular}[c]{@{}c@{}}
+      \InsertImage[scale=0.1]
+        {./apple.png} \\ Apple
+      \end{tabular} & \url{www.apple.com}  \\ \hline
 
-    \begin{tabular}[c]{@{}c@{}}
-    \InsertImage[scale=0.1]
-      {./google.png} \\ Google
-    \end{tabular} & \url{www.google.com} \\ \hline
-
+      \begin{tabular}[c]{@{}c@{}}
+      \InsertImage[scale=0.1]
+        {./google.png} \\ Google
+      \end{tabular} & \url{www.google.com} \\ \hline
     \end{tabular}
     \end{table}
     \end{verbatim}
 
     \begin{table}[h]
     \centering
+    \label{table:how-to:write:image:insert-image-into-table}
     \begin{tabular}{|c|c|}
-    \hline
-    \textbf{\underline{Website}} &
-      \textbf{\underline{URL}} \\ \hline
+      \hline
+      \textbf{\underline{Website}} &
+        \textbf{\underline{URL}} \\ \hline
 
-    \begin{tabular}[c]{@{}c@{}}
-    \InsertImage[scale=0.1]
-      {./example/how-to/write/pic/image/apple.jpg} \\ Apple
-    \end{tabular} & \url{www.apple.com}  \\ \hline
+      \begin{tabular}[c]{@{}c@{}}
+      \InsertImage[scale=0.1]
+        {./example/how-to/write/pic/image/apple.jpg} \\ Apple
+      \end{tabular} & \url{www.apple.com}  \\ \hline
 
-    \begin{tabular}[c]{@{}c@{}}
-    \InsertImage[scale=0.1]
-      {./example/how-to/write/pic/image/google.png} \\ Google
-    \end{tabular} & \url{www.google.com} \\ \hline
-
+      \begin{tabular}[c]{@{}c@{}}
+      \InsertImage[scale=0.1]
+        {./example/how-to/write/pic/image/google.png} \\ Google
+      \end{tabular} & \url{www.google.com} \\ \hline
     \end{tabular}
     \end{table}
 

@@ -237,7 +237,6 @@ LaTeX Table Generator (Fig. \RefTo{fig:how-to:table:table-generator})的頁面�
   } % End of \item{}
 \end{enumerate}
 
-
 % ------------------------------------------------
 \newpage
 \subsection{Style}
@@ -306,20 +305,20 @@ LaTeX Table Generator (Fig. \RefTo{fig:how-to:table:table-generator})的頁面�
   {
     圖片
 
-    這tool沒法插入圖片, 所以有關圖片的部份要自己加在table中, 請參考Chap \RefTo{chapter:how-to:write:image}, 但是在table中的image是不能加標題和label.
+    這tool沒法插入圖片, 所以有關圖片的部份要自己加在table中, 請參考P. \RefPage{table:how-to:write:image:insert-image-into-table}, 但是在table中的image是不能加標題和label.
   } % End of \item{}
-
-    \InsertCenterImage
-      [scale=0.7,
-        caption={Package remain},
-        label={table:package:comment}]
-      {./example/how-to/write/pic/table/table-comment.png}
 
   \item
   {
     備註
 
     而在產生出來的Latex中, 可以看到這類的文字(Fig \RefTo{table:package:comment}). 在注解中所講的, 是指所產生出來的Latex需要使用一些Latex的工具, 但這些工具已被包在本模板中, 所以可以無視的.
+
+    \InsertCenterImage
+      [scale=0.7,
+        caption={Package remain},
+        label={table:package:comment}]
+      {./example/how-to/write/pic/table/table-comment.png}
   } % End of \item{}
   \end{enumerate}
 

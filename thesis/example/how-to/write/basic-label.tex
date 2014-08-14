@@ -1,8 +1,29 @@
 % ------------------------------------------------
 \newpage
 \section{標記 Label}
-標記(Label)是指給某項東西(如圖, 表格, 段落, chapter等)一個用來記憶的名字, 主要用來在引用時可以用來指定它.
+標記(Label)是指給某項東西(如圖, 表格, 段落, chapter等)一個用來記憶的名字, 主要用來在引用時可以用來指定它. 使用方式是:
 
+  \begin{framed}
+  \begin{verbatim}
+    \label{ ... some text here for your label ...} % 設定Label
+
+    e.g
+    \label{fig:introduction:fig1} % 設定Label
+    \RefTo{fig:introduction:fig1} % 引用Label
+  \end{verbatim}
+  \end{framed}
+
+Label的名字是可以任何輸入的文字, 但是為了方便記憶, 會固定以一個名字起頭, 再以段落/章節的方式來分隔.
+
+\noindent 在例子中'fig:introduction:fig1':\\
+以'fig'起頭: 即是目標是一張圖像(figure).\\
+以'introduction'為章節: 即是目標放在introduction這一章中.\\
+最後'fig1': 這張圖像的名字為'fig1'.
+
+同樣其他方便記憶的目標起頭例如: 'website', 'table', 'chapter', 'section', 'paper', etc.
+
+\newpage
+\section{引用 Reference}
 因為原本Latex的引用語法可以引用很多東西, 所以可能會混亂不知道自己在引用什麼, 故本模板提供幾個語法來取代那些語法. (但是如果你是懂得原Latex的寫法(\verb|\ref{}, \cite{}, etc.|), 都可以直接使用原本的寫法, 其實是同一個東西.)
 
   \begin{framed}
@@ -18,10 +39,10 @@
     \RefPage{...}  顯示目標的頁碼, 如: X
 
     引用 其他任何的東西: 如圖片, 表格,
-      chapter, section, subsection, etc.
+          chapter, section, subsection, etc.
     \RefTo{...}
-    顯示章節和它的號碼, 如: X.X
-    所以要手動在引用部份加上 fig, table, chap等一些字眼
+      顯示章節和它的號碼, 如: X.X
+      所以要手動在引用部份加上 fig, table, chap等一些字眼
   \end{verbatim}
   \end{framed}
 
