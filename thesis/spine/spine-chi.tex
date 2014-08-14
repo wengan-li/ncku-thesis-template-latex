@@ -1,10 +1,10 @@
 
 % ----------------------------------------------------------------------------
 %    The spine of the book
-%              書脊
+%    書脊 (Chinese version)
 % ----------------------------------------------------------------------------
 
-% 先把Logo版關掉
+% 先把Logo關掉
 \ClearWatermark
 
 \StartNewPage
@@ -23,7 +23,7 @@
     {
       \begin{tabular}{c}
         \rotatebox{-90}{
-          \parbox[c][\GetSpineColWidth cm][c]{{0.2\textheight}
+          \parbox[c][\GetSpineColWidth cm][c]{{0.15\textheight}
           }{%\vspace{0.4cm}
           \GetSchoolChiName \\ \GetDeptChiName
         }}
@@ -37,16 +37,17 @@
         \ifthenelse{\GetLangEnableDemo = 1}
         {
           \rotatebox{-90}{
-            \parbox[c][\GetSpineColWidth cm][c]{{0.35\textheight}
+            \parbox[c][\GetSpineColWidth cm][c]{{0.37\textheight}
             }{\vspace{0.4cm}%\vspace{0.8cm}
-            \centering \parbox{0.33\textheight}{\footnotesize \GetEngTitle}
+            \centering \parbox{0.33\textheight}{
+              \footnotesize \GetEngTitle}
           }}
         } % End of if{}
         {
           \ifthenelse{\GetLangEnableEng = 1}
           {
             \rotatebox{-90}{
-              \parbox[c][\GetSpineColWidth cm][c]{{0.35\textheight}
+              \parbox[c][\GetSpineColWidth cm][c]{{0.37\textheight}
               }{\vspace{0.4cm}%\vspace{0.8cm}
               \centering \parbox{0.33\textheight}{
               \footnotesize \GetEngTitle}
@@ -57,7 +58,7 @@
             {
               \CJKfamily{normalchifont}
               \rotatebox{-90}{
-                \parbox[c][\GetSpineColWidth cm][c]{{0.35\textheight}
+                \parbox[c][\GetSpineColWidth cm][c]{{0.37\textheight}
                 }{\vspace{0.3cm}%\vspace{0.8cm}
                 \centering \parbox{0.33\textheight}{
                 \footnotesize \GetChiTitle}
@@ -66,7 +67,7 @@
             } % End of if{}
             {
               \rotatebox{-90}{
-                \parbox[c][\GetSpineColWidth cm][c]{{0.35\textheight}
+                \parbox[c][\GetSpineColWidth cm][c]{{0.37\textheight}
                 }{\vspace{0.4cm}%\vspace{0.8cm}
                 \centering \parbox{0.33\textheight}{
                 \footnotesize \GetEngTitle}
@@ -119,7 +120,7 @@
       {
         \begin{tabular}{c}
           \rotatebox{-90}{
-            \parbox[c][\GetSpineColWidth cm][c]{{0.2\textheight}
+            \parbox[c][\GetSpineColWidth cm][c]{{0.15\textheight}
             }{%\vspace{0.4cm}
             \GetSchoolChiName \\ \GetDeptChiName
           }}
@@ -133,7 +134,7 @@
           {
               \CJKfamily{normalchifont}
               \rotatebox{-90}{
-                \parbox[c][\GetSpineColWidth cm][c]{{0.35\textheight}
+                \parbox[c][\GetSpineColWidth cm][c]{{0.37\textheight}
                 }{\vspace{0.3cm}%\vspace{0.8cm}
                 \centering \parbox{0.33\textheight}{
                 \footnotesize \GetChiTitle}
@@ -166,8 +167,4 @@
   \EndOfPage
 }{} % End of \ifthenelse{}
 
-% ------------------------------------------------
-
-% 重新使用學校浮水印 Watermark
-\UseSchoolWatermark
 % ------------------------------------------------

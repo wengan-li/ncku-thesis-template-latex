@@ -1,10 +1,10 @@
 
 % ----------------------------------------------------------------------------
 %    The spine of the book
-%              書脊
+%    書脊 (English version)
 % ----------------------------------------------------------------------------
 
-% 先把Logo版關掉
+% 先把Logo關掉
 \ClearWatermark
 
 \StartNewPage
@@ -35,9 +35,9 @@
         }}
         \\
         \rotatebox{-90}{
-          \parbox[c][\GetSpineEngColWidth cm][c]{{0.33\textheight}
+          \parbox[c][\GetSpineEngColWidth cm][c]{{0.3\textheight}
           }{%\vspace{0.26cm}
-          \centering \parbox{0.33\textheight}{\footnotesize \GetEngTitle}
+          \centering \parbox{0.3\textheight}{\footnotesize \GetEngTitle}
         }}
         \\
         \rotatebox{-90}{
@@ -49,7 +49,8 @@
         \rotatebox{-90}{
           \parbox[c][\GetSpineEngColWidth cm][c]{{0.07\textheight}
           }{%\vspace{0.2cm}
-          \centering \footnotesize \GetThesisMonthInEng \\ \GetThesisYear
+          \centering \footnotesize \GetThesisMonthInEng \\
+            \GetThesisYear
         }}
       \end{tabular}
     } % End of \parbox{}
@@ -60,6 +61,4 @@
 
 \EndOfPage
 
-% 重新使用學校浮水印 Watermark
-\UseSchoolWatermark
 % ------------------------------------------------
