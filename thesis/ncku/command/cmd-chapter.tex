@@ -1,10 +1,10 @@
 
-% Some helper function about chapter
+% Some helper function about chapter and section
 
 % ----------------------------------------------------------------------------
 
 % Chapters
-\DeclareDocumentCommand{\StartChapter}{m g}
+\DeclareDocumentCommand{\StartChapter}{+m +g}
 {
   \chapter{#1}
   \IfNoValueF{#2}{\label{#2}}
@@ -13,6 +13,13 @@
 } % End of \DeclareDocumentCommand{}
 
 \def \EndChapter {\EndOfPage}
+
+% Section
+\DeclareDocumentCommand{\StartSection}{+m +g}
+{
+  \section{#1}
+  \IfNoValueF{#2}{\label{#2}}
+} % End of \DeclareDocumentCommand{}
 
 % ----------------------------------------------------------------------------
 
