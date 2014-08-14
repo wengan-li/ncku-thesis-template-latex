@@ -58,7 +58,7 @@
               \CJKfamily{normalchifont}
               \rotatebox{-90}{
                 \parbox[c][\GetSpineColWidth cm][c]{{0.35\textheight}
-                }{\vspace{0.6cm}%\vspace{0.8cm}
+                }{\vspace{0.3cm}%\vspace{0.8cm}
                 \centering \parbox{0.33\textheight}{
                 \footnotesize \GetChiTitle}
               }}
@@ -99,6 +99,74 @@
 % ------------------------------------------------
 
 \EndOfPage
+
+% ------------------------------------------------
+
+% If this is debug mode, then show in chinese title version
+\ifthenelse{\GetLangEnableDemo = 1}
+{
+  \StartNewPage
+
+  % 設定使用 無頁碼, 有浮水印
+  \thispagestyle{empty}
+
+  {
+    \CJKfamily{vchifont}
+    \fontsize{12}{12}\selectfont
+
+    \fbox{
+      \parbox[c][0.99\textheight][c]{\GetSpineWidth cm}
+      {
+        \begin{tabular}{c}
+          \rotatebox{-90}{
+            \parbox[c][\GetSpineColWidth cm][c]{{0.2\textheight}
+            }{%\vspace{0.4cm}
+            \GetSchoolChiName \\ \GetDeptChiName
+          }}
+          \\
+          \rotatebox{-90}{
+            \parbox[c][\GetSpineColWidth cm][c]{{0.1\textheight}
+            }{%\vspace{0.4cm}
+            \centering \makebox{\GetChiDegree 論文}
+          }}
+          \\
+          {
+              \CJKfamily{normalchifont}
+              \rotatebox{-90}{
+                \parbox[c][\GetSpineColWidth cm][c]{{0.35\textheight}
+                }{\vspace{0.3cm}%\vspace{0.8cm}
+                \centering \parbox{0.33\textheight}{
+                \footnotesize \GetChiTitle}
+              }}
+              \CJKfamily{vchifont}
+          }
+          \\
+          \rotatebox{-90}{
+            \parbox[c][\GetSpineColWidth cm][c]{{0.12\textheight}
+            }{%\vspace{0.4cm}
+            \centering \makebox{\GetAuthorChiName \enspace 撰}
+          }}
+          \\
+          \rotatebox{-90}{
+            \parbox[c][\GetSpineColWidth cm][c]{{0.12\textheight}
+            }{
+            \centering
+            {%\vspace{0.4cm}
+              \fontspec[RawFeature={vertical}]{Times New Roman}
+              \GetThesisYearInTaiwanYear
+            }
+            學年度
+          }}
+        \end{tabular}
+      } % End of \parbox{}
+    } % End of \fbox{}
+
+  } % End of {}
+
+  \EndOfPage
+}{}
+
+% ------------------------------------------------
 
 % 重新使用學校浮水印 Watermark
 \UseSchoolWatermark
