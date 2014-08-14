@@ -1,20 +1,20 @@
 % ------------------------------------------------
-\StartChapter{Latex教學 - 公式 Equation}{chapter:how-to:write:equation}
+\StartSection{公式 Equation}{chapter:how-to:write:equation}
 
 % http://www.hostmath.com/
 % http://www.sciweavers.org/free-online-latex-equation-editor
 % http://www.codecogs.com/latex/eqneditor.php
 
 % ------------------------------------------------
-\StartSection{介紹}
+\StartSubSection{介紹}
 
 公式(Equation)在都是一個常用的顯示方式, 雖然寫法都很固定, 但是內容可以十分豐富, 這產生大量的寫法. 而Latex本身就擁有豐富的有關equation功能, Mircosoft Word都不一定有這麼多功能; 而且有一點Mircosoft Word是做不到, 但Latex就很輕鬆的行為是: 你無法很簡單帶走你所寫的Equation, 拿去轉成圖片或是copy到另一個文件中.
 
 但是在Latex中, Equation跟Table(Chap \RefTo{chapter:how-to:write:table})都是一樣沒法即時知道修改後的畫面, 而且都會出現在基本教學中. 故本模板同樣教大家使用現有的online tool去處理掉這個問題.
 
 % ------------------------------------------------
-\newpage
-\StartSection{使用方式}
+%\newpage
+\StartSubSection{使用方式}
 Equation有2種使用方式:
   \begin{enumerate}
     \item
@@ -30,6 +30,7 @@ Equation有2種使用方式:
       \verb|      畢氏定理($c^2 = a^2 + b^2$)是一個用來計算三角形的公式.|
     } % End of \item{}
 
+    \newpage
     \item
     {
       使用本模板提供的語法.
@@ -55,7 +56,7 @@ Equation有2種使用方式:
           \EquationEnd
         } % End of \item{}
 
-        \newpage
+        %\newpage
         \label{chapter:how-to:write:equation:label-example}
         \item
         {
@@ -78,6 +79,7 @@ Equation有2種使用方式:
           \EquationEnd
         } % End of \item{}
 
+        \newpage
         \item
         {
           可設定標籤(Label)
@@ -109,7 +111,7 @@ Equation有2種使用方式:
 
 % ------------------------------------------------
 \newpage
-\StartSection{工具}
+\StartSubSection{工具}
 
 HostMath所提供的editor (Fig. \RefTo{fig:how-to:equation:hostmath})(\url{http://www.hostmath.com/})\RefBib{web:latex:equation:hostmath}頁面簡單明瞭, 包含了所有Latex支持的語法和斷行, 而且可以即時顯示Latex語法和結果. 因為使用十分簡單, 所以本模板不作深入的介紹.
 
@@ -131,7 +133,7 @@ HostMath所提供的editor (Fig. \RefTo{fig:how-to:equation:hostmath})(\url{http
 在Fig. \RefTo{fig:how-to:equation:hostmath}已經舉了4個例子供大家理解.
 % ------------------------------------------------
 \newpage
-\StartSection{轉成圖片}
+\StartSubSection{轉成圖片}
 HostMath是用來寫你的Equation, 但是如果你是把那條Equation轉成圖片的話, 可使用CodeCogs所提供的這個Latex equation editor (\url{http://www.codecogs.com/latex/eqneditor.php})\RefBib{web:latex:equation:codecogs}.
 
 這Editor (Fig. \RefTo{fig:how-to:equation:codecogs})的頁面比HostMath來講有點簡陋, 但是重點是它可以轉出無失真的圖片(如.pdf, .eps, .svg), 這些圖檔在學術界內用來放在論文中是非常常見, 所以是十分有用的.
@@ -144,6 +146,3 @@ HostMath是用來寫你的Equation, 但是如果你是把那條Equation轉成圖
 
 雖然簡陋, 但是使用上很簡單, 只要把Equation填進去, 之後選擇要ouput成什麼的圖檔, 那中間就會出現Equation的圖片和可按download的位置"Click here to Download Equation". 那download後就可以使用插入圖片 (Chap \RefTo{chapter:how-to:write:image})的方式來插入用來當成論文的用圖片.
 
-% ------------------------------------------------
-\EndChapter
-% ------------------------------------------------
