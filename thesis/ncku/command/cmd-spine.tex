@@ -4,13 +4,17 @@
 % ----------------------------------------------------------------------------
 
 % Set width of the Spine
-% (Default: 1.5cm, minmum: 1.5cm, maximum: 2.5cm)
 %\SetSpineWidth{3.0}
 
 % 書脊 Spine
-\newcommand{\SpineWidth}{1.5} % Default
-\newcommand{\SpineColWidth}{1.0} % Default
-\newcommand{\SpineEngColWidth}{1.0} % Default
+% 5X頁 精裝本 1.3cm
+% 5X頁 普通本 0.6cm
+% 以25頁來當成通用可以比較好
+% 所以應該 ~0.3cm
+% (Default: 1.5cm, minmum: 1.5cm, maximum: 2.5cm)
+\newcommand{\SpineWidth}{0.4} % Default
+\newcommand{\SpineColWidth}{0.1} % Default
+\newcommand{\SpineEngColWidth}{0.1} % Default
 \newcommand{\GetSpineWidth}[0]{\SpineWidth}
 \newcommand{\GetSpineColWidth}[0]{\SpineColWidth}
 \newcommand{\GetSpineEngColWidth}[0]{\SpineEngColWidth}

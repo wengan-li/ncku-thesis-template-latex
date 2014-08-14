@@ -15,41 +15,45 @@
 % ------------------------------------------------
 
 {
-  \CJKfamily{vchifont}
-  \fontsize{12}{12}\selectfont
+  %\CJKfamily{vchifont}
+  \fontsize{8}{8}\selectfont
 
   \fbox{
     \parbox[c][0.99\textheight][c]{\GetSpineWidth cm}
     {
       \begin{tabular}{c}
         \rotatebox{-90}{
-          \parbox[c][\GetSpineEngColWidth cm][c]{{0.2\textheight}
-          }{%\vspace{0.1cm}
-          \scriptsize \GetSchoolEngName \\ \GetDeptEngName
+          \parbox[c][\GetSpineEngColWidth cm][c]{{0.23\textheight}
+          }{\vspace{0.3cm}
+          \tiny \GetSchoolEngName \\ \GetDeptEngName
         }}
         \\
+        \hspace{0.01cm}
         \rotatebox{-90}{
-          \parbox[c][\GetSpineEngColWidth cm][c]{{0.15\textheight}
-          }{%\vspace{0.1cm}
-          \centering \makebox{\footnotesize \GetEngDegreeThesis}
+          \parbox[c][\GetSpineEngColWidth cm][c]{{0.08\textheight}
+          }{\vspace{0.3cm}
+          \centering \makebox{\tiny \GetEngDegreeThesis}
         }}
         \\
+        \hspace{0.02cm}
         \rotatebox{-90}{
-          \parbox[c][\GetSpineEngColWidth cm][c]{{0.3\textheight}
-          }{%\vspace{0.26cm}
-          \centering \parbox{0.3\textheight}{\footnotesize \GetEngTitle}
+          \parbox[c][\GetSpineEngColWidth cm][c]{{0.46\textheight}
+          }{\vspace{0.3cm}
+          \centering \parbox{0.46\textheight}{\tiny \GetEngTitle}
         }}
         \\
+        \hspace{0.01cm}
         \rotatebox{-90}{
-          \parbox[c][\GetSpineEngColWidth cm][c]{{0.15\textheight}
-          }{%\vspace{0.05cm}
-          \centering \makebox{\footnotesize \GetAuthorEngName}
+          \parbox[c][\GetSpineEngColWidth cm][c]{{0.09\textheight}
+          }{\vspace{0.3cm}
+          \centering \makebox{\tiny \GetAuthorEngName}
         }}
         \\
+        \hspace{0.01cm}
         \rotatebox{-90}{
-          \parbox[c][\GetSpineEngColWidth cm][c]{{0.07\textheight}
-          }{%\vspace{0.2cm}
-          \centering \footnotesize \GetThesisMonthInEng \\
+          \parbox[c][\GetSpineEngColWidth cm][c]{{0.05\textheight}
+          }{\vspace{0.3cm}
+          \centering \tiny \GetThesisMonthInEng \\
             \GetThesisYear
         }}
       \end{tabular}
