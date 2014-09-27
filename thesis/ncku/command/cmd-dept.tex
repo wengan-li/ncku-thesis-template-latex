@@ -1,6 +1,3 @@
-% ----------------------------------------------------------------------
-% -------------------------- 未完成 UNFINISH ----------------------------
-% ----------------------------------------------------------------------
 
 % ----------------------------------------------------------------------------
 % The list of all department in NCKU
@@ -15,9 +12,11 @@
 %
 % ----------------------------------------------------------------------------
 
+
 % ----------------------------------------------------------------------------
 %                       系所 Department and Institute 
 % ----------------------------------------------------------------------------
+
 
 % ----------------------------------------------------------------------------
 % --------------------- 文學院 College of Liberal Arts ---------------------
@@ -517,113 +516,310 @@
 % --------------------- 醫學院 College of Medicine ---------------------
 % ----------------------------------------------------------------------------
 
-% 醫學系
-% 護理學系
-% 生物化學暨分子生物學研究所
-% 病理學科
-% 內科學科
-% 醫學檢驗生物技術學系
-% 生理學研究所
-% 外科學科
-% 小兒學科
-% 物理治療學系
-% 解剖學科暨細胞生物與解剖學研究所
-% 婦產學科
-% 骨科學科
-% 職能治療學系
-% 公共衛生學科暨公共衛生研究所
-% 神經學科
-% 精神學科
-% 藥學系
-% 寄生蟲學科
-% 眼科學科
-% 耳鼻喉學科
-% 基礎醫學研究所
-% 工業衛生學科暨環境醫學研究所
-% 皮膚學科
-% 泌尿學科
-% 行為醫學研究所
-% 藥理學科暨藥理學研究所
-% 麻醉學科
-% 復健學科
-% 臨床藥學與藥物科技研究所
-% 微生物學及免疫研究所
-% 放射線學科
-% 核子醫學科
-% 分子醫學研究所
- 
-%  	家庭醫學科
-% 急診學科
-% 口腔醫學研究所
- 
-%  	牙科學科
-% 職業及環境醫學科
-% 臨床醫學研究所
- 
-%  	法醫學科
-%  
-% 健康照護科學研究所
- 
-%  
-%  
-%  	老年學研究所
- 
-% School of Medicine
-% Department of Biochemistry and Molecular Biology
-% Department of Forensic Medicine
-% Department of Otolaryngology
-% Department of Physiology
-% Department of Pathology
-% Department of Dermatology
-% Department of Microbiology and Immunology
-% Department of Internal Medicine
-% Department of Urology
-% Department of Pharmacology
-% Department of Surgery
-% Department of Anesthesiology
-% Department of Environmental and Occupational Health
-% Department of Pediatrics
-% Department of Physical Medicine and Rehabilitation
-% Department of Parasitology
-% Department of Obstetrics Gynecology
-% Department of Radiology
-% Department of Public Health
-% Department of Orthopaedics
-% Department of Nuclear Medicine
-% Department of Cell Biology and Anatomy
-% Department of Neurology
-% Department of Family Medicine
- 
-% Department of Psychiatry
-% Department of Emergency Medicine
- 
-% Department of Ophthalmology
-% Department of Dentistry
- 
-%  
-% Department of Occupational and Environmental Medicine
- 
-%  
-%  
-% Department of Nursing
-% Department of Medical Laboratory Science and Biotechnology
-% Department of Physical Therapy
-% Department of Occupational Therapy
-% School of Pharmacy
-% Institute of Clinical Pharmacy and Pharmaceutical Sciences
-% Institute of Basic Medical Sciences
-% Institute of Behavioral Medicine
-% Institute of Clinical Medicine
-% Institute of Molecular Medicine
-% Institute of Oral Medicine
-% Institute of Allied Health Sciences
-% Institute of Gerontology
-%  
-%  
- 
+% 醫學系 School of Medicine
+\newcommand{\SetDeptEDUC}[0]
+{
+  \SetDeptName{醫學系}{EDUC}{School of Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 生物化學暨分子生物學研究所 Department of Biochemistry and Molecular Biology
+\newcommand{\SetDeptBiohem}[0]
+{
+  \SetDeptName{生物化學暨分子生物學研究所}{Biohem}{Department of Biochemistry and Molecular Biology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 病理學科 Department of Pathology
+\newcommand{\SetDeptPath}[0]
+{
+  \SetDeptName{病理學科}{Path}{Department of Pathology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 內科學科 Department of Internal Medicine
+\newcommand{\SetDeptIntMed}[0]
+{
+  \SetDeptName{內科學科}{IntMed}{Department of Internal Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 生理學研究所 Department of Physiology
+\newcommand{\SetDeptPhysMed}[0]
+{
+  \SetDeptName{生理學研究所}{PhysMed}{Department of Physiology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 外科學科 Department of Surgery
+\newcommand{\SetDeptSurgery}[0]
+{
+  \SetDeptName{外科學科}{Surgery}{Department of Surgery}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 小兒學科 Department of Pediatrics
+\newcommand{\SetDeptPed}[0]
+{
+  \SetDeptName{小兒學科}{Ped}{Department of Pediatrics}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 解剖學科暨細胞生物與解剖學研究所 Department of Cell Biology and Anatomy
+\newcommand{\SetDeptAnatomy}[0]
+{
+  \SetDeptName{解剖學科暨細胞生物與解剖學研究所}{Anatomy}{Department of Cell Biology and Anatomy}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 婦產學科 Department of Obstetrics and Gynecology
+\newcommand{\SetDeptObsGyn}[0]
+{
+  \SetDeptName{婦產學科}{ObsGyn}{Department of Obstetrics and Gynecology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 骨科學科 Department of Orthopaedics
+\newcommand{\SetDeptBone}[0]
+{
+  \SetDeptName{骨科學科}{Bone}{Department of Orthopaedics}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 公共衛生學科暨公共衛生研究所 Department of Public Health
+\newcommand{\SetDeptPhMed}[0]
+{
+  \SetDeptName{公共衛生學科暨公共衛生研究所}{PhMed}{Department of Public Health}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 神經學科 Department of Neurology
+\newcommand{\SetDeptNeuro}[0]
+{
+  \SetDeptName{神經學科}{Neuro}{Department of Neurology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 精神學科 Department of Psychiatry
+\newcommand{\SetDeptPsy}[0]
+{
+  \SetDeptName{精神學科}{Psy}{Department of Psychiatry}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 寄生蟲學科 Department of Parasitology
+\newcommand{\SetDeptParasite}[0]
+{
+  \SetDeptName{寄生蟲學科}{Parasite}{Department of Parasitology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 眼科學科 Department of Ophthalmology
+\newcommand{\SetDeptOphth}[0]
+{
+  \SetDeptName{眼科學科}{Ophth}{Department of Ophthalmology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 耳鼻喉學科 Department of Otolaryngology
+\newcommand{\SetDeptOtolaryngo}[0]
+{
+  \SetDeptName{耳鼻喉學科}{Otolaryngo}{Department of Otolaryngology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 工業衛生學科暨環境醫學研究所 Department of Environmental and Occupational Health
+\newcommand{\SetDeptDEOH}[0]
+{
+  \SetDeptName{工業衛生學科暨環境醫學研究所}{DEOH}{Department of Environmental and Occupational Health}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 皮膚學科 Department of Dermatology
+\newcommand{\SetDeptDerm}[0]
+{
+  \SetDeptName{皮膚學科}{Derm}{Department of Dermatology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 泌尿學科 Department of Urology
+\newcommand{\SetDeptUro}[0]
+{
+  \SetDeptName{泌尿學科}{Uro}{Department of Urology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 藥理學科暨藥理學研究所 Department of Pharmacology
+\newcommand{\SetDeptPharmaco}[0]
+{
+  \SetDeptName{藥理學科暨藥理學研究所}{Pharmaco}{Department of Pharmacology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 麻醉學科 Department of Anesthesiology
+\newcommand{\SetDeptAnesth}[0]
+{
+  \SetDeptName{麻醉學科}{Anesth}{Department of Anesthesiology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 復健學科 Department of Physical Medicine and Rehabilitation
+\newcommand{\SetDeptRehab}[0]
+{
+  \SetDeptName{復健學科}{Rehab}{Department of Physical Medicine and Rehabilitation}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 微生物學及免疫研究所 Department of Microbiology and Immunology
+\newcommand{\SetDeptMicrobio}[0]
+{
+  \SetDeptName{微生物學及免疫研究所}{Microbio}{Department of Microbiology and Immunology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 放射線學科 Department of Diagnostic Radiology
+\newcommand{\SetDeptRad}[0]
+{
+  \SetDeptName{放射線學科}{Rad}{Department of Diagnostic Radiology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 核子醫學科 Department of Nuclear Medicine
+\newcommand{\SetDeptNM}[0]
+{
+  \SetDeptName{核子醫學科}{NM}{Department of Nuclear Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 家庭醫學科 Department of Family Medicine
+\newcommand{\SetDeptFamily}[0]
+{
+  \SetDeptName{家庭醫學科}{Family}{Department of Family Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 急診學科 Department of Emergency Medicine
+\newcommand{\SetDeptEmergency}[0]
+{
+  \SetDeptName{急診學科}{Emergency}{Department of Emergency Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 牙科學科 Institute of Oral Medicine
+\newcommand{\SetDeptIOM}[0]
+{
+  \SetDeptName{牙科學科}{IOM}{Institute of Oral Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 職業及環境醫學科 Department of Occupational and Environmental Medicine
+\newcommand{\SetDeptOEM}[0]
+{
+  \SetDeptName{職業及環境醫學科}{OEM}{Department of Occupational and Environmental Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 法醫學科 Department of Forensic Medicine
+\newcommand{\SetDeptForensic}[0]
+{
+  \SetDeptName{法醫學科}{Forensic}{Department of Forensic Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% ----------------------------------------------
+%                    護理 Nursing
+% ----------------------------------------------
+
+% 護理學系 Department of Nursing
+\newcommand{\SetDeptNursing}[0]
+{
+  \SetDeptName{護理學系}{Nursing}{Department of Nursing}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 醫學檢驗生物技術學系 Department of Medical Laboratory Science and Biotechnology
+\newcommand{\SetDeptMT}[0]
+{
+  \SetDeptName{醫學檢驗生物技術學系}{MT}{Department of Medical Laboratory Science and Biotechnology}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 物理治療學系 Department of Physical Therapy
+\newcommand{\SetDeptPT}[0]
+{
+  \SetDeptName{物理治療學系}{PT}{Department of Physical Therapy}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 職能治療學系 Department of Occupational Therapy
+\newcommand{\SetDeptOT}[0]
+{
+  \SetDeptName{職能治療學系}{OT}{Department of Occupational Therapy}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 藥學系 School of Pharmacy
+\newcommand{\SetDeptPharmacy}[0]
+{
+  \SetDeptName{藥學系}{Pharmacy}{School of Pharmacy}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 基礎醫學研究所 Institute of Basic Medical Sciences
+\newcommand{\SetDeptBasicMed}[0]
+{
+  \SetDeptName{基礎醫學研究所}{BasicMed}{Institute of Basic Medical Sciences}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 行為醫學研究所 Institute of Behavioral Medicine
+\newcommand{\SetDeptBehMed}[0]
+{
+  \SetDeptName{行為醫學研究所}{BehMed}{Institute of Behavioral Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 臨床藥學與藥物科技研究所 Institute of Clinical Pharmacy and Pharmaceutical Sciences
+\newcommand{\SetDeptCLPARM}[0]
+{
+  \SetDeptName{臨床藥學與藥物科技研究所}{CLPARM}{Institute of Clinical Pharmacy and Pharmaceutical Sciences}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 分子醫學研究所 Institute of Molecular Medicine
+\newcommand{\SetDeptIMM}[0]
+{
+  \SetDeptName{分子醫學研究所}{IMM}{Institute of Molecular Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 口腔醫學研究所 Institute of Oral Medicine
+\newcommand{\SetDeptIOM}[0]
+{
+  \SetDeptName{口腔醫學研究所}{IOM}{Institute of Oral Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 臨床醫學研究所 Institute of Clinical Medicine
+\newcommand{\SetDeptICMMed}[0]
+{
+  \SetDeptName{臨床醫學研究所}{ICMMed}{Institute of Clinical Medicine}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 健康照護科學研究所 Institute of Allied Health Sciences
+\newcommand{\SetDeptAlliedHealth}[0]
+{
+  \SetDeptName{健康照護科學研究所}{AlliedHealth}{Institute of Allied Health Sciences}
+  \CollMedicine
+} % End of \newcommand{}
+
+% 老年學研究所 Institute of Gerontology
+\newcommand{\SetDeptIOG}[0]
+{
+  \SetDeptName{老年學研究所}{IOG}{Institute of Gerontology}
+  \CollMedicine
+} % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
 
-% ----------------------------------------------------------------------
-% -------------------------- 未完成 UNFINISH ----------------------------
-% ----------------------------------------------------------------------
