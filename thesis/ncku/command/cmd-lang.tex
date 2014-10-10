@@ -21,15 +21,15 @@
 \newcommand{\GetLangEnableDemo}[0]{\LangEnableDemo}
 
 % APIs for user to do configure
-\newcommand{\LangChi}{\SetLangEnableChi}
-\newcommand{\LangEng}{\SetLangEnableEng}
-\newcommand{\LangDemo}{\SetLangEnableAll}
+\newcommand{\LangChi}[0]{\SetLangEnableChi}
+\newcommand{\LangEng}[0]{\SetLangEnableEng}
+\newcommand{\LangDemo}[0]{\SetLangEnableAll}
 
 % ----------------------------------------------------------------------------
 
 % Mode
-\def{\ChiMode}{\LangChi}
-\def{\EngMode}{\LangEng}
-\def{\DemoMode}{\LangDemo}
+\newcommand{\ChiMode}{\LangChi}
+\newcommand{\EngMode}{\LangEng}
+\newcommand{\DemoMode}{\LangDemo}
 
 % ----------------------------------------------------------------------------

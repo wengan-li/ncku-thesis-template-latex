@@ -42,10 +42,12 @@
   {\renewcommand{\OralDocumentEngOnly}{1}}
 
 % The path of the image that the oral document
-\newcommand\OralDocumentImageChiPath{./oral/example/oral-chi.pdf} % Default
-\newcommand\OralDocumentImageEngPath{./oral/example/oral-eng.pdf} % Default
-\newcommand{\SetOralImageChi}[1]{\renewcommand{\OralDocumentImageChiPath}{#1}}
-\newcommand{\SetOralImageEng}[1]{\renewcommand{\OralDocumentImageEngPath}{#1}}
+\newcommand\OralDocumentImageChiPath{./example/oral/oral-chi.pdf} % Default
+\newcommand\OralDocumentImageEngPath{./example/oral/oral-eng.pdf} % Default
+\newcommand{\SetOralImageChi}[1]
+{\renewcommand{\OralDocumentImageChiPath}{./context/oral/#1}}
+\newcommand{\SetOralImageEng}[1]
+{\renewcommand{\OralDocumentImageEngPath}{./context/oral/#1}}
 
 \newcommand{\SetOralImage}[2]
 {
