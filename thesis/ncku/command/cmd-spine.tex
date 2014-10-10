@@ -56,3 +56,24 @@
 
 % ----------------------------------------------------------------------------
 
+% Use to include the oral files
+\newcommand{\CreateSpine}
+{
+  \BeginThesis
+
+  % Use for chinese version
+  \ifthenelse{\GetLangEnableChi = 1}
+  {
+    \input{./ncku/spine/spine-chi}
+  }{}
+
+  % Use for english version
+  \ifthenelse{\GetLangEnableEng = 1}
+  {
+    \input{./ncku/spine/spine-eng}
+  }{}
+
+  \EndThesis
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------

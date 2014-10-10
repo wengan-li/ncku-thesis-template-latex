@@ -1,19 +1,7 @@
 % ------------------------------------------------
 %    This file is use to build the spine of thesis
 % ------------------------------------------------
+
 \input{./ncku/configure}
-\BeginThesis
 
-% Use for chinese version
-\ifthenelse{\GetLangEnableChi = 1}
-{
-  \input{./spine/spine-chi}
-}{}
-
-% Use for english version
-\ifthenelse{\GetLangEnableEng = 1}
-{
-  \input{./spine/spine-eng}
-}{}
-
-\EndThesis
+\CreateSpine
