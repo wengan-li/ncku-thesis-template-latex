@@ -32,21 +32,21 @@
 
 % 顯示 校名, 系所名, 論文種類
 \begin{minipage}[c][5cm][t]{\textwidth}
-\ifthenelse{\equal{\GetEngDegree}{Master}}
-{
-  % Master
-  \makebox[\textwidth][c]{\Large A thesis submitted to the graduate division in partial fulfillment}
-  \makebox[\textwidth][c]{\Large of the requirements for the degree of Master of Science in}
-%  \makebox[\textwidth][c]{\Large }
-} % End of if{}
-{
-  % Phd
-  \makebox[\textwidth][c]{\Large Submitted in partial fulfillment of the requirements}
-  \makebox[\textwidth][c]{\Large for the degree of Doctor of Philosophy in}
-} % End of else{}
-  \makebox[\textwidth][c]{\Large \GetDeptEngName ,}
-  \makebox[\textwidth][c]{\Large \GetSchoolEngName ,}
-  \makebox[\textwidth][c]{\Large Taiwan, Taiwan, R.O.C.}
+  \ifthenelse{\equal{\GetEngDegree}{Master}}
+  {
+    % Master
+    \makebox[\textwidth][c]{\Large A thesis submitted to the graduate division in partial fulfillment}
+    \makebox[\textwidth][c]{\Large of the requirements for the degree of Master of Science in}
+  } % End of if{}
+  {
+    % Phd
+    \makebox[\textwidth][c]{\Large Submitted in partial fulfillment of the requirements}
+    \makebox[\textwidth][c]{\Large for the degree of Doctor of Philosophy in}
+  } % End of else{}
+  \makebox[\textwidth][c]{\Large \centerline{\GetDeptEngName}}
+  \makebox[\textwidth][c]{\Large \centerline{\GetCollEngName}}
+  \makebox[\textwidth][c]{\Large \centerline{\GetSchoolEngName}}
+  \makebox[\textwidth][c]{\Large \centerline{Taiwan, Taiwan, R.O.C.}}
   \parbox{\textwidth}{\center \Large \GetOralEngMonth \GetOralEngDay, \GetOralEngYear}
 \end{minipage}
 

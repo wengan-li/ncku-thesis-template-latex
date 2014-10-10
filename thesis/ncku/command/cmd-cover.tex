@@ -145,7 +145,8 @@
 
 % --- 學院 College, 系所 Department and Institute ---
 
-\newcommand{\collCname}{C學院}
+% --------------------------- College ---------------------------
+\newcommand{\collCname}{學院 C}
 \newcommand{\collEname}{College of C}
 \newcommand{\SetCollChiName}[1]{\renewcommand{\collCname}{#1}}
 \newcommand{\SetCollEngName}[1]{\renewcommand{\collEname}{#1}}
@@ -158,17 +159,18 @@
 \newcommand{\GetCollChiName}[0]{\collCname}
 \newcommand{\GetCollEngName}[0]{\collEname}
 
-\newcommand{\deptCname}{A系}
+% --------------------------- Department ---------------------------
+\newcommand{\deptCname}{A 系 / 所}
 %\newcommand{\deptEname}{DeptA} % Short form of department
 \newcommand{\fulldeptEname}{Department / Insitute A} % Full name of department
 \newcommand{\SetDeptChiName}[1]{\renewcommand{\deptCname}{#1}}
 %\newcommand{\SetDeptEngShortName}[1]{\renewcommand{\deptEname}{#1}}
 \newcommand{\SetDeptEngName}[1]{\renewcommand{\fulldeptEname}{#1}}
-\newcommand{\SetDeptName}[2]
+\newcommand{\SetDeptName}[3]
 {
   \SetDeptChiName{#1}
 %  \SetDeptEngShortName{#2}
-  \SetDeptEngName{#2}
+  \SetDeptEngName{#3}
 } % End of \newcommand{}
 
 \newcommand{\GetDeptChiName}[0]{\deptCname}
