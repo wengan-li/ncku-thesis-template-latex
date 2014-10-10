@@ -1,11 +1,20 @@
 
 % This file is need to encoded in utf-8
-% 填入你的論文一些需要使用的資料
+%
+% Choose or fill in some needed information for this thesis or dissertation
+% 選擇或填入你的論文一些需要使用的資料
 
 % ----------------------------------------------------------------------------
-%\LangChi  % For Taiwan students
-%\LangEng  % For foreign students
-\LangDemo % default
+
+% --- 論文的模式 / 用途 ---
+% 只能選擇其中一個
+
+% \ChiMode:  編寫的為中文版, 有提供基本的所需的檔案
+% \EngMode:  編寫的為英文版, 有提供基本的所需的檔案
+% \DemoMode: 完整教學 或 樣板測試用
+
+\DemoMode
+
 % ----------------------------------------------------------------------------
 
 % --- Title 論文題目 ---
@@ -17,20 +26,28 @@
 % \SetTitle{你的題目}{Your Title}   % 同時設定中英文題目
 % \SetChiTitle{你的題目}            % 只設定中文題目
 % \SetEngTitle{Your Title}         % 只設定英文題目
+%
+% e.g:
+%
+% \SetTitle
+% {國立成功大學碩博士用畢業論文XeLaTex模板}
+% {National Cheng Kung University (NCKU) Thesis/Dissertation Template in XeLaTex}
+%
+% or
+%
+% \SetChiTitle{國立成功大學碩博士用畢業論文XeLaTex模板}
+% \SetEngTitle{National Cheng Kung University (NCKU)\\ Thesis/Dissertation Template in XeLaTex}
 
 \SetTitle
 {國立成功大學碩博士用畢業論文XeLaTex模板}
 {National Cheng Kung University (NCKU) Thesis/Dissertation Template in XeLaTex}
-% \SetChiTitle{國立成功大學碩博士用畢業論文XeLaTex模板}
-% \SetEngTitle{National Cheng Kung University (NCKU)\\
-% Thesis/Dissertation Template in XeLaTex}
+
 
 % ----------------------------------------------------------------------------
 
 % --- Degree name 學位 ---
-% 不用填寫, 只要選擇即可
-
-% 有2種可使用, 但只有最後設定的一方有效
+%
+% 有2種可選擇, 但只有最後設定的一方有效
 % \PhdDegree    % 博士學位
 % \MasterDegree % 碩士學位
 
@@ -61,7 +78,8 @@
 
 %--------------------------------------------------
 
-% ---  口試的日期 (可不用設定, 請參考內文 '口試資料' 中的說明) ---
+% --- 口試的日期 ---
+% (可不用設定, 請參考內文 '口試資料' 中的說明)
 % 設定西元的年月日, 會自動計算出民國的年份, 和英文的月份轉換
 % 次序: {年份}{月份}{日}
 % \SetOralDate{2014}{12}{31}
@@ -71,16 +89,11 @@
 % ----------------------------------------------------------------------------
 
 % --- 系所 Department or Institute ---
-% 填寫你的系所名字
+%
+% 設定你的系所名字, e.g:
+% \SetDeptMath 數學系
+% \SetDeptCSIE 資訊工程學系
 
-% 有3種可使用, 可獨立使用, 但只有最後設定的一方有效
-% \SetDeptName{系所中文名字}{Department english name} % 同時設定中英文系所名字
-% \SetDeptChiName{系所中文名字}                       % 只設定系所中文名字
-% \SetDeptEngName{Department english name}          % 只設定系所英文名字
-
-%\SetDeptName
-%{資訊工程學系}
-%{Insitute of Computer Science and Information Engineering}
 \SetDeptCSIE
 
 % ----------------------------------------------------------------------------
@@ -94,7 +107,7 @@
 % \SetAdvisorNameX{老師的名字}{Professor's name} % 同時設定中英文名字
 % \SetAdvisorChiNameX{老師的名字}                % 只設定中文名字
 % \SetAdvisorEngNameX{Professor's name}         % 只設定英文名字
-% (請修改NameX為NameA, NameB, NameC)
+% (NameX為NameA, NameB, NameC)
 
 % 使用\SetAdvisorNameA是必須的, 而如果你的指導教授有2或3位,
 % 那只要增加\SetAdvisorNameB和\SetAdvisorNameC則可
@@ -106,32 +119,40 @@
 % ----------------------------------------------------------------------------
 
 % --- 口試証明文件 Document of oral presentation ---
+% 範例版本 或 使用檔案 只能選擇其中一方
 
-% 要顯示 圖片 / 範例
-\DisplayOralTemplete % 顯示範例
-%\DisplayOralImage    % 顯示圖片
-%\SetOralImageChi{}
-%\SetOralImageEng{}
-
+% 顯示 / 使用 口試範例版本
+\DisplayOralTemplete
 % --- 口試委員 Committee member(s) ---
-% 口試委員數量 (至少4位, 最多8位, 預設為8位)
+% 口試委員數量 (至少4位, 最多8位, 預設為8位) 
 % (Only work with \DisplayOralTemplete)
 \SetCommitteeSize{8}
+
+% 使用口試圖片檔案
+% 把你的圖片放在'context/oral'下
+% 之後設定中英文版所對應是哪一個檔案
+%\DisplayOralImage    % 顯示圖片
+%\SetOralImageChi{}   % 中文口試檔案
+%\SetOralImageEng{}   % 英文口試檔案
 
 % ----------------------------------------------------------------------------
 
 % 關鍵字 Keyword
+% 最多5個關鍵字
 
 %\SetKeywords{Keyword A}{Keyword B}{Keyword C}{Keyword D}{Keyword E}
+
 \SetKeywords{NCKU Thesis/Dissertation templete}{Graduate}{Latex/XeLaTex}
 
 % ----------------------------------------------------------------------------
 
 % 書脊 Spine
 
-% Title (For \LangChi only)
-% Default using the english title
-% Use the to using chinese as title
+% 預設書脊上會使用英文題目
+% 把'%'拿掉以設定改使用中文題目
+% Default using the english title in Spine
+% Remove '%' for change to use chinese title
+
 %\SpineTitleChi
 
 % ----------------------------------------------------------------------------
