@@ -1,0 +1,165 @@
+% ------------------------------------------------
+\StartSection{虛擬程式碼(Pseudocode)}{chapter:how-to:write:pseudocode}
+% ------------------------------------------------
+
+\StartSubSection{介紹}
+
+Pseudocode在資訊類的paper是很常見, 雖然這東西冷門, 但是有它的存在意義.
+
+而由於真的要寫Pseudocode的人, 理論上都100\%會寫程式, 所以有關這邊會直接使用例子(基本的function, if-elseif-else, while, return, switch-case)來說明, 靠例子應該就能寫出你所要的Pseudocode.
+
+唯一注意的是需要使用:\\
+'\verb|\Statex|'來斷一行空行\\
+'\verb|\State|'來斷一行以寫新code在後面
+
+% ------------------------------------------------
+
+\newpage
+\begin{algorithm}
+  \caption{My algorithm (function A)}
+  \label{algo:functionA}
+
+  \begin{algorithmic}[1]
+    \Function{function\_name\_a}{arg1, arg2}
+      \If{conditionA}
+        \State ...
+      \ElsIf{conditionB}
+        \State ...
+      \Else
+        \State ...
+      \EndIf
+      \Statex
+      \If{condition1}
+        \State ...
+      \Else
+        \If{condition2}
+          \State ...
+        \Else
+          \State ...
+        \EndIf
+      \EndIf
+      \Statex
+      \For{condition}
+        \State ...
+      \EndFor
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\newpage
+針對function A (Algorithm \RefTo{algo:functionA}), 它的Latex寫法為:
+\begin{framed}
+  \begin{verbatim}
+\begin{algorithm}
+  \caption{My algorithm (function A)}
+  \label{algo:functionA}
+
+  \begin{algorithmic}[1]
+    \Function{function\_name\_a}{arg1, arg2}
+      \If{conditionA}
+        \State ...
+      \ElsIf{conditionB}
+        \State ...
+      \Else
+        \State ...
+      \EndIf
+      \Statex
+      \If{condition1}
+        \State ...
+      \Else
+        \If{condition2}
+          \State ...
+        \Else
+          \State ...
+        \EndIf
+      \EndIf
+      \Statex
+      \For{condition}
+        \State ...
+      \EndFor
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+  \end{verbatim}
+\end{framed}
+
+% ------------------------------------------------
+
+\newpage
+\begin{algorithm}
+  \caption{My algorithm (function B)}
+  \label{algo:functionB}
+
+  \begin{algorithmic}[1]
+    \Function{functionNameB}{}
+      \State ...
+      \State Some code here
+      \State ...
+      \Statex
+      \While{condition3}
+        \State ...
+      \EndWhile
+      \Statex
+      \Repeat
+        \State ...
+      \Until{condition3}
+      \Statex
+      \Switch{condition4}
+        \Case{condition5} ... \Break \EndCase
+        \Statex
+        \Case{condition6}
+          \State ...
+          \State \Break
+        \EndCase
+        \Statex
+        \Default
+          \State ...
+        \EndDefault
+      \EndSwitch
+
+      \Statex\State \Return retValue
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\newpage
+針對function B (Algorithm \RefTo{algo:functionB}), 它的Latex寫法為:
+\begin{framed}
+  \begin{verbatim}
+\begin{algorithm}
+  \caption{My algorithm (function B)}
+  \label{algo:functionB}
+
+  \begin{algorithmic}[1]
+    \Function{functionNameB}{}
+      \State ...
+      \State Some code here
+      \State ...
+      \Statex
+      \While{condition3}
+        \State ...
+      \EndWhile
+      \Statex
+      \Repeat
+        \State ...
+      \Until{condition3}
+      \Statex
+      \Switch{condition4}
+        \Case{condition5} ... \Break \EndCase
+        \Statex
+        \Case{condition6}
+          \State ...
+          \State \Break
+        \EndCase
+        \Statex
+        \Default
+          \State ...
+        \EndDefault
+      \EndSwitch
+
+      \Statex\State \Return retValue
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+  \end{verbatim}
+\end{framed}

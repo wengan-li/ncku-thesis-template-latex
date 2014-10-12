@@ -74,13 +74,29 @@
 \usepackage{booktabs}
 
 \usepackage{comment}
+
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\algnewcommand\algorithmicswitch{\textbf{switch}}
+\algnewcommand\algorithmiccase{\textbf{case}}
+\algnewcommand\algorithmicdefault{\textbf{default}}
+\algnewcommand\algorithmicbreak{\textbf{break}}
+\algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]{\algorithmicswitch\ #1\ }{\algorithmicend\ \algorithmicswitch}%
+\algdef{SE}[CASE]{Case}{EndCase}[1]{\algorithmiccase\ #1:}{\algorithmicend\ \algorithmiccase}%
+\algdef{SE}[CASE]{Default}{EndDefault}[0]{\algorithmicdefault:}{\algorithmicend\ \algorithmiccase}%
+\algtext*{EndSwitch}%
+\algtext*{EndCase}%
+\algtext*{EndDefault}%
+\def\Break{\algorithmicbreak}
+
 %\usepackage[CaptionAfterwards]{fltpage}
 
 %\usepackage{pdflscape}
 %\usepackage{tabularx}
 %\usepackage{lipsum}
 
-% Use in side page
+% Use in spine
 \def\CJKmovesymbol#1{\raise.35em\hbox{#1}}
 \def\CJKmove{\let\CJKsymbol\CJKmovesymbol
              \let\CJKpunctsymbol\CJKmovesymbol}
