@@ -6,53 +6,45 @@
 
 編寫任何的文章, 都會使用不同的章節來把內容進行分區. 例如學校的排版樣子大約:
 
-\begin{minipage}{\textwidth}
-  \begin{framed}
-    \centerline{\LARGE Chapter X}
-    \vspace{0.2cm}
-    \centerline{\LARGE 這是標題}
+\begin{framed}
+  \centerline{\LARGE Chapter X}
+  \vspace{0.2cm}
+  \centerline{\LARGE 這是標題}
 
-    \vspace{0.5cm}
-    \mbox{\Large X.1 子項目}
-    \hspace{0.2cm}\mbox{項目內容 ...}
+  \vspace{0.5cm}
+  \mbox{\Large X.1 子項目}\\
+  \mbox{\hspace{1.2cm}項目內容 ...}
 
-    \vspace{0.3cm}
-    \hspace{0.2cm}\mbox{\large X.1.1 X.1的子項目}
-    \hspace{0.4cm}\mbox{項目內容 ...}
-  \end{framed}
-\end{minipage}
+  \vspace{0.3cm}
+  \mbox{\large X.1.1 子項目}\\
+  \mbox{\hspace{1.2cm}項目內容 ...}
+\end{framed}
 
 所以針對這些功能, 本模版提供:
+
 \begin{framed}
   \begin{verbatim}
-  主要章節
-  Title: 標題 (必填)
-  Label: 標簽 (選填)
-  \StartChapter{ Title }{ Label }
-  \EndChapter
+    主要章節
+    Title: 標題 (必填)
+    Label: 標簽 (選填)
+    \StartChapter{ Title }{ Label }
+    \EndChapter % 用來保證你的內容在這Chapter內
 
-  次章節
-  Title: 標題 (必填)
-  Label: 標簽 (選填)
-  \StartSection{ Title }{ Label }
+    次章節
+    Title: 標題 (必填)
+    Label: 標簽 (選填)
+    \StartSection{ Title }{ Label }
 
-  次章節的子章節
-  Title: 標題 (必填)
-  Label: 標簽 (選填)
-  \StartSubSection{ Title }{ Label }
-
-  子章節的子章節
-  Title: 標題 (必填)
-  Label: 標簽 (選填)
-  \StartSubSubSection{ Title }{ Label }
-
+    次章節的子章節
+    Title: 標題 (必填)
+    Label: 標簽 (選填)
+    \StartSubSection{ Title }{ Label }
   \end{verbatim}
 \end{framed}
 
 所以針對剛剛的例子, 它的Latex寫法為:
 
-\begin{minipage}{\textwidth}
-  \begin{framed}
+\begin{framed}
   \begin{verbatim}
     \StartChapter{這是標題}
 
@@ -62,11 +54,7 @@
     \StartSubSection{X.1的子項目}
     項目內容 ...
 
-    \StartSubSubSection{X.1的子項目的子項目}
-    項目內容 ...
-
     \EndChapter
   \end{verbatim}
-  \end{framed}
-\end{minipage}
+\end{framed}
 
