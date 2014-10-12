@@ -1,0 +1,25 @@
+% ------------------------------------------------
+\StartSubSection{引用別的Latex檔}
+
+正常在編寫Word時, 都會把所有內容寫在同一個.doc中 (當然你都可能原本就喜好分開檔案來寫), 但在Latex中這行為就不常見, 當內容很巨量的時候就更不用講, 這本模板更是其一例子.
+
+\begin{framed}
+  \begin{verbatim}
+    引用的方式
+    \input{ ... 檔案位置 ... }
+
+    如現在你的檔案為:
+    thesis.tex (主檔案)
+    a.tex
+    b.tex
+
+    那要引用a.tex和b.tex時
+    在thesis.tex中要寫
+    \input{./a.tex}
+    \input{./b.tex}
+  \end{verbatim}
+\end{framed}
+
+如果還是不明白的話, 可以參考'./example'中的引用方式.
+
+% ------------------------------------------------
