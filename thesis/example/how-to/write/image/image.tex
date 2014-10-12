@@ -8,16 +8,13 @@
 
 要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.
 
-留意的是, 圖片的路徑跟正常日常使用的路徑會不一樣, 是使用所謂的"相對路徑", 而起點是使用論文主檔案(paper.tex).
+留意的是, 圖片的路徑跟正常日常使用的路徑會不一樣, 是使用所謂的"相對路徑" (Relative path), 而起點是論文的主檔案(thesis.tex).
 
 \noindent 例如 (以Windows的路徑為例子):\\
-主檔案paper.tex在: "\verb|C:\thesis\paper.tex|"\\
+主檔案thesis.tex在: "\verb|C:\thesis\thesis.tex|"\\
 圖片A: "\verb|C:\thesis\some_dir\A.png|"\\
 圖片B: "\verb|C:\thesis\some_dir\B.png|"\\
 使用時以"\verb|./some_dir/A.png|", "\verb|./some_dir/B.png|"的方式來使用, 注意是"$/$"而不是"$\backslash$".
-
-%而要使用的圖片位置就
-%\textbf{注意}: 由於Latex語法的設計上, 在2個'$\lbrace\rbrace$'之間不能斷行或出現空格, 否則會被判斷成其他的語法
 
 % ------------------------------------------------
 \newpage
