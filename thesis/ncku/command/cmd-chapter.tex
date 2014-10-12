@@ -28,5 +28,12 @@
   \IfNoValueF{#2}{\label{#2}}
 } % End of \DeclareDocumentCommand{}
 
+% Sub-Sub-Section
+\DeclareDocumentCommand{\StartSubSubSection}{+m +g}
+{
+  \subsubsection{#1}
+  \IfNoValueF{#2}{\label{#2}}
+} % End of \DeclareDocumentCommand{}
+
 % ----------------------------------------------------------------------------
 
