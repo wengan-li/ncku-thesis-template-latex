@@ -3,17 +3,83 @@
 % ------------------------------------------------
 
 \StartSubSection{介紹}
+這邊會簡單講解如何安裝基本的程式來產生你的論文.
+
+\StartSubSection{MiKTeX安裝}
+我們需要MiKTeX來幫我們來轉Latex成PDF.
+
+  \InsertCenterImage
+    [scale=0.5,
+      caption={MiKTeX Logo}]
+    {./example/how-to/use/build/pic/miktex/logo.png}
+
+首先去MiKTeX的網頁\RefBib{web:miktex:website}來下載它回來, 它預設在'Recommended Download'是32-bit的, 所以如果你要下載64-bit的話, 就要按'Other Downloads'中的第一個.
+
+  \InsertCenterImage
+    [scale=0.2,
+      caption={Download MiKTeX}]
+    {./example/how-to/use/build/pic/miktex/mdownload.png}
+
+  \InsertCenterImage
+    [scale=0.35,
+      caption={安裝MiKTeX}]
+    {./example/how-to/use/build/pic/miktex/minstall.png}
+
+安裝MiKTeX其實沒有什麼需要太在意的東西, 但由獨有一個東西需要設定, 在不停按下一步時, 會出現fig \RefTo{fig:how-to:use:build:package-download}這個畫面, 在這邊推薦選擇'\textbf{Yes}', 因為這邊是用來設定自動幫你下載一些你需要使用的工具來產生論文.
+
+  \InsertCenterImage
+    [scale=0.35,
+      caption={Download Package},
+      label={fig:how-to:use:build:package-download}]
+    {./example/how-to/use/build/pic/miktex/auto-download.png}
+
+最後就要等待安裝, 由於內容滿多, 所以在這邊可能需要等待幾分鐘.
+
+  \InsertCenterImage
+    [scale=0.35,
+      caption={等待安裝完成}]
+    {./example/how-to/use/build/pic/miktex/installing.png}
+
+% ------------------------------------------------
+\newpage
+\StartSubSection{Texmaker安裝}
+
+我們需要Texmaker來幫我們處理產生流程和看PDF用.
+
+  \InsertCenterImage
+    [scale=0.5,
+      caption={Texmaker Logo}]
+    {./example/how-to/use/build/pic/texmaker/logo.png}
+
+首先去Texmaker的網頁\RefBib{web:texmaker:website}來下載它回來, 推薦使用'Executable file for windows', 同時使用'Alternative download link' (因為這個line是使用Google Drive, 所以速度能有保證).
+
+  \InsertCenterImage
+    [scale=0.2,
+      caption={Download Texmaker}]
+    {./example/how-to/use/build/pic/texmaker/download.png}
+
+安裝Texmaker其實沒有什麼要設定的東西, 不停按下一步就行了.
+
+  \InsertCenterImage
+    [scale=0.35,
+      caption={安裝Texmaker}]
+    {./example/how-to/use/build/pic/texmaker/install.png}
+
+  \InsertCenterImage
+    [scale=0.35,
+      caption={安裝Texmaker}]
+    {./example/how-to/use/build/pic/texmaker/install-2.png}
+
+% ------------------------------------------------
+
+
 
 
 編譯
 
-下載範本測試
-
-台大論文格式的範本（也可以參考這篇文章），可於此連結自行取用。完成上述設定之後，直接透過 Makefile 編譯。
-因為我採用的是 XeTeX，所以可以省去很多 *.ps, *.dvi 等等檔案格式間的轉換，畢竟大家最終要的都只是 *.pdf 嘛（茶）。
 
 xelatex thesis // 第一次基本的編譯
 bibtex thesis // 處理論文引用
 xelatex thesis // 第二次編譯利用 bibtex 的結果產生論文引用的連結
-LaTeX 是十分強大的排版語言，你甚至可以利用它製作投影片，如果想要熟悉 LaTeX，市面上已經有許多相關書籍與參考文件，而以下列僅整理出我在論文中常用到的語法：
+
 
