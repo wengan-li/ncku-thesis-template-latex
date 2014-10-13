@@ -18,5 +18,30 @@
   \end{document}
 } % End of \newcommand{}
 
+\begin{comment}
+\newcommand{\IncludeContext}[0]
+{
+  % 預設使用模板的說明文件(./example/context)為內容
+  % 請修改"./context/context"中以成為你的論文內容
+  \ifthenelse{\GetLangEnableDemo = 1}%
+  {\input{./example/context}}%
+  {\input{./context/context}}
+} % End of \newcommand{}
+\end{comment}
+
+\newcommand{\CreateThesis}[0]
+{
+  % Start of thesis
+  \BeginThesis
+
+  % 內容 context
+  \ifthenelse{\GetLangEnableDemo = 1}%
+  {\input{./example/context}}%
+  {\input{./context/context}}
+
+  % End of thesis
+  \EndThesis
+} % End of \newcommand{}
+
 % ----------------------------------------------------------------------------
 
