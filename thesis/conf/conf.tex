@@ -6,11 +6,11 @@
 
 % ----------------------------------------------------------------------------
 
-% --- 論文的模式 / 用途 ---
+% --- 論文的編寫語言 / 用途 ---
 % 只能選擇其中一個
 
-% \ChiMode:  編寫的為中文版, 有提供基本的所需的檔案
-% \EngMode:  編寫的為英文版, 有提供基本的所需的檔案
+% \ChiMode:  編寫的為中英混合版, 有提供基本的所需的檔案
+% \EngMode:  編寫的為全英文版, 有提供基本的所需的檔案
 % \DemoMode: 完整教學 或 樣板測試用
 
 \DemoMode
@@ -29,8 +29,8 @@
 %
 % e.g:
 %
-% \SetTitle
-% {國立成功大學碩博士用畢業論文XeLaTex模板}
+% \SetTitle %
+% {國立成功大學碩博士用畢業論文XeLaTex模板} %
 % {National Cheng Kung University (NCKU) Thesis/Dissertation Template in XeLaTex}
 %
 % or
@@ -38,8 +38,8 @@
 % \SetChiTitle{國立成功大學碩博士用畢業論文XeLaTex模板}
 % \SetEngTitle{National Cheng Kung University (NCKU)\\ Thesis/Dissertation Template in XeLaTex}
 
-\SetTitle
-{國立成功大學碩博士用畢業論文XeLaTex模板}
+\SetTitle %
+{國立成功大學碩博士用畢業論文XeLaTex模板} %
 {National Cheng Kung University (NCKU) Thesis/Dissertation Template in XeLaTex}
 
 
@@ -70,15 +70,15 @@
 % --- Date 日期 ---
 
 % --- 論文封面上的日期 ---
-% 設定西元的年月日, 會自動計算出民國的年份, 和英文的月份轉換
+% 設定西元的年月, 會自動計算出民國的年份, 和英文的月份轉換
 % 次序: {年份}{月份}
+% \SetThesisDate{2014}{12}
 
 \SetThesisDate{2014}{12}
 
 %--------------------------------------------------
 
 % --- 口試的日期 ---
-% (可不用設定, 請參考內文 '口試資料' 中的說明)
 % 設定西元的年月日, 會自動計算出民國的年份, 和英文的月份轉換
 % 次序: {年份}{月份}{日}
 % \SetOralDate{2014}{12}{31}
@@ -132,7 +132,7 @@
 % 使用口試圖片檔案
 % 把你的圖片放在'context/oral'下
 % 之後設定中英文版所對應是哪一個檔案
-% (例子: 'oral-chi.pdf'和'oral-eng.pdf'已放在'context/oral'中)
+% (例子用的'oral-chi.pdf'和'oral-eng.pdf'已放在'context/oral'中)
 %
 %\DisplayOralImage                % 顯示圖片
 %\SetOralImageChi{oral-chi.pdf}   % 中文口試檔案

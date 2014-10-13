@@ -1,8 +1,882 @@
 % ------------------------------------------------
-\newpage
-\StartSection{設定 Configure}{chapter:how-to:use:conf}
+\StartSection{論文基本資料設定 Tesis base configure}{chapter:how-to:use:conf}
 % ------------------------------------------------
 
 \StartSubSection{介紹}
+
+'conf/conf.tex'是用來設定一些論文需要的資料: 如題目, 人名等. 故以下的章節會一個一個資料說明要怎麼填寫或修改:
+
+\begin{enumerate}
+  \item
+  {
+    \textbf{論文的編寫語言 / 用途}
+
+    有3個選擇, 但只能用其中一個.
+
+    \verb|\ChiMode|:  編寫的為中英混合版, 有提供基本的所需的檔案.\\
+    \verb|\EngMode|:  編寫的為全英文版, 有提供基本的所需的檔案.\\
+    \verb|\DemoMode|: 完整教學 或 樣板測試用.
+
+    如果你選擇的是\verb|\DemoMode|, 則會使用'./example/context.tex'中的模板說明文件內容. 而如果使用\verb|\DemoMode|, 但這資料夾已刪的, 在產生論文時會回傳錯誤.
+
+    如果你選擇的是\verb|\ChiMode|或\verb|\EngMode|, 就會使用'./context/context.tex'中的內容. 所以這時候請在這資料夾中編寫你的論文.
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{Title 論文題目}
+
+    要填寫你的中文和(或)英文論文題目.
+
+    如果題目內有必須以數學模式表示的符號，請用\verb|\mbox{}|包住數學模式. 如:\\
+    \verb|\SetTitle{題目題目}{New equation \mbox{$E = mc^4$} here}|\\
+
+    而如果覺得自動產生出來的題目斷行位置不適合, 可以手動加'\verb|\\|'來強制斷行. 如:\\
+    \verb|\SetTitle{題目題目}{Title Tooooooooooo \\ Longgggggggggggg}|\\
+
+    有3種可使用, 可獨立使用, 但只有最後設定的一方有效\\
+    \verb|\SetTitle{你的題目}{Your Title}|: 同時設定中英文題目\\
+    \verb|\SetChiTitle{你的題目}|: 只設定中文題目\\
+    \verb|\SetEngTitle{Your Title}|: 只設定英文題目\\
+
+    如:\\
+    \verb|\SetTitle %|\\
+    \verb|{中文題目中文題目} %|\\
+    \verb|{Your Title Your Title}|\\
+    \verb|'%'|是必須的, 是用來跟Latex說這3行是同一句話.
+
+    或\\
+    \verb|\SetChiTitle{中文題目中文題目}|\\
+    \verb|\SetEngTitle{Your Title \\ Your Title}|
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{Degree name 學位}
+
+    設定這論文是碩士或是博士學位論文.\\
+    有2種可選擇, 但只有最後設定的一方有效.\\
+    \verb|\PhdDegree|: 博士學位\\
+    \verb|\MasterDegree|: 碩士學位
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{Your name 你的名字}
+
+    填寫你的中文和(或)英文.\\
+    有3種可使用, 可獨立使用, 但只有最後設定的一方有效.\\
+    \verb|\SetMyName{你的名字}{Your name}|: 同時設定你的中英文名字\\
+    \verb|\SetMyChiName{你的名字}|: 只設定你的中文名字\\
+    \verb|\SetMyEngName{Your name}|: 只設定你的英文名字
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{論文封面上的日期}
+
+    設定西元的年月, 會自動計算出民國的年份, 和英文的月份轉換.\\
+    次序為: \verb|\SetThesisDate{年份}{月份}|\\
+    如:\verb|\SetThesisDate{2014}{12}|
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{口試的日期}
+
+    設定西元的年月日, 會自動計算出民國的年份, 和英文的月份轉換.\\
+    次序為: \verb|\SetOralDate{年份}{月份}{日}|\\
+    如:\verb|\SetOralDate{2014}{12}{31}|
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{指導老師 Advisor(s)}
+
+    在封面上預算了最多3位的空間, 中文名字固定以'教授'為結尾, 英文名字固定以'Prof.'為開頭.
+
+    有3種可使用, 用來設定3位老師的名字\\
+    \verb|\SetAdvisorNameX{老師的名字}{Professor's name}|: 同時設定中英文名字\\
+    \verb|\SetAdvisorChiNameX{老師的名字}|: 只設定中文名字\\
+    \verb|\SetAdvisorEngNameX{Professor's name}|: 只設定英文名字\\
+    (NameX為NameA, NameB, NameC)
+
+    使用\verb|\SetAdvisorNameA|是必須的, 而如果你的指導教授有2或3位, 那只要增加\verb|\SetAdvisorNameB|和\verb|\SetAdvisorNameC|則可.
+
+    如: \verb|\SetAdvisorNameA{老師的中文名字}{老師的英文名字}|
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{口試証明文件 Document of oral presentation}
+
+    口試証明文件是使用'範例'或是'自己的檔案', 只能選擇其中一方.
+
+    如果要用的是範例:\\
+    \verb|\DisplayOralTemplete|: 顯示 / 使用 口試範例版本.\\
+    \verb|\SetCommitteeSize{8}|: 口試委員數量, 要配合\verb|\DisplayOralTemplete|來使用, 至少4位, 最多8位, 預設為8位.\\
+
+    而如果要用的是自己的檔案:\\
+    把你的圖片放在'context/oral'下, 之後設定中英文版所對應是哪一個檔案.\\
+    例子用的'oral-chi.pdf'和'oral-eng.pdf'已放在'context/oral'中.
+    \verb|\DisplayOralImage|: 設定要顯示圖片
+    \verb|\SetOralImageChi{oral-chi.pdf}|: 設定中文口試檔名
+    \verb|\SetOralImageEng{oral-eng.pdf}|: 設定英文口試檔名
+
+    雖然沒有限定圖片的格式, 但是推薦使用PDF, 而且是沒法使用SVG.
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{關鍵字 Keyword}
+
+    可設定最多5個關鍵字.使用方式:\\
+    \verb|\SetKeywords{Keyword A}{Keyword B}{Keyword C}{Keyword D}{Keyword E}|
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{書脊 Spine}
+
+    用來控制當使用spine.tex來產生書脊時內容控制. 預設書脊上會使用英文題目, 使用\verb|\SpineTitleChi|(把\verb|'%'|拿掉)以設定改使用中文題目.
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{系所 Department or Institute}
+
+    設定你的系所名字, 如:\\
+    \verb|\SetDeptMath|: 數學系\\
+    \verb|\SetDeptCSIE|: 資訊工程學系
+
+    只要設定系所名字, 會自動進行適當的斷行和填入學院名稱等處理.\\
+
+    這部份的資料是使用\url{http://web.ncku.edu.tw/files/11-1000-182.php}.\\
+    縮寫是靠學校給的Domain name所得出的, 故可能會有錯誤的時候.\\
+    所以如果錯了的話, 就請告知真正的寫法(或縮寫)是什麼.\\
+
+    設定系所名字則請參考下面的名單.
+
+    \newpage
+    \begin{table}[h]
+      \caption{系所名字}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
+
+        \verb|\SetDeptChinese| &
+        \begin{tabular}[c]{@{}l@{}}
+          中國文學系\\
+          Department of Chinese Literature
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptArt| &
+        \begin{tabular}[c]{@{}l@{}}
+          藝術研究所\\
+          Institute of Art
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptMinNan| &
+        \begin{tabular}[c]{@{}l@{}}
+          閩南文化研究中心\\
+          Min-Nan Culture Studies Center
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptFLLD| &
+        \begin{tabular}[c]{@{}l@{}}
+          外國語文學系\\
+          Department of Foreign Languages and Literature
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptTWL| &
+        \begin{tabular}[c]{@{}l@{}}
+          臺灣文學系\\
+          Department of Taiwanese Literature
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptKCLC| &
+        \begin{tabular}[c]{@{}l@{}}
+          華語中心\\
+          Chinese Language Center
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptLang| &
+        \begin{tabular}[c]{@{}l@{}}
+          外語中心\\
+          Foreign Language Center
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptHis| &
+        \begin{tabular}[c]{@{}l@{}}
+          歷史學系\\
+          Department of History
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptMath| &
+        \begin{tabular}[c]{@{}l@{}}
+          數學系\\
+          Department of Mathematics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptDPS| &
+        \begin{tabular}[c]{@{}l@{}}
+          光電科學與工程學系\\
+          Departmment of Photonics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPhys| &
+        \begin{tabular}[c]{@{}l@{}}
+          物理學系\\
+          Department of Physics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptCh| &
+        \begin{tabular}[c]{@{}l@{}}
+          化學系\\
+          Department of Chemistry
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptEarth| &
+        \begin{tabular}[c]{@{}l@{}}
+          地球科學系\\
+          Department of Earth Sciences
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPSSC| &
+        \begin{tabular}[c]{@{}l@{}}
+          太空與電漿科學研究所\\
+          Institute of Space and Plasma Sciences
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptNCTS| &
+        \begin{tabular}[c]{@{}l@{}}
+          國家理論科學研究中心\\
+          National Center for Theoretical Sciences (South)
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptME| &
+        \begin{tabular}[c]{@{}l@{}}
+          機械工程學系\\
+          Department of Mechanical Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptChe| &
+        \begin{tabular}[c]{@{}l@{}}
+          化學工程學系\\
+          Department of Chemical Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptCivil| &
+        \begin{tabular}[c]{@{}l@{}}
+          土木工程學系\\
+          Department of Civil Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptMSE| &
+        \begin{tabular}[c]{@{}l@{}}
+          材料科學及工程學系\\
+          Department of Materials Science and Engineering
+        \end{tabular} \\ \hline
+
+      \end{tabular}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+      \caption{系所名字}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
+
+        \verb|\SetDeptHyd| &
+        \begin{tabular}[c]{@{}l@{}}
+          水利及海洋工程學系\\
+          Department of Hydraulic and Ocean Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptES| &
+        \begin{tabular}[c]{@{}l@{}}
+          工程科學系\\
+          Department of Engineering Science
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptSNAME| &
+        \begin{tabular}[c]{@{}l@{}}
+          系統及船舶機電工程學系\\
+          Department of System and Naval Mechatronic Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIAA| &
+        \begin{tabular}[c]{@{}l@{}}
+          航空太空工程學系\\
+          Department of Aeronautics and Astronautics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptMP| &
+        \begin{tabular}[c]{@{}l@{}}
+          資源工程學系\\
+          Department of Resources Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptEV| &
+        \begin{tabular}[c]{@{}l@{}}
+          環境工程學系\\
+          Department of Environmental Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptBME| &
+        \begin{tabular}[c]{@{}l@{}}
+          生物醫學工程學系\\
+          Department of BioMedical Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptGeomatics| &
+        \begin{tabular}[c]{@{}l@{}}
+          測量及空間資訊學系\\
+          Department of Geomatics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIOTMA| &
+        \begin{tabular}[c]{@{}l@{}}
+          海洋科技與事務研究所\\
+          Institute of Ocean Technology and Marine Affairs
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptICA| &
+        \begin{tabular}[c]{@{}l@{}}
+          民航研究所\\
+          Institute of Civil Aviation
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIBDPE| &
+        \begin{tabular}[c]{@{}l@{}}
+          能源國際學士學位學程\\
+          International Bachelor Degree Program on Energy
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptICAMP| &
+        \begin{tabular}[c]{@{}l@{}}
+          尖端材料國際碩士學位學程\\
+          International Curriculum for Advanced Materials Program
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptINHMM| &
+        \begin{tabular}[c]{@{}l@{}}
+          自然災害減災及管理國際碩士學位學程\\
+          International Master Program on \\
+          Natural Hazards Mitigation and Management
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptICEM| &
+        \begin{tabular}[c]{@{}l@{}}
+          工程管理碩士在職專班\\
+          International Graduate Program of \\
+          Civil Engineering and Management
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptEE| &
+        \begin{tabular}[c]{@{}l@{}}
+          電機工程學系\\
+          Department of Electrical Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptCSIE| &
+        \begin{tabular}[c]{@{}l@{}}
+          資訊工程學系\\
+          Insitute of Computer Science and Information Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIME| &
+        \begin{tabular}[c]{@{}l@{}}
+          微電子工程研究所\\
+          Institute of Microelectronics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptCCE| &
+        \begin{tabular}[c]{@{}l@{}}
+          電腦與通信工程研究所\\
+          Institute of Computer \& Communication Engineering
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIMIS| &
+        \begin{tabular}[c]{@{}l@{}}
+          製造資訊與系統研究所\\
+          Institute of Manufacturing Information and Systems
+        \end{tabular} \\ \hline
+
+      \end{tabular}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+      \caption{系所名字}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
+
+        \verb|\SetDeptIMI| &
+        \begin{tabular}[c]{@{}l@{}}
+          醫學資訊研究所\\
+          Institute of Medical Informatics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptSTAT| &
+        \begin{tabular}[c]{@{}l@{}}
+          統計學系\\
+          Department of Statistics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptACC| &
+        \begin{tabular}[c]{@{}l@{}}
+          會計學系\\
+          Department of Accountancy
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptTCM| &
+        \begin{tabular}[c]{@{}l@{}}
+          交通管理科學系\\
+          Department of Transportation and \\
+          Communication Management Science
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptBA| &
+        \begin{tabular}[c]{@{}l@{}}
+          企業管理學系暨國際企業研究所\\
+          Department of Business Administration and\\
+          Graduate Institute of International Business
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptTM| &
+        \begin{tabular}[c]{@{}l@{}}
+          電信管理研究所\\
+          Institute of Telecommunications Management
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIIM| &
+        \begin{tabular}[c]{@{}l@{}}
+          工業與資訊管理學系暨資訊管理研究所\\
+          Institute of Information Management
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptFin| &
+        \begin{tabular}[c]{@{}l@{}}
+          財務金融研究所\\
+          Institute of Finance \& Banking
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPHEI| &
+        \begin{tabular}[c]{@{}l@{}}
+          體育健康與休閒研究所\\
+          Institute of Physical Education, Health \& Leisure Studies
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptEMBA| &
+        \begin{tabular}[c]{@{}l@{}}
+          高階管理碩士在職專班\\
+          Executive Master of Business Administration (EMBA)
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIMBA| &
+        \begin{tabular}[c]{@{}l@{}}
+          國際經營管理研究所\\
+          Institute of International Management (IMBA)
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptAMBA| &
+        \begin{tabular}[c]{@{}l@{}}
+          經營管理碩士班\\
+          Advanced Master of Business Administration (AMBA)
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPolSci| &
+        \begin{tabular}[c]{@{}l@{}}
+          政治學系\\
+          Department of Political Science
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptEconomic| &
+        \begin{tabular}[c]{@{}l@{}}
+          經濟學系\\
+          Department of Economics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPsychology| &
+        \begin{tabular}[c]{@{}l@{}}
+          心理學系\\
+          Department of Psychology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptLaw| &
+        \begin{tabular}[c]{@{}l@{}}
+          法律學系\\
+          Department of Law and \\
+          Institute of Law in Science and Technology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptED| &
+        \begin{tabular}[c]{@{}l@{}}
+          教育研究所\\
+          Institute of Education
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIOCS| &
+        \begin{tabular}[c]{@{}l@{}}
+          認知科學研究所\\
+          Institute of Cognitive Science
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptGIPE| &
+        \begin{tabular}[c]{@{}l@{}}
+          政治經濟學研究所\\
+          Institute of Political Economy
+        \end{tabular} \\ \hline
+
+      \end{tabular}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+      \caption{系所名字}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
+
+        \verb|\SetDeptFMRI| &
+        \begin{tabular}[c]{@{}l@{}}
+          心智影像研究中心\\
+          Mind Research and Image Center
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptArch| &
+        \begin{tabular}[c]{@{}l@{}}
+          建築學系\\
+          Department of Architecture
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptUP| &
+        \begin{tabular}[c]{@{}l@{}}
+          都市計劃學系\\
+          Department of Urban Planning
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptID| &
+        \begin{tabular}[c]{@{}l@{}}
+          工業設計學系\\
+          Department of Industrial Design
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptICID| &
+        \begin{tabular}[c]{@{}l@{}}
+          創意產業設計研究所\\
+          Institute of Creative Industry Design
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptBio| &
+        \begin{tabular}[c]{@{}l@{}}
+          生命科學系\\
+          Department of Life Sciences
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptBioTech| &
+        \begin{tabular}[c]{@{}l@{}}
+          生物科技研究所\\
+          Institute of Biotechnology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIBBT| &
+        \begin{tabular}[c]{@{}l@{}}
+          生物資訊與訊息傳遞研究所\\
+          Institute of Bioinformatics and Biosignal Transduction
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptITPS| &
+        \begin{tabular}[c]{@{}l@{}}
+          熱帶植物科學研究所\\
+          Institute of Tropical Plant Sciences
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptEDUC| &
+        \begin{tabular}[c]{@{}l@{}}
+          醫學系\\
+          School of Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptBiohem| &
+        \begin{tabular}[c]{@{}l@{}}
+          生物化學暨分子生物學研究所\\
+          Department of Biochemistry and Molecular Biology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPath| &
+        \begin{tabular}[c]{@{}l@{}}
+          病理學科\\
+          Department of Pathology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIntMed| &
+        \begin{tabular}[c]{@{}l@{}}
+          內科學科\\
+          Department of Internal Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPhysMed| &
+        \begin{tabular}[c]{@{}l@{}}
+          生理學研究所\\
+          Department of Physiology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptSurgery| &
+        \begin{tabular}[c]{@{}l@{}}
+          外科學科\\
+          Department of Surgery
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPed| &
+        \begin{tabular}[c]{@{}l@{}}
+          小兒學科\\
+          Department of Pediatrics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptAnatomy| &
+        \begin{tabular}[c]{@{}l@{}}
+          解剖學科暨細胞生物與解剖學研究所\\
+          Department of Cell Biology and Anatomy
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptObsGyn| &
+        \begin{tabular}[c]{@{}l@{}}
+          婦產學科\\
+          Department of Obstetrics and Gynecology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptBone| &
+        \begin{tabular}[c]{@{}l@{}}
+          骨科學科\\
+          Department of Orthopaedics
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPhMed| &
+        \begin{tabular}[c]{@{}l@{}}
+          公共衛生學科暨公共衛生研究所\\
+          Department of Public Health
+        \end{tabular} \\ \hline
+
+      \end{tabular}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+      \caption{系所名字}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
+
+        \verb|\SetDeptNeuro| &
+        \begin{tabular}[c]{@{}l@{}}
+          神經學科\\
+          Department of Neurology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPsy| &
+        \begin{tabular}[c]{@{}l@{}}
+          精神學科\\
+          Department of Psychiatry
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptParasite| &
+        \begin{tabular}[c]{@{}l@{}}
+          寄生蟲學科\\
+          Department of Parasitology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptOphth| &
+        \begin{tabular}[c]{@{}l@{}}
+          眼科學科\\
+          Department of Ophthalmology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptOtolaryngo| &
+        \begin{tabular}[c]{@{}l@{}}
+          耳鼻喉學科\\
+          Department of Otolaryngology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptDEOH| &
+        \begin{tabular}[c]{@{}l@{}}
+          工業衛生學科暨環境醫學研究所\\
+          Department of Environmental and Occupational Health
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptDerm| &
+        \begin{tabular}[c]{@{}l@{}}
+          皮膚學科\\
+          Department of Dermatology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptUro| &
+        \begin{tabular}[c]{@{}l@{}}
+          泌尿學科\\
+          Department of Urology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPharmaco| &
+        \begin{tabular}[c]{@{}l@{}}
+          藥理學科暨藥理學研究所\\
+          Department of Pharmacology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptAnesth| &
+        \begin{tabular}[c]{@{}l@{}}
+          麻醉學科\\
+          Department of Anesthesiology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptRehab| &
+        \begin{tabular}[c]{@{}l@{}}
+          復健學科\\
+          Department of Physical Medicine and Rehabilitation
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptMicrobio| &
+        \begin{tabular}[c]{@{}l@{}}
+          微生物學及免疫研究所\\
+          Department of Microbiology and Immunology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptRad| &
+        \begin{tabular}[c]{@{}l@{}}
+          放射線學科\\
+          Department of Diagnostic Radiology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptNM| &
+        \begin{tabular}[c]{@{}l@{}}
+          核子醫學科\\
+          Department of Nuclear Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptFamily| &
+        \begin{tabular}[c]{@{}l@{}}
+          家庭醫學科\\
+          Department of Family Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptEmergency| &
+        \begin{tabular}[c]{@{}l@{}}
+          急診學科\\
+          Department of Emergency Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptDentistry| &
+        \begin{tabular}[c]{@{}l@{}}
+          牙科學科\\
+          Department of Dentistry
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptOEM| &
+        \begin{tabular}[c]{@{}l@{}}
+          職業及環境醫學科\\
+          Department of Occupational and Environmental Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptForensic| &
+        \begin{tabular}[c]{@{}l@{}}
+          法醫學科\\
+          Department of Forensic Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptNursing| &
+        \begin{tabular}[c]{@{}l@{}}
+          護理學系\\
+          Department of Nursing
+        \end{tabular} \\ \hline
+
+      \end{tabular}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+      \caption{系所名字}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
+
+        \verb|\SetDeptMT| &
+        \begin{tabular}[c]{@{}l@{}}
+          醫學檢驗生物技術學系\\
+          Department of Medical Laboratory Science and Biotechnology
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPT| &
+        \begin{tabular}[c]{@{}l@{}}
+          物理治療學系\\
+          Department of Physical Therapy
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptOT| &
+        \begin{tabular}[c]{@{}l@{}}
+          職能治療學系\\
+          Department of Occupational Therapy
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptPharmacy| &
+        \begin{tabular}[c]{@{}l@{}}
+          藥學系\\
+          School of Pharmacy
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptBasicMed| &
+        \begin{tabular}[c]{@{}l@{}}
+          基礎醫學研究所\\
+          Institute of Basic Medical Sciences
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptBehMed| &
+        \begin{tabular}[c]{@{}l@{}}
+          行為醫學研究所\\
+          Institute of Behavioral Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptCLPARM| &
+        \begin{tabular}[c]{@{}l@{}}
+          臨床藥學與藥物科技研究所\\
+          Institute of Clinical Pharmacy and Pharmaceutical Sciences
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIMM| &
+        \begin{tabular}[c]{@{}l@{}}
+          分子醫學研究所\\
+          Institute of Molecular Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIOM| &
+        \begin{tabular}[c]{@{}l@{}}
+          口腔醫學研究所\\
+          Institute of Oral Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptICMMed| &
+        \begin{tabular}[c]{@{}l@{}}
+          臨床醫學研究所\\
+          Institute of Clinical Medicine
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptAlliedHealth| &
+        \begin{tabular}[c]{@{}l@{}}
+          健康照護科學研究所\\
+          Institute of Allied Health Sciences
+        \end{tabular} \\ \hline
+
+        \verb|\SetDeptIOG| &
+        \begin{tabular}[c]{@{}l@{}}
+          老年學研究所\\
+          Institute of Gerontology
+        \end{tabular} \\ \hline
+
+      \end{tabular}
+    \end{table}
+  } % End of \item{}
+\end{enumerate}
+
 
 
