@@ -71,15 +71,76 @@
     {./example/how-to/use/build/pic/texmaker/install-2.png}
 
 % ------------------------------------------------
+\newpage
+\StartSubSection{產生論文和書脊}
 
+當安裝完Texmaker和MiKTeX後, 直接點開'thesis.tex', 可以看到這個畫面(Fig\RefTo{fig:how-to:use:build:texmaker:thesis.tex}).
 
+  \InsertCenterImage
+    [scale=0.25,
+      caption={Texmaker打開thesis.tex畫面},
+      label={fig:how-to:use:build:texmaker:thesis.tex}]
+    {./example/how-to/use/build/pic/texmaker/1.png}
 
+產生論文的方式為在上方(Fig\RefTo{fig:how-to:use:build:texmaker:to_xelatex})由'快速編譯'改成'XeLaTeX', 之後按左方的箭頭就可以進行產生的處理(註: 如果是第一次使用, 那這時候背後MiKTeX會自動下載一些工具回來, 所以會等待比較久).
 
-編譯
+  \InsertCenterImage
+    [scale=0.5,
+      caption={改使用XeLaTeX},
+      label={fig:how-to:use:build:texmaker:to_xelatex}]
+    {./example/how-to/use/build/pic/texmaker/2.png}
 
+\newpage
+之後只要等待下方出現一些結果(Fig\RefTo{fig:how-to:use:build:texmaker:gen_message})就是說明已產生完成.
 
-xelatex thesis // 第一次基本的編譯
-bibtex thesis // 處理論文引用
-xelatex thesis // 第二次編譯利用 bibtex 的結果產生論文引用的連結
+  \InsertCenterImage
+    [scale=0.25,
+      caption={處理的結果},
+      label={fig:how-to:use:build:texmaker:gen_message}]
+    {./example/how-to/use/build/pic/texmaker/2.5.png}
 
+如果PDF產生成功, 那接旁邊'瀏覽PDF'的箭頭, 會出現一個視窗(Fig\RefTo{fig:how-to:use:build:texmaker:new_pdf})來顯示那個PDF檔.
 
+  \InsertCenterImage
+    [scale=0.25,
+      caption={瀏覽PDF},
+      label={fig:how-to:use:build:texmaker:new_pdf}]
+    {./example/how-to/use/build/pic/texmaker/3.png}
+
+\newpage
+把以上的步驟用在'spine.tex'上(Fig\RefTo{fig:how-to:use:build:texmaker:spine.tex})就能去產生你的書脊.
+
+  \InsertCenterImage
+    [scale=0.3,
+      caption={Texmaker打開spine.tex畫面},
+      label={fig:how-to:use:build:texmaker:spine.tex}]
+    {./example/how-to/use/build/pic/texmaker/4.png}
+
+當如果你已經把'thesis.tex'和'spine.tex'都產生了PDF, 你的資料夾應該會有這些檔案和資料夾(Fig\RefTo{fig:how-to:use:build:texmaker:dir}), 那2個PDF正是你需要的東西.
+
+  \InsertCenterImage
+    [scale=0.5,
+      caption={資料夾內容},
+      label={fig:how-to:use:build:texmaker:dir}]
+    {./example/how-to/use/build/pic/texmaker/5.png}
+
+% ------------------------------------------------
+
+\newpage
+\StartSubSection{產生PDF的流程}
+
+在編譯Latex時成PDF時, 必須注意內部的引用(\verb|\RefBib{}|)情況.
+
+如果只是編寫內容, 引用的內容和號碼不是重要的話, 那直接使用:\\
+XeLaTeX -> 瀏覽PDF\\
+即可.
+
+但如果你的PDF是最終版本, 那你的流程則需要使用:\\
+XeLaTeX -> BibTex -> XeLaTeX -> 瀏覽PDF\\
+才對.
+
+因為第一次的XeLaTeX是用來產生'thesis.aux', 而有這個檔案才能對你的內容中Reference的引用來進行連接, 而BibTex正是做這個的處理以產出'thesis.bbl', 而第二次的XeLaTeX會使用'thesis.bbl'來把你的Reference中的號碼在內容中設定.
+
+以上步驟只需用在'thesis.tex'的部份, 而'spine.tex'則不用做這個行為.
+
+% ------------------------------------------------
