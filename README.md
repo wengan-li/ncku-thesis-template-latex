@@ -8,6 +8,9 @@
 現在已知可用的系所:
 > 資訊工程學系 Department of Computer Science and Information Engineering
 
+### Release 樣板
+[Release 樣板](https://github.com/wengan-li/ncku-thesis-templete-release)
+
 ### Version
 v1.0.1
 
