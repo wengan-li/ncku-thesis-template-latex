@@ -27,8 +27,8 @@
 * 資訊工程學系 Department of Computer Science and Information Engineering
 
 應該不可使用的系所:
-* 生物科技研究所 Institute of Biotechnology ([範本](www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc))
-* 體育健康與休閒研究所 Institute of Physical Education, Health and Leisure Studies ([範本](www.ncku.edu.tw/~deprb/docs/Thesis%20Regulation%20.doc))
+* [生物科技研究所 Institute of Biotechnology](http://www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc)
+* [體育健康與休閒研究所 Institute of Physical Education, Health and Leisure Studies](http://www.ncku.edu.tw/~deprb/docs/Thesis%20Regulation%20.doc)
 
 ### Example 樣板/範例
 [有關 樣板/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-templete-release)
