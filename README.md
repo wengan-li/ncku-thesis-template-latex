@@ -3,6 +3,12 @@
 
 這模板是以'102.5.14日101學年第2次教務會議通過'的畢業論文要求來設計, 請留意學校的最新所訂的要求能否使用這樣版.
 
+### Main feature 主要功能
+  1. 能同時編寫中英文內容
+  2. 笨蛋化 (只留下要填寫的部份, 其他都由模板自動產生: 如封面, 目錄, 口試合格證明文件樣板等)
+  3. 內含基本的Latex使用教學手冊
+  4. 提供簡易的語法去使用一些複雜的Latex功能
+
 ### Available to use 已被學校負責單位接受
 
 這模板的
@@ -25,7 +31,7 @@
 > [體育健康與休閒研究所 Institute of Physical Education, Health and Leisure Studies](www.ncku.edu.tw/~deprb/docs/Thesis%20Regulation%20.doc)
 
 ### Example 樣板/範例
-[有關樣板/範例到這邊<--](https://github.com/wengan-li/ncku-thesis-templete-release)
+[有關樣板/範例請到這邊<--](https://github.com/wengan-li/ncku-thesis-templete-release)
 
 ### Version 版本
 v1.0.1
@@ -36,3 +42,6 @@ v1.0.1
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 ![CC-BY-NC-SA](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png "CC Attribution-NonCommercial-ShareAlike License")
+
+### Other 其他
+如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
