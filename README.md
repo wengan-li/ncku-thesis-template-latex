@@ -17,21 +17,21 @@
 * 口試合格證明文件: 已經經過 '教務處-課務組' 所檢查和接受.
 即是可使用本模板來編寫你畢業論文, 並能交給圖書館收藏存放.
 
-(**注意**: 是'接受', 而不是'認可', 即是不等於官方認可, 但可以使用並不會有任何問題)
+( **注意**: 是'接受', 而不是'認可', 即是不等於官方認可, 但可以使用並不會有任何問題)
 
 但是因為各系所有各自的格式, 故請先留意自己的系所有沒有格式要求. 如果沒有, 則這模版應該用來使用. 否則要看系所上的格式, 是否跟這模版有相同的寫法.
 
 而如果這表名單中沒有顯示你的系所, 但你已經知道是否能使用, 請告知以供更新.
 
 已知可用的系所:
-> 資訊工程學系 Department of Computer Science and Information Engineering
+* 資訊工程學系 Department of Computer Science and Information Engineering
 
 應該不可使用的系所:
-> [生物科技研究所 Institute of Biotechnology](www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc)
-> [體育健康與休閒研究所 Institute of Physical Education, Health and Leisure Studies](www.ncku.edu.tw/~deprb/docs/Thesis%20Regulation%20.doc)
+* [生物科技研究所 Institute of Biotechnology](www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc)
+* [體育健康與休閒研究所 Institute of Physical Education, Health and Leisure Studies](www.ncku.edu.tw/~deprb/docs/Thesis%20Regulation%20.doc)
 
 ### Example 樣板/範例
-[有關樣板/範例請到這邊<--](https://github.com/wengan-li/ncku-thesis-templete-release)
+[有關 樣板/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-templete-release)
 
 ### Version 版本
 v1.1.1
