@@ -20,6 +20,7 @@
 
 % ----------------------------------------------------------------------------
 
+\begin{comment}
 \ifthenelse{\OralDocument = \OralDocumentTemplete}
 {
   % -------------------------- 顯示範本 --------------------------
@@ -93,6 +94,46 @@
     \addcontentsline{toc}{section}{English version}
   }{}
 
+  \includepdf{\GetOralImageEngPath}
+} % End of else{}
+\end{comment}
+
+% ----------------------------------------------------------------------------
+
+\ifthenelse{\OralDocument = \OralDocumentTemplete}
+{
+  % -------------------------- 顯示範本 --------------------------
+
+  % 設定顯示在目錄
+  \StartNewPage
+  %\thispagestyle{empty}
+  \addcontentsline{toc}{chapter}{Document of oral presentation}
+
+  % Chinese version
+  \input{./ncku/oral/templete/templete-chi-5}
+
+  % English version
+  \StartNewPage
+  %\thispagestyle{empty}
+  \addcontentsline{toc}{section}{English version}
+  \input{./ncku/oral/templete/templete-eng-2}
+} % End of if{}
+{
+  % ---------------------- 顯示圖片, Image in PDF format ----------------------
+
+  % 設定顯示在目錄
+  \StartNewPage
+  \thispagestyle{empty}
+  \addcontentsline{toc}{chapter}{Document of oral presentation}
+
+  % Chinese version
+  \addcontentsline{toc}{section}{Chinese version}
+  \includepdf{\GetOralImageChiPath}
+
+  % English version
+  \StartNewPage
+  \thispagestyle{empty}
+  \addcontentsline{toc}{section}{English version}
   \includepdf{\GetOralImageEngPath}
 } % End of else{}
 
