@@ -1,7 +1,7 @@
 ## National Cheng Kung University (NCKU) Thesis/Dissertation Template in XeLaTex ##
 ### 台灣國立成功大學碩博士用畢業論文XeLaTex模板 ###
 
-這模板是以'102.5.14日101學年第2次教務會議通過'的畢業論文要求來設計, 請留意學校的最新所訂的要求能否使用這樣版.
+這是國立成功大學碩博士用畢業論文的 LaTex 模板. 這模板是以'102.5.14日101學年第2次教務會議通過'的畢業論文要求來設計, 請留意學校的最新所訂的要求能否使用這樣版.
 
 ### Main feature 主要功能
   1. 能同時編寫中英文內容
@@ -45,3 +45,22 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 
 ### Other 其他
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
+
+### ChangeLog
+* v1.1.2:
+> 1. 重寫有關figure API的code, 增加和優化那些功能 (如增加align)
+> 2. 更新README.md的內容
+> 3. 增加ChangeLog
+
+* v1.1.1:
+> 1. 把'Abstract'的中文版本是以'摘要'來顯示
+> 2. 修改和改良有關oral文件的一些path位置
+
+* v1.1.0:
+> 1. 增加版權資料到一些核心檔案
+> 2. 修改和增加一些圖書館要求的內容
+> 3. 修改有關abstract的一些path位置
+> 4. 正式得到學校有關部門對這模板的接受
+
+* v1.0.1: 修改少量錯誤的內容和URL連接
+* <= v1.0.0: 正式完成版本
