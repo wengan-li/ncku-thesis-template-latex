@@ -60,10 +60,10 @@
   % Print begin block
   \ifthenelse{\equal{\TmpValueColumn}{1}}
   { %
-    \begin{figure}[\TmpValuePosition]
+    \begin{figure}[H]
   } % End of if{}
   { %
-    \begin{figure*}[\TmpValuePosition]
+    \begin{figure*}[Ht]
   } % End of else{}
   %
   % Do center if needed
@@ -96,9 +96,9 @@
 
 % ------------ OLD API ------------
 % A wrapper to handle \InsertCenterImage{}
-%\newcommand{\InsertCenterImage}[2][\empty]
-%{
-%  \InsertImage[#1, align=center]{#2}
-%} % End of \newcommand{}
+\newcommand{\InsertCenterImage}[2][\empty]
+{
+  \InsertImage[#1, align=center]{#2}
+} % End of \newcommand{}
 
 % -----------------------------------------------------------------
