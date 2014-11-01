@@ -84,7 +84,7 @@
       % Default
       \FPeval{
         \WidthOfImagePerRow}{
-          clip(clip(1 / (\GetMultiImagesPerRow)))}
+          clip(clip(1 / (\GetMultiImagesPerRow)) - 0.1)}
     \fi % End of \FPiflt
     %
     \ifthenelse{\boolean{WidthOfImagePerRowTmpIsDone}}
@@ -97,7 +97,7 @@
         %
         \FPeval{
           \WidthOfImagePerRow}{
-            clip(clip(1 / (\GetMultiImagesPerRow)))}
+            clip(clip(1 / (\GetMultiImagesPerRow)) - 0.1)}
       } % End of if{}
       {
         % Diff row
@@ -107,7 +107,7 @@
         \else
           \FPeval{
             \WidthOfImagePerRow}{
-              clip(clip(1 / (\GetMultiImagesPerRow)))}
+              clip(clip(1 / (\GetMultiImagesPerRow)) - 0.1)}
         \fi % End of \FPiflt
       } % End of else{}
     } % End of else{}
