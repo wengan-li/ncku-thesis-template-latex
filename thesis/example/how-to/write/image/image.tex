@@ -42,11 +42,11 @@
     [caption={這 是 標 題}]
       {./image.png}
 
-    \InsertCenterImage
-    [scale=0.5,
-      angle=45,
-      caption={這 是 標 題},
-      label={this:is:label}]
+    \InsertImage
+      [align=center, scale=0.5,
+        angle=45,
+        caption={這 是 標 題},
+        label={this:is:label}]
       {./image.png}
 
     每一項資料可以使用斷行來分隔以保持可讀性.
@@ -65,17 +65,19 @@
       {./image.png}
     \end{verbatim}
     \InsertImage
-    {./example/how-to/write/image/pic/Cc-by_new.svg.png}
+      {./example/how-to/write/image/pic/Cc-by_new.svg.png}
   } % End of \item{}
 
   \item
   {
     使用置中的版本
     \begin{verbatim}
-    \InsertCenterImage
+    \InsertImage
+      [align=center]
       {./image.png}
     \end{verbatim}
-    \InsertCenterImage
+    \InsertImage
+      [align=center]
     {./example/how-to/write/image/pic/Cc-by_new.svg.png}
   } % End of \item{}
 
@@ -83,12 +85,12 @@
   {
     放大比例
     \begin{verbatim}
-    \InsertCenterImage
-      [scale=1.5]
+    \InsertImage
+      [align=center, scale=1.5]
       {./image.png}
     \end{verbatim}
-    \InsertCenterImage
-    [scale=1.5]
+    \InsertImage
+      [align=center, scale=1.5]
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
   } % End of \item{}
 
@@ -98,12 +100,12 @@
   {
     縮小比例
     \begin{verbatim}
-    \InsertCenterImage
-      [scale=0.5]
+    \InsertImage
+      [align=center, scale=0.5]
       {./image.png}
     \end{verbatim}
-    \InsertCenterImage
-    [scale=0.5]
+    \InsertImage
+      [align=center, scale=0.5]
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
   } % End of \item{}
 
@@ -111,12 +113,12 @@
   {
     增加標題並去掉比例的數字
     \begin{verbatim}
-    \InsertCenterImage
-      [caption={Little man}]
+    \InsertImage
+      [align=center, caption={Little man}]
       {./image.png}
     \end{verbatim}
-    \InsertCenterImage
-    [caption={Little man}]
+    \InsertImage
+      [align=center, caption={Little man}]
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
   } % End of \item{}
 
@@ -125,16 +127,16 @@
   {
     增加標簽
     \begin{verbatim}
-    \InsertCenterImage
-    [caption={Little man No.1},
-      label={fig:little-man-no.1}]
+    \InsertImage
+      [align=center, caption={Little man No.1},
+        label={fig:little-man-no.1}]
       {./image.png}
     \end{verbatim}
 
     之後可以使用\verb| \RefTo |去引用 \verb| \RefTo{fig:little-man-no.1} |
-    \InsertCenterImage
-    [caption={Little man No.1},
-      label={fig:little-man-no.1}]
+    \InsertImage
+      [align=center, caption={Little man No.1},
+        label={fig:little-man-no.1}]
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
 
     e.g: 文中所指的人物一號 (Fig \RefTo{fig:little-man-no.1}).
@@ -144,18 +146,18 @@
   {
     使用角度去轉45度
     \begin{verbatim}
-    \InsertCenterImage
-      [angle=45,
-      caption={Little man No.2},
-      label={fig:little-man-no.2}]
-        {./image.png}
+    \InsertImage
+      [align=center, angle=45,
+        caption={Little man No.2},
+        label={fig:little-man-no.2}]
+      {./image.png}
     \end{verbatim}
 
     使用\verb| \RefTo |去引用 \verb| \RefTo{fig:little-man-no.2} |
-    \InsertCenterImage
-    [angle=45,
-      caption={Little man No.2},
-      label={fig:little-man-no.2}]
+    \InsertImage
+      [align=center, angle=45,
+        caption={Little man No.2},
+        label={fig:little-man-no.2}]
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
 
     e.g: 文中所指的人物二號 (Fig \RefTo{fig:little-man-no.2}).
@@ -175,12 +177,12 @@
         \textbf{\underline{URL}} \\ \hline
 
       \begin{tabular}[c]{@{}c@{}}
-      \InsertImage[scale=0.1]
+      \includegraphics[scale=0.1]
         {./apple.png} \\ Apple
       \end{tabular} & \url{www.apple.com}  \\ \hline
 
       \begin{tabular}[c]{@{}c@{}}
-      \InsertImage[scale=0.1]
+      \includegraphics[scale=0.1]
         {./google.png} \\ Google
       \end{tabular} & \url{www.google.com} \\ \hline
     \end{tabular}
@@ -196,12 +198,12 @@
         \textbf{\underline{URL}} \\ \hline
 
       \begin{tabular}[c]{@{}c@{}}
-      \InsertImage[scale=0.1]
-        {./example/how-to/write/image/pic/apple.jpg} \\ Apple
+      \includegraphics[scale=0.1]
+       {./example/how-to/write/image/pic/apple.jpg} \\ Apple
       \end{tabular} & \url{www.apple.com}  \\ \hline
 
       \begin{tabular}[c]{@{}c@{}}
-      \InsertImage[scale=0.1]
+      \includegraphics[scale=0.1]
         {./example/how-to/write/image/pic/google.png} \\ Google
       \end{tabular} & \url{www.google.com} \\ \hline
     \end{tabular}
@@ -231,7 +233,7 @@
     {Image path}  -> {Path}
 
   插入多張圖片
-    \InsertMultiImages[Options]
+    \InsertMultiImages[Options] %
     {
       [Image options]{Image path}
     }%
@@ -254,7 +256,7 @@
     插入2張圖片, 以1張圖為一列
     \begin{verbatim}
     \InsertMultiImages
-    [caption = {2 images and 1 image per row}]
+    [caption = {2 images and 1 image per row}] %
     {
       {./image.png}
     }%
@@ -263,7 +265,7 @@
     }
     \end{verbatim}
     \InsertMultiImages
-    [caption = {2 images and 1 image per row}]
+    [caption = {2 images and 1 image per row}] %
     {
       {./example/how-to/write/image/pic/CC-BY-NC.png}
     }%
@@ -278,7 +280,7 @@
     \begin{verbatim}
     \InsertMultiImages
     [perrow = 2,
-      caption = {2 images and 2 images per row}]
+      caption = {2 images and 2 images per row}] %
     {
       {./image.png}
     }%
@@ -288,7 +290,7 @@
     \end{verbatim}
     \InsertMultiImages
     [perrow = 2,
-      caption = {2 images and 2 images per row}]
+      caption = {2 images and 2 images per row}] %
     {
       {./example/how-to/write/image/pic/CC-BY-NC.png}
     }%
@@ -305,7 +307,7 @@
     \InsertMultiImages
     [perrow = 2,
       caption = {5 images and 2 image per row},
-      label = {fig:example:mi2:fig1}]
+      label = {fig:example:mi2:fig1}] %
     {
       [caption = {Image 1},
       label = {fig:example:mi2:fig1}]
@@ -328,7 +330,7 @@
     \InsertMultiImages
     [perrow = 2,
       caption = {3 images and 2 images per row},
-      label = {fig:example:mi2:mfig}]
+      label = {fig:example:mi2:mfig}] %
     {
       [caption = {Image 1},
       label = {fig:example:mi2:fig1}]
@@ -359,7 +361,7 @@
     \InsertMultiImages
     [perrow = 2,
       caption = {4 images and 2 image per row},
-      label = {fig:example:mi3:mfig}]
+      label = {fig:example:mi3:mfig}] %
     {
       [caption = { }, label = {fig:example:mi3:fig1}]
       {./image.png}
@@ -381,7 +383,7 @@
     \InsertMultiImages
     [perrow = 2,
       caption = {4 images and 2 image per row},
-      label = {fig:example:mi3:mfig}]
+      label = {fig:example:mi3:mfig}] %
     {
       [caption = { },
       label = {fig:example:mi3:fig1}]
