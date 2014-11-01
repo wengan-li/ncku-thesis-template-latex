@@ -34,7 +34,7 @@
 [有關 樣板/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-templete-release)
 
 ### Version 版本
-v1.1.1
+v1.1.2
 
 ### License 授權條款
 本著作採用創用 CC 姓名標示-非商業性-相同方式分享 4.0 授權條款
@@ -48,19 +48,19 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 
 ### ChangeLog
 * v1.1.2:
-> 1. 重寫有關figure API的code, 增加和優化那些功能 (如增加align)
-> 2. 更新README.md的內容
-> 3. 增加ChangeLog
+ 1. 重寫有關figure API的code, 增加和優化那些功能 (如增加align)
+ 2. 更新README.md的內容
+ 3. 增加ChangeLog
 
 * v1.1.1:
-> 1. 把'Abstract'的中文版本是以'摘要'來顯示
-> 2. 修改和改良有關oral文件的一些path位置
+ 1. 把'Abstract'的中文版本是以'摘要'來顯示
+ 2. 修改和改良有關oral文件的一些path位置
 
 * v1.1.0:
-> 1. 增加版權資料到一些核心檔案
-> 2. 修改和增加一些圖書館要求的內容
-> 3. 修改有關abstract的一些path位置
-> 4. 正式得到學校有關部門對這模板的接受
+ 1. 增加版權資料到一些核心檔案
+ 2. 修改和增加一些圖書館要求的內容
+ 3. 修改有關abstract的一些path位置
+ 4. 正式得到學校有關部門對這模板的接受
 
 * v1.0.1: 修改少量錯誤的內容和URL連接
 * <= v1.0.0: 正式完成版本
