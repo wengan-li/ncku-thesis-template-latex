@@ -1,19 +1,7 @@
-%
-% This file is part of ncku-thesis-templete.
-%
-% ncku-thesis-templete is distributed in the hope that it will be useful,
-% you can redistribute it and/or modify
-% it under the terms of the Attribution-NonCommercial-ShareAlike
-% 4.0 International.
-%
-% You should have received a copy of the
-% Attribution-NonCommercial-ShareAlike 4.0 International
-% along with ncku-thesis-templete.
-%
-% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
-%
 
 % Some helper function about insert image
+\usepackage{ifthen}
+\usepackage{xparse}
 
 % ----------------------------------------------------------------------------
 %
@@ -51,363 +39,66 @@
     caption = \empty,
     label = \empty,
     align = \empty,
+    pos = H,
+    col = 1,
   },
-  scale/.estore in = \InsertImageValueScale,
-  angle/.estore in = \InsertImageValueAngle,
-  caption/.estore in = \InsertImageValueCaption,
-  label/.estore in = \InsertImageValueLabel,
-  align/.estore in = \InsertImageValueAlign,
+  scale/.estore in = \TmpValueScale,
+  angle/.estore in = \TmpValueAngle,
+  caption/.estore in = \TmpValueCaption,
+  label/.estore in = \TmpValueLabel,
+  align/.estore in = \TmpValueAlign,
+  pos/.estore in = \TmpValuePosition,
+  col/.estore in = \TmpValueColumn,
 } % End of \pgfkeys{}
 
-% Insert a single image
+% Insert a single column image
 \newcommand{\InsertImage}[2][\empty]
 {
   % Parse the input
   \pgfkeys{/InsertImage, default, #1}
   %
-  % Debug if needed
-%  Scale: \InsertImageValueScale\\
-%  Angle: \InsertImageValueAngle\\
-%  Caption: \InsertImageValueCaption\\
-%  Label: \InsertImageValueLabel\\
-%  Align: \InsertImageValueAlign\\
-%  \ifthenelse{\equal{#2}{\empty}}
-%    {Path: -EMPTY-\\}{Path: #2\\}
-%  \IfNoValueF{#2}{Path: #2\\}
-  %
-  %
-  % Check any caption first
-  \ifthenelse{\equal{\InsertImageValueCaption}{\empty}}
+  % Print begin block
+  \ifthenelse{\equal{\TmpValueColumn}{1}}
   { %
-    %
-    %No Caption
-    %
-    % Align
-    \ifthenelse{\equal{\InsertImageValueAlign}{center}}
-      {\begin{center}}{}
-    % Insert image
-    \includegraphics
-      [scale=\InsertImageValueScale,
-        angle=\InsertImageValueAngle]{#2}
-    % Align
-    \ifthenelse{\equal{\InsertImageValueAlign}{center}}
-      {\end{center}}{}
+    \begin{figure}[\TmpValuePosition]
   } % End of if{}
   { %
-    %
-    %Have Caption
-    %
-    \begin{figure*}[!hbtp]
-      % Do center if needed
-      \ifthenelse{\equal{\InsertImageValueAlign}{center}}
-        {\center}{}
-      % Insert image
-      \includegraphics
-        [scale=\InsertImageValueScale,
-          angle=\InsertImageValueAngle]{#2}
-      % Set Caption
-      \SetImageCaption{\InsertImageValueCaption}
-      % Set Label
-      \ifthenelse{\equal{\InsertImageValueCaption}{\empty}}
-        {}{\SetImageLabel{\InsertImageValueLabel}}
+    \begin{figure*}[\TmpValuePosition]
+  } % End of else{}
+  %
+  % Do center if needed
+  \ifthenelse{\equal{\TmpValueAlign}{center}} %
+    {\center}{}
+  %
+  % Insert image
+  \includegraphics %
+    [scale=\TmpValueScale,%
+      angle=\TmpValueAngle]{#2}%
+  %
+  % Set Caption
+  \SetImageCaption{\TmpValueCaption}
+  %
+  % Set Label
+  \ifthenelse{\equal{\TmpValueCaption}{\empty}} %
+    {}{\SetImageLabel{\TmpValueLabel}}
+  %
+  % Print end block
+  \ifthenelse{\equal{\TmpValueColumn}{1}}
+  { %
+    \end{figure}
+  } % End of if{}
+  { %
     \end{figure*}
   } % End of else{}
 } % End of \newcommand{}
 
-% Insert a single image, but place it in center
-\newcommand{\InsertCenterImage}[2][\empty]
-{
-  \InsertImage[#1, align=center]{#2}
-} % End of \newcommand{}
-
 % -----------------------------------------------------------------
 
-% For multi images
-\newcommand\MultiImagesPerRow{1}
-\newcommand{\SetMultiImagesPerRow}[1]
-  {\renewcommand{\MultiImagesPerRow}{#1}}
-\newcommand{\GetMultiImagesPerRow}[0]{\MultiImagesPerRow}
+% ------------ OLD API ------------
+% A wrapper to handle \InsertCenterImage{}
+%\newcommand{\InsertCenterImage}[2][\empty]
+%{
+%  \InsertImage[#1, align=center]{#2}
+%} % End of \newcommand{}
 
-\newcommand\MultiImageTotalValue{0}
-\newcommand{\SetMultiImageTotalValue}[1]
-  {\renewcommand{\MultiImageTotalValue}{#1}}
-\newcommand{\GetMultiImageTotalValue}[0]{\MultiImageTotalValue}
-
-\newcommand\MultiImageId{0}
-\newcommand{\SetMultiImageId}[1]
-  {\renewcommand{\MultiImageId}{#1}}
-\newcommand{\GetMultiImageId}[0]{\MultiImageId}
-
-\newcommand\WidthOfImagePerRow{0}
-
-%add desired spacing between images, e. g. ~, \quad, \qquad etc.
-%(or a blank line to force the subfigure onto a new line)
-\newcommand{\SubfigureBreakSpaceLine}[1]
-{
-  \ifthenelse{\equal{\intcalcMod{
-    \GetMultiImageId - 1}{\GetMultiImagesPerRow}}{0}}%
-  {%
-    % Echo blank line
-    %
-
-  } % End of if{}
-  {%
-    ~
-  } % End of else{}
-} % End of \newcommand{}
-
-\newcommand{\SetWidthOfImagePerRow}
-{
-  %
-%  GetMultiImagesPerRow: \GetMultiImagesPerRow\\
-%  GetMultiImageTotalValue: \GetMultiImageTotalValue\\
-  %
-  \ifthenelse{\equal{\GetMultiImagesPerRow}{1}}
-  {
-    %perrow = 1
-    \FPeval{\WidthOfImagePerRow}{1.0}
-  } % End of if{}
-  {
-    %perrow > 1
-    %
-    % Flag
-    \provideboolean{WidthOfImagePerRowTmpIsDone}
-    \setboolean{WidthOfImagePerRowTmpIsDone}{false}
-    %
-    % Calc remain
-    \FPeval{\TmpRemain}{
-      clip((\GetMultiImageTotalValue) - (\GetMultiImageId))}
-    %TmpRemain: \TmpRemain\\
-    %
-    % Get mod
-    \modulo{\GetMultiImageTotalValue}{\GetMultiImagesPerRow}
-    %mod: \result\\
-    %
-    \FPiflt{\TmpRemain}{\GetMultiImagesPerRow}
-    \else
-      % Gt
-      \setboolean{WidthOfImagePerRowTmpIsDone}{true}
-      %
-      % Default
-      \FPeval{
-        \WidthOfImagePerRow}{
-          clip(clip(1 / (\GetMultiImagesPerRow)) - 0.1)}
-    \fi % End of \FPiflt
-    %
-    \ifthenelse{\boolean{WidthOfImagePerRowTmpIsDone}}
-    {}
-    {
-      % Lt
-      \ifthenelse{\result = 0}
-      {
-        % Last row
-        %
-        \FPeval{
-          \WidthOfImagePerRow}{
-            clip(clip(1 / (\GetMultiImagesPerRow)) - 0.1)}
-      } % End of if{}
-      {
-        % Diff row
-        %
-        \FPifeq{\TmpRemain}{0}
-          \FPeval{\WidthOfImagePerRow}{1.0}
-        \else
-          \FPeval{
-            \WidthOfImagePerRow}{
-              clip(clip(1 / (\GetMultiImagesPerRow)) - 0.1)}
-        \fi % End of \FPiflt
-      } % End of else{}
-    } % End of else{}
-  } % End of else{}
-  %
-%  \WidthOfImagePerRow
-  %
-} % End of \newcommand{}
-
-\pgfkeys
-{
-  /InsertMultiImages/.is family, /InsertMultiImages,
-  default/.style = 
-  {
-    perrow = 1,
-    caption = \empty,
-    label = \empty,
-  },
-  perrow/.estore in = \InsertMultiImagesValueImagePerRow,
-  caption/.estore in = \InsertMultiImagesValueCaption,
-  label/.estore in = \InsertMultiImagesValueLabel,
-} % End of \pgfkeys{}
-
-% Insert multi-image
-% Arg: 1st: Table configure
-%      2~9th: Images (Max 8 Images)
-%
-% ---------------------------------------
-% 使用 \InsertMultiImageLL#2
-% 是跟 \InsertMultiImageLL{#2} 不一樣的
-% 直接連接#2是指把#2整個當成function的所有參數
-% 而{#2}是指把#2當成單一個參數傳給function
-% ---------------------------------------
-%
-\DeclareDocumentCommand{\InsertMultiImages}{
-  +O{\empty} +m +G{\empty} +G{\empty} +G{\empty}
-  +G{\empty} +G{\empty} +G{\empty} +G{\empty}}
-{
-  % Parse the input
-  \pgfkeys{/InsertMultiImages, default, #1}
-%  perrow: \InsertMultiImagesValueImagePerRow\\
-%  caption: \InsertMultiImagesValueCaption\\
-%  label: \InsertMultiImagesValueLabel\\
-  %
-  %Set Multi Image Total
-  \ifthenelse{\equal{#2}{\empty}}{}{\SetMultiImageTotalValue{1}}
-  \ifthenelse{\equal{#3}{\empty}}{}{\SetMultiImageTotalValue{2}}
-  \ifthenelse{\equal{#4}{\empty}}{}{\SetMultiImageTotalValue{3}}
-  \ifthenelse{\equal{#5}{\empty}}{}{\SetMultiImageTotalValue{4}}
-  \ifthenelse{\equal{#6}{\empty}}{}{\SetMultiImageTotalValue{5}}
-  \ifthenelse{\equal{#7}{\empty}}{}{\SetMultiImageTotalValue{6}}
-  \ifthenelse{\equal{#8}{\empty}}{}{\SetMultiImageTotalValue{7}}
-  \ifthenelse{\equal{#9}{\empty}}{}{\SetMultiImageTotalValue{8}}
-  %
-  % Set per row
-  \FPeval{\MultiImagesPerRow}{clip(
-    \InsertMultiImagesValueImagePerRow)} %
-  %
-  \begin{figure*}[!hbtp]
-    %
-    % Image 1
-    %\#2: P #2 P\\
-    \ifthenelse{\equal{#2}{\empty}}
-      {}
-      {
-        \SetMultiImageId{1}
-        \SubfigureBreakSpaceLine{1}
-        \InsertMultiImagesFunInsertSubfigure#2
-      } % End of else{}
-    %
-    % Image 2
-    %\#3: P #3 P\\
-    \ifthenelse{\equal{#3}{\empty}}
-      {}
-      {
-        \SetMultiImageId{2}
-        \SubfigureBreakSpaceLine{2}
-        \InsertMultiImagesFunInsertSubfigure#3
-      } % End of else{}
-    %
-    % Image 3
-    %\#4: P #4 P\\
-    \ifthenelse{\equal{#4}{\empty}}
-      {}
-      {
-        \SetMultiImageId{3}
-        \SubfigureBreakSpaceLine{3}
-        \InsertMultiImagesFunInsertSubfigure#4
-      } % End of else{}
-    %
-    % Image 4
-    %\#5: P #5 P\\
-    \ifthenelse{\equal{#5}{\empty}}
-      {}
-      {
-        \SetMultiImageId{4}
-        \SubfigureBreakSpaceLine{4}
-        \InsertMultiImagesFunInsertSubfigure#5
-      } % End of else{}
-    %
-    % Image 5
-    %\#6: P #6 P\\
-    \ifthenelse{\equal{#6}{\empty}}
-      {}
-      {
-        \SetMultiImageId{5}
-        \SubfigureBreakSpaceLine{5}
-        \InsertMultiImagesFunInsertSubfigure#6
-      } % End of else{}
-    %
-    % Image 6
-    %\#7: P #7 P\\
-    \ifthenelse{\equal{#7}{\empty}}
-      {}
-      {
-        \SetMultiImageId{6}
-        \SubfigureBreakSpaceLine{6}
-        \InsertMultiImagesFunInsertSubfigure#7
-      } % End of else{}
-    %
-    % Image 7
-    %\#8: P #8 P\\
-    \ifthenelse{\equal{#8}{\empty}}
-      {}
-      {
-        \SetMultiImageId{7}
-        \SubfigureBreakSpaceLine{7}
-        \InsertMultiImagesFunInsertSubfigure#8
-      } % End of else{}
-    %
-    % Image 8
-    %\#9: P #9 P\\
-    \ifthenelse{\equal{#9}{\empty}}
-      {}
-      {
-        \SetMultiImageId{8}
-        \SubfigureBreakSpaceLine{8}
-        \InsertMultiImagesFunInsertSubfigure#9
-      } % End of else{}
-    %
-    % Set Caption
-    \SetImageCaption{\InsertMultiImagesValueCaption}
-    % Set Label
-    \ifthenelse{\equal{\InsertMultiImagesValueCaption}{\empty}}
-      {}{\SetImageLabel{\InsertMultiImagesValueLabel}}
-    %
-  \end{figure*}
-} % End of \newcommand{}
-
-\pgfkeys
-{
-  /InsertMultiImagesFunInsertSubfigure/.is family, /InsertMultiImagesFunInsertSubfigure,
-  default/.style = 
-  {
-    scale = 1.0,
-    angle = 0,
-    caption = \empty,
-    label = \empty,
-    align = \empty,
-  },
-  scale/.estore in = \InsertMultiImagesFunInsertSubfigureValueScale,
-  angle/.estore in = \InsertMultiImagesFunInsertSubfigureValueAngle,
-  caption/.estore in = \InsertMultiImagesFunInsertSubfigureValueCaption,
-  label/.estore in = \InsertMultiImagesFunInsertSubfigureValueLabel,
-  align/.estore in = \InsertMultiImagesFunInsertSubfigureValueAlign,
-} % End of \pgfkeys{}
-
-% Low-level insert image
-\newcommand{\InsertMultiImagesFunInsertSubfigure}[2][\empty]
-{
-  % Set width
-  \SetWidthOfImagePerRow
-%  \WidthOfImagePerRow
-  %
-  % Parse the input
-  \pgfkeys{/InsertMultiImagesFunInsertSubfigure, default, #1}
-  %
-  \begin{subfigure}{\WidthOfImagePerRow\textwidth}
-    %
-    \center
-    %
-    \includegraphics[
-      scale=\InsertMultiImagesFunInsertSubfigureValueScale,
-      angle=\InsertMultiImagesFunInsertSubfigureValueAngle]
-      {#2}
-    %
-    % Set Caption
-    \SetImageCaption{\InsertMultiImagesFunInsertSubfigureValueCaption}
-    % Set Label
-    \ifthenelse{\equal{
-      \InsertMultiImagesFunInsertSubfigureValueCaption}{\empty}}
-      {}{\SetImageLabel{\InsertMultiImagesFunInsertSubfigureValueLabel}}
-  \end{subfigure}%
-} % End of \newcommand{}
-
-% ----------------------------------------------------------------------------
+% -----------------------------------------------------------------
