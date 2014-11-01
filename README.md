@@ -15,6 +15,7 @@
 這模板的
 * 格式/設計: 已經經過 '成大圖書館 系統管理組-數位論文小組' 所檢查和接受.
 * 口試合格證明文件: 已經經過 '教務處-課務組' 所檢查和接受.
+
 即是可使用本模板來編寫你畢業論文, 並能交給圖書館收藏存放.
 
 **注意**: 是'接受', 而不是'認可', 即是不等於官方認可, 但可以使用並不會有任何問題.
@@ -47,6 +48,8 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog
+* v1.1.3: 修正README.md中內容的位置錯誤
+
 * v1.1.2:
  1. 重寫有關figure API的code, 增加和優化那些功能 (如增加align)
  2. 更新README.md的內容
