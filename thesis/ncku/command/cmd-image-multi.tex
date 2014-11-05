@@ -132,7 +132,7 @@
   perrow/.estore in = \TmpMIValueImagePerRow,
   caption/.estore in = \TmpMIValueCaption,
   label/.estore in = \TmpMIValueLabel,
-  align/.estore in = \TmpValueAlign,
+  align/.estore in = \TmpMIValueAlign,
   pos/.estore in = \TmpMIValuePosition,
   col/.estore in = \TmpMIValueColumn,
 } % End of \pgfkeys{}
@@ -180,7 +180,7 @@
   } % End of else{}
   %
   % Do center if needed
-  \ifthenelse{\equal{\TmpValueAlign}{center}} %
+  \ifthenelse{\equal{\TmpMIValueAlign}{center}} %
     {\center}{}
     %
     % Image 1
@@ -317,7 +317,7 @@
     %
   %
   % Do center if needed
-  \ifthenelse{\equal{\TmpValueAlign}{center}} %
+  \ifthenelse{\equal{\TmpMISubValueAlign}{center}} %
     {\center}{}
     %
     \includegraphics[
