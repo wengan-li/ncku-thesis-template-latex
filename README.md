@@ -35,7 +35,7 @@
 [有關 樣板/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-templete-release)
 
 ### Version 版本
-v1.1.4
+v1.1.5
 
 ### License 授權條款
 本著作採用創用 CC 姓名標示-非商業性-相同方式分享 4.0 授權條款
