@@ -48,6 +48,8 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog
+* v1.1.5: 修正每個Chapter的第一頁的頁碼位置跟其他頁面不同的問題\([Issue \#1](https://github.com/wengan-li/ncku-thesis-templete-latex/issues/1)\)
+
 * v1.1.4: 修正目錄自己沒有在目錄的Linking中出現
 
 * v1.1.3: 修正README.md中內容的位置錯誤
