@@ -34,9 +34,6 @@
 ### Example 樣板/範例
 [有關 樣板/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-templete-release)
 
-### Version 版本
-v1.1.5
-
 ### License 授權條款
 本著作採用創用 CC 姓名標示-非商業性-相同方式分享 4.0 授權條款
 
@@ -48,6 +45,8 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog
+* v1.1.6: 刪除'Induection'和'README.md'中的'版本 Version'
+
 * v1.1.5: 修正每個Chapter的第一頁的頁碼位置跟其他頁面不同的問題\([Issue \#1](https://github.com/wengan-li/ncku-thesis-templete-latex/issues/1)\)
 
 * v1.1.4: 修正目錄自己沒有在目錄的Linking中出現
