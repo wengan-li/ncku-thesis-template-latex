@@ -82,8 +82,7 @@
   % --------------------------
 
   % 顯示 學生 的名字
-  \makebox[6em][r]{\Large Student}
-  \makebox[1em][c]{\Large \thinspace : \thinspace}
+  \makebox[7em][r]{\Large Student：}
   \makebox[10.0em][l]{\Large \GetAuthorEngName}\\
 
   % --------------------------
@@ -93,8 +92,7 @@
   % --------------------------
 
   % 顯示 指導老師 A 的名字
-  \makebox[6em][r]{\Large Advisor}
-  \makebox[1em][c]{\Large \thinspace ： \thinspace}
+  \makebox[7em][r]{\Large Advisor：}
   \makebox[10.0em][l]{\Large Prof. \thinspace \GetAdvisorEngNameA} \\
 
   % --------------------------
@@ -104,8 +102,12 @@
   % --------------------------
 
   % 顯示 指導老師 B 的名字
-  \makebox[6em][r]{\Large Co-advisor}
-  \makebox[1em][c]{\Large \thinspace ： \thinspace}
+  \makebox[7em][r]
+  {%
+    \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
+      {}%
+      {\Large Co-advisor：}%
+  }
   \makebox[10.0em][l]
   {%
     \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
@@ -120,8 +122,7 @@
   % --------------------------
 
   % 顯示 指導老師 C 的名字
-  \makebox[6em][r]{}
-  \makebox[1em][c]{}
+  \makebox[7em][r]{}
   \makebox[10.0em][l]
   {%
     \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}%

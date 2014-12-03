@@ -82,7 +82,7 @@
   \makebox[4.0em][r]{\Large 學生：}
   \makebox[6.0em][l]{\Large \GetAuthorChiName}
   \makebox[8.0em][c]{}
-  \makebox[4.0em][r]{\Large Student \thinspace ：}
+  \makebox[4.0em][r]{\Large Student：}
   \makebox[8.0em][l]{\Large \GetAuthorEngName}\\
   % --------------------------
 
@@ -95,7 +95,7 @@
   \makebox[4.0em][r]{\Large 指導老師：}
   \makebox[6.0em][l]{\Large \GetAdvisorChiNameA \thinspace 教授}
   \makebox[8.0em][c]{}
-  \makebox[4.0em][r]{\Large Advisor \thinspace ：}
+  \makebox[4.0em][r]{\Large Advisor：}
   \makebox[8.0em][l]{\Large Prof. \thinspace \GetAdvisorEngNameA}\\
   % --------------------------
 
@@ -105,7 +105,12 @@
 
   % 顯示 指導老師 B 的名字
   \hspace{2.0em}
-  \makebox[4.0em][r]{\Large 共同指導：}
+  \makebox[4.0em][r]
+  {%
+    \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
+      {}%
+      {\Large 共同指導：}%
+  }
   \makebox[6.0em][l]%
   {%
     \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
@@ -113,7 +118,12 @@
       {\Large \GetAdvisorChiNameB \thinspace 教授}%
   }
   \makebox[8.0em][c]{}
-  \makebox[4.0em][r]{\Large Co-advisor \thinspace ：}
+  \makebox[4.0em][r]
+  {%
+    \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
+      {}%
+      {\Large Co-advisor：}%
+  }
   \makebox[8.0em][l]%
   {%
     \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
