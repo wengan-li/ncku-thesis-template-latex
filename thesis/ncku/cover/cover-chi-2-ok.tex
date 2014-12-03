@@ -81,8 +81,8 @@
   \hspace{2.0em}
   \makebox[4.0em][r]{\Large 學生：}
   \makebox[6.0em][l]{\Large \GetAuthorChiName}
-  \makebox[5.0em][c]{}
-  \makebox[4.0em][r]{\Large Student \thinspace :}
+  \makebox[8.0em][c]{}
+  \makebox[4.0em][r]{\Large Student \thinspace ：}
   \makebox[8.0em][l]{\Large \GetAuthorEngName}\\
   % --------------------------
 
@@ -94,8 +94,8 @@
   \hspace{2.0em}
   \makebox[4.0em][r]{\Large 指導老師：}
   \makebox[6.0em][l]{\Large \GetAdvisorChiNameA \thinspace 教授}
-  \makebox[5.0em][c]{}
-  \makebox[4.0em][r]{\Large Advisor \thinspace :}
+  \makebox[8.0em][c]{}
+  \makebox[4.0em][r]{\Large Advisor \thinspace ：}
   \makebox[8.0em][l]{\Large Prof. \thinspace \GetAdvisorEngNameA}\\
   % --------------------------
 
@@ -104,21 +104,21 @@
   % --------------------------
 
   % 顯示 指導老師 B 的名字
-  \hspace{1.5em}
-  \makebox[4.0em][r]{}
-  \makebox[6.0em][l]
-  {
-    \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}
-      {}
-      {\Large \GetAdvisorChiNameB \thinspace 教授}
+  \hspace{2.0em}
+  \makebox[4.0em][r]{\Large 共同指導：}
+  \makebox[6.0em][l]%
+  {%
+    \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
+      {}%
+      {\Large \GetAdvisorChiNameB \thinspace 教授}%
   }
-  \makebox[5.0em][c]{}
-  \makebox[4.0em][r]{}
-  \makebox[8.0em][l]
-  {
-    \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}
-      {}
-      {\Large Prof. \thinspace \GetAdvisorEngNameB}
+  \makebox[8.0em][c]{}
+  \makebox[4.0em][r]{\Large Co-advisor \thinspace ：}
+  \makebox[8.0em][l]%
+  {%
+    \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
+      {}%
+      {\Large Prof. \thinspace \GetAdvisorEngNameB}%
   } \\
 
   % --------------------------
@@ -128,21 +128,21 @@
   % --------------------------
 
   % 顯示 指導老師 C 的名字
-  \hspace{1.5em}
+  \hspace{2.0em}
   \makebox[4.0em][r]{}
   \makebox[6.0em][l]
-  {
-    \ifthenelse{\equal{\GetAdvisorChiNameC}{\empty}}
-      {}
-      {\Large \GetAdvisorChiNameC \thinspace 教授}
+  {%
+    \ifthenelse{\equal{\GetAdvisorChiNameC}{\empty}}%
+      {}%
+      {\Large \GetAdvisorChiNameC \thinspace 教授}%
   }
-  \makebox[5.0em][c]{}
+  \makebox[8.0em][c]{}
   \makebox[4.0em][r]{}
   \makebox[8.0em][l]
-  {
-    \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}
-      {}
-      {\Large Prof. \thinspace \GetAdvisorEngNameC}
+  {%
+    \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}%
+      {}%
+      {\Large Prof. \thinspace \GetAdvisorEngNameC}%
   } \\
 
   % --------------------------
