@@ -218,6 +218,8 @@
 
   設計上可插入1$\sim$8張的圖片, 而且寫法會跟插入單張相近.
 
+  而且不管是主圖或子圖片都推薦使用'align = center'來進行置中, 除非是為了特殊的原因.
+
   \begin{framed}
   \begin{verbatim}
   Options 主圖的設定 (使用','來分隔, 不分先後順序)
@@ -227,7 +229,7 @@
     align:   center (置中)
 
   Image 1~8: 各張圖片的設定
-    設定方式跟使用\InsertImage和\InsertCenterImage是一樣的
+    設定方式跟使用\InsertImage是一樣的
     [Image options] -> [Options]
     {Image path}  -> {Path}
 
@@ -258,20 +260,20 @@
     [align = center,
       caption = {2 images and 1 image per row}] %
     {
-      {./image.png}
+      [align = center]{./image.png}
     }%
     {
-      {./image.png}
+      [align = center]{./image.png}
     }
     \end{verbatim}
     \InsertMultiImages
     [align = center,
       caption = {2 images and 1 image per row}] %
     {
-      {./example/how-to/write/image/pic/CC-BY-NC.png}
+      [align = center]{./example/how-to/write/image/pic/CC-BY-NC.png}
     }%
     {
-      {./example/how-to/write/image/pic/CC-BY-NC-ND.png}
+      [align = center]{./example/how-to/write/image/pic/CC-BY-NC-ND.png}
     }
   } % End of \item{}
 
@@ -283,20 +285,20 @@
     [perrow = 2, align = center,
       caption = {2 images and 2 images per row}] %
     {
-      {./image.png}
+      [align = center]{./image.png}
     }%
     {
-      {./image.png}
+      [align = center]{./image.png}
     }
     \end{verbatim}
     \InsertMultiImages
     [perrow = 2, align = center,
       caption = {2 images and 2 images per row}] %
     {
-      {./example/how-to/write/image/pic/CC-BY-NC.png}
+      [align = center]{./example/how-to/write/image/pic/CC-BY-NC.png}
     }%
     {
-      {./example/how-to/write/image/pic/CC-BY-NC-ND.png}
+      [align = center]{./example/how-to/write/image/pic/CC-BY-NC-ND.png}
     }
   } % End of \item{}
 
@@ -310,18 +312,17 @@
       caption = {5 images and 2 image per row},
       label = {fig:example:mi2:fig1}] %
     {
-      [caption = {Image 1},
+      [caption = {Image 1}, align = center,
       label = {fig:example:mi2:fig1}]
       {./image.png}
     }%
     {
-      [caption = {Image 2},
-      label = {fig:example:mi2:fig2},
-      angle = -20]
+      [caption = {Image 2}, align = center,
+      label = {fig:example:mi2:fig2}, angle = -20]
       {./image.png}
     }%
     {
-      [caption = {Image 3}]
+      [caption = {Image 3}, align = center]
       {./image.png}
     }
     \end{verbatim}
@@ -334,17 +335,19 @@
       label = {fig:example:mi2:mfig}] %
     {
       [caption = {Image 1},
+      align = center,
       label = {fig:example:mi2:fig1}]
       {./example/how-to/write/image/pic/CC-BY-NC.png}
     }%
     {
       [caption = {Image 2},
+      align = center,
       label = {fig:example:mi2:fig2},
       angle = -20]
       {./example/how-to/write/image/pic/CC-BY-NC-ND.png}
     }%
     {
-      [caption = {Image 3}]
+      [caption = {Image 3}, align = center]
       {./example/how-to/write/image/pic/CC-BY-NC-SA.png}
     }
 
@@ -364,45 +367,50 @@
       caption = {4 images and 2 image per row},
       label = {fig:example:mi3:mfig}] %
     {
-      [caption = { }, label = {fig:example:mi3:fig1}]
-      {./image.png}
+      [caption = { }, label = {fig:example:mi3:fig1},
+      align = center]{./image.png}
     }%
     {
-      [caption = {}, label = {fig:example:mi3:fig2}]
-      {./image.png}
+      [caption = {}, label = {fig:example:mi3:fig2},
+      align = center]{./image.png}
     }%
     {
-      [caption = { }, label = {fig:example:mi3:fig3}]
-      {./image.png}
+      [caption = { }, label = {fig:example:mi3:fig3},
+      align = center]{./image.png}
     }%
     {
-      [caption = { }, label = {fig:example:mi3:fig4}]
-      {./image.png}
+      [caption = { }, label = {fig:example:mi3:fig4},
+      align = center]{./image.png}
     }
     \end{verbatim}
 
     \InsertMultiImages
     [perrow = 2, align = center,
       caption = {4 images and 2 image per row},
+      align = center,
       label = {fig:example:mi3:mfig}] %
     {
       [caption = { },
-      label = {fig:example:mi3:fig1}]
+      label = {fig:example:mi3:fig1},
+      align = center]
       {./example/how-to/write/image/pic/CC-BY-NC.png}
     }%
     {
       [caption = {},
-      label = {fig:example:mi3:fig2}]
+      label = {fig:example:mi3:fig2},
+      align = center]
       {./example/how-to/write/image/pic/CC-BY-NC-ND.png}
     }%
     {
       [caption = { },
-      label = {fig:example:mi3:fig3}]
+      label = {fig:example:mi3:fig3},
+      align = center]
       {./example/how-to/write/image/pic/CC-BY-NC-SA.png}
     }%
     {
       [caption = { },
-      label = {fig:example:mi3:fig4}]
+      label = {fig:example:mi3:fig4},
+      align = center]
       {./example/how-to/write/image/pic/CC-BY-ND.png}
     }
 
@@ -423,27 +431,27 @@
     \InsertMultiImages
     [perrow = 2, align = center,
       caption = {8 images and 2 image per row}] %
-    {[caption = { }]{./image.png}}%
-    {[caption = { }]{./image.png}}%
-    {[caption = { }]{./image.png}}%
-    {[caption = { }]{./image.png}}%
-    {[caption = { }]{./image.png}}%
-    {[caption = { }]{./image.png}}%
-    {[caption = { }]{./image.png}}%
-    {[caption = { }]{./image.png}}
+    {[caption = { }, align = center]{./image.png}}%
+    {[caption = { }, align = center]{./image.png}}%
+    {[caption = { }, align = center]{./image.png}}%
+    {[caption = { }, align = center]{./image.png}}%
+    {[caption = { }, align = center]{./image.png}}%
+    {[caption = { }, align = center]{./image.png}}%
+    {[caption = { }, align = center]{./image.png}}%
+    {[caption = { }, align = center]{./image.png}}
     \end{verbatim}
 
     \InsertMultiImages
     [perrow = 2, align = center,
       caption = {8 images and 2 image per row}] %
-    {[caption = { }]{./example/how-to/write/image/pic/CC-BY.png}}%
-    {[caption = { }]{./example/how-to/write/image/pic/CC-BY-NC.png}}%
-    {[caption = { }]{./example/how-to/write/image/pic/CC-BY-ND.png}}%
-    {[caption = { }]{./example/how-to/write/image/pic/CC-BY-SA.png}}%
-    {[caption = { }]{./example/how-to/write/image/pic/CC-BY.png}}%
-    {[caption = { }]{./example/how-to/write/image/pic/CC-BY-NC.png}}%
-    {[caption = { }]{./example/how-to/write/image/pic/CC-BY-ND.png}}%
-    {[caption = { }]{./example/how-to/write/image/pic/CC-BY-SA.png}}
+    {[caption = { }, align = center]{./example/how-to/write/image/pic/CC-BY.png}}%
+    {[caption = { }, align = center]{./example/how-to/write/image/pic/CC-BY-NC.png}}%
+    {[caption = { }, align = center]{./example/how-to/write/image/pic/CC-BY-ND.png}}%
+    {[caption = { }, align = center]{./example/how-to/write/image/pic/CC-BY-SA.png}}%
+    {[caption = { }, align = center]{./example/how-to/write/image/pic/CC-BY.png}}%
+    {[caption = { }, align = center]{./example/how-to/write/image/pic/CC-BY-NC.png}}%
+    {[caption = { }, align = center]{./example/how-to/write/image/pic/CC-BY-ND.png}}%
+    {[caption = { }, align = center]{./example/how-to/write/image/pic/CC-BY-SA.png}}
   } % End of \item{}
   \end{enumerate}
 
