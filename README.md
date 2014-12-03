@@ -45,6 +45,12 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog
+* v1.2.3: 
+ 1. 修正統一使用'Fig'去取代'Fig.', 因為當使用'Fig.'時會產生更大的空格
+ 2. 修正在'表格 Table'中的圖片位置
+ 3. 移除在'圖片 Image'的'多張'中舊API的說明文字
+ 4. 修正在'圖片 Image'中插入多張的圖片時, 不管是主圖或子圖片都推薦使用'align = center'來進行置中, 除非是為了特殊的原因
+
 * v1.2.2: 修正在'Induection'中的'ChangeLog'和'License'中一些奇怪多餘的空白
 
 * v1.2.1: 修正中文書脊文字位置錯誤問題
