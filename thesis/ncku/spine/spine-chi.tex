@@ -28,78 +28,77 @@
 
 % ------------------------------------------------
 
+\ifthenelse{\GetLangEnableChi = 1}
 {
-  \CJKfamily{vchifont}
-  \fontsize{12}{12}\selectfont
+  \StartNewPage
 
-  \fbox{
-    \parbox[c][0.99\textheight][c]{\GetSpineWidth cm}
-    {
-      \begin{tabular}{c}
-        \rotatebox{-90}{
-          \parbox[c][\GetSpineColWidth cm][c]{{0.15\textheight}
-          }{\vspace{0.25cm}
-            \scriptsize \GetSchoolChiName \\ \GetDeptChiName
-        }}
-        \\
-        \rotatebox{-90}{
-          \parbox[c][\GetSpineColWidth cm][c]{{0.05\textheight}
-          }{\vspace{0.25cm}
-            \scriptsize \centering \makebox{\GetChiDegree 論文}
-        }}
-        \\
-        \ifthenelse{\GetLangEnableDemo = 1}
-        {
+  % 設定使用 無頁碼, 有浮水印
+  \thispagestyle{empty}
+
+  {
+    \CJKfamily{vchifont}
+    \fontsize{12}{12}\selectfont
+
+    \fbox{
+      \parbox[c][0.99\textheight][c]{\GetSpineWidth cm}
+      {
+        \begin{tabular}{c}
           \rotatebox{-90}{
-            \parbox[c][\GetSpineColWidth cm][c]{{0.5\textheight}
-            }{\vspace{0.5cm}
-            \centering \parbox{0.5\textheight}{\mbox{
-                \tiny \GetEngTitle}}
+            \parbox[c][\GetSpineColWidth cm][c]{{0.15\textheight}
+            }{\vspace{0.25cm}
+            \scriptsize \GetSchoolChiName \\ \GetDeptChiName
           }}
-        } % End of if{}
-        {
-            \ifthenelse{\SpineTitleLang = \SpineTitleUseChi}
-            {
+          \\
+          \rotatebox{-90}{
+            \parbox[c][\GetSpineColWidth cm][c]{{0.05\textheight}
+            }{\vspace{0.25cm}
+            \scriptsize \centering \makebox{\GetChiDegree 論文}
+          }}
+          \\
+          {
               \CJKfamily{normalchifont}
               \rotatebox{-90}{
                 \parbox[c][\GetSpineColWidth cm][c]{{0.5\textheight}
                 }{\vspace{0.45cm}
-                \centering \parbox{0.5\textheight}{
-                \tiny \GetChiTitle}
+                \centering \parbox{0.5\textheight}%
+                {%
+                  \ifthenelse{\SpineTitleLang = \SpineTitleUseChi}%
+                  {%
+                    \ifthenelse{\GetLangEnableDemo = 1}
+                    {\mbox{\tiny \GetEngTitle}}%
+                    {\tiny \GetChiTitle}%
+                  }%
+                  {\mbox{\tiny \GetEngTitle}}%
+                }%
               }}
               \CJKfamily{vchifont}
-            } % End of if{}
-            {
-              \rotatebox{-90}{
-                \parbox[c][\GetSpineColWidth cm][c]{{0.5\textheight}
-                }{\vspace{0.5cm}
-                \centering \parbox{0.5\textheight}{\mbox{
-                \tiny \GetEngTitle}}
-              }}
-            } % End of else{}
-        } % End of else{}
-        \\
-        \rotatebox{-90}{
-          \parbox[c][\GetSpineColWidth cm][c]{{0.08\textheight}
-          }{\vspace{0.25cm}
+          }
+          \\
+          \rotatebox{-90}{
+            \parbox[c][\GetSpineColWidth cm][c]{{0.08\textheight}
+            }{\vspace{0.25cm}
             \centering \makebox{\scriptsize
               \GetAuthorChiName \enspace 撰}
-        }}
-        \\
-        \rotatebox{-90}{
-          \parbox[c][\GetSpineColWidth cm][c]{{0.08\textheight}
-          }{
-          \vspace{0.25cm} \scriptsize \centering
-          {
-            \fontspec[RawFeature={vertical}]{Times New Roman}
-            \GetThesisYearInTaiwanYear
-          }
-          學年度
-        }}
-      \end{tabular}
-    } % End of \parbox{}
-  } % End of \fbox{}
-} % End of {}
+          }}
+          \\
+          \rotatebox{-90}{
+            \parbox[c][\GetSpineColWidth cm][c]{{0.08\textheight}
+            }{
+            \vspace{0.25cm} \scriptsize \centering
+            {
+              \fontspec[RawFeature={vertical}]{Times New Roman}
+              \GetThesisYearInTaiwanYear
+            }
+            學年度
+          }}
+        \end{tabular}
+      } % End of \parbox{}
+    } % End of \fbox{}
+
+  } % End of {}
+
+  \EndOfPage
+}{} % End of \ifthenelse{}
 
 % ------------------------------------------------
 
