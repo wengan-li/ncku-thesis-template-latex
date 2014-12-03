@@ -45,6 +45,8 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog
+* v1.2.2: 修正在'Induection'中的'ChangeLog'和'License'中一些奇怪多餘的空白
+
 * v1.2.1: 修正中文書脊文字位置錯誤問題
 
 * v1.2.0:
