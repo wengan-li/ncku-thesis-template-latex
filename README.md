@@ -45,6 +45,9 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog
+
+* v1.2.4: 增加英文封面可同時顯示中英文 \([Issue \#3](https://github.com/wengan-li/ncku-thesis-templete-latex/issues/3)\)
+
 * v1.2.3: 
  1. 修正統一使用'Fig'去取代'Fig.', 因為當使用'Fig.'時會產生更大的空格
  2. 修正在'表格 Table'中的圖片位置
@@ -58,12 +61,12 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 * v1.2.0:
  1. Appendix新增'常見問題Q&A'
  2. 把'Induection'中的'ChangeLog'改使用為單一'.tex'檔去存放
- 3. 增加字眼'共同指導'或'Co-advisor'在封面上\([Issue \#2](https://github.com/wengan-li/ncku-thesis-templete-latex/issues/2)\)
+ 3. 增加字眼'共同指導'或'Co-advisor'在封面上 \([Issue \#2](https://github.com/wengan-li/ncku-thesis-templete-latex/issues/2)\)
  4. 重新調整中文封面中的中英文名字2邊的中間空間的大小, 以防止中文名字有4個字時, 出現overlap的問題.
 
 * v1.1.6: 刪除'Induection'和'README.md'中的'版本 Version'
 
-* v1.1.5: 修正每個Chapter的第一頁的頁碼位置跟其他頁面不同的問題\([Issue \#1](https://github.com/wengan-li/ncku-thesis-templete-latex/issues/1)\)
+* v1.1.5: 修正每個Chapter的第一頁的頁碼位置跟其他頁面不同的問題 \([Issue \#1](https://github.com/wengan-li/ncku-thesis-templete-latex/issues/1)\)
 
 * v1.1.4: 修正目錄自己沒有在目錄的Linking中出現
 
