@@ -241,3 +241,17 @@
 \newcommand{\DisplayCover}{\input{./ncku/cover/cover}}
 
 % ----------------------------------------------------------------------------
+
+% Display Chinese and English name in english cover
+\newcommand{\CoverDisplayNameChiEng}{0} % Default not display both
+
+\newcommand{\SetCDBothName}[0]{\renewcommand{\CoverDisplayNameChiEng}{1}}
+
+\newcommand{\CDBothName}[0]
+{
+  \SetCDBothName
+} % End of \newcommand{}
+
+\newcommand{\GetCDBothName}[0]{\CoverDisplayNameChiEng}
+
+% ----------------------------------------------------------------------------
