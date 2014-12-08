@@ -45,6 +45,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog
+* v1.2.5: 修正在'Objective'和'Acknowledgments'的錯誤內容
 
 * v1.2.4: 增加英文封面可同時顯示中英文 \([Issue \#3](https://github.com/wengan-li/ncku-thesis-templete-latex/issues/3)\)
 
