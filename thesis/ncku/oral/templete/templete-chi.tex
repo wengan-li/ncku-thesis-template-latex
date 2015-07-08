@@ -49,59 +49,68 @@
 
 % ------------------------------------------------
 
-\vspace{0.5cm}
+\vspace{0.8cm}
 
 % ------------------------------------------------
 
 % Chinese and English title 中英文題目
-\begin{minipage}[c][3cm][t]{\textwidth}
+\begin{minipage}[c][3cm][c]{\textwidth}
   \begin{center}
-    \parbox{\textwidth}{\center \Large \GetChiTitle}
-    \ifthenelse{\GetLangEnableDemo = 0}
-    {
-      \parbox{\textwidth}{\center \Large \GetEngTitle}
-    } % End of if{}
-    {
-      \parbox{\textwidth}{\center \Large \GetEngTitle}
-      {\Large (口試文件版本1 - 圖書館現用版)}
-    } % End of else{}
+%    \parbox{\paperwidth}{\center \Large \GetChiTitle}
+%    \parbox{\paperwidth}{\center \Large \GetEngTitle}
+    \makebox[\textwidth][c]{\parbox{\paperwidth }{\center \Large \GetChiTitle}}
+    \makebox[\textwidth][c]{\parbox{\paperwidth }{\center \Large \GetEngTitle}}
   \end{center}
 \end{minipage}
 
 % ------------------------------------------------
 
-\vspace{3.7cm}
+\vspace{0.5cm}
 
 % ------------------------------------------------
 
 % 顯示 學生 的名字
 \hspace{2.4em}
-\makebox[4.8em][r]{\LARGE 研究生：}
-\makebox[7.2em][l]{\LARGE \GetAuthorChiName} \\
+\makebox[4.8em][r]{\Large 研究生：}
+\makebox[7.2em][l]{\Large \GetAuthorChiName} \\
 
 % --------------------------
-\vspace{1cm}
-\makebox[\textwidth][c]{\LARGE 本論文業經審查及口試合格特此證明} \\
-% --------------------------
-\vspace{1cm}
-\makebox[11.6cm][l]{\LARGE 論文考試委員：} \\
-% --------------------------
-
-\vspace{4.5cm}
-\hspace{2.4em}
-\makebox[4.8em][r]{\LARGE 指導教授：}
-\makebox[7.2em][l]{}
-
 \vspace{0.5cm}
-\hspace{2.4em}
-\makebox[4.8em][r]{\LARGE 系(所)主管：}
-\makebox[7.2em][l]{}
+\makebox[\textwidth][c]{\Large 本論文業經審查及口試合格特此證明} \\
+% --------------------------
+
+% 博士學位考試委員會置委員五人至九人
+% 碩士學位考試委員會置委員三人至五人
+% 口試委員人數含指導教授
+
+\vspace{1.0cm}
+\begin{minipage}[c][8.0cm][t]{\textwidth}
+  \makebox[\textwidth][l]{\Large 論文考試委員：} \\
+  \DisplayCommitteeSignatureArea
+\end{minipage}
+
+% ------------------------------------------------
+
+% Space
+\vspace{0.5cm}
+
+% ------------------------------------------------
+
+\makebox[4.8em][r]{\Large 指導教授}
+\makebox[1em][c]{\Large：}
+\makebox[7.2em][l]{\namesigdate}\\
+
+\vspace{0.8cm}
+
+\makebox[4.8em][r]{\Large 系(所)主管}
+\makebox[1em][c]{\Large：}
+\makebox[7.2em][l]{\namesigdate}\\
 
 % --------------------------
 
 % Date 日期
-\vspace{0.5cm}
-\makebox[\textwidth][s]{\LARGE 中華民國 \GetOralChiYear 年 \GetOralChiMonth 月 \GetOralChiDay 日}
+\vspace{1.0cm}
+\makebox[\textwidth][s]{\Large 中華民國 \GetOralChiYear 年 \GetOralChiMonth 月 \GetOralChiDay 日}
 
 % ------------------------------------------------
 
@@ -113,6 +122,5 @@
 
 % 重新使用學校浮水印 Watermark
 \UseSchoolWatermark
-
 % ------------------------------------------------
 
