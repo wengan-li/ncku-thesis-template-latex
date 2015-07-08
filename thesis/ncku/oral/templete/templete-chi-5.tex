@@ -56,8 +56,10 @@
 % Chinese and English title 中英文題目
 \begin{minipage}[c][3cm][c]{\textwidth}
   \begin{center}
-    \parbox{\textwidth}{\center \Large \GetChiTitle}
-    \parbox{\textwidth}{\center \Large \GetEngTitle}
+%    \parbox{\paperwidth}{\center \Large \GetChiTitle}
+%    \parbox{\paperwidth}{\center \Large \GetEngTitle}
+    \makebox[\textwidth][c]{\parbox{\paperwidth }{\center \Large \GetChiTitle}}
+    \makebox[\textwidth][c]{\parbox{\paperwidth }{\center \Large \GetEngTitle}}
   \end{center}
 \end{minipage}
 

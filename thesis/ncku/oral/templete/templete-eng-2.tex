@@ -25,13 +25,14 @@
 
 % Aligned to the center of the page
 \begin{center}
+\thispagestyle{empty}
 
 % ------------------------------------------------
 
 \begin{minipage}[c][5cm][t]{\textwidth}
   \begin{center}
     % English title 英文題目
-    \parbox{\textwidth}{\center \Large \GetEngTitle}
+    \makebox[\textwidth][c]{\parbox{\paperwidth }{\center \Large \GetEngTitle}}
 
     \vspace{0.5cm}
     \Large by \\
