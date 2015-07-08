@@ -45,6 +45,11 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog
+* v1.2.6:
+1. 增加可放置論文題目的長度. 修正在封面和Oral的樣板中, 會在題目沒有很長情況下, 被強迫斷行. 長度控制交由同學自己斷行, 以造出比較漂亮題目
+2. 修正書脊中題目跟學位不是同一個高度的問題
+3. 修正英文Oral文件的樣板會出現頁碼的問題
+
 * v1.2.5: 修正在'Objective'和'Acknowledgments'的錯誤內容
 
 * v1.2.4: 增加英文封面可同時顯示中英文 \([Issue \#3](https://github.com/wengan-li/ncku-thesis-templete-latex/issues/3)\)
