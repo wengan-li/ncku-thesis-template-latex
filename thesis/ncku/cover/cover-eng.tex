@@ -49,7 +49,7 @@
     \makebox[\textwidth][c]{\LARGE \GetEngDegreeThesis} \\
 
     \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}%
-      {\vspace{0.5cm}\makebox[5cm][c]{\LARGE (Draft)}}{}
+      {\vspace{0.5cm}\makebox[5cm][c]{\LARGE \GetTextDraftEng}}{}
   \end{center}
 \end{minipage}
 
@@ -200,7 +200,7 @@
         {%
           \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
             {}%
-            {\Large Co-advisor：}%
+            {\Large Co-Advisor：}%
         }
         \makebox[10.0em][l]
         {%
