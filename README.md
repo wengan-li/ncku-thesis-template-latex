@@ -46,8 +46,18 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 
 ### ChangeLog
 * v1.3.0: 重大改版 (如果是使用升級方式, 請注意以下所修改的部份有沒有影響自身的版本)
+    + **封面**:
+        a. 更改 '學生' -> '研究生'
+        b. 更改 '教授' -> '博士', 'Prof.' -> 'Dr.' (因為要去除職稱上的差別)
+        c. 修正錯字, 'Co-advisor' -> 'Co-Advisor'
+        d. 更正 'Master's Dissertation' -> 'Master's Thesis'
+    + **書脊**:
+        a. 修正英文版的日期會因月份的長度, 而造成年份的位置不是跟月份對齊
+    + **功能**:
+        a. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面和書脊
     + **其他**:
         a. 更新CONTRIBUTE中的名單和使用的稱號
+        b. 修正檔名, 應該是'misc.bib', 而不是'msic.bib'
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
