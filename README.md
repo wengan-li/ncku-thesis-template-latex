@@ -45,6 +45,10 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog
+* v1.3.0: 重大改版 (如果是使用升級方式, 請注意以下所修改的部份有沒有影響自身的版本)
+    + **其他**:
+        a. 更新CONTRIBUTE中的名單和使用的稱號
+
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
 * v1.2.7:
