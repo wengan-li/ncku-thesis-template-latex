@@ -45,7 +45,10 @@
     \makebox[8cm][s]{\Huge \GetDeptChiName} \\
 
     \vspace{1cm}
-    \makebox[5cm][s]{\Huge \GetChiDegree 論文} \\
+    \makebox[5cm][s]{\Huge \GetChiDegree 論文}%
+
+    \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}%
+      {\vspace{1cm}\makebox[5cm][c]{\Huge (初稿)}}{}
   \end{center}
 \end{minipage}
 % ------------------------------------------------

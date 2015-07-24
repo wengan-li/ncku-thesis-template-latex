@@ -47,6 +47,9 @@
 
     \vspace{0.5cm}
     \makebox[\textwidth][c]{\LARGE \GetEngDegreeThesis} \\
+
+    \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}%
+      {\vspace{0.5cm}\makebox[5cm][c]{\LARGE (Draft)}}{}
   \end{center}
 \end{minipage}
 
