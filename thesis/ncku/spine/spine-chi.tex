@@ -65,10 +65,16 @@
                   \ifthenelse{\SpineTitleLang = \SpineTitleUseChi}%
                   {%
                     \ifthenelse{\GetLangEnableDemo = 1}
-                    {\mbox{\tiny \GetEngTitle}}%
-                    {\tiny \GetChiTitle}%
+                    {\mbox{\tiny \GetEngTitle %
+                      \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}{\ \ \ \ \ \GetTextDraftEng}{}%
+                      }}%
+                    {\tiny \GetChiTitle %
+                      \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}{\ \ \ \ \ \GetTextDraftChi}{}%
+                      }%
                   }%
-                  {\mbox{\tiny \GetEngTitle}}%
+                  {\mbox{\tiny \GetEngTitle %
+                      \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}{\ \ \ \ \ \GetTextDraftEng}{}%
+                      }}%
                 }%
               }}
               \CJKfamily{vchifont}
@@ -140,7 +146,9 @@
                 \parbox[c][\GetSpineColWidth cm][c]{{0.5\textheight}
                 }{\vspace{0.45cm}
                 \centering \parbox{0.5\textheight}{
-                \tiny \GetChiTitle}
+                \tiny \GetChiTitle %
+                      \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}{\ \ \ \ \ \GetTextDraftChi}{}%
+                }
               }}
               \CJKfamily{vchifont}
           }
