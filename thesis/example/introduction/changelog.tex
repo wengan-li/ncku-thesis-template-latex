@@ -9,6 +9,8 @@
           \item 修正錯字, 'Co-advisor' -> 'Co-Advisor'
           \item 更正 'Master's Dissertation' -> 'Master's Thesis'
           \item 增加封面內頁和修改封面的學校Logo. 封面是顯示所有封面內容, 但沒有學校Logo. 而內頁是顯示所有封面內容, 但有學校Logo. 在'context.tex'中使用'\texttt{\DisplayInsideCover}'來使用.
+          \item 更名API 'SetThesisDate' -> 'SetCoverDate', 底層轉到'\SetCoverDate'來保留這API
+          \item 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
         \end{enumerate}
       \item[書脊] \hfill
         \begin{enumerate}
@@ -27,8 +29,9 @@
         \begin{enumerate}
           \item 更新CONTRIBUTE中的名單和使用的稱號
           \item 修正檔名, 應該是'misc.bib', 而不是'msic.bib' (\href{https://github.com/wengan-li/ncku-thesis-template-latex/issues/4}{Issue \#4})
-          \item 修正錯字 'Templete' -> 'Template', 受影響的API為 '\texttt{\DisplayOralTemplate}' (原為 '\texttt{\DisplayOralTemplete}') \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
+          \item 修正錯字 'Templete' -> 'Template', 受影響的API為 '\texttt{\DisplayOralTemplate}' (原為 '\texttt{\DisplayOralTemplete}', 底層轉到'\texttt{\DisplayOralTemplate}'來保留這API) \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
           \item 删除 '封面' 和 '口試証明文件' 出現在目錄
+          \item 修正封面和口試証明上的日期因轉換時造成的奇怪空格.
         \end{enumerate}
     \end{description}
 

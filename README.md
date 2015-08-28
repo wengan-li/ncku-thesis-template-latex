@@ -52,6 +52,8 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         c. 修正錯字, 'Co-advisor' -> 'Co-Advisor'
         d. 更正 'Master's Dissertation' -> 'Master's Thesis'
         e. 增加封面內頁和修改封面的學校Logo. 封面是顯示所有封面內容, 但沒有學校Logo. 而內頁是顯示所有封面內容, 但有學校Logo. 在'context.tex'中使用'\DisplayInsideCover'來使用.
+        f. 更名API 'SetThesisDate' -> 'SetCoverDate', 底層轉到'\SetCoverDate'來保留這API
+        g. 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
     + **書脊**:
         a. 修正英文版的日期會因月份的長度, 而造成年份的位置不是跟月份對齊
     + **功能**:
@@ -62,8 +64,9 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
     + **其他**:
         a. 更新CONTRIBUTE中的名單和使用的稱號
         b. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)
-        c. 修正錯字 'Templete' -> 'Template', 受影響的API為 '\DisplayOralTemplate' (原為 '\DisplayOralTemplete') \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
+        c. 修正錯字 'Templete' -> 'Template', 受影響的API為 '\DisplayOralTemplate' (原為 '\DisplayOralTemplete', 底層轉到'\DisplayOralTemplate'來保留這API) \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
         d. 删除 '封面' 和 '口試証明文件' 出現在目錄
+        e. 修正封面和口試証明上的日期因轉換時造成的奇怪空格.
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
