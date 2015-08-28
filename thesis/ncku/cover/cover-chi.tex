@@ -165,7 +165,9 @@
 
 % Date 日期
 \vspace{0.5cm}
-\makebox[8cm][s]{\Large 中華民國 \GetThesisYearInTaiwanYear 年 \GetThesisMonth 月}
+\ifthenelse{\equal{\GetFlagDegreeType}{\ValueDegreeMaster}}%
+{\makebox[8cm][s]{\Large 中華民國 \GetThesisYearInTaiwanYear 年 \GetThesisMonth 月}}%
+{\makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYear 年 \GetThesisMonth 月 \GetOralEngDay 日}}
 
 % ------------------------------------------------
 

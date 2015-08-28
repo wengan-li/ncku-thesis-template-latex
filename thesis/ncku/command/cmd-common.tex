@@ -20,33 +20,33 @@
 % Some helper functions
 
 \newcommand{\GetMonthInEng}[1]
-{
-  \ifthenelse{\equal{#1}{1}}{January}{}
-  \ifthenelse{\equal{#1}{2}}{February}{}
-  \ifthenelse{\equal{#1}{3}}{March}{}
-  \ifthenelse{\equal{#1}{4}}{April}{}
-  \ifthenelse{\equal{#1}{5}}{May}{}
-  \ifthenelse{\equal{#1}{6}}{June}{}
-  \ifthenelse{\equal{#1}{7}}{July}{}
-  \ifthenelse{\equal{#1}{8}}{August}{}
-  \ifthenelse{\equal{#1}{9}}{September}{}
-  \ifthenelse{\equal{#1}{10}}{October}{}
-  \ifthenelse{\equal{#1}{11}}{November}{}
-  \ifthenelse{\equal{#1}{12}}{December}{}
+{%
+  \ifthenelse{\equal{#1}{1}}{January}{}%
+  \ifthenelse{\equal{#1}{2}}{February}{}%
+  \ifthenelse{\equal{#1}{3}}{March}{}%
+  \ifthenelse{\equal{#1}{4}}{April}{}%
+  \ifthenelse{\equal{#1}{5}}{May}{}%
+  \ifthenelse{\equal{#1}{6}}{June}{}%
+  \ifthenelse{\equal{#1}{7}}{July}{}%
+  \ifthenelse{\equal{#1}{8}}{August}{}%
+  \ifthenelse{\equal{#1}{9}}{September}{}%
+  \ifthenelse{\equal{#1}{10}}{October}{}%
+  \ifthenelse{\equal{#1}{11}}{November}{}%
+  \ifthenelse{\equal{#1}{12}}{December}{}%
 } % End of \newcommand{}
 
 % 計算出台灣民國幾年
 % Get the year using Taiwans' year
-\newcommand{\SetOralTaiwanYear}[1]
-{
-  \FPeval{\OralTaiwanYearResult}{clip(#1 - 1911)}
+\newcommand{\SetOralTaiwanYear}[1]%
+{%
+  \FPeval{\OralTaiwanYearResult}{clip(#1 - 1911)}%
 } % End of \newcommand{}
 
 % 計算出台灣民國幾年
 % Get the year using Taiwans' year
-\newcommand{\SetThesisTaiwanYear}[1]
-{
-  \FPeval{\ThesisTaiwanYearResult}{clip(#1 - 1911)}
+\newcommand{\SetThesisTaiwanYear}[1]%
+{%
+  \FPeval{\ThesisTaiwanYearResult}{clip(#1 - 1911)}%
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------

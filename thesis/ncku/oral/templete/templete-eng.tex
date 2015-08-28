@@ -47,22 +47,25 @@
 
 % 顯示 校名, 系所名, 論文種類
 \begin{minipage}[c][5cm][t]{\textwidth}
+  \begin{center}\Large %
   \ifthenelse{\equal{\GetEngDegree}{Master}}
-  {
+  {%
     % Master
-    \makebox[\textwidth][c]{\Large A thesis submitted to the graduate division in partial fulfillment}
-    \makebox[\textwidth][c]{\Large of the requirements for the degree of Master of Science in}
+    A thesis submitted to the graduate division in partial fulfillment\\
+    of the requirements for the degree of Master of Science in%
   } % End of if{}
-  {
+  {%
     % Phd
-    \makebox[\textwidth][c]{\Large Submitted in partial fulfillment of the requirements}
-    \makebox[\textwidth][c]{\Large for the degree of Doctor of Philosophy in}
+    Submitted in partial fulfillment of the requirements\\%
+    for the degree of Doctor of Philosophy in%
   } % End of else{}
-  \makebox[\textwidth][c]{\Large \centerline{\GetDeptEngName}}
-  \makebox[\textwidth][c]{\Large \centerline{\GetCollEngName}}
-  \makebox[\textwidth][c]{\Large \centerline{\GetSchoolEngName}}
-  \makebox[\textwidth][c]{\Large \centerline{Taiwan, Taiwan, R.O.C.}}
-  \parbox{\textwidth}{\center \Large \GetOralEngMonth \GetOralEngDay, \GetOralEngYear}
+  \GetDeptEngName\\%
+  \GetCollEngName\\%
+  \GetSchoolEngName\\%
+  Taiwan, Taiwan, R.O.C.\\%
+  \vspace{0.1cm}
+  \GetOralEngDay \thinspace \thinspace \GetThesisMonthInEng \thinspace \thinspace \GetThesisYear%
+  \end{center}
 \end{minipage}
 
 % ------------------------------------------------

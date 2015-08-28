@@ -230,10 +230,11 @@
 
 % Date 日期
 \vspace{0.5cm}
-
 \begin{minipage}{\textwidth}
-  \begin{center}
-    \Large \GetThesisMonthInEng \thinspace \GetThesisYear
+  \begin{center}\Large %
+    \ifthenelse{\equal{\GetFlagDegreeType}{\ValueDegreeMaster}}%
+      {\GetThesisMonthInEng \thinspace \GetThesisYear}%
+      {\GetOralEngDay \thinspace \thinspace \GetThesisMonthInEng \thinspace \thinspace \GetThesisYear}
   \end{center}
 \end{minipage}
 
