@@ -54,6 +54,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         e. 增加封面內頁和修改封面的學校Logo. 封面是顯示所有封面內容, 但沒有學校Logo. 而內頁是顯示所有封面內容, 但有學校Logo. 在'context.tex'中使用'\DisplayInsideCover'來使用.
         f. 更名API 'SetThesisDate' -> 'SetCoverDate', 底層轉到'\SetCoverDate'來保留這API
         g. 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
+        h. 更新在context.tex中, 有關要使用哪種封面的說明.
     + **書脊**:
         a. 修正英文版的日期會因月份的長度, 而造成年份的位置不是跟月份對齊
     + **功能**:
