@@ -68,22 +68,29 @@
 % thesis 是指論文的通稱
 % dissertation 指的是博士的論文
 
-% 碩士論文是             Master's thesis
-% 但是一般碩士論文都會說   Master's dissertation
+% 碩士論文  Master's thesis
+% 博士論文  Doctoral dissertation
 
-% 博士論文也可以說是      Doctoral thesis
-% 但是一般博士論文都會說   Doctoral dissertation
+\newcommand{\ValueDegreeMaster}{0}
+\newcommand{\ValueDegreePhd}{1}
+\newcommand{\FlagDegreeType}{\ValueDegreePhd} % Default
+\newcommand{\GetFlagDegreeType}{\FlagDegreeType}
+\newcommand{\SetFlagDegreeType}[1]{\renewcommand{\FlagDegreeType}{#1}}
 
 \newcommand{\degreeCname}{碩士/博士} % Default
 \newcommand{\degreeEname}{Master / Doctor} % Default
 \newcommand{\degreeThesisEname}{Master's Thesis / Doctoral Dissertation} % Default
 
+\newcommand{\GetChiDegree}[0]{\degreeCname}
+\newcommand{\GetEngDegree}[0]{\degreeEname}
+\newcommand{\GetEngDegreeThesis}[0]{\degreeThesisEname}
 \newcommand{\SetChiDegree}[1]{\renewcommand{\degreeCname}{#1}}
 \newcommand{\SetEngDegree}[1]{\renewcommand{\degreeEname}{#1}}
 \newcommand{\SetEngDegreeThesis}[1]{\renewcommand{\degreeThesisEname}{#1}}
 
 \newcommand{\PhdDegree}[0]
 {
+  \SetFlagDegreeType{\ValueDegreePhd}
   \SetChiDegree{博士}
   \SetEngDegree{Doctor}
   \SetEngDegreeThesis{Doctoral Dissertation}
@@ -91,14 +98,12 @@
 
 \newcommand{\MasterDegree}[0]
 {
+  \SetFlagDegreeType{\ValueDegreeMaster}
   \SetChiDegree{碩士}
   \SetEngDegree{Master}
   \SetEngDegreeThesis{Master's Thesis}
 } % End of \newcommand{}
 
-\newcommand{\GetChiDegree}[0]{\degreeCname}
-\newcommand{\GetEngDegree}[0]{\degreeEname}
-\newcommand{\GetEngDegreeThesis}[0]{\degreeThesisEname}
 % ----------------------------------------------------------------------------
 
 % --- Date 日期 ---
@@ -107,7 +112,8 @@
 \newcommand{\ThesisYear}{2014}  % Default
 \newcommand{\ThesisMonth}{1}    % Default
 
-\newcommand{\SetThesisDate}[2]
+\newcommand{\SetThesisDate}[2]{\SetThesisDate{#1}{#2}} % For backporting
+\newcommand{\SetCoverDate}[2]
 {
   \SetThesisTaiwanYear{#1}
   \renewcommand{\ThesisYear}{#1}
@@ -128,6 +134,8 @@
 \newcommand{\OralEngDay}{1}         % Default
 
 \newcommand{\GetOralChiYear}[0]{\OralChiYear}
+\newcommand{\GetOralYearInTaiwanYear}[0]
+{\SetThesisTaiwanYear{\OralEngYear}\ThesisTaiwanYearResult}
 \newcommand{\GetOralChiMonth}[0]{\OralChiMonth}
 \newcommand{\GetOralChiDay}[0]{\OralChiDay}
 \newcommand{\GetOralEngYear}[0]{\OralEngYear}
@@ -248,10 +256,7 @@
 
 \newcommand{\SetCDBothName}[0]{\renewcommand{\CoverDisplayNameChiEng}{1}}
 
-\newcommand{\CDBothName}[0]
-{
-  \SetCDBothName
-} % End of \newcommand{}
+\newcommand{\CDBothName}[0]{\SetCDBothName}
 
 \newcommand{\GetCDBothName}[0]{\CoverDisplayNameChiEng}
 
