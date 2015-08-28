@@ -171,17 +171,16 @@
 % 口試証明文件 Document of oral presentation
 
 % 要顯示圖片還是範例
-\newcommand{\OralDocumentImage}{0}
-\newcommand{\OralDocumentTemplate}{1}
-\newcommand{\OralDocumentEngOnly}{0}
-\newcommand{\OralDocument}{\OralDocumentTemplate} % Default
+\newcommand{\ValueOralDocumentTypeImage}{0}
+\newcommand{\ValueOralDocumentTypeTemplate}{1}
+\newcommand{\FlagOralDocumentType}{\OralDocumentTemplate} % Default
+\newcommand{\GetOralDocumentType}{\FlagOralDocumentType} % Default
 
+\newcommand{\DisplayOralTemplete}[0]{\DisplayOralTemplate} % For backporting
 \newcommand{\DisplayOralTemplate}[0]
-  {\renewcommand{\OralDocument}{\OralDocumentTemplate}}
+  {\renewcommand{\FlagOralDocumentType}{\ValueOralDocumentTypeTemplate}}
 \newcommand{\DisplayOralImage}[0]
-  {\renewcommand{\OralDocument}{\OralDocumentImage}}
-\newcommand{\DisplayOralEngOnly}[0]
-  {\renewcommand{\OralDocumentEngOnly}{1}}
+  {\renewcommand{\FlagOralDocumentType}{\ValueOralDocumentTypeImage}}
 
 % The path of the image that the oral document
 \newcommand\OralDocumentImageChiPath{./example/oral/oral-chi.pdf} % Default

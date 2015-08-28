@@ -20,14 +20,13 @@
 
 % ----------------------------------------------------------------------------
 
-\ifthenelse{\OralDocument = \OralDocumentTemplete}
+\ifthenelse{\equal{\GetOralDocumentType}{\ValueOralDocumentTypeTemplate}}%
 {
   % -------------------------- 顯示範本 --------------------------
 
+  % Chinese version
   \StartNewPage
   %\thispagestyle{empty}
-
-  % Chinese version
   \input{./ncku/oral/templete/templete-chi}
 
   % English version
@@ -38,10 +37,9 @@
 {
   % ---------------------- 顯示圖片, Image in PDF format ----------------------
 
+  % Chinese version
   \StartNewPage
   \thispagestyle{empty}
-
-  % Chinese version
   \includepdf{\GetOralImageChiPath}
 
   % English version
