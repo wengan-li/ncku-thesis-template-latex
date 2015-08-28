@@ -55,11 +55,15 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
     + **書脊**:
         a. 修正英文版的日期會因月份的長度, 而造成年份的位置不是跟月份對齊
     + **功能**:
-        a. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面和書脊
+        a. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面和書脊 在'conf.tex'中使用'\DisplayDraft'來使用.
+    + **Appendix**:
+        a. Appendix 更新2015版的 '口試注意事項' 和 '學位論文上傳說明'
+        b. 補上引用文件的URL
     + **其他**:
         a. 更新CONTRIBUTE中的名單和使用的稱號
         b. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)
         c. 修正錯字 'Templete' -> 'Template', 受影響的API為 '\DisplayOralTemplate' (原為 '\DisplayOralTemplete') \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
+        d. 删除 '封面' 和 '口試証明文件' 出現在目錄
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
