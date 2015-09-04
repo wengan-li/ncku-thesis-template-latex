@@ -17,32 +17,20 @@
 
 % ----------------------------------------------------------------------------
 
-% Acknowledgments
 \newcommand{\StartAcknowledgments}
 {
   \StartNewPage
-
-  % Add to "Table of Contents"
-  \addcontentsline{toc}{chapter}{Acknowledgments}
-
-  % Title
-  \centerline{\Large \textbf{Acknowledgments}}
-
-%  \IfNoValueF{#1}{\label{#1}}
+  \chapter*{Acknowledgements}
+  \addcontentsline{toc}{chapter}{Acknowledgements}
+  \pagestyle{plain}
 } % End of \newcommand{}
 
-%\newcommand{\StartAcknowledgmentsChi}[1]
 \newcommand{\StartAcknowledgmentsChi}
 {
   \StartNewPage
-
-  % Add to "Table of Contents"
+  \chapter*{致謝}
   \addcontentsline{toc}{chapter}{致謝}
-
-  % Title
-  \centerline{\Large \textbf{致謝}}
-
-%  \IfNoValueF{#1}{\label{#1}}
+  \pagestyle{plain}
 } % End of \newcommand{}
 
 \def \EndAcknowledgments {\EndOfPage}

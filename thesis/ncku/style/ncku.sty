@@ -38,6 +38,11 @@
 
 % ------------------------------------------------
 
+% 預設前幾頁的頁碼是用羅馬數字
+\pagenumbering{roman}
+
+% ------------------------------------------------
+
 % Move in by 0.05in on both left and right
 %\oddsidemargin 0.38in \evensidemargin 0.7in
 %\textwidth 5.65in
@@ -57,7 +62,7 @@
 %\parskip 5 pt plus 1.5pt minus .5pt
 %\itemsep 0 pt plus .5pt
 
-%\pagenumbering{roman}
+
 
 
 
@@ -261,14 +266,14 @@
     \default@spacing
     \global\@topnum\z@ \@afterindentfalse %\@afterindenttrue
     \secdef\@chapter\@schapter}
-\begin{comment}
+
 \def\shortchapter{%
     \clearpage
     \short@page \setcounter{regular@short}{1} %<<--
     \default@spacing
     \global\@topnum\z@ \@afterindentfalse %\@afterindenttrue
     \secdef\@chapter\@schapter}
-\end{comment}
+
 
 \newcount\chap@or@app\chap@or@app=1
 
@@ -535,15 +540,6 @@
 %    \centerline{\graduation@month\ \graduation@year}
 %    \clearpage
 %    \setcounter{regular@short}{1}}
-
-%
-%       Acknowledgements
-%
-
-%\def\acknowledgements{%
-%    \shortchapter*{Acknowledgements}
-%    \addcontentsline{toc}{chapter}{Acknowledgements}
-%    \pagestyle{plain}}
 
 %
 %       Preface
