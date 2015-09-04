@@ -45,7 +45,12 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog 版本修改
-* v1.3.0: 重大改版 (如果是使用直接取代舊版檔案的升級方式, 請注意以下所修改的部份有沒有影響自身的內容)
+* v1.3.0: **重大改版**
+    由於所修改的內容影響全部的使用方式和排版, 故比較推薦以重新編寫的方式來升級.
+    + **排版**:
+        a. 使用原本'utdiss.sty'來重構'ncku.sty'. 保留有用的內容, 其他都盡量刪去.
+        b. 修正內頁邊界錯誤, 原本排版為大約上3.8cm、下4.3cm(含頁碼)、左3.5cm、右3.4cm. 現修正為上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm, 以符合學校的格式.
+        c. 更新封面邊界的使用方式, 產出效果跟舊版效果是一樣
     + **封面**:
         a. 更改 '學生' -> '研究生'
         b. 更改 '教授' -> '博士', 'Prof.' -> 'Dr.' (因為要去除職稱上的差別)
@@ -56,7 +61,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         g. 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
         h. 更新在context.tex中, 有關要使用哪種封面的說明.
     + **書脊**:
-        a. 修正英文版的日期會因月份的長度, 而造成年份的位置不是跟月份對齊
+        a. 修正因空白影響而造成英文版的日期會因月份的長度, 而造成年份的位置不是跟月份對齊
     + **功能**:
         a. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面和書脊 在'conf.tex'中使用'\DisplayDraft'來使用.
     + **Appendix**:
@@ -71,8 +76,6 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         f. 更新README.md中, CC Logo改使用HTML方式來對齊
         g. 更新README.md中, 畢業論文要求補上引用的URL
         h. 更正 '資訊工程系' -> '資訊工程研究所'
-        i. 使用原本'utdiss.sty'來重構'ncku.sty'. 保留有用的內容, 其他都盡量刪去.
-        j. 修正內頁邊界距離錯誤, 原本排版為大約上3.8cm、下4.3cm(含頁碼)、左3.5cm、右3.4cm. 現修正為上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm, 以符合學校的格式.
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
