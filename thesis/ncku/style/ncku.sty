@@ -184,7 +184,7 @@
     \def\default@spacing{\baselineskip=15.5pt plus .5pt minus .2pt}}
 \def\specialspacing{%
     \def\default@spacing{\baselineskip=21.5pt plus .5pt minus .2pt}}
-
+\begin{comment}
 %
 % Macros to adjust the shape of table of contents.
 % Adopted from macros of Stefan Timphus that do not indent
@@ -251,7 +251,7 @@
     \advance\leftskip\@tempdima \hskip -\leftskip #1\nobreak\hfil
     \nobreak\hbox to\@pnumwidth{\hss #2}\par
     \penalty\@highpenalty \endgroup}
-
+\end{comment}
 \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
     \ifnum \c@secnumdepth >\m@ne \Large\bf \@chapapp{} \thechapter
     \par \vskip 15pt \fi \Large \bf #1\par \nobreak \vskip 35pt}}
@@ -664,20 +664,20 @@
 %       Table of Content page
 %
 \def\tableofcontents{%
-    \shortchapter*{Table of Contents}
+    \chapter*{Table of Contents}
     \pagestyle{plain}
     \baselineskip=15pt plus .5pt minus .5pt
     \@starttoc{toc}}
 
 \def\listoffigures{%
-    \shortchapter*{List of Figures}
+    \chapter*{List of Figures}
     \addcontentsline{toc}{chapter}{List of Figures}
     \pagestyle{plain}
     \baselineskip=15pt plus .5pt minus .5pt
     \@starttoc{lof}}
 
 \def\listoftables{%
-    \shortchapter*{List of Tables}
+    \chapter*{List of Tables}
     \addcontentsline{toc}{chapter}{List of Tables}
     \pagestyle{plain}
     \baselineskip=15pt plus .5pt minus .5pt
