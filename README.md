@@ -39,19 +39,19 @@
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
-![CC-BY-NC-SA](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png "CC Attribution-NonCommercial-ShareAlike License")
+<img style='float: center' src='https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png'>
 
 ### Other 其他
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
 
-### ChangeLog
+### ChangeLog 版本修改
 * v1.3.0: 重大改版 (如果是使用直接取代舊版檔案的升級方式, 請注意以下所修改的部份有沒有影響自身的內容)
     + **封面**:
         a. 更改 '學生' -> '研究生'
         b. 更改 '教授' -> '博士', 'Prof.' -> 'Dr.' (因為要去除職稱上的差別)
         c. 修正錯字, 'Co-advisor' -> 'Co-Advisor'
         d. 更正 'Master's Dissertation' -> 'Master's Thesis'
-        e. 增加封面內頁和修改封面的學校Logo. 封面是顯示所有封面內容, 但沒有學校Logo. 而內頁是顯示所有封面內容, 但有學校Logo. 在'context.tex'中使用'\DisplayInsideCover'來使用.
+        e. 增加內頁. 封面主要用在印刷版, 如精裝版 或 平裝版. 而內頁主要用在電子版 + 印刷版. 在'context.tex'中使用'\DisplayInsideCover'來使用.
         f. 更名API 'SetThesisDate' -> 'SetCoverDate', 底層轉到'\SetCoverDate'來保留這API
         g. 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
         h. 更新在context.tex中, 有關要使用哪種封面的說明.
@@ -60,7 +60,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
     + **功能**:
         a. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面和書脊 在'conf.tex'中使用'\DisplayDraft'來使用.
     + **Appendix**:
-        a. Appendix 更新2015版的 '口試注意事項' 和 '學位論文上傳說明'
+        a. 更新2015版的 '口試注意事項' 和 '學位論文上傳說明'
         b. 補上引用文件的URL
     + **其他**:
         a. 更新CONTRIBUTE中的名單和使用的稱號
@@ -68,6 +68,11 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         c. 修正錯字 'Templete' -> 'Template', 受影響的API為 '\DisplayOralTemplate' (原為 '\DisplayOralTemplete', 底層轉到'\DisplayOralTemplate'來保留這API) \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
         d. 删除 '封面' 和 '口試証明文件' 出現在目錄
         e. 修正封面和口試証明上的日期因轉換時造成的奇怪空格.
+        f. 更新README.md中, CC Logo改使用HTML方式來對齊
+        g. 更新README.md中, 畢業論文要求補上引用的URL
+        h. 更正 '資訊工程系' -> '資訊工程研究所'
+        i. 使用原本'utdiss.sty'來重構'ncku.sty'. 保留有用的內容, 其他都盡量刪去.
+        j. 修正內頁邊界距離錯誤, 原本排版為大約上3.8cm、下4.3cm(含頁碼)、左3.5cm、右3.4cm. 現修正為上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm, 以符合學校的格式.
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
