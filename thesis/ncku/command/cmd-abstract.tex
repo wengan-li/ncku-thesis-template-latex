@@ -18,33 +18,29 @@
 % ----------------------------------------------------------------------------
 
 % Abstract
-\newcommand{\StartChiAbstract}
+\newcommand{\StartChiAbstract}{\StartAbstractChi}
+\newcommand{\StartAbstractChi}
 {
   \StartNewPage
-
-  % Add to "Table of Contents"
-  \addcontentsline{toc}{chapter}{Abstract (Chinese)}
-
-  % Title
-  \centerline{\Large \textbf{摘要}}
+  \chapter*{摘要}
+  \addcontentsline{toc}{chapter}{摘要}
+  \pagestyle{plain}
 } % End of \newcommand{}
 
 \newcommand{\StartAbstract}
 {
   \StartNewPage
-
-  % Add to "Table of Contents"
-  \addcontentsline{toc}{chapter}{Abstract (English)}
-
-  % Title
-  \centerline{\Large \textbf{Abstract}}
+  \chapter*{Abstract}
+  \addcontentsline{toc}{chapter}{Abstract}
+  \pagestyle{plain}
 } % End of \newcommand{}
 
-\newcommand{\EndChiAbstract}
+\newcommand{\EndChiAbstract}{\EndAbstractChi}
+\newcommand{\EndAbstractChi}
 {
   % Keyword
   \AbstractKeyword
-
+  %
   \EndOfPage
 } % End of \newcommand{}
 
@@ -52,7 +48,7 @@
 {
   % Keyword
   \ExtendedAbstractKeyword
-
+  %
   \EndOfPage
 } % End of \newcommand{}
 
@@ -188,23 +184,23 @@
           \ifthenelse{\equal{\GetKeywordsA}{\empty}}
           {}
           {
-            {\noindent \bf Key words:} \GetKeywordsA
+            {\noindent \bf Keywords:} \GetKeywordsA
           } % End of else{}
         } % End of if{}
         {
-          {\noindent \bf Key words:} \GetKeywordsA, \GetKeywordsB
+          {\noindent \bf Keywords:} \GetKeywordsA, \GetKeywordsB
         } % End of else{}
       } % End of if{}
       {
-        {\noindent \bf Key words:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC
+        {\noindent \bf Keywords:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC
       } % End of else{}
     } % End of if{}
     {
-      {\noindent \bf Key words:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD
+      {\noindent \bf Keywords:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD
     } % End of else{}
   } % End of if{}
   {
-    {\noindent\bf Key words:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD, \GetKeywordsE
+    {\noindent\bf Keywords:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD, \GetKeywordsE
   } % End of else{}
 } % End of \newcommand{}
 
