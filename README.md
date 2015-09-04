@@ -51,6 +51,9 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         a. 使用原本'utdiss.sty'來重構'ncku.sty'. 保留有用的內容, 其他都盡量刪去.
         b. 修正內頁邊界錯誤, 原本排版為大約上3.8cm、下4.3cm(含頁碼)、左3.5cm、右3.4cm. 現修正為上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm, 以符合學校的格式.
         c. 更新封面邊界的使用方式, 產出效果跟舊版效果是一樣
+        d. 調整Chapter和Section的字體大小, 除了Chapter字體比較大, Section跟內容的字體是一樣, 但以粗體來顯示
+        e. 更新Acknowledgments的標題位置
+        f. 更新Abstract的標題位置
     + **封面**:
         a. 更改 '學生' -> '研究生'
         b. 更改 '教授' -> '博士', 'Prof.' -> 'Dr.' (因為要去除職稱上的差別)
@@ -67,15 +70,24 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
     + **Appendix**:
         a. 更新2015版的 '口試注意事項' 和 '學位論文上傳說明'
         b. 補上引用文件的URL
+    + **目錄**:
+        a. 删除 '封面' 和 '口試証明文件' 出現在目錄
+        b. 更正 '致謝' 在目錄顯示正確
+        c. 更正 '摘要' 在目錄顯示正確
+        d. 目錄使用新的style以壓縮內容
+    + **摘要**:
+        a. 修正英文顯示 'Key words' -> 'Keywords'
+        b. 更名API 'StartChiAbstract' -> 'StartAbstractChi', 底層轉到'\StartAbstractChi'來保留這API
+        c. 更名API 'EndChiAbstract' -> 'EndAbstractChi', 底層轉到'\EndAbstractChi'來保留這API
     + **其他**:
         a. 更新CONTRIBUTE中的名單和使用的稱號
         b. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)
         c. 修正錯字 'Templete' -> 'Template', 受影響的API為 '\DisplayOralTemplate' (原為 '\DisplayOralTemplete', 底層轉到'\DisplayOralTemplate'來保留這API) \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
-        d. 删除 '封面' 和 '口試証明文件' 出現在目錄
-        e. 修正封面和口試証明上的日期因轉換時造成的奇怪空格.
-        f. 更新README.md中, CC Logo改使用HTML方式來對齊
-        g. 更新README.md中, 畢業論文要求補上引用的URL
-        h. 更正 '資訊工程系' -> '資訊工程研究所'
+        d. 修正封面和口試証明上的日期因轉換時造成的奇怪空格.
+        e. 更新README.md中, CC Logo改使用HTML方式來對齊
+        f. 更新README.md中, 畢業論文要求補上引用的URL
+        g. 更正 '資訊工程系' -> '資訊工程研究所'
+        h. 修正引用的API '\RefXXX' 所引用的內容前面會有多餘的空白
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
