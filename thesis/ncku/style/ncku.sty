@@ -1,7 +1,7 @@
 % ------------------------------------------------
-% 台灣國立成功大學碩博士排版設定
+% 台灣國立成功大學(NCKU)碩博士排版設定
 %
-% 基礎於陳朝鈞老師所修改自的 'utdiss.sty', 並在2015年9月4號重新修補.
+% 基礎於陳朝鈞老師所修改的 'utdiss.sty', 並在2015年9月4號重新修補.
 % 有關修補內容可參考 https://github.com/wengan-li/ncku-thesis-template-latex 中
 % v1.3.0的ChangeLog.
 %
@@ -67,7 +67,7 @@
 %
 % Macros to change the location of page number on the page head
 %
-
+\begin{comment}
 \newlength{\my@head@width}
 \setlength{\my@head@width}{\textwidth}
 \addtolength{\my@head@width}{0.25in}
@@ -77,7 +77,7 @@
 {\rlap{\parbox[b]{\my@head@width}{\raggedright#2\strut}}\hfill
 \parbox[b]{\my@head@width}{\centering#3\strut}\hfill
 \llap{\parbox[b]{\my@head@width}{\raggedleft#4\strut}}}}}#5}
-\begin{comment}
+
 % Adopted from `report.sty' and modified
 \def\ps@myheadings{\let\@mkboth\@gobbletwo
 \def\@oddhead{\@fancyhead\relax{\hbox{}}{\hbox{}}{\rm\thepage}\hss}
@@ -97,6 +97,7 @@
 %          of TeX, do NOT modify these macros.              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+
 \newlength{\regular@textheight}
 \newlength{\short@textheight}
 \setlength{\regular@textheight}{\textheight}
@@ -114,13 +115,16 @@
     \@colroom\textheight
     \vsize\textheight}
 
-\newcounter{regular@short}
 
+\newcounter{regular@short}
+\begin{comment}
 \let\old@opcol\@opcol
 \def\@opcol{%
     \ifnum\value{regular@short}=0\regular@page\old@opcol
     \else\short@page\old@opcol\fi}
+\end{comment}
 
+\begin{comment}
 %
 % Macros to set spacing of texts and quotations
 %                          ^^^^^ ^^^ ^^^^^^^^^^
@@ -165,7 +169,7 @@
     \def\endquote{\endonehalf@space\endold@quote}
     \def\quotation{\old@quotation\onehalf@space}
     \def\endquotation{\endonehalf@space\endold@quotation}}
-
+\end{comment}
 % Regular text spacing
 \def\doublespacing{%
     \def\default@spacing{\baselineskip=20pt plus .5pt minus .2pt}}
@@ -339,11 +343,11 @@
      {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
 
  \def\section{\@startsection{section}{1}{\z@}%
-    {4.6ex plus -1ex minus -.2ex}{.3ex plus .2ex}{\large\bf}}
+    {4.6ex plus -1ex minus -.2ex}{.3ex plus .2ex}{\bf}}
 \def\subsection{\@startsection{subsection}{2}{\z@}%
-    {3.9ex plus -1ex minus -.2ex}{.2ex plus .2ex}{\normalsize\bf}}
+    {3.9ex plus -1ex minus -.2ex}{.2ex plus .2ex}{\bf}}
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-    {3.25ex plus -1ex minus -.2ex}{.1ex plus .2ex}{\normalsize\it}}
+    {3.25ex plus -1ex minus -.2ex}{.1ex plus .2ex}{\bf}}
 \begin{comment}
 %\def\thebibliography#1{\chapter*{Bibliography}
 %    \addcontentsline{toc}{chapter}{Bibliography}
