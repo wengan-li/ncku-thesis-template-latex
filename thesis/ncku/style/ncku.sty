@@ -660,9 +660,14 @@
     \addcontentsline{toc}{chapter}{Acknowledgements}
     \pagestyle{plain}}
 \end{comment}
-%
-%       Table of Content page
-%
+
+% --------------------------
+
+% 目錄
+
+\usepackage[tocfullflat]{tocstyle}
+\usetocstyle{standard}
+
 \def\tableofcontents{%
     \chapter*{Table of Contents}
     \pagestyle{plain}
@@ -682,6 +687,16 @@
     \pagestyle{plain}
     \baselineskip=15pt plus .5pt minus .5pt
     \@starttoc{lot}}
+
+% --------------------------
+
+% Sytle of itemize
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$-$}
+\renewcommand{\labelitemiii}{$\diamond$}
+\renewcommand{\labelitemiv}{$\ast$}
+
+% --------------------------
 
 \begin{comment}
 %
