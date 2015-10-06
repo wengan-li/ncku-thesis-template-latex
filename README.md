@@ -46,7 +46,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 
 ### ChangeLog 版本修改
 * v1.3.0: **重大改版**
-    由於所修改的內容影響全部的使用方式和排版, 故比較推薦以重新編寫的方式來升級.
+    由於所修改的內容影響全部內容和排版, 故比較推薦以重新編寫的方式來升級.
     + **排版**:
         a. 使用原本'utdiss.sty'來重構'ncku.sty'. 保留有用的內容, 其他都盡量刪去.
         b. 修正內頁邊界錯誤, 原本排版為大約上3.8cm、下4.3cm(含頁碼)、左3.5cm、右3.4cm. 現修正為上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm, 以符合學校的格式.
@@ -64,7 +64,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         g. 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
         h. 更新在context.tex中, 有關要使用哪種封面的說明.
     + **書脊**:
-        a. 修正因空白影響而造成英文版的日期會因月份的長度, 而造成年份的位置不是跟月份對齊
+        a. 移除書脊功能, 移除任何相關檔案和說明. 基於有影印店說, 就算我們有提供書脊檔案給他們, 他們都會自己使用一些工具重新弄一個書脊出來以給影印機所印出來, 故模板不再需要提供書脊功能.
     + **功能**:
         a. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面和書脊 在'conf.tex'中使用'\DisplayDraft'來使用.
     + **Appendix**:
@@ -87,7 +87,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         e. 更新README.md中, CC Logo改使用HTML方式來對齊
         f. 更新README.md中, 畢業論文要求補上引用的URL
         g. 更正 '資訊工程系' -> '資訊工程研究所'
-        h. 修正引用的API '\RefXXX' 所引用的內容前面會有多餘的空白
+        h. 修正引用的API '\RefXXX' 系列所引用的內容前面會有多餘的空白
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
