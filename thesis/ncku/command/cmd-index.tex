@@ -18,6 +18,26 @@
 % ----------------------------------------------------------------------------
 
 % Use to include the index files
-\newcommand{\DisplayIndex}{\input{./ncku/index/index}}
+\newcommand{\DisplayIndex}{\tableofcontents}
+\newcommand{\DisplayTablesIndex}{\listoftables}
+\newcommand{\DisplayFiguresIndex}{\listoffigures}
+
+% ----------------------------------------------------------------------------
+
+% Flag
+\newcommand\IndexInChiMode{1}
+\newcommand\IndexInEngMode{2}
+\newcommand\VarIndexMode{\IndexInEngMode}  % Default
+
+\newcommand{\SetIndexChiMode}{\renewcommand{\VarIndexMode}{\IndexInChiMode}}
+\newcommand{\SetIndexEngMode}{\renewcommand{\VarIndexMode}{\IndexInEngMode}}
+
+\newcommand{\GetIndexMode}{\VarIndexMode}
+
+% ----------------------------------------------------------------------------
+
+% Mode
+\newcommand{\IndexChiMode}{\SetIndexChiMode}
+\newcommand{\IndexEngMode}{\SetIndexEngMode}
 
 % ----------------------------------------------------------------------------
