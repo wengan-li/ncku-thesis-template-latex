@@ -75,6 +75,9 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         b. 更正 '致謝' 在目錄顯示正確
         c. 更正 '摘要' 在目錄顯示正確
         d. 目錄使用新的style以壓縮內容
+        e. 目錄可在在'conf.tex'中使用'\IndexChiMode'或'\IndexEngMode'來控制所顯示的標題的文字語言.
+        f. 更新'\DisplayIndex', 並新增'\DisplayTablesIndex' 和 '\DisplayFiguresIndex' 在'context.tex'以控制需要顯示的索引內容, 以免得沒有相關的內容, 但多了一頁沒意義的索引頁.
+
     + **摘要**:
         a. 修正英文顯示 'Key words' -> 'Keywords'
         b. 更名API 'StartChiAbstract' -> 'StartAbstractChi', 底層轉到'\StartAbstractChi'來保留這API
