@@ -19,34 +19,32 @@
 
 % Chapters
 \DeclareDocumentCommand{\StartChapter}{+m +g}
-{
-  \chapter{#1}
-  \IfNoValueF{#2}{\label{#2}}
-%  \baselineskip=26pt
-%  \thispagestyle{empty}
+{%
+  \chapter{#1}%
+  \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
 
 \def \EndChapter {\EndOfPage}
 
 % Section
 \DeclareDocumentCommand{\StartSection}{+m +g}
-{
-  \section{#1}
-  \IfNoValueF{#2}{\label{#2}}
+{%
+  \section{#1}%
+  \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
 
 % Sub-Section
 \DeclareDocumentCommand{\StartSubSection}{+m +g}
-{
-  \subsection{#1}
-  \IfNoValueF{#2}{\label{#2}}
+{%
+  \subsection{#1}%
+  \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
 
 % Sub-Sub-Section
 \DeclareDocumentCommand{\StartSubSubSection}{+m +g}
-{
-  \subsubsection{#1}
-  \IfNoValueF{#2}{\label{#2}}
+{%
+  \subsubsection{#1}%
+  \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
 
 % ----------------------------------------------------------------------------

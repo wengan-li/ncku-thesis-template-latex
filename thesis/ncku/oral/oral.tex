@@ -23,29 +23,27 @@
 \ifthenelse{\equal{\GetOralDocumentType}{\ValueOralDocumentTypeTemplate}}%
 {
   % -------------------------- 顯示範本 --------------------------
-
   % Chinese version
-  \StartNewPage
-  \thispagestyle{empty}
-  \input{./ncku/oral/templete/templete-chi}
-
+  \StartNewPage%
+  \thispagestyle{empty}%
+  \input{./ncku/oral/templete/templete-chi}%
+  %
   % English version
-  \StartNewPage
-  \thispagestyle{empty}
-  \input{./ncku/oral/templete/templete-eng}
+  \StartNewPage%
+  \thispagestyle{empty}%
+  \input{./ncku/oral/templete/templete-eng}%
 } % End of if{}
 {
   % ---------------------- 顯示圖片, Image in PDF format ----------------------
-
   % Chinese version
-  \StartNewPage
-  \thispagestyle{empty}
-  \includepdf{\GetOralImageChiPath}
-
+  \StartNewPage%
+  \thispagestyle{empty}%
+  \includepdf{\GetOralImageChiPath}%
+  %
   % English version
-  \StartNewPage
-  \thispagestyle{empty}
-  \includepdf{\GetOralImageEngPath}
+  \StartNewPage%
+  \thispagestyle{empty}%
+  \includepdf{\GetOralImageEngPath}%
 } % End of else{}
 
 % ----------------------------------------------------------------------------
