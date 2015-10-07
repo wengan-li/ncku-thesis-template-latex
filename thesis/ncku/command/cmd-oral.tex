@@ -20,7 +20,7 @@
 % ----------------------------------------------------------------------------
 
 % 口試委員 Committee member(s)
-\newcommand{\CommitteeSize}{8} % Default
+\newcommand{\CommitteeSize}{9} % Default
 \newcommand{\GetCommitteeSize}[0]{\CommitteeSize}
 \newcommand{\SetCommitteeSize}[1]
 {
@@ -29,8 +29,8 @@
     \renewcommand{\CommitteeSize}{2}
   } % End of if{}
   {
-    \ifthenelse{#1 > 8}
-    {\renewcommand{\CommitteeSize}{8}}
+    \ifthenelse{#1 > 9}
+    {\renewcommand{\CommitteeSize}{9}}
     {\renewcommand{\CommitteeSize}{#1}}
   } % End of else{}
 } % End of \newcommand{}
@@ -38,123 +38,152 @@
 % 口試委員簽名區
 \newcommand{\DisplayCommitteeSignatureArea}
 {
+  \par
   % 口試委員 至少2位
   \ifthenelse{\CommitteeSize = 2}
   {
-    \begin{minipage}[c][6.4cm][c]{\textwidth}
+    \begin{minipage}[c][8.0cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
   } % End of if{}
   {} % End of else{}
-
+  %
   \ifthenelse{\CommitteeSize = 3}
   {
-    \begin{minipage}[c][3.2cm][c]{\textwidth}
+    \begin{minipage}[c][4.0cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
-    \begin{minipage}[c][3.2cm][c]{\textwidth}
+    %
+    \begin{minipage}[c][4.0cm][c]{\textwidth}
       \makebox[\textwidth][c]{\namesigdate}
     \end{minipage}
   } % End of if{}
   {} % End of else{}
-
+  %
   \ifthenelse{\CommitteeSize = 4}
   {
-    \begin{minipage}[c][3.2cm][c]{\textwidth}
+    \begin{minipage}[c][4.0cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
-    \begin{minipage}[c][3.2cm][c]{\textwidth}
+    %
+    \begin{minipage}[c][4.0cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
   } % End of if{}
   {} % End of else{}
-
+  %
   \ifthenelse{\CommitteeSize = 5}
   {
-    \begin{minipage}[c][2.13cm][c]{\textwidth}
+    \begin{minipage}[c][2.65cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
-    \begin{minipage}[c][2.13cm][c]{\textwidth}
+    %
+    \begin{minipage}[c][2.65cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
-    \begin{minipage}[c][2.13cm][c]{\textwidth}
+    %
+    \begin{minipage}[c][2.65cm][c]{\textwidth}
       \makebox[\textwidth][c]{\namesigdate}
     \end{minipage}
   } % End of if{}
   {} % End of else{}
-
+  %
   \ifthenelse{\CommitteeSize = 6}
   {
-    \begin{minipage}[c][2.13cm][c]{\textwidth}
+    \begin{minipage}[c][2.65cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
-    \begin{minipage}[c][2.13cm][c]{\textwidth}
+    %
+    \begin{minipage}[c][2.65cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
-    \begin{minipage}[c][2.13cm][c]{\textwidth}
+    %
+    \begin{minipage}[c][2.65cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
   } % End of if{}
   {} % End of else{}
-
+  %
   \ifthenelse{\CommitteeSize = 7}
   {
-    \begin{minipage}[c][1.6cm][c]{\textwidth}
+    \begin{minipage}[c][2.0cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
-    \begin{minipage}[c][1.6cm][c]{\textwidth}
+    %
+    \begin{minipage}[c][2.0cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
-    \begin{minipage}[c][1.6cm][c]{\textwidth}
+    %
+    \begin{minipage}[c][2.0cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
-    \begin{minipage}[c][1.6cm][c]{\textwidth}
+    %
+    \begin{minipage}[c][2.0cm][c]{\textwidth}
       \makebox[\textwidth][c]{\namesigdate}
     \end{minipage}
   } % End of if{}
   {} % End of else{}
-
+  %
   \ifthenelse{\CommitteeSize = 8}
+  {
+    \begin{minipage}[c][2.0cm][c]{\textwidth}
+      \makebox[0.5\textwidth][c]{\namesigdate}
+      \makebox[0.5\textwidth][c]{\namesigdate}
+    \end{minipage}
+    %
+    \begin{minipage}[c][2.0cm][c]{\textwidth}
+      \makebox[0.5\textwidth][c]{\namesigdate}
+      \makebox[0.5\textwidth][c]{\namesigdate}
+    \end{minipage}
+    %
+    \begin{minipage}[c][2.0cm][c]{\textwidth}
+      \makebox[0.5\textwidth][c]{\namesigdate}
+      \makebox[0.5\textwidth][c]{\namesigdate}
+    \end{minipage}
+    %
+    \begin{minipage}[c][2.0cm][c]{\textwidth}
+      \makebox[0.5\textwidth][c]{\namesigdate}
+      \makebox[0.5\textwidth][c]{\namesigdate}
+    \end{minipage}
+  } % End of if{}
+  {} % End of else{}
+  %
+  \ifthenelse{\CommitteeSize = 9}
   {
     \begin{minipage}[c][1.6cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
+    %
     \begin{minipage}[c][1.6cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
+    %
     \begin{minipage}[c][1.6cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
     \end{minipage}
-
+    %
     \begin{minipage}[c][1.6cm][c]{\textwidth}
       \makebox[0.5\textwidth][c]{\namesigdate}
       \makebox[0.5\textwidth][c]{\namesigdate}
+    \end{minipage}
+    %
+    \begin{minipage}[c][1.6cm][c]{\textwidth}
+      \makebox[\textwidth][c]{\namesigdate}
     \end{minipage}
   } % End of if{}
   {} % End of else{}

@@ -83,8 +83,10 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         c. 更名API 'EndChiAbstract' -> 'EndAbstractChi', 底層轉到'\EndAbstractChi'來保留這API
         d. 可使用'\SetAbstractChiKeywords' 或 '\SetAbstractEngKeywords' 來設定中英文版摘要中的關鍵字
     + **口試証明文件**:
-        a. 範例的中英文版本可獨立顯示 \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
-        b. 口試圖檔可只使用中/英文版, 或同時使用. \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
+        a. 範例的中英文版本可單獨顯示 \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
+        b. 口試圖檔可單獨使用中/英文版, 或同時使用. \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
+        c. 調整了一下範例的設計, 以讓'指導教授'和'系 (所) 主管'中間的空間比較分開
+        d. 調整了一下範例中口試委員簽署的空間, 以讓口試委員數量最多可放9位
     + **其他**:
         a. 更新CONTRIBUTE中的名單和使用的稱號
         b. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)
