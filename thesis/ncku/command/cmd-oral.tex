@@ -160,7 +160,6 @@
   {} % End of else{}
 } % End of \newcommand{}
 
-
 % ----------------------------------------------------------------------------
 
 % Signature line
@@ -183,21 +182,28 @@
   {\renewcommand{\FlagOralDocumentType}{\ValueOralDocumentTypeImage}}
 
 % The path of the image that the oral document
-\newcommand\OralDocumentImageChiPath{./example/oral/oral-chi.pdf} % Default
-\newcommand\OralDocumentImageEngPath{./example/oral/oral-eng.pdf} % Default
+\newcommand\OralDocumentImageChiPath{\empty} % Default
+\newcommand\OralDocumentImageEngPath{\empty} % Default
 \newcommand{\SetOralImageChi}[1]
 {\renewcommand{\OralDocumentImageChiPath}{./context/oral/#1}}
 \newcommand{\SetOralImageEng}[1]
 {\renewcommand{\OralDocumentImageEngPath}{./context/oral/#1}}
 
-\newcommand{\SetOralImage}[2]
-{
-  \SetOralImageChi{#1}
-  \SetOralImageEng{#2}
-} % End of \newcommand{}
-
 \newcommand{\GetOralImageChiPath}[0]{\OralDocumentImageChiPath}
 \newcommand{\GetOralImageEngPath}[0]{\OralDocumentImageEngPath}
+
+\newcommand{\ValueDisplayOralTemplateOn}{1}
+\newcommand{\ValueDisplayOralTemplateOff}{0}
+\newcommand{\VarDisplayOralTemplateChi}{\ValueDisplayOralTemplateOff}
+\newcommand{\VarDisplayOralTemplateEng}{\ValueDisplayOralTemplateOff}
+
+\newcommand{\DisplayOralChiTemplate}[0]
+  {\renewcommand{\VarDisplayOralTemplateChi}{\ValueDisplayOralTemplateOn}}
+\newcommand{\GetDisplayOralChiTemplate}[0]{\VarDisplayOralTemplateChi}
+
+\newcommand{\DisplayOralEngTemplate}[0]
+  {\renewcommand{\VarDisplayOralTemplateEng}{\ValueDisplayOralTemplateOn}}
+\newcommand{\GetDisplayOralTemplateEng}[0]{\VarDisplayOralTemplateEng}
 
 % ----------------------------------------------------------------------------
 

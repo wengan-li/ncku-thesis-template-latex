@@ -155,6 +155,16 @@
 
 % 顯示 / 使用 口試範例版本
 \DisplayOralTemplate
+
+% --- 範例版本的語言 ---
+% 選擇你需要的範例
+% (Only work with \DisplayOralTemplate)
+% \DisplayOralChiTemplate    % 顯示中文範例版本
+% \DisplayOralEngTemplate    % 顯示英文範例版本
+
+\DisplayOralChiTemplate    % 顯示中文範例版本
+\DisplayOralEngTemplate    % 顯示英文範例版本
+
 % --- 口試委員 Committee member(s) ---
 % 口試委員數量 (至少2位, 最多8位, 預設為8位)
 % (Only work with \DisplayOralTemplate)
@@ -168,11 +178,13 @@
 % 使用口試圖片檔案
 % 把你的圖片放在'context/oral'下
 % 之後設定中英文版所對應是哪一個檔案
-% (例子用的'oral-chi.pdf'和'oral-eng.pdf'已放在'context/oral'中)
-%
-%\DisplayOralImage                % 顯示圖片
-%\SetOralImageChi{oral-chi.pdf}   % 中文口試檔案
-%\SetOralImageEng{oral-eng.pdf}   % 英文口試檔案
+% 就算已啟用\DisplayOralImage,
+% 但沒有填寫圖檔檔名的話, 都不會顯示出來.
+% (例子用的'example-oral-chi.pdf'和'example-oral-eng.pdf'已放在'context/oral'中)
+
+%\DisplayOralImage                % 顯示圖檔
+%\SetOralImageChi{example-oral-chi.pdf}   % 中文口試檔案
+%\SetOralImageEng{example-oral-eng.pdf}   % 英文口試檔案
 
 % ----------------------------------------------------------------------------
 
