@@ -164,9 +164,21 @@
 
   \item
   {
-    \textbf{書脊 Spine}
+    \textbf{目錄 Index}
 
-    用來控制當使用spine.tex來產生書脊時內容控制. 預設書脊上會使用英文題目, 使用\verb|\SpineTitleChi|(把\verb|'%'|拿掉)以設定改使用中文題目.
+    可設定目錄的標題文字使用預設的中文或是英文\\
+    \verb|\IndexChiMode|:  標題文字為中文\\
+    \verb|\IndexEngMode|:  標題文字為英文
+
+    另外可個別設定標題文字.\\
+    預設的目錄標題為: 目錄 (中文) / Table of Contents (英文)\\
+    預設的表格目錄標題為: 表格 (中文) / List of Tables (英文)\\
+    預設的圖片目錄標題為: 圖片 (中文) / List of Figures (英文)\\
+    如應為預設文字不是你所希望的, 那可以使用這邊去個別設定你所希望的文字, 不分中文英.
+
+    \verb|\SetIndexTitleText|: 設定目錄標題\\
+    \verb|\SetTablesIndexTitleText|: 設定表格目錄標題\\
+    \verb|\SetFiguresIndexTitleText|: 設定圖片目錄標題
   } % End of \item{}
 
   \item
