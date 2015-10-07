@@ -24,20 +24,40 @@
 
 % ----------------------------------------------------------------------------
 
-% Flag
-\newcommand\IndexInChiMode{1}
-\newcommand\IndexInEngMode{2}
-\newcommand\VarIndexMode{\IndexInEngMode}  % Default
+\newcommand\VarIndexTitleChi{目錄}
+\newcommand\VarIndexTitleEng{Table of Contents}
+\newcommand\VarIndexTitleText{\VarIndexTitleEng}  % Default
+\newcommand\GetIndexTitleText{\VarIndexTitleText}
+\newcommand{\SetIndexTitleText}[1]{\renewcommand{\VarIndexTitleText}{#1}}
 
-\newcommand{\SetIndexChiMode}{\renewcommand{\VarIndexMode}{\IndexInChiMode}}
-\newcommand{\SetIndexEngMode}{\renewcommand{\VarIndexMode}{\IndexInEngMode}}
+% ----------------------------------------------------------------------------
 
-\newcommand{\GetIndexMode}{\VarIndexMode}
+\newcommand\VarTablesIndexTitleChi{表格}
+\newcommand\VarTablesIndexTitleEng{List of Tables}
+\newcommand\VarTablesIndexTitleText{\VarTablesIndexTitleEng}  % Default
+\newcommand\GetTablesIndexTitleText{\VarTablesIndexTitleText}
+\newcommand{\SetTablesIndexTitleText}[1]{\renewcommand{\VarTablesIndexTitleText}{#1}}
+
+% ----------------------------------------------------------------------------
+
+\newcommand\VarFiguresIndexTitleChi{圖片}
+\newcommand\VarFiguresIndexTitleEng{List of Figures}
+\newcommand\VarFiguresIndexTitleText{\VarFiguresIndexTitleEng}  % Default
+\newcommand\GetFiguresIndexTitleText{\VarFiguresIndexTitleText}
+\newcommand{\SetFiguresIndexTitleText}[1]{\renewcommand{\VarFiguresIndexTitleText}{#1}}
 
 % ----------------------------------------------------------------------------
 
 % Mode
-\newcommand{\IndexChiMode}{\SetIndexChiMode}
-\newcommand{\IndexEngMode}{\SetIndexEngMode}
+\newcommand{\IndexChiMode}{%
+  \SetIndexTitleText{\VarIndexTitleChi}
+  \SetTablesIndexTitleText{\VarTablesIndexTitleChi}
+  \SetFiguresIndexTitleText{\VarFiguresIndexTitleChi}
+}
+\newcommand{\IndexEngMode}{%
+  \SetIndexTitleText{\VarIndexTitleEng}
+  \SetTablesIndexTitleText{\VarTablesIndexTitleEng}
+  \SetFiguresIndexTitleText{\VarFiguresIndexTitleEng}
+}
 
 % ----------------------------------------------------------------------------

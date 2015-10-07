@@ -185,10 +185,25 @@
 
 % ----------------------------------------------------------------------------
 
-% --- 目錄文字語言 Language of Index ---
+% --- 目錄 Index ---
+% 設定可獨立使用, 但只有最後設定的一方有效
 
-\IndexChiMode
-%\IndexEngMode
+% 標題文字語言 Language
+% 目錄的標題文字使用預設的中文或是英文
+% \IndexChiMode:  標題文字為中文
+% \IndexEngMode:  標題文字為英文
+
+\IndexEngMode
+
+% 標題文字 Text of title
+% 預設的目錄標題為: 目錄 (中文) / Table of Contents (英文)
+% 預設的表格目錄標題為: 表格 (中文) / List of Tables (英文)
+% 預設的圖片目錄標題為: 圖片 (中文) / List of Figures (英文)
+% 如應為預設文字不是你所希望的, 那可以使用這邊去個別設定你所希望的文字, 不分中文英.
+
+\SetIndexTitleText{Table of Contents / 目錄}
+\SetTablesIndexTitleText{List of Tables / 表格}
+\SetFiguresIndexTitleText{List of Figures / 圖片}
 
 % ----------------------------------------------------------------------------
 
