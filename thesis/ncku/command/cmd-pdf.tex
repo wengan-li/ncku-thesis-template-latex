@@ -46,40 +46,8 @@
       pdfsubject  = {},
     }
 
-    \ifthenelse{\equal{\GetKeywordsE}{\empty}}
-    {
-      \ifthenelse{\equal{\GetKeywordsD}{\empty}}
-      {
-        \ifthenelse{\equal{\GetKeywordsC}{\empty}}
-        {
-          \ifthenelse{\equal{\GetKeywordsB}{\empty}}
-          {
-            \ifthenelse{\equal{\GetKeywordsA}{\empty}}
-            {}
-            {
-              \hypersetup
-              {pdfkeywords = {\GetKeywordsA}}
-            } % End of else{}
-          } % End of if{}
-          {
-            \hypersetup
-            {pdfkeywords = {\GetKeywordsA, \GetKeywordsB}}
-          } % End of else{}
-        } % End of if{}
-        {
-          \hypersetup
-          {pdfkeywords = {\GetKeywordsA, \GetKeywordsB, \GetKeywordsC}}
-        } % End of else{}
-      } % End of if{}
-      {
-        \hypersetup
-        {pdfkeywords = {\GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD}}
-      } % End of else{}
-    } % End of if{}
-    {
-      \hypersetup
-      {pdfkeywords = {\GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD, \GetKeywordsE}}
-    } % End of else{}
+    \ifthenelse{\equal{\GetPDFKeywords}{\empty}}{}{%
+      \hypersetup{pdfkeywords = {\GetPDFKeywords}}}
   \fi
 } % End of \newcommand{}
 

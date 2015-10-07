@@ -177,11 +177,39 @@
 % ----------------------------------------------------------------------------
 
 % --- 關鍵字 Keyword ---
-% 最多5個關鍵字
+% 最多9個關鍵字
+% 為了方便同學自行設定
+% 故所產出來的PDF檔案中的關鍵字和內文摘要的關鍵字
+% 可獨立個別設定
 
-%\SetKeywords{Keyword A}{Keyword B}{Keyword C}{Keyword D}{Keyword E}
+% \SetKeywords是設定所產出來的PDF中的Keyword那一項目
+% 可同時填寫中英文
+% e.g
+% \SetKeywords{Keyword A (關鍵字 A)}{Keyword B (關鍵字 B)}{Keyword C (關鍵字 C)}
+% 或單純中文或英文
+% \SetKeywords{Keyword A}{Keyword B}{Keyword C}
+% \SetKeywords{關鍵字 A}{關鍵字 B}{關鍵字 C}
 
 \SetKeywords{NCKU Thesis/Dissertation template}{Graduate}{Latex/XeLaTex}
+
+% 摘要中的關鍵字
+% 為了方便同學們能達到以下情況:
+% a. 只寫中文版摘要
+% b. 只寫英文版摘要
+% c. 同時寫中英文版摘要
+% 故中英文版的關鍵字都是可個別設定
+% \SetAbstractChiKeywords: 用來設定中文版摘要
+% \SetAbstractEngKeywords: 用來設定英文版摘要
+% 所以只要使用你需要寫的版本則可.
+% 但如果2個版本都要寫, 則2個都同時使用則可.
+% 沒有填寫的話, 則摘要中的關鍵字部份是不會顯示出來.
+%
+% e.g
+% \SetAbstractChiKeywords{關鍵字 A}{關鍵字 B}{關鍵字 C}
+% \SetAbstractEngKeywords{Keyword A}{Keyword B}{Keyword C}
+
+\SetAbstractChiKeywords{國立成功大學畢業論文模板}{碩博士}{Latex/XeLaTex}
+\SetAbstractEngKeywords{NCKU Thesis/Dissertation Template}{Graduate}{Latex/XeLaTex}
 
 % ----------------------------------------------------------------------------
 

@@ -39,7 +39,8 @@
 \newcommand{\EndAbstractChi}
 {
   % Keyword
-  \AbstractKeyword
+  \ifthenelse{\equal{\GetAbstractChiKeywords}{\empty}}{}{%
+      \par{\noindent \bf 關鍵字:} \GetAbstractChiKeywords}
   %
   \EndOfPage
 } % End of \newcommand{}
@@ -47,7 +48,8 @@
 \newcommand{\EndAbstract}
 {
   % Keyword
-  \ExtendedAbstractKeyword
+  \ifthenelse{\equal{\GetAbstractEngKeywords}{\empty}}{}{%
+      \par{\noindent \bf Keyword:} \GetAbstractEngKeywords}
   %
   \EndOfPage
 } % End of \newcommand{}
@@ -113,7 +115,8 @@
     \ExtAbstractChapter{SUMMARY}{#1}
 
     % Keyword
-    \ExtendedAbstractKeyword
+    \par
+    {\noindent \bf Keyword:} \GetAbstractEngKeywords
   \end{framed}
 } % End of \newcommand{}
 
@@ -132,76 +135,6 @@
   \textbf{#1}
 
   #2
-} % End of \newcommand{}
-
-\newcommand{\AbstractKeyword}[0]
-{
-  % Keyword
-  \par
-  \ifthenelse{\equal{\GetKeywordsE}{\empty}}
-  {
-    \ifthenelse{\equal{\GetKeywordsD}{\empty}}
-    {
-      \ifthenelse{\equal{\GetKeywordsC}{\empty}}
-      {
-        \ifthenelse{\equal{\GetKeywordsB}{\empty}}
-        {
-          \ifthenelse{\equal{\GetKeywordsA}{\empty}}
-          {}
-          {
-            {\noindent \bf 關鍵字:} \GetKeywordsA
-          } % End of else{}
-        } % End of if{}
-        {
-          {\noindent \bf 關鍵字:} \GetKeywordsA, \GetKeywordsB
-        } % End of else{}
-      } % End of if{}
-      {
-        {\noindent \bf 關鍵字:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC
-      } % End of else{}
-    } % End of if{}
-    {
-      {\noindent \bf 關鍵字:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD
-    } % End of else{}
-  } % End of if{}
-  {
-    {\noindent\bf 關鍵字:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD, \GetKeywordsE
-  } % End of else{}
-} % End of \newcommand{}
-
-\newcommand{\ExtendedAbstractKeyword}[0]
-{
-  % Keyword
-  \par
-  \ifthenelse{\equal{\GetKeywordsE}{\empty}}
-  {
-    \ifthenelse{\equal{\GetKeywordsD}{\empty}}
-    {
-      \ifthenelse{\equal{\GetKeywordsC}{\empty}}
-      {
-        \ifthenelse{\equal{\GetKeywordsB}{\empty}}
-        {
-          \ifthenelse{\equal{\GetKeywordsA}{\empty}}
-          {}
-          {
-            {\noindent \bf Keywords:} \GetKeywordsA
-          } % End of else{}
-        } % End of if{}
-        {
-          {\noindent \bf Keywords:} \GetKeywordsA, \GetKeywordsB
-        } % End of else{}
-      } % End of if{}
-      {
-        {\noindent \bf Keywords:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC
-      } % End of else{}
-    } % End of if{}
-    {
-      {\noindent \bf Keywords:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD
-    } % End of else{}
-  } % End of if{}
-  {
-    {\noindent\bf Keywords:} \GetKeywordsA, \GetKeywordsB, \GetKeywordsC, \GetKeywordsD, \GetKeywordsE
-  } % End of else{}
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------

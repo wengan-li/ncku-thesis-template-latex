@@ -51,34 +51,6 @@
 
 % ----------------------------------------------------------------------------
 
-% --- 關鍵字 Keyword ---
-\newcommand{\KeywordsA}{} % Default
-\newcommand{\KeywordsB}{} % Default
-\newcommand{\KeywordsC}{} % Default
-\newcommand{\KeywordsD}{} % Default
-\newcommand{\KeywordsE}{} % Default
-\newcommand{\SetKeywordsA}[1]{\renewcommand{\KeywordsA}{#1}}
-\newcommand{\SetKeywordsB}[1]{\renewcommand{\KeywordsB}{#1}}
-\newcommand{\SetKeywordsC}[1]{\renewcommand{\KeywordsC}{#1}}
-\newcommand{\SetKeywordsD}[1]{\renewcommand{\KeywordsD}{#1}}
-\newcommand{\SetKeywordsE}[1]{\renewcommand{\KeywordsE}{#1}}
-\newcommand{\GetKeywordsA}[0]{\KeywordsA}
-\newcommand{\GetKeywordsB}[0]{\KeywordsB}
-\newcommand{\GetKeywordsC}[0]{\KeywordsC}
-\newcommand{\GetKeywordsD}[0]{\KeywordsD}
-\newcommand{\GetKeywordsE}[0]{\KeywordsE}
-\DeclareDocumentCommand{\SetKeywords}{
-  m G{\empty} G{\empty} G{\empty} G{\empty}}
-{
-  \SetKeywordsA{#1}
-  \ifthenelse{\equal{#2}{\empty}}{}{\SetKeywordsB{#2}}
-  \ifthenelse{\equal{#3}{\empty}}{}{\SetKeywordsC{#3}}
-  \ifthenelse{\equal{#4}{\empty}}{}{\SetKeywordsD{#4}}
-  \ifthenelse{\equal{#5}{\empty}}{}{\SetKeywordsE{#5}}
-} % End of \newcommand{}
-
-% ----------------------------------------------------------------------------
-
 % In the minimal example below the macro \modulo{<a>}{<b>} stores the result of <a> mod <b> in the macro \result
 \newcommand{\modulo}[2]{%
   \FPeval{\result}{trunc(#1-(#2*trunc(#1/#2,0)),0)}%

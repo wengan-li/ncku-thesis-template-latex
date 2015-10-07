@@ -1,0 +1,80 @@
+%
+% This file is part of ncku-thesis-template.
+%
+% ncku-thesis-template is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify
+% it under the terms of the Attribution-NonCommercial-ShareAlike
+% 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with ncku-thesis-template.
+%
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
+
+% Some common helper function
+
+% ----------------------------------------------------------------------------
+
+% Common function
+\def\AppendKeywordString#1#2{\edef#1{#1#2}}
+
+% --- 關鍵字 Keyword ---
+\def\VarPDFKeywords{\empty} % initialize
+\def\GetPDFKeywords{\VarPDFKeywords} % initialize
+\def\AppendPDFKeyword#1{\AppendKeywordString{\VarPDFKeywords}{#1}}
+
+\DeclareDocumentCommand{\SetKeywords}{
+  m G{\empty} G{\empty}
+  G{\empty} G{\empty} G{\empty}
+  G{\empty} G{\empty} G{\empty}}
+{
+  \AppendPDFKeyword{#1}
+  \ifthenelse{\equal{#2}{\empty}}{}{\AppendPDFKeyword{, #2}}
+  \ifthenelse{\equal{#3}{\empty}}{}{\AppendPDFKeyword{, #3}}
+  \ifthenelse{\equal{#4}{\empty}}{}{\AppendPDFKeyword{, #4}}
+  \ifthenelse{\equal{#5}{\empty}}{}{\AppendPDFKeyword{, #5}}
+  \ifthenelse{\equal{#6}{\empty}}{}{\AppendPDFKeyword{, #6}}
+  \ifthenelse{\equal{#7}{\empty}}{}{\AppendPDFKeyword{, #7}}
+  \ifthenelse{\equal{#8}{\empty}}{}{\AppendPDFKeyword{, #8}}
+  \ifthenelse{\equal{#9}{\empty}}{}{\AppendPDFKeyword{, #9}}
+} % End of \newcommand{}
+
+\def\VarAbstractChiKeywords{\empty} % initialize
+\def\GetAbstractChiKeywords{\VarAbstractChiKeywords} % initialize
+\DeclareDocumentCommand{\SetAbstractChiKeywords}{
+  m G{\empty} G{\empty}
+  G{\empty} G{\empty} G{\empty}
+  G{\empty} G{\empty} G{\empty}}
+{
+  \AppendKeywordString{\VarAbstractChiKeywords}{#1}
+  \ifthenelse{\equal{#2}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #2}}
+  \ifthenelse{\equal{#3}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #3}}
+  \ifthenelse{\equal{#4}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #4}}
+  \ifthenelse{\equal{#5}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #5}}
+  \ifthenelse{\equal{#6}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #6}}
+  \ifthenelse{\equal{#7}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #7}}
+  \ifthenelse{\equal{#8}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #8}}
+  \ifthenelse{\equal{#9}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #9}}
+} % End of \newcommand{}
+
+\def\VarAbstractEngKeywords{\empty} % initialize
+\def\GetAbstractEngKeywords{\VarAbstractEngKeywords} % initialize
+\DeclareDocumentCommand{\SetAbstractEngKeywords}{
+  m G{\empty} G{\empty}
+  G{\empty} G{\empty} G{\empty}
+  G{\empty} G{\empty} G{\empty}}
+{
+  \AppendKeywordString{\VarAbstractEngKeywords}{#1}
+  \ifthenelse{\equal{#2}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #2}}
+  \ifthenelse{\equal{#3}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #3}}
+  \ifthenelse{\equal{#4}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #4}}
+  \ifthenelse{\equal{#5}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #5}}
+  \ifthenelse{\equal{#6}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #6}}
+  \ifthenelse{\equal{#7}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #7}}
+  \ifthenelse{\equal{#8}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #8}}
+  \ifthenelse{\equal{#9}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #9}}
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
