@@ -63,10 +63,9 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         f. 更名API 'SetThesisDate' -> 'SetCoverDate', 底層轉到'\SetCoverDate'來保留這API
         g. 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
         h. 更新在context.tex中, 有關要使用哪種封面的說明.
+        i. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面在conf.tex中使用'\DisplayDraft'來使用.
     + **書脊**:
         a. 移除書脊功能, 移除任何相關檔案和說明. 基於有影印店說, 就算我們有提供書脊檔案給他們, 他們都會自己使用一些工具重新弄一個書脊出來以給影印機所印出來, 故模板不再需要提供書脊功能.
-    + **功能**:
-        a. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面在conf.tex中使用'\DisplayDraft'來使用.
     + **Appendix**:
         a. 更新2015版的 '口試注意事項' 和 '學位論文上傳說明'
         b. 補上引用文件的URL
@@ -79,9 +78,10 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         f. 更新'\DisplayIndex', 並新增'\DisplayTablesIndex' 和 '\DisplayFiguresIndex' 在'context.tex'以控制需要顯示的索引內容, 以免得沒有相關的內容, 但多了一頁沒意義的索引頁.
         g. 提供'\SetIndexTitleText', '\SetTablesIndexTitleText' 和 '\SetFiguresIndexTitleText'在conf.tex以讓同學們可以自行設定目錄中的標題文字.
     + **摘要**:
-        a. 修正英文顯示 'Key words' -> 'Keywords'
+        a. 修正英文顯示 'Key words' -> 'Keyword'
         b. 更名API 'StartChiAbstract' -> 'StartAbstractChi', 底層轉到'\StartAbstractChi'來保留這API
         c. 更名API 'EndChiAbstract' -> 'EndAbstractChi', 底層轉到'\EndAbstractChi'來保留這API
+        d. 可使用'\SetAbstractChiKeywords' 或 '\SetAbstractEngKeywords' 來設定中英文版摘要中的關鍵字
     + **其他**:
         a. 更新CONTRIBUTE中的名單和使用的稱號
         b. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)
@@ -91,6 +91,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         f. 更新README.md中, 畢業論文要求補上引用的URL
         g. 更正 '資訊工程系' -> '資訊工程研究所'
         h. 修正引用的API '\RefXXX' 系列所引用的內容前面會有多餘的空白
+        i. 在conf.tex使用'\SetKeywords'可設定所產出來的PDF中的Keyword項目
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 

@@ -22,14 +22,11 @@
           \item 更名API 'SetThesisDate' -> 'SetCoverDate', 底層轉到'\verb|\SetCoverDate|'來保留這API
           \item 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
           \item 更新在context.tex中, 有關要使用哪種封面的說明.
+          \item 增加可設定 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面. 在conf.tex中使用'\verb|\DisplayDraft|'來使用.
         \end{enumerate}
       \item[書脊] \hfill
         \begin{enumerate}
           \item 移除書脊功能, 移除任何相關檔案和說明. 基於有影印店說, 就算我們有提供書脊檔案給他們, 他們都會自己使用一些工具重新弄一個書脊出來以給影印機所印出來, 故模板不再需要提供書脊功能.
-        \end{enumerate}
-      \item[功能] \hfill
-        \begin{enumerate}
-          \item 增加可設定 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面. 在conf.tex中使用'\verb|\DisplayDraft|'來使用.
         \end{enumerate}
       \item[Appendix] \hfill
         \begin{enumerate}
@@ -48,9 +45,10 @@
         \end{enumerate}
       \item[摘要] \hfill
         \begin{enumerate}
-          \item 修正英文顯示 'Key words' -> 'Keywords'
+          \item 修正英文顯示 'Key words' -> 'Keyword'
           \item 更名API 'StartChiAbstract' -> 'StartAbstractChi', 底層轉到'\verb|\StartAbstractChi|'來保留這API
-          \item 更名API 'EndChiAbstract' -> 'EndAbstractChi', 底層轉到'\EndAbstractChi'來保留這API
+          \item 更名API 'EndChiAbstract' -> 'EndAbstractChi', 底層轉到'\verb|\EndAbstractChi|'來保留這API
+          \item 可使用'\verb|\SetAbstractChiKeywords|' 或 '\verb|\SetAbstractEngKeywords|' 來設定中英文版摘要中的關鍵字
         \end{enumerate}
       \item[其他] \hfill
         \begin{enumerate}
@@ -62,6 +60,7 @@
           \item 更新README.md中, 畢業論文要求補上引用的URL
           \item 更正 '資訊工程系' -> '資訊工程研究所'
           \item 修正引用的API '\verb|\RefXXX|' 系列所引用的內容前面會有多餘的空白
+          \item 在conf.tex使用'\verb|\SetKeywords|'可設定所產出來的PDF中的Keyword項目
         \end{enumerate}
     \end{description}
 
