@@ -83,7 +83,8 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         a. 修正英文顯示 'Key words' -> 'Keyword'
         b. 更名API 'StartChiAbstract' -> 'StartAbstractChi', 底層轉到'\StartAbstractChi'來保留這API
         c. 更名API 'EndChiAbstract' -> 'EndAbstractChi', 底層轉到'\EndAbstractChi'來保留這API
-        d. 可使用'\SetAbstractChiKeywords' 或 '\SetAbstractEngKeywords' 來設定中英文版摘要中的關鍵字
+        d. 在conf.tex可使用'\SetAbstractChiKeywords' 或 '\SetAbstractEngKeywords' 來設定中英文版摘要中的關鍵字
+        e. 在content.tex可手動控制顯示中英文版摘要和英文延伸摘要
     + **口試証明文件**:
         a. 範例的中英文版本可單獨顯示 \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
         b. 口試圖檔可單獨使用中/英文版, 或同時使用. \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
@@ -99,6 +100,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         g. 更正 '資訊工程系' -> '資訊工程研究所'
         h. 修正引用的API '\RefXXX' 系列所引用的內容前面會有多餘的空白
         i. 在conf.tex使用'\SetKeywords'可設定所產出來的PDF中的Keyword項目
+        j. 在content.tex可手動控制顯示中英文版誌謝
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
