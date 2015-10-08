@@ -65,89 +65,120 @@
 
 \begin{minipage}[c][4.5cm][t]{\textwidth}
   \begin{center}
-
-  % --------------------------
-
-  % 顯示 學生 的名字
-  \hspace{2.0em}
-  \makebox[4.0em][r]{\Large 研究生：}
-  \makebox[6.0em][l]{\Large \GetAuthorChiName}
-  \makebox[8.0em][c]{}
-  \makebox[4.0em][r]{\Large Student：}
-  \makebox[8.0em][l]{\Large \GetAuthorEngName}\\
-  % --------------------------
-
-  \vspace{0.5cm}
-
-  % --------------------------
-
-  % 顯示 指導老師 A 的名字
-  \hspace{2.0em}
-  \makebox[4.0em][r]{\Large 指導老師：}
-  \makebox[6.0em][l]{\Large \GetAdvisorChiNameA \thinspace 博士}
-  \makebox[8.0em][c]{}
-  \makebox[4.0em][r]{\Large Advisor：}
-  \makebox[8.0em][l]{\Large Dr. \thinspace \GetAdvisorEngNameA}\\
-  % --------------------------
-
-  \vspace{0.1cm}
-
-  % --------------------------
-
-  % 顯示 指導老師 B 的名字
-  \hspace{2.0em}
-  \makebox[4.0em][r]
-  {%
-    \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
-      {}%
-      {\Large 共同指導：}%
-  }
-  \makebox[6.0em][l]%
-  {%
-    \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
-      {}%
-      {\Large \GetAdvisorChiNameB \thinspace 博士}%
-  }
-  \makebox[8.0em][c]{}
-  \makebox[4.0em][r]
-  {%
-    \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
-      {}%
-      {\Large Co-Advisor：}%
-  }
-  \makebox[8.0em][l]%
-  {%
-    \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
-      {}%
-      {\Large Dr. \thinspace \GetAdvisorEngNameB}%
-  } \\
-
-  % --------------------------
-
-  \vspace{0.1cm}
-
-  % --------------------------
-
-  % 顯示 指導老師 C 的名字
-  \hspace{2.0em}
-  \makebox[4.0em][r]{}
-  \makebox[6.0em][l]
-  {%
-    \ifthenelse{\equal{\GetAdvisorChiNameC}{\empty}}%
-      {}%
-      {\Large \GetAdvisorChiNameC \thinspace 博士}%
-  }
-  \makebox[8.0em][c]{}
-  \makebox[4.0em][r]{}
-  \makebox[8.0em][l]
-  {%
-    \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}%
-      {}%
-      {\Large Dr. \thinspace \GetAdvisorEngNameC}%
-  } \\
-
-  % --------------------------
-
+    \ifthenelse{\equal{\GetCDBothName}{1}}%
+      {%
+        % ----- 中英文同時顯示 -----
+        % --------------------------
+        % 顯示 學生 的名字
+        \hspace{2.0em}
+        \makebox[4.0em][r]{\Large 學生：}
+        \makebox[6.0em][l]{\Large \GetAuthorChiName}
+        \makebox[8.0em][c]{}
+        \makebox[4.0em][r]{\Large Student：}
+        \makebox[8.0em][l]{\Large \GetAuthorEngName}\\
+        % --------------------------
+        \vspace{0.5cm}
+        % --------------------------
+        % 顯示 指導老師 A 的名字
+        \hspace{2.0em}
+        \makebox[4.0em][r]{\Large 指導老師：}
+        \makebox[6.0em][l]{\Large \GetAdvisorChiNameA \thinspace 博士}
+        \makebox[8.0em][c]{}
+        \makebox[4.0em][r]{\Large Advisor：}
+        \makebox[8.0em][l]{\Large Dr. \thinspace \GetAdvisorEngNameA}\\
+        % --------------------------
+        \vspace{0.1cm}
+        % --------------------------
+        % 顯示 指導老師 B 的名字
+        \hspace{2.0em}
+        \makebox[4.0em][r]
+        {%
+          \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
+            {}%
+            {\Large 共同指導：}%
+        }
+        \makebox[6.0em][l]%
+        {%
+          \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
+            {}%
+            {\Large \GetAdvisorChiNameB \thinspace 博士}%
+        }
+        \makebox[8.0em][c]{}
+        \makebox[4.0em][r]
+        {%
+          \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
+            {}%
+            {\Large Co-Advisor：}%
+        }
+        \makebox[8.0em][l]%
+        {%
+          \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
+            {}%
+            {\Large Dr. \thinspace \GetAdvisorEngNameB}%
+        } \\
+        % --------------------------
+        \vspace{0.1cm}
+        % --------------------------
+        % 顯示 指導老師 C 的名字
+        \hspace{2.0em}
+        \makebox[4.0em][r]{}
+        \makebox[6.0em][l]
+        {%
+          \ifthenelse{\equal{\GetAdvisorChiNameC}{\empty}}%
+            {}%
+            {\Large \GetAdvisorChiNameC \thinspace 博士}%
+        }
+        \makebox[8.0em][c]{}
+        \makebox[4.0em][r]{}
+        \makebox[8.0em][l]
+        {%
+          \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}%
+            {}%
+            {\Large Dr. \thinspace \GetAdvisorEngNameC}%
+        } \\
+        % --------------------------
+      }%
+      {%
+        % ----- 只顯示中文 -----
+        % --------------------------
+        % 顯示 學生 的名字
+        \makebox[7em][r]{\Large 研究生：}
+        \makebox[10.0em][l]{\Large \GetAuthorChiName}\\
+        % --------------------------
+        \vspace{0.5cm}
+        % --------------------------
+        % 顯示 指導老師 A 的名字
+        \makebox[7em][r]{\Large 指導老師：}
+        \makebox[10.0em][l]{\Large \GetAdvisorChiNameA \thinspace 博士} \\
+        % --------------------------
+        \vspace{0.1cm}
+        % --------------------------
+        % 顯示 指導老師 B 的名字
+        \makebox[7em][r]
+        {%
+          \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
+            {}%
+            {\Large 共同指導：}%
+        }
+        \makebox[10.0em][l]
+        {%
+          \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
+            {}%
+            {\Large \GetAdvisorChiNameB \thinspace 博士}%
+        } \\
+        % --------------------------
+        \vspace{0.1cm}
+        % --------------------------
+        % 顯示 指導老師 C 的名字
+        \makebox[7em][r]{}
+        \makebox[10.0em][l]
+        {%
+          \ifthenelse{\equal{\GetAdvisorChiNameC}{\empty}}%
+            {}%
+            {\Large \GetAdvisorChiNameC \thinspace 博士}%
+        } \\
+        % --------------------------
+      }%
   \end{center}
 \end{minipage}
 % ------------------------------------------------
