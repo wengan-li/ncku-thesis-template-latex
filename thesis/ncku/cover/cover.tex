@@ -28,15 +28,11 @@
 % 封面沒有學校Logo
 \ClearWatermark
 
-\ifthenelse{\GetLangEnableChi = 1}
-{
-  \input{./ncku/cover/cover-chi}
-}{}
-
-\ifthenelse{\GetLangEnableEng = 1}
-{
+\if \GetDisplayCoverLang \ValueDisplayCoverLangEng
   \input{./ncku/cover/cover-eng}
-}{}
+\else
+  \input{./ncku/cover/cover-chi}
+\fi
 
 % 重新使用學校浮水印 Watermark
 \UseSchoolWatermark

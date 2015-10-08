@@ -282,6 +282,15 @@
 
 % ----------------------------------------------------------------------------
 
+\newcommand{\ValueDisplayCoverLangEng}{0}
+\newcommand{\ValueDisplayCoverLangChi}{1}
+\newcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangEng}
+\newcommand{\GetDisplayCoverLang}{\VarDisplayCoverLang}
+\newcommand{\DisplayCoverInChi}[0]{\renewcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangChi}}
+\newcommand{\DisplayCoverInEng}[0]{\renewcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangEng}}
+
+% ----------------------------------------------------------------------------
+
 % Display Chinese and English name in english cover
 \newcommand{\CoverDisplayNameChiEng}{0} % Default not display both
 

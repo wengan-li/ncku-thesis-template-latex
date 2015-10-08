@@ -21,15 +21,10 @@
 % 內頁: 顯示所有封面內容, 但有學校Logo
 % 不論是精裝版或平裝版都是 封面 (殼/皮) + 內頁
 %
-
-\ifthenelse{\GetLangEnableChi = 1}
-{
-  \input{./ncku/cover/cover-chi}
-}{}
-
-\ifthenelse{\GetLangEnableEng = 1}
-{
+\if \GetDisplayCoverLang \ValueDisplayCoverLangEng
   \input{./ncku/cover/cover-eng}
-}{}
+\else
+  \input{./ncku/cover/cover-chi}
+\fi
 
 % ------------------------------------------------
