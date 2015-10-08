@@ -269,8 +269,15 @@
 
 % ----------------------------------------------------------------------------
 
-% Use to include the cover files
-\newcommand{\DisplayCover}{\input{./ncku/cover/cover}}
+% Use to create cover
+\newcommand{\CreateCover}[0]%
+{
+  \begin{document}
+  \input{./ncku/cover/cover}
+  \end{document}
+} % End of \newcommand{}
+
+% Use to include and display inner cover
 \newcommand{\DisplayInsideCover}{\input{./ncku/cover/inside-cover}}
 
 % ----------------------------------------------------------------------------
