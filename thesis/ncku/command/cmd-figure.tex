@@ -1,0 +1,98 @@
+
+% Some helper function about insert image
+\usepackage{ifthen}
+\usepackage{xparse}
+
+% ----------------------------------------------------------------------------
+%
+% http://tex.stackexchange.com/questions/34312/how-to-create-a-command-with-key-values
+%
+% 用\begin{figure} .. \end{figure}
+% 可能會出現問題
+% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=ouparmd
+%
+% ----------------------------------------------------------------------------
+
+\DeclareDocumentCommand{\SetImageCaption}{G{\empty}}
+{
+  \ifthenelse{\equal{#1}{\empty}}
+  {}
+  {\IfNoValueF{#1}{\caption{#1}}}
+} % End of \DeclareDocumentCommand{}
+
+\DeclareDocumentCommand{\SetImageLabel}{G{\empty}}
+{
+  \ifthenelse{\equal{#1}{\empty}}
+  {}
+  {\IfNoValueF{#1}{\label{#1}}}
+} % End of \DeclareDocumentCommand{}
+
+% -----------------------------------------------------------------
+
+\pgfkeys
+{
+  /InsertFigure/.is family, /InsertFigure,
+  default/.style =
+  {
+    scale = 1.0,
+    angle = 0,
+    caption = \empty,
+    label = \empty,
+    pos = {H},      % Useless, for backporting
+    align = \empty, % Useless, for backporting
+    col = 1,        % Useless, for backporting
+  },
+  scale/.estore in = \TmpValueScale,
+  angle/.estore in = \TmpValueAngle,
+  caption/.estore in = \TmpValueCaption,
+  label/.estore in = \TmpValueLabel,
+  pos/.estore in = \TmpValuePosition,   % Useless, for backporting
+  align/.estore in = \TmpValueAlign,    % Useless, for backporting
+  col/.estore in = \TmpValueColumn,     % Useless, for backporting
+} % End of \pgfkeys{}
+
+% Insert a single column image
+\newcommand{\InsertFigure}[2][\empty]
+{
+  % Parse the input
+  \pgfkeys{/InsertFigure, default, #1}%
+  %
+  \begin{figure}[H]%
+  %
+  % Insert image
+  \colorbox{white}{
+    \begin{minipage}{\textwidth}{%
+      \makebox[\textwidth]{%
+      \includegraphics[
+          scale=\TmpValueScale,
+          angle=\TmpValueAngle]{#2}%
+      }}%
+      %
+      % Set Caption
+      \SetImageCaption{\TmpValueCaption}%
+      %
+      % Set Label
+      \ifthenelse{\equal{\TmpValueCaption}{\empty}} %
+        {}{\SetImageLabel{\TmpValueLabel}}%
+    \end{minipage}%
+  }%
+  \end{figure}%
+} % End of \newcommand{}
+
+% -----------------------------------------------------------------
+
+% ------------ OLD API (Backporting) ------------
+% A wrapper to handle \InsertCenterImage{}
+\newcommand{\InsertCenterImage}[2][\empty]
+{
+%  \InsertFigure[#1, align=center]{#2}
+  \InsertFigure[#1]{#2}%
+} % End of \newcommand{}
+
+% A wrapper to handle \InsertImage{}
+\newcommand{\InsertImage}[2][\empty]
+{
+  \InsertFigure[#1]{#2}%
+} % End of \newcommand{}
+
+% -----------------------------------------------------------------

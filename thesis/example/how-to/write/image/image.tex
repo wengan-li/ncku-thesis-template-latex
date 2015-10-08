@@ -4,7 +4,7 @@
 
 \StartSubSection{介紹}
 
-插入圖片其實有很多的玩法, 但是在畢業論文中, 它的放置位置則是非常固定的, 都是以中間為主, 之後就是插多張圖片. 因為它很固定, 所以本模板針對了插入單張或多張, 分別提供了以下的指令.
+插入圖片其實有很多的玩法, 但是在畢業論文中, 它的放置位置則是非常固定的, 都是以中間為主, 之後就是插多張圖片. 因為圖片位置都是固定的, 所以本模板針對了插入單張或多張, 分別提供了以下的指令.
 
 要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.
 
@@ -19,29 +19,29 @@
 % ------------------------------------------------
 \newpage
 \StartSubSection{單張}
-
-  \begin{framed}
+  \EmptyLine
+  \begin{fmpage}{\textwidth}
   \begin{verbatim}
   Path:   圖片位置 (必填)
 
   Options 設定 (使用','來分隔, 不分先後順序)
     scale:   比例 (選填, 預設: 1.0)
     (1.0: 原大小; 0.x ~ < 1.0: 縮小; > 1.0: 放大)
+    (設計上你是可以無限放大, 但還是推薦你使用大圖, 之後縮小)
     caption: 標題 (選填)
     label:   標簽 (選填, 必須要配合caption使用, 否則無效)
-    angle:   角度 (選填, 預設: 90)
-    align:   center (置中)
+    angle:   角度 (選填, 預設: 0度)
 
   插入圖片
-  \InsertImage[Options]{Path}
+  \InsertFigure[Options]{Path}
 
   E.g
-    \InsertImage
+    \InsertFigure
     [caption={這 是 標 題}]
       {./image.png}
 
-    \InsertImage
-      [align = center, scale=0.5,
+    \InsertFigure
+      [scale=0.5,
         angle=45,
         caption={這 是 標 題},
         label={this:is:label}]
@@ -49,8 +49,12 @@
 
     每一項資料可以使用斷行來分隔以保持可讀性.
     caption和label必須要使用'{}'才能有空格的句子.
+
+    補充:
+        Latex對SVG檔的支援並不理想, 故推薦先對SVG進行加工,
+        如轉成.eps或.pdf (推薦).
   \end{verbatim}
-  \end{framed}
+  \end{fmpage}
 
   \newpage
   {\bf 效果:}
@@ -59,101 +63,87 @@
   {
     只填了比例和圖片位置
     \begin{verbatim}
-    \InsertImage
+    \InsertFigure
       {./image.png}
     \end{verbatim}
-    \InsertImage
+    \InsertFigure
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
-  } % End of \item{}
-
-  \item
-  {
-    使用置中的版本
-    \begin{verbatim}
-    \InsertImage
-      [align = center]
-      {./image.png}
-    \end{verbatim}
-    \InsertImage
-      [align = center]
-    {./example/how-to/write/image/pic/Cc-by_new.svg.png}
   } % End of \item{}
 
   \item
   {
     放大比例
     \begin{verbatim}
-    \InsertImage
-      [align = center, scale=1.5]
+    \InsertFigure
+      [scale=1.5]
       {./image.png}
     \end{verbatim}
-    \InsertImage
-      [align = center, scale=1.5]
+    \InsertFigure
+      [scale=1.5]
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
   } % End of \item{}
-
-  \newpage
 
   \item
   {
     縮小比例
     \begin{verbatim}
-    \InsertImage
-      [align = center, scale=0.5]
+    \InsertFigure
+      [scale=0.5]
       {./image.png}
     \end{verbatim}
-    \InsertImage
-      [align = center, scale=0.5]
-      {./example/how-to/write/image/pic/Cc-by_new.svg.png}
-  } % End of \item{}
-
-  \item
-  {
-    增加標題並去掉比例的數字
-    \begin{verbatim}
-    \InsertImage
-      [align = center, caption={Little man}]
-      {./image.png}
-    \end{verbatim}
-    \InsertImage
-      [align = center, caption={Little man}]
+    \InsertFigure
+      [scale=0.5]
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
   } % End of \item{}
 
   \newpage
   \item
   {
+    增加標題並去掉比例的數字
+    \begin{verbatim}
+    \InsertFigure
+      [caption={Little man}]
+      {./image.png}
+    \end{verbatim}
+    \InsertFigure
+      [caption={Little man}]
+      {./example/how-to/write/image/pic/Cc-by_new.svg.png}
+  } % End of \item{}
+
+  \item
+  {
     增加標簽
     \begin{verbatim}
-    \InsertImage
-      [align = center, caption={Little man No.1},
+    \InsertFigure
+      [caption={Little man No.1},
         label={fig:little-man-no.1}]
       {./image.png}
     \end{verbatim}
 
     之後可以使用\verb| \RefTo |去引用 \verb| \RefTo{fig:little-man-no.1} |
-    \InsertImage
-      [align = center, caption={Little man No.1},
+    \InsertFigure
+      [caption={Little man No.1},
         label={fig:little-man-no.1}]
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
 
     e.g: 文中所指的人物一號 (Fig \RefTo{fig:little-man-no.1}).
   } % End of \item{}
 
+  \newpage
   \item
   {
     使用角度去轉45度
     \begin{verbatim}
-    \InsertImage
-      [align = center, angle=45,
+    \InsertFigure
+      [angle=45,
         caption={Little man No.2},
         label={fig:little-man-no.2}]
       {./image.png}
     \end{verbatim}
 
     使用\verb| \RefTo |去引用 \verb| \RefTo{fig:little-man-no.2} |
-    \InsertImage
-      [align = center, angle=45,
+    \InsertFigure
+      [angle=45,
         caption={Little man No.2},
         label={fig:little-man-no.2}]
       {./example/how-to/write/image/pic/Cc-by_new.svg.png}
@@ -164,10 +154,10 @@
   \newpage
   \item
   {
-    把圖放在表格中, 這時候是使用\verb|\InsertImage{}|(如要置中則設定table就可), 而且不能使用caption和label (正常寫法應該用不到, 例如出現'Fig X.X'這種字在table中). (有關表格table的使用, 請參考Chap \RefTo{chapter:how-to:write:table})
+    把圖放在表格中, 這時候是使用\verb|\InsertFigure{}|, 是不能使用caption和label (正常寫法應該用不到, 例如出現'Fig X.X'這種字在table中). (有關表格table的使用, 請參考Chap \RefTo{chapter:how-to:write:table}). 如真的想使用, 則考慮這邊的寫法.
 
     \begin{verbatim}
-    \begin{table}[h]
+    \begin{table}[H]
     \centering
     \begin{tabular}{|c|c|}
       \hline
@@ -187,7 +177,7 @@
     \end{table}
     \end{verbatim}
 
-    \begin{table}[h]
+    \begin{table}[H]
     \centering
     \label{table:how-to:write:image:insert-image-into-table}
     \begin{tabular}{|c|c|}
@@ -229,7 +219,7 @@
     align:   center (置中)
 
   Image 1~8: 各張圖片的設定
-    設定方式跟使用\InsertImage是一樣的
+    設定方式跟使用\InsertFigure是一樣的
     [Image options] -> [Options]
     {Image path}  -> {Path}
 
