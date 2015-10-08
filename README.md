@@ -64,6 +64,8 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         g. 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
         h. 更新在context.tex中, 有關要使用哪種封面的說明.
         i. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面在conf.tex中使用'\DisplayDraft'來使用.
+        j. 在conf.tex可使用'\CDBothName'以控制在封面上的學生和老師名字要只顯示中文, 英文或中英文同時顯示.
+        k. 在conf.tex可使用'\DisplayCoverInChi'或'\DisplayCoverInEng'以控制封面以中文或是英文顯示.
     + **書脊**:
         a. 移除書脊功能, 移除任何相關檔案和說明. 基於有影印店說, 就算我們有提供書脊檔案給他們, 他們都會自己使用一些工具重新弄一個書脊出來以給影印機所印出來, 故模板不再需要提供書脊功能.
     + **Appendix**:
