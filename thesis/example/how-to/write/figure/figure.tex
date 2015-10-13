@@ -206,12 +206,13 @@
 
   如果要同時顯示多張的話, 因為要能一頁版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 大約4張都已經算多的了. 所以真的數量比較多的話, 推薦分別放同不到頁面會比較好閱讀.
 
-  設計上可插入1$\sim$8張的圖片, 而且寫法會跟插入單張相近.
+  多張是使用\verb|\InsertFigures| ({\bf 注意:} Figure是複數, 有一個's'), 設計上可插入1$\sim$8張的圖片, 而且寫法會跟插入單張相近.
 
+  \EmptyLine
   \begin{fmpage}{\textwidth}
   \begin{verbatim}
   Options 主圖的設定 (使用','來分隔, 不分先後順序)
-    perrow:  每一列多少張圖片 (選填, 預設: 1)
+    perrow:  每一列多少張圖片 (選填, 預設: 1. 最小: 1, 最大: 4)
     caption: 標題 (選填)
     label:   標簽 (選填, 必須要配合caption使用, 否則無效)
 
@@ -402,7 +403,7 @@
     引用子圖片(d) (Fig \RefTo{fig:example:mi3:fig4})
   } % End of \item{}
 
-  % 最後一張圖位置怪怪
+  %
   \newpage
   \item
   {
@@ -424,6 +425,70 @@
     \InsertFigures
     [perrow = 2,
       caption = {8 figures and 2 figures per row}] %
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY-NC.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY-ND.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY-SA.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY-NC.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY-ND.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY-SA.png}}
+  } % End of \item{}
+
+  %
+  \newpage
+  \item
+  {
+    插入8張圖片, 3張圖一列, 只有主圖填了標題.\\
+    \begin{verbatim}
+    \InsertFigures
+    [perrow = 3,
+      caption = {8 figures and 3 figures per row}] %
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}
+    \end{verbatim}
+
+    \InsertFigures
+    [perrow = 3,
+      caption = {8 figures and 3 figures per row}] %
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
+    {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}
+  } % End of \item{}
+
+  %
+  \newpage
+  \item
+  {
+    插入8張圖片, 4張圖一列, 只有主圖填了標題.\\
+    \begin{verbatim}
+    \InsertFigures
+    [perrow = 4,
+      caption = {8 figures and 4 figures per row}] %
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}%
+    {[caption = { }]{./figure.png}}
+    \end{verbatim}
+
+    \InsertFigures
+    [perrow = 4,
+      caption = {8 figures and 4 figures per row}] %
     {[caption = { }]{./example/how-to/write/figure/pic/CC-BY.png}}%
     {[caption = { }]{./example/how-to/write/figure/pic/CC-BY-NC.png}}%
     {[caption = { }]{./example/how-to/write/figure/pic/CC-BY-ND.png}}%
