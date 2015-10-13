@@ -1,7 +1,17 @@
-
-% Some helper function about insert image
-\usepackage{ifthen}
-\usepackage{xparse}
+%
+% This file is part of ncku-thesis-template.
+%
+% ncku-thesis-template is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify
+% it under the terms of the Attribution-NonCommercial-ShareAlike
+% 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with ncku-thesis-template.
+%
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
 
 % ----------------------------------------------------------------------------
 %
@@ -13,14 +23,26 @@
 %
 % ----------------------------------------------------------------------------
 
-\DeclareDocumentCommand{\SetImageCaption}{G{\empty}}
+\DeclareDocumentCommand{\SetImageCaptionAndLabel}{
+  +m +m}
+{
+  \ifthenelse{\equal{#1}{\empty}}{}%
+  {%
+    \caption{#1}%
+    \ifthenelse{\equal{#2}{\empty}}%
+    {}%
+    {\label{#2}}%
+  }%
+} % End of \DeclareDocumentCommand{}
+
+\DeclareDocumentCommand{\SetImageCaption}{+m}
 {
   \ifthenelse{\equal{#1}{\empty}}
   {}
   {\IfNoValueF{#1}{\caption{#1}}}
 } % End of \DeclareDocumentCommand{}
 
-\DeclareDocumentCommand{\SetImageLabel}{G{\empty}}
+\DeclareDocumentCommand{\SetImageLabel}{+m}
 {
   \ifthenelse{\equal{#1}{\empty}}
   {}
@@ -40,7 +62,6 @@
     label = \empty,
     pos = {H},      % Useless, for backporting
     align = \empty, % Useless, for backporting
-    col = 1,        % Useless, for backporting
   },
   scale/.estore in = \TmpValueScale,
   angle/.estore in = \TmpValueAngle,
@@ -48,7 +69,6 @@
   label/.estore in = \TmpValueLabel,
   pos/.estore in = \TmpValuePosition,   % Useless, for backporting
   align/.estore in = \TmpValueAlign,    % Useless, for backporting
-  col/.estore in = \TmpValueColumn,     % Useless, for backporting
 } % End of \pgfkeys{}
 
 % Insert a single column image
@@ -67,13 +87,8 @@
           scale=\TmpValueScale,
           angle=\TmpValueAngle]{#2}%
       }}%
-      %
-      % Set Caption
-      \SetImageCaption{\TmpValueCaption}%
-      %
-      % Set Label
-      \ifthenelse{\equal{\TmpValueCaption}{\empty}} %
-        {}{\SetImageLabel{\TmpValueLabel}}%
+      % Set Caption and Label
+      \SetImageCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}
     \end{minipage}%
   }%
   \end{figure}%
