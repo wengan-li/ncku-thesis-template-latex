@@ -229,19 +229,16 @@ LaTeX Table Generator (Fig \RefTo{fig:how-to:table:table-generator})的頁面非
 
   把圖表的標題要放在上方還是下方
 
-  \InsertMultiImages
+  \InsertFigures
     [perrow = 2,
-      align = center,
       caption = {Option of caption}] %
     {
       [scale=0.4,
-      align = center,
       caption={標題放在上方}]
       {./example/how-to/write/table/pic/caption/above.png}
     }%
     {
       [scale=0.4,
-      align = center,
       caption={標題放在下方}]
       {./example/how-to/write/table/pic/caption/below.png}
     }
@@ -263,21 +260,18 @@ LaTeX Table Generator (Fig \RefTo{fig:how-to:table:table-generator})的頁面非
 
   Fig \RefTo{table:style:sample-1}是一個例子分別是使用Latex原版的顯示方式(Fig \RefTo{table:style:default-1})或是使用booktabs版的顯示方式(Fig \RefTo{table:style:booktabs-1}).
 
-  \InsertMultiImages
+  \InsertFigures
     [perrow = 2,
-      align = center,
       caption = {A sample between Latex style and Booktabs style},
       label={table:style:sample-1}] %
     {
       [scale=0.3,
-      align = center,
       caption={Default style},
       label={table:style:default-1}]
       {./example/how-to/write/table/pic/style/default-1.png}
     }%
     {
       [scale=0.2,
-      align = center,
       caption={Booktabs style},
       label={table:style:booktabs-1}]
       {./example/how-to/write/table/pic/style/booktabs-1.png}
@@ -286,20 +280,17 @@ LaTeX Table Generator (Fig \RefTo{fig:how-to:table:table-generator})的頁面非
   %\newpage
   而Fig \RefTo{table:style:sample-2}是2個版本都加上垂直線時候的樣子.
 
-  \InsertMultiImages
+  \InsertFigures
     [perrow = 2,
-      align = center,
       caption = {Table with horizontal line},
       label={table:style:sample-2}] %
     {
       [scale=0.3,
-      align = center,
       caption={Default style}]
       {./example/how-to/write/table/pic/style/default-2.png}
     }%
     {
       [scale=0.25,
-      align = center,
       caption={Booktabs style}]
       {./example/how-to/write/table/pic/style/booktabs-2.png}
     }
