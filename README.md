@@ -94,6 +94,8 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         a. 更新相關的說明文件
         b. 更名API '\InsertImage' -> '\InsertFigure', 底層轉到'\InsertFigure'來保留這API
         c. 圖片和標題背後現在會有白色背景, 讓圖片和標題更加清晰
+        d. 更名API '\InsertMultiImages' -> '\InsertFigures', 底層轉到'\InsertFigures'來保留這API
+        e. 更新改寫'\InsertFigures'的做法, 使用鎖死格式方式來取代計算的方式來調整圖片的位置和大小, 去掉Latex在計算上的困難和潛在的計算錯誤.
     + **其他**:
         a. 更新CONTRIBUTE中的名單和使用的稱號
         b. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)

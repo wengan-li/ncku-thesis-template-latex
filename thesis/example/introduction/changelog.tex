@@ -65,6 +65,8 @@
           \item 更新相關的說明文件
           \item 更名API '\verb|\InsertImage|' -> '\verb|\InsertFigure|', 底層轉到'\verb|\InsertFigure|'來保留這API
           \item 圖片和標題背後現在會有白色背景, 讓圖片和標題更加清晰
+          \item 更名API '\verb|\InsertMultiImages|' -> '\verb|\InsertFigures|', 底層轉到'\verb|\InsertFigures|'來保留這API
+          \item 更新改寫'\verb|\InsertFigures|'的做法, 使用鎖死格式方式來取代計算的方式來調整圖片的位置和大小, 去掉Latex在計算上的困難和潛在的計算錯誤.
         \end{enumerate}
       \item[其他] \hfill
         \begin{enumerate}
