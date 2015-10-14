@@ -179,7 +179,7 @@
 
     \begin{table}[H]
     \centering
-    \label{table:how-to:write:image:insert-image-into-table}
+    \label{table:how-to:write:figure:insert-figure-into-table}
     \begin{tabular}{|c|c|}
       \hline
       \textbf{\underline{Website}} &
@@ -216,21 +216,21 @@
     caption: 標題 (選填)
     label:   標簽 (選填, 必須要配合caption使用, 否則無效)
 
-  Image 1~8: 各張圖片的設定
+  Figure 1~8: 各張圖片的設定
     設定方式跟使用\InsertFigure是一樣的
-    [Image options] -> [Options]
-    {Image path}  -> {Path}
+    [Figure options] -> [Options]
+    {Figure path}  -> {Path}
 
   插入多張圖片
     \InsertFigures[Options] %
     {
-      [Image options]{Image path}
+      [Figure options]{Figure path}
     }%
     {
       ...
     }%
     {
-      [Image options]{Image path}
+      [Figure options]{Figure path}
     }
   ('%'是必須存在的, 以防止被Latex認為這是新段落)
   \end{verbatim}
@@ -300,17 +300,17 @@
       caption = {3 figures and 2 figures per row},
       label = {fig:example:mi2:fig1}] %
     {
-      [caption = {Image 1},
+      [caption = {Figure 1},
       label = {fig:example:mi2:fig1}]
       {./figure.png}
     }%
     {
-      [caption = {Image 2},
+      [caption = {Figure 2},
       label = {fig:example:mi2:fig2}, angle = -20]
       {./figure.png}
     }%
     {
-      [caption = {Image 3}]
+      [caption = {Figure 3}]
       {./figure.png}
     }
     \end{verbatim}
@@ -322,18 +322,18 @@
       caption = {3 figures and 2 figures per row},
       label = {fig:example:mi2:mfig}] %
     {
-      [caption = {Image 1},
+      [caption = {Figure 1},
       label = {fig:example:mi2:fig1}]
       {./example/how-to/write/figure/pic/CC-BY-NC.png}
     }%
     {
-      [caption = {Image 2},
+      [caption = {Figure 2},
       label = {fig:example:mi2:fig2},
       angle = -20]
       {./example/how-to/write/figure/pic/CC-BY-NC-ND.png}
     }%
     {
-      [caption = {Image 3}]
+      [caption = {Figure 3}]
       {./example/how-to/write/figure/pic/CC-BY-NC-SA.png}
     }%
 
@@ -372,7 +372,7 @@
 
     \InsertFigures
     [perrow = 2,
-      caption = {4 images and 2 figures per row}
+      caption = {4 figures and 2 figures per row}
       label = {fig:example:mi3:mfig}] %
     {
       [caption = { },
