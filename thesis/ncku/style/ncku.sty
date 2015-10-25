@@ -316,7 +316,7 @@
     \def\thechapter{\Alph{AppendixCounter}}}
 
 \def\@chapter[#1]#2{
-  \if \GetChapterSectionTitleLang
+  \if \GetChapterSectionTitleLang \VarChapterSectionTitleLangEng
     \ifnum \c@secnumdepth >\m@ne
     \refstepcounter{chapter}
     \typeout{\@chapapp\space\thechapter.}
