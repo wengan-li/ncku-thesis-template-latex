@@ -1,0 +1,67 @@
+%
+% This file is part of ncku-thesis-template.
+%
+% ncku-thesis-template is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify
+% it under the terms of the Attribution-NonCommercial-ShareAlike
+% 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with ncku-thesis-template.
+%
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
+
+% ----------------------------------------------------------------------------
+
+\pgfkeys
+{
+  /InsertTable/.is family, /InsertTable,
+  default/.style =
+  {
+    scale = 0.0,
+    caption = \empty,
+    label = \empty,
+    pos = top, % Position of caption
+  },
+  scale/.estore in = \TmpValueScale,
+  caption/.estore in = \TmpValueCaption,
+  label/.estore in = \TmpValueLabel,
+  pos/.estore in = \TmpValuePosition,
+} % End of \pgfkeys{}
+
+\newcommand{\DisplayTableContent}[2][\empty]
+{
+  \ifthenelse{\equal{#1}{0.0}}%
+  {%
+    \begin{minipage}[c]{\textwidth}
+    \colorbox{white}{\makebox[\textwidth]{#2}}
+    \end{minipage}
+  }{%
+    \begin{minipage}[c]{\textwidth}
+    \colorbox{white}{\makebox[\textwidth]{%
+    \resizebox{#1\paperwidth}{!}{#2}}}
+    \end{minipage}
+  }%
+} % End of \newcommand{}
+
+\newcommand{\InsertTable}[2][\empty]
+{
+  % Parse the input
+  \pgfkeys{/InsertTable, default, #1}%
+  %
+  \begin{table}[H]
+  %
+    \ifthenelse{\equal{\TmpValuePosition}{top}}%
+    {%
+      \SetImageCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}%
+      \DisplayTableContent[\TmpValueScale]{#2}%
+    }{%
+      \DisplayTableContent[\TmpValueScale]{#2}%
+      \SetImageCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}%
+    }%
+  \end{table}
+} % End of \newcommand{}
+
+% -----------------------------------------------------------------
