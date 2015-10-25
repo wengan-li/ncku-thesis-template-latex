@@ -96,6 +96,8 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         c. 圖片和標題背後現在會有白色背景, 讓圖片和標題更加清晰
         d. 更名API '\InsertMultiImages' -> '\InsertFigures', 底層轉到'\InsertFigures'來保留這API
         e. 更新改寫'\InsertFigures'的做法, 使用鎖死格式方式來取代計算的方式來調整圖片的位置和大小, 去掉Latex在計算上的困難和潛在的計算錯誤.
+        f. 增加 '\InsertTable' 來幫忙插入表單, 並加有白色背景, 讓表單內容更加清晰
+        g. 增加斜線功能給表單, 同時增加相關的說明例子
     + **其他**:
         a. 更新CONTRIBUTE中的名單和使用的稱號
         b. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)
