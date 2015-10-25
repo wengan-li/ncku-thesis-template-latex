@@ -251,9 +251,16 @@
     \nobreak\hbox to\@pnumwidth{\hss #2}\par
     \penalty\@highpenalty \endgroup}
 \end{comment}
-\def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
-    \ifnum \c@secnumdepth >\m@ne \Large\bf \@chapapp{} \thechapter
-    \par \vskip 15pt \fi \Large \bf #1\par \nobreak \vskip 35pt}}
+
+\if \GetChapterSectionTitleLang \VarChapterSectionTitleLangEng
+  \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
+      \ifnum \c@secnumdepth >\m@ne \Large\bf \@chapapp{} \thechapter
+      \par \vskip 15pt \fi \Large \bf #1\par \nobreak \vskip 35pt}}
+\else
+  \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
+      \ifnum \c@secnumdepth >\m@ne \Large\bf 第 \thechapter 章
+      \par \vskip 15pt \fi \Large \bf #1\par \nobreak \vskip 35pt}}
+\fi
 
 \def\@makeschapterhead#1{\vspace*{0pt} {\parindent 0pt \centering
     \Large \bf #1\par \nobreak \vskip 30pt}}
@@ -308,11 +315,20 @@
     \chap@or@app=2
     \def\thechapter{\Alph{AppendixCounter}}}
 
-\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+\def\@chapter[#1]#2{
+  \if \GetChapterSectionTitleLang
+    \ifnum \c@secnumdepth >\m@ne
     \refstepcounter{chapter}
     \typeout{\@chapapp\space\thechapter.}
     \addcontentsline{toc}{chapter}{\@chapapp\space\thechapter.\hspace*{1em}#1}\else
     \addcontentsline{toc}{chapter}{#1}\fi
+  \else
+    \ifnum \c@secnumdepth >\m@ne
+    \refstepcounter{chapter}
+    \typeout{第\thechapter 章.}
+    \addcontentsline{toc}{chapter}{第\thechapter 章.\hspace*{1em}#1}\else
+    \addcontentsline{toc}{chapter}{#1}\fi
+  \fi
     \chaptermark{#1}
     \addtocontents{lof}{\protect\addvspace{10pt}}
     \addtocontents{lot}{\protect\addvspace{10pt}}
@@ -321,6 +337,7 @@
         \markboth{}{}\pagestyle{plain}
         \pagenumbering{arabic}\fi\fi
         \thispagestyle{plain}}
+
 \begin{comment}
 \def\@schapter#1{\thispagestyle{plain}
         \@makeschapterhead{#1} \@afterheading}
