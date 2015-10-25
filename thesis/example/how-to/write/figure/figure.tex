@@ -16,6 +16,7 @@
 圖片B: "\verb|C:\thesis\some_dir\B.png|"\\
 使用時以"\verb|./some_dir/A.png|", "\verb|./some_dir/B.png|"的方式來使用, 注意是"$/$"而不是"$\backslash$".
 
+還有檔名的文字盡量不要在非格式的字(如.png, .pdf等)出現'.'這個符號, 否則有可能會出現潛在的錯誤.
 % ------------------------------------------------
 \newpage
 \StartSubSection{單張}
@@ -67,7 +68,7 @@
       {./figure.png}
     \end{verbatim}
     \InsertFigure
-      {./example/how-to/write/figure/pic/Cc-by_new.svg.png}
+      {./example/how-to/write/figure/pic/Cc-by_new.png}
   } % End of \item{}
 
   \item
@@ -80,7 +81,7 @@
     \end{verbatim}
     \InsertFigure
       [scale=1.5]
-      {./example/how-to/write/figure/pic/Cc-by_new.svg.png}
+      {./example/how-to/write/figure/pic/Cc-by_new.png}
   } % End of \item{}
 
   \item
@@ -93,7 +94,7 @@
     \end{verbatim}
     \InsertFigure
       [scale=0.5]
-      {./example/how-to/write/figure/pic/Cc-by_new.svg.png}
+      {./example/how-to/write/figure/pic/Cc-by_new.png}
   } % End of \item{}
 
   \newpage
@@ -107,7 +108,7 @@
     \end{verbatim}
     \InsertFigure
       [caption={Little man}]
-      {./example/how-to/write/figure/pic/Cc-by_new.svg.png}
+      {./example/how-to/write/figure/pic/Cc-by_new.png}
   } % End of \item{}
 
   \item
@@ -124,7 +125,7 @@
     \InsertFigure
       [caption={Little man No.1},
         label={fig:little-man-no.1}]
-      {./example/how-to/write/figure/pic/Cc-by_new.svg.png}
+      {./example/how-to/write/figure/pic/Cc-by_new.png}
 
     e.g: 文中所指的人物一號 (Fig \RefTo{fig:little-man-no.1}).
   } % End of \item{}
@@ -146,7 +147,7 @@
       [angle=45,
         caption={Little man No.2},
         label={fig:little-man-no.2}]
-      {./example/how-to/write/figure/pic/Cc-by_new.svg.png}
+      {./example/how-to/write/figure/pic/Cc-by_new.png}
 
     e.g: 文中所指的人物二號 (Fig \RefTo{fig:little-man-no.2}).
   } % End of \item{}

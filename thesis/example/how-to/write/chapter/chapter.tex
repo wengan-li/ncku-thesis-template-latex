@@ -6,7 +6,8 @@
 
 編寫任何的文章, 都會使用不同的章節來把內容進行分區. 例如學校的排版樣子大約:
 
-\begin{framed}
+  \EmptyLine
+\begin{fmpage}{\textwidth}
   \centerline{\LARGE Chapter X}
   \vspace{0.2cm}
   \centerline{\LARGE 這是標題}
@@ -18,11 +19,13 @@
   \vspace{0.3cm}
   \mbox{\large X.1.1 子項目}\\
   \mbox{\hspace{1.2cm}項目內容 ...}
-\end{framed}
+\end{fmpage}
+  \EmptyLine
 
 所以針對這些功能, 本模版提供:
 
-\begin{framed}
+  \EmptyLine
+\begin{fmpage}{\textwidth}
   \begin{verbatim}
     主要章節
     Title: 標題 (必填)
@@ -40,11 +43,13 @@
     Label: 標簽 (選填)
     \StartSubSection{ Title }{ Label }
   \end{verbatim}
-\end{framed}
+\end{fmpage}
+  \EmptyLine
 
 所以針對剛剛的例子, 它的Latex寫法為:
 
-\begin{framed}
+  \EmptyLine
+\begin{fmpage}{\textwidth}
   \begin{verbatim}
     \StartChapter{這是標題}
 
@@ -56,5 +61,5 @@
 
     \EndChapter
   \end{verbatim}
-\end{framed}
+\end{fmpage}
 
