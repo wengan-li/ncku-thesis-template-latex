@@ -15,55 +15,31 @@
 
   可使用的原因幾乎都是系所自己沒有特殊要求, 所以直接使用圖書館的要求, 而本模板就是跟隨圖書館所定下的要求來設計.
 
-  \begin{table*}[ht!]
-    \centering
-    \caption{應該可使用的系所}
-    \label{table:acceptable-dept:acceptable}
-    \begin{tabular}{|c|c|}
-
-    % ------------------------------------------------
-    \hline
-    \multicolumn{1}{|c|}{資訊工程學系} &
-    \multicolumn{1}{c|}{Department of Computer Science and Information Engineering} \\
-
-    % ------------------------------------------------
-    \hline
-    \end{tabular}
-  \end{table*}
+  \InsertTable
+    [caption={應該可使用的系所},
+      label={table:acceptable-dept:acceptable}]
+    {
+      \begin{tabular}{|l|l|}
+      \hline
+      資訊工程學系 & Department of Computer Science and Information Engineering \\ \hline
+      \end{tabular}
+    } % End of \InsertTable
 
 % ------------------------------------------------
 \section{應該不可使用}
 
   不可使用的原因是那系所已經有提供一份樣版出來, 而那份樣版的要求有沒有跟本模板一樣設計, 這個就不作詳細分析. 故如果已經有樣版, 那我就會自動把它們分類成\textit{無法使用這本模板}比較好, 但如果分類錯誤, 請告知.
 
-  \begin{table*}[ht!]
-    \centering
-    \caption{應該不可使用的系所}
-    \label{table:acceptable-dept:unacceptable}
-    \begin{tabular}{|c|c|c|}
-
-    % ------------------------------------------------
-    \hline
-    \multicolumn{1}{|c|}{生物科技研究所} &
-    \multicolumn{1}{c|}{
-      \tabincell{l}{Institute of Biotechnology}} &
-    \multicolumn{1}{c|}{\href{www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc}{Link}} \\
-
-    % ------------------------------------------------
-    \hline
-    \multicolumn{1}{|c|}{體育健康與休閒研究所} &
-    \multicolumn{1}{c|}{
-      \tabincell{l}{
-      Institute of Physical Education,\\
-      Health and Leisure Studies
-      }
-    } &
-    \multicolumn{1}{c|}{\href{www.ncku.edu.tw/~deprb/docs/Thesis\%20Regulation\%20.doc}{Link}} \\
-
-    % ------------------------------------------------
-    \hline
-    \end{tabular}
-  \end{table*}
+  \InsertTable
+    [caption={應該不可使用的系所},
+      label={table:acceptable-dept:unacceptable}]
+    {
+      \begin{tabular}{|l|l|l|}
+      \hline
+      生物科技研究所 & Institute of Biotechnology & \href{www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc}{Link} \\ \hline
+      體育健康與休閒研究所 & \begin{tabular}[c]{@{}l@{}}Institute of Physical Education\\ Health and Leisure Studies\end{tabular} & \href{www.ncku.edu.tw/~deprb/docs/Thesis\%20Regulation\%20.doc}{Link} \\ \hline
+      \end{tabular}
+    } % End of \InsertTable
 
 % ------------------------------------------------
 \EndChapter
