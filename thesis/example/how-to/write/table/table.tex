@@ -329,9 +329,176 @@
 
 % ------------------------------------------------
 \newpage
+\StartSubSection{使用斜線}
+
+斜線在表格上的設計是非常普遍, 但正如這一章開始時提到, Latex在表格設計上不直覺, 有很多功能都要自行處理, 斜線這一功能正是其一. 在LaTeX Table Generator中是沒法弄出斜線的, 故需弄完表格後再修改內容. 以下的內容都是拿自斜線工具的文件 \RefBib{web:latex:diagbox-doc}, 只抽出一些重要內容.
+
+  \EmptyLine
+  \begin{fmpage}{\textwidth}
+  \begin{verbatim}
+  Options 斜線的設定 (使用','來分隔, 不分先後順序)
+    width:  畫斜線的格子寬度 (選填, 推薦使用以cm/mm來設定)
+    height: 畫斜線的格子高度 (選填, 推薦使用以cm/mm來設定)
+    dir:   斜線的方向 (選填, 預設: NW)
+      NW: 由左上向右下, NE: 由右上向左下
+      SW: 由左下向右上, SE: 由右下向左上
+
+  Content 表格在這格子中的內容文字 (可設2~3個)
+
+  插入斜線
+    \diagbox[Options]{Content}
+
+  E.g
+    \diagbox{A}{B}{C}
+
+    \diagbox[dir=NW, width=1cm, height=1cm]{A}{B}
+  \end{verbatim}
+  \end{fmpage}
+  \EmptyLine
+
+  一個最基本的例子:
+  \begin{verbatim}
+    \begin{tabular}{|l|ccc|}
+      \hline
+      \diagbox{Time}{Day} & Mon & Tue & Wed \\
+      \hline
+      Morning & used & used & \\
+      Afternoon & & used & used \\
+      \hline
+    \end{tabular}
+  \end{verbatim}
+
+  \begin{table}[H]
+  \centering
+  \begin{tabular}{|l|ccc|}
+    \hline
+    \diagbox{Time}{Day} & Mon & Tue & Wed \\
+    \hline
+    Morning & used & used & \\
+    Afternoon & & used & used \\
+    \hline
+  \end{tabular}
+  \end{table}
+
+% ------------------------------------------------
+\newpage
+
+  如果是給3個的話:
+  \begin{verbatim}
+    \begin{tabular}{|l|ccc|}
+    \hline
+    \diagbox{Time}{Room}{Day} & Mon & Tue & Wed \\
+    \hline
+    Morning & used & used & \\
+    Afternoon & & used & used \\
+    \hline
+    \end{tabular}
+  \end{verbatim}
+
+  \begin{table}[H]
+  \centering
+    \begin{tabular}{|l|ccc|}
+    \hline
+    \diagbox{Time}{Room}{Day} & Mon & Tue & Wed \\
+    \hline
+    Morning & used & used & \\
+    Afternoon & & used & used \\
+    \hline
+    \end{tabular}
+  \end{table}
+
+  \EmptyLine
+
+  % ------------------------------------------------
+  如Column或Row標頭需要斷行的話都是可以:
+  \begin{verbatim}
+    \begin{tabular}{|c|}
+    \hline
+    \diagbox{Row\\header}{Col\\header} \\
+    \hline
+    \end{tabular}
+  \end{verbatim}
+
+  \begin{table}[H]
+  \centering
+    \begin{tabular}{|c|}
+    \hline
+    \diagbox{Row\\header}{Col\\header} \\
+    \hline
+    \end{tabular}
+  \end{table}
+
+% ------------------------------------------------
+\newpage
+
+  使用以上的設定和組合可以玩出比較複雜的應用.
+
+  \begin{verbatim}
+    \begin{tabular}{|l|c|c|r|}
+      \hline
+      \diagbox{Time}{Day} & Mon & Tue & Wed\\
+      \hline
+      Morning & used & used & used\\
+      \hline
+      Afternoon & & used & \diagbox[dir=SW]{A}{B} \\
+      \hline
+    \end{tabular}
+  \end{verbatim}
+
+  \begin{table}[H]
+  \centering
+    \begin{tabular}{|l|c|c|r|}
+      \hline
+      \diagbox{Time}{Day} & Mon & Tue & Wed\\
+      \hline
+      Morning & used & used & used\\
+      \hline
+      Afternoon & & used & \diagbox[dir=SW]{A}{B} \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+% ------------------------------------------------
+\newpage
+
+最後就是斜線長度是跟隨表格中最寬的那個寬度, 故如果對寬度不滿意, 可自行調整\verb|\diagbox|的width.
+
+  \begin{verbatim}
+    \begin{tabular}{|c|} \hline
+      \diagbox{A}{B} \\\hline
+      Very long term \\\hline
+    \end{tabular}
+  \end{verbatim}
+
+  \begin{table}[H]
+  \centering
+    \begin{tabular}{|c|} \hline
+      \diagbox{A}{B} \\\hline
+      Very long term \\\hline
+    \end{tabular}
+  \end{table}
+
+  調整成:
+  \begin{verbatim}
+    \begin{tabular}{|c|} \hline
+      \diagbox[width=3cm]{A}{B} \\\hline
+      Very long term \\\hline
+    \end{tabular}
+  \end{verbatim}
+
+  \begin{table}[H]
+  \centering
+    \begin{tabular}{|c|} \hline
+      \diagbox[width=3cm]{A}{B} \\\hline
+      Very long term \\\hline
+    \end{tabular}
+  \end{table}
+
+% ------------------------------------------------
+\newpage
 \StartSubSection{模板提供的功能}
 
-在畢業論文中, 表格的位置跟圖片一樣都是非常固定以中間為主, 而不一樣的東西主要是表格的標題位置和表格的設計, 同時為了幫同學們調整好表格的位置, 大小和預設白色背景, 故本模板同時增加一個幫助你插入表格的功能.
+在畢業論文中, 表格的位置跟圖片一樣都是非常固定以中間為主, 而不一樣的東西主要是表格的標題位置和表格的設計, 同時為了幫同學們調整好表格的故使用斜線則必須自行在內容中進行修改位置, 大小和預設白色背景, 故本模板同時增加一個幫助你插入表格的功能.
 
   \EmptyLine
   \begin{fmpage}{\textwidth}
@@ -447,10 +614,10 @@
   \newpage
   \item
   {
-    Scale是用來調整表格的大小, 一般來講都不需要使用到這設定, 只有在特殊情況, 例如表格內容過多影響到闊度. 不同在Mircosoft Word中, 在Latex中表格是會無視闊度是否超過頁面的, 故這就需要靠scale來調整.Table \RefTo{table:how-to-write:table-example1} 是一個闊度超過頁面的例子, 而Table \RefTo{table:how-to-write:table-example2} 是把闊度控制跟頁面一樣闊, 但這就會沒有左右的空白空間, 而Table \RefTo{table:how-to-write:table-example3} 則是保留了左右的空白空間 (個人推薦最大值為0.9).
+    Scale是用來調整表格的大小, 一般來講都不需要使用到這設定, 只有在特殊情況, 例如表格內容過多影響到寬度. 不同在Mircosoft Word中, 在Latex中表格是會無視寬度是否超過頁面的, 故這就需要靠scale來調整.Table \RefTo{table:how-to-write:table-example1} 是一個寬度超過頁面的例子, 而Table \RefTo{table:how-to-write:table-example2} 是把寬度控制跟頁面一樣闊, 但這就會沒有左右的空白空間, 而Table \RefTo{table:how-to-write:table-example3} 則是保留了左右的空白空間 (個人推薦最大值為0.9).
 
   \InsertTable
-    [caption={表格闊度超過頁面},
+    [caption={表格寬度超過頁面},
       label={table:how-to-write:table-example1}]
     {
       \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
@@ -465,7 +632,7 @@
 
   \InsertTable
     [scale=1.0,
-      caption={表格闊度設定scale=1.0},
+      caption={表格寬度設定scale=1.0},
       label={table:how-to-write:table-example2}]
     {
       \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
@@ -480,7 +647,7 @@
 
   \InsertTable
     [scale=0.9,
-      caption={表格闊度設定scale=0.9},
+      caption={表格寬度設定scale=0.9},
       label={table:how-to-write:table-example3}]
     {
       \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
