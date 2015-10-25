@@ -2,34 +2,35 @@
 \StartSection{論文基本資料設定 Tesis base configure}{chapter:how-to:use:conf}
 % ------------------------------------------------
 
-\StartSubSection{介紹}
-
 'conf/conf.tex'是用來設定一些論文需要的資料: 如題目, 人名等. 故以下的章節會一個一個資料說明要怎麼填寫或修改:
 
 \begin{enumerate}
   \item
   {
-    \textbf{論文的編寫語言 / 用途}
+    \textbf{使用的論文內容}
 
-    有3個選擇, 但只能用其中一個.
+    如果使用'\verb|\DemoMode|'
 
-    \verb|\ChiMode|:  編寫的為中英混合版, 有提供基本的所需的檔案.\\
-    \verb|\EngMode|:  編寫的為全英文版, 有提供基本的所需的檔案.\\
-    \verb|\DemoMode|: 完整教學 或 樣板測試用.
+    就會使用'./example/context.tex'中模板說明文件內容. 但如果這資料夾已刪的話, 在產生論文時會回傳錯誤.
 
-    如果你選擇的是\verb|\DemoMode|, 則會使用'./example/context.tex'中的模板說明文件內容. 而如果使用\verb|\DemoMode|, 但這資料夾已刪的, 在產生論文時會回傳錯誤.
+    否則會使用'./context/context.tex'的你所編寫論文內容. 所以這時候請在這資料夾中編寫你的論文.
+  } % End of \item{}
 
-    如果你選擇的是\verb|\ChiMode|或\verb|\EngMode|, 就會使用'./context/context.tex'中的內容. 所以這時候請在這資料夾中編寫你的論文.
+  \item
+  {
+    \textbf{封面上顯示文字的語言}
+
+    \verb|\DisplayCoverInChi|:  封面以全中文顯示
+    \verb|\DisplayCoverInEng|:  封面以全英文顯示
+    只能選擇其中一個, 但只有最後設定的一方有效
   } % End of \item{}
 
   \item
   {
     \textbf{封面名字顯示方式}
 
-    如果你是使用\verb|\ChiMode|, 則可無視這個設定.
-
-    而如果你選擇是\verb|\EngMode|, 預設在封面上只會顯示英文名字而已, 把\verb|\CDBothName|中的\verb|'%'|拿掉以設定同時顯示中英文名字
-
+    預設在封面上只會顯示中文或英文名字而已.
+    不論你是使用'\verb|\DisplayCoverInChi|'或'\verb|\DisplayCoverInEng|', 使用'\verb|\CDBothName|'以設定同時顯示中英文名字.
   } % End of \item{}
 
   \item
@@ -64,6 +65,13 @@
 
   \item
   {
+    \textbf{Draft 初稿}
+
+    使用'\verb|\DisplayDraft|' 可顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面
+  } % End of \item{}
+
+  \item
+  {
     \textbf{Degree name 學位}
 
     設定這論文是碩士或是博士學位論文.\\
@@ -93,17 +101,13 @@
 
     \textbf{注意}: 依本校研究生學位考試細則第十條規定：
       \begin{description}
-        \item[碩士班]: \hfill
-          論文日期：上學期為〇〇〇年1月；下學期為〇〇〇年6月，
-          以該學期結束日期(一月或六月)為準。
-          (如：在上學期101年9月~102年1月期間口試，
-              不論是在此期間何月份口試，其日期均固定為102年1月).
-          另碩士生如101上學期完成口試，101下學期申請出國，102上學期辦理離校，
-          則論文封面為103年1月
+        \item[碩士班]: \hfill\\
+          論文日期：上學期為$\bigcirc\bigcirc\bigcirc$年1月；下學期為$\bigcirc\bigcirc\bigcirc$年6月，以該學期結束日期(一月或六月)為準。\\
+          (如：在上學期101年9月~102年1月期間口試，不論是在此期間何月份口試，其日期均固定為102年1月).\\
+          另碩士生如101上學期完成口試，101下學期申請出國，102上學期辦理離校，則論文封面為103年1月
 
-        \item[博士班]: \hfill
-        以當學期通過學位口試，則論文日期為口試日期(如〇〇〇年〇〇月〇〇日)，
-        若論文有修改致延至次學期，則以論文上傳日期為主。
+        \item[博士班]: \hfill\\
+        以當學期通過學位口試，則論文日期為口試日期(如$\bigcirc\bigcirc\bigcirc$年$\bigcirc\bigcirc$月$\bigcirc\bigcirc$日)，若論文有修改致延至次學期，則以論文上傳日期為主。
       \end{description}
     故本模版會根據你的學位, 來選擇顯示在封面的日期格式.
   } % End of \item{}
@@ -121,7 +125,7 @@
   {
     \textbf{指導老師 Advisor(s)}
 
-    在封面上預算了最多3位的空間, 中文名字固定以'教授'為結尾, 英文名字固定以'Prof.'為開頭.
+    在封面上預算了最多3位的空間, 中文名字固定以'博士'為結尾, 英文名字固定以'Dr.'為開頭.
 
     有3種可使用, 用來設定3位老師的名字\\
     \verb|\SetAdvisorNameX{老師的名字}{Professor's name}|: 同時設定中英文名字\\
@@ -142,14 +146,17 @@
 
     如果要用的是範例:\\
     \verb|\DisplayOralTemplate|: 顯示 / 使用 口試範例版本.\\
-    \verb|\SetCommitteeSize{8}|: 口試委員數量, 要配合\verb|\DisplayOralTemplate|來使用, 至少4位, 最多8位, 預設為8位.\\
+    \verb|\DisplayOralChiTemplate|: 顯示中文範例版本\\
+    \verb|\DisplayOralEngTemplate|: 顯示英文範例版本\\
+    \verb|\SetCommitteeSize{9}|: 口試委員數量, 要配合\verb|\DisplayOralTemplate|來使用, 至少4位, 最多9位, 預設為9位.\\
 
     而如果要用的是自己的檔案:\\
     把你的圖片放在'context/oral'下, 之後設定中英文版所對應是哪一個檔案.\\
-    例子用的'oral-chi.pdf'和'oral-eng.pdf'已放在'context/oral'中.
-    \verb|\DisplayOralImage|: 設定要顯示圖片
-    \verb|\SetOralImageChi{oral-chi.pdf}|: 設定中文口試檔名
-    \verb|\SetOralImageEng{oral-eng.pdf}|: 設定英文口試檔名
+    就算已啟用'\verb|\DisplayOralImage|', 但沒有填寫圖檔檔名的話, 都不會顯示出來.\\
+    (例子用的'example-oral-chi.pdf'和'example-oral-eng.pdf'已放在'context/oral'中)\\
+    \verb|\DisplayOralImage|: 設定要顯示圖片\\
+    \verb|\SetOralImageChi{example-oral-chi.pdf}|: 設定中文口試檔名\\
+    \verb|\SetOralImageEng{example-oral-eng.pdf}|: 設定英文口試檔名
 
     雖然沒有限定圖片的格式, 但是推薦使用PDF, 而且是沒法使用SVG.
   } % End of \item{}
@@ -158,8 +165,30 @@
   {
     \textbf{關鍵字 Keyword}
 
-    可設定最多5個關鍵字.使用方式:\\
-    \verb|\SetKeywords{Keyword A}{Keyword B}{Keyword C}{Keyword D}{Keyword E}|
+    最多可設定9個關鍵字, 為了方便同學自行設定, 故所產出來的PDF檔案中的關鍵字和內文摘要的關鍵字, 可獨立個別設定.
+
+    '\verb|\SetKeywords|'是設定所產出來的PDF中的Keyword項目, 可同時填寫中英文.
+    e.g\\
+    \verb|\SetKeywords|{Keyword A (關鍵字 A)}{Keyword B (關鍵字 B)}{Keyword C (關鍵字 C)}\\
+    或單純中文或英文\\
+    \verb|\SetKeywords|{Keyword A}{Keyword B}{Keyword C}\\
+    \verb|\SetKeywords|{關鍵字 A}{關鍵字 B}{關鍵字 C}
+
+    而摘要中的關鍵字, 為了方便同學們能達到以下情況:\\
+    a. 只寫中文版摘要\\
+    b. 只寫英文版摘要\\
+    c. 同時寫中英文版摘要\\
+    故中英文版的關鍵字都是可個別設定.\\
+    \verb|\SetAbstractChiKeywords|: 用來設定中文版摘要的關鍵字\\
+    \verb|\SetAbstractEngKeywords|: 用來設定英文版摘要的關鍵字\\
+    \verb|\SetAbstractExtKeywords|: 用來設定英文延伸摘要的關鍵字 (只有你要編寫英文延伸摘要才需要設定)\\
+    所以只要使用你需要寫的版本則可. 但如果2個版本都要寫, 則2個都同時使用則可. 沒有填寫的話, 則摘要中的關鍵字部份是不會顯示出來.
+
+    e.g\\
+    \verb|\SetAbstractChiKeywords|{關鍵字 A}{關鍵字 B}{關鍵字 C}\\
+    \verb|\SetAbstractEngKeywords|{Keyword A}{Keyword B}{Keyword C}\\
+    \verb|\SetAbstractExtKeywords|{Keyword A}{Keyword B}{Keyword C}\\
+    英文延伸摘要的關鍵字理應會跟英文版摘要的關鍵字是一樣, 但為了同學能編寫不同內容和關鍵字, 故可獨立設定.
   } % End of \item{}
 
   \item
