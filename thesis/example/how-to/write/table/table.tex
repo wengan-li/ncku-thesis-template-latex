@@ -2,20 +2,14 @@
 \StartSection{表格 Table}{chapter:how-to:write:table}
 % ------------------------------------------------
 
-\StartSubSection{介紹}
+表格(Table)在任何情況下都是一個常用的顯示方式, 所以如何設計它都會有大量的玩法. 在正常Mircosoft Word這種有畫面的情況下, 可以慢慢拉出一個比較適合自己的, 但是在Latex中這個過程會是十分的痛苦, 因為你沒法馬上知道修改後的畫面, 故要不斷測試才知道效果, 這樣會大大減低選用table的使用次數.\\
 
-表格(Table)在任何情況下都是一個常用的顯示方式, 所以如何設計它都會有大量的玩法. 在正常Mircosoft Word這種有畫面的情況下, 可以慢慢拉出一個比較適合自己的, 但是在Latex中這個過程會是十分的痛苦, 因為你沒法馬上知道修改後的畫面, 故要不斷測試才知道效果, 這樣會大大減低選用table的使用次數.
+在一般任何的Latex教學上, 如何編寫一個table出來都會是其中一項, 了解任何一個部份的寫法, 位置, 設定等. 但是由於那些資料十分的巨量 (不同寫法有不同效果), 所以這絕對不是使用本模板的大家想知道的東西, 故本模板不使用過往的方式, 而且直接教大家怎樣使用現有的online tool去處理掉這個問題.\\
 
-在一般任何的Latex教學上, 如何編寫一個table出來都會是其中一項, 了解任何一個部份的寫法, 位置, 設定等. 但是由於那些資料十分的巨量 (不同寫法有不同效果), 所以這絕對不是使用本模板的大家想知道的東西, 故本模板不使用過往的方式, 而且直接教大家怎樣使用現有的online tool去處理掉這個問題.
+以下的說明都是針對LaTeX Table Generator\RefBib{web:latex:table-generator}來進行說明. LaTeX Table Generator (Fig \RefTo{fig:how-to:table:table-generator})的頁面非常明瞭和簡單, 只要有過Mircosoft Word中的table設計的經驗, 應該要上手這個東西絕對不會很難.
 
-以下的說明都是針對LaTeX Table Generator\RefBib{web:latex:table-generator}來進行說明.
-
-LaTeX Table Generator (Fig \RefTo{fig:how-to:table:table-generator})的頁面非常明瞭和簡單, 只要有過Mircosoft Word中的table設計的經驗, 應該要上手這個東西絕對不會很難.
-
-% ------------------------------------------------
-\newpage
-\InsertImage
-  [scale=0.4, align=center,
+\InsertFigure
+  [scale=0.30,
   caption={LaTeX Table Generator頁面},
   label={fig:how-to:table:table-generator}]
   {./example/how-to/write/table/pic/table-generator.png}
@@ -316,7 +310,7 @@ LaTeX Table Generator (Fig \RefTo{fig:how-to:table:table-generator})的頁面非
   {
     圖片
 
-    這tool沒法插入圖片, 所以有關圖片的部份要自己加在table中, 請參考P. \RefPage{table:how-to:write:image:insert-image-into-table}, 但是在table中的image是不能加標題和label.
+    這tool沒法插入圖片, 所以有關圖片的部份要自己加在table中, 請參考P. \RefPage{table:how-to:write:figure:insert-figure-into-table}, 但是在table中的figure是不能加標題和label.
   } % End of \item{}
 
   \item
@@ -331,6 +325,219 @@ LaTeX Table Generator (Fig \RefTo{fig:how-to:table:table-generator})的頁面非
         label={table:package:comment}]
       {./example/how-to/write/table/pic/table-comment.png}
   } % End of \item{}
+  \end{enumerate}
+
+% ------------------------------------------------
+\newpage
+\StartSubSection{模板提供的功能}
+
+在畢業論文中, 表格的位置跟圖片一樣都是非常固定以中間為主, 而不一樣的東西主要是表格的標題位置和表格的設計, 同時為了幫同學們調整好表格的位置, 大小和預設白色背景, 故本模板同時增加一個幫助你插入表格的功能.
+
+  \EmptyLine
+  \begin{fmpage}{\textwidth}
+  \begin{verbatim}
+  Content:   表格內容 (必填)
+    只需要\begin{tabular} ... \end{tabular}這部份的內容
+
+  Options 設定 (使用','來分隔, 不分先後順序)
+    scale:   頁面的比例 (選填, 預設: 0.0)
+    (0.0: 原大小; 1.0: 跟頁面一樣大;
+     0.x: 以比例的大小; 個人推薦最大值為0.9, 因需保留小量左右的空白)
+    caption: 標題 (選填)
+    label:   標簽 (選填, 必須要配合caption使用, 否則無效)
+    pos:   caption在表格的位置
+      top為上方, bottom為下面 (選填, 預設: top)
+
+  插入表格
+  \InsertTable[Options]{Content}
+
+  E.g
+    \InsertTable
+    [caption={這 是 標 題}]
+      {
+        \begin{tabular}{ ... }
+        ...
+        \end{tabular}
+      }
+
+    \InsertTable
+      [scale=0.5,
+        pos=bottom,
+        caption={這 是 標 題},
+        label={this:is:label}]
+      {
+        \begin{tabular}{ ... }
+        ...
+        \end{tabular}
+      }
+  \end{verbatim}
+  \end{fmpage}
+
+% ------------------------------------------------
+
+  \newpage
+  {\bf 效果:}
+  \begin{enumerate}
+
+% ------------------------------------------------
+
+  \item
+  {
+    標題在表格上方.
+    \begin{verbatim}
+    \InsertTable
+      [caption={標題在上方}]
+      {
+        \begin{tabular}{|c|c|c|}
+        \hline
+         & Col 1 & Col 2 \\ \hline
+        Row 1 & Value 1-1 & Value 1-2 \\ \hline
+        Row 2 & Value 2-1 & Value 2-2 \\ \hline
+        \end{tabular}
+      }
+    \end{verbatim}
+
+    \InsertTable
+      [caption={標題在上方}]
+      {
+        \begin{tabular}{|c|c|c|}
+        \hline
+         & Col 1 & Col 2 \\ \hline
+        Row 1 & Value 1-1 & Value 1-2 \\ \hline
+        Row 2 & Value 2-1 & Value 2-2 \\ \hline
+        \end{tabular}
+      }
+  } % End of \item{}
+
+% ------------------------------------------------
+
+  \newpage
+  \item
+  {
+    標題在表格下面.
+    \begin{verbatim}
+    \InsertTable
+      [caption={標題在下面},
+        pos=bottom]
+      {
+        \begin{tabular}{|c|c|c|}
+        \hline
+         & Col 1 & Col 2 \\ \hline
+        Row 1 & Value 1-1 & Value 1-2 \\ \hline
+        Row 2 & Value 2-1 & Value 2-2 \\ \hline
+        \end{tabular}
+      }
+    \end{verbatim}
+
+    \InsertTable
+      [caption={標題在下面},
+        pos=bottom]
+      {
+        \begin{tabular}{|c|c|c|}
+        \hline
+         & Col 1 & Col 2 \\ \hline
+        Row 1 & Value 1-1 & Value 1-2 \\ \hline
+        Row 2 & Value 2-1 & Value 2-2 \\ \hline
+        \end{tabular}
+      }
+  } % End of \item{}
+
+% ------------------------------------------------
+
+  \newpage
+  \item
+  {
+    Scale是用來調整表格的大小, 一般來講都不需要使用到這設定, 只有在特殊情況, 例如表格內容過多影響到闊度. 不同在Mircosoft Word中, 在Latex中表格是會無視闊度是否超過頁面的, 故這就需要靠scale來調整.Table \RefTo{table:how-to-write:table-example1} 是一個闊度超過頁面的例子, 而Table \RefTo{table:how-to-write:table-example2} 是把闊度控制跟頁面一樣闊, 但這就會沒有左右的空白空間, 而Table \RefTo{table:how-to-write:table-example3} 則是保留了左右的空白空間 (個人推薦最大值為0.9).
+
+  \InsertTable
+    [caption={表格闊度超過頁面},
+      label={table:how-to-write:table-example1}]
+    {
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+       & Col 1 & Col 2 & Col 3 & Col 4 & Col 5 & Col 6 & Col 7 & Col 8 & Col 9 & Col 10 & Col 11 & Col 12 & Col 13 & Col 14 \\ \hline
+      Row 1 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 2 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 3 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 4 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      \end{tabular}
+    }
+
+  \InsertTable
+    [scale=1.0,
+      caption={表格闊度設定scale=1.0},
+      label={table:how-to-write:table-example2}]
+    {
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+       & Col 1 & Col 2 & Col 3 & Col 4 & Col 5 & Col 6 & Col 7 & Col 8 & Col 9 & Col 10 & Col 11 & Col 12 & Col 13 & Col 14 \\ \hline
+      Row 1 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 2 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 3 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 4 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      \end{tabular}
+    }
+
+  \InsertTable
+    [scale=0.9,
+      caption={表格闊度設定scale=0.9},
+      label={table:how-to-write:table-example3}]
+    {
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+       & Col 1 & Col 2 & Col 3 & Col 4 & Col 5 & Col 6 & Col 7 & Col 8 & Col 9 & Col 10 & Col 11 & Col 12 & Col 13 & Col 14 \\ \hline
+      Row 1 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 2 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 3 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 4 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      \end{tabular}
+    }
+
+雖然內容可以保留在頁面中, 但看得出內容的文字會變小, 故表格的內容不能放過多內容, 否則會縮得十分的小.
+  } % End of \item{}
+
+% ------------------------------------------------
+
+  \newpage
+  \item
+  {
+    相反, 如果表格內容較少, 卻使用scale的話則會造成放大的行為.
+Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 而Table \RefTo{table:how-to-write:table-example5} 則設定了scale=0.9.
+
+  \InsertTable
+    [caption={內容較少的表格},
+      label={table:how-to-write:table-example4}]
+    {
+      \begin{tabular}{|c|c|c|c|c|}
+      \hline
+       & Col 1 & Col 2 & Col 3 & Col 4 \\ \hline
+      Row 1 & Value 1-1 & Value 1-2 & Value 1-3 & Value 1-4 \\ \hline
+      Row 2 & Value 2-1 & Value 2-2 & Value 2-3 & Value 2-4 \\ \hline
+      Row 3 & Value 3-1 & Value 3-2 & Value 3-3 & Value 3-4 \\ \hline
+      Row 4 & Value 4-1 & Value 4-2 & Value 4-3 & Value 4-4 \\ \hline
+      \end{tabular}
+    }
+
+% ------------------------------------------------
+
+  \InsertTable
+    [scale=0.9,
+      caption={內容較少的表格, 但設定了scale=0.9},
+      label={table:how-to-write:table-example5}]
+    {
+      \begin{tabular}{|c|c|c|c|c|}
+      \hline
+       & Col 1 & Col 2 & Col 3 & Col 4 \\ \hline
+      Row 1 & Value 1-1 & Value 1-2 & Value 1-3 & Value 1-4 \\ \hline
+      Row 2 & Value 2-1 & Value 2-2 & Value 2-3 & Value 2-4 \\ \hline
+      Row 3 & Value 3-1 & Value 3-2 & Value 3-3 & Value 3-4 \\ \hline
+      Row 4 & Value 4-1 & Value 4-2 & Value 4-3 & Value 4-4 \\ \hline
+      \end{tabular}
+    }
+  } % End of \item{}
+
+% ------------------------------------------------
+
   \end{enumerate}
 
 % ------------------------------------------------
