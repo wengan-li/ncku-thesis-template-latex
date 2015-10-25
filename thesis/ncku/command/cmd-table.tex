@@ -52,6 +52,8 @@
   \pgfkeys{/InsertTable, default, #1}%
   %
   \begin{table}[H]
+    \colorbox{white}{\makebox[\textwidth]{
+    \begin{minipage}[c]{\textwidth}
   %
     \ifthenelse{\equal{\TmpValuePosition}{top}}%
     {%
@@ -61,6 +63,8 @@
       \DisplayTableContent[\TmpValueScale]{#2}%
       \SetImageCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}%
     }%
+    \end{minipage}
+    }}%
   \end{table}
 } % End of \newcommand{}
 
