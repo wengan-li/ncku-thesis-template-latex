@@ -536,6 +536,47 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
     }
   } % End of \item{}
 
+
+% ------------------------------------------------
+
+  \newpage
+  \item
+  {
+    有時候在寫Pseudocode時會使用Pseudocode (Chap. \RefTo{chapter:how-to:write:pseudocode})外, 都可能會直接使用Table來顯示, 以下是使用Hello World為例子.
+
+    \begin{verbatim}
+      \InsertTable
+        [caption={Hello World in C}]
+        {
+          \begin{tabular}{ll}
+          \hline
+          1. & \#include \textless stdio.h\textgreater \\
+          2. &  \\
+          3. & int main(void) \\
+          4. & \{ \\
+          5. & \ \ \ \ \ \ \ \ printf("hello, world"); \\
+          6. & \} \\ \hline
+          \end{tabular}
+        }
+    \end{verbatim}
+
+  \InsertTable
+    [caption={Hello World in C}]
+    {
+      \begin{tabular}{ll}
+      \hline
+      1. & \#include \textless stdio.h\textgreater \\
+      2. &  \\
+      3. & int main(void) \\
+      4. & \{ \\
+      5. & \ \ \ \ \ \ \ \ printf("hello, world"); \\
+      6. & \} \\ \hline
+      \end{tabular}
+    }
+  } % End of \item{}
+
+相比Pseudocode的缺點是沒有自動算行數和Keyword沒有變粗體, 所有內容都由自己控制.
+
 % ------------------------------------------------
 
   \end{enumerate}
