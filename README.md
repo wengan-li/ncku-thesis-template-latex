@@ -39,7 +39,9 @@
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
-<img style='float: center' src='https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png'>
+<p align="center">
+  <img src='https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png' alt="CC-BY-NC-SA-4.0"/>
+</p>
 
 ### Other 其他
 如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
@@ -48,68 +50,68 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 * v1.3.0: **重大改版**
     由於所修改的內容影響全部內容和排版, 故比較推薦以重新編寫的方式來升級.
     + **排版**:
-        a. 使用原本'utdiss.sty'來重構'ncku.sty'. 保留有用的內容, 其他都盡量刪去.
-        b. 修正內頁邊界錯誤, 原本排版為大約上3.8cm、下4.3cm(含頁碼)、左3.5cm、右3.4cm. 現修正為上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm, 以符合學校的格式.
-        c. 更新封面邊界的使用方式, 產出效果跟舊版效果是一樣
-        d. 調整Chapter和Section的字體大小, 除了Chapter字體比較大, Section跟內容的字體是一樣, 但以粗體來顯示
-        e. 更新Acknowledgments的標題位置
-        f. 更新Abstract的標題位置
+        1. 使用原本'utdiss.sty'來重構'ncku.sty'. 保留有用的內容, 其他都盡量刪去.
+        2. 修正內頁邊界錯誤, 原本排版為大約上3.8cm、下4.3cm(含頁碼)、左3.5cm、右3.4cm. 現修正為上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm, 以符合學校的格式.
+        3. 更新封面邊界的使用方式, 產出效果跟舊版效果是一樣
+        4. 調整Chapter和Section的字體大小, 除了Chapter字體比較大, Section跟內容的字體是一樣, 但以粗體來顯示
+        5. 更新Acknowledgments的標題位置
+        6. 更新Abstract的標題位置
     + **封面**:
-        a. 更改 '學生' -> '研究生'
-        b. 更改 '教授' -> '博士', 'Prof.' -> 'Dr.' (因為要去除職稱上的差別)
-        c. 修正錯字, 'Co-advisor' -> 'Co-Advisor'
-        d. 更正 'Master's Dissertation' -> 'Master's Thesis'
-        e. 增加內頁. 封面主要用在印刷版, 如精裝版 或 平裝版. 而內頁主要用在電子版 + 印刷版. 在'context.tex'中使用'\DisplayInsideCover'來使用.
-        f. 更名API 'SetThesisDate' -> 'SetCoverDate', 底層轉到'\SetCoverDate'來保留這API
-        g. 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
-        h. 更新在context.tex中, 有關要使用哪種封面的說明.
-        i. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面在conf.tex中使用'\DisplayDraft'來使用.
-        j. 在conf.tex可使用'\CDBothName'以控制在封面上的學生和老師名字要只顯示中文, 英文或中英文同時顯示.
-        k. 在conf.tex可使用'\DisplayCoverInChi'或'\DisplayCoverInEng'以控制封面以中文或是英文顯示.
+        1. 更改 '學生' -> '研究生'
+        2. 更改 '教授' -> '博士', 'Prof.' -> 'Dr.' (因為要去除職稱上的差別)
+        3. 修正錯字, 'Co-advisor' -> 'Co-Advisor'
+        4. 更正 'Master's Dissertation' -> 'Master's Thesis'
+        5. 增加內頁. 封面主要用在印刷版, 如精裝版 或 平裝版. 而內頁主要用在電子版 + 印刷版. 在'context.tex'中使用'\DisplayInsideCover'來使用.
+        6. 更名API 'SetThesisDate' -> 'SetCoverDate', 底層轉到'\SetCoverDate'來保留這API
+        7. 更新在conf.tex和編寫介紹中, 有關封面日期設定的說明.
+        8. 更新在context.tex中, 有關要使用哪種封面的說明.
+        9. 增加可設定初稿, 會顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面在conf.tex中使用'\DisplayDraft'來使用.
+        10. 在conf.tex可使用'\CDBothName'以控制在封面上的學生和老師名字要只顯示中文, 英文或中英文同時顯示.
+        11. 在conf.tex可使用'\DisplayCoverInChi'或'\DisplayCoverInEng'以控制封面以中文或是英文顯示.
     + **書脊**:
-        a. 移除書脊功能, 移除任何相關檔案和說明. 基於有影印店說, 就算我們有提供書脊檔案給他們, 他們都會自己使用一些工具重新弄一個書脊出來以給影印機所印出來, 故模板不再需要提供書脊功能.
+        1. 移除書脊功能, 移除任何相關檔案和說明. 基於有影印店說, 就算我們有提供書脊檔案給他們, 他們都會自己使用一些工具重新弄一個書脊出來以給影印機所印出來, 故模板不再需要提供書脊功能.
     + **Appendix**:
-        a. 更新2015版的 '口試注意事項' 和 '學位論文上傳說明'
-        b. 補上引用文件的URL
+        1. 更新2015版的 '口試注意事項' 和 '學位論文上傳說明'
+        2. 補上引用文件的URL
     + **目錄**:
-        a. 删除 '封面' 和 '口試証明文件' 出現在目錄
-        b. 更正 '致謝' 在目錄顯示正確
-        c. 更正 '摘要' 在目錄顯示正確
-        d. 目錄使用新的style以壓縮內容
-        e. 目錄可在conf.tex中使用'\IndexChiMode'或'\IndexEngMode'來控制所顯示的標題的文字語言.
-        f. 更新'\DisplayIndex', 並新增'\DisplayTablesIndex' 和 '\DisplayFiguresIndex' 在'context.tex'以控制需要顯示的索引內容, 以免得沒有相關的內容, 但多了一頁沒意義的索引頁.
-        g. 提供'\SetIndexTitleText', '\SetTablesIndexTitleText' 和 '\SetFiguresIndexTitleText'在conf.tex以讓同學們可以自行設定目錄中的標題文字.
+        1. 删除 '封面' 和 '口試証明文件' 出現在目錄
+        2. 更正 '致謝' 在目錄顯示正確
+        3. 更正 '摘要' 在目錄顯示正確
+        4. 目錄使用新的style以壓縮內容
+        5. 目錄可在conf.tex中使用'\IndexChiMode'或'\IndexEngMode'來控制所顯示的標題的文字語言.
+        6. 更新'\DisplayIndex', 並新增'\DisplayTablesIndex' 和 '\DisplayFiguresIndex' 在'context.tex'以控制需要顯示的索引內容, 以免得沒有相關的內容, 但多了一頁沒意義的索引頁.
+        7. 提供'\SetIndexTitleText', '\SetTablesIndexTitleText' 和 '\SetFiguresIndexTitleText'在conf.tex以讓同學們可以自行設定目錄中的標題文字.
     + **摘要**:
-        a. 修正英文顯示 'Key words' -> 'Keyword'
-        b. 更名API 'StartChiAbstract' -> 'StartAbstractChi', 底層轉到'\StartAbstractChi'來保留這API
-        c. 更名API 'EndChiAbstract' -> 'EndAbstractChi', 底層轉到'\EndAbstractChi'來保留這API
-        d. 在conf.tex可使用'\SetAbstractChiKeywords' 或 '\SetAbstractEngKeywords' 來設定中英文版摘要中的關鍵字
-        e. 在content.tex可手動控制顯示中英文版摘要和英文延伸摘要
+        1. 修正英文顯示 'Key words' -> 'Keyword'
+        2. 更名API 'StartChiAbstract' -> 'StartAbstractChi', 底層轉到'\StartAbstractChi'來保留這API
+        3. 更名API 'EndChiAbstract' -> 'EndAbstractChi', 底層轉到'\EndAbstractChi'來保留這API
+        4. 在conf.tex可使用'\SetAbstractChiKeywords' 或 '\SetAbstractEngKeywords' 來設定中英文版摘要中的關鍵字
+        5. 在content.tex可手動控制顯示中英文版摘要和英文延伸摘要
     + **口試証明文件**:
-        a. 範例的中英文版本可單獨顯示 \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
-        b. 口試圖檔可單獨使用中/英文版, 或同時使用. \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
-        c. 調整了一下範例的設計, 以讓'指導教授'和'系 (所) 主管'中間的空間比較分開
-        d. 調整了一下範例中口試委員簽署的空間, 以讓口試委員數量最多可放9位
+        1. 範例的中英文版本可單獨顯示 \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
+        2. 口試圖檔可單獨使用中/英文版, 或同時使用. \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
+        3. 調整了一下範例的設計, 以讓'指導教授'和'系 (所) 主管'中間的空間比較分開
+        4. 調整了一下範例中口試委員簽署的空間, 以讓口試委員數量最多可放9位
     + **圖片/表格**:
-        a. 更新相關的說明文件
-        b. 更名API '\InsertImage' -> '\InsertFigure', 底層轉到'\InsertFigure'來保留這API
-        c. 圖片和標題背後現在會有白色背景, 讓圖片和標題更加清晰
-        d. 更名API '\InsertMultiImages' -> '\InsertFigures', 底層轉到'\InsertFigures'來保留這API
-        e. 更新改寫'\InsertFigures'的做法, 使用鎖死格式方式來取代計算的方式來調整圖片的位置和大小, 去掉Latex在計算上的困難和潛在的計算錯誤.
-        f. 增加 '\InsertTable' 來幫忙插入表單, 並加有白色背景, 讓表單內容更加清晰
-        g. 增加斜線功能給表單, 同時增加相關的說明例子
+        1. 更新相關的說明文件
+        2. 更名API '\InsertImage' -> '\InsertFigure', 底層轉到'\InsertFigure'來保留這API
+        3. 圖片和標題背後現在會有白色背景, 讓圖片和標題更加清晰
+        4. 更名API '\InsertMultiImages' -> '\InsertFigures', 底層轉到'\InsertFigures'來保留這API
+        5. 更新改寫'\InsertFigures'的做法, 使用鎖死格式方式來取代計算的方式來調整圖片的位置和大小, 去掉Latex在計算上的困難和潛在的計算錯誤.
+        6. 增加 '\InsertTable' 來幫忙插入表單, 並加有白色背景, 讓表單內容更加清晰
+        7. 增加斜線功能給表單, 同時增加相關的說明例子
     + **其他**:
-        a. 更新CONTRIBUTE中的名單和使用的稱號
-        b. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)
-        c. 修正錯字 'Templete' -> 'Template', 受影響的API為 '\DisplayOralTemplate' (原為 '\DisplayOralTemplete', 底層轉到'\DisplayOralTemplate'來保留這API) \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
-        d. 修正封面和口試証明上的日期因轉換時造成的奇怪空格.
-        e. 更新README.md中, CC Logo改使用HTML方式來對齊
-        f. 更新README.md中, 畢業論文要求補上引用的URL
-        g. 更正 '資訊工程系' -> '資訊工程研究所'
-        h. 修正引用的API '\RefXXX' 系列所引用的內容前面會有多餘的空白
-        i. 在conf.tex使用'\SetKeywords'可設定所產出來的PDF中的Keyword項目
-        j. 在content.tex可手動控制顯示中英文版誌謝
-        k. 在conf.tex使用'\ChapterSectionTitleInChi'可設定章節標題為中文版或是英文版 \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
+        1. 更新CONTRIBUTE中的名單和使用的稱號
+        2. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)
+        3. 修正錯字 'Templete' -> 'Template', 受影響的API為 '\DisplayOralTemplate' (原為 '\DisplayOralTemplete', 底層轉到'\DisplayOralTemplate'來保留這API) \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
+        4. 修正封面和口試証明上的日期因轉換時造成的奇怪空格.
+        5. 更新README.md中, CC Logo改使用HTML方式來對齊
+        6. 更新README.md中, 畢業論文要求補上引用的URL
+        7. 更正 '資訊工程系' -> '資訊工程研究所'
+        8. 修正引用的API '\RefXXX' 系列所引用的內容前面會有多餘的空白
+        9. 在conf.tex使用'\SetKeywords'可設定所產出來的PDF中的Keyword項目
+        10. 在content.tex可手動控制顯示中英文版誌謝
+        11. 在conf.tex使用'\ChapterSectionTitleInChi'可設定章節標題為中文版或是英文版 \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
