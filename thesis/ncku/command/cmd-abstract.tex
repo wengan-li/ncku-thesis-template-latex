@@ -58,37 +58,37 @@
 \newcommand{\StartExtendedAbstract}
 {
   \StartNewPage
-
+  %
   % Set page
   \baselineskip=20pt
   \setlength{\parindent}{0.0pt}
-
+  %
   % Set style
   \pagestyle{empty}
-
+  %
   % 設定段落之間的距離
   \setlength{\parskip}{0.5cm}
-
+  %
   % Add to "Table of Contents"
   \addcontentsline{toc}{chapter}{Extended Abstract}
-
+  %
   % Add title
   \parbox{\textwidth}{\center \large \textbf{\eTitle}}
   \vspace{0.5cm}
-
+  %
   % Add name
   \centerline{\large \GetAuthorEngName}
-
+  %
   % Add names
-  \centerline{Prof. \thinspace \GetAdvisorEngNameA}
+  \centerline{Dr. \thinspace \GetAdvisorEngNameA}
   \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}
     {}
-    {\centerline{Prof. \thinspace \GetAdvisorEngNameB}}
-
+    {\centerline{Dr. \thinspace \GetAdvisorEngNameB}}
+  %
   \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}
     {}
-    {\centerline{Prof. \thinspace \GetAdvisorEngNameC}}
-
+    {\centerline{Dr. \thinspace \GetAdvisorEngNameC}}
+  %
   % Add department
   \centerline{\GetDeptEngName}
   \centerline{\GetCollEngName}
@@ -97,26 +97,30 @@
 \newcommand{\EndExtendedAbstract}
 {
   \EndOfPage
-
+  %
   % 設定段落之間的距離
   \setlength{\parskip}{0.3cm}
-
+  %
   % Reset page
   \setlength{\parindent}{1.5em}
   \baselineskip=26pt
-
+  %
   % Re-set style
   \pagestyle{plain}
-} % End of \def{}
+  %
+  % Reset figure and table counter to zero
+  \setcounter{table}{0}
+  \setcounter{figure}{0}
+} % End of \newcommand{}
 
 % Summary in Extended Abstract
 \newcommand{\ExtAbstractSummary}[1]{
   \begin{framed}
     \ExtAbstractChapter{SUMMARY}{#1}
-
+    %
     % Keyword
     \par
-    {\noindent \bf Keyword:} \GetAbstractEngKeywords
+    {\noindent \bf Keyword:} \GetAbstractExtKeywords
   \end{framed}
 } % End of \newcommand{}
 
@@ -125,17 +129,14 @@
 {
   \vspace{0.4cm}
   \centerline{\textbf{#1}}
-
-  #2
+  #2%
 } % End of \newcommand{}
 
 % Sub-chapter in Extended Abstract
 \newcommand{\ExtAbstractSection}[2]
 {
-  \textbf{#1}
-
-  #2
+  \textbf{#1}\\%
+  #2%
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
-

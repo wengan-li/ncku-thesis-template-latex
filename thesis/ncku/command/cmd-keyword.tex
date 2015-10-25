@@ -77,4 +77,22 @@
   \ifthenelse{\equal{#9}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #9}}
 } % End of \newcommand{}
 
+\def\VarAbstractExtKeywords{\empty} % initialize
+\def\GetAbstractExtKeywords{\VarAbstractExtKeywords} % initialize
+\DeclareDocumentCommand{\SetAbstractExtKeywords}{
+  m G{\empty} G{\empty}
+  G{\empty} G{\empty} G{\empty}
+  G{\empty} G{\empty} G{\empty}}
+{
+  \AppendKeywordString{\VarAbstractExtKeywords}{#1}
+  \ifthenelse{\equal{#2}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #2}}
+  \ifthenelse{\equal{#3}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #3}}
+  \ifthenelse{\equal{#4}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #4}}
+  \ifthenelse{\equal{#5}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #5}}
+  \ifthenelse{\equal{#6}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #6}}
+  \ifthenelse{\equal{#7}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #7}}
+  \ifthenelse{\equal{#8}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #8}}
+  \ifthenelse{\equal{#9}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #9}}
+} % End of \newcommand{}
+
 % ----------------------------------------------------------------------------

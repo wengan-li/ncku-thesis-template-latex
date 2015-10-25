@@ -218,8 +218,9 @@
 % b. 只寫英文版摘要
 % c. 同時寫中英文版摘要
 % 故中英文版的關鍵字都是可個別設定
-% \SetAbstractChiKeywords: 用來設定中文版摘要
-% \SetAbstractEngKeywords: 用來設定英文版摘要
+% \SetAbstractChiKeywords: 用來設定中文版摘要的關鍵字
+% \SetAbstractEngKeywords: 用來設定英文版摘要的關鍵字
+% \SetAbstractExtKeywords: 用來設定英文延伸摘要的關鍵字 (只有你要編寫英文延伸摘要才需要設定)
 % 所以只要使用你需要寫的版本則可.
 % 但如果2個版本都要寫, 則2個都同時使用則可.
 % 沒有填寫的話, 則摘要中的關鍵字部份是不會顯示出來.
@@ -227,9 +228,13 @@
 % e.g
 % \SetAbstractChiKeywords{關鍵字 A}{關鍵字 B}{關鍵字 C}
 % \SetAbstractEngKeywords{Keyword A}{Keyword B}{Keyword C}
+% \SetAbstractExtKeywords{Keyword A}{Keyword B}{Keyword C}
+% 英文延伸摘要的關鍵字理應會跟英文版摘要的關鍵字是一樣,
+% 但為了同學能編寫不同內容和關鍵字, 故可獨立設定.
 
 \SetAbstractChiKeywords{國立成功大學畢業論文模板}{碩博士}{Latex/XeLaTex}
 \SetAbstractEngKeywords{NCKU Thesis/Dissertation Template}{Graduate}{Latex/XeLaTex}
+\SetAbstractExtKeywords{NCKU Thesis/Dissertation Template}{Graduate}{Latex/XeLaTex}
 
 % ----------------------------------------------------------------------------
 
