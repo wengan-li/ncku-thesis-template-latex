@@ -70,16 +70,16 @@
   \setlength{\parskip}{0.5cm}
   %
   % Add to "Table of Contents"
-  \addcontentsline{toc}{chapter}{Extended Abstract}
+%  \addcontentsline{toc}{chapter}{Extended Abstract}
+  \addcontentsline{toc}{chapter}{英文延伸摘要}
   %
   % Add title
-  \parbox{\textwidth}{\center \large \textbf{\eTitle}}
-  \vspace{0.5cm}
-  %
-  % Add name
-  \centerline{\large \GetAuthorEngName}
+  \begin{minipage}[c][4cm][c]{\textwidth}
+  \parbox{\textwidth}{\center \large \textbf{\GetEngTitle}}
+  \end{minipage}
   %
   % Add names
+  \centerline{\GetAuthorEngName}
   \centerline{Dr. \thinspace \GetAdvisorEngNameA}
   \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}
     {}
