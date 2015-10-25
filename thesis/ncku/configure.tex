@@ -70,29 +70,21 @@
 
 % --------------------------
 
-\usepackage{fancyhdr}
-\usepackage{float}
-\usepackage{pgfkeys}
-\usepackage{graphicx}
+% For PDF
 \usepackage{hyperref}
 \usepackage{pdfpages}
-\usepackage{url}
-\usepackage{multirow}
-\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
-\usepackage{fp}
-\usepackage{siunitx}
-\usepackage{ifthen}
-\usepackage{xparse}
 
-\usepackage{readarray}
-\usepackage{framed}
+% For figure
+\usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{amsmath}
+
+% For table
+\usepackage{multirow}
 \usepackage{booktabs}
+\usepackage{diagbox}
 
-\usepackage{comment}
-
+% For pseudocode
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \algnewcommand\algorithmicswitch{\textbf{switch}}
@@ -106,6 +98,22 @@
 \algtext*{EndCase}%
 \algtext*{EndDefault}%
 \def\Break{\algorithmicbreak}
+
+% For comment
+\usepackage{comment}
+
+% Other useful or needed libraries
+\usepackage{fp}
+%\usepackage{fancyhdr}
+%\usepackage{float}
+\usepackage{pgfkeys}
+\usepackage{url}
+%\usepackage{siunitx}
+\usepackage{ifthen}
+\usepackage{xparse}
+%\usepackage{readarray}
+\usepackage{framed}
+\usepackage{amsmath}
 
 % ------------------------------------------------
 
