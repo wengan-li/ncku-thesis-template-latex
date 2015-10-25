@@ -109,6 +109,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         h. 修正引用的API '\RefXXX' 系列所引用的內容前面會有多餘的空白
         i. 在conf.tex使用'\SetKeywords'可設定所產出來的PDF中的Keyword項目
         j. 在content.tex可手動控制顯示中英文版誌謝
+        k. 在conf.tex使用'\ChapterSectionTitleInChi'可設定章節標題為中文版或是英文版 \([來自Issue \#5的提醒](https://github.com/wengan-li/ncku-thesis-template-latex/issues/5)\)
 
 * v1.2.8: 修正日期在英文書脊中, 會因月份文字的長度而影響位置不一樣的問題
 
