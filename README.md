@@ -7,8 +7,8 @@
   1. 能同時讓你編寫中英文內容
   2. 主要資料能自動產生
      (只留下要填寫的部份, 其他都由模版自動產生: 如封面, 目錄, 口試合格證明文件樣板等)
-  3. 內含非常基本的Latex使用教學手冊
-  4. 提供簡易的語法去使用一些複雜的Latex功能
+  3. 內含非常基本的LaTex使用教學手冊
+  4. 提供簡易的語法去使用一些複雜的LaTex功能
 
 ### Available to use 已被學校負責單位接受
 
@@ -99,7 +99,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         2. 更名API '\InsertImage' -> '\InsertFigure', 底層轉到'\InsertFigure'來保留這API
         3. 圖片和標題背後現在會有白色背景, 讓圖片和標題更加清晰
         4. 更名API '\InsertMultiImages' -> '\InsertFigures', 底層轉到'\InsertFigures'來保留這API
-        5. 更新改寫'\InsertFigures'的做法, 使用鎖死格式方式來取代計算的方式來調整圖片的位置和大小, 去掉Latex在計算上的困難和潛在的計算錯誤.
+        5. 更新改寫'\InsertFigures'的做法, 使用鎖死格式方式來取代計算的方式來調整圖片的位置和大小, 去掉LaTex在計算上的困難和潛在的計算錯誤.
         6. 增加 '\InsertTable' 來幫忙插入表單, 並加有白色背景, 讓表單內容更加清晰
         7. 增加斜線功能給表單, 同時增加相關的說明例子
     + **其他**:
