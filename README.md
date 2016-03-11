@@ -36,6 +36,9 @@
 ### Sample 樣板/範例
 [有關 樣板/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-template-latex-sample)
 
+### Other 其他
+如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
+
 ### License 授權條款
 本著作採用創用 CC 姓名標示-非商業性-相同方式分享 4.0 授權條款
 
@@ -45,10 +48,18 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
   <img src='https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png' alt="CC-BY-NC-SA-4.0"/>
 </p>
 
-### Other 其他
-如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
-
 ### ChangeLog 版本修改
+* v1.3.1:
+    1. 增加Nomenclatures功能, 同時增加相關的說明例子
+    2. 把這模版的名字由'XeLaTex模版'改回'LaTex模版'. 基於當時原本Google對'XeLaTex'這字沒有相對的對應到去'LaTex', 故才把部份名字回成'LaTex' (如GitHub的URL). 但現在在'主要功能'有提到是使用XeLaTex技術即可 (因為對一般同學基本不知道差異性).
+    3. 在章節'圖片 Figure'中, 新增'小知識'和'轉換格式'的一些應對同學們有用的內容.
+    4. 修正部份內容的斷行位置.
+    5. 修正在章節'產生論文'舊有沒處理的書脊資料, 更換成新的有關封面內容.
+    6. 修正並統一使用'模版', 而不是'模板'.
+    7. 刪去一些沒再使用的檔案和內容.
+    8. 修正'README.md'中範例的URL \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\).
+    9. 修正'README.md'中一些文字說明 \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\).
+
 * v1.3.0: **重大改版**
     由於所修改的內容影響全部內容和排版, 故比較推薦以重新編寫的方式來升級.
     + **排版**:
