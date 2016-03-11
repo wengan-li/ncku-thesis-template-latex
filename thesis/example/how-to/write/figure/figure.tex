@@ -2,21 +2,97 @@
 \StartSection{圖片 Figure}{chapter:how-to:write:figure}
 % ------------------------------------------------
 
-\StartSubSection{介紹}
+\StartSubSection{圖片小知識}
 
-插入圖片其實有很多的玩法, 但是在畢業論文中, 它的放置位置則是非常固定的, 都是以中間為主, 之後就是插多張圖片. 因為圖片位置都是固定的, 所以本模版針對了插入單張或多張, 分別提供了以下的指令.
+圖片為兩類別: 點陣圖或向量圖 (參考 Fig \RefTo{fig:how-to:write:figure:format}) .\\
 
-要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.
+  \InsertFigure
+    [scale=0.3,
+      caption={圖片類別},
+      label={fig:how-to:write:figure:format}]
+    {./example/how-to/write/figure/pic/graph-format.png}
 
-留意的是, 圖片的路徑跟正常日常使用的路徑會不一樣, 是使用所謂的"相對路徑" (Relative path), 而起點是論文的主檔案(thesis.tex).
+點陣圖(如.jpg, .gif,.png, .tiff)在相機和網頁中十分常見, 優點是幾乎能應用在不同地方/工具, 缺點在放大縮小時會出現失真的情況, 所以為了更清晰, 則要更高的解析度的圖片, 這時候就會大大增加圖片大小, 而這大小會直接影響所產生出來論文PDF的大小.\\
+
+向量圖(如.pdf, .eps, .svg)在學術界內用來放在論文中是非常常見. 優點是不會因放大縮小而造成內容變型, 所以是十分有用的. 缺點是必須使用一些特定的工具才能顯示或產生出來. 而Latex主要使用這一類圖檔. 但Latex對SVG的支援十分不好, 故這模版沒無提供插入SVG檔, 故強烈推薦使用PDF為主要的格式.\\
+
+PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來轉成PDF. 另一種Windows增加型中繼檔(.emf)都同樣是點陣圖或向量圖, 而由於Word是沒法直接插入PDF/EPS/SVG的圖檔, 所以需先轉成這格式, 以保留向量圖的品質.
+
+% ------------------------------------------------
+\newpage
+\StartSubSection{轉換格式}
+
+以下為一些已知的方式可把圖像轉成向量圖格式, 按鈕的位置有可能不一樣, 但應該都會在那些地方中. (以下使用工具版本為: Adobe Acrobat XI Pro, Adobe Illustor CS5, Adobe Photoshop CS5, Microsoft Visio Professional 2013, Microsoft Office Professional 2013 [Excel/PowerPoint])
+
+\begin{description}
+  \item[SVG - > PDF] \hfill\\
+    如果你有安裝學校的Adobe Acrobat Pro (沒有的話都推薦你安裝. 因為交給圖書館的電子檔時, 你起碼要對PDF檔上鎖), 直接對那個SVG檔右鍵, 就會有'轉換成Adobe PDF' 這個選項.
+
+  \item[Adobe Illustor - > EMF] \hfill\\
+    '檔案' -> '轉存' -> 格式拉到最下面就有了.
+
+  \item[Adobe Illustor - > PDF] \hfill\\
+    '檔案' -> '另存新檔' -> 在格式中間位置 -> 如果你的是成品的話, 則可考慮把 '保留Illustrator編輯能力', '內嵌頁面縮圖'都拿掉以減少PDF檔的大小.
+
+  \item[Adobe Illustor - > SVG] \hfill\\
+    '檔案' -> '另存新檔' -> 在格式最底的位置 -> 如果你想不到有什麼設定, 直接按'確定'就好了. 同時都推薦在'影像'的選項設定為'嵌入'以去掉任何影像有位置不對而造成SVG檔有什麼問題.
+
+  \item[Adobe Photoshop - > PDF] \hfill\\
+    '檔案' -> '另存新檔' -> 在格式中下的位置 -> 如果你的是成品的話, 則可考慮把 '保留Photoshop編輯能力'拿掉以減少PDF檔的大小.
+
+  \item[Visio - > PDF] \hfill\\
+    '檔案' -> '匯出' -> '建立PDF/XPS'.
+
+  \item[Visio - > SVG] \hfill\\
+    '檔案' -> '匯出' -> '變更檔案類型' -> 'SVG可縮放向量圖形' -> 下面的'另存新檔'.
+
+  \item[Visio - > EMF] \hfill\\
+    '檔案' -> '匯出' -> '變更檔案類型' -> 'EMF 增加型中繼檔' -> 下面的'另存新檔'.
+
+  \newpage
+  \item[PowerPoint - > EMF] \hfill
+    \begin{enumerate}
+      \item '檔案' -> '匯出' -> '變更檔案類型' -> '儲存成其他檔案類型'
+      \item 下面的'另存新檔' -> 在格式最底部位置選擇'Windows增加型中繼檔' -> '僅此投影片'即可.
+      \item 當然都可選擇'所有投影片', 只是'僅此投影片'即可儲存跟PowerPoint同檔名的EMF檔. 而'所有投影片'會把多張的EMF檔放在一個資料夾中.
+    \end{enumerate}
+
+  \item[Excel - > PDF] Excel可以把所做出來的圖表轉成PDF內容. 
+    \begin{enumerate}
+      \item 在Excel中對某個圖表按一下左鍵, 之後 '檔案' -> '匯出' -> '建立PDF/XPS'.
+      \item 所做出來的PDF應該是一張A4, 所以要做裁切. 打開那個PDF, 右上方有一個'工具' -> 右邊多了一個工具列.
+      \item 按'裁切', 之後在圖中的任何地方按2下左鍵, 把'移除白色邊距'打勾 (如右圖中沒任何反應, 重新打勾一下看看), 之後按'確定'即可.
+      \item 按'Ctrl + S'來儲存即可.
+    \end{enumerate}
+
+  \item[Excel - > EMF] Excel沒有任何直接方式把圖表轉成EMF, 但有方法來間接轉換.
+    \begin{enumerate}
+      \item 先做一次\textbf{Excel - > PDF}的方法.
+      \item '檔案' -> '另存新檔' -> 在格式中間位置選擇'PowerPoint簡報(*.pptx)'.
+      \item 之後做一次\textbf{PowerPoint - > EMF}的方法即可.
+    \end{enumerate}
+\end{description}
+
+\noindent \textbf{注意:} 一些系所可能會使用自己的程式或一些工具以製造出SVG檔, 但以我經驗發現有時候有些工具所產出的SVG檔並不能在日常的工具或瀏覽器正常顯示 (應該是SVG中的XML有某程度的內容跟公認的內容不太一樣所造成的). 所以我會推薦先檢查這SVG檔是否在手上的工具或程式都顯示正常, 之後再把這SVG轉成PDF, 以方便匯入到論文之中, 同時能保證這SVG中的內容沒有出現任何變型或錯誤.
+
+% ------------------------------------------------
+\newpage
+\StartSubSection{使用介紹}
+
+插入圖片其實有很多的玩法, 但是在畢業論文中, 它的放置位置則是非常固定的, 都是以中間為主, 並插入單/多張圖片. 因為圖片位置都是固定的, 所以本模版針對了插入單張或多張來設計, 之後的章節會對這2個方式的使用作詳細說明.\\
+
+要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.\\
+
+留意的是, 圖片的路徑跟正常日常使用的路徑會不一樣, 是使用所謂的"相對路徑" (Relative path), 而起點是論文的主檔案(thesis.tex).\\
 
 \noindent 例如 (以Windows的路徑為例子):\\
 主檔案thesis.tex在: "\verb|C:\thesis\thesis.tex|"\\
 圖片A: "\verb|C:\thesis\some_dir\A.png|"\\
 圖片B: "\verb|C:\thesis\some_dir\B.png|"\\
-使用時以"\verb|./some_dir/A.png|", "\verb|./some_dir/B.png|"的方式來使用, 注意是"$/$"而不是"$\backslash$".
+使用時以"\verb|./some_dir/A.png|", "\verb|./some_dir/B.png|"的方式來使用, 注意是"$/$"而不是"$\backslash$".\\
 
-還有檔名的文字盡量不要在非格式的字(如.png, .pdf等)出現'.'這個符號, 否則有可能會出現潛在的錯誤.
+還有檔名的文字中間不要在非格式的位置(如最後的.png, .pdf等)出現'.'這個符號 (如AB.CD-EF.png), 否則有可能會出現潛在的錯誤.
+
 % ------------------------------------------------
 \newpage
 \StartSubSection{單張}
@@ -62,7 +138,7 @@
   \begin{enumerate}
   \item
   {
-    只填了比例和圖片位置
+    只填了圖片位置
     \begin{verbatim}
     \InsertFigure
       {./figure.png}
@@ -205,7 +281,7 @@
 \newpage
 \StartSubSection{多張}
 
-  如果要同時顯示多張的話, 因為要能一頁版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 大約4張都已經算多的了. 所以真的數量比較多的話, 推薦分別放同不到頁面會比較好閱讀.
+  如果要同時顯示多張的話, 因為要能一頁版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 大約4張都已經算多的了. 所以真的數量比較多的話, 推薦分別放同不到頁面會比較好閱讀.\\
 
   多張是使用\verb|\InsertFigures| ({\bf 注意:} Figure是複數, 有一個's'), 設計上可插入1$\sim$8張的圖片, 而且寫法會跟插入單張相近.
 
