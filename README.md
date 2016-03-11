@@ -1,10 +1,10 @@
-## National Cheng Kung University (NCKU) Thesis/Dissertation Template in XeLaTex ##
-### 台灣國立成功大學碩博士用畢業論文XeLaTex模版 ###
+## National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex ##
+### 台灣國立成功大學碩博士用畢業論文LaTex模版 ###
 
-這是國立成功大學碩博士用畢業論文的 LaTex 模版. 這模版是以'102.5.14日101學年第2次教務會議通過'的畢業論文要求來設計, 請留意學校的最新所訂的要求能否使用這樣板.
+這是國立成功大學碩博士用畢業論文的LaTex模版. 這模版是以'102.5.14日101學年第2次教務會議通過'的畢業論文要求來設計, 請留意學校的最新所訂的要求能否使用這樣板.
 
 ### Main feature 主要功能
-  1. 能同時讓你編寫中英文內容
+  1. 能同時讓你編寫中英文內容 (建基於XeLaTex)
   2. 主要資料能自動產生
      (只留下要填寫的部份, 其他都由模版自動產生: 如封面, 目錄, 口試合格證明文件樣板等)
   3. 內含非常基本的LaTex使用教學手冊
@@ -33,8 +33,8 @@
 * [生物科技研究所 Institute of Biotechnology](http://www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc)
 * [體育健康與休閒研究所 Institute of Physical Education, Health and Leisure Studies](http://www.ncku.edu.tw/~deprb/docs/Thesis%20Regulation%20.doc)
 
-### Sample 模版範例
-[有關 模版範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-template-latex-sample)
+### Sample 樣板/範例
+[有關 樣板/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-template-latex-sample)
 
 ### License 授權條款
 本著作採用創用 CC 姓名標示-非商業性-相同方式分享 4.0 授權條款
