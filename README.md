@@ -1,26 +1,28 @@
 ## National Cheng Kung University (NCKU) Thesis/Dissertation Template in XeLaTex ##
-### 台灣國立成功大學碩博士用畢業論文XeLaTex模板 ###
+### 台灣國立成功大學碩博士用畢業論文XeLaTex模版 ###
 
-這是國立成功大學碩博士用畢業論文的 LaTex 模板. 這模板是以'102.5.14日101學年第2次教務會議通過'的畢業論文要求來設計, 請留意學校的最新所訂的要求能否使用這樣版.
+這是國立成功大學碩博士用畢業論文的 LaTex 模版. 這模版是以'102.5.14日101學年第2次教務會議通過'的畢業論文要求來設計, 請留意學校的最新所訂的要求能否使用這樣板.
 
 ### Main feature 主要功能
   1. 能同時讓你編寫中英文內容
   2. 主要資料能自動產生
-     (只留下要填寫的部份, 其他都由模板自動產生: 如封面, 目錄, 口試合格證明文件樣板等)
+     (只留下要填寫的部份, 其他都由模版自動產生: 如封面, 目錄, 口試合格證明文件樣板等)
   3. 內含非常基本的Latex使用教學手冊
   4. 提供簡易的語法去使用一些複雜的Latex功能
 
 ### Available to use 已被學校負責單位接受
 
-這模板的
+這模版的
 * 格式/設計: 已經經過 '成大圖書館 系統管理組-數位論文小組' 所檢查和接受.
 * 口試合格證明文件: 已經經過 '教務處-課務組' 所檢查和接受.
 
-即是可使用本模板來編寫你畢業論文, 並能交給圖書館收藏存放.
+即是可使用本模版來編寫你畢業論文, 並能交給圖書館收藏存放.
 
 **注意**: 是'接受', 而不是'認可', 即是不屬於學校認可, 但可以使用並且不會有任何問題.
 
-但是因為各系所有各自的格式, 故請先留意自己的系所有沒有格式要求. 如果沒有, 則這模版應該用來使用. 否則要看系所上的格式, 是否跟這模版有相同的寫法.
+但是因為各系所有各自的格式, 故請先留意自己的系所有沒有格式要求.
+如果沒有, 則這模版應該可以使用的.
+否則要看系所上的格式, 是否跟這模版有相同的寫法.
 
 而如果這表名單中沒有顯示你的系所, 但你已經知道是否能使用, 請告知以供更新.
 
@@ -31,8 +33,8 @@
 * [生物科技研究所 Institute of Biotechnology](http://www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc)
 * [體育健康與休閒研究所 Institute of Physical Education, Health and Leisure Studies](http://www.ncku.edu.tw/~deprb/docs/Thesis%20Regulation%20.doc)
 
-### Example 樣板/範例
-[有關 樣板/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-template-release)
+### Sample 模版範例
+[有關 模版範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-template-latex-sample)
 
 ### License 授權條款
 本著作採用創用 CC 姓名標示-非商業性-相同方式分享 4.0 授權條款
@@ -44,7 +46,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 </p>
 
 ### Other 其他
-如果對本模板沒有興趣, 有[另一位同學提供的模板](https://github.com/lycsjm/nckuthesis)可使用.
+如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog 版本修改
 * v1.3.0: **重大改版**
@@ -69,7 +71,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
         10. 在conf.tex可使用'\CDBothName'以控制在封面上的學生和老師名字要只顯示中文, 英文或中英文同時顯示.
         11. 在conf.tex可使用'\DisplayCoverInChi'或'\DisplayCoverInEng'以控制封面以中文或是英文顯示.
     + **書脊**:
-        1. 移除書脊功能, 移除任何相關檔案和說明. 基於有影印店說, 就算我們有提供書脊檔案給他們, 他們都會自己使用一些工具重新弄一個書脊出來以給影印機所印出來, 故模板不再需要提供書脊功能.
+        1. 移除書脊功能, 移除任何相關檔案和說明. 基於有影印店說, 就算我們有提供書脊檔案給他們, 他們都會自己使用一些工具重新弄一個書脊出來以給影印機所印出來, 故模版不再需要提供書脊功能.
     + **Appendix**:
         1. 更新2015版的 '口試注意事項' 和 '學位論文上傳說明'
         2. 補上引用文件的URL
@@ -103,7 +105,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
     + **其他**:
         1. 更新CONTRIBUTE中的名單和使用的稱號
         2. 修正檔名, 應該是'misc.bib', 而不是'msic.bib' \([Issue \#4](https://github.com/wengan-li/ncku-thesis-template-latex/issues/4)\)
-        3. 修正錯字 'Templete' -> 'Template', 受影響的API為 '\DisplayOralTemplate' (原為 '\DisplayOralTemplete', 底層轉到'\DisplayOralTemplate'來保留這API) \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\)
+        3. 修正錯字 'Templete' -> 'Template', 受影響的API為 '\DisplayOralTemplate' (原為 '\DisplayOralTemplete', 底層轉到'\DisplayOralTemplate'來保留這API) \([Issue \#6](https://github.com/wengan-li/ncku-thesis-template-latex/issues/6)\)
         4. 修正封面和口試証明上的日期因轉換時造成的奇怪空格.
         5. 更新README.md中, CC Logo改使用HTML方式來對齊
         6. 更新README.md中, 畢業論文要求補上引用的URL
@@ -161,7 +163,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
  1. 增加版權資料到一些核心檔案
  2. 修改和增加一些圖書館要求的內容
  3. 修改有關abstract的一些path位置
- 4. 正式得到學校有關部門對這模板的接受
+ 4. 正式得到學校有關部門對這模版的接受
 
 * v1.0.1: 修改少量錯誤的內容和URL連接
 
