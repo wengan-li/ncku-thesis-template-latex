@@ -59,6 +59,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
     7. 刪去一些沒再使用的檔案和內容.
     8. 修正'README.md'中範例的URL \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\).
     9. 修正'README.md'中一些文字說明 \([Issue \#7](https://github.com/wengan-li/ncku-thesis-template-latex/issues/7)\).
+    10. Table增加設定和功能, 同時增加相關的說明例子
 
 * v1.3.0: **重大改版**
     由於所修改的內容影響全部內容和排版, 故比較推薦以重新編寫的方式來升級.
