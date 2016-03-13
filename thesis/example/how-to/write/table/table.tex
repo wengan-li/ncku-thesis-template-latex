@@ -347,6 +347,8 @@
     label:   標簽 (選填, 必須要配合caption使用, 否則無效)
     pos:   caption在表格的位置
       top為上方, bottom為下面 (選填, 預設: top)
+    tabcolsep: 每一個表格左右的空白空間 (選填, 預設: 6pt)
+    arraystretch: 每一個表格上下的空間 (選填, 預設: 1)
 
   插入表格
   \InsertTable[Options]{Content}
@@ -536,7 +538,6 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
     }
   } % End of \item{}
 
-
 % ------------------------------------------------
 
   \newpage
@@ -579,7 +580,99 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
 
 % ------------------------------------------------
 
+  \newpage
+  \item
+  {
+    使用tabcolsep來控制表格左右的空白空間
+
+    \begin{verbatim}
+      \InsertTable
+        [tabcolsep = 18pt]
+        {
+          \begin{tabular}{|c|c|c|}
+          \hline
+          Title1 & Col 1 & Col 2 \\ \hline
+          Row 1 & Value 1-1 & Value 1-2 \\ \hline
+          Row 2 & Value 2-1 & Value 2-2 \\ \hline
+          \end{tabular}
+        }
+    \end{verbatim}
+
+    \InsertTable
+      [tabcolsep = 18pt]
+      {
+        \begin{tabular}{|c|c|c|}
+        \hline
+        Title1 & Col 1 & Col 2 \\ \hline
+        Row 1 & Value 1-1 & Value 1-2 \\ \hline
+        Row 2 & Value 2-1 & Value 2-2 \\ \hline
+        \end{tabular}
+      }
+  } % End of \item{}
+
+  \newpage
+  \item
+  {
+    使用arraystretch來控制表格上下的空間
+
+    \begin{verbatim}
+      \InsertTable
+        [arraystretch = 2]
+        {
+          \begin{tabular}{|c|c|c|}
+          \hline
+          Title1 & Col 1 & Col 2 \\ \hline
+          Row 1 & Value 1-1 & Value 1-2 \\ \hline
+          Row 2 & Value 2-1 & Value 2-2 \\ \hline
+          \end{tabular}
+        }
+    \end{verbatim}
+
+    \InsertTable
+      [arraystretch = 2]
+      {
+        \begin{tabular}{|c|c|c|}
+        \hline
+        Title1 & Col 1 & Col 2 \\ \hline
+        Row 1 & Value 1-1 & Value 1-2 \\ \hline
+        Row 2 & Value 2-1 & Value 2-2 \\ \hline
+        \end{tabular}
+      }
+  } % End of \item{}
+
   \end{enumerate}
+
+% ------------------------------------------------
+\newpage
+\StartSubSection{表格闊度和文字位置}
+
+LaTeX Table Generator沒法設定每一個Column的闊度, 故本模版提供3個APIs來設定. 分別為:
+  \begin{verbatim}
+    L{ WIDTH }: 文字偏左
+    C{ WIDTH }: 文字置中
+    R{ WIDTH }: 文字偏右
+  \end{verbatim}
+這個東西是寫在'\verb|\begin{tabular}|'的位置, 例如可以寫\verb|\C{2.0cm}|, \verb|\L{20pt}|. 但比較推薦配合'\verb|\textwidth|'來使用, 因為是使用一行文字可使用的長度, 所以用來分成幾個column會比較好計算大約位置.
+
+\begin{verbatim}
+\InsertTable
+{
+  \begin{tabular}{C{0.2\textwidth} L{0.4\textwidth} R{0.35\textwidth}}
+  \hline
+  Title1 & Title2 & Title3 \\
+  Center & Left & Right \\ \hline
+  \end{tabular}
+}
+\end{verbatim}
+
+    \InsertTable
+      {
+        \begin{tabular}{C{0.2\textwidth} L{0.4\textwidth} R{0.35\textwidth}}
+        \hline
+        Title1 & Title2 & Title3 \\
+        Col1 & Col 2 & Col 3 \\ \hline
+        \end{tabular}
+      }
 
 % ------------------------------------------------
 \newpage
@@ -622,17 +715,17 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
     \end{tabular}
   \end{verbatim}
 
-  \begin{table}[H]
-  \centering
-  \begin{tabular}{|l|ccc|}
-    \hline
-    \diagbox{Time}{Day} & Mon & Tue & Wed \\
-    \hline
-    Morning & used & used & \\
-    Afternoon & & used & used \\
-    \hline
-  \end{tabular}
-  \end{table}
+  \InsertTable
+  {
+    \begin{tabular}{|l|ccc|}
+      \hline
+      \diagbox{Time}{Day} & Mon & Tue & Wed \\
+      \hline
+      Morning & used & used & \\
+      Afternoon & & used & used \\
+      \hline
+    \end{tabular}
+  }
 
 % ------------------------------------------------
 \newpage
@@ -649,8 +742,8 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
     \end{tabular}
   \end{verbatim}
 
-  \begin{table}[H]
-  \centering
+  \InsertTable
+  {
     \begin{tabular}{|l|ccc|}
     \hline
     \diagbox{Time}{Room}{Day} & Mon & Tue & Wed \\
@@ -659,7 +752,7 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
     Afternoon & & used & used \\
     \hline
     \end{tabular}
-  \end{table}
+  }
 
   \EmptyLine
 
@@ -673,14 +766,14 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
     \end{tabular}
   \end{verbatim}
 
-  \begin{table}[H]
-  \centering
+  \InsertTable
+  {
     \begin{tabular}{|c|}
     \hline
     \diagbox{Row\\header}{Col\\header} \\
     \hline
     \end{tabular}
-  \end{table}
+  }
 
 % ------------------------------------------------
 \newpage
@@ -699,8 +792,8 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
     \end{tabular}
   \end{verbatim}
 
-  \begin{table}[H]
-  \centering
+  \InsertTable
+  {
     \begin{tabular}{|l|c|c|r|}
       \hline
       \diagbox{Time}{Day} & Mon & Tue & Wed\\
@@ -710,7 +803,7 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
       Afternoon & & used & \diagbox[dir=SW]{A}{B} \\
       \hline
     \end{tabular}
-  \end{table}
+  }
 
 % ------------------------------------------------
 \newpage
@@ -724,13 +817,13 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
     \end{tabular}
   \end{verbatim}
 
-  \begin{table}[H]
-  \centering
+  \InsertTable
+  {
     \begin{tabular}{|c|} \hline
       \diagbox{A}{B} \\\hline
       Very long term \\\hline
     \end{tabular}
-  \end{table}
+  }
 
   調整成:
   \begin{verbatim}
@@ -740,13 +833,13 @@ Table \RefTo{table:how-to-write:table-example4} 是一個內容較少的表格, 
     \end{tabular}
   \end{verbatim}
 
-  \begin{table}[H]
-  \centering
+  \InsertTable
+  {
     \begin{tabular}{|c|} \hline
       \diagbox[width=3cm]{A}{B} \\\hline
       Very long term \\\hline
     \end{tabular}
-  \end{table}
+  }
 
 % ------------------------------------------------
 \EndChapter
