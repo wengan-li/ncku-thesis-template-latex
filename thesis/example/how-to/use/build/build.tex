@@ -6,7 +6,7 @@
 這邊會簡單講解如何安裝基本的程式來產生你的論文.
 
 \StartSubSection{MiKTeX安裝}
-我們需要MiKTeX來幫我們來轉Latex成PDF.
+我們需要MiKTeX來幫我們來轉LaTex成PDF.
 
   \InsertFigure
     [scale=0.5,
@@ -72,7 +72,7 @@
 
 % ------------------------------------------------
 \newpage
-\StartSubSection{產生論文和書脊}
+\StartSubSection{產生論文和封面}
 
 當安裝完Texmaker和MiKTeX後, 直接點開'thesis.tex', 可以看到這個畫面(Fig\RefTo{fig:how-to:use:build:texmaker:thesis.tex}).
 
@@ -108,15 +108,15 @@
     {./example/how-to/use/build/pic/texmaker/3.png}
 
 \newpage
-把以上的步驟用在'spine.tex'上(Fig\RefTo{fig:how-to:use:build:texmaker:spine.tex})就能去產生你的書脊.
+把以上的步驟用在'cover.tex'上(Fig\RefTo{fig:how-to:use:build:texmaker:cover.tex})就能去產生你的封面.
 
   \InsertFigure
     [scale=0.3,
-      caption={Texmaker打開spine.tex畫面},
-      label={fig:how-to:use:build:texmaker:spine.tex}]
+      caption={Texmaker打開cover.tex畫面},
+      label={fig:how-to:use:build:texmaker:cover.tex}]
     {./example/how-to/use/build/pic/texmaker/4.png}
 
-當如果你已經把'thesis.tex'和'spine.tex'都產生了PDF, 你的資料夾應該會有這些檔案和資料夾(Fig\RefTo{fig:how-to:use:build:texmaker:dir}), 那2個PDF正是你需要的東西.
+當如果你已經把'thesis.tex'和'cover.tex'都產生了PDF, 你的資料夾應該會有這些檔案和資料夾(Fig\RefTo{fig:how-to:use:build:texmaker:dir}), 那2個PDF正是你需要的東西.
 
   \InsertFigure
     [scale=0.5,
@@ -129,7 +129,7 @@
 \newpage
 \StartSubSection{產生PDF的流程}
 
-在編譯Latex時成PDF時, 必須注意內部的引用(\verb|\RefBib{}|)情況.
+在編譯LaTex時成PDF時, 必須注意內部的引用(\verb|\RefBib{}|)情況.
 
 如果只是編寫內容, 引用的內容和號碼不是重要的話, 那直接使用:\\
 XeLaTeX -> 瀏覽PDF\\
@@ -141,6 +141,6 @@ XeLaTeX -> BibTex -> XeLaTeX -> 瀏覽PDF\\
 
 因為第一次的XeLaTeX是用來產生'thesis.aux', 而有這個檔案才能對你的內容中Reference的引用來進行連接, 而BibTex正是做這個的處理以產出'thesis.bbl', 而第二次的XeLaTeX會使用'thesis.bbl'來把你的Reference中的號碼在內容中設定.
 
-以上步驟只需用在'thesis.tex'的部份, 而'spine.tex'則不用做這個行為.
+以上步驟只需用在'thesis.tex'的部份, 而'cover.tex'則不用做這個行為.
 
 % ------------------------------------------------
