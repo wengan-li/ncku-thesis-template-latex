@@ -16,6 +16,42 @@
 % Some helper function about references and bibliography
 % 參考文獻或資料
 
+% Useful URL:
+% https://www.sharelatex.com/learn/Bibtex_bibliography_styles
+% http://ftp.isu.edu.tw/pub/Unix/CTAN/biblio/bibtex/contrib/apacite/apacite.pdf
+% https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+
+%     -- Style Name --    | 	 -- Author Name Format --  |  -- Reference Format --  |  -- Sorting --
+%        plain                     |	       Homer Jay Simpson 	     |                  #ID# 	                  |   by author
+%        unsrt                    |	        Homer Jay Simpson       |	                 #ID#                     |	   as referenced
+%        abbrv                  |	             H. J. Simpson               |	                #ID#                     |	   by author
+%       alpha                   |	       Homer Jay Simpson       |	   Sim95                              |	   by author
+%      abstract              |	       Homer Jay Simpson      |	   Simpson-1995a 	
+%         acm                  |	            Simpson, H. J.              |	   #ID# 	
+%    authordate1      |	      Simpson, Homer Jay      |	   Simpson, 1995 	
+%         apa                  |	       Simpson, H. J. (1995)      |	   Simpson1995 	
+%        named            |	         Homer Jay Simpson     |	   Simpson 1995 	
+
+% 使用package 'apacite' 的話
+%         apacite                  |	       Ackerman, 1990
+
+% ----------------------------------------------------------------------------
+
+% Bibliography style 使用的變數
+\newcommand{\BibStyleTypeAbbrv}{1}
+\newcommand{\BibStyleTypePlain}{2}
+\newcommand{\BibStyleTypeAlpha}{3}
+\newcommand{\BibStyleTypeApacite}{4}
+\newcommand{\BibStyleTypeVar}{\BibStyleTypeAbbrv} % Default style: 'abbrv'
+\newcommand{\SetBibStyleTypeVar}[1]{\renewcommand{\BibStyleTypeVar}{#1}}
+\newcommand{\GetBibStyleTypeVar}{\BibStyleTypeVar}
+
+% 公開使用的APIs
+\newcommand{\BibStyleUseAbbrv}{\SetBibStyleTypeVar{\BibStyleTypeAbbrv}}
+\newcommand{\BibStyleUsePlain}{\SetBibStyleTypeVar{\BibStyleTypePlain}}
+\newcommand{\BibStyleUseAlpha}{\SetBibStyleTypeVar{\BibStyleTypeAlpha}}
+\newcommand{\BibStyleUseApacite}{\SetBibStyleTypeVar{\BibStyleTypeApacite}}
+
 % ----------------------------------------------------------------------------
 
 \DeclareDocumentCommand{\ReferencesFiles}{%
@@ -29,9 +65,16 @@
   % Change the title of bibliography
   \renewcommand\bibname{\centerline{\Large References}}
   % ------------------------------------------------
-  %Style Name | Author Name Format | Reference Format | Sorting
-  %  abbrv    | H. J. Simpson      |        #ID#      | by author
-  \bibliographystyle{abbrv}
+
+  \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeAbbrv}}%
+  {\bibliographystyle{abbrv}}{}
+  \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypePlain}}%
+  {\bibliographystyle{plain}}{}
+  \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeAlpha}}%
+  {\bibliographystyle{alpha}}{}
+  \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeApacite}}%
+  {\bibliographystyle{apacite}}{}
+
   % ------------------------------------------------
   % Bib files
   \ifthenelse{\equal{#9}{\empty}}

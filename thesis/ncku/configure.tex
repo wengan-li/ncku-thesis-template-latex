@@ -150,3 +150,10 @@
 \FillInPDFData
 
 % ------------------------------------------------
+
+% 一些會受到conf.tex中設定而影響的package
+
+% For reference
+\ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeApacite}}%
+{\usepackage[notocbib]{apacite}}{}
+
