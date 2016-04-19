@@ -20,9 +20,8 @@
 
 **注意**: 是'接受', 而不是'認可', 即是不屬於學校認可, 但可以使用並且不會有任何問題.
 
-但是因為各系所有各自的格式, 故請先留意自己的系所有沒有格式要求.
-如果沒有, 則這模版應該可以使用的.
-否則要看系所上的格式, 是否跟這模版有相同的寫法.
+### 可使用的系所
+因為各系所有各自的格式, 故請先留意自己的系所有沒有格式要求. 如果沒有, 則這模版應該可以使用的. 否則要看系所上的格式, 是否跟這模版有相同的寫法.
 
 而如果這表名單中沒有顯示你的系所, 但你已經知道是否能使用, 請告知以供更新.
 
@@ -40,9 +39,9 @@
 如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog 版本修改
-最新版本為: [v1.3.2](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
+最新版本為: [v1.3.3](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
 
-[詳細請看ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
+詳細[請看ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
 
 ### License 授權條款
 本著作採用創用 CC 姓名標示-非商業性-相同方式分享 4.0 授權條款
@@ -53,4 +52,4 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
   <img src='https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png' alt="CC-BY-NC-SA-4.0"/>
 </p>
 
-詳細請看'LICENSE'這檔案中的條款說明.
+詳細[請看LICENSE](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/LICENSE)這檔案中的條款說明.
