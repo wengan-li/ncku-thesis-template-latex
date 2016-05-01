@@ -70,6 +70,15 @@
 
 % --------------------------
 
+% flafter package will make sure that the floats are
+% not placed before their definition
+\usepackage{flafter}
+\raggedbottom
+
+% For list
+\usepackage{enumitem}
+\setlist{nosep}
+
 % For PDF
 \usepackage{hyperref}
 \usepackage{pdfpages}
@@ -156,4 +165,9 @@
 % For reference
 \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeApacite}}%
 {\usepackage[notocbib]{apacite}}{}
+
+% http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/zhnumber/zhnumber.pdf
+%\usepackage{zhnumber}
+%\renewcommand\thesection{\zhnum{section}}
+%\renewcommand{\thesubsection}{\thesection.\zhnum{subsection}}
 
