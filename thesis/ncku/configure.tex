@@ -25,6 +25,10 @@
 % 加這個就可以設定字體
 \usepackage{fontspec}
 
+% 控制能使用UTF8的文字或符號在.tex檔案中
+% 否則那些文字或符號會被強制轉成其他能顯示的內容
+\usepackage[utf8]{inputenc}
+
 % 使用xeCJK，其他的還有CJK或是xCJK
 \usepackage[BoldFont]{xeCJK}
 
@@ -178,3 +182,6 @@
 % https://www.sharelatex.com/learn/Code_listing
 % https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
 % ftp://ftp.dante.de/tex-archive/macros/latex/contrib/minted/minted.pdf
+
+%\usepackage{natbib}
+%\bibpunct{（}{)}{；}{a}{，}{;}
