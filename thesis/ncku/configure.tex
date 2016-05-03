@@ -166,8 +166,15 @@
 \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeApacite}}%
 {\usepackage[notocbib]{apacite}}{}
 
+% For chinese number in title
 % http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/zhnumber/zhnumber.pdf
-%\usepackage{zhnumber}
-%\renewcommand\thesection{\zhnum{section}}
-%\renewcommand{\thesubsection}{\thesection.\zhnum{subsection}}
+\ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangChi}}%
+{\usepackage{zhnumber}}{}
 
+%\usepackage{minted}
+% https://www.sharelatex.com/learn/Code_Highlighting_with_minted
+
+%\usepackage{lstlisting}
+% https://www.sharelatex.com/learn/Code_listing
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+% ftp://ftp.dante.de/tex-archive/macros/latex/contrib/minted/minted.pdf

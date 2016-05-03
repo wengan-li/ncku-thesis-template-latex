@@ -60,10 +60,24 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand\VarChapterSectionTitleLangChi{1}
-\newcommand\VarChapterSectionTitleLangEng{0}
-\newcommand\VarChapterSectionTitleLang{\VarChapterSectionTitleLangEng}
-\newcommand\GetChapterSectionTitleLang{\VarChapterSectionTitleLang}
-\newcommand{\ChapterSectionTitleInChi}[1]{\renewcommand{\VarChapterSectionTitleLang}{\VarChapterSectionTitleLangChi}}
+% Chapter標題改使用 第1章 的方式來顯示
+\newcommand\VarChapterTitleLangChi{1}
+\newcommand\VarChapterTitleLangEng{0}
+\newcommand\VarChapterTitleLang{\VarChapterTitleLangEng}
+\newcommand\GetChapterTitleLang{\VarChapterTitleLang}
+\newcommand{\ChapterTitleInChi}{\renewcommand{\VarChapterTitleLang}{\VarChapterTitleLangChi}}
+
+% A wrapper to handle \ChapterSectionTitleInChi
+\newcommand{\ChapterSectionTitleInChi}
+{
+  \ChapterTitleInChi
+} % End of \newcommand{}
+
+% Chapter標題中的數字改使用中文數字, 如 第一章 的方式來顯示
+\newcommand\VarChapterTitleNumStyleChiNumber{1}
+\newcommand\VarChapterTitleNumStyleNumber{0}
+\newcommand\VarChapterTitleNumStyle{\VarChapterTitleNumStyleNumber}
+\newcommand\GetChapterTitleNumStyle{\VarChapterTitleNumStyle}
+\newcommand{\ChapterTitleNumInChi}{\renewcommand{\VarChapterTitleNumStyle}{\VarChapterTitleNumStyleChiNumber}}
 
 % ----------------------------------------------------------------------------
