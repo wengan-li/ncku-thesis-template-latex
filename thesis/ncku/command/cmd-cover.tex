@@ -53,8 +53,8 @@
   \SetSchoolEngName{#2}
 } % End of \newcommand{}
 
-\newcommand{\GetSchoolChiName}[0]{\univCname}
-\newcommand{\GetSchoolEngName}[0]{\univEname}
+\newcommand{\GetSchoolChiName}{\univCname}
+\newcommand{\GetSchoolEngName}{\univEname}
 % ----------------------------------------------------------------------------
 
 % --- Chinese / English title 中英文論文題目 ---
@@ -68,8 +68,8 @@
   \SetEngTitle{#2}
 } % End of \newcommand{}
 
-\newcommand{\GetChiTitle}[0]{\cTitle}
-\newcommand{\GetEngTitle}[0]{\eTitle}
+\newcommand{\GetChiTitle}{\cTitle}
+\newcommand{\GetEngTitle}{\eTitle}
 % ----------------------------------------------------------------------------
 
 % --- User's name 使用者名字 ---
@@ -83,8 +83,8 @@
   \SetMyEngName{#2}
 } % End of \newcommand{}
 
-\newcommand{\GetAuthorChiName}[0]{\myCname}
-\newcommand{\GetAuthorEngName}[0]{\myEname}
+\newcommand{\GetAuthorChiName}{\myCname}
+\newcommand{\GetAuthorEngName}{\myEname}
 
 % ----------------------------------------------------------------------------
 
@@ -105,14 +105,14 @@
 \newcommand{\degreeEname}{Master / Doctor} % Default
 \newcommand{\degreeThesisEname}{Master's Thesis / Doctoral Dissertation} % Default
 
-\newcommand{\GetChiDegree}[0]{\degreeCname}
-\newcommand{\GetEngDegree}[0]{\degreeEname}
-\newcommand{\GetEngDegreeThesis}[0]{\degreeThesisEname}
+\newcommand{\GetChiDegree}{\degreeCname}
+\newcommand{\GetEngDegree}{\degreeEname}
+\newcommand{\GetEngDegreeThesis}{\degreeThesisEname}
 \newcommand{\SetChiDegree}[1]{\renewcommand{\degreeCname}{#1}}
 \newcommand{\SetEngDegree}[1]{\renewcommand{\degreeEname}{#1}}
 \newcommand{\SetEngDegreeThesis}[1]{\renewcommand{\degreeThesisEname}{#1}}
 
-\newcommand{\PhdDegree}[0]
+\newcommand{\PhdDegree}
 {
   \SetFlagDegreeType{\ValueDegreePhd}
   \SetChiDegree{博士}
@@ -120,7 +120,7 @@
   \SetEngDegreeThesis{Doctoral Dissertation}
 } % End of \newcommand{}
 
-\newcommand{\MasterDegree}[0]
+\newcommand{\MasterDegree}
 {
   \SetFlagDegreeType{\ValueDegreeMaster}
   \SetChiDegree{碩士}
@@ -144,10 +144,10 @@
   \renewcommand{\ThesisMonth}{#2}
 } % End of \newcommand{}
 
-\newcommand{\GetThesisYear}[0]{\ThesisYear}
-\newcommand{\GetThesisYearInTaiwanYear}[0]{\ThesisTaiwanYearResult}
-\newcommand{\GetThesisMonth}[0]{\ThesisMonth}
-\newcommand{\GetThesisMonthInEng}[0]{\GetMonthInEng{\ThesisMonth}}
+\newcommand{\GetThesisYear}{\ThesisYear}
+\newcommand{\GetThesisYearInTaiwanYear}{\ThesisTaiwanYearResult}
+\newcommand{\GetThesisMonth}{\ThesisMonth}
+\newcommand{\GetThesisMonthInEng}{\GetMonthInEng{\ThesisMonth}}
 
 % ---  口試的日期 ---
 \newcommand{\OralChiYear}{101}      % Default
@@ -157,14 +157,14 @@
 \newcommand{\OralEngMonth}{January} % Default
 \newcommand{\OralEngDay}{1}         % Default
 
-\newcommand{\GetOralChiYear}[0]{\OralChiYear}
-\newcommand{\GetOralYearInTaiwanYear}[0]
+\newcommand{\GetOralChiYear}{\OralChiYear}
+\newcommand{\GetOralYearInTaiwanYear}
 {\SetThesisTaiwanYear{\OralEngYear}\ThesisTaiwanYearResult}
-\newcommand{\GetOralChiMonth}[0]{\OralChiMonth}
-\newcommand{\GetOralChiDay}[0]{\OralChiDay}
-\newcommand{\GetOralEngYear}[0]{\OralEngYear}
-\newcommand{\GetOralEngMonth}[0]{\OralEngMonth}
-\newcommand{\GetOralEngDay}[0]{\OralEngDay}
+\newcommand{\GetOralChiMonth}{\OralChiMonth}
+\newcommand{\GetOralChiDay}{\OralChiDay}
+\newcommand{\GetOralEngYear}{\OralEngYear}
+\newcommand{\GetOralEngMonth}{\OralEngMonth}
+\newcommand{\GetOralEngDay}{\OralEngDay}
 
 \newcommand{\SetOralChiDate}[3]
 {
@@ -202,8 +202,8 @@
   \SetCollEngName{#2}
 } % End of \newcommand{}
 
-\newcommand{\GetCollChiName}[0]{\collCname}
-\newcommand{\GetCollEngName}[0]{\collEname}
+\newcommand{\GetCollChiName}{\collCname}
+\newcommand{\GetCollEngName}{\collEname}
 
 % --------------------------- Department ---------------------------
 \newcommand{\deptCname}{A 系 / 所}
@@ -219,8 +219,8 @@
   \SetDeptEngName{#3}
 } % End of \newcommand{}
 
-\newcommand{\GetDeptChiName}[0]{\deptCname}
-\newcommand{\GetDeptEngName}[0]{\fulldeptEname}
+\newcommand{\GetDeptChiName}{\deptCname}
+\newcommand{\GetDeptEngName}{\fulldeptEname}
 
 % ----------------------------------------------------------------------------
 
@@ -271,7 +271,7 @@
 % ----------------------------------------------------------------------------
 
 % Use to create cover
-\newcommand{\CreateCover}[0]%
+\newcommand{\CreateCover}%
 {
   \begin{document}
   \input{./ncku/cover/cover}
@@ -287,19 +287,16 @@
 \newcommand{\ValueDisplayCoverLangChi}{1}
 \newcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangEng}
 \newcommand{\GetDisplayCoverLang}{\VarDisplayCoverLang}
-\newcommand{\DisplayCoverInChi}[0]{\renewcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangChi}}
-\newcommand{\DisplayCoverInEng}[0]{\renewcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangEng}}
+\newcommand{\DisplayCoverInChi}{\renewcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangChi}}
+\newcommand{\DisplayCoverInEng}{\renewcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangEng}}
 
 % ----------------------------------------------------------------------------
 
 % Display Chinese and English name in english cover
 \newcommand{\CoverDisplayNameChiEng}{0} % Default not display both
-
-\newcommand{\SetCDBothName}[0]{\renewcommand{\CoverDisplayNameChiEng}{1}}
-
-\newcommand{\CDBothName}[0]{\SetCDBothName}
-
-\newcommand{\GetCDBothName}[0]{\CoverDisplayNameChiEng}
+\newcommand{\SetCDBothName}{\renewcommand{\CoverDisplayNameChiEng}{1}}
+\newcommand{\GetCDBothName}{\CoverDisplayNameChiEng}
+\newcommand{\CDBothName}{\SetCDBothName}
 
 % ----------------------------------------------------------------------------
 
@@ -307,7 +304,7 @@
 \newcommand{\GetTextDraftChi}{(初稿)}
 \newcommand{\GetTextDraftEng}{(Draft)}
 \newcommand{\VarCoverDisplayDraft}{0} % Don't display in default
-\newcommand{\EnableFlagDisplayDraft}[0]{\renewcommand{\VarCoverDisplayDraft}{1}}
-\newcommand{\DisplayDraft}[0]{\EnableFlagDisplayDraft}
-\newcommand{\GetFlagDisplayDraft}[0]{\VarCoverDisplayDraft}
+\newcommand{\EnableFlagDisplayDraft}{\renewcommand{\VarCoverDisplayDraft}{1}}
+\newcommand{\DisplayDraft}{\EnableFlagDisplayDraft}
+\newcommand{\GetFlagDisplayDraft}{\VarCoverDisplayDraft}
 % ----------------------------------------------------------------------------

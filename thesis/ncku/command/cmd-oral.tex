@@ -21,7 +21,7 @@
 
 % 口試委員 Committee member(s)
 \newcommand{\CommitteeSize}{9} % Default
-\newcommand{\GetCommitteeSize}[0]{\CommitteeSize}
+\newcommand{\GetCommitteeSize}{\CommitteeSize}
 \newcommand{\SetCommitteeSize}[1]
 {
   \ifthenelse{#1 < 2}
@@ -192,7 +192,7 @@
 % ----------------------------------------------------------------------------
 
 % Signature line
-\newcommand{\namesigdate}[0]{\rule{5.5cm}{1pt}}
+\newcommand{\namesigdate}{\rule{5.5cm}{1pt}}
 
 % ----------------------------------------------------------------------------
 
@@ -204,10 +204,10 @@
 \newcommand{\FlagOralDocumentType}{\OralDocumentTemplate} % Default
 \newcommand{\GetOralDocumentType}{\FlagOralDocumentType} % Default
 
-\newcommand{\DisplayOralTemplete}[0]{\DisplayOralTemplate} % For backporting
-\newcommand{\DisplayOralTemplate}[0]
+\newcommand{\DisplayOralTemplete}{\DisplayOralTemplate} % For backporting
+\newcommand{\DisplayOralTemplate}
   {\renewcommand{\FlagOralDocumentType}{\ValueOralDocumentTypeTemplate}}
-\newcommand{\DisplayOralImage}[0]
+\newcommand{\DisplayOralImage}
   {\renewcommand{\FlagOralDocumentType}{\ValueOralDocumentTypeImage}}
 
 % The path of the image that the oral document
@@ -218,21 +218,21 @@
 \newcommand{\SetOralImageEng}[1]
 {\renewcommand{\OralDocumentImageEngPath}{./context/oral/#1}}
 
-\newcommand{\GetOralImageChiPath}[0]{\OralDocumentImageChiPath}
-\newcommand{\GetOralImageEngPath}[0]{\OralDocumentImageEngPath}
+\newcommand{\GetOralImageChiPath}{\OralDocumentImageChiPath}
+\newcommand{\GetOralImageEngPath}{\OralDocumentImageEngPath}
 
 \newcommand{\ValueDisplayOralTemplateOn}{1}
 \newcommand{\ValueDisplayOralTemplateOff}{0}
 \newcommand{\VarDisplayOralTemplateChi}{\ValueDisplayOralTemplateOff}
 \newcommand{\VarDisplayOralTemplateEng}{\ValueDisplayOralTemplateOff}
 
-\newcommand{\DisplayOralChiTemplate}[0]
+\newcommand{\DisplayOralChiTemplate}
   {\renewcommand{\VarDisplayOralTemplateChi}{\ValueDisplayOralTemplateOn}}
-\newcommand{\GetDisplayOralChiTemplate}[0]{\VarDisplayOralTemplateChi}
+\newcommand{\GetDisplayOralChiTemplate}{\VarDisplayOralTemplateChi}
 
-\newcommand{\DisplayOralEngTemplate}[0]
+\newcommand{\DisplayOralEngTemplate}
   {\renewcommand{\VarDisplayOralTemplateEng}{\ValueDisplayOralTemplateOn}}
-\newcommand{\GetDisplayOralTemplateEng}[0]{\VarDisplayOralTemplateEng}
+\newcommand{\GetDisplayOralTemplateEng}{\VarDisplayOralTemplateEng}
 
 % ----------------------------------------------------------------------------
 
