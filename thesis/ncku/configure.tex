@@ -15,46 +15,55 @@
 
 % ------------------------------------------------
 
-\documentclass[12pt, a4paper,onecolumn]{report}
+\documentclass[12pt, a4paper, onecolumn]{report}
 
 % ------------------------------------------------
 
 % XeLaTex 的設定
 
 % --------------------------
+
 % 加這個就可以設定字體
 \usepackage{fontspec}
 
 % 控制能使用UTF8的文字或符號在.tex檔案中
 % 否則那些文字或符號會被強制轉成其他能顯示的內容
-\usepackage[utf8]{inputenc}
+% 例如 全形 半形
+\usepackage{inputenc}
 
 % 使用xeCJK，其他的還有CJK或是xCJK
+%\usepackage[BoldFont, AutoFallBack=true]{xeCJK}
+%\usepackage[fallback]{xeCJK}[2011/05/01]
+%\usepackage{xeCJK}
 \usepackage[BoldFont]{xeCJK}
 
+% 設定英文的字型
 % Set english font (Use package <ifplatform> to check)
 %\usepackage{ifplatform}
 %\ifwindows
   % In Windows
   \setmainfont{Times New Roman}
+%\setmainfont[Ligatures=TeX]{Times New Roman.ttf}
 %\else
   % In *nix
 %  \usepackage{times}
 %  \usepackage[T1]{fontenc}
 %\fi 
 
-% 設定中英文的字型
+% 設定中文的字型
 % 字型的設定可以使用系統內的字型，而不用像以前一樣另外安裝
-\setCJKmainfont{標楷體}
-\newfontlanguage{Chinese}{CHN}
-\setCJKfamilyfont{vchifont}[Script=CJK,Language=Chinese,Vertical=RotatedGlyphs]{標楷體}
-\setCJKfamilyfont{normalchifont}[Script=CJK,Language=Chinese]{標楷體}
+%\setCJKmainfont{標楷體}
+%\setCJKmainfont{SimSun}
+\setCJKmainfont{kaiu.ttf}
+%\newfontlanguage{Chinese}{CHN}
+%\setCJKfamilyfont{vchifont}[Script=CJK,Language=Chinese,Vertical=RotatedGlyphs]{標楷體}
+%\setCJKfamilyfont{normalchifont}[Script=CJK,Language=Chinese]{標楷體}
 
 % 中文自動換行
-\XeTeXlinebreaklocale "zh"
+%\XeTeXlinebreaklocale "zh"
 
 % 文字的彈性間距
-\XeTeXlinebreakskip = 0pt plus 1pt
+%\XeTeXlinebreakskip = 0pt plus 1pt
 
 % 設定段落之間的距離
 %\setlength{\parskip}{0.3cm}
@@ -66,7 +75,13 @@
 %\pagestyle{plain}
 
 % Set the line spacing for whole thesis
-\baselineskip = 26pt
+%\baselineskip = 26pt
+
+%\xeCJKsetup{PunctStyle=quanjiao}
+%\xeCJKsetup{PunctStyle=banjiao}
+%\xeCJKsetup{PunctStyle=CCT}
+%\xeCJKsetup{PunctStyle=kaiming}
+%\xeCJKsetup{PunctStyle=plain}
 
 % ------------------------------------------------
 
@@ -117,8 +132,8 @@
 \usepackage{comment}
 
 % For 目錄
-\usepackage[tocgraduated]{tocstyle}
-\usetocstyle{standard}
+%\usepackage[tocgraduated]{tocstyle}
+%\usetocstyle{standard}
 
 % Other useful or needed libraries
 \usepackage{fp}
@@ -132,6 +147,11 @@
 %\usepackage{readarray}
 \usepackage{framed}
 \usepackage{amsmath}
+
+% For bib
+% everal features of babel that do not make sense in the XeLaTex world
+% (like font encodings, shorthands, etc.) are not supported.
+\usepackage{polyglossia}
 
 % ------------------------------------------------
 
@@ -183,5 +203,3 @@
 % https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
 % ftp://ftp.dante.de/tex-archive/macros/latex/contrib/minted/minted.pdf
 
-%\usepackage{natbib}
-%\bibpunct{（}{)}{；}{a}{，}{;}
