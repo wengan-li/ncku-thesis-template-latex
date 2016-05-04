@@ -42,7 +42,11 @@
 %\usepackage{ifplatform}
 %\ifwindows
   % In Windows
-  \setmainfont{Times New Roman}
+%  \setmainfont{Times New Roman}
+%\usepackage{mathptmx}
+%\usepackage{times}
+%\setmainfont{Times New Roman}
+\usepackage{newtxtext}
 %\setmainfont[Ligatures=TeX]{Times New Roman.ttf}
 %\else
   % In *nix
@@ -151,6 +155,9 @@
 % everal features of babel that do not make sense in the XeLaTex world
 % (like font encodings, shorthands, etc.) are not supported.
 \usepackage{polyglossia}
+
+% For math
+\usepackage{newtxmath}
 
 % ------------------------------------------------
 
