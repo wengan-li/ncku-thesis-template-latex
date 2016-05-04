@@ -43,48 +43,48 @@
 
 % --- University name 學校名字 ---
 % 基本上是寫死, 但是如果是別校的人, 可直接使用\SetSchoolName來修改
-\newcommand\univCname{國立成功大學}           % Default
-\newcommand\univEname{National Cheng Kung University} % Default
-\newcommand{\SetSchoolChiName}[1]{\renewcommand{\univCname}{#1}}
-\newcommand{\SetSchoolEngName}[1]{\renewcommand{\univEname}{#1}}
+\newcommand\VarUniversityChiName{國立成功大學}           % Default
+\newcommand\VarUniversityEngName{National Cheng Kung University} % Default
+\newcommand{\SetSchoolChiName}[1]{\renewcommand{\VarUniversityChiName}{#1}}
+\newcommand{\SetSchoolEngName}[1]{\renewcommand{\VarUniversityEngName}{#1}}
 \newcommand{\SetSchoolName}[2]
 {
   \SetSchoolChiName{#1}
   \SetSchoolEngName{#2}
 } % End of \newcommand{}
 
-\newcommand{\GetSchoolChiName}{\univCname}
-\newcommand{\GetSchoolEngName}{\univEname}
+\newcommand{\GetSchoolChiName}{\VarUniversityChiName}
+\newcommand{\GetSchoolEngName}{\VarUniversityEngName}
 % ----------------------------------------------------------------------------
 
 % --- Chinese / English title 中英文論文題目 ---
-\newcommand{\cTitle}{Chinese Title Here} % Default
-\newcommand{\eTitle}{English Title Here} % Default
-\newcommand{\SetChiTitle}[1]{\renewcommand{\cTitle}{#1}}
-\newcommand{\SetEngTitle}[1]{\renewcommand{\eTitle}{#1}}
+\newcommand{\VarThesisChiName}{Chinese Title Here} % Default
+\newcommand{\VarThesisEngName}{English Title Here} % Default
+\newcommand{\SetChiTitle}[1]{\renewcommand{\VarThesisChiName}{#1}}
+\newcommand{\SetEngTitle}[1]{\renewcommand{\VarThesisEngName}{#1}}
 \newcommand{\SetTitle}[2]
 {
   \SetChiTitle{#1}
   \SetEngTitle{#2}
 } % End of \newcommand{}
 
-\newcommand{\GetChiTitle}{\cTitle}
-\newcommand{\GetEngTitle}{\eTitle}
+\newcommand{\GetChiTitle}{\VarThesisChiName}
+\newcommand{\GetEngTitle}{\VarThesisEngName}
 % ----------------------------------------------------------------------------
 
 % --- User's name 使用者名字 ---
-\newcommand{\myCname}{你的名字}     % Default
-\newcommand{\myEname}{Your name}   % Default
-\newcommand{\SetMyChiName}[1]{\renewcommand{\myCname}{#1}}
-\newcommand{\SetMyEngName}[1]{\renewcommand{\myEname}{#1}}
+\newcommand{\VarMyChiName}{你的名字}     % Default
+\newcommand{\VarMyEngName}{Your name}   % Default
+\newcommand{\SetMyChiName}[1]{\renewcommand{\VarMyChiName}{#1}}
+\newcommand{\SetMyEngName}[1]{\renewcommand{\VarMyEngName}{#1}}
 \newcommand{\SetMyName}[2]
 {
   \SetMyChiName{#1}
   \SetMyEngName{#2}
 } % End of \newcommand{}
 
-\newcommand{\GetAuthorChiName}{\myCname}
-\newcommand{\GetAuthorEngName}{\myEname}
+\newcommand{\GetAuthorChiName}{\VarMyChiName}
+\newcommand{\GetAuthorEngName}{\VarMyEngName}
 
 % ----------------------------------------------------------------------------
 
@@ -101,15 +101,15 @@
 \newcommand{\GetFlagDegreeType}{\FlagDegreeType}
 \newcommand{\SetFlagDegreeType}[1]{\renewcommand{\FlagDegreeType}{#1}}
 
-\newcommand{\degreeCname}{碩士/博士} % Default
-\newcommand{\degreeEname}{Master / Doctor} % Default
+\newcommand{\VarDegreeChiName}{碩士/博士} % Default
+\newcommand{\VarDegreeEngName}{Master / Doctor} % Default
 \newcommand{\degreeThesisEname}{Master's Thesis / Doctoral Dissertation} % Default
 
-\newcommand{\GetChiDegree}{\degreeCname}
-\newcommand{\GetEngDegree}{\degreeEname}
+\newcommand{\GetChiDegree}{\VarDegreeChiName}
+\newcommand{\GetEngDegree}{\VarDegreeEngName}
 \newcommand{\GetEngDegreeThesis}{\degreeThesisEname}
-\newcommand{\SetChiDegree}[1]{\renewcommand{\degreeCname}{#1}}
-\newcommand{\SetEngDegree}[1]{\renewcommand{\degreeEname}{#1}}
+\newcommand{\SetChiDegree}[1]{\renewcommand{\VarDegreeChiName}{#1}}
+\newcommand{\SetEngDegree}[1]{\renewcommand{\VarDegreeEngName}{#1}}
 \newcommand{\SetEngDegreeThesis}[1]{\renewcommand{\degreeThesisEname}{#1}}
 
 \newcommand{\PhdDegree}
@@ -192,35 +192,35 @@
 % --- 學院 College, 系所 Department and Institute ---
 
 % --------------------------- College ---------------------------
-\newcommand{\collCname}{學院 C}
-\newcommand{\collEname}{College of C}
-\newcommand{\SetCollChiName}[1]{\renewcommand{\collCname}{#1}}
-\newcommand{\SetCollEngName}[1]{\renewcommand{\collEname}{#1}}
+\newcommand{\VarCollegeChiName}{學院 C}
+\newcommand{\VarCollegeEngName}{College of C}
+\newcommand{\SetCollChiName}[1]{\renewcommand{\VarCollegeChiName}{#1}}
+\newcommand{\SetCollEngName}[1]{\renewcommand{\VarCollegeEngName}{#1}}
 \newcommand{\SetCollName}[2]
 {
   \SetCollChiName{#1}
   \SetCollEngName{#2}
 } % End of \newcommand{}
 
-\newcommand{\GetCollChiName}{\collCname}
-\newcommand{\GetCollEngName}{\collEname}
+\newcommand{\GetCollChiName}{\VarCollegeChiName}
+\newcommand{\GetCollEngName}{\VarCollegeEngName}
 
 % --------------------------- Department ---------------------------
-\newcommand{\deptCname}{A 系 / 所}
-%\newcommand{\deptEname}{DeptA} % Short form of department
-\newcommand{\fulldeptEname}{Department / Insitute A} % Full name of department
-\newcommand{\SetDeptChiName}[1]{\renewcommand{\deptCname}{#1}}
-%\newcommand{\SetDeptEngShortName}[1]{\renewcommand{\deptEname}{#1}}
-\newcommand{\SetDeptEngName}[1]{\renewcommand{\fulldeptEname}{#1}}
+\newcommand{\VarDepartmentChiName}{A 系 / 所}
+%\newcommand{\VarDepartmentEngName}{DeptA} % Short form of department
+\newcommand{\VarDepartmentEngFullName}{Department / Insitute A} % Full name of department
+\newcommand{\SetDeptChiName}[1]{\renewcommand{\VarDepartmentChiName}{#1}}
+%\newcommand{\SetDeptEngShortName}[1]{\renewcommand{\VarDepartmentEngName}{#1}}
+\newcommand{\SetDeptEngFullName}[1]{\renewcommand{\VarDepartmentEngFullName}{#1}}
 \newcommand{\SetDeptName}[3]
 {
   \SetDeptChiName{#1}
 %  \SetDeptEngShortName{#2}
-  \SetDeptEngName{#3}
+  \SetDeptEngFullName{#3}
 } % End of \newcommand{}
 
-\newcommand{\GetDeptChiName}{\deptCname}
-\newcommand{\GetDeptEngName}{\fulldeptEname}
+\newcommand{\GetDeptChiName}{\VarDepartmentChiName}
+\newcommand{\GetDeptEngName}{\VarDepartmentEngFullName}
 
 % ----------------------------------------------------------------------------
 
@@ -229,26 +229,26 @@
 % 中文名字固定以 博士 結尾
 % 英文名字固定以 Dr. 開頭
 
-\newcommand{\advisorCnameA}{X}
-\newcommand{\advisorEnameA}{X}
-\newcommand{\advisorCnameB}{}
-\newcommand{\advisorEnameB}{}
-\newcommand{\advisorCnameC}{}
-\newcommand{\advisorEnameC}{}
+\newcommand{\VarAdvisorChiNameA}{X}
+\newcommand{\VarAdvisorEngNameA}{X}
+\newcommand{\VarAdvisorChiNameB}{}
+\newcommand{\VarAdvisorEngNameB}{}
+\newcommand{\VarAdvisorChiNameC}{}
+\newcommand{\VarAdvisorEngNameC}{}
 
-\newcommand{\GetAdvisorChiNameA}{\advisorCnameA}
-\newcommand{\GetAdvisorEngNameA}{\advisorEnameA}
-\newcommand{\GetAdvisorChiNameB}{\advisorCnameB}
-\newcommand{\GetAdvisorEngNameB}{\advisorEnameB}
-\newcommand{\GetAdvisorChiNameC}{\advisorCnameC}
-\newcommand{\GetAdvisorEngNameC}{\advisorEnameC}
+\newcommand{\GetAdvisorChiNameA}{\VarAdvisorChiNameA}
+\newcommand{\GetAdvisorEngNameA}{\VarAdvisorEngNameA}
+\newcommand{\GetAdvisorChiNameB}{\VarAdvisorChiNameB}
+\newcommand{\GetAdvisorEngNameB}{\VarAdvisorEngNameB}
+\newcommand{\GetAdvisorChiNameC}{\VarAdvisorChiNameC}
+\newcommand{\GetAdvisorEngNameC}{\VarAdvisorEngNameC}
 
-\newcommand{\SetAdvisorChiNameA}[1]{\renewcommand{\advisorCnameA}{#1}}
-\newcommand{\SetAdvisorEngNameA}[1]{\renewcommand{\advisorEnameA}{#1}}
-\newcommand{\SetAdvisorChiNameB}[1]{\renewcommand{\advisorCnameB}{#1}}
-\newcommand{\SetAdvisorEngNameB}[1]{\renewcommand{\advisorEnameB}{#1}}
-\newcommand{\SetAdvisorChiNameC}[1]{\renewcommand{\advisorCnameC}{#1}}
-\newcommand{\SetAdvisorEngNameC}[1]{\renewcommand{\advisorEnameC}{#1}}
+\newcommand{\SetAdvisorChiNameA}[1]{\renewcommand{\VarAdvisorChiNameA}{#1}}
+\newcommand{\SetAdvisorEngNameA}[1]{\renewcommand{\VarAdvisorEngNameA}{#1}}
+\newcommand{\SetAdvisorChiNameB}[1]{\renewcommand{\VarAdvisorChiNameB}{#1}}
+\newcommand{\SetAdvisorEngNameB}[1]{\renewcommand{\VarAdvisorEngNameB}{#1}}
+\newcommand{\SetAdvisorChiNameC}[1]{\renewcommand{\VarAdvisorChiNameC}{#1}}
+\newcommand{\SetAdvisorEngNameC}[1]{\renewcommand{\VarAdvisorEngNameC}{#1}}
 
 \newcommand{\SetAdvisorNameA}[2]
 {
