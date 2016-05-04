@@ -15,24 +15,20 @@
 
 % ----------------------------------------------------------------------------
 
-% --- 封面上顯示文字的語言 ---
+% --- 封面上語言和名字顯示方式 ---
 %
 % \DisplayCoverInChi:  封面以全中文顯示
 % \DisplayCoverInEng:  封面以全英文顯示
 % 只能選擇其中一個, 但只有最後設定的一方有效
-
-\DisplayCoverInChi
-
-%--------------------------------------------------
-
-% --- 封面名字顯示方式 ---
-%
-% 預設在封面上只會顯示中文或英文名字而已.
-%
+% 預設使用\DisplayCoverInEng
+% 
+% 另外預設在封面上只會顯示中文或英文名字而已.
 % 不論你是使用\DisplayCoverInChi或\DisplayCoverInEng,
-% 把'%'拿掉以設定同時顯示中英文名字.
+% 使用\DisplayCoverPeoplesBothNames以設定同時顯示中英文名字.
 
-\CDBothName
+%\DisplayCoverInChi
+%\DisplayCoverInEng
+%\DisplayCoverPeoplesBothNames
 
 % ----------------------------------------------------------------------------
 
@@ -277,8 +273,8 @@
 % 故使用'\ChapterTitleNumInChi'可以顯示成 '第一章' 而不是 '第1章'.
 % \ChapterTitleNumInChi必須配合\ChapterTitleInChi來使用, 否則會無效.
 
-\ChapterTitleInChi
-\ChapterTitleNumInChi
+%\ChapterTitleInChi
+%\ChapterTitleNumInChi
 
 % ----------------------------------------------------------------------------
 

@@ -296,7 +296,10 @@
 \newcommand{\CoverDisplayNameChiEng}{0} % Default not display both
 \newcommand{\SetCDBothName}{\renewcommand{\CoverDisplayNameChiEng}{1}}
 \newcommand{\GetCDBothName}{\CoverDisplayNameChiEng}
-\newcommand{\CDBothName}{\SetCDBothName}
+\newcommand{\DisplayCoverPeoplesBothNames}{\SetCDBothName}
+
+% A wrapper to handle \CDBothName{}
+\newcommand{\CDBothName}{\DisplayCoverPeoplesBothNames}
 
 % ----------------------------------------------------------------------------
 
