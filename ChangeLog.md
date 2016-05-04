@@ -1,13 +1,31 @@
+#### v1.3.4 [May 4, 2016]:
+某些更新可能會影響同學們的排版 (理應會更好看), 故推薦請檢查更新後的新樣子, 否則可提出回報以讓幫你修改.
+
+如更新後有任何的錯誤訊息出現, 請重新rebuild幾次thesis.tex和.bib應該就能解決.
+
++ **更新**:
+  1. 在conf.tex中新增\ChapterTitleNumInChi來控制章節題目呈現中文數字, 可顯示成[第一章]而非[第1章] \([Issue \#10](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10)\).
+  2. 修正把清單(itemize, enumerate和description)的行距收緊, 同時都叫內文收緊, 以讓整篇論文的行距都是相同 \([Issue \#10](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10)\).
+  3. 更名conf.tex中的API 'ChapterSectionTitleInChi' -> 'ChapterTitleInChi', 底層轉到'\ChapterTitleInChi'來保留這API.
+  4. 更新對conf.tex的使用說明.
+  5. 新增package{inputenc}來控制任何在.tex檔的文字或符號都能正常使用 (.tex檔案都必須是UTF-8格式), 否則有潛在的可能性把文字或符號轉成其他能顯示的內容. 這包括全形和半形的符號.
+  6. 更名conf.tex中的API 'CDBothName' -> 'DisplayCoverPeoplesBothNames', 底層轉到'\DisplayCoverPeoplesBothNames'來保留這API.
+  7. 修正字型Times New Roman的問題, 使用package{newtxtext}方式去使用這字型, 這應能處理Windows跟Linux或Mac OS需要使用不同檔名去使用這字型的問題.
+  8. 新增使用package{newtxmath}去讓數學公式的字型更圓滑.
+
++ **發現情況**:
+  1. 寫編寫模版時, 大約是v1.0.0或更早時, 所使用的package和Texmaker已是2年前左右. 而在編寫這版時為了使用一些新功能, 故把所有package和Texmaker更新到最新版. 發現符號 ( &#x0027; ) 會產出 ( &#x055A; ), 但經過檢查['大家來學 LaTeX'中的'3.3.3 針對標點符號的遊戲規則'](http://www.cs.pu.edu.tw/~wckuo/doc/latex123/node4.html#SECTION00433000000000000000)卻發現產出 ( &#x055A; ) 才是正常, 而( &#x0027; )則換成要使用 '\textprimstress' 才能顯示.  而為什麼發生這情況則原因不明.
+
 #### v1.3.3 [April 19, 2016]:
-1. 修正ChangeLog中v1.3.1和v1.3.0的說明排版錯誤
+1. 修正ChangeLog中v1.3.1和v1.3.0的說明排版錯誤.
 2. 修改README.md中有關可使用系所的說明, 並增加對應的URL.
 
 #### v1.3.2 [April 08, 2016]:
-1. 新增控制Reference和引用時的格式的相關功能和說明\([Issue \#9](https://github.com/wengan-li/ncku-thesis-template-latex/issues/9)\).
+1. 新增控制Reference和引用時的格式的相關功能和說明 \([Issue \#9](https://github.com/wengan-li/ncku-thesis-template-latex/issues/9)\).
 2. 把ChangeLog抽出成獨立的檔案.
 
 #### v1.3.1 [March 14, 2016]:
-1. 增加Nomenclatures功能, 同時增加相關的說明例子
+1. 增加Nomenclatures功能, 同時增加相關的說明例子.
 2. 把這模版的名字由'XeLaTex模版'改回'LaTex模版'. 基於當時原本Google對'XeLaTex'這字沒有相對的對應到去'LaTex', 故才把部份名字回成'LaTex' (如GitHub的URL). 但現在在'主要功能'有提到是使用XeLaTex技術即可 (因為對一般同學基本不知道差異性).
 3. 在章節'圖片 Figure'中, 新增'小知識'和'轉換格式'的一些應對同學們有用的內容.
 4. 修正部份內容的斷行位置.
