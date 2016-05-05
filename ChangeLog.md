@@ -1,10 +1,14 @@
+#### v1.3.5 [May 5, 2016]:
+1. Appendix新增由xeCJK的v3.3.4(2016/02/10)版本中提供的50頁有關所有Symbol的寫法, 極度值得同學們閱讀或在這邊找你所需的Symbols.
+2. 新增介紹章節 '3.3.3 更新MiKTeX' 去介紹如何更新MiKTeX
+
 #### v1.3.4 [May 4, 2016]:
-某些更新可能會影響同學們的排版 (理應會更好看), 故推薦請檢查更新後的新樣子, 否則可提出回報以讓幫你修改.
+某些更新可能會影響同學們的排版 (理應會更好看), 故推薦請檢查更新後的新樣子, 否則可提出回報以讓幫你修改. 另外某些功能可需要更新MiKTex到最新版才能使用.
 
 如更新後有任何的錯誤訊息出現, 請重新rebuild幾次thesis.tex和.bib應該就能解決.
 
 + **更新**:
-  1. 在conf.tex中新增\ChapterTitleNumInChi來控制章節題目呈現中文數字, 可顯示成[第一章]而非[第1章] \([Issue \#10](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10)\).
+  1. 在conf.tex中新增\ChapterTitleNumInChi來控制章節題目呈現中文數字, 可顯示成[第一章]而非[第1章] \([Issue \#10](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10)\) (推薦更新MiKTex和Texmaker到最新版).
   2. 修正把清單(itemize, enumerate和description)的行距收緊, 同時都叫內文收緊, 以讓整篇論文的行距都是相同 \([Issue \#10](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10)\).
   3. 更名conf.tex中的API 'ChapterSectionTitleInChi' -> 'ChapterTitleInChi', 底層轉到'\ChapterTitleInChi'來保留這API.
   4. 更新對conf.tex的使用說明.
