@@ -32,60 +32,15 @@
 \usepackage{inputenc}
 
 % 使用xeCJK，其他的還有CJK或是xCJK
-%\usepackage[BoldFont, AutoFallBack=true]{xeCJK}
-%\usepackage[fallback]{xeCJK}[2011/05/01]
-%\usepackage{xeCJK}
 \usepackage[BoldFont]{xeCJK}
 
 % 設定英文的字型
-% Set english font (Use package <ifplatform> to check)
-%\usepackage{ifplatform}
-%\ifwindows
-  % In Windows
-%  \setmainfont{Times New Roman}
-%\usepackage{mathptmx}
-%\usepackage{times}
-%\setmainfont{Times New Roman}
+% 預設為 Times New Roman
 \usepackage{newtxtext}
-%\setmainfont[Ligatures=TeX]{Times New Roman.ttf}
-%\else
-  % In *nix
-%  \usepackage{times}
-%  \usepackage[T1]{fontenc}
-%\fi 
 
 % 設定中文的字型
-% 字型的設定可以使用系統內的字型，而不用像以前一樣另外安裝
-%\setCJKmainfont{標楷體}
-%\setCJKmainfont{SimSun}
+% 預設為 標楷體
 \setCJKmainfont{kaiu.ttf}
-%\newfontlanguage{Chinese}{CHN}
-%\setCJKfamilyfont{vchifont}[Script=CJK,Language=Chinese,Vertical=RotatedGlyphs]{標楷體}
-%\setCJKfamilyfont{normalchifont}[Script=CJK,Language=Chinese]{標楷體}
-
-% 中文自動換行
-%\XeTeXlinebreaklocale "zh"
-
-% 文字的彈性間距
-%\XeTeXlinebreakskip = 0pt plus 1pt
-
-% 設定段落之間的距離
-%\setlength{\parskip}{0.3cm}
-
-% 設定行距
-%\linespread{1.5}\selectfont
-
-% Set style
-%\pagestyle{plain}
-
-% Set the line spacing for whole thesis
-%\baselineskip = 26pt
-
-%\xeCJKsetup{PunctStyle=quanjiao}
-%\xeCJKsetup{PunctStyle=banjiao}
-%\xeCJKsetup{PunctStyle=CCT}
-%\xeCJKsetup{PunctStyle=kaiming}
-%\xeCJKsetup{PunctStyle=plain}
 
 % ------------------------------------------------
 
@@ -199,6 +154,9 @@
 % For chinese number in title
 % http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/zhnumber/zhnumber.pdf
 \ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangChi}}%
+{\usepackage{zhnumber}}{}
+
+\ifthenelse{\equal{\GetDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
 {\usepackage{zhnumber}}{}
 
 %\usepackage{minted}
