@@ -133,6 +133,13 @@
 
 % --- Date 日期 ---
 
+% \CoverDateNumInChi: 日期使用中文數字,
+% 而不是阿拉伯數字,
+% 故使用'\CoverDateNumInChi'可以顯示
+% '第一章' 而不是 '中華民國 103 年 12 月 31 日'.
+% \CoverDateNumInChi必須配合\DisplayCoverInChi來使用, 否則會無效.
+%\CoverDateNumInChi
+
 % --- 論文的日期 ---
 \newcommand{\ThesisYear}{2014}  % Default
 \newcommand{\ThesisMonth}{1}    % Default
@@ -148,6 +155,7 @@
 \newcommand{\GetThesisYear}{\ThesisYear}
 \newcommand{\GetThesisYearInTaiwanYear}{\ThesisTaiwanYearResult}
 \newcommand{\GetThesisMonth}{\ThesisMonth}
+\newcommand{\GetThesisMonthNumInChi}{\zhnumber{\ThesisMonth}}
 \newcommand{\GetThesisMonthInEng}{\GetMonthInEng{\ThesisMonth}}
 
 % ---  口試的日期 ---
@@ -161,11 +169,14 @@
 \newcommand{\GetOralChiYear}{\OralChiYear}
 \newcommand{\GetOralYearInTaiwanYear}
 {\SetThesisTaiwanYear{\OralEngYear}\ThesisTaiwanYearResult}
+\newcommand{\GetOralYearInTaiwanYearNumInChi}
+{\SetThesisTaiwanYear{\OralEngYear}\zhdigits{\ThesisTaiwanYearResult}}
 \newcommand{\GetOralChiMonth}{\OralChiMonth}
 \newcommand{\GetOralChiDay}{\OralChiDay}
 \newcommand{\GetOralEngYear}{\OralEngYear}
 \newcommand{\GetOralEngMonth}{\OralEngMonth}
 \newcommand{\GetOralEngDay}{\OralEngDay}
+\newcommand{\GetOralEngDayNumInChi}{\zhnumber{\OralEngDay}}
 
 \newcommand{\SetOralChiDate}[3]
 {
@@ -291,6 +302,13 @@
 \newcommand{\DisplayCoverInChi}{\renewcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangChi}}
 \newcommand{\DisplayCoverInEng}{\renewcommand{\VarDisplayCoverLang}{\ValueDisplayCoverLangEng}}
 
+% 日期顯示中文數字
+\newcommand{\ValueDisplayCoverDateNumInNum}{0}
+\newcommand{\ValueDisplayCoverDateNumInChi}{1}
+\newcommand{\VarDisplayCoverDateNum}{\ValueDisplayCoverDateNumInNum}
+\newcommand{\GetDisplayCoverDateNum}{\VarDisplayCoverDateNum}
+\newcommand{\CoverDateNumInChi}{\renewcommand{\VarDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}
+
 % ----------------------------------------------------------------------------
 
 % Display Chinese and English name in english cover
@@ -311,4 +329,5 @@
 \newcommand{\EnableFlagDisplayDraft}{\renewcommand{\VarCoverDisplayDraft}{1}}
 \newcommand{\DisplayDraft}{\EnableFlagDisplayDraft}
 \newcommand{\GetFlagDisplayDraft}{\VarCoverDisplayDraft}
+
 % ----------------------------------------------------------------------------
