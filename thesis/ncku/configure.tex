@@ -42,6 +42,9 @@
 % 預設為 標楷體
 \setCJKmainfont{kaiu.ttf}
 
+% 設定段落之間的距離
+%\setlength{\parskip}{0.3cm}
+
 % ------------------------------------------------
 
 % LaTex packages
@@ -112,7 +115,8 @@
 \usepackage{polyglossia}
 
 % For math
-\usepackage{newtxmath}
+%\usepackage{lmodern}
+%\usepackage{newtxmath}
 
 % ------------------------------------------------
 
@@ -158,12 +162,4 @@
 
 \ifthenelse{\equal{\GetDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
 {\usepackage{zhnumber}}{}
-
-%\usepackage{minted}
-% https://www.sharelatex.com/learn/Code_Highlighting_with_minted
-
-%\usepackage{lstlisting}
-% https://www.sharelatex.com/learn/Code_listing
-% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
-% ftp://ftp.dante.de/tex-archive/macros/latex/contrib/minted/minted.pdf
 
