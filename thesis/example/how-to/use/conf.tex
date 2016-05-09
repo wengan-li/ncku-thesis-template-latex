@@ -2,18 +2,18 @@
 \StartSection{論文基本資料設定 Tesis base configure}{chapter:how-to:use:conf}
 % ------------------------------------------------
 
-'conf/conf.tex'是用來設定一些論文需要的資料: 如題目, 人名等. 故以下的章節會一個一個資料說明要怎麼填寫或修改:
+`conf/conf.tex'是用來設定一些論文需要的資料: 如題目, 人名等. 故以下的章節會一個一個資料說明要怎麼填寫或修改:
 
 \begin{enumerate}
   \item
   {
     \textbf{使用的論文內容}
 
-    如果使用'\verb|\DemoMode|'
+    如果使用`\verb|\DemoMode|'
 
-    就會使用'./example/context.tex'中模版說明文件內容. 但如果這資料夾已刪的話, 在產生論文時會回傳錯誤.
+    就會使用`./example/context.tex'中模版說明文件內容. 但如果這資料夾已刪的話, 在產生論文時會回傳錯誤.
 
-    否則會使用'./context/context.tex'的你所編寫論文內容. 所以這時候請在這資料夾中編寫你的論文.
+    否則會使用`./context/context.tex'的你所編寫論文內容. 所以這時候請在這資料夾中編寫你的論文.
   } % End of \item{}
 
   \item
@@ -38,7 +38,7 @@
     如果題目內有必須以數學模式表示的符號，請用\verb|\mbox{}|包住數學模式. 如:\\
     \verb|\SetTitle{題目題目}{New equation \mbox{$E = mc^4$} here}|\\
 
-    而如果覺得自動產生出來的題目斷行位置不適合, 可以手動加'\verb|\\|'來強制斷行. 如:\\
+    而如果覺得自動產生出來的題目斷行位置不適合, 可以手動加`\verb|\\|'來強制斷行. 如:\\
     \verb|\SetTitle{題目題目}{Title Tooooooooooo \\ Longgggggggggggg}|\\
 
     有3種可使用, 可獨立使用, 但只有最後設定的一方有效\\
@@ -63,7 +63,7 @@
   {
     \textbf{Draft 初稿}
 
-    使用'\verb|\DisplayDraft|' 可顯示 '(初稿)' (中文版) 和 '(Draft)' (英文版) 在封面
+    使用`\verb|\DisplayDraft|' 可顯示 `(初稿)' (中文版) 和 `(Draft)' (英文版) 在封面
   } % End of \item{}
 
   \item
@@ -121,7 +121,7 @@
   {
     \textbf{指導老師 Advisor(s)}
 
-    在封面上預算了最多3位的空間, 中文名字固定以'博士'為結尾, 英文名字固定以'Dr.'為開頭.
+    在封面上預算了最多3位的空間, 中文名字固定以`博士'為結尾, 英文名字固定以`Dr.'為開頭.
 
     有3種可使用, 用來設定3位老師的名字\\
     \verb|\SetAdvisorNameX{老師的名字}{Professor's name}|: 同時設定中英文名字\\
@@ -138,7 +138,7 @@
   {
     \textbf{口試証明文件 Oral presentation document}
 
-    口試証明文件是使用'範例'或是'自己的檔案', 只能選擇其中一方.
+    口試証明文件是使用`範例'或是`自己的檔案', 只能選擇其中一方.
 
     如果要用的是範例:\\
     \verb|\DisplayOralTemplate|: 顯示 / 使用 口試範例版本.\\
@@ -147,9 +147,9 @@
     \verb|\SetCommitteeSize{9}|: 口試委員數量, 要配合\verb|\DisplayOralTemplate|來使用, 至少4位, 最多9位, 預設為9位.\\
 
     而如果要用的是自己的檔案:\\
-    把你的圖片放在'context/oral'下, 之後設定中英文版所對應是哪一個檔案.\\
-    就算已啟用'\verb|\DisplayOralImage|', 但沒有填寫圖檔檔名的話, 都不會顯示出來.\\
-    (例子用的'example-oral-chi.pdf'和'example-oral-eng.pdf'已放在'context/oral'中)\\
+    把你的圖片放在`context/oral'下, 之後設定中英文版所對應是哪一個檔案.\\
+    就算已啟用`\verb|\DisplayOralImage|', 但沒有填寫圖檔檔名的話, 都不會顯示出來.\\
+    (例子用的`example-oral-chi.pdf'和`example-oral-eng.pdf'已放在`context/oral'中)\\
     \verb|\DisplayOralImage|: 設定要顯示圖片\\
     \verb|\SetOralImageChi{example-oral-chi.pdf}|: 設定中文口試檔名\\
     \verb|\SetOralImageEng{example-oral-eng.pdf}|: 設定英文口試檔名
@@ -163,7 +163,7 @@
 
     最多可設定9個關鍵字, 為了方便同學自行設定, 故所產出來的PDF檔案中的關鍵字和內文摘要的關鍵字, 可獨立個別設定.
 
-    '\verb|\SetKeywords|'是設定所產出來的PDF中的Keyword項目, 可同時填寫中英文.
+    `\verb|\SetKeywords|'是設定所產出來的PDF中的Keyword項目, 可同時填寫中英文.
     e.g\\
     \verb|\SetKeywords|{Keyword A (關鍵字 A)}{Keyword B (關鍵字 B)}{Keyword C (關鍵字 C)}\\
     或單純中文或英文\\
@@ -211,13 +211,13 @@
     \textbf{章節標題的語言和數字}
 
     \verb|\ChapterTitleInChi|:  章節標題以全中文顯示\\
-    預設上章節標題是以英文來顯示 (如 Chapter 1), 但全中文編寫則需要顯示成中文, 故使用'\verb|\ChapterTitleInChi|'可以顯示成中文 (如 第1章).
+    預設上章節標題是以英文來顯示 (如 Chapter 1), 但全中文編寫則需要顯示成中文, 故使用`\verb|\ChapterTitleInChi|'可以顯示成中文 (如 第1章).
 
     \verb|\ChapterTitleNumInChi|: 章節標題數字要使用中文數字, 而不是阿拉伯數字\\
-    故使用'\verb|\ChapterTitleNumInChi|'可以顯示成 '第一章' 而不是 '第1章'. '\verb|\ChapterTitleNumInChi|'必須配合'\verb|\ChapterTitleInChi|'來使用, 否則會無效.
+    故使用`\verb|\ChapterTitleNumInChi|'可以顯示成 `第一章' 而不是 `第1章'. `\verb|\ChapterTitleNumInChi|'必須配合`\verb|\ChapterTitleInChi|'來使用, 否則會無效.
   } % End of \item{}
 
-  \newpage
+%  \newpage
   \item
   {
     \textbf{Reference和引用時的格式}
@@ -236,7 +236,7 @@
         \end{tabular}
     }
 
- \textbf{注意:} 如果你要轉換使用格式時, 推薦在重新產生論文前, 先把所有除了thesis.tex外的所有thesis開頭或以thesis為檔名的檔案全刪掉. 例如'thesis.bbl', 'thesis.aux', 'thesis.lof'等所有檔案.  否則有可能在產生論文時遇到錯誤, 如果遇到錯誤, 請不斷重新刪掉和重新產生論文, 直到解決問題為止.\\
+ \textbf{注意:} 如果你要轉換使用格式時, 推薦在重新產生論文前, 先把所有除了thesis.tex外的所有thesis開頭或以thesis為檔名的檔案全刪掉. 例如`thesis.bbl', `thesis.aux', `thesis.lof'等所有檔案.  否則有可能在產生論文時遇到錯誤, 如果遇到錯誤, 請不斷重新刪掉和重新產生論文, 直到解決問題為止.\\
 
  \textbf{已知:} 由abbrv轉去apacite必定需要刪除檔案才能進行.
   } % End of \item{}

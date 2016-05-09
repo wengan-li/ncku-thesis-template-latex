@@ -449,7 +449,9 @@
   \newpage
   \item
   {
-    Scale是用來調整表格的大小, 一般來講都不需要使用到這設定, 只有在特殊情況, 例如表格內容過多影響到寬度. 不同在Mircosoft Word中, 在LaTex中表格是會無視寬度是否超過頁面的, 故這就需要靠scale來調整.Table \RefTo{table:how-to-write:table-example1} 是一個寬度超過頁面的例子, 而Table \RefTo{table:how-to-write:table-example2} 是把寬度控制跟頁面一樣闊, 但這就會沒有左右的空白空間, 而Table \RefTo{table:how-to-write:table-example3} 則是保留了左右的空白空間 (個人推薦最大值為0.9).
+    Scale是用來調整表格的大小, 一般來講都不需要使用到這設定, 只有在特殊情況, 例如表格內容過多影響到寬度. 不同在Mircosoft Word中, 在LaTex中表格是會無視寬度是否超過頁面的, 故這就需要靠scale來調整.\\
+
+Table \RefTo{table:how-to-write:table-example1} 是一個寬度超過頁面的例子, 而Table \RefTo{table:how-to-write:table-example2} 是把寬度控制跟頁面一樣闊, 但這就會沒有左右的空白空間, 而Table \RefTo{table:how-to-write:table-example3} 則是保留了左右的空白空間 (個人推薦最大值為0.9).
 
   \InsertTable
     [caption={表格寬度超過頁面},
@@ -652,7 +654,7 @@ LaTeX Table Generator沒法設定每一個Column的闊度, 故本模版提供3�
     C{ WIDTH }: 文字置中
     R{ WIDTH }: 文字偏右
   \end{verbatim}
-這個東西是寫在'\verb|\begin{tabular}|'的位置, 例如可以寫\verb|\C{2.0cm}|, \verb|\L{20pt}|. 但比較推薦配合'\verb|\textwidth|'來使用, 因為是使用一行文字可使用的長度, 所以用來分成幾個column會比較好計算大約位置.
+這個東西是寫在`\verb|\begin{tabular}|'的位置, 例如可以寫\verb|\C{2.0cm}|, \verb|\L{20pt}|. 但比較推薦配合`\verb|\textwidth|'來使用, 因為是使用一行文字可使用的長度, 所以用來分成幾個column會比較好計算大約位置.
 
 \begin{verbatim}
 \InsertTable
