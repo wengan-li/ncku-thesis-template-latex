@@ -39,7 +39,7 @@
 如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog 版本修改
-最新版本為: [v1.3.4](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
+最新版本為: [v1.4.0](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
 
 詳細[請看ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
 
@@ -53,3 +53,5 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 </p>
 
 詳細[請看LICENSE](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/LICENSE)這檔案中的條款說明.
+
+而本模版所使用到的國立成功大學浮水印則由國立成功大學擁有**所有**相關的權利. 故如使用這浮水印到論文以外的應用, 請跟'成大圖書館 系統管理組-數位論文小組'聯絡.
