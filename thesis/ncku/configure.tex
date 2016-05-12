@@ -35,15 +35,16 @@
 \usepackage{inputenc}
 
 % 使用xeCJK，其他的還有CJK或是xCJK
-\usepackage[BoldFont]{xeCJK}
+%\usepackage[BoldFont]{xeCJK}
+\usepackage{xeCJK}
 
 % 設定英文的字型
 % 預設為 Times New Roman
-\usepackage{newtxtext}
+%\usepackage{newtxtext}
 
 % 設定中文的字型
 % 預設為 標楷體
-\setCJKmainfont{kaiu.ttf}
+%\setCJKmainfont{kaiu.ttf}
 
 % 設定段落之間的距離
 %\setlength{\parskip}{0.3cm}
@@ -164,3 +165,20 @@
 \ifthenelse{\equal{\GetDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
 {\usepackage{zhnumber}}{}
 
+% Reference from
+% <http://texdoc.net/texmf-dist/doc/latex/fontspec/fontspec.pdf>
+\setmainfont{ThesisEngFont}[
+  Path = ./ncku/fonts/,
+  UprightFont = times.ttf,
+  ItalicFont = timesi.ttf,
+  BoldFont = timesbd.ttf,
+  BoldItalicFont = timesbi.ttf
+]
+
+\setCJKmainfont[
+  Path = ./ncku/fonts/,
+  UprightFont = kaiu.ttf,
+  ItalicFont = kaiu.ttf,
+  BoldFont = kaiu.ttf,
+  BoldItalicFont = kaiu.ttf
+]{ThesisChiFont}
