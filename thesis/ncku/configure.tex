@@ -17,6 +17,17 @@
 
 \documentclass[12pt, a4paper, onecolumn]{report}
 
+\usepackage{ifxetex}
+
+%\ifxetex
+%  \usepackage{fontspec}
+%  \defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
+%  \setromanfont{Hoefler Text}
+%\else
+%  \usepackage[T1]{fontenc}
+%  \usepackage[utf8]{inputenc}
+%\fi
+
 % ------------------------------------------------
 
 % XeLaTex 的設定
@@ -47,7 +58,7 @@
 %\setCJKmainfont{kaiu.ttf}
 
 % 設定段落之間的距離
-%\setlength{\parskip}{0.3cm}
+\setlength{\parskip}{0.3cm}
 
 % ------------------------------------------------
 
@@ -62,7 +73,9 @@
 
 % For list
 \usepackage{enumitem}
-\setlist{noitemsep, nosep}
+\setlist{nosep}
+%\setlist{noitemsep, nosep}
+%\setlist{noitemsep}
 
 % For PDF
 \usepackage{hyperref}
@@ -165,20 +178,11 @@
 \ifthenelse{\equal{\GetDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
 {\usepackage{zhnumber}}{}
 
-% Reference from
-% <http://texdoc.net/texmf-dist/doc/latex/fontspec/fontspec.pdf>
-\setmainfont{ThesisEngFont}[
-  Path = ./ncku/fonts/,
-  UprightFont = times.ttf,
-  ItalicFont = timesi.ttf,
-  BoldFont = timesbd.ttf,
-  BoldItalicFont = timesbi.ttf
-]
+% ------------------------------------------------
 
-\setCJKmainfont[
-  Path = ./ncku/fonts/,
-  UprightFont = kaiu.ttf,
-  ItalicFont = kaiu.ttf,
-  BoldFont = kaiu.ttf,
-  BoldItalicFont = kaiu.ttf
-]{ThesisChiFont}
+% 當所有的package都load完後, 才真正設定我們要的字型,
+% 以清掉所有由package影響到的設定.
+%\UseDefaultFontType
+%\UseFontStyleTimesKaiu
+%\UseFontStyleNotoSansCJK
+\InitDefaultFontType
