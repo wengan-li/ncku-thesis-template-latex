@@ -17,57 +17,34 @@
 
 \documentclass[12pt, a4paper, onecolumn]{report}
 
+% ------------------------------------------------
+
 % XeLaTex檢查點, 以要求必須使用XeLaTex來處理模版
 \usepackage{ifxetex}
 \ifxetex\else\errmessage{模版: 請使用XeLaTex來產生論文.}\stop\fi
 
-%\ifxetex
-%  \usepackage{fontspec}
-%  \defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
-%  \setromanfont{Hoefler Text}
-%\else
-%  \usepackage[T1]{fontenc}
-%  \usepackage[utf8]{inputenc}
-%\fi
-
 % ------------------------------------------------
 
-% XeLaTex 的設定
+% 引用字體的基本設定
+%
+% No longer need \usepackage[T1]{fontenc} and
+% \usepackage[utf8]{inputenc} when using XeLaTeX and LuaLaTeX as the engine.
+%
 
-% --------------------------
-
-% 提供符號的使用
-\usepackage{tipa}
-
-% 加這個就可以設定字體
+% 引用fontspec以提供控制英文字型
 \usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
 
-% 控制能使用UTF8的文字或符號在.tex檔案中
-% 否則那些文字或符號會被強制轉成其他能顯示的內容
-% 例如 全形 半形
-\usepackage{inputenc}
+% 引用xeCJK以提供控制中文字型
+\usepackage[BoldFont]{xeCJK}
 
-% 使用xeCJK，其他的還有CJK或是xCJK
-%\usepackage[BoldFont]{xeCJK}
-\usepackage{xeCJK}
-
-% 設定英文的字型
-% 預設為 Times New Roman
-%\usepackage{newtxtext}
-
-% 設定中文的字型
-% 預設為 標楷體
-%\setCJKmainfont{kaiu.ttf}
-
-% 設定段落之間的距離
-\setlength{\parskip}{0.3cm}
+%\usepackage{tipa}
 
 % ------------------------------------------------
 
-% LaTex packages
+% 引用需要的LaTex packages
 
-% --------------------------
-
+% For floats
 % flafter package will make sure that the floats are
 % not placed before their definition
 \usepackage{flafter}
@@ -185,3 +162,10 @@
 % 當所有的package都include完後, 才真正設定我們要的字型,
 % 以清掉所有由package影響到的設定.
 \InitDefaultFontType
+
+% ------------------------------------------------
+
+% 其他排版的設定
+
+% 設定段落之間的距離
+\setlength{\parskip}{0.3cm}
