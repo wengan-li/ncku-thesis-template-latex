@@ -1,0 +1,237 @@
+%
+% This file is part of ncku-thesis-template.
+%
+% ncku-thesis-template is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify
+% it under the terms of the Attribution-NonCommercial-ShareAlike
+% 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with ncku-thesis-template.
+%
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
+
+% ----------------------------------------------------------------------------
+
+% Some helper function about font
+
+% Reference from
+% <http://texdoc.net/texmf-dist/doc/latex/fontspec/fontspec.pdf>
+
+% ----------------------------------------------------------------------------
+
+% Type TimesKaiu
+% Eng: Times New Roman
+% Chi: 標楷體
+\def \VarFontTypeTimesKaiuEngFileNameNormal {times.ttf}
+\def \VarFontTypeTimesKaiuEngFileNameItalic {timesi.ttf}
+\def \VarFontTypeTimesKaiuEngFileNameBold {timesbd.ttf}
+\def \VarFontTypeTimesKaiuEngFileNameBoldItalic {timesbi.ttf}
+\def \VarFontTypeTimesKaiuChiFileNameNormal {kaiu.ttf}
+\def \VarFontTypeTimesKaiuChiFileNameItalic {kaiu.ttf}
+\def \VarFontTypeTimesKaiuChiFileNameBold {kaiu.ttf}
+\def \VarFontTypeTimesKaiuChiFileNameBoldItalic {kaiu.ttf}
+\newcommand{\VarFontTypeTimesKaiu}{0}
+
+% -------------------------------------------
+
+% Type Noto Sans CJK (Eng & Chi)
+\def \VarFontTypeNotoSansCJKEngFileNameNormal {NotoSansCJKtc-Medium.otf}
+\def \VarFontTypeNotoSansCJKEngFileNameItalic {NotoSansCJKtc-Medium.otf}
+\def \VarFontTypeNotoSansCJKEngFileNameBold {NotoSansCJKtc-Bold.otf}
+\def \VarFontTypeNotoSansCJKEngFileNameBoldItalic {NotoSansCJKtc-Bold.otf}
+\def \VarFontTypeNotoSansCJKChiFileNameNormal {NotoSansCJKtc-Medium.otf}
+\def \VarFontTypeNotoSansCJKChiFileNameItalic {NotoSansCJKtc-Medium.otf}
+\def \VarFontTypeNotoSansCJKChiFileNameBold {NotoSansCJKtc-Bold.otf}
+\def \VarFontTypeNotoSansCJKChiFileNameBoldItalic {NotoSansCJKtc-Bold.otf}
+\newcommand{\VarFontTypeNotoSansCJK}{1}
+
+% -------------------------------------------
+
+% Custom type
+% Font files is needed to be provided
+% Default it is the Type TimesKaiu
+\def \VarFontTypeCustomEngFileNameNormal {times.ttf} % Default
+\def \VarFontTypeCustomEngFileNameItalic {timesi.ttf} % Default
+\def \VarFontTypeCustomEngFileNameBold {timesbd.ttf} % Default
+\def \VarFontTypeCustomEngFileNameBoldItalic {timesbi.ttf} % Default
+\def \VarFontTypeCustomChiFileNameNormal {kaiu.ttf} % Default
+\def \VarFontTypeCustomChiFileNameItalic {kaiu.ttf} % Default
+\def \VarFontTypeCustomChiFileNameBold {kaiu.ttf} % Default
+\def \VarFontTypeCustomChiFileNameBoldItalic {kaiu.ttf} % Default
+
+\newcommand{\SetCustomEngFontFiles}[4]
+{%
+  \SetFontUseType{\VarFontTypeCustom}
+  \renewcommand{\VarFontTypeCustomEngFileNameNormal}{#1}%
+  \renewcommand{\VarFontTypeCustomEngFileNameItalic}{#2}%
+  \renewcommand{\VarFontTypeCustomEngFileNameBold}{#3}%
+  \renewcommand{\VarFontTypeCustomEngFileNameBoldItalic}{#4}%
+} % End of \newcommand{}
+
+\newcommand{\SetCustomChiFontFiles}[4]
+{%
+  \SetFontUseType{\VarFontTypeCustom}
+  \renewcommand{\VarFontTypeCustomChiFileNameNormal}{#1}%
+  \renewcommand{\VarFontTypeCustomChiFileNameItalic}{#2}%
+  \renewcommand{\VarFontTypeCustomChiFileNameBold}{#3}%
+  \renewcommand{\VarFontTypeCustomChiFileNameBoldItalic}{#4}%
+} % End of \newcommand{}
+\newcommand{\VarFontTypeCustom}{10}
+
+% -------------------------------------------
+
+\def \VarFontDirPath {./ncku/fonts/} % Fix font path
+\def \GetFontDirPath {\VarFontDirPath}
+
+\newcommand{\VarFontUseType}{\VarFontTypeTimesKaiu} % Default
+\newcommand{\GetFontUseType}{\VarFontUseType}
+\newcommand{\SetFontUseType}[1]
+{%
+  \renewcommand{\VarFontUseType}{#1}%
+} % End of \newcommand{}
+
+% -------------------------------------------
+
+\newcommand{\SetEngFont}[5]
+{%
+  \setmainfont{#1}[
+    Path = \GetFontDirPath,
+    UprightFont = #2,
+    ItalicFont = #3,
+    BoldFont = #4,
+    BoldItalicFont = #5
+  ]%
+} % End of \newcommand{}
+
+\newcommand{\SetChiFont}[5]
+{%
+  \setCJKmainfont[
+    Path = \GetFontDirPath,
+    UprightFont = #2,
+    ItalicFont = #3,
+    BoldFont = #4,
+    BoldItalicFont = #5
+  ]{#1}%
+} % End of \newcommand{}
+
+\newfontfamily\UseFontStyleTimesKaiu{TimesKaiu}[
+    Path = \GetFontDirPath,
+    UprightFont = \VarFontTypeTimesKaiuEngFileNameNormal,
+    ItalicFont = \VarFontTypeTimesKaiuEngFileNameItalic,
+    BoldFont = \VarFontTypeTimesKaiuEngFileNameBold,
+    BoldItalicFont = \VarFontTypeTimesKaiuEngFileNameBoldItalic,
+  ]%
+
+%\def \UseFontStyleTimesKaiu
+%{
+%  \fontfamily{TimesKaiu}{TimesKaiu}[
+%    Path = \GetFontDirPath,
+%    UprightFont = \VarFontTypeTimesKaiuEngFileNameNormal,
+%    ItalicFont = \VarFontTypeTimesKaiuEngFileNameItalic,
+%    BoldFont = \VarFontTypeTimesKaiuEngFileNameBold,
+%    BoldItalicFont = \VarFontTypeTimesKaiuEngFileNameBoldItalic,
+%  ]\selectfont
+%} % End of \newcommand{}
+
+
+\newcommand{\SetEngFontTimesKaiu}
+{%
+  \SetEngFont{TimesKaiuEngFont}{%
+      \VarFontTypeTimesKaiuEngFileNameNormal}{%
+      \VarFontTypeTimesKaiuEngFileNameItalic}{%
+      \VarFontTypeTimesKaiuEngFileNameBold}{%
+      \VarFontTypeTimesKaiuEngFileNameBoldItalic}%
+} % End of \newcommand{}
+
+\newcommand{\SetChiFontTimesKaiu}
+{%
+  \SetChiFont{TimesKaiuChiFont}{%
+      \VarFontTypeTimesKaiuChiFileNameNormal}{%
+      \VarFontTypeTimesKaiuChiFileNameItalic}{%
+      \VarFontTypeTimesKaiuChiFileNameBold}{%
+      \VarFontTypeTimesKaiuChiFileNameBoldItalic}%
+} % End of \newcommand{}
+
+\newcommand{\SetEngFontNotoSansCJK}
+{%
+  \SetEngFont{NotoSansCJKEngFont}{%
+      \VarFontTypeNotoSansCJKEngFileNameNormal}{%
+      \VarFontTypeNotoSansCJKEngFileNameItalic}{%
+      \VarFontTypeNotoSansCJKEngFileNameBold}{%
+      \VarFontTypeNotoSansCJKEngFileNameBoldItalic}%
+} % End of \newcommand{}
+
+\newcommand{\SetChiFontNotoSansCJK}
+{%
+  \SetChiFont{NotoSansCJKChiFont}{%
+      \VarFontTypeNotoSansCJKChiFileNameNormal}{%
+      \VarFontTypeNotoSansCJKChiFileNameItalic}{%
+      \VarFontTypeNotoSansCJKChiFileNameBold}{%
+      \VarFontTypeNotoSansCJKChiFileNameBoldItalic}%
+} % End of \newcommand{}
+
+\newcommand{\SetEngFontCustom}
+{%
+  \SetEngFont{CustomEngFont}{%
+      \VarFontTypeCustomEngFileNameNormal}{%
+      \VarFontTypeCustomEngFileNameItalic}{%
+      \VarFontTypeCustomEngFileNameBold}{%
+      \VarFontTypeCustomEngFileNameBoldItalic}%
+} % End of \newcommand{}
+
+\newcommand{\SetChiFontCustom}
+{%
+  \SetChiFont{CustomChiFont}{%
+      \VarFontTypeCustomChiFileNameNormal}{%
+      \VarFontTypeCustomChiFileNameItalic}{%
+      \VarFontTypeCustomChiFileNameBold}{%
+      \VarFontTypeCustomChiFileNameBoldItalic}%
+} % End of \newcommand{}
+
+% -------------------------------------------
+
+\newcommand{\UseFontTypeTimesKaiu}
+{
+  \SetEngFontTimesKaiu%
+  \SetChiFontTimesKaiu%
+} % End of \newcommand{}
+
+\newcommand{\UseFontTypeNotoSansCJK}
+{
+  \SetEngFontNotoSansCJK%
+  \SetChiFontNotoSansCJK%
+} % End of \newcommand{}
+
+\newcommand{\UseFontTypeCustom}
+{
+  \SetEngFontCustom%
+  \SetChiFontCustom%
+} % End of \newcommand{}
+
+\newcommand{\InitFontType}
+{%
+  \if \GetFontUseType \VarFontTypeTimesKaiu%
+    \UseFontTypeTimesKaiu%
+  \fi%
+%
+  \if \GetFontUseType \VarFontTypeNotoSansCJK%
+    \UseFontTypeNotoSansCJK%
+  \fi%
+%
+  \if \GetFontUseType \VarFontTypeCustom%
+    \UseFontTypeCustom%
+  \fi%
+} % End of \newcommand{}
+
+
+
+%\setmathrm{hfont namei}[hfont featuresi]
+%\setmathsf{hfont namei}[hfont featuresi]
+%\setmathtt{hfont namei}[hfont featuresi]
+%\setboldmathrm{hfont namei}[hfont featuresi]
+
+% ----------------------------------------------------------------------------
+
