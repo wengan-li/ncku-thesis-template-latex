@@ -49,3 +49,22 @@
 
 % ----------------------------------------------------------------------------
 
+% Chapter標題改使用 第1章 的方式來顯示
+\newcommand\VarChapterTitleLangChi{1}
+\newcommand\VarChapterTitleLangEng{0}
+\newcommand\VarChapterTitleLang{\VarChapterTitleLangEng}
+\newcommand\GetChapterTitleLang{\VarChapterTitleLang}
+\newcommand{\ChapterTitleInChi}{\renewcommand{\VarChapterTitleLang}{\VarChapterTitleLangChi}}
+
+% A wrapper to handle \ChapterSectionTitleInChi
+\newcommand{\ChapterSectionTitleInChi}
+{
+  \ChapterTitleInChi
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
+% 過去的API, 以 Error提醒不能再使用
+\newcommand{\ChapterTitleNumInChi}{\errmessage{模版: 由v1.4.1開始, ChapterTitleNumInChi已不能再使用.}\stop}
+
+% ----------------------------------------------------------------------------
