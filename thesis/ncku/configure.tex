@@ -15,7 +15,7 @@
 
 % ------------------------------------------------
 
-\documentclass[12pt, a4paper, onecolumn]{report}
+\documentclass[12pt, a4paper, onecolumn, english]{report}
 
 % ------------------------------------------------
 
@@ -49,7 +49,6 @@
 % flafter package will make sure that the floats are
 % not placed before their definition
 \usepackage{flafter}
-\raggedbottom
 
 % For list
 \usepackage{enumitem}
@@ -109,9 +108,9 @@
 \usepackage{polyglossia}
 \setdefaultlanguage{english}
 
-% For math
-%\usepackage{lmodern}
-%\usepackage{newtxmath}
+% For chinese number in title
+% http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/zhnumber/zhnumber.pdf
+\usepackage{zhnumber}
 
 % ------------------------------------------------
 
@@ -150,13 +149,12 @@
 \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeApacite}}%
 {\usepackage[notocbib]{apacite}}{}
 
-% For chinese number in title
-% http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/zhnumber/zhnumber.pdf
-\ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangChi}}%
-{\usepackage{zhnumber}}{}
+% ------------------------------------------------
 
-\ifthenelse{\equal{\GetDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
-{\usepackage{zhnumber}}{}
+% 其他排版的設定
+
+% 設定段落之間的距離
+%\setlength{\parskip}{0.3cm}
 
 % ------------------------------------------------
 
@@ -164,9 +162,6 @@
 % 以清掉所有由package影響到的設定.
 \InitDefaultFontType
 
-% ------------------------------------------------
-
-% 其他排版的設定
-
-% 設定段落之間的距離
-%\setlength{\parskip}{0.3cm}
+% Makes all pages the height of the text on that page.
+% No extra vertical space is added. 
+\raggedbottom

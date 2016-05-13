@@ -264,19 +264,127 @@
 % ----------------------------------------------------------------------------
 
 % --- 章節標題的語言和數字 ---
+
+% --- 語言 ---
 %
 % \ChapterTitleInChi:  章節標題以全中文顯示
 % 預設上章節標題是以英文來顯示 (如 Chapter 1),
 % 但全中文編寫則需要顯示成中文,
 % 故使用'\ChapterTitleInChi'可以顯示成中文 (如 第1章).
 %
-% \ChapterTitleNumInChi: 章節標題數字要使用中文數字,
-% 而不是阿拉伯數字,
-% 故使用'\ChapterTitleNumInChi'可以顯示成 '第一章' 而不是 '第1章'.
-% \ChapterTitleNumInChi必須配合\ChapterTitleInChi來使用, 否則會無效.
-
 %\ChapterTitleInChi
-%\ChapterTitleNumInChi
+
+%--------------------------------------------------
+
+% --- 數字 ---
+% 可自行設計你想要的數字和格式
+%
+% 有以下的數字類型提供
+%   1. 阿拉伯數字
+%   2. 羅馬數字 (大小寫)
+%   3. 英文字母  (大小寫)
+%   4. 天干 (如: 甲乙丙丁戊癸)
+%   5. 中文數字 (如: 一二三)
+%
+% 由於是可自行設定,
+% 所以可以有極大量的例子,
+% 所以請同學自行慢慢研究和嘗試去弄出自己想要的樣子.
+%
+% ----------------------
+%
+% --- 使用方式 ---
+%
+% 章節意思
+% Chapter (章序號): 1
+% Section (節): 1.1
+% SubSection (小節): 1.1.1
+% SubSubSection (小小節): 1.1.1.1
+%
+% 使用以下的寫法去設定不同地方數字和格式
+%\ChapterTitleNumFormat{ < 格式 >}    % chapter 	(章序號)
+%\SectionTitleNumFormat{ < 格式 >}    % section 	(節)
+%\SubSectionTitleNumFormat{ < 格式 >}    % subsection 	(小節)
+%\SubSubSectionTitleNumFormat{ < 格式 >}    % subsubsection 	(小小節)
+%
+% ----------------------
+%
+% --- 數字類型 ---
+%
+% Chapter (章序號)
+%    \StyleCNumChiNum 章序號是使用 '中文數字' 方式
+%    \StyleCNumTiangan 章序號是使用 '天干' 方式
+%    \StyleCNumArabic 章序號是使用 '阿拉伯數字' 方式
+%    \StyleCNumLowerRoman 章序號是使用 '小寫羅馬數字' 方式
+%    \StyleCNumUpperRoman 章序號是使用 '大寫羅馬數字' 方式
+%    \StyleCNumLowerAlph 章序號是使用 '小寫英文字母' 方式
+%    \StyleCNumUpperAlph 章序號是使用 '大寫英文字母' 方式
+%
+% Section (節)
+%    \StyleSNumChiNum 節是使用 '中文數字' 方式
+%    \StyleSNumTiangan 節是使用 '天干' 方式
+%    \StyleSNumArabic 節是使用 '阿拉伯數字' 方式
+%    \StyleSNumLowerRoman 節是使用 '小寫羅馬數字' 方式
+%    \StyleSNumUpperRoman 節是使用 '大寫羅馬數字' 方式
+%    \StyleSNumLowerAlph 節是使用 '小寫英文字母' 方式
+%    \StyleSNumUpperAlph 節是使用 '大寫英文字母' 方式
+%
+% SubSection (小節)
+%    \StyleSSNumChiNum 小節是使用 '中文數字' 方式
+%    \StyleSSNumTiangan 小節是使用 '天干' 方式
+%    \StyleSSNumArabic 小節是使用 '阿拉伯數字' 方式
+%    \StyleSSNumLowerRoman 小節是使用 '小寫羅馬數字' 方式
+%    \StyleSSNumUpperRoman 小節是使用 '大寫羅馬數字' 方式
+%    \StyleSSNumLowerAlph 小節是使用 '小寫英文字母' 方式
+%    \StyleSSNumUpperAlph 小節是使用 '大寫英文字母' 方式
+%
+% SubSubSection (小小節)
+%    \StyleSSSNumChiNum 小小節是使用 '中文數字' 方式
+%    \StyleSSSNumTiangan 小小節是使用 '天干' 方式
+%    \StyleSSSNumArabic 小小節是使用 '阿拉伯數字' 方式
+%    \StyleSSSNumLowerRoman 小小節是使用 '小寫羅馬數字' 方式
+%    \StyleSSSNumUpperRoman 小小節是使用 '大寫羅馬數字' 方式
+%    \StyleSSSNumLowerAlph 小小節是使用 '小寫英文字母' 方式
+%    \StyleSSSNumUpperAlph 小小節是使用 '大寫英文字母' 方式
+%
+% ----------------------
+%
+% --- 格式 ---
+% < 格式 > 正是由數字類型所組出來
+%
+% 預設的格式:
+% Chapter: 1
+% Section: 1.1
+% SubSection: 1.1.1
+% SubSubSection: (空白, 只有題目)
+%
+% 如果 '章' 要由數字改使用為:
+%        '1' -> '-A-'
+% 則使用
+%        \ChapterTitleNumFormat{-\StyleCNumUpperAlph-}
+%
+% 如果 '節' 要由數字改使用為:
+%        '1.2' -> '一 -乙-'
+% 則使用
+%        \SectionTitleNumFormat{\StyleCNumChiNum -\StyleCNumTiangan-}
+%
+% 如果 '節' 不想看到 '章' 的數字:
+%        '1.2' -> '2'
+% 則使用
+%        \SectionTitleNumFormat{\StyleSNumChiNum}
+% 直接不提供 '章' 的數字在格式中則可
+%
+% ----------------------
+%
+% --- 請在這邊設定你要的樣子 ---
+%
+
+%\ChapterTitleNumFormat{%
+%  \StyleCNumArabic}
+%\SectionTitleNumFormat{%
+%  \StyleCNumArabic.\StyleSNumArabic}
+%\SubSectionTitleNumFormat{%
+%  \StyleCNumArabic.\StyleSNumArabic.\StyleSSNumArabic}
+%\SubSubSectionTitleNumFormat{}
 
 % ----------------------------------------------------------------------------
 

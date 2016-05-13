@@ -1,0 +1,105 @@
+%
+% This file is part of ncku-thesis-template.
+%
+% ncku-thesis-template is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify
+% it under the terms of the Attribution-NonCommercial-ShareAlike
+% 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with ncku-thesis-template.
+%
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
+
+% Some helper function use for counter
+
+% ----------------------------------------------------------------------------
+
+%    tiangan (天干: 甲乙丙丁戊癸, 正常範圍是 1–10, 超出範圍的數位將輸出空值)
+%    arabic (阿拉伯數字)
+%    roman (小寫的羅馬數字)
+%    Roman (大寫的羅馬數字)
+%    alph (小寫字母)
+%    Alph (大寫字母)
+
+%    計數器名  (用途)
+%    part 	(部序號)
+%    chapter 	(章序號)
+%    section 	(節)
+%    subsection 	(小節)
+%    subsubsection 	(小小節)
+%    paragraph 	(段)
+%    subparagraph 	(小段)
+%    figure 	(插圖序號)
+%    table 	(表格序號)
+%    equation 	(公式序號)
+%    page 	(頁碼計數器)
+%    footnote 	(註腳序號)
+%    mpfootnote 	(小頁環境中註腳計數器)
+
+% ----------------------------------------------------------------------------
+
+% Chapter format
+\newcommand\StyleCNumChiNum{\zhnumber{chapter}}
+\newcommand\StyleCNumTiangan{\zhtiangan{chapter}}
+\newcommand\StyleCNumArabic{\arabic{chapter}}
+\newcommand\StyleCNumLowerRoman{\roman{chapter}}
+\newcommand\StyleCNumUpperRoman{\Roman{chapter}}
+\newcommand\StyleCNumLowerAlph{\alph{chapter}}
+\newcommand\StyleCNumUpperAlph{\Alph{chapter}}
+
+% Section format
+\newcommand\StyleSNumChiNum{\zhnumber{section}}
+\newcommand\StyleSNumTiangan{\zhtiangan{section}}
+\newcommand\StyleSNumArabic{\arabic{section}}
+\newcommand\StyleSNumLowerRoman{\roman{section}}
+\newcommand\StyleSNumUpperRoman{\Roman{section}}
+\newcommand\StyleSNumLowerAlph{\alph{section}}
+\newcommand\StyleSNumUpperAlph{\Alph{section}}
+
+% SubSection format
+\newcommand\StyleSSNumChiNum{\zhnumber{subsection}}
+\newcommand\StyleSSNumTiangan{\zhtiangan{subsection}}
+\newcommand\StyleSSNumArabic{\arabic{subsection}}
+\newcommand\StyleSSNumLowerRoman{\roman{subsection}}
+\newcommand\StyleSSNumUpperRoman{\Roman{subsection}}
+\newcommand\StyleSSNumLowerAlph{\alph{subsection}}
+\newcommand\StyleSSNumUpperAlph{\Alph{subsection}}
+
+% SubSubSection format
+\newcommand\StyleSSSNumChiNum{\zhnumber{subsubsection}}
+\newcommand\StyleSSSNumTiangan{\zhtiangan{subsubsection}}
+\newcommand\StyleSSSNumArabic{\arabic{subsubsection}}
+\newcommand\StyleSSSNumLowerRoman{\roman{subsubsection}}
+\newcommand\StyleSSSNumUpperRoman{\Roman{subsubsection}}
+\newcommand\StyleSSSNumLowerAlph{\alph{subsubsection}}
+\newcommand\StyleSSSNumUpperAlph{\Alph{subsubsection}}
+
+% ----------------------------------------------------------------------------
+
+\newcommand\ChapterTitleNumFormat[1]{%
+  \renewcommand\thechapter{#1}}
+\newcommand\SectionTitleNumFormat[1]{%
+  \renewcommand\thesection{#1}}
+\newcommand\SubSectionTitleNumFormat[1]{%
+  \renewcommand\thesubsection{#1}}
+\newcommand\SubSubSectionTitleNumFormat[1]{%
+  \renewcommand\thesubsubsection{#1}}
+
+% ----------------------------------------------------------------------------
+
+% Default
+% Chapter: 1
+% Section: 1.1
+% SubSection: 1.1.1
+% SubSubSection: __EMPTY__
+\ChapterTitleNumFormat{\StyleCNumArabic}
+\SectionTitleNumFormat{%
+  \StyleCNumArabic.  (\StyleSNumArabic)}
+\SubSectionTitleNumFormat{%
+  \StyleCNumArabic.\StyleSNumArabic.\StyleSSNumArabic}
+\SubSubSectionTitleNumFormat{}
+
+% ----------------------------------------------------------------------------

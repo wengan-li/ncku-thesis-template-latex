@@ -268,15 +268,9 @@
 \end{comment}
 
 \if \GetChapterTitleLang \VarChapterTitleLangChi
-  \if \GetChapterTitleNumStyle \VarChapterTitleNumStyleNumber
-    \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
-        \ifnum \c@secnumdepth >\m@ne \Large\bf 第 \thechapter 章
-        \par \vskip 15pt \fi \Large \bf #1\par \nobreak \vskip 35pt}}
-  \else
-    \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
-        \ifnum \c@secnumdepth >\m@ne \Large\bf 第\zhnumber{\thechapter}章
-        \par \vskip 15pt \fi \Large \bf #1\par \nobreak \vskip 35pt}}
-  \fi
+  \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
+      \ifnum \c@secnumdepth >\m@ne \Large\bf 第\zhnumber{\thechapter}章
+      \par \vskip 15pt \fi \Large \bf #1\par \nobreak \vskip 35pt}}
 \else
   \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
       \ifnum \c@secnumdepth >\m@ne \Large\bf \@chapapp{} \thechapter
@@ -348,13 +342,8 @@
   \else
     \ifnum \c@secnumdepth >\m@ne
         \refstepcounter{chapter}
-        \if \GetChapterTitleNumStyle \VarChapterTitleNumStyleNumber
-            \typeout{第\thechapter 章.}
-            \addcontentsline{toc}{chapter}{第\thechapter 章.\hspace*{1em}#1}
-        \else
-            \typeout{第\zhnumber{\thechapter}章.}
-            \addcontentsline{toc}{chapter}{第\zhnumber{\thechapter}章.\hspace*{1em}#1}
-        \fi
+        \typeout{第\thechapter 章.}
+        \addcontentsline{toc}{chapter}{第\thechapter 章.\hspace*{1em}#1}
     \else
         \addcontentsline{toc}{chapter}{#1}
     \fi
@@ -399,6 +388,13 @@
     {3.9ex plus -1ex minus -.2ex}{.2ex plus .2ex}{\bf}}
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}%
     {3.25ex plus -1ex minus -.2ex}{.1ex plus .2ex}{\bf}}
+
+%\usepackage{titlesec}
+%\titleformat{\section}[hang]{\normalfont\bfseries}{\thesection}{0.5em}{}[]
+ 
+%\titlespacing{\section}{12pc}{1.5ex plus .1ex minus .2ex}{1pc}
+ 
+
 \begin{comment}
 %\def\thebibliography#1{\chapter*{Bibliography}
 %    \addcontentsline{toc}{chapter}{Bibliography}
