@@ -96,18 +96,8 @@
 
 % -----------------------------------------------------------------
 
-% ------------ OLD API (Backporting) ------------
-% A wrapper to handle \InsertCenterImage{}
-\newcommand{\InsertCenterImage}[2][\empty]
-{
-%  \InsertFigure[#1, align=center]{#2}
-  \InsertFigure[#1]{#2}%
-} % End of \newcommand{}
-
-% A wrapper to handle \InsertImage{}
-\newcommand{\InsertImage}[2][\empty]
-{
-  \InsertFigure[#1]{#2}%
-} % End of \newcommand{}
+% 過去的API, 以 Error提醒不能再使用
+\newcommand{\InsertCenterImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
+\newcommand{\InsertImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
 
 % -----------------------------------------------------------------

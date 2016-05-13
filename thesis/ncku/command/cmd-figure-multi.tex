@@ -354,13 +354,7 @@
 
 % ----------------------------------------------------------------------------
 
-% ------------ OLD API (Backporting) ------------
-% A wrapper to handle \InsertMultiImages{}
-\DeclareDocumentCommand{\InsertMultiImages}{
-  +O{\empty} +m +G{\empty} +G{\empty} +G{\empty}
-  +G{\empty} +G{\empty} +G{\empty} +G{\empty}}
-{
-  \InsertFigures[#1]{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
-} % End of \newcommand{}
+% 過去的API, 以 Error提醒不能再使用
+\newcommand{\InsertMultiImages}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigures.}\stop}
 
 % -----------------------------------------------------------------
