@@ -1,3 +1,15 @@
+#### v1.4.1 [May 12, 2016]:
+1. 增加檢查必須要使用XeLaTex來使用這模版
+2. 重新編寫字型相關的使用方式, 以保證不會因引用大量package時影響到我們想要的字型的設定.
+3. 修正`v1.3.4`後所影響的到清單排版.
+4. 修正ext struct以更方便編寫
+5. 在conf.tex中提供可自行設定章節數字的格式 (中文, 阿拉伯數字, 羅馬字等)
+6. 以下過去的API由這版開始被移除, 改以Error方式進行提醒.
+  1. `\ChapterTitleNumInChi`
+  2. `\InsertMultiImages`
+  3. `\InsertCenterImage`
+  4. `\InsertImage`
+
 #### v1.4.0 [May 9, 2016]:
 **極度推薦升級到這一版**
 
