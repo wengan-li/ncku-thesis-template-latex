@@ -117,8 +117,7 @@
 {%
   % Parse the input
   \pgfkeys{/ParseFontOption, default, #1}%
-%
-  %\setmainfont{#2}[%
+  %
   \defaultfontfeatures[#2]{%
     Path = \GetFontDirPath,
     UprightFont = \TmpValueNormalFont
@@ -134,23 +133,32 @@
     \defaultfontfeatures+[#2]{%
       BoldItalicFont = \TmpValueBoldItalicFont}}%
   %
-  \defaultfontfeatures+[#2]{%
-    AutoFakeBold = \TmpValueAutoFakeBold}%
+%  \defaultfontfeatures+[#2]{%
+%    AutoFakeBold = \TmpValueAutoFakeBold}%
   %
   \setmainfont{#2}
 } % End of \newcommand{}
 
-\newcommand{\SetChiMainFont}[5]
+\newcommand{\SetChiMainFont}[2][\empty]
 {%
+  % Parse the input
+  \pgfkeys{/ParseFontOption, default, #1}%
+  %
   \setCJKmainfont[%
     Path = \GetFontDirPath,
-    UprightFont = #2,
-%    ItalicFont = #3,
-%    BoldFont = #4,
-%    BoldItalicFont = #5,
-    AutoFakeBold = 4
-  ]{#1}%
-  \setCJKmathfont{#1}%
+    UprightFont = \TmpValueNormalFont,
+    AutoFakeBold = true,
+    AutoFakeSlant = true,
+  ]{#2}%
+  %
+  \ifthenelse{\equal{\TmpValueItalicFont}{\empty}}{}{%
+    \addCJKfontfeatures*{ItalicFont = \TmpValueItalicFont}}%
+  \ifthenelse{\equal{\TmpValueBoldFont}{\empty}}{}{%
+    \addCJKfontfeatures*{BoldFont = \TmpValueBoldFont}}%
+  \ifthenelse{\equal{\TmpValueBoldItalicFont}{\empty}}{}{%
+    \addCJKfontfeatures*{BoldItalicFont = \TmpValueBoldItalicFont}}%
+  %
+  %\setCJKmathfont{#2}%
 } % End of \newcommand{}
 
 \newcommand{\SetEngFontFamily}[5]
@@ -209,12 +217,12 @@
     BoldFont = \VarFontTypeTimesKaiuEngFileNameBold,%
     BoldItalicFont = \VarFontTypeTimesKaiuEngFileNameBoldItalic,%
     ]{TimesKaiuEngFont}%
-
-  \SetChiMainFont{TimesKaiuChiFont}{%
-    \VarFontTypeTimesKaiuChiFileNameNormal}{%
-    \VarFontTypeTimesKaiuChiFileNameItalic}{%
-    \VarFontTypeTimesKaiuChiFileNameBold}{%
-    \VarFontTypeTimesKaiuChiFileNameBoldItalic}%
+  \SetChiMainFont[%
+    NormalFont = \VarFontTypeTimesKaiuChiFileNameNormal,%
+    ItalicFont = \VarFontTypeTimesKaiuChiFileNameItalic,%
+    BoldFont = \VarFontTypeTimesKaiuChiFileNameBold,%
+    BoldItalicFont = \VarFontTypeTimesKaiuChiFileNameBoldItalic,%
+    ]{TimesKaiuChiFont}%
 } % End of \newcommand{}
 
 % -------------------------------------------
