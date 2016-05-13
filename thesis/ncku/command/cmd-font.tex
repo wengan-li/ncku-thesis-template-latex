@@ -95,15 +95,49 @@
 
 % -------------------------------------------
 
-\newcommand{\SetEngMainFont}[5]
+\pgfkeys
+{
+  /ParseFontOption/.is family, /ParseFontOption,
+  default/.style =
+  {
+    NormalFont = \empty,
+    ItalicFont = \empty,
+    BoldFont = \empty,
+    BoldItalicFont = \empty,
+    AutoFakeBold = 4,
+  },
+  NormalFont/.estore in = \TmpValueNormalFont,
+  ItalicFont/.estore in = \TmpValueItalicFont,
+  BoldFont/.estore in = \TmpValueBoldFont,
+  BoldItalicFont/.estore in = \TmpValueBoldItalicFont,
+  AutoFakeBold/.estore in = \TmpValueAutoFakeBold,
+} % End of \pgfkeys{}
+
+\newcommand{\SetEngMainFont}[2][\empty]
 {%
-  \setmainfont{#1}[%
+  % Parse the input
+  \pgfkeys{/ParseFontOption, default, #1}%
+%
+  %\setmainfont{#2}[%
+  \defaultfontfeatures[#2]{%
     Path = \GetFontDirPath,
-    UprightFont = #2,
-    ItalicFont = #3,
-    BoldFont = #4,
-    BoldItalicFont = #5
-  ]%
+    UprightFont = \TmpValueNormalFont
+  }%
+  %
+  \ifthenelse{\equal{\TmpValueItalicFont}{\empty}}{}{%
+    \defaultfontfeatures+[#2]{%
+      ItalicFont = \TmpValueItalicFont}}%
+  \ifthenelse{\equal{\TmpValueBoldFont}{\empty}}{}{%
+    \defaultfontfeatures+[#2]{%
+      BoldFont = \TmpValueBoldFont}}%
+  \ifthenelse{\equal{\TmpValueBoldItalicFont}{\empty}}{}{%
+    \defaultfontfeatures+[#2]{%
+      BoldItalicFont = \TmpValueBoldItalicFont}}%
+  %
+  \defaultfontfeatures+[#2]{%
+    AutoFakeBold = \TmpValueAutoFakeBold}%
+  %
+  \setmainfont{#2}
 } % End of \newcommand{}
 
 \newcommand{\SetChiMainFont}[5]
@@ -146,11 +180,20 @@
 
 \def \UseFontStyleTimesKaiu
 {
-  \SetEngFontFamily{TimesKaiuEngFont}{%
-    \VarFontTypeTimesKaiuEngFileNameNormal}{%
-    \VarFontTypeTimesKaiuEngFileNameItalic}{%
-    \VarFontTypeTimesKaiuEngFileNameBold}{%
-    \VarFontTypeTimesKaiuEngFileNameBoldItalic}%
+%  \SetEngFontFamily{TimesKaiuEngFont}{%
+%    \VarFontTypeTimesKaiuEngFileNameNormal}{%
+%    \VarFontTypeTimesKaiuEngFileNameItalic}{%
+%    \VarFontTypeTimesKaiuEngFileNameBold}{%
+%    \VarFontTypeTimesKaiuEngFileNameBoldItalic}%
+
+  \SetEngFontFamily[%
+    NormalFont = \VarFontTypeTimesKaiuEngFileNameNormal,%
+    ItalicFont = \VarFontTypeTimesKaiuEngFileNameItalic,%
+    BoldFont = \VarFontTypeTimesKaiuEngFileNameBold,%
+    BoldItalicFont = \VarFontTypeTimesKaiuEngFileNameBoldItalic,%
+    ]{TimesKaiuEngFont}%
+
+
   \SetChiFontFamily{TimesKaiuChiFont}{%
     \VarFontTypeTimesKaiuChiFileNameNormal}{%
     \VarFontTypeTimesKaiuChiFileNameItalic}{%
@@ -160,11 +203,13 @@
 
 \def \InitFontStyleTimesKaiu
 {
-  \SetEngMainFont{TimesKaiuEngFont}{%
-    \VarFontTypeTimesKaiuEngFileNameNormal}{%
-    \VarFontTypeTimesKaiuEngFileNameItalic}{%
-    \VarFontTypeTimesKaiuEngFileNameBold}{%
-    \VarFontTypeTimesKaiuEngFileNameBoldItalic}%
+  \SetEngMainFont[%
+    NormalFont = \VarFontTypeTimesKaiuEngFileNameNormal,%
+    ItalicFont = \VarFontTypeTimesKaiuEngFileNameItalic,%
+    BoldFont = \VarFontTypeTimesKaiuEngFileNameBold,%
+    BoldItalicFont = \VarFontTypeTimesKaiuEngFileNameBoldItalic,%
+    ]{TimesKaiuEngFont}%
+
   \SetChiMainFont{TimesKaiuChiFont}{%
     \VarFontTypeTimesKaiuChiFileNameNormal}{%
     \VarFontTypeTimesKaiuChiFileNameItalic}{%
