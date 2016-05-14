@@ -45,16 +45,31 @@
 
 % 引用需要的LaTex packages
 
+% Some base packages
+\usepackage{fp}
+\usepackage{ifthen}
+\usepackage{pgfkeys}
+\usepackage{xparse}
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{url}
+
 % For floats
 % flafter package will make sure that the floats are
 % not placed before their definition
 \usepackage{flafter}
 
 % For list
+% Ref: <http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/enumitem/enumitem.pdf>
 \usepackage{enumitem}
-\setlist{nosep}
 %\setlist{noitemsep, nosep}
-%\setlist{noitemsep}
+
+% For paragraphs
+\usepackage{parskip}
+
+% Fro line spacing
+% Ref: <https://en.wikibooks.org/wiki/LaTeX/Paragraph_Formatting>
+\usepackage{setspace}
 
 % For PDF
 \usepackage{hyperref}
@@ -71,6 +86,23 @@
 \usepackage{booktabs}
 \usepackage{diagbox}
 
+% For comment
+\usepackage{comment}
+
+% For 目錄
+\usepackage[tocgraduated]{tocstyle}
+\usetocstyle{standard}
+
+% For bib
+% everal features of babel that do not make sense in the XeLaTex world
+% (like font encodings, shorthands, etc.) are not supported.
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+% For chinese number in title
+% http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/zhnumber/zhnumber.pdf
+\usepackage{zhnumber}
+
 % For pseudocode
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
@@ -85,32 +117,6 @@
 \algtext*{EndCase}%
 \algtext*{EndDefault}%
 \def\Break{\algorithmicbreak}
-
-% For comment
-\usepackage{comment}
-
-% For 目錄
-\usepackage[tocgraduated]{tocstyle}
-\usetocstyle{standard}
-
-% Other useful or needed libraries
-\usepackage{fp}
-\usepackage{pgfkeys}
-\usepackage{url}
-\usepackage{ifthen}
-\usepackage{xparse}
-\usepackage{framed}
-\usepackage{amsmath}
-
-% For bib
-% everal features of babel that do not make sense in the XeLaTex world
-% (like font encodings, shorthands, etc.) are not supported.
-\usepackage{polyglossia}
-\setdefaultlanguage{english}
-
-% For chinese number in title
-% http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/zhnumber/zhnumber.pdf
-\usepackage{zhnumber}
 
 % ------------------------------------------------
 
@@ -156,8 +162,6 @@
 % 設定段落之間的距離
 %\setlength{\parskip}{0.3cm}
 
-% ------------------------------------------------
-
 % 當所有的package都include完後, 才真正設定我們要的字型,
 % 以清掉所有由package影響到的設定.
 \InitDefaultFontType
@@ -165,3 +169,5 @@
 % Makes all pages the height of the text on that page.
 % No extra vertical space is added. 
 \raggedbottom
+
+% ------------------------------------------------
