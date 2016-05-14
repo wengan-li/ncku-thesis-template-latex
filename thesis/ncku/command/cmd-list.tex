@@ -1,0 +1,42 @@
+%
+% This file is part of ncku-thesis-template.
+%
+% ncku-thesis-template is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify
+% it under the terms of the Attribution-NonCommercial-ShareAlike
+% 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with ncku-thesis-template.
+%
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
+
+% ----------------------------------------------------------------------------
+
+\newcommand{\SetStyleItemizeItemLevelOne}[1]{%
+  \renewcommand{\labelitemi}{$#1$}}
+\newcommand{\SetStyleItemizeItemLevelTwo}[1]{%
+  \renewcommand{\labelitemii}{$#1$}}
+\newcommand{\SetStyleItemizeItemLevelThree}[1]{%
+  \renewcommand{\labelitemiii}{$#1$}}
+\newcommand{\SetStyleItemizeItemLevelFour}[1]{%
+  \renewcommand{\labelitemiv}{$#1$}}
+
+\newcommand{\SetStyleEnumItemLevelOne}[1]{%
+  \renewcommand{\labelenumi}{$#1$}}
+\newcommand{\SetStyleEnumItemLevelTwo}[1]{%
+  \renewcommand{\labelenumii}{$#1$}}
+\newcommand{\SetStyleEnumItemLevelThree}[1]{%
+  \renewcommand{\labelenumiii}{$#1$}}
+\newcommand{\SetStyleEnumItemLevelFour}[1]{%
+  \renewcommand{\labelenumiv}{$#1$}}
+
+% Default sytle of itemize items
+\SetStyleItemizeItemLevelOne{\bullet}
+\SetStyleItemizeItemLevelTwo{-}
+\SetStyleItemizeItemLevelThree{\diamond}
+\SetStyleItemizeItemLevelFour{\ast}
+
+% ----------------------------------------------------------------------------
