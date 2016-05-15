@@ -1,16 +1,25 @@
 #### v1.4.1 [May 13, 2016]:
-** 由於package<zhnumber>已改成基礎package之一, 故更新是必須的. 故請看有關`'3.3.3 更新MiKTeX'`章節. **
+** 由於package 'zhnumber'已改成基礎package之一, 故更新是必須的. 故請看有關`'3.3.3 更新MiKTeX'`章節. **
 
-1. 增加檢查必須要使用XeLaTex來使用這模版
-2. 重新編寫字型相關的使用方式, 以保證不會因引用大量package時影響到我們想要的字型的設定.
-3. 修正`v1.3.4`後所影響的到清單排版.
-4. 修正ext struct以更方便編寫
-5. 在conf.tex中提供可自行設定章節數字的格式 (中文, 阿拉伯數字, 羅馬字等)
-6. 以下過去的API由這版開始被移除, 改以Error方式進行提醒.
-  1. `\ChapterTitleNumInChi`
-  2. `\InsertMultiImages`
-  3. `\InsertCenterImage`
-  4. `\InsertImage`
++ **更新**:
+  1. 增加檢查必須要使用XeLaTex來使用這模版
+  2. 重新編寫字型相關的使用方式, 以保證不會因引用大量package時影響到我們想要的字型的設定.
+  3. 修正`v1.3.4`後所影響的到清單和段距的空間.
+  4. 在conf.tex中提供可自行設定章節數字的格式 (中文, 阿拉伯數字, 羅馬字等)
+  5. 以下過去的API由這版開始被移除, 改以Error方式進行提醒.
+    1. `\ChapterTitleNumInChi` -> 停用
+    2. `\InsertMultiImages` -> 請改使用`\InsertFigures`
+    3. `\InsertCenterImage` -> 請改使用`\InsertFigure`
+    4. `\InsertImage` -> 請改使用`\InsertFigure`
+  6. 更新相關的說明文件.
+
+  4. 修正ext struct以更方便編寫
+  7. 提供可自行定義清單的符號.
+  8. 提供可自行定義所產出後PDF中一些引用的顏色.
+
++ **發現情況**:
+  1. 意外發現學校提供的`英文延伸摘要(Extended Abstract)撰寫格式說明`中所寫的`建議字型 Times New Roman`這一條, 但發現範例中最上面的論文題目和名字不是根本不是`Times New Roman`字型. 對比`論文題目`中跟`SUMMARY`中的`T`這個字即可, 橫的那條線一個是平滑, 但另一個不是. 故無視範例中所顯示的效果, 直接統一使用要求所定出的`Times New Roman`.
+  2. 同樣範例應該是`段落為單行間距`, 但發現如果直接拿模版弄出來的PDF跟Word在同樣100%大小時作對比是一樣的, 但卻沒法跟範例有同樣的效果. 故直接統一使用Latex使用的單行間距的預設設定.
 
 #### v1.4.0 [May 9, 2016]:
 **極度推薦升級到這一版**
