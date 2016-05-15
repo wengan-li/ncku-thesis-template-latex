@@ -1,0 +1,114 @@
+%
+% This file is part of ncku-thesis-template.
+%
+% ncku-thesis-template is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify
+% it under the terms of the Attribution-NonCommercial-ShareAlike
+% 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with ncku-thesis-template.
+%
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
+
+% Some helper function use in extended abstract
+
+% ----------------------------------------------------------------------------
+
+% Extended Abstract
+\newcommand{\StartExtendedAbstract}
+{
+  \StartNewPage
+  %
+  % Set style
+  \thispagestyle{empty}
+  %
+  % Add to "Table of Contents"
+%  \addcontentsline{toc}{chapter}{Extended Abstract}
+  \addcontentsline{toc}{chapter}{英文延伸摘要}
+  %
+  \begin{minipage}[c][5cm][c]{\textwidth}
+  \parbox{\textwidth}{\center\large\textbf{\GetEngTitle}}
+  \EmptyLine%
+  \center\normalsize\GetAuthorEngName\\%
+  \center\normalsize Dr. \GetAdvisorEngNameA\\%
+  \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}{}%
+    {\center\normalsize Dr. \GetAdvisorEngNameB\\}
+  \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}{}%
+    {\center\normalsize Dr. \GetAdvisorEngNameC\\}
+  \center\normalsize\textit{\GetDeptEngName}\\%
+  \center\normalsize\textit{\GetCollEngName}\\%
+  \EmptyLine%
+  \end{minipage}
+  %
+  % Set page
+  %\baselineskip=15pt
+%  \setlength{\parindent}{0.0pt}
+  % 設定段落之間的距離
+%  \setlength{\parskip}{0.5cm}
+  %
+  \captionsetup[table]{font=bf}
+  \captionsetup[figure]{font=bf}
+} % End of \newcommand{}
+
+\newcommand{\EndExtendedAbstract}
+{
+  \EndOfPage
+  %
+  % 設定段落之間的距離
+%  \setlength{\parskip}{0.3cm}
+  %
+  % Reset page
+%  \setlength{\parindent}{1.5em}
+%  \baselineskip=26pt
+  %
+  % Re-set style
+  \pagestyle{plain}
+  %
+  % Reset figure and table counter to zero
+  \setcounter{table}{0}
+  \setcounter{figure}{0}
+  %
+  \captionsetup[table]{labelfont=bf, textfont=normalfont}
+  \captionsetup[figure]{labelfont=bf, textfont=normalfont}
+} % End of \newcommand{}
+
+% Summary in Extended Abstract
+\global\mdfdefinestyle{ExtAbstractSummaryStyle}{%
+  linewidth=1pt%
+}
+\newcommand{\ExtAbstractSummary}[1]
+{%
+  \begin{mdframed}[style=ExtAbstractSummaryStyle]%
+  \vspace{0.3cm}%
+  \parbox{\textwidth}{\center\textbf{SUMMARY}}%
+  \vspace{0.3cm}\\%
+  #1%
+  \EmptyLine%
+  \vspace{0.3cm}\\%
+  \textbf{Keyword:} \GetAbstractExtKeywords%
+  \end{mdframed}%
+} % End of \newcommand{}
+
+% Chapter in Extended Abstract
+\newcommand{\ExtAbstractChapter}[1]
+{
+  \EmptyLine%
+  \centerline{\textbf{\MakeUppercase{#1}}}%
+  \EmptyLine%
+} % End of \newcommand{}
+
+% Section in Extended Abstract
+%\newcommand{\ExtAbstractSection}[2]
+\newcommand{\ExtAbstractSection}[1]
+{
+  \EmptyLine%
+  \textbf{#1}\\%
+  \EmptyLine%
+%  \textbf{#1}\\%
+%  #2%
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
