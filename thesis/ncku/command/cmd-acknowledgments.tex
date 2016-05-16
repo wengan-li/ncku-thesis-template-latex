@@ -18,22 +18,28 @@
 % ----------------------------------------------------------------------------
 
 \newcommand{\StartAcknowledgments}
-{
-  \StartNewPage
-  \chapter*{Acknowledgements}
-  \addcontentsline{toc}{chapter}{Acknowledgements}
-  \pagestyle{plain}
+{%
+  \StartNewPage%
+  \UseEngLinesSpacing%
+  \chapter*{Acknowledgements}%
+  \addcontentsline{toc}{chapter}{Acknowledgements}%
+  \pagestyle{plain}%
 } % End of \newcommand{}
 
 \newcommand{\StartAcknowledgmentsChi}
-{
-  \StartNewPage
-  \chapter*{誌謝}
-  \addcontentsline{toc}{chapter}{誌謝}
-  \pagestyle{plain}
+{%
+  \StartNewPage%
+  \UseChiLinesSpacing%
+  \chapter*{誌謝}%
+  \addcontentsline{toc}{chapter}{誌謝}%
+  \pagestyle{plain}%
 } % End of \newcommand{}
 
-\def \EndAcknowledgments {\EndOfPage}
+\newcommand{\EndAcknowledgments}
+{%
+  \EndOfPage%
+  \UseDefaultLinesSpacing%
+} % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
 

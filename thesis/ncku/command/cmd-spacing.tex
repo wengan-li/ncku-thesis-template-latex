@@ -20,3 +20,39 @@
 
 % ----------------------------------------------------------------------------
 
+% Default lines are double spaced
+
+\newcommand{\VarDefaultLinesSpacingTypeEng}{0}
+\newcommand{\VarDefaultLinesSpacingTypeChi}{1}
+\newcommand{\VarDefaultLinesSpacingType}{%
+  \VarDefaultLinesSpacingTypeEng} % Default
+\newcommand{\GetDefaultLinesSpacingType}{%
+  \VarDefaultLinesSpacingType}
+\newcommand{\SetDefaultLinesSpacingType}[1]{\renewcommand{\VarDefaultLinesSpacingType}{#1}}
+
+\newcommand{\UseEngLinesSpacing}
+{%
+  \doublespacing%
+  \doublespace%
+} % End of \newcommand{}
+
+\newcommand{\UseChiLinesSpacing}
+{%
+  \singlespacing%
+  \singlespace%
+} % End of \newcommand{}
+
+\newcommand{\ThesisWroteInChi}{%
+  \SetDefaultLinesSpacingType{\VarDefaultLinesSpacingTypeChi}}
+
+\newcommand{\UseDefaultLinesSpacing}
+{%
+  \ifthenelse{\GetDefaultLinesSpacingType = \VarDefaultLinesSpacingTypeEng}%
+  {\UseEngLinesSpacing}{}%
+  %
+  \ifthenelse{\GetDefaultLinesSpacingType = \VarDefaultLinesSpacingTypeChi}%
+  {\UseChiLinesSpacing}{}%
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
