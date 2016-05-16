@@ -77,8 +77,9 @@
 
 % Summary in Extended Abstract
 \global\mdfdefinestyle{ExtAbstractSummaryStyle}{%
-  linewidth=1pt%
-}
+  linewidth=1pt, apptotikzsetting={%
+    \tikzset{mdfbackground/.append style={opacity=0.75}}}%
+} % End of \mdfdefinestyle{}
 \newcommand{\ExtAbstractSummary}[1]
 {%
   \begin{mdframed}[style=ExtAbstractSummaryStyle]%
@@ -93,22 +94,23 @@
 } % End of \newcommand{}
 
 % Chapter in Extended Abstract
-\newcommand{\ExtAbstractChapter}[1]
+\DeclareDocumentCommand{\ExtAbstractChapter}{+m +g} % Back-porting
+%\newcommand{\ExtAbstractChapter}[1]
 {
   \EmptyLine%
   \centerline{\textbf{\MakeUppercase{#1}}}%
   \EmptyLine%
+  \IfNoValueF{#2}{#2}%
 } % End of \newcommand{}
 
 % Section in Extended Abstract
-%\newcommand{\ExtAbstractSection}[2]
-\newcommand{\ExtAbstractSection}[1]
+%\newcommand{\ExtAbstractSection}[1]
+\DeclareDocumentCommand{\ExtAbstractSection}{+m +g} % Back-porting
 {
   \EmptyLine%
   \textbf{#1}\\%
   \EmptyLine%
-%  \textbf{#1}\\%
-%  #2%
+  \IfNoValueF{#2}{#2}%
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
