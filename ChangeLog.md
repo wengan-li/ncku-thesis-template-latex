@@ -1,5 +1,5 @@
 #### v1.4.1 [May 13, 2016]:
-** 由於package 'zhnumber'已改成基礎package之一, 故更新是必須的. 故請看有關`'3.3.3 更新MiKTeX'`章節. **
+** 由於package `zhnumber`已改成基礎package之一, 故更新是必須的. 故請看有關`'3.3.3 更新MiKTeX'`章節. **
 
 + **更新**:
   1. 增加檢查必須要使用XeLaTex來使用這模版
@@ -11,9 +11,12 @@
     2. `\InsertMultiImages` -> 請改使用`\InsertFigures`
     3. `\InsertCenterImage` -> 請改使用`\InsertFigure`
     4. `\InsertImage` -> 請改使用`\InsertFigure`
-  6. 更新相關的說明文件.
+  6. 刪除`example/abstract/extended.tex`, 直接共用`context/abstract/extended.tex`, 以減少多餘的檔案.
+  7. 對`英文延伸摘要(Extended Abstract)`進行重新設計和排版, 提供以更方便的編寫和正常的顯示. 但同時保留以前的使用方式, 以能無痛升級.
+  8. 在`conf.tex`中新增`\ThesisWroteInChi`, 以控制要使用為中文或英文而設計的段距.
+  9. 更新相關的說明文件.
 
-  4. 修正ext struct以更方便編寫
+
   7. 提供可自行定義清單的符號.
   8. 提供可自行定義所產出後PDF中一些引用的顏色.
 
