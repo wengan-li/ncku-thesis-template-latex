@@ -58,14 +58,14 @@
   G{\empty} G{\empty} G{\empty} %
   G{\empty} G{\empty} G{\empty} %
   G{\empty} G{\empty} G{\empty}}
-{
-  \StartNewPage
+{%
+  \StartNewPage%
   % Add to "Table of Contents"
   \addcontentsline{toc}{chapter}{References}
   % Change the title of bibliography
   \renewcommand\bibname{\centerline{\Large References}}
   % ------------------------------------------------
-
+  %
   \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeAbbrv}}%
   {\bibliographystyle{abbrv}}{}
   \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypePlain}}%
@@ -74,7 +74,7 @@
   {\bibliographystyle{alpha}}{}
   \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeApacite}}%
   {\bibliographystyle{apacite}}{}
-
+  %
   % ------------------------------------------------
   % Bib files
   \ifthenelse{\equal{#9}{\empty}}
@@ -129,7 +129,7 @@
     \bibliography{#1,#2,#3,#4,#5,#6,#7,#8,#9}%
   } % End of else{}
   % ------------------------------------------------
-  \EndOfPage
+  \EndOfPage%
 } % End of \DeclareDocumentCommand{}
 % ----------------------------------------------------------------------------
 
