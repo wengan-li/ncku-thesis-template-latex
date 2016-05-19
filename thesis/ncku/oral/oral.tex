@@ -25,19 +25,11 @@
   % -------------------------- 顯示範本 --------------------------
   % Chinese version
   \ifthenelse{\equal{\GetDisplayOralChiTemplate}{\ValueDisplayOralTemplateOn}}%
-    {\StartNewPage%
-      \thispagestyle{empty}%
-      \input{./ncku/oral/templete/templete-chi}%
-    }%
-    {}%
+    {\input{./ncku/oral/templete/templete-chi}}{}%
   %
   % English version
   \ifthenelse{\equal{\GetDisplayOralTemplateEng}{\ValueDisplayOralTemplateOn}}%
-    {\StartNewPage%
-      \thispagestyle{empty}%
-      \input{./ncku/oral/templete/templete-eng}%
-    }%
-    {}%
+    {\input{./ncku/oral/templete/templete-eng}}{}%
 } % End of if{}
 {
   % ---------------------- 顯示圖片, Image in PDF format ----------------------

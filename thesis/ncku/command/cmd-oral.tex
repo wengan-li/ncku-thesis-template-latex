@@ -19,6 +19,69 @@
 \def \OralIndexHeader {Oral presentation document}
 % ----------------------------------------------------------------------------
 
+\newcommand{\StartOralTempleteDocChi}
+{
+  %
+  \UseEngLinesSpacing
+  %
+  % 由於中文版的watermark是用文字, 所以先把Logo版關掉
+  \ClearWatermark
+  %
+  % 使用文字版watermark
+  \UseSchoolTextWatermark
+  %
+  \StartNewPage
+  %
+  % 設定使用 無頁碼
+  \thispagestyle{empty}
+  %
+  % Aligned to the center of the page
+  \begin{center}
+} % End of \newcommand{}
+
+\newcommand{\StartOralTempleteDocEng}
+{
+  %
+  \UseEngLinesSpacing
+  %
+  \StartNewPage
+  %
+  % 設定使用 無頁碼
+  \thispagestyle{empty}
+  %
+  % Aligned to the center of the page
+  \begin{center}
+} % End of \newcommand{}
+
+\newcommand{\EndOralTempleteDoc}
+{
+  % End of alignment
+  \end{center}
+  %
+  % End of page
+  \EndOfPage
+  \UseDefaultLinesSpacing
+  %
+  % 重新使用學校浮水印 Watermark
+  \UseSchoolWatermark
+} % End of \newcommand{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ----------------------------------------------------------------------------
+
 % 口試委員 Committee member(s)
 \newcommand{\CommitteeSize}{9} % Default
 \newcommand{\GetCommitteeSize}{\CommitteeSize}
