@@ -18,15 +18,15 @@
 % ----------------------------------------------------------------------------
 \newcommand{\StartCover}
 {
+  %
+  \UseEngLinesSpacing
+  %
   \StartNewPage
   %
   % 設定使用 無頁碼
   \thispagestyle{empty}
   %
   \EnableCoverPageStyle
-  %
-  % Set the line spacing to single for the titles (to compress the lines)
-  \renewcommand{\baselinestretch}{1}   %行距 1 倍
   %
   % Aligned to the center of the page
   \begin{center}
@@ -38,6 +38,7 @@
   \end{center}
   \DisableCoverPageStyle
   \EndOfPage
+  \UseDefaultLinesSpacing
 } % End of \newcommand{}
 % ----------------------------------------------------------------------------
 
