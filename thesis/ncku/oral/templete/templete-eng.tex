@@ -18,29 +18,31 @@
 %                   英文版口試証明文件
 % ----------------------------------------------------------------------------
 
-% Set the line spacing to single for the titles (to compress the lines)
-\renewcommand{\baselinestretch}{1}   %行距 1 倍
-
+% ------------------------------------------------
+\StartOralTempleteDocEng
 % ------------------------------------------------
 
-% Aligned to the center of the page
-\begin{center}
-
-% ------------------------------------------------
-
-\begin{minipage}[c][5cm][t]{\textwidth}
+\begin{minipage}[c][3.5cm][t]{\textwidth}
   \begin{center}
+    \vspace{0.4cm}
+
     % English title 英文題目
-    \makebox[\textwidth][c]{\parbox{\paperwidth }{\center \Large \GetEngTitle}}
+    \makebox[\textwidth][c]{\parbox{\paperwidth}{\center \Large \GetEngTitle}}
 
     \vspace{0.5cm}
-    \Large by \\
+
+    \makebox[\textwidth][c]{\Large by}\\
+
+    \vspace{0.5cm}
 
     % 顯示學生名字
-    \vspace{0.5cm}
-    \Large \GetAuthorEngName \\
+    \makebox[\textwidth][c]{\Large \GetAuthorEngName}\\
   \end{center}
 \end{minipage}
+
+% ------------------------------------------------
+
+\vspace{1.3cm}
 
 % ------------------------------------------------
 
@@ -69,37 +71,37 @@
 
 % ------------------------------------------------
 
-\vspace{1.0cm}
+\vspace{0.85cm}
+
+% ------------------------------------------------
 \begin{minipage}[c][9.0cm][t]{\textwidth}
   \makebox[\textwidth][l]{\Large Approved by:} \\
-  \vspace{0.5cm}
+
+  \vspace{0.48cm}
+
   \DisplayCommitteeSignatureArea
 \end{minipage}
 
 % ------------------------------------------------
 
-% Space
 \vspace{1.5cm}
 
 % ------------------------------------------------
 
-\makebox[4.8em][r]{\Large Advisor}
-\makebox[1em][c]{\Large:}
-\makebox[7.2em][l]{\namesigdate}\\
+\begin{minipage}[c][2.0cm][t]{\textwidth}
+  \begin{center}
+    \makebox[4.8em][r]{\Large Advisor}
+    \makebox[1em][c]{\Large:}
+    \makebox[7.2em][l]{\namesigdate}\\
 
-\vspace{1.0cm}
+    \vspace{1.0cm}
 
-\makebox[4.8em][r]{\Large Chairman}
-\makebox[1em][c]{\Large:}
-\makebox[7.2em][l]{\namesigdate}\\
-
-% ------------------------------------------------
-
-% End of alignment
-\end{center}
-
-% End of page
-\clearpage
+    \makebox[4.8em][r]{\Large Chairman}
+    \makebox[1em][c]{\Large:}
+    \makebox[7.2em][l]{\namesigdate}\\
+  \end{center}
+\end{minipage}
 
 % ------------------------------------------------
-
+\EndOralTempleteDoc
+% ------------------------------------------------
