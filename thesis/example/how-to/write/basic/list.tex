@@ -10,7 +10,7 @@
 
     可以有2種寫法, 使用\verb|\item xxxx|來只寫一行, 或是用\verb|{...}|可把內容包起來.
     \EmptyLine
-    \begin{fmpage}{\textwidth}
+    \begin{DescriptionFrame}
     \begin{verbatim}
       \begin{enumerate}
       \item Item1
@@ -32,7 +32,7 @@
       }
       \end{enumerate}
     \end{verbatim}
-    \end{fmpage}
+    \end{DescriptionFrame}
     \EmptyLine
 
     效果:
@@ -63,7 +63,7 @@
     符號
 
     \EmptyLine
-    \begin{fmpage}{\textwidth}
+    \begin{DescriptionFrame}
     \begin{verbatim}
       \begin{itemize}
       \item Item1
@@ -85,7 +85,7 @@
       }
       \end{itemize}
     \end{verbatim}
-    \end{fmpage}
+    \end{DescriptionFrame}
     \EmptyLine
 
     效果:
@@ -119,7 +119,7 @@
     或是用\verb|\hfill \\|把內容放到第2行才開始.
 
     \EmptyLine
-    \begin{fmpage}{\textwidth}
+    \begin{DescriptionFrame}
     \begin{verbatim}
       \begin{description}
       \item[Item1] Item1's context
@@ -128,7 +128,7 @@
         Item3's context
       \end{description}
     \end{verbatim}
-    \end{fmpage}
+    \end{DescriptionFrame}
     \EmptyLine
 
     效果:
@@ -147,7 +147,7 @@
 
     表單應該最多只會用到第4層, 但是其實當你需要用到第3層時, 這時候你應該考慮的不是怎使用表單, 而是要怎換另外一種寫法了.
 
-    \begin{framed}
+    \begin{DescriptionFrame}
     \begin{verbatim}
       \begin{enumerate}
         \item
@@ -195,7 +195,7 @@
         }
       \end{itemize}
     \end{verbatim}
-    \end{framed}
+    \end{DescriptionFrame}
 
     效果:
     \begin{enumerate}

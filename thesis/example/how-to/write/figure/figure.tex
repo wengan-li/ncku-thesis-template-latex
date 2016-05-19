@@ -97,7 +97,7 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
 \newpage
 \StartSubSection{單張}
   \EmptyLine
-  \begin{fmpage}{\textwidth}
+  \begin{DescriptionFrame}
   \begin{verbatim}
   Path:   圖片位置 (必填)
 
@@ -131,7 +131,7 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
         LaTex對SVG檔的支援並不理想, 故推薦先對SVG進行加工,
         如轉成.eps或.pdf (推薦).
   \end{verbatim}
-  \end{fmpage}
+  \end{DescriptionFrame}
 
   \newpage
   {\bf 效果:}
@@ -286,7 +286,7 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
   多張是使用\verb|\InsertFigures| ({\bf 注意:} Figure是複數, 有一個`s'), 設計上可插入1$\sim$8張的圖片, 而且寫法會跟插入單張相近.
 
   \EmptyLine
-  \begin{fmpage}{\textwidth}
+  \begin{DescriptionFrame}
   \begin{verbatim}
   Options 主圖的設定 (使用','來分隔, 不分先後順序)
     perrow:  每一列多少張圖片 (選填, 預設: 1. 最小: 1, 最大: 4)
@@ -311,7 +311,7 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
     }
   ('%'是必須存在的, 以防止被LaTex認為這是新段落)
   \end{verbatim}
-  \end{fmpage}
+  \end{DescriptionFrame}
 
   \newpage
 

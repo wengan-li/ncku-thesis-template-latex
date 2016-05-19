@@ -70,3 +70,13 @@
 \newcommand{\EmptyLine}{  \ \\}
 
 % ----------------------------------------------------------------------------
+
+\global\mdfdefinestyle{DescriptionFrameStyle}{%
+  linewidth=1pt, apptotikzsetting={%
+    \tikzset{mdfbackground/.append style={opacity=0.75}}}%
+} % End of \mdfdefinestyle{}
+\newenvironment{DescriptionFrame}%
+{\begin{mdframed}[style=DescriptionFrameStyle]}%
+{\end{mdframed}}
+
+% ----------------------------------------------------------------------------

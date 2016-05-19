@@ -3,7 +3,7 @@
 標記(Label)是指給某項東西(如圖, 表格, 段落, chapter等)一個用來記憶的名字, 主要用來在引用時可以用來指定它. 使用方式是:
 
   \EmptyLine
-  \begin{fmpage}{\textwidth}
+  \begin{DescriptionFrame}
   \begin{verbatim}
     \label{ ... some text here for your label ...} % 設定Label
 
@@ -11,7 +11,7 @@
     \label{fig:introduction:fig1} % 設定Label
     \RefTo{fig:introduction:fig1} % 引用Label
   \end{verbatim}
-  \end{fmpage}
+  \end{DescriptionFrame}
   \EmptyLine
 
 \noindent Label的名字是可以任何輸入的文字, 但是為了方便記憶, 會固定以一個名字起頭, 再以段落/章節的方式來分隔.\\
@@ -30,7 +30,7 @@
 因為原本LaTex的引用語法可以引用很多東西, 所以可能會混亂不知道自己在引用什麼, 故本模版提供幾個語法來取代那些語法. (但是如果你是懂得原LaTex的寫法(\verb|\ref{}, \cite{}, etc.|), 都可以直接使用原本的寫法, 其實是同一個東西.)
 
   \EmptyLine
-  \begin{fmpage}{\textwidth}
+  \begin{DescriptionFrame}
   \begin{verbatim}
     引用 公式(Equation)
     \RefEquation{...}   直接顯示章節和它的號碼, 如: X.X
@@ -48,7 +48,7 @@
       顯示章節和它的號碼, 如: X.X
       所以要手動在引用部份加上 fig, table, chap等一些字眼
   \end{verbatim}
-  \end{fmpage}
+  \end{DescriptionFrame}
 
   \EmptyLine
 由於label寫在LaTex中, 而產生出來的後的文件是看不到的, 所以沒法簡單講解來說明, 所以可以參考後面的一些章節, 其內容會有一些例子會方便理解.

@@ -324,7 +324,7 @@
 在畢業論文中, 表格的位置跟圖片一樣都是非常固定以中間為主, 而不一樣的東西主要是表格的標題位置和表格的設計, 同時為了幫同學們調整好表格的故使用斜線則必須自行在內容中進行修改位置, 大小和預設白色背景, 故本模版同時增加一個幫助你插入表格的功能.
 
   \EmptyLine
-  \begin{fmpage}{\textwidth}
+  \begin{DescriptionFrame}
   \begin{verbatim}
   Content:   表格內容 (必填)
     只需要\begin{tabular} ... \end{tabular}這部份的內容
@@ -363,7 +363,7 @@
         \end{tabular}
       }
   \end{verbatim}
-  \end{fmpage}
+  \end{DescriptionFrame}
 
 % ------------------------------------------------
 
@@ -673,7 +673,7 @@ LaTeX Table Generator沒法設定每一個Column的闊度, 故本模版提供3�
 斜線在表格上的設計是非常普遍, 但正如這一章開始時提到, LaTex在表格設計上不直覺, 有很多功能都要自行處理, 斜線這一功能正是其一. 在LaTeX Table Generator中是沒法弄出斜線的, 故需弄完表格後再修改內容. 以下的內容都是拿自斜線工具的文件 \RefBib{web:latex:diagbox-doc}, 只抽出一些重要內容.
 
   \EmptyLine
-  \begin{fmpage}{\textwidth}
+  \begin{DescriptionFrame}
   \begin{verbatim}
   Options 斜線的設定 (使用','來分隔, 不分先後順序)
     width:  畫斜線的格子寬度 (選填, 推薦使用以cm/mm來設定)
@@ -692,7 +692,7 @@ LaTeX Table Generator沒法設定每一個Column的闊度, 故本模版提供3�
 
     \diagbox[dir=NW, width=1cm, height=1cm]{A}{B}
   \end{verbatim}
-  \end{fmpage}
+  \end{DescriptionFrame}
   \EmptyLine
 
   一個最基本的例子:
