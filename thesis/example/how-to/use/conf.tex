@@ -206,7 +206,7 @@
     預設的目錄標題為: 目錄 (中文) / Table of Contents (英文)\\
     預設的表格目錄標題為: 表格 (中文) / List of Tables (英文)\\
     預設的圖片目錄標題為: 圖片 (中文) / List of Figures (英文)\\
-    如應為預設文字不是你所希望的, 那可以使用這邊去個別設定你所希望的文字, 不分中文英.
+    如應為預設文字不是你所希望的, 那可以使用這邊去個別設定你所希望的文字, 不分中英文.
 
     \verb|\SetIndexTitleText|: 設定目錄標題\\
     \verb|\SetTablesIndexTitleText|: 設定表格目錄標題\\
@@ -310,7 +310,23 @@
   \newpage
   \item
   {
-    \textbf{Reference和引用時的格式}
+    \textbf{參考文獻 Reference}
+
+     設定可獨立使用, 但只有最後設定的一方有效\\
+
+     Reference的標題文字使用預設的中文或是英文\\
+     預設的標題為: 參考文獻 (中文) / References (英文)\\
+     \verb|\ChapterReferenceTitleInChi|:  標題文字為中文\\
+     \verb|\ChapterReferenceTitleInEng|:  標題文字為英文\\
+     預設使用\verb|\ChapterReferenceTitleInEng|\\
+
+     如應為預設文字不是你所希望的,  則可使用\verb|\SetChapterReferenceTitle|去設定你所希望的文字, 不分中英文.
+  } % End of \item{}
+
+
+  \item
+  {
+    \textbf{Reference引用時的格式}
 
     除非有特殊的格式要求, 否則這個是不用管的.\\
 
@@ -331,6 +347,7 @@
  \textbf{已知:} 由abbrv轉去apacite必定需要刪除檔案才能進行.
   } % End of \item{}
 
+  \newpage
   \item
   {
     \textbf{系所 Department or Institute}
