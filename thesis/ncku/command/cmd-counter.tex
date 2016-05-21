@@ -42,8 +42,8 @@
 % ----------------------------------------------------------------------------
 
 % Chapter format
-\newcommand\StyleCNumChiNum{\zhnumber{chapter}}
-\newcommand\StyleCNumTiangan{\zhtiangan{chapter}}
+\newcommand\StyleCNumChiNum{\zhnum{chapter}}
+\newcommand\StyleCNumTiangan{\zhtiangan{\value{chapter}}}
 \newcommand\StyleCNumArabic{\arabic{chapter}}
 \newcommand\StyleCNumLowerRoman{\roman{chapter}}
 \newcommand\StyleCNumUpperRoman{\Roman{chapter}}
@@ -51,8 +51,8 @@
 \newcommand\StyleCNumUpperAlph{\Alph{chapter}}
 
 % Section format
-\newcommand\StyleSNumChiNum{\zhnumber{section}}
-\newcommand\StyleSNumTiangan{\zhtiangan{section}}
+\newcommand\StyleSNumChiNum{\zhnum{section}}
+\newcommand\StyleSNumTiangan{\zhtiangan{\value{section}}}
 \newcommand\StyleSNumArabic{\arabic{section}}
 \newcommand\StyleSNumLowerRoman{\roman{section}}
 \newcommand\StyleSNumUpperRoman{\Roman{section}}
@@ -60,8 +60,8 @@
 \newcommand\StyleSNumUpperAlph{\Alph{section}}
 
 % SubSection format
-\newcommand\StyleSSNumChiNum{\zhnumber{subsection}}
-\newcommand\StyleSSNumTiangan{\zhtiangan{subsection}}
+\newcommand\StyleSSNumChiNum{\zhnum{subsection}}
+\newcommand\StyleSSNumTiangan{\zhtiangan{\value{subsection}}}
 \newcommand\StyleSSNumArabic{\arabic{subsection}}
 \newcommand\StyleSSNumLowerRoman{\roman{subsection}}
 \newcommand\StyleSSNumUpperRoman{\Roman{subsection}}
@@ -69,8 +69,8 @@
 \newcommand\StyleSSNumUpperAlph{\Alph{subsection}}
 
 % SubSubSection format
-\newcommand\StyleSSSNumChiNum{\zhnumber{subsubsection}}
-\newcommand\StyleSSSNumTiangan{\zhtiangan{subsubsection}}
+\newcommand\StyleSSSNumChiNum{\zhnum{subsubsection}}
+\newcommand\StyleSSSNumTiangan{\zhtiangan{\value{subsubsection}}}
 \newcommand\StyleSSSNumArabic{\arabic{subsubsection}}
 \newcommand\StyleSSSNumLowerRoman{\roman{subsubsection}}
 \newcommand\StyleSSSNumUpperRoman{\Roman{subsubsection}}

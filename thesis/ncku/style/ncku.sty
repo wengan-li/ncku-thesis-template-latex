@@ -230,7 +230,8 @@
 
 \if \GetChapterTitleLang \VarChapterTitleLangChi
   \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
-      \ifnum \c@secnumdepth >\m@ne \Large\bf 第\zhnumber{\thechapter}章
+%      \ifnum \c@secnumdepth >\m@ne \Large\bf 第\zhnumber{\thechapter}章
+      \ifnum \c@secnumdepth >\m@ne \Large\bf 第\thechapter 章
       \par \vskip 15pt \fi \Large \bf #1\par \nobreak \vskip 35pt}}
 \else
   \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
