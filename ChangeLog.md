@@ -1,3 +1,10 @@
+#### v1.4.2 [May 21, 2016]:
+**緊急修正v1.4.1所產生的錯誤**
+
+1. 修正中文數字格式的`\StyleCNumChiNum`, `\StyleSNumChiNum`, `\StyleSSNumChiNum`和`\StyleSSSNumChiNum`只有零的錯誤 \([Issue \#10](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10)\).
+2. 修正天干數字格式的`\StyleCNumTiangan`, `\StyleSNumTiangan`, `\StyleSSNumTiangan`和`\StyleSSSNumTiangan`沒法使用的問題.
+3. 修正當使用了`\ChapterTitleInChi`, 章節的數字都會同時馬上自動轉成中文, 但這應該是交由同學自行決定.
+
 #### v1.4.1 [May 19, 2016]:
 **建議升級到這一版, 因為要修改部份`ncku.sty`和`英文延伸摘要(Extended Abstract)`的內容**
 
