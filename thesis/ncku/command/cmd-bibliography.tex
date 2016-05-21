@@ -53,6 +53,23 @@
 \newcommand{\BibStyleUseApacite}{\SetBibStyleTypeVar{\BibStyleTypeApacite}}
 
 % ----------------------------------------------------------------------------
+\newcommand{\VarReferenceTitle}{\VarReferenceTitleCustom}
+\newcommand{\SetReferenceTitle}[1]{\renewcommand{\VarReferenceTitle}{#1}}
+\newcommand{\GetReferenceTitle}{\VarReferenceTitle}
+
+\newcommand{\VarReferenceTitleChi}{參考文獻}
+\newcommand{\VarReferenceTitleEng}{References}
+\newcommand{\VarReferenceTitleCustom}{References / 參考文獻}
+
+\newcommand{\ChapterReferenceTitleInChi}{%
+  \SetReferenceTitle{\VarReferenceTitleChi}}
+\newcommand{\ChapterReferenceTitleInEng}{%
+  \SetReferenceTitle{\VarReferenceTitleEng}}
+\newcommand{\SetChapterReferenceTitle}[1]{\SetReferenceTitle{#1}}
+
+\ChapterReferenceTitleInEng % Default
+
+% ----------------------------------------------------------------------------
 
 \DeclareDocumentCommand{\ReferencesFiles}{%
   G{\empty} G{\empty} G{\empty} %
@@ -61,9 +78,9 @@
 {%
   \StartNewPage%
   % Add to "Table of Contents"
-  \addcontentsline{toc}{chapter}{References}
+  \addcontentsline{toc}{chapter}{\GetReferenceTitle}
   % Change the title of bibliography
-  \renewcommand\bibname{\centerline{\Large References}}
+  \renewcommand\bibname{\centerline{\Large \GetReferenceTitle}}
   % ------------------------------------------------
   %
   \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeAbbrv}}%
