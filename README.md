@@ -39,7 +39,7 @@
 如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog 版本修改
-最新版本為: [v1.4.1](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
+最新版本為: [v1.4.2](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
 
 詳細[請看ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
 
