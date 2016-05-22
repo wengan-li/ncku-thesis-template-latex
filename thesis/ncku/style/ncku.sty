@@ -256,7 +256,7 @@
     \nobreak%
     \vskip 35pt%
   }%
-  \addcontentsline{toc}{chapter}{#1}%
+  \addcontentsline{toc}{chapter}{#1.\space#2}%
 } % End of \newcommand{}
 
 \newcommand{\DisplayChapterHeaderStar}[1]%
@@ -267,6 +267,7 @@
     \nobreak%
     \vskip 30pt%
   }%
+  \addcontentsline{toc}{chapter}{#1}%
 } % End of \newcommand{}
 
 
@@ -287,7 +288,7 @@
 \RenewDocumentCommand{\chapter}{s m}
 {%
   \refstepcounter{chapter}
-
+  %
   % 檢查是 \chapter*{} 或是 \chapter{}
   \IfBooleanTF{#1}%
   {%
