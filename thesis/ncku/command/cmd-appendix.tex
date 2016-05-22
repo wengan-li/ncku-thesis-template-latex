@@ -17,17 +17,41 @@
 
 % ----------------------------------------------------------------------------
 
-\def \StartAppendix
+\space
+
+% ----------------------------------------------------------------------------
+
+\newcounter{CounterAppendix}
+\setcounter{CounterAppendix}{0}
+
+\def\VarAppendixTitleEng{Appendix}
+\def\VarAppendixTitleChi{附錄}
+\def\GetAppendixTitle{\VarAppendixTitleEng}
+
+
+\def\ValueEnableAppendixChapter{1}
+\def\ValueDisableAppendixChapter{0}
+\def\VarStartAppendixChapter{\ValueDisableAppendixChapter}
+\def\SetStartAppendixChapter{%
+  \renewcommand{\VarStartAppendixChapter}{\ValueEnableAppendixChapter}}
+\def\GetStartAppendixChapter{\VarStartAppendixChapter}
+
+\newcommand{\StartAppendix}
 {
   \StartNewPage%
   % Appendix begins here (For one appendix chapter only)
   %\cleardoublepage
-  \appendix%
+%  \appendix%
   %\clearpage
   %\setcounter{page}{\thepage}
   % If more than one appendix chapters
   %\appendices
-}
+%    \def\@chapapp{\GetAppendixTitle}
+%  \renewcommand{\@chapapp}{\GetAppendixTitle}
+%    \def\chap@or@app=2
+  \SetStartAppendixChapter
+%  \def\thechapter{\Alph{CounterAppendix}}
+} % End of \newcommand{}
 
 \def \EndAppendix {\EndOfPage}
 

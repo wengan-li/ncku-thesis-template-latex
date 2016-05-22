@@ -242,27 +242,113 @@
 \def\@makeschapterhead#1{\vspace*{0pt} {\parindent 0pt \centering
     \Large \bf #1\par \nobreak \vskip 30pt}}
 
+\newcount\chap@or@app\chap@or@app=1
+
+\newcommand{\DisplayTitleHeader}[2]%
+{%
+ \vspace*{0pt}%
+  {%
+    \parindent 0pt \centering%
+    \Large\bf #1 \par%
+    \vskip 15pt%
+    \Large \bf #2 \par%
+    \nobreak%
+    \vskip 35pt%
+  }%
+  \addcontentsline{toc}{chapter}{#1}%
+} % End of \newcommand{}
+
+% 看不出差別, 沒用 ?
+\begin{comment}
 \def\chapter{%
     \clearpage
-    \stepcounter{AppendixCounter}
+    \stepcounter{CounterChapter}
     \short@page \setcounter{regular@short}{0} %<<--
     \default@spacing
     \global\@topnum\z@ \@afterindentfalse %\@afterindenttrue
     \secdef\@chapter\@schapter}
+\end{comment}
 
+%\begin{comment}
+\def\@chapter[#1]#2
+{%
+  \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+  {
+    % 開始Appendix Chapter
+%    \typeout{\GetAppendixTitle.}
+%      \chaptermark{#1}
+%      \addtocontents{lof}{\protect\addvspace{10pt}}
+%      \addtocontents{lot}{\protect\addvspace{10pt}}
+%      \@makechapterhead{#2}
+    \DisplayTitleHeader{\GetAppendixTitle\space\thechapter}{#2}
+% \@afterheading
+  }%
+  {
+    % 一般Chapter
+    \refstepcounter{chapter}
+    \DisplayTitleHeader{第\thechapter 章}{#2}
+\begin{comment}
+    \if \GetChapterTitleLang \VarChapterTitleLangEng
+      \ifnum \c@secnumdepth >\m@ne
+          \refstepcounter{chapter}
+          \typeout{\@chapapp\space\thechapter.}
+          \addcontentsline{toc}{chapter}{\@chapapp\space\thechapter.\hspace*{1em}#1}
+      \else
+
+          \addcontentsline{toc}{chapter}{#1}
+      \fi
+    \else
+      \ifnum \c@secnumdepth >\m@ne
+          \refstepcounter{chapter}
+          \typeout{第\thechapter 章.}
+          \addcontentsline{toc}{chapter}{第\thechapter 章.\hspace*{1em}#1}
+      \else
+          \addcontentsline{toc}{chapter}{#1}
+      \fi
+    \fi
+
+
+      \chaptermark{#1}
+      \addtocontents{lof}{\protect\addvspace{10pt}}
+      \addtocontents{lot}{\protect\addvspace{10pt}}
+      \@makechapterhead{#2} \@afterheading
+\end{comment}
+  }%
+} % End of \def{}
+%\end{comment}
+
+\begin{comment}
+\titleformat{\chapter}[display]{\normalsize \huge  \color{black}}%
+{\flushright\normalsize %
+   \MakeUppercase{\chaptertitlename}\hspace{1ex}%
+   {\fontfamily{mdugm}\fontsize{60}{60}\selectfont\thechapter}}%
+  {10 pt}%
+  {\center\bfseries}%
+\end{comment}
+
+\begin{comment}
+\makeatletter
+\let\stdchapter\chapter
+\renewcommand*\chapter{%
+  \@ifstar{\starchapter}{\@dblarg\nostarchapter}}
+\newcommand*\starchapter[1]{\stdchapter*{#1}}
+\def\nostarchapter[#1]#2{\stdchapter[{#1}]{#2}}
+\makeatother
+\end{comment}
+
+\begin{comment}
 \def\shortchapter{%
     \clearpage
     \short@page \setcounter{regular@short}{1} %<<--
     \default@spacing
     \global\@topnum\z@ \@afterindentfalse %\@afterindenttrue
     \secdef\@chapter\@schapter}
+\end{comment}
 
-
-\newcount\chap@or@app\chap@or@app=1
-
+\begin{comment}
 \def\appendixname{Appendix}
 
-\newcounter{AppendixCounter}
+\newcounter{CounterAppendix}
 
 \def\appendix{\clearpage
 %    \typeout{Appendix.}
@@ -273,10 +359,10 @@
 %    \addcontentsline{toc}{chapter}{Appendix}
 %    \setcounter{chapter}{0}
 %    \setcounter{section}{0}
-    \setcounter{AppendixCounter}{0}
+    \setcounter{CounterAppendix}{0}
     \def\@chapapp{\appendixname}
     \chap@or@app=2
-    \def\thechapter{\Alph{AppendixCounter}}}
+    \def\thechapter{\Alph{CounterAppendix}}}
 
 \def\appendices{\clearpage
 %    \typeout{Appendices.}
@@ -287,37 +373,15 @@
 %    \nopage@addcontentsline{toc}{chapter}{Appendices}
 %    \setcounter{chapter}{0}
 %    \setcounter{section}{0}
-    \setcounter{AppendixCounter}{0}
+    \setcounter{CounterAppendix}{0}
     \def\@chapapp{\appendixname}
     \chap@or@app=2
-    \def\thechapter{\Alph{AppendixCounter}}}
+    \def\thechapter{\Alph{CounterAppendix}}}
+\end{comment}
 
-\def\@chapter[#1]#2{
-  \if \GetChapterTitleLang \VarChapterTitleLangEng
-    \ifnum \c@secnumdepth >\m@ne
-        \refstepcounter{chapter}
-        \typeout{\@chapapp\space\thechapter.}
-        \addcontentsline{toc}{chapter}{\@chapapp\space\thechapter.\hspace*{1em}#1}
-    \else
-        \addcontentsline{toc}{chapter}{#1}
-    \fi
-  \else
-    \ifnum \c@secnumdepth >\m@ne
-        \refstepcounter{chapter}
-        \typeout{第\thechapter 章.}
-        \addcontentsline{toc}{chapter}{第\thechapter 章.\hspace*{1em}#1}
-    \else
-        \addcontentsline{toc}{chapter}{#1}
-    \fi
-  \fi
-    \chaptermark{#1}
-    \addtocontents{lof}{\protect\addvspace{10pt}}
-    \addtocontents{lot}{\protect\addvspace{10pt}}
-    \@makechapterhead{#2} \@afterheading
-    \ifnum\chap@or@app=1\ifnum\value{chapter}=1         % if Chapter 1
-        \markboth{}{}\pagestyle{plain}
-        \pagenumbering{arabic}\fi\fi
-        \thispagestyle{plain}}
+
+
+
 
 %%% Stolen from latex.tex (to unindent the first para of (sub)sections)
 %\def\@startsection#1#2#3#4#5#6{\if@noskipsec \leavevmode \fi
