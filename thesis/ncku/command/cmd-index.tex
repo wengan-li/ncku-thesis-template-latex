@@ -51,12 +51,48 @@
   \SetIndexTitleText{\VarIndexTitleChi}%
   \SetTablesIndexTitleText{\VarTablesIndexTitleChi}%
   \SetFiguresIndexTitleText{\VarFiguresIndexTitleChi}%
-}
+} % End of \newcommand{}
 \newcommand{\IndexEngMode}{%
   \SetIndexTitleText{\VarIndexTitleEng}%
   \SetTablesIndexTitleText{\VarTablesIndexTitleEng}%
   \SetFiguresIndexTitleText{\VarFiguresIndexTitleEng}%
-}
+} % End of \newcommand{}
 \IndexEngMode % Default
+
+% ----------------------------------------------------------------------------
+
+\makeatletter
+
+\renewcommand\tableofcontents
+{%
+  \StartNewPage%
+  \chapter*{\VarIndexTitleText}%
+  \addcontentsline{toc}{chapter}{\VarIndexTitleText}%
+  \pagestyle{plain}%
+  \@starttoc{toc}%
+  \EndOfPage%
+} % End of \renewcommand{}
+
+\renewcommand\listoftables
+{%
+  \StartNewPage%
+  \chapter*{\VarTablesIndexTitleText}%
+  \addcontentsline{toc}{chapter}{\VarTablesIndexTitleText}%
+  \pagestyle{plain}%
+  \@starttoc{lot}%
+  \EndOfPage%
+} % End of \renewcommand{}
+
+\renewcommand\listoffigures
+{%
+  \StartNewPage%
+  \chapter*{\VarFiguresIndexTitleText}%
+  \addcontentsline{toc}{chapter}{\VarFiguresIndexTitleText}%
+  \pagestyle{plain}%
+  \@starttoc{lof}%
+  \EndOfPage%
+} % End of \renewcommand{}
+
+\makeatother
 
 % ----------------------------------------------------------------------------

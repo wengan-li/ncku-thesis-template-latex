@@ -228,6 +228,7 @@
     \penalty\@highpenalty \endgroup}
 \end{comment}
 
+\begin{comment}
 \if \GetChapterTitleLang \VarChapterTitleLangChi
   \def\@makechapterhead#1{ \vspace*{0pt} {\parindent 0pt \centering
 %      \ifnum \c@secnumdepth >\m@ne \Large\bf 第\zhnumber{\thechapter}章
@@ -238,13 +239,13 @@
       \ifnum \c@secnumdepth >\m@ne \Large\bf \@chapapp{} \thechapter
       \par \vskip 15pt \fi \Large \bf #1\par \nobreak \vskip 35pt}}
 \fi
+\end{comment}
+%\def\@makeschapterhead#1{\vspace*{0pt} {\parindent 0pt \centering
+%    \Large \bf #1\par \nobreak \vskip 30pt}}
 
-\def\@makeschapterhead#1{\vspace*{0pt} {\parindent 0pt \centering
-    \Large \bf #1\par \nobreak \vskip 30pt}}
+%\newcount\chap@or@app\chap@or@app=1
 
-\newcount\chap@or@app\chap@or@app=1
-
-\newcommand{\DisplayTitleHeader}[2]%
+\newcommand{\DisplayChapterHeader}[2]%
 {%
  \vspace*{0pt}%
   {%
@@ -258,6 +259,18 @@
   \addcontentsline{toc}{chapter}{#1}%
 } % End of \newcommand{}
 
+\newcommand{\DisplayChapterHeaderStar}[1]%
+{%
+  \vspace*{0pt}%
+  {%
+    \parindent 0pt \centering \Large \bf #1\par%
+    \nobreak%
+    \vskip 30pt%
+  }%
+} % End of \newcommand{}
+
+
+
 % 看不出差別, 沒用 ?
 \begin{comment}
 \def\chapter{%
@@ -270,53 +283,68 @@
 \end{comment}
 
 %\begin{comment}
-\def\@chapter[#1]#2
+%\def\@chapter#1#2
+\RenewDocumentCommand{\chapter}{s m}
 {%
   \refstepcounter{chapter}
-  \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
-  {
-    % 開始Appendix Chapter
-%    \typeout{\GetAppendixTitle.}
-%      \chaptermark{#1}
-%      \addtocontents{lof}{\protect\addvspace{10pt}}
-%      \addtocontents{lot}{\protect\addvspace{10pt}}
-%      \@makechapterhead{#2}
 
-%    \DisplayTitleHeader{\GetAppendixTitle\space\thechapter}{#2}
-    \SetAppendixTitleFormatFinalString
-    \DisplayTitleHeader{\GetAppendixTitleFormatFinalString}{#2}
-
-% \@afterheading
+  % 檢查是 \chapter*{} 或是 \chapter{}
+  \IfBooleanTF{#1}%
+  {%
+    % \chapter*{}
+%    Starred
+    \DisplayChapterHeaderStar{#2}
   }%
-  {
-    % 一般Chapter
-    \DisplayTitleHeader{第\thechapter 章}{#2}
-\begin{comment}
-    \if \GetChapterTitleLang \VarChapterTitleLangEng
-      \ifnum \c@secnumdepth >\m@ne
-          \refstepcounter{chapter}
-          \typeout{\@chapapp\space\thechapter.}
-          \addcontentsline{toc}{chapter}{\@chapapp\space\thechapter.\hspace*{1em}#1}
+  {%
+    % \chapter{}
+%    Non-Starred
+    \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+    {
+      % 開始Appendix Chapter
+  %    \typeout{\GetAppendixTitle.}
+  %      \chaptermark{#1}
+  %      \addtocontents{lof}{\protect\addvspace{10pt}}
+  %      \addtocontents{lot}{\protect\addvspace{10pt}}
+  %      \@makechapterhead{#2}
+
+  %    \DisplayChapterHeader{\GetAppendixTitle\space\thechapter}{#2}
+      \SetAppendixTitleFormatFinalString
+      \DisplayChapterHeader{\GetAppendixTitleFormatFinalString}{#2}
+
+  % \@afterheading
+    }%
+    {
+      % 一般Chapter
+        \DisplayChapterHeader{第\thechapter 章}{#2}
+
+  \begin{comment}
+      \if \GetChapterTitleLang \VarChapterTitleLangEng
+        \ifnum \c@secnumdepth >\m@ne
+            \refstepcounter{chapter}
+            \typeout{\@chapapp\space\thechapter.}
+            \addcontentsline{toc}{chapter}{\@chapapp\space\thechapter.\hspace*{1em}#1}
+        \else
+            \addcontentsline{toc}{chapter}{#1}
+        \fi
       \else
-
-          \addcontentsline{toc}{chapter}{#1}
+        \ifnum \c@secnumdepth >\m@ne
+            \refstepcounter{chapter}
+            \typeout{第\thechapter 章.}
+            \addcontentsline{toc}{chapter}{第\thechapter 章.\hspace*{1em}#1}
+        \else
+            \addcontentsline{toc}{chapter}{#1}
+        \fi
       \fi
-    \else
-      \ifnum \c@secnumdepth >\m@ne
-          \refstepcounter{chapter}
-          \typeout{第\thechapter 章.}
-          \addcontentsline{toc}{chapter}{第\thechapter 章.\hspace*{1em}#1}
-      \else
-          \addcontentsline{toc}{chapter}{#1}
-      \fi
-    \fi
+
+        \chaptermark{#1}
+        \addtocontents{lof}{\protect\addvspace{10pt}}
+        \addtocontents{lot}{\protect\addvspace{10pt}}
+        \@makechapterhead{#2} \@afterheading
+  \end{comment}
+  }%
 
 
-      \chaptermark{#1}
-      \addtocontents{lof}{\protect\addvspace{10pt}}
-      \addtocontents{lot}{\protect\addvspace{10pt}}
-      \@makechapterhead{#2} \@afterheading
-\end{comment}
+
   }%
 } % End of \def{}
 %\end{comment}
@@ -415,31 +443,6 @@
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}%
     {3.25ex plus -1ex minus -.2ex}{.1ex plus .2ex}{\bf}}
  
-% --------------------------
-
-% 目錄
-
-\def\tableofcontents{%
-    \chapter*{\VarIndexTitleText}
-    \addcontentsline{toc}{chapter}{\VarIndexTitleText}
-    \pagestyle{plain}
-    \baselineskip=15pt plus .5pt minus .5pt
-    \@starttoc{toc}}
-
-\def\listoftables{%
-    \chapter*{\VarTablesIndexTitleText}
-    \addcontentsline{toc}{chapter}{\VarTablesIndexTitleText}
-    \pagestyle{plain}
-    \baselineskip=15pt plus .5pt minus .5pt
-    \@starttoc{lot}}
-
-\def\listoffigures{%
-    \chapter*{\VarFiguresIndexTitleText}
-    \addcontentsline{toc}{chapter}{\VarFiguresIndexTitleText}
-    \pagestyle{plain}
-    \baselineskip=15pt plus .5pt minus .5pt
-    \@starttoc{lof}}
-
 % --------------------------
 
 % Default lines space is following English style format 
