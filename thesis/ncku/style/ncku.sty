@@ -272,6 +272,7 @@
 %\begin{comment}
 \def\@chapter[#1]#2
 {%
+  \refstepcounter{chapter}
   \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
   {
     % 開始Appendix Chapter
@@ -280,12 +281,15 @@
 %      \addtocontents{lof}{\protect\addvspace{10pt}}
 %      \addtocontents{lot}{\protect\addvspace{10pt}}
 %      \@makechapterhead{#2}
-    \DisplayTitleHeader{\GetAppendixTitle\space\thechapter}{#2}
+
+%    \DisplayTitleHeader{\GetAppendixTitle\space\thechapter}{#2}
+    \SetAppendixTitleFormatFinalString
+    \DisplayTitleHeader{\GetAppendixTitleFormatFinalString}{#2}
+
 % \@afterheading
   }%
   {
     % 一般Chapter
-    \refstepcounter{chapter}
     \DisplayTitleHeader{第\thechapter 章}{#2}
 \begin{comment}
     \if \GetChapterTitleLang \VarChapterTitleLangEng

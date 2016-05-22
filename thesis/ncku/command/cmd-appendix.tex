@@ -17,12 +17,36 @@
 
 % ----------------------------------------------------------------------------
 
-\space
+\def\VarAppendixTitleFormatPrefix{Appendix}
+\def\VarAppendixTitleFormatSuffix{}
+
+\newcommand{\VarAppendixTitleFormatFinalString}{}%
+\newcommand{\InitAppendixTitleFormatFinalString}{%
+  \renewcommand{\VarAppendixTitleFormatFinalString}{}}%
+
+\makeatletter
+\newcommand{\AppendAppendixTitleFormatFinalString}[1]%
+{%
+  \g@addto@macro\VarAppendixTitleFormatFinalString{#1}%
+} % End of \newcommand{}
+\makeatother
+
+\newcommand{\SetAppendixTitleFormatFinalString}%
+{%
+  \InitAppendixTitleFormatFinalString%
+  \ifthenelse{\equal{\VarAppendixTitleFormatPrefix}{\empty}}%
+  {}{\AppendAppendixTitleFormatFinalString{\VarAppendixTitleFormatPrefix\space}}%
+  \AppendAppendixTitleFormatFinalString{\thechapter}%
+  \ifthenelse{\equal{\VarAppendixTitleFormatSuffix}{\empty}}%
+  {}{\AppendAppendixTitleFormatFinalString{\space\VarAppendixTitleFormatSuffix}}%
+} % End of \newcommand{}
+
+\newcommand{\GetAppendixTitleFormatFinalString}{%
+  \VarAppendixTitleFormatFinalString}
+
+
 
 % ----------------------------------------------------------------------------
-
-\newcounter{CounterAppendix}
-\setcounter{CounterAppendix}{0}
 
 \def\VarAppendixTitleEng{Appendix}
 \def\VarAppendixTitleChi{附錄}
@@ -51,6 +75,14 @@
 %    \def\chap@or@app=2
   \SetStartAppendixChapter
 %  \def\thechapter{\Alph{CounterAppendix}}
+
+  % Reset counters
+  \setcounter{chapter}{0}
+  \setcounter{section}{0}
+  \setcounter{subsection}{0}
+  \setcounter{subsubsection}{0}
+  \setcounter{table}{0}
+  \setcounter{figure}{0}
 } % End of \newcommand{}
 
 \def \EndAppendix {\EndOfPage}
