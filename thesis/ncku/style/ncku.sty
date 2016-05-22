@@ -287,65 +287,38 @@
 %\def\@chapter#1#2
 \RenewDocumentCommand{\chapter}{s m}
 {%
-  \refstepcounter{chapter}
   %
   % 檢查是 \chapter*{} 或是 \chapter{}
   \IfBooleanTF{#1}%
   {%
     % \chapter*{}
-%    Starred
+    %    Starred
     \DisplayChapterHeaderStar{#2}
   }%
   {%
     % \chapter{}
-%    Non-Starred
+    %
+    \refstepcounter{chapter}
+    %
+    %    Non-Starred
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {
       % 開始Appendix Chapter
-  %    \typeout{\GetAppendixTitle.}
-  %      \chaptermark{#1}
-  %      \addtocontents{lof}{\protect\addvspace{10pt}}
-  %      \addtocontents{lot}{\protect\addvspace{10pt}}
-  %      \@makechapterhead{#2}
-
-  %    \DisplayChapterHeader{\GetAppendixTitle\space\thechapter}{#2}
       \SetAppendixTitleFormatFinalString
       \DisplayChapterHeader{\GetAppendixTitleFormatFinalString}{#2}
-
-  % \@afterheading
     }%
     {
       % 一般Chapter
+      \ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangEng}}%
+      {%
+        % 題目為英文
         \DisplayChapterHeader{第\thechapter 章}{#2}
-
-  \begin{comment}
-      \if \GetChapterTitleLang \VarChapterTitleLangEng
-        \ifnum \c@secnumdepth >\m@ne
-            \refstepcounter{chapter}
-            \typeout{\@chapapp\space\thechapter.}
-            \addcontentsline{toc}{chapter}{\@chapapp\space\thechapter.\hspace*{1em}#1}
-        \else
-            \addcontentsline{toc}{chapter}{#1}
-        \fi
-      \else
-        \ifnum \c@secnumdepth >\m@ne
-            \refstepcounter{chapter}
-            \typeout{第\thechapter 章.}
-            \addcontentsline{toc}{chapter}{第\thechapter 章.\hspace*{1em}#1}
-        \else
-            \addcontentsline{toc}{chapter}{#1}
-        \fi
-      \fi
-
-        \chaptermark{#1}
-        \addtocontents{lof}{\protect\addvspace{10pt}}
-        \addtocontents{lot}{\protect\addvspace{10pt}}
-        \@makechapterhead{#2} \@afterheading
-  \end{comment}
-  }%
-
-
-
+      }%
+      {%
+        % 題目為中文
+        \DisplayChapterHeader{第\thechapter 章}{#2}
+      }%
+    }%
   }%
 } % End of \def{}
 %\end{comment}
