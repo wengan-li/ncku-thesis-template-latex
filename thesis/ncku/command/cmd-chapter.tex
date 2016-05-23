@@ -76,17 +76,20 @@
     \ifthenelse{\equal{\GetValuePageInMainmatter}{\VarPageNotInMainmatter}}%
     {\pagenumbering{arabic}\SetValuePageInMainmatter}{}
     %
-    \refstepcounter{chapter}
-    %
     %    Non-Starred
+    %
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
-    {
+    {%
       % 開始Appendix Chapter
+      \refstepcounter{appendixchapter}
+      %
       \SetAppendixTitleFormatFinalString
       \DisplayChapterHeader{\GetAppendixTitleFormatFinalString}{#2}
     }%
-    {
+    {%
       % 一般Chapter
+      \refstepcounter{chapter}
+      %
       \ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangEng}}%
       {%
         % 題目為英文

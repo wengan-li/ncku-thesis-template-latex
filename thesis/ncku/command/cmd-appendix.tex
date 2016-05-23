@@ -17,6 +17,10 @@
 
 % ----------------------------------------------------------------------------
 
+\newcounter{appendixchapter}
+
+% ----------------------------------------------------------------------------
+
 \def\VarAppendixTitleFormatPrefix{Appendix}
 \def\VarAppendixTitleFormatSuffix{}
 
@@ -36,7 +40,7 @@
   \InitAppendixTitleFormatFinalString%
   \ifthenelse{\equal{\VarAppendixTitleFormatPrefix}{\empty}}%
   {}{\AppendAppendixTitleFormatFinalString{\VarAppendixTitleFormatPrefix\space}}%
-  \AppendAppendixTitleFormatFinalString{\thechapter}%
+  \AppendAppendixTitleFormatFinalString{\theappendixchapter}%
   \ifthenelse{\equal{\VarAppendixTitleFormatSuffix}{\empty}}%
   {}{\AppendAppendixTitleFormatFinalString{\space\VarAppendixTitleFormatSuffix}}%
 } % End of \newcommand{}
@@ -44,14 +48,11 @@
 \newcommand{\GetAppendixTitleFormatFinalString}{%
   \VarAppendixTitleFormatFinalString}
 
-
-
 % ----------------------------------------------------------------------------
 
 \def\VarAppendixTitleEng{Appendix}
 \def\VarAppendixTitleChi{附錄}
 \def\GetAppendixTitle{\VarAppendixTitleEng}
-
 
 \def\ValueEnableAppendixChapter{1}
 \def\ValueDisableAppendixChapter{0}
@@ -63,26 +64,16 @@
 \newcommand{\StartAppendix}
 {
   \StartNewPage%
-  % Appendix begins here (For one appendix chapter only)
-  %\cleardoublepage
-%  \appendix%
-  %\clearpage
-  %\setcounter{page}{\thepage}
-  % If more than one appendix chapters
-  %\appendices
-%    \def\@chapapp{\GetAppendixTitle}
-%  \renewcommand{\@chapapp}{\GetAppendixTitle}
-%    \def\chap@or@app=2
   \SetStartAppendixChapter
 %  \def\thechapter{\Alph{CounterAppendix}}
 
   % Reset counters
-  \setcounter{chapter}{0}
-  \setcounter{section}{0}
-  \setcounter{subsection}{0}
-  \setcounter{subsubsection}{0}
-  \setcounter{table}{0}
-  \setcounter{figure}{0}
+%  \setcounter{chapter}{0}
+%  \setcounter{section}{0}
+%  \setcounter{subsection}{0}
+%  \setcounter{subsubsection}{0}
+%  \setcounter{table}{0}
+%  \setcounter{figure}{0}
 } % End of \newcommand{}
 
 \def \EndAppendix {\EndOfPage}
