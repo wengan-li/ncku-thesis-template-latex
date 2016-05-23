@@ -79,14 +79,19 @@
 
 % ----------------------------------------------------------------------------
 
+\newcommand\ValueChapterTitleNumberingFormat{}
+\newcommand\ValueSectionTitleNumberingFormat{}
+\newcommand\ValueSubSectionTitleNumberingFormat{}
+\newcommand\ValueSubSubSectionTitleNumberingFormat{}
+
 \newcommand\ChapterTitleNumFormat[1]{%
-  \renewcommand\thechapter{#1}}
+  \renewcommand\ValueChapterTitleNumberingFormat{#1}}
 \newcommand\SectionTitleNumFormat[1]{%
-  \renewcommand\thesection{#1}}
+  \renewcommand\ValueSectionTitleNumberingFormat{#1}}
 \newcommand\SubSectionTitleNumFormat[1]{%
-  \renewcommand\thesubsection{#1}}
+  \renewcommand\ValueSubSectionTitleNumberingFormat{#1}}
 \newcommand\SubSubSectionTitleNumFormat[1]{%
-  \renewcommand\thesubsubsection{#1}}
+  \renewcommand\ValueSubSubSectionTitleNumberingFormat{#1}}
 
 % ----------------------------------------------------------------------------
 
@@ -95,11 +100,88 @@
 % Section: 1.1
 % SubSection: 1.1.1
 % SubSubSection: __EMPTY__
-\ChapterTitleNumFormat{\StyleCNumArabic}
+\ChapterTitleNumFormat{Chapter \StyleCNumArabic}
 \SectionTitleNumFormat{%
   \StyleCNumArabic.\StyleSNumArabic}
 \SubSectionTitleNumFormat{%
   \StyleCNumArabic.\StyleSNumArabic.\StyleSSNumArabic}
 \SubSubSectionTitleNumFormat{}
+
+% ----------------------------------------------------------------------------
+
+% Appendix Chapter format
+\newcommand\StyleAppixCNumChiNum{\zhnum{chapter}}
+\newcommand\StyleAppixCNumTiangan{\zhtiangan{\value{chapter}}}
+\newcommand\StyleAppixCNumArabic{\arabic{chapter}}
+\newcommand\StyleAppixCNumLowerRoman{\roman{chapter}}
+\newcommand\StyleAppixCNumUpperRoman{\Roman{chapter}}
+\newcommand\StyleAppixCNumLowerAlph{\alph{chapter}}
+\newcommand\StyleAppixCNumUpperAlph{\Alph{chapter}}
+
+% Appendix Section format
+\newcommand\StyleAppixSNumChiNum{\zhnum{section}}
+\newcommand\StyleAppixSNumTiangan{\zhtiangan{\value{section}}}
+\newcommand\StyleAppixSNumArabic{\arabic{section}}
+\newcommand\StyleAppixSNumLowerRoman{\roman{section}}
+\newcommand\StyleAppixSNumUpperRoman{\Roman{section}}
+\newcommand\StyleAppixSNumLowerAlph{\alph{section}}
+\newcommand\StyleAppixSNumUpperAlph{\Alph{section}}
+
+% Appendix SubSection format
+\newcommand\StyleAppixSSNumChiNum{\zhnum{subsection}}
+\newcommand\StyleAppixSSNumTiangan{\zhtiangan{\value{subsection}}}
+\newcommand\StyleAppixSSNumArabic{\arabic{subsection}}
+\newcommand\StyleAppixSSNumLowerRoman{\roman{subsection}}
+\newcommand\StyleAppixSSNumUpperRoman{\Roman{subsection}}
+\newcommand\StyleAppixSSNumLowerAlph{\alph{subsection}}
+\newcommand\StyleAppixSSNumUpperAlph{\Alph{subsection}}
+
+% Appendix SubSubSection format
+\newcommand\StyleAppixSSSNumChiNum{\zhnum{subsubsection}}
+\newcommand\StyleAppixSSSNumTiangan{\zhtiangan{\value{subsubsection}}}
+\newcommand\StyleAppixSSSNumArabic{\arabic{subsubsection}}
+\newcommand\StyleAppixSSSNumLowerRoman{\roman{subsubsection}}
+\newcommand\StyleAppixSSSNumUpperRoman{\Roman{subsubsection}}
+\newcommand\StyleAppixSSSNumLowerAlph{\alph{subsubsection}}
+\newcommand\StyleAppixSSSNumUpperAlph{\Alph{subsubsection}}
+
+% ----------------------------------------------------------------------------
+
+\newcommand\ValueAppendixChapterTitleNumberingFormat{}
+\newcommand\ValueAppendixSectionTitleNumberingFormat{}
+\newcommand\ValueAppendixSubSectionTitleNumberingFormat{}
+\newcommand\ValueAppendixSubSubSectionTitleNumberingFormat{}
+
+%\newcommand\UseAppendixChapterTitleNumFormat{%
+%  \renewcommand\thechapter{\ValueAppendixChapterTitleNumFormat}}
+%\newcommand\UseAppendixSectionTitleNumFormat{%
+%  \renewcommand\thesection{\ValueAppendixSectionTitleNumFormat}}
+%\newcommand\UseAppendixSubSectionTitleNumFormat{%
+%  \renewcommand\thesubsection{\ValueAppendixSubSectionTitleNumFormat}}
+%\newcommand\UseAppendixSubSubSectionTitleNumFormat{%
+%  \renewcommand\thesubsubsection{\ValueAppendixSubSubSectionTitleNumFormat}}
+
+\newcommand\AppendixChapterTitleNumFormat[1]{%
+  \renewcommand\ValueAppendixChapterTitleNumberingFormat{#1}}
+\newcommand\AppendixSectionTitleNumFormat[1]{%
+  \renewcommand\ValueAppendixSectionTitleNumberingFormat{#1}}
+\newcommand\AppendixSubSectionTitleNumFormat[1]{%
+  \renewcommand\ValueAppendixSubSectionTitleNumberingFormat{#1}}
+\newcommand\AppendixSubSubSectionTitleNumFormat[1]{%
+  \renewcommand\ValueAppendixSubSubSectionTitleNumberingFormat{#1}}
+
+% ----------------------------------------------------------------------------
+
+% Default
+% Chapter: A
+% Section: A.1
+% SubSection: A.1.1
+% SubSubSection: __EMPTY__
+\AppendixChapterTitleNumFormat{Appendix \StyleAppixCNumUpperAlph}
+\AppendixSectionTitleNumFormat{%
+  \StyleAppixCNumUpperAlph.\StyleAppixSNumArabic}
+\AppendixSubSectionTitleNumFormat{%
+  \StyleAppixCNumUpperAlph.\StyleAppixSNumArabic.\StyleAppixSSNumArabic}
+\AppendixSubSubSectionTitleNumFormat{}
 
 % ----------------------------------------------------------------------------

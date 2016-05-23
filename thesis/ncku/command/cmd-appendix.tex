@@ -17,7 +17,7 @@
 
 % ----------------------------------------------------------------------------
 
-\newcounter{appendixchapter}
+%\newcounter{appendixchapter}
 
 % ----------------------------------------------------------------------------
 
@@ -38,11 +38,12 @@
 \newcommand{\SetAppendixTitleFormatFinalString}%
 {%
   \InitAppendixTitleFormatFinalString%
-  \ifthenelse{\equal{\VarAppendixTitleFormatPrefix}{\empty}}%
-  {}{\AppendAppendixTitleFormatFinalString{\VarAppendixTitleFormatPrefix\space}}%
-  \AppendAppendixTitleFormatFinalString{\theappendixchapter}%
-  \ifthenelse{\equal{\VarAppendixTitleFormatSuffix}{\empty}}%
-  {}{\AppendAppendixTitleFormatFinalString{\space\VarAppendixTitleFormatSuffix}}%
+  \AppendAppendixTitleFormatFinalString{\thechapter}%
+%  \ifthenelse{\equal{\VarAppendixTitleFormatPrefix}{\empty}}%
+%  {}{\AppendAppendixTitleFormatFinalString{\VarAppendixTitleFormatPrefix\space}}%
+%  \AppendAppendixTitleFormatFinalString{\theappendixchapter}%
+%  \ifthenelse{\equal{\VarAppendixTitleFormatSuffix}{\empty}}%
+%  {}{\AppendAppendixTitleFormatFinalString{\space\VarAppendixTitleFormatSuffix}}%
 } % End of \newcommand{}
 
 \newcommand{\GetAppendixTitleFormatFinalString}{%
@@ -61,12 +62,22 @@
   \renewcommand{\VarStartAppendixChapter}{\ValueEnableAppendixChapter}}
 \def\GetStartAppendixChapter{\VarStartAppendixChapter}
 
+% ----------------------------------------------------------------------------
+
 \newcommand{\StartAppendix}
 {
   \StartNewPage%
-  \SetStartAppendixChapter
-%  \def\thechapter{\Alph{CounterAppendix}}
+  \SetStartAppendixChapter%
+%  \InitinalAppendixStyles%
+  \setcounter{chapter}{0}
+} % End of \newcommand{}
 
+\def \EndAppendix {\EndOfPage}
+
+% ----------------------------------------------------------------------------
+
+%\newcommand{\InitinalAppendixStyles}
+%{
   % Reset counters
 %  \setcounter{chapter}{0}
 %  \setcounter{section}{0}
@@ -74,9 +85,12 @@
 %  \setcounter{subsubsection}{0}
 %  \setcounter{table}{0}
 %  \setcounter{figure}{0}
-} % End of \newcommand{}
-
-\def \EndAppendix {\EndOfPage}
+%  \def\thechapter{\Alph{CounterAppendix}}
+%  \UseAppendixChapterTitleNumFormat%
+%  \UseAppendixSectionTitleNumFormat%
+%  \UseAppendixSubSectionTitleNumFormat%
+%  \UseAppendixSubSubSectionTitleNumFormat%
+%} % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
 

@@ -78,27 +78,30 @@
     %
     %    Non-Starred
     %
+    \refstepcounter{chapter}
+    %
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {%
-      % 開始Appendix Chapter
-      \refstepcounter{appendixchapter}
+      % Appendix Chapter
       %
-      \SetAppendixTitleFormatFinalString
-      \DisplayChapterHeader{\GetAppendixTitleFormatFinalString}{#2}
+%      \SetAppendixTitleFormatFinalString
+%      \DisplayChapterHeader{\GetAppendixTitleFormatFinalString}{#2}
+      \DisplayChapterHeader{\ValueAppendixChapterTitleNumberingFormat}{#2}
     }%
     {%
       % 一般Chapter
-      \refstepcounter{chapter}
       %
-      \ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangEng}}%
-      {%
+      \DisplayChapterHeader{\ValueChapterTitleNumberingFormat}{#2}
+%      \ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangEng}}%
+%      {%
         % 題目為英文
-        \DisplayChapterHeader{第\thechapter 章}{#2}
-      }%
-      {%
+%        \DisplayChapterHeader{第\thechapter 章}{#2}
+%        \DisplayChapterHeader{\ValueChapterTitleNumberingFormat}{#2}
+%      }%
+%      {%
         % 題目為中文
-        \DisplayChapterHeader{第\thechapter 章}{#2}
-      }%
+%        \DisplayChapterHeader{第\thechapter 章}{#2}
+%      }%
     }%
   }%
 } % End of \RenewDocumentCommand{}
@@ -108,6 +111,7 @@
 \makeatletter
 
 %%% Restored from latex.ltx--Glenn G. Lai
+%\begin{comment}
 \def\@startsection#1#2#3#4#5#6{\if@noskipsec \leavevmode \fi
    \par \@tempskipa #4\relax
    \@afterindenttrue
@@ -118,7 +122,7 @@
      \addpenalty{\@secpenalty}\addvspace{\@tempskipa}\fi \@ifstar
      {\@ssect{#3}{#4}{#5}{#6}}%
      {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
-
+%\end{comment}
  \def\section{\@startsection{section}{1}{\z@}%
     {4.6ex plus -1ex minus -.2ex}{.3ex plus .2ex}{\bf}}
 \def\subsection{\@startsection{subsection}{2}{\z@}%
@@ -128,11 +132,40 @@
 
 \makeatother
 
+\RenewDocumentCommand{\section}{s m}
+{%
+  %
+  % 檢查是 \section*{} 或是 \section{}
+  \IfBooleanTF{#1}%
+  {%
+    % \section*{}
+%        Starred
+  }%
+  {%
+    % \section{}
+%        Non-Starred
+    \refstepcounter{section}%
+    \ifthenelse{\equal{\value{section}}{1}}%
+    {\vspace{0.2cm}}%
+    {\vspace{1.0cm}}%
+    %
+    \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+    {%
+       \parindent 0pt \textbf{\ValueAppendixSectionTitleNumberingFormat\hspace{0.5cm}#2} \par \vspace{0.1cm}%
+    }%
+    {%
+       \parindent 0pt \textbf{\ValueSectionTitleNumberingFormat\hspace{0.5cm}#2} \par \vspace{0.1cm}%
+    }%
+    %
+  }%
+} % End of \RenewDocumentCommand{}
+
 % ----------------------------------------------------------------------------
 
 % Chapters
 \DeclareDocumentCommand{\StartChapter}{+m +g}
 {%
+  \StartNewPage%
   \chapter{#1}%
   \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
