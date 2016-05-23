@@ -106,6 +106,10 @@
 %      }%
     }%
   }%
+  %
+  % Reset counters
+  \setcounter{section}{0}%
+  \setcounter{appendixsection}{0}%
 } % End of \RenewDocumentCommand{}
 
 % ----------------------------------------------------------------------------
@@ -134,6 +138,8 @@
 
 \makeatother
 
+% ----------------------------------------------------------------------------
+
 \RenewDocumentCommand{\section}{s m}
 {%
   %
@@ -146,24 +152,113 @@
   {%
     % \section{}
 %        Non-Starred
-    \refstepcounter{section}%
-    \ifthenelse{\equal{\value{section}}{1}}%
-    {\vspace{0.2cm}}%
-    {\vspace{1.0cm}}%
     %
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {%
-       \parindent 0pt \textbf{\ValueAppendixSectionTitleNumberingFormat\hspace{0.5cm}#2} \par \vspace{0.1cm}%
+      \refstepcounter{appendixsection}%
+      \ifthenelse{\equal{\value{appendixsection}}{1}}%
+      {\vspace{0.2cm}}%
+      {\vspace{1.0cm}}%
+      \parindent 0pt \textbf{%
+        \ValueAppendixSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \vspace{0.1cm}%
     }%
     {%
-       \parindent 0pt \textbf{\ValueSectionTitleNumberingFormat\hspace{0.5cm}#2} \par \vspace{0.1cm}%
+      \refstepcounter{section}%
+      \ifthenelse{\equal{\value{section}}{1}}%
+      {\vspace{0.2cm}}%
+      {\vspace{1.0cm}}%
+      \parindent 0pt \textbf{%
+        \ValueSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \vspace{0.1cm}%
+    }%
+    %
+  }%
+  % Reset counters
+  \setcounter{subsection}{0}%
+  \setcounter{appendixsubsection}{0}%
+} % End of \RenewDocumentCommand{}
+
+% ----------------------------------------------------------------------------
+
+\RenewDocumentCommand{\subsection}{s m}
+{%
+  %
+  % 檢查是 \subsection*{} 或是 \subsection{}
+  \IfBooleanTF{#1}%
+  {%
+    % \subsection*{}
+%        Starred
+  }%
+  {%
+    % \subsection{}
+%        Non-Starred
+    %
+    \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+    {%
+      \refstepcounter{appendixsubsection}%
+      \ifthenelse{\equal{\value{appendixsubsection}}{1}}%
+      {\vspace{0.2cm}}%
+      {\vspace{1.0cm}}%
+      \parindent 0pt \textbf{%
+        \ValueAppendixSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \vspace{0.1cm}%
+    }%
+    {%
+      \refstepcounter{subsection}%
+      \ifthenelse{\equal{\value{subsection}}{1}}%
+      {\vspace{0.2cm}}%
+      {\vspace{1.0cm}}%
+      \parindent 0pt \textbf{%
+        \ValueSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \vspace{0.1cm}%
+    }%
+    %
+  }%
+  % Reset counters
+  \setcounter{subsubsection}{0}%
+  \setcounter{appendixsubsubsection}{0}%
+} % End of \RenewDocumentCommand{}
+
+% ----------------------------------------------------------------------------
+
+\RenewDocumentCommand{\subsubsection}{s m}
+{%
+  %
+  % 檢查是 \subsubsection*{} 或是 \subsubsection{}
+  \IfBooleanTF{#1}%
+  {%
+    % \subsubsection*{}
+%        Starred
+  }%
+  {%
+    % \subsubsection{}
+%        Non-Starred
+    %
+    \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+    {%
+      \refstepcounter{appendixsubsubsection}%
+      \ifthenelse{\equal{\value{appendixsubsubsection}}{1}}%
+      {\vspace{0.2cm}}%
+      {\vspace{1.0cm}}%
+      \parindent 0pt \textbf{%
+        \ValueAppendixSubSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \vspace{0.1cm}%
+    }%
+    {%
+      \refstepcounter{subsubsection}%
+      \ifthenelse{\equal{\value{subsubsection}}{1}}%
+      {\vspace{0.2cm}}%
+      {\vspace{1.0cm}}%
+      \parindent 0pt \textbf{%
+        \ValueSubSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \vspace{0.1cm}%
     }%
     %
   }%
 } % End of \RenewDocumentCommand{}
 
 % ----------------------------------------------------------------------------
-
 % Chapters
 \DeclareDocumentCommand{\StartChapter}{+m +g}
 {%
@@ -198,21 +293,25 @@
 % ----------------------------------------------------------------------------
 
 % Chapter標題改使用 第1章 的方式來顯示
-\newcommand\VarChapterTitleLangChi{1}
-\newcommand\VarChapterTitleLangEng{0}
-\newcommand\VarChapterTitleLang{\VarChapterTitleLangEng}
-\newcommand\GetChapterTitleLang{\VarChapterTitleLang}
-\newcommand{\ChapterTitleInChi}{\renewcommand{\VarChapterTitleLang}{\VarChapterTitleLangChi}}
+%\newcommand\VarChapterTitleLangChi{1}
+%\newcommand\VarChapterTitleLangEng{0}
+%\newcommand\VarChapterTitleLang{\VarChapterTitleLangEng}
+%\newcommand\GetChapterTitleLang{\VarChapterTitleLang}
+%\newcommand{\ChapterTitleInChi}{\renewcommand{\VarChapterTitleLang}{\VarChapterTitleLangChi}}
 
 % A wrapper to handle \ChapterSectionTitleInChi
-\newcommand{\ChapterSectionTitleInChi}
-{
-  \ChapterTitleInChi
-} % End of \newcommand{}
+%\newcommand{\ChapterSectionTitleInChi}
+%{
+%  \ChapterTitleInChi
+%} % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
 
 % 過去的API, 以 Error提醒不能再使用
 \newcommand{\ChapterTitleNumInChi}{\errmessage{模版: 由v1.4.1開始, ChapterTitleNumInChi已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+
+\newcommand{\ChapterTitleInChi}{\errmessage{模版: 由v1.4.4開始, ChapterTitleInChi已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+
+\newcommand{\ChapterSectionTitleInChi}{\errmessage{模版: 由v1.4.4開始, ChapterSectionTitleInChi已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
 
 % ----------------------------------------------------------------------------

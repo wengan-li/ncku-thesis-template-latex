@@ -18,79 +18,69 @@
 % ----------------------------------------------------------------------------
 
 \newcounter{appendixchapter}
+\newcounter{appendixsection}
+\newcounter{appendixsubsection}
+\newcounter{appendixsubsubsection}
 
 % ----------------------------------------------------------------------------
 
-\def\VarAppendixTitleFormatPrefix{Appendix}
-\def\VarAppendixTitleFormatSuffix{}
+%\def\VarAppendixTitleFormatPrefix{Appendix}
+%\def\VarAppendixTitleFormatSuffix{}
 
-\newcommand{\VarAppendixTitleFormatFinalString}{}%
-\newcommand{\InitAppendixTitleFormatFinalString}{%
-  \renewcommand{\VarAppendixTitleFormatFinalString}{}}%
+%\newcommand{\VarAppendixTitleFormatFinalString}{}%
+%\newcommand{\InitAppendixTitleFormatFinalString}{%
+%  \renewcommand{\VarAppendixTitleFormatFinalString}{}}%
 
-\makeatletter
-\newcommand{\AppendAppendixTitleFormatFinalString}[1]%
-{%
-  \g@addto@macro\VarAppendixTitleFormatFinalString{#1}%
-} % End of \newcommand{}
-\makeatother
+%\makeatletter
+%\newcommand{\AppendAppendixTitleFormatFinalString}[1]%
+%{%
+%  \g@addto@macro\VarAppendixTitleFormatFinalString{#1}%
+%} % End of \newcommand{}
+%\makeatother
 
-\newcommand{\SetAppendixTitleFormatFinalString}%
-{%
-  \InitAppendixTitleFormatFinalString%
-  \AppendAppendixTitleFormatFinalString{\thechapter}%
+%\newcommand{\SetAppendixTitleFormatFinalString}%
+%{%
+%  \InitAppendixTitleFormatFinalString%
+%  \AppendAppendixTitleFormatFinalString{\thechapter}%
 %  \ifthenelse{\equal{\VarAppendixTitleFormatPrefix}{\empty}}%
 %  {}{\AppendAppendixTitleFormatFinalString{\VarAppendixTitleFormatPrefix\space}}%
 %  \AppendAppendixTitleFormatFinalString{\theappendixchapter}%
 %  \ifthenelse{\equal{\VarAppendixTitleFormatSuffix}{\empty}}%
 %  {}{\AppendAppendixTitleFormatFinalString{\space\VarAppendixTitleFormatSuffix}}%
-} % End of \newcommand{}
+%} % End of \newcommand{}
 
-\newcommand{\GetAppendixTitleFormatFinalString}{%
-  \VarAppendixTitleFormatFinalString}
+%\newcommand{\GetAppendixTitleFormatFinalString}{%
+%  \VarAppendixTitleFormatFinalString}
 
 % ----------------------------------------------------------------------------
 
-\def\VarAppendixTitleEng{Appendix}
-\def\VarAppendixTitleChi{附錄}
-\def\GetAppendixTitle{\VarAppendixTitleEng}
+%\def\VarAppendixTitleEng{Appendix}
+%\def\VarAppendixTitleChi{附錄}
+%\def\GetAppendixTitle{\VarAppendixTitleEng}
 
 \def\ValueEnableAppendixChapter{1}
 \def\ValueDisableAppendixChapter{0}
 \def\VarStartAppendixChapter{\ValueDisableAppendixChapter}
-\def\SetStartAppendixChapter{%
+\def\BeginAppendixChapter{%
   \renewcommand{\VarStartAppendixChapter}{\ValueEnableAppendixChapter}}
 \def\GetStartAppendixChapter{\VarStartAppendixChapter}
 
 % ----------------------------------------------------------------------------
 
 \newcommand{\StartAppendix}
-{
+{%
+  \BeginAppendixChapter%
+  %
+  % Reset chapter counter
+  \setcounter{chapter}{0}%
+  %
+  % Set Default style for chapter numbering
+  \renewcommand{\thechapter}{\Alph{chapter}}%
+  %
   \StartNewPage%
-  \SetStartAppendixChapter%
-%  \InitinalAppendixStyles%
-  \setcounter{chapter}{0}
 } % End of \newcommand{}
 
 \def \EndAppendix {\EndOfPage}
-
-% ----------------------------------------------------------------------------
-
-%\newcommand{\InitinalAppendixStyles}
-%{
-  % Reset counters
-%  \setcounter{chapter}{0}
-%  \setcounter{section}{0}
-%  \setcounter{subsection}{0}
-%  \setcounter{subsubsection}{0}
-%  \setcounter{table}{0}
-%  \setcounter{figure}{0}
-%  \def\thechapter{\Alph{CounterAppendix}}
-%  \UseAppendixChapterTitleNumFormat%
-%  \UseAppendixSectionTitleNumFormat%
-%  \UseAppendixSubSectionTitleNumFormat%
-%  \UseAppendixSubSubSectionTitleNumFormat%
-%} % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
 
