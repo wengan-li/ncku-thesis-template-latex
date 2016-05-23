@@ -78,11 +78,11 @@
     %
     %    Non-Starred
     %
-    \refstepcounter{chapter}
-    %
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {%
       % Appendix Chapter
+      \refstepcounter{appendixchapter}
+      %
       %
 %      \SetAppendixTitleFormatFinalString
 %      \DisplayChapterHeader{\GetAppendixTitleFormatFinalString}{#2}
@@ -90,6 +90,8 @@
     }%
     {%
       % 一般Chapter
+      \refstepcounter{chapter}
+      %
       %
       \DisplayChapterHeader{\ValueChapterTitleNumberingFormat}{#2}
 %      \ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangEng}}%
