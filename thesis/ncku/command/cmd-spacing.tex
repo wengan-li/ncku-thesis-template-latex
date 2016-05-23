@@ -15,6 +15,22 @@
 
 % ----------------------------------------------------------------------------
 
+\makeatletter
+
+% Regular text spacing
+\def\doublespacing{%
+    \def\default@spacing{\baselineskip=20pt plus .5pt minus .2pt}}
+\def\onehalfspacing{%
+    \def\default@spacing{\baselineskip=20.5pt plus .5pt minus .2pt}}
+\def\singlespacing{%
+    \def\default@spacing{\baselineskip=15.5pt plus .5pt minus .2pt}}
+\def\specialspacing{%
+    \def\default@spacing{\baselineskip=21.5pt plus .5pt minus .2pt}}
+
+\makeatother
+
+% ----------------------------------------------------------------------------
+
 % 設定段落之間的距離
 %\setlength{\parskip}{0.3cm}
 
@@ -56,3 +72,5 @@
 
 % ----------------------------------------------------------------------------
 
+% Default lines space is following English style format 
+\UseEngLinesSpacing

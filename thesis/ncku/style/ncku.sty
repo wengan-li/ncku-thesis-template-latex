@@ -95,9 +95,9 @@
     \@colroom\textheight
     \vsize\textheight}
 
-
-\newcounter{regular@short}
 \begin{comment}
+\newcounter{regular@short}
+
 \let\old@opcol\@opcol
 \def\@opcol{%
     \ifnum\value{regular@short}=0\regular@page\old@opcol
@@ -150,15 +150,7 @@
     \def\quotation{\old@quotation\onehalf@space}
     \def\endquotation{\endonehalf@space\endold@quotation}}
 \end{comment}
-% Regular text spacing
-\def\doublespacing{%
-    \def\default@spacing{\baselineskip=20pt plus .5pt minus .2pt}}
-\def\onehalfspacing{%
-    \def\default@spacing{\baselineskip=20.5pt plus .5pt minus .2pt}}
-\def\singlespacing{%
-    \def\default@spacing{\baselineskip=15.5pt plus .5pt minus .2pt}}
-\def\specialspacing{%
-    \def\default@spacing{\baselineskip=21.5pt plus .5pt minus .2pt}}
+
 \begin{comment}
 %
 % Macros to adjust the shape of table of contents.
@@ -245,30 +237,7 @@
 
 %\newcount\chap@or@app\chap@or@app=1
 
-\newcommand{\DisplayChapterHeader}[2]%
-{%
- \vspace*{0pt}%
-  {%
-    \parindent 0pt \centering%
-    \Large\bf #1 \par%
-    \vskip 15pt%
-    \Large \bf #2 \par%
-    \nobreak%
-    \vskip 35pt%
-  }%
-  \addcontentsline{toc}{chapter}{#1.\space#2}%
-} % End of \newcommand{}
 
-\newcommand{\DisplayChapterHeaderStar}[1]%
-{%
-  \vspace*{0pt}%
-  {%
-    \parindent 0pt \centering \Large \bf #1\par%
-    \nobreak%
-    \vskip 30pt%
-  }%
-  \addcontentsline{toc}{chapter}{#1}%
-} % End of \newcommand{}
 
 
 
@@ -292,64 +261,7 @@
 %  \setcounter{page}{\thetmpsavepage}
 %} % End of \newcommand{}
 
-% 使用 \frontmatter, \mainmatter 其實可簡化事情,
-% 但這增加不需要的內容在context.tex, 使用bypass的方法已減少同學的煩惱.
-%\newcommand{\VarPageInFrontmatter}{1}
-%\newcommand{\VarPageNotInFrontmatter}{0}
-%\newcommand{\ValuePageInFrontmatter}{\VarPageInFrontmatter} % Default
-%\newcommand{\GetValuePageInFrontmatter}{\ValuePageInFrontmatter}
-\newcommand{\VarPageInMainmatter}{1}
-\newcommand{\VarPageNotInMainmatter}{0}
-\newcommand{\ValuePageInMainmatter}{\VarPageNotInMainmatter} % Default
-\newcommand{\SetValuePageInMainmatter}{%
-  \renewcommand{\ValuePageInMainmatter}{\VarPageInMainmatter}}
-\newcommand{\GetValuePageInMainmatter}{\ValuePageInMainmatter}
 
-% 這邊是overload latex原生的\chapter{}和\chapter*{}
-\RenewDocumentCommand{\chapter}{s m}
-{%
-  %
-  % 檢查是 \chapter*{} 或是 \chapter{}
-  \IfBooleanTF{#1}%
-  {%
-    % \chapter*{}
-    %
-    % 用\chapter*{}都是前幾頁的內容, 用羅馬數字
-    %
-    %    Starred
-    \DisplayChapterHeaderStar{#2}
-  }%
-  {%
-    % \chapter{}
-    %
-    % 用\chapter{}都是主要內容, 故用數字
-    % 如果第一次使用\chapter{}, 則把頁碼改使用成數字
-    \ifthenelse{\equal{\GetValuePageInMainmatter}{\VarPageNotInMainmatter}}%
-    {\pagenumbering{arabic}\SetValuePageInMainmatter}{}
-    %
-    \refstepcounter{chapter}
-    %
-    %    Non-Starred
-    \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
-    {
-      % 開始Appendix Chapter
-      \SetAppendixTitleFormatFinalString
-      \DisplayChapterHeader{\GetAppendixTitleFormatFinalString}{#2}
-    }%
-    {
-      % 一般Chapter
-      \ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangEng}}%
-      {%
-        % 題目為英文
-        \DisplayChapterHeader{第\thechapter 章}{#2}
-      }%
-      {%
-        % 題目為中文
-        \DisplayChapterHeader{第\thechapter 章}{#2}
-      }%
-    }%
-  }%
-} % End of \def{}
 %\end{comment}
 
 \begin{comment}
@@ -427,26 +339,6 @@
 %   \@ifstar{\@ssect{#3}{#4}{#5}{#6}}%
 %           {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
 
-%%% Restored from latex.ltx--Glenn G. Lai
-\def\@startsection#1#2#3#4#5#6{\if@noskipsec \leavevmode \fi
-   \par \@tempskipa #4\relax
-   \@afterindenttrue
-   \ifdim \@tempskipa <\z@
-     \@tempskipa -\@tempskipa \@afterindentfalse
-   \fi
-   \if@nobreak \everypar{}\else
-     \addpenalty{\@secpenalty}\addvspace{\@tempskipa}\fi \@ifstar
-     {\@ssect{#3}{#4}{#5}{#6}}%
-     {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
 
- \def\section{\@startsection{section}{1}{\z@}%
-    {4.6ex plus -1ex minus -.2ex}{.3ex plus .2ex}{\bf}}
-\def\subsection{\@startsection{subsection}{2}{\z@}%
-    {3.9ex plus -1ex minus -.2ex}{.2ex plus .2ex}{\bf}}
-\def\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-    {3.25ex plus -1ex minus -.2ex}{.1ex plus .2ex}{\bf}}
  
-% --------------------------
 
-% Default lines space is following English style format 
-\UseEngLinesSpacing
