@@ -29,7 +29,7 @@
 
 
 #### v1.4.3 [May 21, 2016]:
-1. 提供可自定章節`參考文獻`的題目, 而非固定的`References`.
+1. 提供可自定章節`參考文獻`的題目, 而非固定的`References`. 請參考`conf.tex`中的`\ChapterReferenceTitleInChi`, `\ChapterReferenceTitleInEng`, `\SetChapterReferenceTitle`.
 
 #### v1.4.2 [May 21, 2016]:
 **緊急修正v1.4.1所產生的錯誤**
