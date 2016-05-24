@@ -37,11 +37,13 @@
     caption = \empty,
     label = \empty,
     align = \empty,      % Useless, for backporting
+    opacity = 0.75,
   },
   perrow/.estore in = \TmpMIValueImagePerRow,
   caption/.estore in = \TmpMIValueCaption,
   label/.estore in = \TmpMIValueLabel,
   align/.estore in = \TmpMIValueAlign,      % Useless, for backporting
+  opacity/.estore in = \TmpValueOpacity,
 } % End of \pgfkeys{}
 
 % Insert multi-figure
@@ -55,28 +57,28 @@
   \pgfkeys{/InsertFigures, default, #1}%
   %
   \begin{figure}[H]%
-  %
-  % Insert image
-  \colorbox{white}{
-    \begin{minipage}{\textwidth}{%
-        \if \TmpMIValueImagePerRow 1
-          \InsertFiguresOnePerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
-        \fi
-        \if \TmpMIValueImagePerRow 2
-          \InsertFiguresTwoPerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
-        \fi
-        \if \TmpMIValueImagePerRow 3
-          \InsertFiguresThreePerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
-        \fi
-        \if \TmpMIValueImagePerRow 4
-          \InsertFiguresFourPerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
-        \fi
-      }%
+  \begin{minipage}[c]{\textwidth}%
+  \begin{mdframed}[skipabove=0pt, skipbelow=0pt, leftmargin=0pt, rightmargin=0pt,
+    innerleftmargin=0pt, innerrightmargin=0pt, innertopmargin=0pt,
+    innerbottommargin=0pt, linewidth=0pt, apptotikzsetting={%
+    \tikzset{mdfbackground/.append style={opacity=\TmpValueOpacity}}}]%
+      \if \TmpMIValueImagePerRow 1
+        \InsertFiguresOnePerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
+      \fi
+      \if \TmpMIValueImagePerRow 2
+        \InsertFiguresTwoPerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
+      \fi
+      \if \TmpMIValueImagePerRow 3
+        \InsertFiguresThreePerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
+      \fi
+      \if \TmpMIValueImagePerRow 4
+        \InsertFiguresFourPerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
+      \fi
       %
-      % Set Caption and Label
-      \SetImageCaptionAndLabel{\TmpMIValueCaption}{\TmpMIValueLabel}
-    \end{minipage}%
-  }%
+  \end{mdframed}%
+  \end{minipage}%
+  % Set Caption and Label
+  \SetImageCaptionAndLabel{\TmpMIValueCaption}{\TmpMIValueLabel}
   \end{figure}%
 } % End of \newcommand{}
 
