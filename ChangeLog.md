@@ -1,5 +1,5 @@
-#### v1.4.4 [May 22, 2016]:
-**建議升級到這一版, 因為更新了整個模版的排版和設計. 修正由`v1.3.4`到`v1.4.3`所產生出來的錯誤, 並修正/移除了一些的使用方式.**
+#### v1.4.4 [May 25, 2016]:
+**建議升級到這一版, 因為更新了整個模版的排版和設計. 修正由`v1.3.4`到`v1.4.3`所產生出來的錯誤, 並新增/修正/移除了一些的使用方式.**
 
 1. 由[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)發現太容易因修改章節數字的格式而影響其他大量的事物, 故重新設計`ncku.sty`的格式.
 2. 因應`ncku.sty`的新修改, 故同時對部份底層的APIs進行重新設計以對應新的簡化使用, 例如:
@@ -14,13 +14,13 @@
   9. `\subsubsection`
 3. 因修改和出現功能重複的關係, 故拿掉了原本正在提供的APIs: `\ChapterTitleInChi` -> 請改使用`\ChapterTitleNumFormat`, 並以Error方式進行提醒.
 4. 重新設計行距的使用方式, 故`ThesisWroteInChi`由這版被移除, 改以Error方式進行提醒.
-5. 在Appendix中, 章節號碼的錯誤, 如'6.1'卻不是'A.1' \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-6. 使用equation時, equation的號碼受新的格式而影響 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-7. 使用table時, table的號碼受新的格式而影響 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-8. 新增可使用`\ChapterTitleNumFormat`或`\AppendixChapterTitleNumFormat`同時自定號碼和旁邊的一些內容, 相關的使用方式請看`conf.tex`和說明文件 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-9. 更新`\InsertFigure`, `\InsertTable`, Table/Figure可以新增`opacity`的設定, 以控制背景白底的透明度 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-10. 在`conf.tex`提供`SetCustomFigureName`和`SetCustomTableName`以自定圖表的文字, 如Table 2.1 -> 表 2.1 或 Figure 2.1 -> 圖 2.1  \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-11. 在`conf.tex`中新增提供`\SetLineStretch`來自定行距.
+5. 在`conf.tex`中新增提供`\SetLineStretch`來自定行距.
+6. 在Appendix中, 章節號碼的錯誤, 如'6.1'卻不是'A.1' \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
+7. 使用equation時, equation的號碼受新的格式而影響 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
+8. 使用table時, table的號碼受新的格式而影響 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
+9. 新增可使用`\ChapterTitleNumFormat`或`\AppendixChapterTitleNumFormat`同時自定號碼和旁邊的一些內容, 相關的使用方式請看`conf.tex`和說明文件 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
+10. 更新`\InsertFigure`, `\InsertTable`, Table/Figure可以新增`opacity`的設定, 以控制背景白底的透明度 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
+11. 在`conf.tex`提供`\SetCustomFigureName`和`\SetCustomTableName`以自定圖表的文字, 如Table 2.1 -> 表 2.1 或 Figure 2.1 -> 圖 2.1  \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
 12. 修正英文延伸摘要中的Table和Figure都不會顯示在目錄中.
 13. 修正由`v1.1.2`跟[Issue \#6](https://github.com/wengan-li/ncku-thesis-template-latex/issues/6)提到的一直殘下來的錯字(templete -> template).
 14. 更新了`ncku.sty`中的內容說明.
