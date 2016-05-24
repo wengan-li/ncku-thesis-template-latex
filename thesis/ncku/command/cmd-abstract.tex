@@ -31,7 +31,6 @@
   \StartChapterStar{Abstract}%
 } % End of \newcommand{}
 
-\newcommand{\EndChiAbstract}{\EndAbstractChi}
 \newcommand{\EndAbstractChi}
 {%
   % Keyword
@@ -49,5 +48,10 @@
   %
   \EndChapter%
 } % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
+% 過去的API, 以 Error提醒不能再使用
+\newcommand{\EndChiAbstract}{\errmessage{模版: 由v1.4.4開始, EndChiAbstract已不能再使用. 請改使用EndAbstractChi.}\stop}
 
 % ----------------------------------------------------------------------------
