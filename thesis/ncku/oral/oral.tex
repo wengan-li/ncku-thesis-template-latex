@@ -21,7 +21,7 @@
 % ----------------------------------------------------------------------------
 
 \ifthenelse{\equal{\GetOralDocumentType}{\ValueOralDocumentTypeTemplate}}%
-{
+{%
   % -------------------------- 顯示範本 --------------------------
   % Chinese version
   \ifthenelse{\equal{\GetDisplayOralChiTemplate}{\ValueDisplayOralTemplateOn}}%
@@ -31,7 +31,7 @@
   \ifthenelse{\equal{\GetDisplayOralTemplateEng}{\ValueDisplayOralTemplateOn}}%
     {\input{./ncku/oral/templete/templete-eng}}{}%
 } % End of if{}
-{
+{%
   % ---------------------- 顯示圖片, Image in PDF format ----------------------
   % Chinese version
   \ifthenelse{\equal{\GetOralImageChiPath}{\empty}}%
@@ -39,6 +39,7 @@
     {\StartNewPage%
       \thispagestyle{empty}%
       \includepdf{\GetOralImageChiPath}%
+      \EndOfPage%
     }%
   %
   % English version
@@ -47,12 +48,7 @@
     {\StartNewPage%
       \thispagestyle{empty}%
       \includepdf{\GetOralImageEngPath}%
+      \EndOfPage%
     }%
 } % End of else{}
-
-% ----------------------------------------------------------------------------
-
-% End of page
-\EndOfPage
-
 % ----------------------------------------------------------------------------
