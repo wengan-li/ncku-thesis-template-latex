@@ -294,7 +294,8 @@
      SubSubSection: (空白, 只有題目)
 
     如果 `章' 要由文字改使用為:\verb|'Chapter 1' -> '第 1 章'|\\
-    則使用\verb|\ChapterTitleNumFormat{第 \StyleCNumUpperAlph 章}|
+    則使用\verb|\ChapterTitleNumFormat{第\StyleCNumArabic 章}|\\
+    (注意在'章'字前必須有一個空白, 否則會被當成\StyleCNumArabic的字元之一, 這是基於LaTex的寫法, 所以請慢慢嘗試和注意Style前後字元能不能連在一起)
 
      如果 `章' 要由數字改使用為:\verb|'1' -> '-A-'|\\
      則使用\verb|\ChapterTitleNumFormat{Chapter -\StyleCNumUpperAlph-}|
@@ -303,7 +304,7 @@
      則使用\verb|\SectionTitleNumFormat{\StyleCNumChiNum -\StyleCNumTiangan-}|
      
      如果 `節' 不想看到 `章' 的數字:\verb|'1.2' -> '2'|\\
-     則使用\verb|\SectionTitleNumFormat{\StyleSNumChiNum}|\\
+     則使用\verb|\SectionTitleNumFormat{\StyleSNumArabic}|\\
      直接不提供 `章' 的數字在格式中則可
 
     \end{description}
