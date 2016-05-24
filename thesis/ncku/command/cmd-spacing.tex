@@ -55,44 +55,40 @@
 
 % ----------------------------------------------------------------------------
 
-% Default lines are double spaced
+% 	延伸baseline的高度
+\newcommand{\ValueDefaultLineStretch}{1.2} % Default
+\newcommand{\ValueCustomLineStretch}{1.2} % Default
 
-\newcommand{\VarDefaultLinesSpacingTypeEng}{0}
-\newcommand{\VarDefaultLinesSpacingTypeChi}{1}
-\newcommand{\VarDefaultLinesSpacingType}{%
-  \VarDefaultLinesSpacingTypeEng} % Default
-\newcommand{\GetDefaultLinesSpacingType}{%
-  \VarDefaultLinesSpacingType}
-\newcommand{\SetDefaultLinesSpacingType}[1]{\renewcommand{\VarDefaultLinesSpacingType}{#1}}
+\newcommand{\ValueDefaultLineStretchTypeDefault}{0}
+\newcommand{\ValueDefaultLineStretchTypeCustom}{1}
+\newcommand{\VarDefaultLineStretchType}{%
+  \ValueDefaultLineStretchTypeDefault} % Default
+\newcommand{\GetDefaultLineStretchType}{%
+  \VarDefaultLineStretchType}
+\newcommand{\SetDefaultLineStretchType}[1]{\renewcommand{\VarDefaultLineStretchType}{#1}}
 
-\newcommand{\UseEngLinesSpacing}
+% 公開的APIs
+\newcommand{\SetLineStretch}[1]%
 {%
-%  \doublespacing%
-%  \doublespace%
+  \renewcommand{\ValueCustomLineStretch}{#1}%
+  \SetDefaultLineStretchType{\ValueDefaultLineStretchTypeCustom}%
 } % End of \newcommand{}
 
-\newcommand{\UseChiLinesSpacing}
+\newcommand{\UseDefaultLineStretch}
 {%
-%  \singlespacing%
-%  \singlespace%
-} % End of \newcommand{}
-
-\newcommand{\ThesisWroteInChi}{%
-  \SetDefaultLinesSpacingType{\VarDefaultLinesSpacingTypeChi}}
-
-\newcommand{\UseDefaultLinesSpacing}
-{%
-  \ifthenelse{\GetDefaultLinesSpacingType = \VarDefaultLinesSpacingTypeEng}%
-  {\UseEngLinesSpacing}{}%
+  \ifthenelse{\equal{\GetDefaultLineStretchType}{\ValueDefaultLineStretchTypeDefault}}%
+  {\setstretch{\ValueDefaultLineStretch}}{}%
   %
-  \ifthenelse{\GetDefaultLinesSpacingType = \VarDefaultLinesSpacingTypeChi}%
-  {\UseChiLinesSpacing}{}%
+  \ifthenelse{\equal{\GetDefaultLineStretchType}{\ValueDefaultLineStretchTypeCustom}}%
+  {\setstretch{\ValueCustomLineStretch}}{}%
 } % End of \newcommand{}
+
+\UseDefaultLineStretch % Default
 
 % ----------------------------------------------------------------------------
 
-% Default lines space is following English style format 
-\UseEngLinesSpacing
+% 過去的API, 以 Error提醒不能再使用
 
-% 	延伸 baseline的高度
-\renewcommand{\baselinestretch}{1.2}
+\newcommand{\ThesisWroteInChi}{\errmessage{模版: 由v1.4.4開始, ThesisWroteInChi已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+
+% ----------------------------------------------------------------------------

@@ -40,7 +40,7 @@
 % Extended Abstract
 \newcommand{\StartExtendedAbstract}
 {%
-  \UseEngLinesSpacing%
+  \singlespacing%
   %
   \StartNewPage%
   % Set style
@@ -50,9 +50,20 @@
 %  \addcontentsline{toc}{chapter}{Extended Abstract}
   \addcontentsline{toc}{chapter}{英文延伸摘要}%
   %
+  % Reset style of caption of fingure and table
+  \captionsetup[table]{font=bf}%
+  \captionsetup[figure]{font=bf}%
+  %
+  \BeginExtendedAbstractFigureTableControl%
+  %
+  \UseTableNameDefault%
+  \UseFigureNameDefault%
+  %
+  % -----------------------------------------------------------------
+  %
   \begin{minipage}[c][5cm][c]{\textwidth}
   \parbox{\textwidth}{\center\large\textbf{\GetEngTitle}}
-  \EmptyLine%
+  \vspace{0.3cm}%
   \center\normalsize\GetAuthorEngName\\%
   \center\normalsize Dr. \GetAdvisorEngNameA\\%
   \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}{}%
@@ -63,17 +74,8 @@
   \center\normalsize\GetCollEngName\\%
 %  \center\normalsize\textit{\GetDeptEngName}\\%
 %  \center\normalsize\textit{\GetCollEngName}\\%
-  \EmptyLine%
   \end{minipage}%
   %
-  % Reset style of caption of fingure and table
-  \captionsetup[table]{font=bf}%
-  \captionsetup[figure]{font=bf}%
-  %
-  \BeginExtendedAbstractFigureTableControl%
-  %
-  \UseTableNameDefault%
-  \UseFigureNameDefault%
 } % End of \newcommand{}
 
 \newcommand{\EndExtendedAbstract}
@@ -96,7 +98,7 @@
   \captionsetup[table]{labelfont=bf, textfont=normalfont}%
   \captionsetup[figure]{labelfont=bf, textfont=normalfont}%
   %
-  \UseDefaultLinesSpacing%
+  \UseDefaultLineStretch%
 } % End of \newcommand{}
 
 % Summary in Extended Abstract
@@ -106,6 +108,7 @@
 } % End of \mdfdefinestyle{}
 \newcommand{\ExtAbstractSummary}[1]
 {%
+  \vspace{0.3cm}%
   \begin{mdframed}[style=ExtAbstractSummaryStyle]%
   \vspace{0.3cm}%
   \parbox{\textwidth}{\center\textbf{SUMMARY}}%
@@ -121,9 +124,9 @@
 %\newcommand{\ExtAbstractChapter}[1]
 \DeclareDocumentCommand{\ExtAbstractChapter}{+m +g} % Back-porting
 {
-  \EmptyLine%
-  \centerline{\textbf{\MakeUppercase{#1}}}%
-  \EmptyLine%
+  \vspace{0.5cm}%
+  \centerline{\textbf{\MakeUppercase{#1}}}
+  \vspace{0.3cm}%
   \IfNoValueF{#2}{#2}%
 } % End of \newcommand{}
 
@@ -131,9 +134,10 @@
 %\newcommand{\ExtAbstractSection}[1]
 \DeclareDocumentCommand{\ExtAbstractSection}{+m +g} % Back-porting
 {
-  \EmptyLine%
-  \textbf{#1}\\%
-  \EmptyLine%
+  \vspace{0.3cm}%
+  \textbf{#1}%
+  \vspace{0.1cm}%
+
   \IfNoValueF{#2}{#2}%
 } % End of \newcommand{}
 
