@@ -78,9 +78,11 @@
 {%
   \StartNewPage%
   % Add to "Table of Contents"
-  \addcontentsline{toc}{chapter}{\GetReferenceTitle}
+%  \addcontentsline{toc}{chapter}{\GetReferenceTitle}
   % Change the title of bibliography
-  \renewcommand\bibname{\centerline{\Large \GetReferenceTitle}}
+%  \renewcommand\bibname{\centerline{\Large\GetReferenceTitle}}
+  \renewcommand\bibname{\GetReferenceTitle}
+%  \renewcommand\refname{\Large\GetReferenceTitle}}
   % ------------------------------------------------
   %
   \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeAbbrv}}%
@@ -146,7 +148,7 @@
     \bibliography{#1,#2,#3,#4,#5,#6,#7,#8,#9}%
   } % End of else{}
   % ------------------------------------------------
-  \EndOfPage%
+  \EndChapter%
 } % End of \DeclareDocumentCommand{}
 % ----------------------------------------------------------------------------
 
