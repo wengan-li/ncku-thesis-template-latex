@@ -1,3 +1,33 @@
+#### v1.4.4 [May 22, 2016]:
+1. 由[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)發現太容易因修改章節數字的格式而影響其他大量的事物, 故重新設計`ncku.sty`的格式, 包括:
+  1. \chapter
+  2. \section
+  3. \subsection
+  4. \subsubsection
+  5. Appendix部份
+
+  而因修改和出現功能重複的關係, 為了提供更簡化的使用方式, 故拿掉了部份原本正在提供的APIs:
+  1. `\ChapterTitleInChi` -> 請改使用`\ChapterTitleNumFormat`
+
+10. 因應`ncku.sty`的新修改, 故同時對部份底層的APIs進行重新設計以對應新的簡化使用, 例如:
+  1. `\StartAppendix`, `\EndAppendix`
+  2. `\StartChapter`, `\EndChapter`
+  3. `\StartAbstractChi`, `\StartAbstract`, `\EndAbstractChi`, `\EndAbstract`
+  4. `\tableofcontents`, `\listoftables`, `\listoffigures`
+
+
+20. 修正[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)提到的一些錯誤:
+  1. 在Appendix中, 章節號碼的錯誤, 如'6.1'卻不是'A.1'
+  2. 使用equation時, equation的號碼受新的格式而影響
+
+30. 提供[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)提到的一些新功能:
+  1. 可使用`\ChapterTitleNumFormat`或`\AppendixChapterTitleNumFormat`同時自定號碼和旁邊的一些內容, 相關的使用方式請看`conf.tex`和說明文件.
+  2. 表格可以新增`op`的設定, 以選擇要不要背景白底的漸透度.
+
+
+4.Table 二.1－> 表 2.1
+
+
 #### v1.4.3 [May 21, 2016]:
 1. 提供可自定章節`參考文獻`的題目, 而非固定的`References`.
 
