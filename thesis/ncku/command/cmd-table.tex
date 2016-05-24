@@ -24,7 +24,10 @@
 {%
   \ifthenelse{\equal{#1}{\empty}}{}%
   {%
-    \caption{#1}%
+    \ifthenelse{\equal{%
+      \GetStartExtendedAbstractFigureTableControl}{%
+      \ValueDisableExtendedAbstractFigureTableControl}}%
+      {\caption{#1}}{\caption[]{#1}}
     \ifthenelse{\equal{#2}{\empty}}{}{\label{#2}}%
   }%
 } % End of \DeclareDocumentCommand{}

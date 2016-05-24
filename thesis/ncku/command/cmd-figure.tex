@@ -28,30 +28,26 @@
 %
 % ----------------------------------------------------------------------------
 
-\DeclareDocumentCommand{\SetImageCaptionAndLabel}{
-  +m +m}
+\DeclareDocumentCommand{\SetFigureCaptionAndLabel}{+m +m}
 {
   \ifthenelse{\equal{#1}{\empty}}{}%
   {%
-    \caption{#1}%
-    \ifthenelse{\equal{#2}{\empty}}%
-    {}%
-    {\label{#2}}%
+    \ifthenelse{\equal{%
+      \GetStartExtendedAbstractFigureTableControl}{%
+      \ValueDisableExtendedAbstractFigureTableControl}}%
+      {\caption{#1}}{\caption[]{#1}}
+    \ifthenelse{\equal{#2}{\empty}}{}{\label{#2}}%
   }%
 } % End of \DeclareDocumentCommand{}
 
-\DeclareDocumentCommand{\SetImageCaption}{+m}
+\DeclareDocumentCommand{\SetFigureCaption}{+m}
 {
-  \ifthenelse{\equal{#1}{\empty}}
-  {}
-  {\IfNoValueF{#1}{\caption{#1}}}
+  \ifthenelse{\equal{#1}{\empty}}{}{\IfNoValueF{#1}{\caption{#1}}}
 } % End of \DeclareDocumentCommand{}
 
 \DeclareDocumentCommand{\SetImageLabel}{+m}
 {
-  \ifthenelse{\equal{#1}{\empty}}
-  {}
-  {\IfNoValueF{#1}{\label{#1}}}
+  \ifthenelse{\equal{#1}{\empty}}{}{\IfNoValueF{#1}{\label{#1}}}
 } % End of \DeclareDocumentCommand{}
 
 % -----------------------------------------------------------------
@@ -98,7 +94,7 @@
   \end{mdframed}%
   \end{minipage}%
   % Set Caption and Label
-  \SetImageCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}
+  \SetFigureCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}
   \end{figure}%
 } % End of \newcommand{}
 

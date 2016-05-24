@@ -22,6 +22,21 @@
 
 % ----------------------------------------------------------------------------
 
+\def\ValueEnableExtendedAbstractFigureTableControl{1}
+\def\ValueDisableExtendedAbstractFigureTableControl{0}
+\def\VarStartExtendedAbstractFigureTableControl{%
+  \ValueDisableExtendedAbstractFigureTableControl}
+\def\BeginExtendedAbstractFigureTableControl{%
+  \renewcommand{\VarStartExtendedAbstractFigureTableControl}{%
+    \ValueEnableExtendedAbstractFigureTableControl}}
+\def\EndExtendedAbstractFigureTableControl{%
+  \renewcommand{\VarStartExtendedAbstractFigureTableControl}{%
+    \ValueDisableExtendedAbstractFigureTableControl}}
+\def\GetStartExtendedAbstractFigureTableControl{%
+  \VarStartExtendedAbstractFigureTableControl}
+
+% ----------------------------------------------------------------------------
+
 % Extended Abstract
 \newcommand{\StartExtendedAbstract}
 {%
@@ -55,6 +70,8 @@
   % Reset style of caption of fingure and table
   \captionsetup[table]{font=bf}
   \captionsetup[figure]{font=bf}
+  %
+  \BeginExtendedAbstractFigureTableControl
 } % End of \newcommand{}
 
 \newcommand{\EndExtendedAbstract}
@@ -63,6 +80,8 @@
   %
   % Re-set style
   \pagestyle{plain}
+  %
+  \EndExtendedAbstractFigureTableControl
   %
   % Reset figure and table counter to zero
   \setcounter{table}{0}
