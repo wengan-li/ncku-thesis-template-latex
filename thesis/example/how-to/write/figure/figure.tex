@@ -12,9 +12,9 @@
       label={fig:how-to:write:figure:format}]
     {./example/how-to/write/figure/pic/graph-format.png}
 
-點陣圖(如.jpg, .gif,.png, .tiff)在相機和網頁中十分常見, 優點是幾乎能應用在不同地方/工具, 缺點在放大縮小時會出現失真的情況, 所以為了更清晰, 則要更高的解析度的圖片, 這時候就會大大增加圖片大小, 而這大小會直接影響所產生出來論文PDF的大小.\\
+點陣圖(如.jpg, .gif,.png, .tiff)在相機和網頁中十分常見, 優點是幾乎能應用在不同地方/工具, 缺點在放大縮小時會出現失真的情況, 所以為了更清晰, 則要更高的解析度的圖片, 這時候就會大大增加圖片大小, 而這大小會直接影響所產生出來論文PDF的大小.
 
-向量圖(如.pdf, .eps, .svg)在學術界內用來放在論文中是非常常見. 優點是不會因放大縮小而造成內容變型, 所以是十分有用的. 缺點是必須使用一些特定的工具才能顯示或產生出來. 而LaTex主要使用這一類圖檔. 但LaTex對SVG的支援十分不好, 故這模版沒無提供插入SVG檔, 故強烈推薦使用PDF為主要的格式.\\
+向量圖(如.pdf, .eps, .svg)在學術界內用來放在論文中是非常常見. 優點是不會因放大縮小而造成內容變型, 所以是十分有用的. 缺點是必須使用一些特定的工具才能顯示或產生出來. 而LaTex主要使用這一類圖檔. 但LaTex對SVG的支援十分不好, 故這模版沒無提供插入SVG檔, 故強烈推薦使用PDF為主要的格式.
 
 PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來轉成PDF. 另一種Windows增加型中繼檔(.emf)都同樣是點陣圖或向量圖, 而由於Word是沒法直接插入PDF/EPS/SVG的圖檔, 所以需先轉成這格式, 以保留向量圖的品質.
 
@@ -79,24 +79,24 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
 \newpage
 \StartSubSection{使用介紹}
 
-插入圖片其實有很多的玩法, 但是在畢業論文中, 它的放置位置則是非常固定的, 都是以中間為主, 並插入單/多張圖片. 因為圖片位置都是固定的, 所以本模版針對了插入單張或多張來設計, 之後的章節會對這2個方式的使用作詳細說明.\\
+插入圖片其實有很多的玩法, 但是在畢業論文中, 它的放置位置則是非常固定的, 都是以中間為主, 並插入單/多張圖片. 因為圖片位置都是固定的, 所以本模版針對了插入單張或多張來設計, 之後的章節會對這2個方式的使用作詳細說明.
 
-要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.\\
+要注意的是, 圖片在畫面看到的大小, 跟真正寫到文件是不一樣的 (因為經過程式的自動縮放), 所以比例正常都要修改的.
 
-留意的是, 圖片的路徑跟正常日常使用的路徑會不一樣, 是使用所謂的"相對路徑" (Relative path), 而起點是論文的主檔案(thesis.tex).\\
+留意的是, 圖片的路徑跟正常日常使用的路徑會不一樣, 是使用所謂的"相對路徑" (Relative path), 而起點是論文的主檔案(thesis.tex).
 
 \noindent 例如 (以Windows的路徑為例子):\\
 主檔案thesis.tex在: "\verb|C:\thesis\thesis.tex|"\\
 圖片A: "\verb|C:\thesis\some_dir\A.png|"\\
 圖片B: "\verb|C:\thesis\some_dir\B.png|"\\
-使用時以"\verb|./some_dir/A.png|", "\verb|./some_dir/B.png|"的方式來使用, 注意是"$/$"而不是"$\backslash$".\\
+使用時以"\verb|./some_dir/A.png|", "\verb|./some_dir/B.png|"的方式來使用, 注意是"$/$"而不是"$\backslash$".
 
 還有檔名的文字中間不要在非格式的位置(如最後的.png, .pdf等)出現`.'這個符號 (如AB.CD-EF.png), 否則有可能會出現潛在的錯誤.
 
 % ------------------------------------------------
 \newpage
 \StartSubSection{單張}
-  \EmptyLine
+  
   \begin{DescriptionFrame}
   \begin{verbatim}
   Path:   圖片位置 (必填)
@@ -108,6 +108,8 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
     caption: 標題 (選填)
     label:   標簽 (選填, 必須要配合caption使用, 否則無效)
     angle:   角度 (選填, 預設: 0度)
+    opacity: 背景顏色透明度, 預設使用白色為背景 (選填, 預設: 0.75)
+    (0.x ~ < 1.0: 透明; => 1.0: 不透明)
 
   插入圖片
   \InsertFigure[Options]{Path}
@@ -231,6 +233,68 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
   \newpage
   \item
   {
+    使用透明度以能看到頁面中的學校浮水印, 不過除非你是使用很小的圖, 否則還是會被你的圖蓋到而會感覺不出來的.\\
+
+    \vspace{2.0cm}
+
+    \begin{verbatim}
+    \InsertFigure
+      [caption={opacity使用預設}]
+      {./figure.png}
+    \end{verbatim}
+
+    \InsertFigure
+      [scale=0.5,
+        caption={opacity使用預設}]
+      {./example/abstract/pic/extended-abstract-2.jpg}
+
+    \newpage
+    \EmptyLine
+    \vspace{2.5cm}
+
+    \begin{verbatim}
+    \InsertFigure
+      [opacity=0.4,
+      caption={opacity使用0.4}]
+      {./figure.png}
+    \end{verbatim}
+
+    \InsertFigure
+      [scale=0.5,
+        caption={opacity使用0.4},
+        opacity=0.4]
+      {./example/abstract/pic/extended-abstract-2.jpg}
+
+    \newpage
+    \EmptyLine
+    \vspace{7.0cm}
+
+    \InsertFigures
+    [caption={opacity使用預設}] %
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC.png}
+    }%
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC-ND.png}
+    }
+
+    \vspace{1.0cm}
+
+    \InsertFigures
+    [caption={opacity使用0.4},
+    opacity=0.4]
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC.png}
+    }%
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC-ND.png}
+    }
+
+  } % End of \item{}
+
+  \newpage
+  \item
+  {
     把圖放在表格中, 這時候是使用\verb|\InsertFigure{}|, 是不能使用caption和label (正常應該用不到這種+寫法, 例如出現`Fig X.X'這種字在table中). (有關表格table的使用, 請參考Chap \RefTo{chapter:how-to:write:table}). 如真的想使用, 則考慮這邊的寫法.
 
     \begin{verbatim}
@@ -281,17 +345,18 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
 \newpage
 \StartSubSection{多張}
 
-  如果要同時顯示多張的話, 因為要能一頁版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 大約4張都已經算多的了. 所以真的數量比較多的話, 推薦分別放同不到頁面會比較好閱讀.\\
+  如果要同時顯示多張的話, 因為要能一頁版面的範圍內, 同時又要能清楚顯示到你圖中的內容和文字, 大約4張都已經算多的了. 所以真的數量比較多的話, 推薦分別放同不到頁面會比較好閱讀.
 
-  多張是使用\verb|\InsertFigures| ({\bf 注意:} Figure是複數, 有一個`s'), 設計上可插入1$\sim$8張的圖片, 而且寫法會跟插入單張相近.
+  多張是使用\verb|\InsertFigures| ({\bf 注意:} Figure是複數, 有一個`s'), 設計上可插入1$\sim$8張的圖片, 而且寫法會跟插入單張相近.\\
 
-  \EmptyLine
   \begin{DescriptionFrame}
   \begin{verbatim}
   Options 主圖的設定 (使用','來分隔, 不分先後順序)
     perrow:  每一列多少張圖片 (選填, 預設: 1. 最小: 1, 最大: 4)
     caption: 標題 (選填)
     label:   標簽 (選填, 必須要配合caption使用, 否則無效)
+    opacity: 背景顏色透明度, 預設使用白色為背景 (選填, 預設: 0.75)
+    (0.x ~ < 1.0: 透明; => 1.0: 不透明)
 
   Figure 1~8: 各張圖片的設定
     設定方式跟使用\InsertFigure是一樣的

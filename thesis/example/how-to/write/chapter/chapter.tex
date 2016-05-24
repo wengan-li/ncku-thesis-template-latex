@@ -2,29 +2,27 @@
 \StartSection{章節 Chapter/Section}{chapter:how-to:write:chapter-section}
 % ------------------------------------------------
 
-\StartSubSection{介紹}
-
-編寫任何的文章, 都會使用不同的章節來把內容進行分區. 例如學校的排版樣子大約:
-
-  \EmptyLine
+編寫任何的文章, 都會使用不同的章節來把內容進行分區. 例如這模版預設的樣子為:
 \begin{DescriptionFrame}
-  \centerline{\LARGE Chapter X}
   \vspace{0.2cm}
+  \centerline{\LARGE Chapter X}
+  \vspace{0.3cm}
   \centerline{\LARGE 這是標題}
 
   \vspace{0.5cm}
-  \mbox{\Large X.1 子項目}\\
-  \mbox{\hspace{1.2cm}項目內容 ...}
+  \mbox{\Large X.1 節標題}\\
+  \mbox{\hspace{1.2cm}內容 ...}
 
   \vspace{0.3cm}
-  \mbox{\large X.1.1 子項目}\\
-  \mbox{\hspace{1.2cm}項目內容 ...}
+  \mbox{\large X.1.1 小節標題}\\
+  \mbox{\hspace{1.2cm}內容 ...}
+
+  \vspace{0.3cm}
+  \mbox{\large 小小節標題}\\
+  \mbox{\hspace{1.2cm}內容 ...}
 \end{DescriptionFrame}
-  \EmptyLine
 
 所以針對這些功能, 本模版提供:
-
-  \EmptyLine
 \begin{DescriptionFrame}
   \begin{verbatim}
     主要章節
@@ -33,31 +31,37 @@
     \StartChapter{ Title }{ Label }
     \EndChapter % 用來保證你的內容在這Chapter內
 
-    次章節
+    節
     Title: 標題 (必填)
     Label: 標簽 (選填)
     \StartSection{ Title }{ Label }
 
-    次章節的子章節
+    小節
     Title: 標題 (必填)
     Label: 標簽 (選填)
     \StartSubSection{ Title }{ Label }
+
+    小小節
+    Title: 標題 (必填)
+    Label: 標簽 (選填)
+    \StartSubSubSection{ Title }{ Label }
   \end{verbatim}
 \end{DescriptionFrame}
-  \EmptyLine
 
-所以針對剛剛的例子, 它的LaTex寫法為:
+所以針對剛剛的例子, 它的LaTex寫法為:\\
 
-  \EmptyLine
 \begin{DescriptionFrame}
   \begin{verbatim}
     \StartChapter{這是標題}
 
-    \StartSection{子項目}
-    項目內容 ...
+    \StartSection{節標題}
+    內容 ...
 
-    \StartSubSection{X.1的子項目}
-    項目內容 ...
+    \StartSubSection{小節標題}
+    內容 ...
+
+    \StartSubSubSection{小小節標題}
+    內容 ...
 
     \EndChapter
   \end{verbatim}
