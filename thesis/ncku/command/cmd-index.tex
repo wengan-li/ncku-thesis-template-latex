@@ -27,7 +27,8 @@
 \newcommand\VarIndexTitleEng{Table of Contents}
 \newcommand\VarIndexTitleText{\VarIndexTitleEng}  % Default
 \newcommand\GetIndexTitleText{\VarIndexTitleText}
-\newcommand{\SetIndexTitleText}[1]{\renewcommand{\VarIndexTitleText}{#1}}
+\newcommand{\SetIndexTitleText}[1]
+  {\renewcommand{\VarIndexTitleText}{#1}}
 
 % ----------------------------------------------------------------------------
 
@@ -35,7 +36,8 @@
 \newcommand\VarTablesIndexTitleEng{List of Tables}
 \newcommand\VarTablesIndexTitleText{\VarTablesIndexTitleEng}  % Default
 \newcommand\GetTablesIndexTitleText{\VarTablesIndexTitleText}
-\newcommand{\SetTablesIndexTitleText}[1]{\renewcommand{\VarTablesIndexTitleText}{#1}}
+\newcommand{\SetTablesIndexTitleText}[1]
+  {\renewcommand{\VarTablesIndexTitleText}{#1}}
 
 % ----------------------------------------------------------------------------
 
@@ -43,7 +45,8 @@
 \newcommand\VarFiguresIndexTitleEng{List of Figures}
 \newcommand\VarFiguresIndexTitleText{\VarFiguresIndexTitleEng}  % Default
 \newcommand\GetFiguresIndexTitleText{\VarFiguresIndexTitleText}
-\newcommand{\SetFiguresIndexTitleText}[1]{\renewcommand{\VarFiguresIndexTitleText}{#1}}
+\newcommand{\SetFiguresIndexTitleText}[1]
+  {\renewcommand{\VarFiguresIndexTitleText}{#1}}
 
 % ----------------------------------------------------------------------------
 
@@ -52,11 +55,13 @@
   \SetTablesIndexTitleText{\VarTablesIndexTitleChi}%
   \SetFiguresIndexTitleText{\VarFiguresIndexTitleChi}%
 } % End of \newcommand{}
+
 \newcommand{\IndexEngMode}{%
   \SetIndexTitleText{\VarIndexTitleEng}%
   \SetTablesIndexTitleText{\VarTablesIndexTitleEng}%
   \SetFiguresIndexTitleText{\VarFiguresIndexTitleEng}%
 } % End of \newcommand{}
+
 \IndexEngMode % Default
 
 % ----------------------------------------------------------------------------
