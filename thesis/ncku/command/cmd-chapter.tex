@@ -255,8 +255,14 @@
       \ifthenelse{\equal{\value{subsubsection}}{1}}%
       {\vspace{0.2cm}}%
       {\vspace{1.0cm}}%
-      \parindent 0pt \textbf{%
-        \ValueSubSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \ifthenelse{\equal{\ValueSubSubSectionTitleNumberingFormat}{\empty}}%
+      {%
+        \parindent 0pt \textbf{#2} \par%
+      }%
+      {%
+        \parindent 0pt \textbf{%
+          \ValueSubSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      }%
       \vspace{0.1cm}%
     }%
     %
