@@ -20,6 +20,9 @@
 
 % ----------------------------------------------------------------------------
 
+%\def\singlespacing{%
+%    \def\default@spacing{\baselineskip=15.5pt plus .5pt minus .2pt}}
+\begin{comment}
 \makeatletter
 
 % Regular text spacing
@@ -33,7 +36,7 @@
     \def\default@spacing{\baselineskip=21.5pt plus .5pt minus .2pt}}
 
 \makeatother
-
+\end{comment}
 % ----------------------------------------------------------------------------
 
 % 設定段落之間的距離
@@ -64,14 +67,14 @@
 
 \newcommand{\UseEngLinesSpacing}
 {%
-  \doublespacing%
-  \doublespace%
+%  \doublespacing%
+%  \doublespace%
 } % End of \newcommand{}
 
 \newcommand{\UseChiLinesSpacing}
 {%
-  \singlespacing%
-  \singlespace%
+%  \singlespacing%
+%  \singlespace%
 } % End of \newcommand{}
 
 \newcommand{\ThesisWroteInChi}{%
@@ -90,3 +93,6 @@
 
 % Default lines space is following English style format 
 \UseEngLinesSpacing
+
+% 	延伸 baseline的高度
+\renewcommand{\baselinestretch}{1.2}
