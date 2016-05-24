@@ -19,7 +19,7 @@
 
 % Extended Abstract
 \newcommand{\StartExtendedAbstract}
-{
+{%
   %
   \UseEngLinesSpacing
   %
@@ -47,26 +47,14 @@
   \EmptyLine%
   \end{minipage}
   %
-  % Set page
-  %\baselineskip=15pt
-%  \setlength{\parindent}{0.0pt}
-  % 設定段落之間的距離
-%  \setlength{\parskip}{0.5cm}
-  %
+  % Reset style of caption of fingure and table
   \captionsetup[table]{font=bf}
   \captionsetup[figure]{font=bf}
 } % End of \newcommand{}
 
 \newcommand{\EndExtendedAbstract}
 {
-  \EndOfPage
-  %
-  % 設定段落之間的距離
-%  \setlength{\parskip}{0.3cm}
-  %
-  % Reset page
-%  \setlength{\parindent}{1.5em}
-%  \baselineskip=26pt
+  \EndChapter
   %
   % Re-set style
   \pagestyle{plain}
@@ -75,6 +63,7 @@
   \setcounter{table}{0}
   \setcounter{figure}{0}
   %
+  % Reset style of caption of fingure and table
   \captionsetup[table]{labelfont=bf, textfont=normalfont}
   \captionsetup[figure]{labelfont=bf, textfont=normalfont}
   %
@@ -100,8 +89,8 @@
 } % End of \newcommand{}
 
 % Chapter in Extended Abstract
-\DeclareDocumentCommand{\ExtAbstractChapter}{+m +g} % Back-porting
 %\newcommand{\ExtAbstractChapter}[1]
+\DeclareDocumentCommand{\ExtAbstractChapter}{+m +g} % Back-porting
 {
   \EmptyLine%
   \centerline{\textbf{\MakeUppercase{#1}}}%
