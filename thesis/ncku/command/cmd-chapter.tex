@@ -246,8 +246,14 @@
       \ifthenelse{\equal{\value{appendixsubsubsection}}{1}}%
       {\vspace{0.2cm}}%
       {\vspace{1.0cm}}%
-      \parindent 0pt \textbf{%
-        \ValueAppendixSubSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \ifthenelse{\equal{\ValueAppendixSubSubSectionTitleNumberingFormat}{\empty}}%
+      {%
+        \parindent 0pt \textbf{#2} \par%
+      }%
+      {%
+        \parindent 0pt \textbf{%
+          \ValueAppendixSubSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      }%
       \vspace{0.1cm}%
     }%
     {%
