@@ -20,7 +20,6 @@
 
 % Some helper function about chapter and section
 
-
 % ----------------------------------------------------------------------------
 
 \newcommand{\DisplayChapterHeader}[2]%
@@ -118,11 +117,11 @@
 } % End of \RenewDocumentCommand{}
 
 % ----------------------------------------------------------------------------
-
+\begin{comment}
 \makeatletter
 
 %%% Restored from latex.ltx--Glenn G. Lai
-%\begin{comment}
+
 \def\@startsection#1#2#3#4#5#6{\if@noskipsec \leavevmode \fi
    \par \@tempskipa #4\relax
    \@afterindenttrue
@@ -133,7 +132,7 @@
      \addpenalty{\@secpenalty}\addvspace{\@tempskipa}\fi \@ifstar
      {\@ssect{#3}{#4}{#5}{#6}}%
      {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
-%\end{comment}
+
  \def\section{\@startsection{section}{1}{\z@}%
     {4.6ex plus -1ex minus -.2ex}{.3ex plus .2ex}{\bf}}
 \def\subsection{\@startsection{subsection}{2}{\z@}%
@@ -142,7 +141,7 @@
     {3.25ex plus -1ex minus -.2ex}{.1ex plus .2ex}{\bf}}
 
 \makeatother
-
+\end{comment}
 % ----------------------------------------------------------------------------
 
 \RenewDocumentCommand{\section}{s m}
@@ -164,8 +163,14 @@
       \ifthenelse{\equal{\value{appendixsection}}{1}}%
       {\vspace{0.2cm}}%
       {\vspace{1.0cm}}%
-      \parindent 0pt \textbf{%
-        \ValueAppendixSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \ifthenelse{\equal{\ValueAppendixSectionTitleNumberingFormat}{\empty}}%
+      {%
+        \parindent 0pt \textbf{#2} \par%
+      }%
+      {%
+        \parindent 0pt \textbf{%
+          \ValueAppendixSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      }%
       \vspace{0.1cm}%
     }%
     {%
@@ -173,11 +178,16 @@
       \ifthenelse{\equal{\value{section}}{1}}%
       {\vspace{0.2cm}}%
       {\vspace{1.0cm}}%
-      \parindent 0pt \textbf{%
-        \ValueSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \ifthenelse{\equal{\ValueSectionTitleNumberingFormat}{\empty}}%
+      {%
+        \parindent 0pt \textbf{#2} \par%
+      }%
+      {%
+        \parindent 0pt \textbf{%
+          \ValueSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      }%
       \vspace{0.1cm}%
     }%
-    %
   }%
   % Reset counters
   \setcounter{subsection}{0}%
@@ -205,8 +215,14 @@
       \ifthenelse{\equal{\value{appendixsubsection}}{1}}%
       {\vspace{0.2cm}}%
       {\vspace{1.0cm}}%
-      \parindent 0pt \textbf{%
-        \ValueAppendixSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \ifthenelse{\equal{\ValueAppendixSubSectionTitleNumberingFormat}{\empty}}%
+      {%
+        \parindent 0pt \textbf{#2} \par%
+      }%
+      {%
+        \parindent 0pt \textbf{%
+          \ValueAppendixSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      }%
       \vspace{0.1cm}%
     }%
     {%
@@ -214,11 +230,16 @@
       \ifthenelse{\equal{\value{subsection}}{1}}%
       {\vspace{0.2cm}}%
       {\vspace{1.0cm}}%
-      \parindent 0pt \textbf{%
-        \ValueSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      \ifthenelse{\equal{\ValueSubSectionTitleNumberingFormat}{\empty}}%
+      {%
+        \parindent 0pt \textbf{#2} \par%
+      }%
+      {%
+        \parindent 0pt \textbf{%
+          \ValueSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
+      }%
       \vspace{0.1cm}%
     }%
-    %
   }%
   % Reset counters
   \setcounter{subsubsection}{0}%
@@ -271,7 +292,6 @@
       }%
       \vspace{0.1cm}%
     }%
-    %
   }%
 } % End of \RenewDocumentCommand{}
 
