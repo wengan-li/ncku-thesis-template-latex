@@ -25,9 +25,7 @@
   \ifthenelse{\equal{#1}{\empty}}{}%
   {%
     \caption{#1}%
-    \ifthenelse{\equal{#2}{\empty}}%
-    {}%
-    {\label{#2}}%
+    \ifthenelse{\equal{#2}{\empty}}{}{\label{#2}}%
   }%
 } % End of \DeclareDocumentCommand{}
 
@@ -36,31 +34,38 @@
   \ifthenelse{\equal{#1}{\empty}}{}%
   {%
     \caption*{#1}%
-    \ifthenelse{\equal{#2}{\empty}}%
-    {}%
-    {\label{#2}}%
+    \ifthenelse{\equal{#2}{\empty}}{}{\label{#2}}%
   }%
 } % End of \DeclareDocumentCommand{}
 
-\newcommand{\DisplayTableContent}[4]
-{
+\newcommand{\DisplayTableContent}[5]
+{%
+  \begin{minipage}[c]{\textwidth}%
+  \begin{mdframed}[skipabove=0pt, skipbelow=0pt, leftmargin=0pt, rightmargin=0pt,
+    innerleftmargin=0pt, innerrightmargin=0pt, innertopmargin=0pt,
+    innerbottommargin=0pt, linewidth=0pt, apptotikzsetting={%
+    \tikzset{mdfbackground/.append style={opacity=#4}}}]%
   \ifthenelse{\equal{#1}{0.0}}%
   {%
-    \begin{minipage}[c]{\textwidth}
-    \colorbox{white}{\makebox[\textwidth]{%
+    \makebox[\textwidth]%
+    {%
       \setlength{\tabcolsep}{#2}%
       \renewcommand{\arraystretch}{#3}%
-      #4}}
-    \end{minipage}
+      #5%
+    }%
   }{%
-    \begin{minipage}[c]{\textwidth}
-    \colorbox{white}{\makebox[\textwidth]{%
-    \resizebox{#1\paperwidth}{!}{%
-      \setlength{\tabcolsep}{#2}%
-      \renewcommand{\arraystretch}{#3}%
-      #4}}}
-    \end{minipage}
+    \makebox[\textwidth]%
+    {%
+      \resizebox{#1\paperwidth}{!}%
+      {%
+        \setlength{\tabcolsep}{#2}%
+        \renewcommand{\arraystretch}{#3}%
+        #5%
+      }%
+    }%
   }%
+  \end{mdframed}%
+  \end{minipage}%
 } % End of \newcommand{}
 
 \pgfkeys
@@ -75,6 +80,7 @@
     pos = top, % Position of caption or nomtitle
     tabcolsep = 6pt,
     arraystretch = 1,
+    opacity = 0.75,
   },
   scale/.estore in = \TmpValueScale,
   nomtitle/.estore in = \TmpValueNomTitle,
@@ -83,32 +89,34 @@
   pos/.estore in = \TmpValuePosition,
   tabcolsep/.estore in = \TmpValueTabColSep,
   arraystretch/.estore in = \TmpValueArrayStretch,
+  opacity/.estore in = \TmpValueOpacity,
 } % End of \pgfkeys{}
 
 \newcommand{\InsertTable}[2][\empty]
-{
+{%
   % Parse the input
   \pgfkeys{/InsertTable, default, #1}%
   %
   \begin{table}[H]%
-    \colorbox{white}{\makebox[\textwidth]{%
-    \begin{minipage}[c]{\textwidth}%
   %
     \ifthenelse{\equal{\TmpValuePosition}{top}}%
     {%
       \ifthenelse{\equal{\TmpValueNomTitle}{\empty}}%
-      {\SetTableCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}}%
-      {\SetTableCaptionStarAndLabel{\TmpValueNomTitle}{\TmpValueLabel}}%
-      \DisplayTableContent{\TmpValueScale}{\TmpValueTabColSep}{\TmpValueArrayStretch}{#2}%
-    }{%
-      \DisplayTableContent{\TmpValueScale}{\TmpValueTabColSep}{\TmpValueArrayStretch}{#2}%
-      \ifthenelse{\equal{\TmpValueNomTitle}{\empty}}%
-      {\SetTableCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}}%
-      {\SetTableCaptionStarAndLabel{\TmpValueNomTitle}{\TmpValueLabel}}%
+        {\SetTableCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}}%
+        {\SetTableCaptionStarAndLabel{\TmpValueNomTitle}{\TmpValueLabel}}%
+      \DisplayTableContent{%
+        \TmpValueScale}{\TmpValueTabColSep}{%
+        \TmpValueArrayStretch}{\TmpValueOpacity}{#2}%
     }%
-    \end{minipage}
-    }}%
-  \end{table}
+    {%
+      \DisplayTableContent{%
+        \TmpValueScale}{\TmpValueTabColSep}{%
+        \TmpValueArrayStretch}{\TmpValueOpacity}{#2}%
+      \ifthenelse{\equal{\TmpValueNomTitle}{\empty}}%
+        {\SetTableCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}}%
+        {\SetTableCaptionStarAndLabel{\TmpValueNomTitle}{\TmpValueLabel}}%
+    }%
+  \end{table}%
 } % End of \newcommand{}
 
 % -----------------------------------------------------------------
