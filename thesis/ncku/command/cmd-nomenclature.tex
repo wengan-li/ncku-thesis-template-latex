@@ -20,12 +20,9 @@
 % Chapters
 \DeclareDocumentCommand{\StartNomChapter}{+m +g}
 {%
-  \chapter*{#1}%
-  \IfNoValueF{#2}{\label{#2}}%
-  \addcontentsline{toc}{chapter}{#1}%
+  \StartChapterStar{#1}{#2}%
 } % End of \DeclareDocumentCommand{}
 
-\def \EndNomChapter {\EndOfPage}
+\newcommand{\EndNomChapter}{\EndChapter}
 
 % ----------------------------------------------------------------------------
-

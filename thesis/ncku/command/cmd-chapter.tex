@@ -259,15 +259,29 @@
 } % End of \RenewDocumentCommand{}
 
 % ----------------------------------------------------------------------------
-% Chapters
+% Chapters (對應\chapter{})
 \DeclareDocumentCommand{\StartChapter}{+m +g}
 {%
   \StartNewPage%
   \chapter{#1}%
+  \pagestyle{plain}% Default page style
   \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
 
-\def \EndChapter {\EndOfPage}
+% Chapters Star (對應\chapter*{})
+\DeclareDocumentCommand{\StartChapterStar}{+m +g}
+{%
+  \StartNewPage%
+  \chapter*{#1}%
+  \pagestyle{plain}% Default page style
+  \IfNoValueF{#2}{\label{#2}}%
+} % End of \DeclareDocumentCommand{}
+
+\newcommand{\EndChapter}
+{%
+  \EndOfPage%
+  \UseDefaultLinesSpacing%
+} % End of \newcommand{}
 
 % Section
 \DeclareDocumentCommand{\StartSection}{+m +g}

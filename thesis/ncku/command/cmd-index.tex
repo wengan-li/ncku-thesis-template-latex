@@ -65,27 +65,23 @@
 
 \renewcommand\tableofcontents
 {%
-  \StartNewPage%
-  \chapter*{\VarIndexTitleText}%
+  \StartChapterStar{\VarIndexTitleText}%
   \@starttoc{toc}%
-  \EndOfPage%
+  \EndChapter%
 } % End of \renewcommand{}
 
 \renewcommand\listoftables
 {%
-  \UseDefaultLinesSpacing%
-  \StartNewPage%
-  \chapter*{\VarTablesIndexTitleText}%
+  \StartChapterStar{\VarTablesIndexTitleText}%
   \@starttoc{lot}%
-  \EndOfPage%
+  \EndChapter%
 } % End of \renewcommand{}
 
 \renewcommand\listoffigures
 {%
-  \StartNewPage%
-  \chapter*{\VarFiguresIndexTitleText}%
+  \StartChapterStar{\VarFiguresIndexTitleText}%
   \@starttoc{lof}%
-  \EndOfPage%
+  \EndChapter%
 } % End of \renewcommand{}
 
 \makeatother

@@ -22,40 +22,32 @@
 \newcommand{\StartAbstractChi}
 {%
   \UseChiLinesSpacing%
-  \StartNewPage%
-  \chapter*{摘要}%
-  \addcontentsline{toc}{chapter}{摘要}%
-  \pagestyle{plain}%
+  \StartChapterStar{摘要}%
 } % End of \newcommand{}
 
 \newcommand{\StartAbstract}
 {%
   \UseEngLinesSpacing%
-  \StartNewPage%
-  \chapter*{Abstract}%
-  \addcontentsline{toc}{chapter}{Abstract}%
-  \pagestyle{plain}%
+  \StartChapterStar{Abstract}%
 } % End of \newcommand{}
 
 \newcommand{\EndChiAbstract}{\EndAbstractChi}
 \newcommand{\EndAbstractChi}
 {%
   % Keyword
-  \ifthenelse{\equal{\GetAbstractChiKeywords}{\empty}}{}{%
-      \par{\noindent \bf 關鍵字:} \GetAbstractChiKeywords}
+  \ifthenelse{\equal{\GetAbstractChiKeywords}{\empty}}%
+    {}{\par{\noindent \bf 關鍵字:} \GetAbstractChiKeywords}
   %
-  \EndOfPage%
-  \UseDefaultLinesSpacing%
+  \EndChapter%
 } % End of \newcommand{}
 
 \newcommand{\EndAbstract}
 {%
   % Keyword
-  \ifthenelse{\equal{\GetAbstractEngKeywords}{\empty}}{}{%
-      \par{\noindent \bf Keyword:} \GetAbstractEngKeywords}
+  \ifthenelse{\equal{\GetAbstractEngKeywords}{\empty}}%
+    {}{\par{\noindent \bf Keyword:} \GetAbstractEngKeywords}
   %
-  \EndOfPage%
-  \UseDefaultLinesSpacing%
+  \EndChapter%
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
