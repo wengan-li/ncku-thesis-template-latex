@@ -1,0 +1,125 @@
+% ------------------------------------------------
+
+\newpage
+\StartSection{Table使用透明度}
+
+\EmptyLine
+\EmptyLine
+\EmptyLine
+\EmptyLine
+\EmptyLine
+
+\InsertTable
+  [caption={opacity使用預設}]
+  {
+    \begin{tabular}{llll}
+    \hline
+    Engine &  &  & OPEL Astra C16SE \\ \hline
+    Displacement (cc) &  &  & 1598 \\
+    Bore x stroke(mm x mm) &  &  & 79 x 81.5 \\
+    Value mechanism &  &  & SOHC \\
+    Number of valves &  &  & Intake 4, exhaust 4 \\
+    Compression ratio &  &  & 9.8:1 \\
+    Torque &  &  & 135/3400 Nm/rpm \\
+    Power &  &  & 74/5800 kW/rpm \\
+    Ignition sequence &  &  & 1-3-4-2 \\
+    Spark plug &  &  & BPR6ES \\
+    Fuel &  &  & 95 unleaded gasoline \\
+    Cylinder arrangment &  &  & In-line 4 cylinders \\ \hline
+    \end{tabular}
+  } % End of  \InsertTable{}
+
+  \InsertTable
+    [caption={測試opacity=0.4},
+      opacity=0.4]
+    {
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+       & Col 1 & Col 2 & Col 3 & Col 4 & Col 5 & Col 6 & Col 7 & Col 8 & Col 9 & Col 10 & Col 11 & Col 12 & Col 13 & Col 14 \\ \hline
+      Row 1 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 2 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 3 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 4 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      \end{tabular}
+  } % End of  \InsertTable{}
+
+% ------------------------------------------------
+
+\newpage
+\StartSection{Table測試寬度}
+
+  \InsertTable
+    [caption={不進行寬度設定, 應超出頁面}]
+    {
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+       & Col 1 & Col 2 & Col 3 & Col 4 & Col 5 & Col 6 & Col 7 & Col 8 & Col 9 & Col 10 & Col 11 & Col 12 & Col 13 & Col 14 \\ \hline
+      Row 1 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 2 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 3 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 4 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      \end{tabular}
+  } % End of  \InsertTable{}
+
+  \InsertTable
+    [scale=0.9,
+      caption={表格寬度設定scale=0.9}]
+    {
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+       & Col 1 & Col 2 & Col 3 & Col 4 & Col 5 & Col 6 & Col 7 & Col 8 & Col 9 & Col 10 & Col 11 & Col 12 & Col 13 & Col 14 \\ \hline
+      Row 1 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 2 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 3 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      Row 4 & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value & Value \\ \hline
+      \end{tabular}
+  } % End of  \InsertTable{}
+
+% ------------------------------------------------
+
+\newpage
+\StartSection{Figure使用透明度}
+
+\EmptyLine
+
+\InsertFigure
+  [scale=0.5,
+    caption={opacity使用預設}]
+  {./example/abstract/pic/extended-abstract-2.jpg}
+
+\EmptyLine
+
+\InsertFigure
+  [scale=0.5,
+    caption={測試opacity=0.4},
+    opacity=0.4]
+  {./example/abstract/pic/extended-abstract-2.jpg}
+
+\newpage
+
+\EmptyLine\EmptyLine\EmptyLine\EmptyLine\EmptyLine
+\EmptyLine\EmptyLine\EmptyLine\EmptyLine\EmptyLine
+\EmptyLine\EmptyLine\EmptyLine\EmptyLine\EmptyLine
+
+    \InsertFigures
+    [caption={opacity使用預設}] %
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC.png}
+    }%
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC-ND.png}
+    }
+
+\EmptyLine
+
+    \InsertFigures
+    [caption={測試opacity=0.4},
+    opacity=0.4]
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC.png}
+    }%
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC-ND.png}
+    }
+
+% ------------------------------------------------
