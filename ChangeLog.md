@@ -14,19 +14,28 @@
   2. `\StartChapter`, `\EndChapter`
   3. `\StartAbstractChi`, `\StartAbstract`, `\EndAbstractChi`, `\EndAbstract`
   4. `\tableofcontents`, `\listoftables`, `\listoffigures`
+  5. `\InsertTable`, `\InsertFigure`
 
 
 20. 修正[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)提到的一些錯誤:
   1. 在Appendix中, 章節號碼的錯誤, 如'6.1'卻不是'A.1'
   2. 使用equation時, equation的號碼受新的格式而影響
+  3. 使用table時, table的號碼受新的格式而影響
 
 30. 提供[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)提到的一些新功能:
   1. 可使用`\ChapterTitleNumFormat`或`\AppendixChapterTitleNumFormat`同時自定號碼和旁邊的一些內容, 相關的使用方式請看`conf.tex`和說明文件.
-  2. 表格可以新增`op`的設定, 以選擇要不要背景白底的漸透度.
+  2. 更新`\InsertFigure`, `\InsertTable`, Table/Figure可以新增`opacity`的設定, 以控制背景白底的透明度.
+  3. 在`conf.tex`提供`SetCustomFigureName`和`SetCustomTableName`以自定圖表的文字, 如Table 2.1 -> 表 2.1 或 Figure 2.1 -> 圖 2.1
 
 
-4.Table 二.1－> 表 2.1
+1. 修正英文延伸摘要中的Table和Figure都不會顯示在目錄中.
 
+
+40. 修正由`v1.1.2`跟[Issue \#6](https://github.com/wengan-li/ncku-thesis-template-latex/issues/6)提到的一直殘下來的錯字(templete -> template).
+
+
+50. 更新核心檔案的版權資料的說明.
+60. 更新了`ncku.sty`中的內容說明.
 
 #### v1.4.3 [May 21, 2016]:
 1. 提供可自定章節`參考文獻`的題目, 而非固定的`References`. 請參考`conf.tex`中的`\ChapterReferenceTitleInChi`, `\ChapterReferenceTitleInEng`, `\SetChapterReferenceTitle`.
