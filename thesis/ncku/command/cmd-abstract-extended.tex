@@ -40,16 +40,15 @@
 % Extended Abstract
 \newcommand{\StartExtendedAbstract}
 {%
+  \UseEngLinesSpacing%
   %
-  \UseEngLinesSpacing
-  %
-  \StartNewPage
+  \StartNewPage%
   % Set style
-  \thispagestyle{empty}
+  \thispagestyle{empty}%
   %
   % Add to "Table of Contents"
 %  \addcontentsline{toc}{chapter}{Extended Abstract}
-  \addcontentsline{toc}{chapter}{英文延伸摘要}
+  \addcontentsline{toc}{chapter}{英文延伸摘要}%
   %
   \begin{minipage}[c][5cm][c]{\textwidth}
   \parbox{\textwidth}{\center\large\textbf{\GetEngTitle}}
@@ -65,33 +64,39 @@
 %  \center\normalsize\textit{\GetDeptEngName}\\%
 %  \center\normalsize\textit{\GetCollEngName}\\%
   \EmptyLine%
-  \end{minipage}
+  \end{minipage}%
   %
   % Reset style of caption of fingure and table
-  \captionsetup[table]{font=bf}
-  \captionsetup[figure]{font=bf}
+  \captionsetup[table]{font=bf}%
+  \captionsetup[figure]{font=bf}%
   %
-  \BeginExtendedAbstractFigureTableControl
+  \BeginExtendedAbstractFigureTableControl%
+  %
+  \UseTableNameDefault%
+  \UseFigureNameDefault%
 } % End of \newcommand{}
 
 \newcommand{\EndExtendedAbstract}
-{
-  \EndChapter
+{%
+  \EndChapter%
   %
   % Re-set style
-  \pagestyle{plain}
+  \pagestyle{plain}%
   %
-  \EndExtendedAbstractFigureTableControl
+  \EndExtendedAbstractFigureTableControl%
+  %
+  \UseTableNameCustom%
+  \UseFigureNameCustom%
   %
   % Reset figure and table counter to zero
-  \setcounter{table}{0}
-  \setcounter{figure}{0}
+  \setcounter{table}{0}%
+  \setcounter{figure}{0}%
   %
   % Reset style of caption of fingure and table
-  \captionsetup[table]{labelfont=bf, textfont=normalfont}
-  \captionsetup[figure]{labelfont=bf, textfont=normalfont}
+  \captionsetup[table]{labelfont=bf, textfont=normalfont}%
+  \captionsetup[figure]{labelfont=bf, textfont=normalfont}%
   %
-  \UseDefaultLinesSpacing
+  \UseDefaultLinesSpacing%
 } % End of \newcommand{}
 
 % Summary in Extended Abstract

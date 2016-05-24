@@ -142,3 +142,13 @@
 
 % -----------------------------------------------------------------
 
+\def\ValueTableNameDefault{Table}
+\def\ValueTableNameCustom{Table} % Default
+\def\UseTableNameDefault{%
+  \renewcommand{\tablename}{\ValueTableNameDefault}}
+\def\UseTableNameCustom{%
+  \renewcommand{\tablename}{\ValueTableNameCustom}}
+\newcommand{\SetCustomTableName}[1]{%
+  \renewcommand{\ValueTableNameCustom}{#1}}
+
+% -----------------------------------------------------------------

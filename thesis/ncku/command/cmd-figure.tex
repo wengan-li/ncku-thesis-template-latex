@@ -100,6 +100,17 @@
 
 % -----------------------------------------------------------------
 
+\def\ValueFigureNameDefault{Figure}
+\def\ValueFigureNameCustom{Figure} % Default
+\def\UseFigureNameDefault{%
+  \renewcommand{\figurename}{\ValueFigureNameDefault}}
+\def\UseFigureNameCustom{%
+  \renewcommand{\figurename}{\ValueFigureNameCustom}}
+\newcommand{\SetCustomFigureName}[1]{%
+  \renewcommand{\ValueFigureNameCustom}{#1}}
+
+% -----------------------------------------------------------------
+
 % 過去的API, 以 Error提醒不能再使用
 \newcommand{\InsertCenterImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
 \newcommand{\InsertImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
