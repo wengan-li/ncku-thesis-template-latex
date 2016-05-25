@@ -290,6 +290,49 @@
 
 % ----------------------------------------------------------------------------
 
+% --- 參考文獻 Reference ---
+% 設定可獨立使用, 但只有最後設定的一方有效
+
+% Reference的標題文字使用預設的中文或是英文
+% 預設的標題為: 參考文獻 (中文) / References (英文)
+% \ChapterReferenceTitleInChi:  標題文字為中文
+% \ChapterReferenceTitleInEng:  標題文字為英文
+% 預設使用\ChapterReferenceTitleInEng
+%
+% 如應為預設文字不是你所希望的,
+% 則可使用\SetChapterReferenceTitle去設定你所希望的文字, 不分中英文.
+
+%\ChapterReferenceTitleInChi
+%\ChapterReferenceTitleInEng
+%\SetChapterReferenceTitle{References / 參考文獻}
+
+% ----------------------
+
+% Reference引用時的格式
+% 除非有特殊的格式要求, 否則這部份是不用管的.
+
+%
+% 使用的格式  | 	作者名稱顯示的格式          |  引用時顯示的例子
+%     abbrv       |     H. J. Simpson                  |                [4]
+%     plain        |     Homer Jay Simpson     |                [4]
+%     alpha      |     Homer Jay Simpson     |            Sim95
+%    apacite  |     Homer J. S.                       |        Homer, 1995
+% 預設使用plain
+%
+% 注意: 如果你要轉換使用格式時, 推薦在重新產生論文前, 先把所有除了thesis.tex外的所有
+% thesis開頭或以thesis為檔名的檔案全刪掉. 例如'thesis.bbl', 'thesis.aux', 'thesis.lof'等所有檔案.
+% 否則有可能在產生論文時遇到錯誤, 如果遇到錯誤, 請不斷重新刪掉和重新產生論文,
+% 直到解決問題為止.
+% 已知: 由abbrv轉去apacite必定需要刪除檔案才能進行.
+%
+
+%\BibStyleUseAbbrv
+%\BibStyleUsePlain
+%\BibStyleUseAlpha
+%\BibStyleUseApacite
+
+% ----------------------------------------------------------------------------
+
 % --- 章節標題的設定 ---
 
 % --- 數字 ---
@@ -406,49 +449,6 @@
 %\SubSectionTitleNumFormat{%
 %  \StyleCNumArabic.\StyleSNumArabic.\StyleSSNumArabic}
 %\SubSubSectionTitleNumFormat{}
-
-% ----------------------------------------------------------------------------
-
-% --- 參考文獻 Reference ---
-% 設定可獨立使用, 但只有最後設定的一方有效
-
-% Reference的標題文字使用預設的中文或是英文
-% 預設的標題為: 參考文獻 (中文) / References (英文)
-% \ChapterReferenceTitleInChi:  標題文字為中文
-% \ChapterReferenceTitleInEng:  標題文字為英文
-% 預設使用\ChapterReferenceTitleInEng
-%
-% 如應為預設文字不是你所希望的,
-% 則可使用\SetChapterReferenceTitle去設定你所希望的文字, 不分中英文.
-
-%\ChapterReferenceTitleInChi
-%\ChapterReferenceTitleInEng
-%\SetChapterReferenceTitle{References / 參考文獻}
-
-% ----------------------
-
-% Reference引用時的格式
-% 除非有特殊的格式要求, 否則這部份是不用管的.
-
-%
-% 使用的格式  | 	作者名稱顯示的格式          |  引用時顯示的例子
-%     abbrv       |     H. J. Simpson                  |                [4]
-%     plain        |     Homer Jay Simpson     |                [4]
-%     alpha      |     Homer Jay Simpson     |            Sim95
-%    apacite  |     Homer J. S.                       |        Homer, 1995
-% 預設使用plain
-%
-% 注意: 如果你要轉換使用格式時, 推薦在重新產生論文前, 先把所有除了thesis.tex外的所有
-% thesis開頭或以thesis為檔名的檔案全刪掉. 例如'thesis.bbl', 'thesis.aux', 'thesis.lof'等所有檔案.
-% 否則有可能在產生論文時遇到錯誤, 如果遇到錯誤, 請不斷重新刪掉和重新產生論文,
-% 直到解決問題為止.
-% 已知: 由abbrv轉去apacite必定需要刪除檔案才能進行.
-%
-
-%\BibStyleUseAbbrv
-%\BibStyleUsePlain
-%\BibStyleUseAlpha
-%\BibStyleUseApacite
 
 % ----------------------------------------------------------------------------
 
