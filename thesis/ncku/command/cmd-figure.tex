@@ -116,3 +116,19 @@
 \newcommand{\InsertImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
 
 % -----------------------------------------------------------------
+
+% Default style
+\newcommand{\UseFigureCaptionDefaultStyle}
+{%
+  \captionsetup[figure]{labelfont=bf, textfont=normalfont}
+} % End of \newcommand{}
+
+% Style for Extended Abstract
+\newcommand{\UseFigureCaptionExtendedAbstractStyle}
+{%
+  \captionsetup[figure]{font=bf}%
+} % End of \newcommand{}
+
+\UseFigureCaptionDefaultStyle % Default
+
+% -----------------------------------------------------------------

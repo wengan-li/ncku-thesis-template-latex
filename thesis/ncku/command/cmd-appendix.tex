@@ -76,11 +76,10 @@
 {%
   \BeginAppendixChapter%
   %
-  % Reset chapter counter
-  \setcounter{chapter}{0}%
-  %
-  % Set Default style for chapter numbering
-  \renewcommand{\thechapter}{\Alph{chapter}}%
+  % Set numbering format style for figure/table/equation
+  \renewcommand{\thefigure}{\Alph{appendixchapter}.\arabic{figure}}
+  \renewcommand{\thetable}{\Alph{appendixchapter}.\arabic{table}}
+  \renewcommand{\theequation}{\Alph{appendixchapter}.\arabic{equation}}
   %
   \StartNewPage%
 } % End of \newcommand{}

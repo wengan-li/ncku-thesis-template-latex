@@ -43,16 +43,16 @@
   \singlespacing%
   %
   \StartNewPage%
-  % Set style
+  %
   \thispagestyle{empty}%
   %
   % Add to "Table of Contents"
 %  \addcontentsline{toc}{chapter}{Extended Abstract}
   \addcontentsline{toc}{chapter}{英文延伸摘要}%
   %
-  % Reset style of caption of fingure and table
-  \captionsetup[table]{font=bf}%
-  \captionsetup[figure]{font=bf}%
+  % Set style of caption for figure and table
+  \UseTableCaptionExtendedAbstractStyle%
+  \UseFigureCaptionExtendedAbstractStyle%
   %
   \BeginExtendedAbstractFigureTableControl%
   %
@@ -94,9 +94,9 @@
   \setcounter{table}{0}%
   \setcounter{figure}{0}%
   %
-  % Reset style of caption of fingure and table
-  \captionsetup[table]{labelfont=bf, textfont=normalfont}%
-  \captionsetup[figure]{labelfont=bf, textfont=normalfont}%
+  % Reset style of caption of figure and table
+  \UseTableCaptionDefaultStyle%
+  \UseFigureCaptionDefaultStyle%
   %
   \UseDefaultLineStretch%
 } % End of \newcommand{}
