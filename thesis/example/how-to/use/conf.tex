@@ -11,7 +11,7 @@
 
     如果使用`\verb|\DemoMode|'
 
-    就會使用`./example/context.tex'中模版說明文件內容. 但如果這資料夾已刪的話, 在產生論文時會回傳錯誤.
+    就會使用`./example/context.tex'中模版說明文件內容. 但如果這資料夾已刪的話, 在產生論文時會回傳錯誤.o
 
     否則會使用`./context/context.tex'的你所編寫論文內容. 所以這時候請在這資料夾中編寫你的論文.
   } % End of \item{}
@@ -204,6 +204,24 @@
     \verb|\SetIndexTitleText|: 設定目錄標題\\
     \verb|\SetTablesIndexTitleText|: 設定表格目錄標題\\
     \verb|\SetFiguresIndexTitleText|: 設定圖片目錄標題
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{圖片相關的設定}
+
+    預設上每一張圖的名字都是以 'Figure 2.1',\\
+    假如想使用自定的名字, 如 '圖 2.1',\\
+    則使用 \verb|\SetCustomFigureName{圖}| 即可.
+  } % End of \item{}
+
+  \item
+  {
+    \textbf{表格相關的設定}
+
+    預設上每一張表的名字都是以 'Table 2.1',\\
+    假如想使用自定的名字, 如 '表 2.1',\\
+    則使用 \verb|\SetCustomTableName{表}| 即可.
   } % End of \item{}
 
   \item
