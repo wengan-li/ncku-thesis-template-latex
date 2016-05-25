@@ -1,0 +1,45 @@
+% ------------------------------------------------
+
+\newpage
+\StartSection{Figure使用透明度}
+
+\vspace{2.0cm}
+
+\InsertFigure
+  [scale=0.5,
+    caption={opacity使用預設}]
+  {./example/abstract/pic/extended-abstract-2.jpg}
+
+\InsertFigure
+  [scale=0.5,
+    caption={測試opacity=0.4},
+    opacity=0.4]
+  {./example/abstract/pic/extended-abstract-2.jpg}
+
+\newpage
+
+\EmptyLine
+\vspace{7.0cm}
+
+    \InsertFigures
+    [caption={opacity使用預設}] %
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC.png}
+    }%
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC-ND.png}
+    }
+
+\vspace{1.0cm}
+
+    \InsertFigures
+    [caption={測試opacity=0.4},
+    opacity=0.4]
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC.png}
+    }%
+    {
+      {./example/how-to/write/figure/pic/CC-BY-NC-ND.png}
+    }
+
+% ------------------------------------------------
