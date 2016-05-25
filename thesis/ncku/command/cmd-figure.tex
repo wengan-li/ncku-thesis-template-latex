@@ -118,11 +118,48 @@
 \newcommand{\InsertImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
 
 % -----------------------------------------------------------------
+\begin{comment}
+\def\ValueFigureNameBoldOn{1}
+\def\ValueFigureNameBoldOff{0}
+\def\VarFigureNameBoldOption{\ValueFigureNameBoldOn} %Default
+\def\GetFigureNameBoldOption{\VarFigureNameBoldOption}
+\newcommand{\EnableFigureNameBold}{%
+  \renewcommand{\VarFigureNameBoldOption}{\ValueFigureNameBoldOn}}
+\newcommand{\DisableFigureNameBold}{%
+  \renewcommand{\VarFigureNameBoldOption}{\ValueFigureNameBoldOff}}
+
+% ------------------------------------------
+
+\def\ValueFigureTextBoldOn{3}
+\def\ValueFigureTextBoldOff{2}
+\def\VarFigureTextBoldOption{\ValueFigureTextBoldOff} %Default
+\def\GetFigureTextBoldOption{\VarFigureTextBoldOption}
+\newcommand{\EnableFigureTextBold}{%
+  \renewcommand{\VarFigureTextBoldOption}{\ValueFigureTextBoldOn}}
+\newcommand{\DisableFigureTextBold}{%
+  \renewcommand{\VarFigureTextBoldOption}{\ValueFigureTextBoldOff}}
+\end{comment}
+% ------------------------------------------
 
 % Default style
 \newcommand{\UseFigureCaptionDefaultStyle}
 {%
-  \captionsetup[figure]{labelfont=bf, textfont=normalfont}
+%  \ifthenelse{\equal{\GetFigureNameBoldOption}{\ValueFigureNameBoldOn}}
+%  {%
+%    \captionsetup[figure]{labelfont=bf}
+%  }%
+%  {%
+%    \captionsetup[figure]{labelfont=normalfont}
+%  }%
+  %
+%  \ifthenelse{\equal{\GetFigureTextBoldOption}{\ValueFigureTextBoldOn}}
+%  {%
+%    \captionsetup[figure]{textfont=bf}%
+%  }%
+%  {%
+%    \captionsetup[figure]{textfont=normalfont}%
+%  }%
+  \captionsetup[figure]{labelfont=bf, textfont=normalfont}%
 } % End of \newcommand{}
 
 % Style for Extended Abstract

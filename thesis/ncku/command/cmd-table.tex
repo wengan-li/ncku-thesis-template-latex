@@ -154,11 +154,53 @@
 \UseTableNameCustom % Default
 
 % -----------------------------------------------------------------
+\begin{comment}
+\def\ValueTableNameBoldOn{1}
+\def\ValueTableNameBoldOff{0}
+\def\VarTableNameBoldOption{\ValueTableNameBoldOn} %Default
+\def\GetTableNameBoldOption{\VarTableNameBoldOption}
+\newcommand{\EnableTableNameBold}{%
+  \renewcommand{\VarTableNameBoldOption}{\ValueTableNameBoldOn}}
+\newcommand{\DisableTableNameBold}{%
+  \renewcommand{\VarTableNameBoldOption}{\ValueTableNameBoldOff}}
+
+% ------------------------------------------
+
+\def\ValueTableTextBoldOn{3}
+\def\ValueTableTextBoldOff{2}
+\def\VarTableTextBoldOption{\ValueTableTextBoldOff} %Default
+\def\GetTableTextBoldOption{\VarTableTextBoldOption}
+\newcommand{\EnableTableTextBold}{%
+  \renewcommand{\VarTableTextBoldOption}{\ValueTableTextBoldOn}}
+\newcommand{\DisableTableTextBold}{%
+  \renewcommand{\VarTableTextBoldOption}{\ValueTableTextBoldOff}}
+\end{comment}
+% ------------------------------------------
+
+%\newcommand\TableCaptionFormatStyleLabel[1]{#1}
+%\newcommand\TableCaptionFormatStyleText[1]{\begin{bfseries}#1\end{bfseries}}
+%\begin{bfseries} Text to bold \end{bfseries}
+%\DeclareCaptionFormat{TableCaptionFormatStyle}{\TableCaptionFormatStyleLabel{#1#2}\TableCaptionFormatStyleText{#3}}
 
 % Default style
 \newcommand{\UseTableCaptionDefaultStyle}
 {%
-  \captionsetup[table]{labelfont=bf, textfont=normalfont}
+%  \ifthenelse{\equal{\GetTableNameBoldOption}{\ValueTableNameBoldOn}}
+%  {%
+%    \captionsetup[table]{labelfont=bf}
+%  }%
+%  {%
+%    \captionsetup[table]{labelfont=normalfont}
+%  }%
+  %
+%  \ifthenelse{\equal{\GetTableTextBoldOption}{\ValueTableTextBoldOn}}
+%  {%
+%    \captionsetup[table]{textfont=bf}%
+%  }%
+%  {%
+%    \captionsetup[table]{textfont=normalfont}%
+%  }%
+  \captionsetup[table]{labelfont=bf, textfont=normalfont}%
 } % End of \newcommand{}
 
 % Style for Extended Abstract
