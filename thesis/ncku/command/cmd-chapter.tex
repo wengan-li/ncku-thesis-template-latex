@@ -149,6 +149,20 @@
 \end{comment}
 % ----------------------------------------------------------------------------
 
+\newcommand{\DisplaySectionHeader}[2]%
+{%
+  \vspace{0.5cm}%
+  \ifthenelse{\equal{#1}{\empty}}%
+  {%
+    \parindent 0pt \textbf{#2} \par%
+  }%
+  {%
+    \parindent 0pt \textbf{#1\hspace{0.5cm}#2} \par%
+  }%
+  \vspace{0.1cm}%
+  \addcontentsline{toc}{section}{#1.\space#2}%
+} % End of \newcommand{}
+
 \RenewDocumentCommand{\section}{s m}
 {%
   %
@@ -165,35 +179,11 @@
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {%
       \refstepcounter{appendixsection}%
-      \vspace{0.5cm}%
-%      \ifthenelse{\equal{\value{appendixsection}}{1}}%
-%      {\vspace{0.2cm}}%
-%      {\vspace{1.0cm}}%
-      \ifthenelse{\equal{\ValueAppendixSectionTitleNumberingFormat}{\empty}}%
-      {%
-        \parindent 0pt \textbf{#2} \par%
-      }%
-      {%
-        \parindent 0pt \textbf{%
-          \ValueAppendixSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
-      }%
-      \vspace{0.1cm}%
+      \DisplaySectionHeader{\ValueAppendixSectionTitleNumberingFormat}{#2}
     }%
     {%
       \refstepcounter{section}%
-      \vspace{0.5cm}%
-%      \ifthenelse{\equal{\value{section}}{1}}%
-%      {\vspace{0.2cm}}%
-%      {\vspace{1.0cm}}%
-      \ifthenelse{\equal{\ValueSectionTitleNumberingFormat}{\empty}}%
-      {%
-        \parindent 0pt \textbf{#2} \par%
-      }%
-      {%
-        \parindent 0pt \textbf{%
-          \ValueSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
-      }%
-      \vspace{0.1cm}%
+      \DisplaySectionHeader{\ValueSectionTitleNumberingFormat}{#2}
     }%
   }%
   % Reset counters
@@ -202,6 +192,20 @@
 } % End of \RenewDocumentCommand{}
 
 % ----------------------------------------------------------------------------
+
+\newcommand{\DisplaySubSectionHeader}[2]%
+{%
+  \vspace{0.5cm}%
+  \ifthenelse{\equal{#1}{\empty}}%
+  {%
+    \parindent 0pt \textbf{#2} \par%
+  }%
+  {%
+    \parindent 0pt \textbf{#1\hspace{0.5cm}#2} \par%
+  }%
+  \vspace{0.1cm}%
+  \addcontentsline{toc}{subsection}{#1.\space#2}%
+} % End of \newcommand{}
 
 \RenewDocumentCommand{\subsection}{s m}
 {%
@@ -219,35 +223,13 @@
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {%
       \refstepcounter{appendixsubsection}%
-      \vspace{0.5cm}%
-%      \ifthenelse{\equal{\value{appendixsubsection}}{1}}%
-%      {\vspace{0.2cm}}%
-%      {\vspace{1.0cm}}%
-      \ifthenelse{\equal{\ValueAppendixSubSectionTitleNumberingFormat}{\empty}}%
-      {%
-        \parindent 0pt \textbf{#2} \par%
-      }%
-      {%
-        \parindent 0pt \textbf{%
-          \ValueAppendixSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
-      }%
-      \vspace{0.1cm}%
+      \DisplaySubSectionHeader{%
+        \ValueAppendixSubSectionTitleNumberingFormat}{#2}
     }%
     {%
       \refstepcounter{subsection}%
-      \vspace{0.5cm}%
-%      \ifthenelse{\equal{\value{subsection}}{1}}%
-%      {\vspace{0.2cm}}%
-%      {\vspace{1.0cm}}%
-      \ifthenelse{\equal{\ValueSubSectionTitleNumberingFormat}{\empty}}%
-      {%
-        \parindent 0pt \textbf{#2} \par%
-      }%
-      {%
-        \parindent 0pt \textbf{%
-          \ValueSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
-      }%
-      \vspace{0.1cm}%
+      \DisplaySubSectionHeader{%
+        \ValueSubSectionTitleNumberingFormat}{#2}
     }%
   }%
   % Reset counters
@@ -256,6 +238,20 @@
 } % End of \RenewDocumentCommand{}
 
 % ----------------------------------------------------------------------------
+
+\newcommand{\DisplaySubSubSectionHeader}[2]%
+{%
+  \vspace{0.5cm}%
+  \ifthenelse{\equal{#1}{\empty}}%
+  {%
+    \parindent 0pt \textbf{#2} \par%
+  }%
+  {%
+    \parindent 0pt \textbf{#1\hspace{0.5cm}#2} \par%
+  }%
+  \vspace{0.1cm}%
+  \addcontentsline{toc}{subsubsection}{#1.\space#2}%
+} % End of \newcommand{}
 
 \RenewDocumentCommand{\subsubsection}{s m}
 {%
@@ -273,35 +269,13 @@
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {%
       \refstepcounter{appendixsubsubsection}%
-      \vspace{0.5cm}%
-%      \ifthenelse{\equal{\value{appendixsubsubsection}}{1}}%
-%      {\vspace{0.2cm}}%
-%      {\vspace{1.0cm}}%
-      \ifthenelse{\equal{\ValueAppendixSubSubSectionTitleNumberingFormat}{\empty}}%
-      {%
-        \parindent 0pt \textbf{#2} \par%
-      }%
-      {%
-        \parindent 0pt \textbf{%
-          \ValueAppendixSubSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
-      }%
-      \vspace{0.1cm}%
+      \DisplaySubSubSectionHeader{%
+        \ValueAppendixSubSubSectionTitleNumberingFormat}{#2}
     }%
     {%
       \refstepcounter{subsubsection}%
-      \vspace{0.5cm}%
-%      \ifthenelse{\equal{\value{subsubsection}}{1}}%
-%      {\vspace{0.2cm}}%
-%      {\vspace{1.0cm}}%
-      \ifthenelse{\equal{\ValueSubSubSectionTitleNumberingFormat}{\empty}}%
-      {%
-        \parindent 0pt \textbf{#2} \par%
-      }%
-      {%
-        \parindent 0pt \textbf{%
-          \ValueSubSubSectionTitleNumberingFormat\hspace{0.5cm}#2} \par%
-      }%
-      \vspace{0.1cm}%
+      \DisplaySubSubSectionHeader{%
+        \ValueSubSubSectionTitleNumberingFormat}{#2}
     }%
   }%
 } % End of \RenewDocumentCommand{}
