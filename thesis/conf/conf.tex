@@ -250,16 +250,18 @@
 % 目錄的標題文字使用預設的中文或是英文
 % \IndexChiMode:  標題文字為中文
 % \IndexEngMode:  標題文字為英文
+% 預設的目錄標題為: 目錄 (中文) / Table of Contents (英文)
+% 預設的表格目錄標題為: 表格 (中文) / List of Tables (英文)
+% 預設的圖片目錄標題為: 圖片 (中文) / List of Figures (英文)
 % 預設使用\IndexEngMode
 
 %\IndexChiMode
 \IndexEngMode
 
-% 標題文字 Text of title
-% 預設的目錄標題為: 目錄 (中文) / Table of Contents (英文)
-% 預設的表格目錄標題為: 表格 (中文) / List of Tables (英文)
-% 預設的圖片目錄標題為: 圖片 (中文) / List of Figures (英文)
-% 如應為預設文字不是你所希望的, 那可以使用這邊去個別設定你所希望的文字, 不分中英文.
+% ----------------------
+
+% 目錄標題文字 Text of title
+% 如果預設文字不是你所希望的, 那可以使用這邊去個別設定你所希望的文字, 不分中英文.
 
 % 設定目錄標題
 %\SetIndexTitleText{Table of Contents / 目錄}
@@ -269,6 +271,30 @@
 
 % 設定圖片目錄標題
 %\SetFiguresIndexTitleText{List of Figures / 圖片}
+
+% ----------------------
+
+% 目錄中章節號碼跟章節題目中的分隔符號
+% 正常在目錄中會顯示 'Chapter 1. ABCDEF' 或 '第一章. ABCDEF'
+% 但因個人喜好, 做法不一樣, 如 'Chapter 1: ABCDEF' 或 '第一章 ABCDEF'
+% 故這邊可設定你想要的符號或不需要符號
+% \SetChapterTitleIndexSep % 設定'章'的符號
+% \SetSectionTitleIndexSep  % 設定'節'的符號
+% \SetSubSectionTitleIndexSep % 設定'小節'的符號
+% \SetSubSubSectionTitleIndexSep % 設定'小小節'的符號
+%
+% 如想換'章'的由'Chapter 1. ABCDEF'換成'Chapter 1: ABCDEF'
+% 則使用\SetChapterTitleIndexSep{:}
+%
+% 如想換'章'的由'第一章. ABCDEF'換成'第一章 ABCDEF'
+% 則使用\SetChapterTitleIndexSep{} 
+% 空掉內容則可.
+%
+
+%\SetChapterTitleIndexSep{}
+%\SetSectionTitleIndexSep{}
+%\SetSubSectionTitleIndexSep{.}
+%\SetSubSubSectionTitleIndexSep{.}
 
 % ----------------------------------------------------------------------------
 
@@ -443,7 +469,7 @@
 % --- 請在這邊設定你要的樣子 ---
 %
 
-%\ChapterTitleNumFormat{Chapter \StyleCNumArabic}
+\ChapterTitleNumFormat{第\StyleCNumArabic 章}
 %\SectionTitleNumFormat{%
 %  \StyleCNumArabic.\StyleSNumArabic}
 %\SubSectionTitleNumFormat{%

@@ -22,6 +22,24 @@
 
 % ----------------------------------------------------------------------------
 
+\newcommand{\VarChapterHeaderSeparatorInToc}{.} % Default
+\newcommand{\SetChapterTitleIndexSep}[1]{%
+  \renewcommand{\VarChapterHeaderSeparatorInToc}{#1}}
+
+\newcommand{\VarSectionHeaderSeparatorInToc}{.} % Default
+\newcommand{\SetSectionTitleIndexSep}[1]{%
+  \renewcommand{\VarSectionHeaderSeparatorInToc}{#1}}
+
+\newcommand{\VarSubSectionHeaderSeparatorInToc}{.} % Default
+\newcommand{\SetSubSectionTitleIndexSep}[1]{%
+  \renewcommand{\VarSubSectionHeaderSeparatorInToc}{#1}}
+
+\newcommand{\VarSubSubSectionHeaderSeparatorInToc}{.} % Default
+\newcommand{\SetSubSubSectionTitleIndexSep}[1]{%
+  \renewcommand{\VarSubSubSectionHeaderSeparatorInToc}{#1}}
+
+% ----------------------------------------------------------------------------
+
 \newcommand{\DisplayChapterHeader}[2]%
 {%
  \vspace*{0pt}%
@@ -34,7 +52,8 @@
 %    \vskip 35pt%
     \vskip 25pt%
   }%
-  \addcontentsline{toc}{chapter}{#1.\space#2}%
+  \addcontentsline{%
+    toc}{chapter}{#1\VarChapterHeaderSeparatorInToc{\ \ \ }#2}%
   \addtocontents{lof}{\protect\addvspace{10 pt}}
   \addtocontents{lot}{\protect\addvspace{10 pt}}
 } % End of \newcommand{}
@@ -162,7 +181,8 @@
     \parindent 0pt \textbf{#1\hspace{0.5cm}#2} \par%
   }%
   \vspace{0.1cm}%
-  \addcontentsline{toc}{section}{#1.\space#2}%
+  \addcontentsline{%
+    toc}{section}{#1\VarSectionHeaderSeparatorInToc{\ \ \ }#2}%
 } % End of \newcommand{}
 
 \RenewDocumentCommand{\section}{s m}
@@ -206,7 +226,8 @@
     \parindent 0pt \textbf{#1\hspace{0.5cm}#2} \par%
   }%
   \vspace{0.1cm}%
-  \addcontentsline{toc}{subsection}{#1.\space#2}%
+  \addcontentsline{%
+    toc}{subsection}{#1\VarSubSectionHeaderSeparatorInToc{\ \ \ }#2}%
 } % End of \newcommand{}
 
 \RenewDocumentCommand{\subsection}{s m}
@@ -252,7 +273,8 @@
     \parindent 0pt \textbf{#1\hspace{0.5cm}#2} \par%
   }%
   \vspace{0.1cm}%
-  \addcontentsline{toc}{subsubsection}{#1.\space#2}%
+  \addcontentsline{%
+    toc}{subsubsection}{#1\VarSubSubSectionHeaderSeparatorInToc{\ \ \ }#2}%
 } % End of \newcommand{}
 
 \RenewDocumentCommand{\subsubsection}{s m}
