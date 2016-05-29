@@ -45,7 +45,7 @@
 %    mpfootnote 	(小頁環境中註腳計數器)
 
 % ----------------------------------------------------------------------------
-
+\begin{comment}
 \newcommand\VarCounterNumberChapterNumber{\arabic{chapter}}
 \newcommand\GetCounterNumberChapterNumber{%
   \VarCounterNumberChapterNumber}
@@ -297,7 +297,7 @@
 % UpperRoman{\Roman{appendixsection}}
 % LowerAlph{\alph{appendixsection}}
 % UpperAlph{\Alph{appendixsection}}
-\begin{comment}
+
 \newcommand\GetCounterByType[2]
 {%
   \ifthenelse{\equal{#1}{ChiNum}}{\zhnum{#2}}{}%
@@ -497,8 +497,8 @@
   {
     BeginText = \empty,
     EndText = \empty,
-    CNumStyle = \empty,
-    SepAtIndex = \empty,
+    CNumStyle = Arabic,
+    SepAtIndex = {.},
   },
   BeginText/.estore in = \GetCTitleNumberFormatBeginText,
   EndText/.estore in = \GetCTitleNumberFormatEndText,
@@ -527,10 +527,10 @@
   {
     BeginText = \empty,
     EndText = \empty,
-    CNumStyle = \empty,
-    SNumStyle = \empty,
-    SepAtIndex = \empty, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = \empty, % 章號碼跟節號碼中的分隔符號
+    CNumStyle = Arabic,
+    SNumStyle = Arabic,
+    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
+    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
   },
   BeginText/.estore in = \GetSTitleNumberFormatBeginText,
   EndText/.estore in = \GetSTitleNumberFormatEndText,
@@ -565,12 +565,12 @@
   {
     BeginText = \empty,
     EndText = \empty,
-    CNumStyle = \empty,
-    SNumStyle = \empty,
-    SSNumStyle = \empty,
-    SepAtIndex = \empty, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = \empty, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = \empty, % 節號碼跟小節號碼中的分隔符號
+    CNumStyle = Arabic,
+    SNumStyle = Arabic,
+    SSNumStyle = Arabic,
+    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
+    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
+    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
   },
   BeginText/.estore in = \GetSSTitleNumberFormatBeginText,
   EndText/.estore in = \GetSSTitleNumberFormatEndText,
@@ -610,14 +610,14 @@
   {
     BeginText = \empty,
     EndText = \empty,
-    CNumStyle = \empty,
-    SNumStyle = \empty,
-    SSNumStyle = \empty,
-    SSSNumStyle = \empty,
-    SepAtIndex = \empty, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = \empty, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = \empty, % 節號碼跟小節號碼中的分隔符號
-    SepBetweenSSCnSSS = \empty, % 小節號碼跟小小節號碼中的分隔符號
+    CNumStyle = Arabic,
+    SNumStyle = Arabic,
+    SSNumStyle = Arabic,
+    SSSNumStyle = Arabic,
+    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
+    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
+    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
+    SepBetweenSSCnSSS = {.}, % 小節號碼跟小小節號碼中的分隔符號
   },
   BeginText/.estore in = \GetSSSTitleNumberFormatBeginText,
   EndText/.estore in = \GetSSSTitleNumberFormatEndText,
@@ -662,8 +662,8 @@
   {
     BeginText = \empty,
     EndText = \empty,
-    CNumStyle = \empty,
-    SepAtIndex = \empty,
+    CNumStyle = UpperAlph,
+    SepAtIndex = {.},
   },
   BeginText/.estore in = \GetAppendixCTitleNumberFormatBeginText,
   EndText/.estore in = \GetAppendixCTitleNumberFormatEndText,
@@ -692,10 +692,10 @@
   {
     BeginText = \empty,
     EndText = \empty,
-    CNumStyle = \empty,
-    SNumStyle = \empty,
-    SepAtIndex = \empty, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = \empty, % 章號碼跟節號碼中的分隔符號
+    CNumStyle = UpperAlph,
+    SNumStyle = Arabic,
+    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
+    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
   },
   BeginText/.estore in = \GetAppendixSTitleNumberFormatBeginText,
   EndText/.estore in = \GetAppendixSTitleNumberFormatEndText,
@@ -730,12 +730,12 @@
   {
     BeginText = \empty,
     EndText = \empty,
-    CNumStyle = \empty,
-    SNumStyle = \empty,
-    SSNumStyle = \empty,
-    SepAtIndex = \empty, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = \empty, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = \empty, % 節號碼跟小節號碼中的分隔符號
+    CNumStyle = UpperAlph,
+    SNumStyle = Arabic,
+    SSNumStyle = Arabic,
+    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
+    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
+    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
   },
   BeginText/.estore in = \GetAppendixSSTitleNumberFormatBeginText,
   EndText/.estore in = \GetAppendixSSTitleNumberFormatEndText,
@@ -775,14 +775,14 @@
   {
     BeginText = \empty,
     EndText = \empty,
-    CNumStyle = \empty,
-    SNumStyle = \empty,
-    SSNumStyle = \empty,
-    SSSNumStyle = \empty,
-    SepAtIndex = \empty, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = \empty, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = \empty, % 節號碼跟小節號碼中的分隔符號
-    SepBetweenSSCnSSS = \empty, % 小節號碼跟小小節號碼中的分隔符號
+    CNumStyle = UpperAlph,
+    SNumStyle = Arabic,
+    SSNumStyle = Arabic,
+    SSSNumStyle = Arabic,
+    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
+    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
+    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
+    SepBetweenSSCnSSS = {.}, % 小節號碼跟小小節號碼中的分隔符號
   },
   BeginText/.estore in = \GetAppendixSSSTitleNumberFormatBeginText,
   EndText/.estore in = \GetAppendixSSSTitleNumberFormatEndText,
@@ -935,14 +935,14 @@
   {
     BeginText = \empty,
     EndText = \empty,
-    CNumStyle = \empty,
-    SNumStyle = \empty,
-    SSNumStyle = \empty,
-    SSSNumStyle = \empty,
-    SepAtIndex = \empty, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = \empty, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = \empty, % 節號碼跟小節號碼中的分隔符號
-    SepBetweenSSCnSSS = \empty, % 小節號碼跟小小節號碼中的分隔符號
+    CNumStyle = Arabic,
+    SNumStyle = Arabic,
+    SSNumStyle = Arabic,
+    SSSNumStyle = Arabic,
+    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
+    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
+    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
+    SepBetweenSSCnSSS = {.}, % 小節號碼跟小小節號碼中的分隔符號
   },
   BeginText/.estore in = \TmpValueBeginText,
   EndText/.estore in = \TmpValueEndText,
@@ -1060,5 +1060,10 @@
   SepAtIndex = {}, SepBetweenCnS = {},
   SepBetweenSnSS = {}, SepBetweenSSCnSSS = {},
 } % End of \SetTitleNumberFormat{}
+
+% ----------------------------------------------------------------------------
+
+% Set numbering format of general figure/table/equation
+\SetupFTENumberFormat
 
 % ----------------------------------------------------------------------------

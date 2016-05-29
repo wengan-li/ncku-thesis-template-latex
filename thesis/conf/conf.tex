@@ -469,7 +469,7 @@
 % --- 請在這邊設定你要的樣子 ---
 %
 
-\ChapterTitleNumFormat{第\StyleCNumChiNum 章}
+%\ChapterTitleNumFormat{第\StyleCNumChiNum 章}
 %\SectionTitleNumFormat{%
 %  \StyleCNumArabic.\StyleSNumArabic}
 %\SubSectionTitleNumFormat{%
@@ -551,5 +551,9 @@
 %\AppendixSubSectionTitleNumFormat{%
 %  \StyleAppixCNumUpperAlph.\StyleAppixSNumArabic.\StyleAppixSSNumArabic}
 %\AppendixSubSubSectionTitleNumFormat{}
+
+\SetTitleNumberFormat[Chapter]{%
+  BeginText = {第}, EndText = {章},
+} % End of \SetTitleNumberFormat{}
 
 % ----------------------------------------------------------------------------
