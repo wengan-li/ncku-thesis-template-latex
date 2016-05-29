@@ -98,7 +98,7 @@
     test {\ifstrequal{#1}{AppendixSection}} }
       {%
         \vspace{0.5cm}%
-        \ifthenelse{\equal{#1}{\empty}}%
+        \ifthenelse{\equal{\TmpValueLabelString}{\empty}}%
         {%
           \parindent 0pt \textbf{\TmpValueTextString} \par%
         }%
@@ -116,7 +116,7 @@
     test {\ifstrequal{#1}{AppendixSubSection}} }
       {%
         \vspace{0.5cm}%
-        \ifthenelse{\equal{#1}{\empty}}%
+        \ifthenelse{\equal{\TmpValueLabelString}{\empty}}%
         {%
           \parindent 0pt \textbf{\TmpValueTextString} \par%
         }%
@@ -134,7 +134,7 @@
     test {\ifstrequal{#1}{AppendixSubSubSection}} }
       {%
         \vspace{0.5cm}%
-        \ifthenelse{\equal{#1}{\empty}}%
+        \ifthenelse{\equal{\TmpValueLabelString}{\empty}}%
         {%
           \parindent 0pt \textbf{\TmpValueTextString} \par%
         }%
@@ -345,6 +345,7 @@
     {%
       \refstepcounter{appendixsection}%
 %      \DisplaySectionHeader{\ValueAppendixSectionTitleNumberingFormat}{#2}
+      \SetupAppendixSectionTitleNumberFormatString%
       \DisplayTitleHeader{AppendixSection}%
       {%
         LabelString=\GetAppendixSectionTitleNumberFormatString,%
@@ -355,6 +356,7 @@
     {%
       \refstepcounter{section}%
 %      \DisplaySectionHeader{\ValueSectionTitleNumberingFormat}{#2}
+      \SetupSectionTitleNumberFormatString%
       \DisplayTitleHeader{Section}%
       {%
         LabelString=\GetSectionTitleNumberFormatString,%
@@ -403,6 +405,7 @@
       \refstepcounter{appendixsubsection}%
 %      \DisplaySubSectionHeader{%
 %        \ValueAppendixSubSectionTitleNumberingFormat}{#2}
+      \SetupAppendixSubSectionTitleNumberFormatString%
       \DisplayTitleHeader{AppendixSubSection}%
       {%
         LabelString=\GetAppendixSubSectionTitleNumberFormatString,%
@@ -414,6 +417,7 @@
       \refstepcounter{subsection}%
 %      \DisplaySubSectionHeader{%
 %        \ValueSubSectionTitleNumberingFormat}{#2}
+      \SetupSubSectionTitleNumberFormatString%
       \DisplayTitleHeader{SubSection}%
       {%
         LabelString=\GetSubSectionTitleNumberFormatString,%
@@ -462,6 +466,7 @@
       \refstepcounter{appendixsubsubsection}%
 %      \DisplaySubSubSectionHeader{%
 %        \ValueAppendixSubSubSectionTitleNumberingFormat}{#2}
+      \SetupAppendixSubSubSectionTitleNumberFormatString%
       \DisplayTitleHeader{AppendixSubSubSection}%
       {%
         LabelString=\GetAppendixSubSubSectionTitleNumberFormatString,%
@@ -473,6 +478,7 @@
       \refstepcounter{subsubsection}%
 %      \DisplaySubSubSectionHeader{%
 %        \ValueSubSubSectionTitleNumberingFormat}{#2}
+      \SetupSubSubSectionTitleNumberFormatString%
       \DisplayTitleHeader{SubSubSection}%
       {%
         LabelString=\GetSubSubSectionTitleNumberFormatString,%
