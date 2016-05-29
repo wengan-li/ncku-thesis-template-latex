@@ -1,10 +1,48 @@
 #### v1.4.5 [May 25, 2016]:
-**這版影響到`conf.tex`的內容.**
+**緊急修正v1.4.4所產生的問題**
+**這版影響到`conf.tex`的內容, 如同學不需要使用在conf.tex的新功能則不受影響.**
+
++ **修正錯誤**:
+
+
++ **提供/移除的APIs**:
+1. 放棄使用由`v1.4.4`提供的
+```
+\ChapterTitleNumFormat
+\SectionTitleNumFormat
+\SubSectionTitleNumFormat
+\SubSubSectionTitleNumFormat
+\AppendixChapterTitleNumFormat
+\AppendixSectionTitleNumFormat
+\AppendixSubSectionTitleNumFormat
+\AppendixSubSubSectionTitleNumFormat
+以及相關的\StyleXXXXX所有APIs
+```
+
+理由為:
+  ```
+  1. 使用方式過於複雜, 增加同學的困擾.
+  2. 使用方式不直覺, 如同一種的數字類型會因應用在哪, 必須使用對應的API. 故產生同一個位置(如 Chapter)卻有7種對應的API去使用7種的數字類型.
+  3. 由[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)發現, 之前的底層設計方式沒法提供因不同的數字類型在引用時還能使用新的類型, 同時都沒法修改原有的API來修正這問題.
+  4. 正由於這個的使用方式和底層設計方式複雜, 對維護這模版造成很大的困擾和難度.
+  ```
+
+一律改使用新的`\SetTitleNumberFormat`去對應以上的功能和提供更多的設定.
+
+
+
+
+
++ **更新**:
 
 1. 在目錄中, 在章節號碼跟章節題目中增加了一下空白, 以提高可閱讀性.
-2. 在`conf.tex`新增`\SetChapterTitleIndexSep`, `\SetSectionTitleIndexSep`, `\SetSubSectionTitleIndexSep`和`\SetSubSubSectionTitleIndexSep`, 以控制目錄中章節號碼跟章節題目中的分隔符號, 如'第一章. ABCDEF'換成'第一章 ABCDEF' \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
 
 10. 重新編寫`v1.4.4`的更新內容, 以更清楚的方式來說明.
+
+
+
+
+
 
 #### v1.4.4 [May 25, 2016]:
 `conf.tex`
