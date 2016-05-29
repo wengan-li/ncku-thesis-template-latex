@@ -818,7 +818,115 @@
   }{\GetAppendixSubSubSectionTitleNumberFormatString}%
 } % End of \newcommand{}
 
+% ----------------------------------------------------------------------------
+
+\newcommand\GetGeneralFigureNumberFormatString{}
+\newcommand\SetupGeneralFigureNumberFormatString
+{%
+  \appto\GetGeneralFigureNumberFormatString{}%
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetGeneralFigureNumberFormatString}{%
+    \GetCTitleNumberFormatCNumStyle}{chapter}%
+  \appto\GetGeneralFigureNumberFormatString{.}
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetGeneralFigureNumberFormatString}{Arabic}{figure}%
+} % End of \newcommand{}
+
 % ---------------------------
+
+\newcommand\GetGeneralTableNumberFormatString{}
+\newcommand\SetupGeneralTableNumberFormatString
+{%
+  \appto\GetGeneralTableNumberFormatString{}%
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetGeneralTableNumberFormatString}{%
+    \GetCTitleNumberFormatCNumStyle}{chapter}%
+  \appto\GetGeneralTableNumberFormatString{.}
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetGeneralTableNumberFormatString}{Arabic}{table}%
+} % End of \newcommand{}
+
+% ---------------------------
+
+\newcommand\GetGeneralEquationNumberFormatString{}
+\newcommand\SetupGeneralEquationNumberFormatString
+{%
+  \appto\GetGeneralEquationNumberFormatString{}%
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetGeneralEquationNumberFormatString}{%
+    \GetCTitleNumberFormatCNumStyle}{chapter}%
+  \appto\GetGeneralEquationNumberFormatString{.}
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetGeneralEquationNumberFormatString}{Arabic}{equation}%
+} % End of \newcommand{}
+
+% ---------------------------
+
+\newcommand\GetAppendixFigureNumberFormatString{}
+\newcommand\SetupAppendixFigureNumberFormatString
+{%
+  \appto\GetAppendixFigureNumberFormatString{}%
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetAppendixFigureNumberFormatString}{%
+    \GetAppendixCTitleNumberFormatCNumStyle}{appendixchapter}%
+  \appto\GetAppendixFigureNumberFormatString{.}
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetAppendixFigureNumberFormatString}{Arabic}{figure}%
+} % End of \newcommand{}
+
+% ---------------------------
+
+\newcommand\GetAppendixTableNumberFormatString{}
+\newcommand\SetupAppendixTableNumberFormatString
+{%
+  \appto\GetAppendixTableNumberFormatString{}%
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetAppendixTableNumberFormatString}{%
+    \GetAppendixCTitleNumberFormatCNumStyle}{appendixchapter}%
+  \appto\GetAppendixTableNumberFormatString{.}
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetAppendixTableNumberFormatString}{Arabic}{table}%
+} % End of \newcommand{}
+
+% ---------------------------
+
+\newcommand\GetAppendixEquationNumberFormatString{}
+\newcommand\SetupAppendixEquationNumberFormatString
+{%
+  \appto\GetAppendixEquationNumberFormatString{}%
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetAppendixEquationNumberFormatString}{%
+    \GetAppendixCTitleNumberFormatCNumStyle}{appendixchapter}%
+  \appto\GetAppendixEquationNumberFormatString{.}
+  \SetupTitleNumberFormatStringAppendCounterString{%
+    \GetAppendixEquationNumberFormatString}{Arabic}{equation}%
+} % End of \newcommand{}
+
+% ---------------------------
+
+% Set numbering format of general figure/table/equation
+\newcommand\SetupFTENumberFormat
+{%
+  \SetupGeneralFigureNumberFormatString%
+  \SetupGeneralTableNumberFormatString%
+  \SetupGeneralEquationNumberFormatString%
+  \renewcommand{\thefigure}{\GetGeneralFigureNumberFormatString}%
+  \renewcommand{\thetable}{\GetGeneralTableNumberFormatString}%
+  \renewcommand{\theequation}{\GetGeneralEquationNumberFormatString}%
+} % End of \newcommand{}
+
+\newcommand\SetupAppendixFTENumberFormat
+{%
+  \SetupAppendixFigureNumberFormatString%
+  \SetupAppendixTableNumberFormatString%
+  \SetupAppendixEquationNumberFormatString%
+  \renewcommand{\thefigure}{\GetAppendixFigureNumberFormatString}
+  \renewcommand{\thetable}{\GetAppendixTableNumberFormatString}
+  \renewcommand{\theequation}{\GetAppendixEquationNumberFormatString}
+} % End of \newcommand{}
+
+% ----------------------------------------------------------------------------
+
 \begin{comment}
 \pgfkeys
 {
