@@ -22,6 +22,20 @@
 
 % ----------------------------------------------------------------------------
 
+% 為了能連同顯示的內容都能控制, 故做多一層command來包
+% Implatment a custom '\label' to have more control
+% \LabelThisAs{ < label_name >}{ < format/display_value > }
+
+\makeatletter
+\newcommand{\LabelThisAs}[2]
+{%
+  \def\@currentlabel{#2}%
+  \label{#1}%
+} % End of \newcommand{}
+\makeatother
+
+% ----------------------------------------------------------------------------
+
 % For equation
 \newcommand{\RefEquation}[1]{\ref{#1}}
 
@@ -32,7 +46,23 @@
 \newcommand{\RefBib}[1]{\cite{#1}}
 
 % For figure, table, chapter, section, subsection, .etc
-\newcommand{\RefTo}[1]{\ref{#1}}
+\newcommand{\RefTo}[1]
+{
+%  \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+%  {%
+%    \refstepcounter{appendixchapter}
+%    \refstepcounter{appendixsection}
+%    \refstepcounter{appendixsubsection}
+%    \refstepcounter{appendixsubsubsection}
+%  }%
+%  {%
+%    \refstepcounter{chapter}
+%    \refstepcounter{section}
+%    \refstepcounter{subsection}
+%    \refstepcounter{subsubsection}
+%  }%
+  \ref{#1}%
+} % End of \newcommand{}
 
 \newcommand{\RefFigure}[1]{\RefTo{#1}}
 
@@ -41,5 +71,14 @@
 % For page
 \newcommand{\RefPage}[1]{\pageref{#1}}
 
+
 % ----------------------------------------------------------------------------
 
+% 過去的API, 以 Error提醒不能再使用
+%\newcommand{\RefTo}{\errmessage{模版: 由v1.4.5開始, RefTo已不再推薦使用. 請改用.}\stop}
+
+%\makeatletter
+%\newcommand{\todo}[1][]{\@latex@warning{TODO #1}\fbox{TODO\dots}}
+%\makeatother
+
+% ----------------------------------------------------------------------------

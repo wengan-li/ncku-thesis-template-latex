@@ -40,20 +40,97 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplayChapterHeader}[2]%
+\pgfkeys
+{
+  /DisplayTitleHeader/.is family, /DisplayTitleHeader,
+  default/.style =
+  {
+    LabelString = \empty,
+    TextString = \empty,
+    SepAtIndex = \empty,
+    SpacesAtIndex = {\ \ \ },
+  },
+  LabelString/.estore in = \TmpValueLabelString,
+  TextString/.estore in = \TmpValueTextString,
+  SepAtIndex/.estore in = \TmpValueSepAtIndex,
+  SpacesAtIndex/.estore in = \TmpValueSpacesAtIndex,
+} % End of \pgfkeys{}
+
+\newcommand{\DisplayTitleHeader}[2]
+{%
+  \pgfkeys{/DisplayTitleHeader, default, #2}%
+  \ifboolexpr{%
+    test {\ifstrequal{#1}{Chapter}} or %
+    test {\ifstrequal{#1}{AppendixChapter}} }
+      {%
+       \vspace*{0pt}%
+        {%
+          \parindent 0pt \centering%
+          \Large\bf \TmpValueLabelString \par%
+          \vskip 15pt%
+          \Large \bf \TmpValueTextString \par%
+          \nobreak%
+      %    \vskip 35pt%
+          \vskip 25pt%
+        }%
+        \addcontentsline{%
+          toc}{chapter}{%
+          {\TmpValueLabelString}{\TmpValueSepAtIndex}{\TmpValueSpacesAtIndex}{\TmpValueTextString}}%
+        \addtocontents{lof}{\protect\addvspace{10 pt}}
+        \addtocontents{lot}{\protect\addvspace{10 pt}}
+      }{}%
+  %
+  \ifboolexpr{%
+    test {\ifstrequal{#1}{ChapterStar}} }
+      {%
+        \vspace*{0pt}%
+        {%
+          \parindent 0pt \centering \Large \bf \TmpValueTextString \par%
+          \nobreak%
+      %    \vskip 30pt%
+          \vskip 20pt%
+        }%
+        \addcontentsline{toc}{chapter}{\TmpValueTextString}%
+      }{}%
+  %
+  \ifboolexpr{%
+    test {\ifstrequal{#1}{Section}} or %
+    test {\ifstrequal{#1}{AppendixSection}} }
+      {%
+
+      }{}%
+  %
+  \ifboolexpr{%
+    test {\ifstrequal{#1}{SubSection}} or %
+    test {\ifstrequal{#1}{AppendixSubSection}} }
+      {%
+
+      }{}%
+  %
+  \ifboolexpr{%
+    test {\ifstrequal{#1}{SubSubSection}} or %
+    test {\ifstrequal{#1}{AppendixSubSubSection}} }
+      {%
+
+      }{}%
+} % End of \newcommand{}
+
+
+
+\newcommand{\DisplayChapterHeader}[3]%
 {%
  \vspace*{0pt}%
   {%
     \parindent 0pt \centering%
     \Large\bf #1 \par%
     \vskip 15pt%
-    \Large \bf #2 \par%
+    \Large \bf #3 \par%
     \nobreak%
 %    \vskip 35pt%
     \vskip 25pt%
   }%
   \addcontentsline{%
-    toc}{chapter}{#1\VarChapterHeaderSeparatorInToc{\ \ \ }#2}%
+    toc}{chapter}{#1#2{\ \ \ }#3}%
   \addtocontents{lof}{\protect\addvspace{10 pt}}
   \addtocontents{lot}{\protect\addvspace{10 pt}}
 } % End of \newcommand{}
@@ -93,7 +170,9 @@
     % 用\chapter*{}都是前幾頁的內容, 用羅馬數字
     %
     %    Starred
-    \DisplayChapterHeaderStar{#2}
+    \DisplayTitleHeader{ChapterStar}%
+    {TextString=#2}%
+%\DisplayChapterHeaderStar{#2}
   }%
   {%
     % \chapter{}
@@ -111,16 +190,47 @@
       \refstepcounter{appendixchapter}
       %
       %
+\SetupAppendixChapterTitleNumberFormatString
 %      \SetAppendixTitleFormatFinalString
 %      \DisplayChapterHeader{\GetAppendixTitleFormatFinalString}{#2}
-      \DisplayChapterHeader{\ValueAppendixChapterTitleNumberingFormat}{#2}
+%      \DisplayChapterHeader{\ValueAppendixChapterTitleNumberingFormat}{#2}
+%      \DisplayChapterHeader{%
+%        \GetAppendixChapterTitleNumberFormatString}{%
+%        \GetAppendixCTitleNumberFormatSepAtIndex}{%
+%        #2}%
+%
+      \DisplayTitleHeader{AppendixChapter}%
+      {%
+        LabelString=\GetAppendixChapterTitleNumberFormatString,%
+        SepAtIndex=\GetAppendixCTitleNumberFormatSepAtIndex,%
+        TextString=#2,%
+      }%
     }%
     {%
       % 一般Chapter
       \refstepcounter{chapter}
       %
       %
-      \DisplayChapterHeader{\ValueChapterTitleNumberingFormat}{#2}
+%      \DisplayChapterHeader{\ValueChapterTitleNumberingFormat}{#2}
+%\protect\GetChapterTitleNumberFormatCNumStyle 123
+%      \DisplayChapterHeader{\GetChapterTitleNumberFormatBeginText\GetChapterTitleNumberFormatCNumVaule}{#2}
+
+\SetupChapterTitleNumberFormatString
+%\ValueChapterTitleNumberingFormat
+      \DisplayTitleHeader{Chapter}%
+      {%
+        LabelString=\GetChapterTitleNumberFormatString,%
+        SepAtIndex=\GetCTitleNumberFormatSepAtIndex,%
+        TextString=#2,%
+      }%
+%      \DisplayChapterHeader{%
+%        \GetChapterTitleNumberFormatString}{%
+%        \GetCTitleNumberFormatSepAtIndex}{%
+%        #2}%
+
+%      \DisplayChapterHeader{\ValueChapterTitleNumberingFormat}{#2}
+%\stop
+%      \DisplayChapterHeader{\GetChapterTitleNumberingFormat}{#2}
 %      \ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangEng}}%
 %      {%
         % 題目為英文
@@ -311,6 +421,12 @@
   \StartNewPage%
   \chapter{#1}%
   \pagestyle{plain}% Default page style
+%  \IfNoValueF{#2}%
+%  {%
+%    \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+%    {\LabelThisAs{#2}{\GetCounterNumberAppixChapterNumber}}%
+%    {\LabelThisAs{#2}{\GetCounterNumberChapterNumber}}%
+%  }%
   \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
 

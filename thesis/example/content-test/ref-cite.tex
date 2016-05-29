@@ -1,0 +1,68 @@
+% ------------------------------------------------
+\StartChapter{測試Reference/Cite}{testpage:ref-cite:chapter}
+% ------------------------------------------------
+
+本校創校於西元1931年（昭和6年，民國20年）1月15日，原名為「臺南高等工業學校」；1944年（昭和19年，民國33年）改稱為「臺南工業專門學校」。民國34年臺灣光復。本校於民國35年2月改制為「臺灣省立臺南工業專科學校」，由王石安博士擔任校長；35年10月改制為「臺灣省立工學院」，仍由王石安博士擔任校長。彼時僅有成功校區，39年增購勝利校區。41年2月，由秦大鈞博士接任校長。
+\begin{comment}
+\StartSection{Section}{testpage:ref-cite:section}
+45年8月，本校改制為「臺灣省立成功大學」，仍由秦大鈞博士擔任校長；同時增設文理學院及商學院。46年8月，由閻振興博士接任校長。54年1月，由羅雲平博士接任校長。55年增購光復校區。58年10月，將文理學院分為文學院及理學院。60年8月，改制為「國立成功大學」，並由倪超博士接任校長；同年增購建國校區。67年8月，由王唯農博士接任校長。
+
+\StartSubSection{SubSection}{testpage:ref-cite:subsection}
+69年8月，夏漢民博士接任校長；同年將商學院更名為管理學院。72年8月，增設醫學院，並增購自強校區及敬業校區。74年增購力行校區部分校地。76年增購歸仁校區，設置航空太空實驗場。77年6月本校醫學院附設醫院正式營運。77年8月，馬哲儒博士接任校長。80年增購自強校區北半部。82年陸續增購台南市「文大五」用地，闢為本校安南校區。
+
+\StartSubSubSection{SubSubSection}{testpage:ref-cite:subsubsection}
+96年2月，賴明詔院士接任校長，97年2月教育部公佈「發展國際一流大學及頂尖研究中心計畫」第二梯次的審議結果，本校繼續獲得教育部的肯定與補助，積極朝國際一流大學的目標邁進。97年10月增購歸仁校區北側台糖土地（正式登記為本校管有）。100年2月，黃煌煇博士接任校長。100年4月本校獲得教育部第二期頂尖大學計畫補助，持續朝國際一流大學的目標邁進。104年2月，蘇慧貞博士接任校長。
+
+\InsertFigure
+  [scale=0.5,
+    caption={Ref用figure}, label={testpage:ref-cite:figure}]
+  {./example/abstract/pic/extended-abstract-2.jpg}
+
+\InsertTable
+  [caption={Ref用table}, label={testpage:ref-cite:table}]
+  {
+    \begin{tabular}{llll}
+    \hline
+    Engine &  &  & OPEL Astra C16SE \\ \hline
+    Displacement (cc) &  &  & 1598 \\
+    Bore x stroke(mm x mm) &  &  & 79 x 81.5 \\
+    Value mechanism &  &  & SOHC \\
+    Number of valves &  &  & Intake 4, exhaust 4 \\
+    Compression ratio &  &  & 9.8:1 \\
+    Torque &  &  & 135/3400 Nm/rpm \\
+    Power &  &  & 74/5800 kW/rpm \\
+    Ignition sequence &  &  & 1-3-4-2 \\
+    Spark plug &  &  & BPR6ES \\
+    Fuel &  &  & 95 unleaded gasoline \\
+    Cylinder arrangment &  &  & In-line 4 cylinders \\ \hline
+    \end{tabular}
+  } % End of  \InsertTable{}
+
+\EquationBegin{testpage:ref-cite:eq}E = mc^2\EquationEnd
+
+% ------------------------------------------------
+\EndChapter
+% ------------------------------------------------
+
+\StartChapter{測試 RefXXX}
+
+chapter (\verb|\RefTo{}|): \RefTo{testpage:ref-cite:chapter}\\
+chapter (\verb|\ref*{}|): \ref*{testpage:ref-cite:chapter}\\
+
+section (\verb|\RefTo{}|): \RefTo{testpage:ref-cite:section}\\
+section (\verb|\ref*{}|): \ref*{testpage:ref-cite:section}\\
+
+subsection (\verb|\RefTo{}|): \RefTo{testpage:ref-cite:subsection}\\
+subsection (\verb|\ref*{}|): \ref*{testpage:ref-cite:subsection}\\
+
+subsubsection (\verb|\RefTo{}|): \RefTo{testpage:ref-cite:subsubsection}\\
+subsubsection (\verb|\ref*{}|): \ref*{testpage:ref-cite:subsubsection}\\
+
+figure: \RefFigure{testpage:ref-cite:figure}\\
+table: \RefTable{testpage:ref-cite:table}\\
+equation: \RefEquation{testpage:ref-cite:eq}\\
+equation with (): \RefEquationB{testpage:ref-cite:eq}\\
+\end{comment}
+% ------------------------------------------------
+\EndChapter
+% ------------------------------------------------

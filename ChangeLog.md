@@ -1,4 +1,13 @@
+#### v1.4.5 [May 25, 2016]:
+**這版影響到`conf.tex`的內容.**
+
+1. 在目錄中, 在章節號碼跟章節題目中增加了一下空白, 以提高可閱讀性.
+2. 在`conf.tex`新增`\SetChapterTitleIndexSep`, `\SetSectionTitleIndexSep`, `\SetSubSectionTitleIndexSep`和`\SetSubSubSectionTitleIndexSep`, 以控制目錄中章節號碼跟章節題目中的分隔符號, 如'第一章. ABCDEF'換成'第一章 ABCDEF' \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
+
+10. 重新編寫`v1.4.4`的更新內容, 以更清楚的方式來說明.
+
 #### v1.4.4 [May 25, 2016]:
+`conf.tex`
 **建議升級到這一版, 因為更新了整個模版的排版和設計. 修正由`v1.3.4`到`v1.4.3`所產生出來的錯誤, 並新增/修正/移除了一些的使用方式.**
 
 1. 由[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)發現太容易因修改章節數字的格式而影響其他大量的事物, 故重新設計`ncku.sty`的格式.
