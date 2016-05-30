@@ -819,8 +819,7 @@
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
-
-\newcommand\GetGeneralFigureNumberFormatString{}
+%\begin{comment}
 \newcommand\SetupGeneralFigureNumberFormatString
 {%
   \renewcommand\GetGeneralFigureNumberFormatString{}%
@@ -834,7 +833,6 @@
 
 % ---------------------------
 
-\newcommand\GetGeneralTableNumberFormatString{}
 \newcommand\SetupGeneralTableNumberFormatString
 {%
   \renewcommand\GetGeneralTableNumberFormatString{}%
@@ -848,7 +846,6 @@
 
 % ---------------------------
 
-\newcommand\GetGeneralEquationNumberFormatString{}
 \newcommand\SetupGeneralEquationNumberFormatString
 {%
   \renewcommand\GetGeneralEquationNumberFormatString{}%
@@ -862,7 +859,6 @@
 
 % ---------------------------
 
-\newcommand\GetAppendixFigureNumberFormatString{}
 \newcommand\SetupAppendixFigureNumberFormatString
 {%
   \renewcommand\GetAppendixFigureNumberFormatString{}%
@@ -876,7 +872,6 @@
 
 % ---------------------------
 
-\newcommand\GetAppendixTableNumberFormatString{}
 \newcommand\SetupAppendixTableNumberFormatString
 {%
   \renewcommand\GetAppendixTableNumberFormatString{}%
@@ -890,7 +885,6 @@
 
 % ---------------------------
 
-\newcommand\GetAppendixEquationNumberFormatString{}
 \newcommand\SetupAppendixEquationNumberFormatString
 {%
   \appto\GetAppendixEquationNumberFormatString{}%
@@ -901,7 +895,7 @@
   \AppendCounterStringToFormatString{%
     \GetAppendixEquationNumberFormatString}{Arabic}{equation}%
 } % End of \newcommand{}
-
+%\end{comment}
 % ---------------------------
 
 \pgfkeys
@@ -920,6 +914,18 @@
     SepBetweenCnS = \empty,
     SepBetweenSnSS = \empty,
     SepBetweenSSCnSSS = \empty,
+    %
+    FigureNumStyle = \empty,
+    FigureCounterName = \empty,
+    FigureSep = {.},
+    %
+    TableNumStyle = \empty,
+    TableCounterName = \empty,
+    TableSep = {.},
+    %
+    EquationNumStyle = \empty,
+    EquationCounterName = \empty,
+    EquationSep = {.},
   },
   CNumStyle/.estore in = \TmpValueCNumStyle,
   CCounterName/.estore in = \TmpValueCCounterName,
@@ -932,6 +938,18 @@
   SepBetweenCnS/.estore in = \TmpValueSepBetweenCnS,
   SepBetweenSnSS/.estore in = \TmpValueSepBetweenSnSS,
   SepBetweenSSCnSSS/.estore in = \TmpValueSepBetweenSSCnSSS,
+  %
+  FigureNumStyle/.estore in = \TmpValueFigureNumStyle,
+  FigureCounterName/.estore in = \TmpValueFigureCounterName,
+  FigureSep/.estore in = \TmpValueFigureSep,
+  %
+  TableNumStyle/.estore in = \TmpValueTableNumStyle,
+  TableCounterName/.estore in = \TmpValueTableCounterName,
+  TableSep/.estore in = \TmpValueTableSep,
+  %
+  EquationNumStyle/.estore in = \TmpValueEquationNumStyle,
+  EquationCounterName/.estore in = \TmpValueEquationCounterName,
+  EquationSep/.estore in = \TmpValueEquationSep,
 } % End of \pgfkeys{}
 
 \newcommand\SetupGeneralAppendixNumberFormatString[3]
@@ -987,26 +1005,66 @@
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSSNumStyle}{\TmpValueSSSCounterName}%
       }{}%
+  %
+  \ifboolexpr{%
+    test {\ifstrequal{#1}{Figure}} or %
+    test {\ifstrequal{#1}{AppendixFigure}} }
+      {%
+        \AppendCounterStringToFormatString{%
+          #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
+        \appto#3{\TmpValueFigureSep}%
+        \AppendCounterStringToFormatString{%
+          #3}{\TmpValueFigureNumStyle}{\TmpValueFigureCounterName}%
+      }{}%
+  %
+  \ifboolexpr{%
+    test {\ifstrequal{#1}{Table}} or %
+    test {\ifstrequal{#1}{AppendixTable}} }
+      {%
+        \AppendCounterStringToFormatString{%
+          #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
+        \appto#3{\TmpValueTableSep}%
+        \AppendCounterStringToFormatString{%
+          #3}{\TmpValueTableNumStyle}{\TmpValueTableCounterName}%
+      }{}%
+  %
+  \ifboolexpr{%
+    test {\ifstrequal{#1}{Equation}} or %
+    test {\ifstrequal{#1}{AppendixEquation}} }
+      {%
+        \AppendCounterStringToFormatString{%
+          #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
+        \appto#3{\TmpValueEquationSep}%
+        \AppendCounterStringToFormatString{%
+          #3}{\TmpValueEquationNumStyle}{\TmpValueEquationCounterName}%
+      }{}%
+  %
 } % End of \newcommand{}
 
 \newcommand\GetGeneralChapterNumberingFormatString{}
 \newcommand\GetGeneralSectionNumberingFormatString{}
 \newcommand\GetGeneralSubSectionNumberingFormatString{}
 \newcommand\GetGeneralSubSubSectionNumberingFormatString{}
+\newcommand\GetGeneralFigureNumberFormatString{}
+\newcommand\GetGeneralTableNumberFormatString{}
+\newcommand\GetGeneralEquationNumberFormatString{}
 
 \newcommand\GetAppendixChapterNumberingFormatString{}
 \newcommand\GetAppendixSectionNumberingFormatString{}
 \newcommand\GetAppendixSubSectionNumberingFormatString{}
 \newcommand\GetAppendixSubSubSectionNumberingFormatString{}
+\newcommand\GetAppendixFigureNumberFormatString{}
+\newcommand\GetAppendixTableNumberFormatString{}
+\newcommand\GetAppendixEquationNumberFormatString{}
 
-\newcommand\SetupGeneralNumberingFormatString
+\newcommand\InitinalGeneralAppendixNumberingFormatString
 {%
   \SetupGeneralAppendixNumberFormatString{Chapter}%
   {%
     CNumStyle=\GetCTitleNumberFormatCNumStyle,%
     CCounterName=chapter,%
   }{\GetGeneralChapterNumberingFormatString}%
-
+  %
   \SetupGeneralAppendixNumberFormatString{Section}%
   {%
     CNumStyle=\GetSTitleNumberFormatCNumStyle,%
@@ -1015,22 +1073,19 @@
     CCounterName=chapter,%
     SCounterName=section,%
   }{\GetGeneralSectionNumberingFormatString}%
-
+  %
   \SetupGeneralAppendixNumberFormatString{SubSection}%
   {%
-    BeginText=\GetSSTitleNumberFormatBeginText,%
-    EndText=\GetSSTitleNumberFormatEndText,%
     CNumStyle=\GetSSTitleNumberFormatCNumStyle,%
     SNumStyle=\GetSSTitleNumberFormatSNumStyle,%
     SSNumStyle=\GetSSTitleNumberFormatSSNumStyle,%
-    SepAtIndex=\GetSSTitleNumberFormatSepAtIndex,%
     SepBetweenCnS=\GetSSTitleNumberFormatSepBetweenCnS,%
     SepBetweenSnSS=\GetSSTitleNumberFormatSepBetweenSnSS,%
     CCounterName=chapter,%
     SCounterName=section,%
     SSCounterName=subsection,%
   }{\GetGeneralSubSectionNumberingFormatString}%
-
+  %
   \SetupGeneralAppendixNumberFormatString{SubSubSection}%
   {%
     CNumStyle=\GetSSSTitleNumberFormatCNumStyle,%
@@ -1045,25 +1100,22 @@
     SSCounterName=subsection,%
     SSSCounterName=subsubsection,%
   }{\GetGeneralSubSubSectionNumberingFormatString}%
-
+  %
   \SetupGeneralAppendixNumberFormatString{AppendixChapter}%
   {%
     CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
     CCounterName=appendixchapter,%
   }{\GetAppendixChapterNumberingFormatString}%
-
+  %
   \SetupGeneralAppendixNumberFormatString{AppendixSection}%
   {%
-    BeginText=\GetAppendixSTitleNumberFormatBeginText,%
-    EndText=\GetAppendixSTitleNumberFormatEndText,%
     CNumStyle=\GetAppendixSTitleNumberFormatCNumStyle,%
     SNumStyle=\GetAppendixSTitleNumberFormatSNumStyle,%
-    SepAtIndex=\GetAppendixSTitleNumberFormatSepAtIndex,%
     SepBetweenCnS=\GetAppendixSTitleNumberFormatSepBetweenCnS,%
     CCounterName=appendixchapter,%
     SCounterName=appendixsection,%
   }{\GetAppendixSectionNumberingFormatString}%
-
+  %
   \SetupGeneralAppendixNumberFormatString{AppendixSubSection}%
   {%
     CNumStyle=\GetAppendixSSTitleNumberFormatCNumStyle,%
@@ -1075,7 +1127,7 @@
     SCounterName=appendixsection,%
     SSCounterName=appendixsubsection,%
   }{\GetAppendixSubSectionNumberingFormatString}%
-
+  %
   \SetupGeneralAppendixNumberFormatString{AppendixSubSubSection}%
   {%
     CNumStyle=\GetAppendixSSSTitleNumberFormatCNumStyle,%
@@ -1090,10 +1142,68 @@
     SSCounterName=appendixsubsection,%
     SSSCounterName=appendixsubsubsection,%
   }{\GetAppendixSubSubSectionNumberingFormatString}%
+  %
 } % End of \newcommand{}
 
-% ---------------------------
+  \begin{comment}
+  \SetupGeneralAppendixNumberFormatString{Figure}%
+  {%
+    CNumStyle=\GetCTitleNumberFormatCNumStyle,%
+    CCounterName=chapter,%
+    FigureNumStyle=Arabic,%
+    FigureCounterName=figure,%
+    FigureSep=\GetSSTitleNumberFormatSepAtIndex,%
+  }{\GetGeneralFigureNumberFormatString}%
+  %
+  \SetupGeneralAppendixNumberFormatString{AppendixFigure}%
+  {%
+    CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
+    CCounterName=appendixchapter,%
+    FigureNumStyle=Arabic,%
+    FigureCounterName=figure,%
+    FigureSep=\GetSSTitleNumberFormatSepAtIndex,%
+  }{\GetAppendixFigureNumberFormatString}%
+  %
+  \SetupGeneralAppendixNumberFormatString{Table}%
+  {%
+    CNumStyle=\GetCTitleNumberFormatCNumStyle,%
+    CCounterName=chapter,%
+    TableNumStyle=Arabic,%
+    TableCounterName=table,%
+    TableSep=\GetSSTitleNumberFormatSepAtIndex,%
+  }{\GetGeneralTableNumberFormatString}%
+  %
+  \SetupGeneralAppendixNumberFormatString{AppendixTable}%
+  {%
+    CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
+    CCounterName=appendixchapter,%
+    TableNumStyle=Arabic,%
+    TableCounterName=table,%
+    TableSep=\GetSSTitleNumberFormatSepAtIndex,%
+  }{\GetAppendixTableNumberFormatString}%
+  %
+  \SetupGeneralAppendixNumberFormatString{Equation}%
+  {%
+    CNumStyle=\GetCTitleNumberFormatCNumStyle,%
+    CCounterName=chapter,%
+    EquationNumStyle=Arabic,%
+    EquationCounterName=equation,%
+    EquationSep=\GetSSTitleNumberFormatSepAtIndex,%
+  }{\GetGeneralEquationNumberFormatString}%
+  %
+  \SetupGeneralAppendixNumberFormatString{AppendixEquation}%
+  {%
+    CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
+    CCounterName=appendixchapter,%
+    EquationNumStyle=Arabic,%
+    EquationCounterName=equation,%
+    EquationSep=\GetSSTitleNumberFormatSepAtIndex,%
+  }{\GetAppendixEquationNumberFormatString}%
+  %
+  \end{comment}
 
+% ---------------------------
+\begin{comment}
 % Set numbering format of general figure/table/equation
 \newcommand\SetupFTENumberFormat
 {%
@@ -1114,13 +1224,42 @@
   \renewcommand{\thetable}{\GetAppendixTableNumberFormatString}
   \renewcommand{\theequation}{\GetAppendixEquationNumberFormatString}
 } % End of \newcommand{}
-
+\end{comment}
 % ----------------------------------------------------------------------------
 
 % Setup all custom numbering format
 \newcommand\SetupNumberingFormat
 {%
-  \SetupFTENumberFormat%
+  \InitinalGeneralAppendixNumberingFormatString%
+  %
+%  \renewcommand{\thechapter}{\GetGeneralChapterNumberingFormatString}%
+%  \renewcommand{\thesection}{\GetGeneralSectionNumberingFormatString}%
+%  \renewcommand{\thesubsection}{\GetGeneralSubSectionNumberingFormatString}%
+%  \renewcommand{\thesubsubsection}{\GetGeneralSubSubSectionNumberingFormatString}%
+  %
+  \SetupGeneralFigureNumberFormatString%
+  \SetupGeneralTableNumberFormatString%
+  \SetupGeneralEquationNumberFormatString%
+  \renewcommand{\thefigure}{\GetGeneralFigureNumberFormatString}%
+  \renewcommand{\thetable}{\GetGeneralTableNumberFormatString}%
+  \renewcommand{\theequation}{\GetGeneralEquationNumberFormatString}%
+} % End of \newcommand{}
+
+% Setup all custom numbering format use in Appendix
+\newcommand\SetupAppendixNumberingFormat
+{%
+  %
+%  \renewcommand{\thechapter}{\GetAppendixChapterNumberingFormatString}%
+%  \renewcommand{\thesection}{\GetAppendixSectionNumberingFormatString}%
+%  \renewcommand{\thesubsection}{\GetAppendixSubSectionNumberingFormatString}%
+%  \renewcommand{\thesubsubsection}{\GetAppendixSubSubSectionNumberingFormatString}%
+  %
+  \SetupAppendixFigureNumberFormatString%
+  \SetupAppendixTableNumberFormatString%
+  \SetupAppendixEquationNumberFormatString%
+  \renewcommand{\thefigure}{\GetAppendixFigureNumberFormatString}
+  \renewcommand{\thetable}{\GetAppendixTableNumberFormatString}
+  \renewcommand{\theequation}{\GetAppendixEquationNumberFormatString}
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------

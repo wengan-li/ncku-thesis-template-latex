@@ -21,7 +21,7 @@
 % Some helper function about chapter and section
 
 % ----------------------------------------------------------------------------
-
+\begin{comment}
 \newcommand{\VarChapterHeaderSeparatorInToc}{.} % Default
 \newcommand{\SetChapterTitleIndexSep}[1]{%
   \renewcommand{\VarChapterHeaderSeparatorInToc}{#1}}
@@ -37,133 +37,23 @@
 \newcommand{\VarSubSubSectionHeaderSeparatorInToc}{.} % Default
 \newcommand{\SetSubSubSectionTitleIndexSep}[1]{%
   \renewcommand{\VarSubSubSectionHeaderSeparatorInToc}{#1}}
-
+\end{comment}
 % ----------------------------------------------------------------------------
 
-\pgfkeys
-{
-  /DisplayTitleHeader/.is family, /DisplayTitleHeader,
-  default/.style =
-  {
-    LabelString = \empty,
-    TextString = \empty,
-    SepAtIndex = \empty,
-    SpacesAtIndex = {\ \ \ },
-  },
-  LabelString/.estore in = \TmpValueLabelString,
-  TextString/.estore in = \TmpValueTextString,
-  SepAtIndex/.estore in = \TmpValueSepAtIndex,
-  SpacesAtIndex/.estore in = \TmpValueSpacesAtIndex,
-} % End of \pgfkeys{}
-
-\newcommand{\DisplayTitleHeader}[2]
-{%
-  \pgfkeys{/DisplayTitleHeader, default, #2}%
-  \ifboolexpr{%
-    test {\ifstrequal{#1}{Chapter}} or %
-    test {\ifstrequal{#1}{AppendixChapter}} }
-      {%
-       \vspace*{0pt}%
-        {%
-          \parindent 0pt \centering%
-          \Large\bf \TmpValueLabelString \par%
-          \vskip 15pt%
-          \Large \bf \TmpValueTextString \par%
-          \nobreak%
-      %    \vskip 35pt%
-          \vskip 25pt%
-        }%
-        \addcontentsline{%
-          toc}{chapter}{%
-          \TmpValueLabelString\TmpValueSepAtIndex\TmpValueSpacesAtIndex\TmpValueTextString}%
-        \addtocontents{lof}{\protect\addvspace{10 pt}}
-        \addtocontents{lot}{\protect\addvspace{10 pt}}
-      }{}%
-  %
-  \ifboolexpr{%
-    test {\ifstrequal{#1}{ChapterStar}} }
-      {%
-        \vspace*{0pt}%
-        {%
-          \parindent 0pt \centering \Large \bf \TmpValueTextString \par%
-          \nobreak%
-      %    \vskip 30pt%
-          \vskip 20pt%
-        }%
-        \addcontentsline{toc}{chapter}{\TmpValueTextString}%
-      }{}%
-  %
-  \ifboolexpr{%
-    test {\ifstrequal{#1}{Section}} or %
-    test {\ifstrequal{#1}{AppendixSection}} }
-      {%
-        \vspace{0.5cm}%
-        \ifthenelse{\equal{\TmpValueLabelString}{\empty}}%
-        {%
-          \parindent 0pt \textbf{\TmpValueTextString} \par%
-        }%
-        {%
-          \parindent 0pt \textbf{\TmpValueLabelString\hspace{0.5cm}\TmpValueTextString} \par%
-        }%
-        \vspace{0.1cm}%
-        \addcontentsline{%
-          toc}{section}{%
-          \TmpValueLabelString\TmpValueSepAtIndex\TmpValueSpacesAtIndex\TmpValueTextString}%
-      }{}%
-  %
-  \ifboolexpr{%
-    test {\ifstrequal{#1}{SubSection}} or %
-    test {\ifstrequal{#1}{AppendixSubSection}} }
-      {%
-        \vspace{0.5cm}%
-        \ifthenelse{\equal{\TmpValueLabelString}{\empty}}%
-        {%
-          \parindent 0pt \textbf{\TmpValueTextString} \par%
-        }%
-        {%
-          \parindent 0pt \textbf{\TmpValueLabelString\hspace{0.5cm}\TmpValueTextString} \par%
-        }%
-        \vspace{0.1cm}%
-        \addcontentsline{%
-          toc}{section}{%
-          \TmpValueLabelString\TmpValueSepAtIndex\TmpValueSpacesAtIndex\TmpValueTextString}%
-      }{}%
-  %
-  \ifboolexpr{%
-    test {\ifstrequal{#1}{SubSubSection}} or %
-    test {\ifstrequal{#1}{AppendixSubSubSection}} }
-      {%
-        \vspace{0.5cm}%
-        \ifthenelse{\equal{\TmpValueLabelString}{\empty}}%
-        {%
-          \parindent 0pt \textbf{\TmpValueTextString} \par%
-        }%
-        {%
-          \parindent 0pt \textbf{\TmpValueLabelString\hspace{0.5cm}\TmpValueTextString} \par%
-        }%
-        \vspace{0.1cm}%
-        \addcontentsline{%
-          toc}{section}{%
-          \TmpValueLabelString\TmpValueSepAtIndex\TmpValueSpacesAtIndex\TmpValueTextString}%
-      }{}%
-} % End of \newcommand{}
-
-
-\begin{comment}
-\newcommand{\DisplayChapterHeader}[3]%
+\newcommand{\DisplayChapterHeader}[2]%
 {%
  \vspace*{0pt}%
   {%
     \parindent 0pt \centering%
     \Large\bf #1 \par%
     \vskip 15pt%
-    \Large \bf #3 \par%
+    \Large \bf #2 \par%
     \nobreak%
 %    \vskip 35pt%
     \vskip 25pt%
   }%
   \addcontentsline{%
-    toc}{chapter}{#1#2{\ \ \ }#3}%
+    toc}{chapter}{#1\GetCTitleNumberFormatSepAtIndex{\ \ \ }#2}%
   \addtocontents{lof}{\protect\addvspace{10 pt}}
   \addtocontents{lot}{\protect\addvspace{10 pt}}
 } % End of \newcommand{}
@@ -179,7 +69,7 @@
   }%
   \addcontentsline{toc}{chapter}{#1}%
 } % End of \newcommand{}
-\end{comment}
+
 % ----------------------------------------------------------------------------
 
 % 使用 \frontmatter, \mainmatter 其實可簡化事情,
@@ -203,9 +93,7 @@
     % 用\chapter*{}都是前幾頁的內容, 用羅馬數字
     %
     %    Starred
-    \DisplayTitleHeader{ChapterStar}%
-    {TextString=#2}%
-%\DisplayChapterHeaderStar{#2}
+    \DisplayChapterHeaderStar{#2}
   }%
   {%
     % \chapter{}
@@ -223,47 +111,18 @@
       \refstepcounter{appendixchapter}
       %
       %
-\SetupAppendixChapterTitleNumberFormatString
 %      \SetAppendixTitleFormatFinalString
 %      \DisplayChapterHeader{\GetAppendixTitleFormatFinalString}{#2}
-%      \DisplayChapterHeader{\ValueAppendixChapterTitleNumberingFormat}{#2}
-%      \DisplayChapterHeader{%
-%        \GetAppendixChapterTitleNumberFormatString}{%
-%        \GetAppendixCTitleNumberFormatSepAtIndex}{%
-%        #2}%
-%
-      \DisplayTitleHeader{AppendixChapter}%
-      {%
-        LabelString=\GetAppendixChapterTitleNumberFormatString,%
-        SepAtIndex=\GetAppendixCTitleNumberFormatSepAtIndex,%
-        TextString=#2,%
-      }%
+      \SetupAppendixChapterTitleNumberFormatString%
+      \DisplayChapterHeader{\GetAppendixChapterTitleNumberFormatString}{#2}
     }%
     {%
       % 一般Chapter
       \refstepcounter{chapter}
       %
       %
-%      \DisplayChapterHeader{\ValueChapterTitleNumberingFormat}{#2}
-%\protect\GetChapterTitleNumberFormatCNumStyle 123
-%      \DisplayChapterHeader{\GetChapterTitleNumberFormatBeginText\GetChapterTitleNumberFormatCNumVaule}{#2}
-
-\SetupChapterTitleNumberFormatString
-%\ValueChapterTitleNumberingFormat
-      \DisplayTitleHeader{Chapter}%
-      {%
-        LabelString=\GetChapterTitleNumberFormatString,%
-        SepAtIndex=\GetCTitleNumberFormatSepAtIndex,%
-        TextString=#2,%
-      }%
-%      \DisplayChapterHeader{%
-%        \GetChapterTitleNumberFormatString}{%
-%        \GetCTitleNumberFormatSepAtIndex}{%
-%        #2}%
-
-%      \DisplayChapterHeader{\ValueChapterTitleNumberingFormat}{#2}
-%\stop
-%      \DisplayChapterHeader{\GetChapterTitleNumberingFormat}{#2}
+      \SetupChapterTitleNumberFormatString%
+      \DisplayChapterHeader{\GetChapterTitleNumberFormatString}{#2}
 %      \ifthenelse{\equal{\GetChapterTitleLang}{\VarChapterTitleLangEng}}%
 %      {%
         % 題目為英文
@@ -312,7 +171,7 @@
 \makeatother
 \end{comment}
 % ----------------------------------------------------------------------------
-\begin{comment}
+
 \newcommand{\DisplaySectionHeader}[2]%
 {%
   \vspace{0.5cm}%
@@ -325,9 +184,9 @@
   }%
   \vspace{0.1cm}%
   \addcontentsline{%
-    toc}{section}{#1\VarSectionHeaderSeparatorInToc{\ \ \ }#2}%
+    toc}{section}{#1\GetSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
 } % End of \newcommand{}
-\end{comment}
+
 \RenewDocumentCommand{\section}{s m}
 {%
   %
@@ -344,25 +203,13 @@
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {%
       \refstepcounter{appendixsection}%
-%      \DisplaySectionHeader{\ValueAppendixSectionTitleNumberingFormat}{#2}
       \SetupAppendixSectionTitleNumberFormatString%
-      \DisplayTitleHeader{AppendixSection}%
-      {%
-        LabelString=\GetAppendixSectionTitleNumberFormatString,%
-        SepAtIndex=\GetAppendixSTitleNumberFormatSepAtIndex,%
-        TextString=#2,%
-      }%
+      \DisplaySectionHeader{\GetAppendixSectionTitleNumberFormatString}{#2}
     }%
     {%
       \refstepcounter{section}%
-%      \DisplaySectionHeader{\ValueSectionTitleNumberingFormat}{#2}
       \SetupSectionTitleNumberFormatString%
-      \DisplayTitleHeader{Section}%
-      {%
-        LabelString=\GetSectionTitleNumberFormatString,%
-        SepAtIndex=\GetSTitleNumberFormatSepAtIndex,%
-        TextString=#2,%
-      }%
+      \DisplaySectionHeader{\GetSectionTitleNumberFormatString}{#2}
     }%
   }%
   % Reset counters
@@ -371,7 +218,7 @@
 } % End of \RenewDocumentCommand{}
 
 % ----------------------------------------------------------------------------
-\begin{comment}
+
 \newcommand{\DisplaySubSectionHeader}[2]%
 {%
   \vspace{0.5cm}%
@@ -384,9 +231,9 @@
   }%
   \vspace{0.1cm}%
   \addcontentsline{%
-    toc}{subsection}{#1\VarSubSectionHeaderSeparatorInToc{\ \ \ }#2}%
+    toc}{subsection}{#1\GetSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
 } % End of \newcommand{}
-\end{comment}
+
 \RenewDocumentCommand{\subsection}{s m}
 {%
   %
@@ -403,27 +250,15 @@
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {%
       \refstepcounter{appendixsubsection}%
-%      \DisplaySubSectionHeader{%
-%        \ValueAppendixSubSectionTitleNumberingFormat}{#2}
       \SetupAppendixSubSectionTitleNumberFormatString%
-      \DisplayTitleHeader{AppendixSubSection}%
-      {%
-        LabelString=\GetAppendixSubSectionTitleNumberFormatString,%
-        SepAtIndex=\GetAppendixSSTitleNumberFormatSepAtIndex,%
-        TextString=#2,%
-      }%
+      \DisplaySubSectionHeader{%
+        \GetAppendixSubSectionTitleNumberFormatString}{#2}
     }%
     {%
       \refstepcounter{subsection}%
-%      \DisplaySubSectionHeader{%
-%        \ValueSubSectionTitleNumberingFormat}{#2}
       \SetupSubSectionTitleNumberFormatString%
-      \DisplayTitleHeader{SubSection}%
-      {%
-        LabelString=\GetSubSectionTitleNumberFormatString,%
-        SepAtIndex=\GetSSTitleNumberFormatSepAtIndex,%
-        TextString=#2,%
-      }%
+      \DisplaySubSectionHeader{%
+        \GetSubSectionTitleNumberFormatString}{#2}
     }%
   }%
   % Reset counters
@@ -432,7 +267,7 @@
 } % End of \RenewDocumentCommand{}
 
 % ----------------------------------------------------------------------------
-\begin{comment}
+
 \newcommand{\DisplaySubSubSectionHeader}[2]%
 {%
   \vspace{0.5cm}%
@@ -445,9 +280,9 @@
   }%
   \vspace{0.1cm}%
   \addcontentsline{%
-    toc}{subsubsection}{#1\VarSubSubSectionHeaderSeparatorInToc{\ \ \ }#2}%
+    toc}{subsubsection}{#1\GetSSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
 } % End of \newcommand{}
-\end{comment}
+
 \RenewDocumentCommand{\subsubsection}{s m}
 {%
   %
@@ -464,27 +299,15 @@
     \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
     {%
       \refstepcounter{appendixsubsubsection}%
-%      \DisplaySubSubSectionHeader{%
-%        \ValueAppendixSubSubSectionTitleNumberingFormat}{#2}
       \SetupAppendixSubSubSectionTitleNumberFormatString%
-      \DisplayTitleHeader{AppendixSubSubSection}%
-      {%
-        LabelString=\GetAppendixSubSubSectionTitleNumberFormatString,%
-        SepAtIndex=\GetAppendixSSSTitleNumberFormatSepAtIndex,%
-        TextString=#2,%
-      }%
+      \DisplaySubSubSectionHeader{%
+        \GetAppendixSubSubSectionTitleNumberFormatString}{#2}
     }%
     {%
       \refstepcounter{subsubsection}%
-%      \DisplaySubSubSectionHeader{%
-%        \ValueSubSubSectionTitleNumberingFormat}{#2}
       \SetupSubSubSectionTitleNumberFormatString%
-      \DisplayTitleHeader{SubSubSection}%
-      {%
-        LabelString=\GetSubSubSectionTitleNumberFormatString,%
-        SepAtIndex=\GetSSSTitleNumberFormatSepAtIndex,%
-        TextString=#2,%
-      }%
+      \DisplaySubSubSectionHeader{%
+        \GetSubSubSectionTitleNumberFormatString}{#2}
     }%
   }%
 } % End of \RenewDocumentCommand{}
@@ -496,12 +319,6 @@
   \StartNewPage%
   \chapter{#1}%
   \pagestyle{plain}% Default page style
-%  \IfNoValueF{#2}%
-%  {%
-%    \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
-%    {\LabelThisAs{#2}{\GetCounterNumberAppixChapterNumber}}%
-%    {\LabelThisAs{#2}{\GetCounterNumberChapterNumber}}%
-%  }%
   \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
 
