@@ -172,7 +172,7 @@
 \end{comment}
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySectionHeader}[2]%
+\newcommand{\DisplaySectionHeader}[3]%
 {%
   \vspace{0.5cm}%
   \ifthenelse{\equal{#1}{\empty}}%
@@ -185,9 +185,11 @@
   \vspace{0.1cm}%
   \addcontentsline{%
     toc}{section}{#1\GetSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
+  %
+  \IfNoValueF{#3}{\LabelThisAs{#3}{#1}}%
 } % End of \newcommand{}
 
-\RenewDocumentCommand{\section}{s m}
+\RenewDocumentCommand{\section}{s m m}
 {%
   %
   % 檢查是 \section*{} 或是 \section{}
@@ -204,12 +206,12 @@
     {%
       \refstepcounter{appendixsection}%
       \SetupAppendixSectionTitleNumberFormatString%
-      \DisplaySectionHeader{\GetAppendixSectionTitleNumberFormatString}{#2}
+      \DisplaySectionHeader{\GetAppendixSectionTitleNumberFormatString}{#2}{#3}%
     }%
     {%
       \refstepcounter{section}%
       \SetupSectionTitleNumberFormatString%
-      \DisplaySectionHeader{\GetSectionTitleNumberFormatString}{#2}
+      \DisplaySectionHeader{\GetSectionTitleNumberFormatString}{#2}{#3}%
     }%
   }%
   % Reset counters
@@ -219,7 +221,7 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySubSectionHeader}[2]%
+\newcommand{\DisplaySubSectionHeader}[3]%
 {%
   \vspace{0.5cm}%
   \ifthenelse{\equal{#1}{\empty}}%
@@ -232,9 +234,11 @@
   \vspace{0.1cm}%
   \addcontentsline{%
     toc}{subsection}{#1\GetSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
+  %
+  \IfNoValueF{#3}{\LabelThisAs{#3}{#1}}%
 } % End of \newcommand{}
 
-\RenewDocumentCommand{\subsection}{s m}
+\RenewDocumentCommand{\subsection}{s m m}
 {%
   %
   % 檢查是 \subsection*{} 或是 \subsection{}
@@ -252,13 +256,13 @@
       \refstepcounter{appendixsubsection}%
       \SetupAppendixSubSectionTitleNumberFormatString%
       \DisplaySubSectionHeader{%
-        \GetAppendixSubSectionTitleNumberFormatString}{#2}
+        \GetAppendixSubSectionTitleNumberFormatString}{#2}{#3}%
     }%
     {%
       \refstepcounter{subsection}%
       \SetupSubSectionTitleNumberFormatString%
       \DisplaySubSectionHeader{%
-        \GetSubSectionTitleNumberFormatString}{#2}
+        \GetSubSectionTitleNumberFormatString}{#2}{#3}%
     }%
   }%
   % Reset counters
@@ -268,7 +272,7 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySubSubSectionHeader}[2]%
+\newcommand{\DisplaySubSubSectionHeader}[3]%
 {%
   \vspace{0.5cm}%
   \ifthenelse{\equal{#1}{\empty}}%
@@ -281,9 +285,11 @@
   \vspace{0.1cm}%
   \addcontentsline{%
     toc}{subsubsection}{#1\GetSSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
+  %
+  \IfNoValueF{#3}{\LabelThisAs{#3}{#1}}%
 } % End of \newcommand{}
 
-\RenewDocumentCommand{\subsubsection}{s m}
+\RenewDocumentCommand{\subsubsection}{s m m}
 {%
   %
   % 檢查是 \subsubsection*{} 或是 \subsubsection{}
@@ -301,13 +307,13 @@
       \refstepcounter{appendixsubsubsection}%
       \SetupAppendixSubSubSectionTitleNumberFormatString%
       \DisplaySubSubSectionHeader{%
-        \GetAppendixSubSubSectionTitleNumberFormatString}{#2}
+        \GetAppendixSubSubSectionTitleNumberFormatString}{#2}{#3}%
     }%
     {%
       \refstepcounter{subsubsection}%
       \SetupSubSubSectionTitleNumberFormatString%
       \DisplaySubSubSectionHeader{%
-        \GetSubSubSectionTitleNumberFormatString}{#2}
+        \GetSubSubSectionTitleNumberFormatString}{#2}{#3}%
     }%
   }%
 } % End of \RenewDocumentCommand{}
@@ -340,22 +346,19 @@
 % Section
 \DeclareDocumentCommand{\StartSection}{+m +g}
 {%
-  \section{#1}%
-  \IfNoValueF{#2}{\label{#2}}%
+  \section{#1}{#2}%
 } % End of \DeclareDocumentCommand{}
 
 % Sub-Section
 \DeclareDocumentCommand{\StartSubSection}{+m +g}
 {%
-  \subsection{#1}%
-  \IfNoValueF{#2}{\label{#2}}%
+  \subsection{#1}{#2}%
 } % End of \DeclareDocumentCommand{}
 
 % Sub-Sub-Section
 \DeclareDocumentCommand{\StartSubSubSection}{+m +g}
 {%
-  \subsubsection{#1}%
-  \IfNoValueF{#2}{\label{#2}}%
+  \subsubsection{#1}{#2}%
 } % End of \DeclareDocumentCommand{}
 
 % ----------------------------------------------------------------------------
