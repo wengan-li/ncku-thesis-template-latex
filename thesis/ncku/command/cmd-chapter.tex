@@ -172,7 +172,7 @@
 \end{comment}
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySectionHeader}[3]%
+\newcommand{\DisplaySectionHeader}[2]%
 {%
   \vspace{0.5cm}%
   \ifthenelse{\equal{#1}{\empty}}%
@@ -185,11 +185,9 @@
   \vspace{0.1cm}%
   \addcontentsline{%
     toc}{section}{#1\GetSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
-  %
-  \IfNoValueF{#3}{\LabelThisAs{#3}{#1}}%
 } % End of \newcommand{}
 
-\RenewDocumentCommand{\section}{s m m}
+\RenewDocumentCommand{\section}{s m}
 {%
   %
   % 檢查是 \section*{} 或是 \section{}
@@ -206,12 +204,12 @@
     {%
       \refstepcounter{appendixsection}%
       \SetupAppendixSectionTitleNumberFormatString%
-      \DisplaySectionHeader{\GetAppendixSectionTitleNumberFormatString}{#2}{#3}%
+      \DisplaySectionHeader{\GetAppendixSectionTitleNumberFormatString}{#2}
     }%
     {%
       \refstepcounter{section}%
       \SetupSectionTitleNumberFormatString%
-      \DisplaySectionHeader{\GetSectionTitleNumberFormatString}{#2}{#3}%
+      \DisplaySectionHeader{\GetSectionTitleNumberFormatString}{#2}
     }%
   }%
   % Reset counters
@@ -221,7 +219,7 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySubSectionHeader}[3]%
+\newcommand{\DisplaySubSectionHeader}[2]%
 {%
   \vspace{0.5cm}%
   \ifthenelse{\equal{#1}{\empty}}%
@@ -234,11 +232,9 @@
   \vspace{0.1cm}%
   \addcontentsline{%
     toc}{subsection}{#1\GetSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
-  %
-  \IfNoValueF{#3}{\LabelThisAs{#3}{#1}}%
 } % End of \newcommand{}
 
-\RenewDocumentCommand{\subsection}{s m m}
+\RenewDocumentCommand{\subsection}{s m}
 {%
   %
   % 檢查是 \subsection*{} 或是 \subsection{}
@@ -256,13 +252,13 @@
       \refstepcounter{appendixsubsection}%
       \SetupAppendixSubSectionTitleNumberFormatString%
       \DisplaySubSectionHeader{%
-        \GetAppendixSubSectionTitleNumberFormatString}{#2}{#3}%
+        \GetAppendixSubSectionTitleNumberFormatString}{#2}
     }%
     {%
       \refstepcounter{subsection}%
       \SetupSubSectionTitleNumberFormatString%
       \DisplaySubSectionHeader{%
-        \GetSubSectionTitleNumberFormatString}{#2}{#3}%
+        \GetSubSectionTitleNumberFormatString}{#2}
     }%
   }%
   % Reset counters
@@ -272,7 +268,7 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySubSubSectionHeader}[3]%
+\newcommand{\DisplaySubSubSectionHeader}[2]%
 {%
   \vspace{0.5cm}%
   \ifthenelse{\equal{#1}{\empty}}%
@@ -285,11 +281,9 @@
   \vspace{0.1cm}%
   \addcontentsline{%
     toc}{subsubsection}{#1\GetSSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
-  %
-  \IfNoValueF{#3}{\LabelThisAs{#3}{#1}}%
 } % End of \newcommand{}
 
-\RenewDocumentCommand{\subsubsection}{s m m}
+\RenewDocumentCommand{\subsubsection}{s m}
 {%
   %
   % 檢查是 \subsubsection*{} 或是 \subsubsection{}
@@ -307,13 +301,13 @@
       \refstepcounter{appendixsubsubsection}%
       \SetupAppendixSubSubSectionTitleNumberFormatString%
       \DisplaySubSubSectionHeader{%
-        \GetAppendixSubSubSectionTitleNumberFormatString}{#2}{#3}%
+        \GetAppendixSubSubSectionTitleNumberFormatString}{#2}
     }%
     {%
       \refstepcounter{subsubsection}%
       \SetupSubSubSectionTitleNumberFormatString%
       \DisplaySubSubSectionHeader{%
-        \GetSubSubSectionTitleNumberFormatString}{#2}{#3}%
+        \GetSubSubSectionTitleNumberFormatString}{#2}
     }%
   }%
 } % End of \RenewDocumentCommand{}
@@ -324,8 +318,16 @@
 {%
   \StartNewPage%
   \chapter{#1}%
+  %
+  \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{\GetAppendixChapterNumberingFormatString}}%
+  }%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{\GetGeneralChapterNumberingFormatString}}%
+  }%
+  %
   \pagestyle{plain}% Default page style
-  \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
 
 % Chapters Star (對應\chapter*{})
@@ -333,8 +335,16 @@
 {%
   \StartNewPage%
   \chapter*{#1}%
+  %
+  \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{\GetAppendixChapterNumberingFormatString}}%
+  }%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{\GetGeneralChapterNumberingFormatString}}%
+  }%
+  %
   \pagestyle{plain}% Default page style
-  \IfNoValueF{#2}{\label{#2}}%
 } % End of \DeclareDocumentCommand{}
 
 \newcommand{\EndChapter}
@@ -346,19 +356,45 @@
 % Section
 \DeclareDocumentCommand{\StartSection}{+m +g}
 {%
-  \section{#1}{#2}%
+  \section{#1}%
+  %
+  \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{\GetAppendixSectionNumberingFormatString}}%
+  }%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{\GetGeneralSectionNumberingFormatString}}%
+  }%
 } % End of \DeclareDocumentCommand{}
 
 % Sub-Section
 \DeclareDocumentCommand{\StartSubSection}{+m +g}
 {%
-  \subsection{#1}{#2}%
+  \subsection{#1}%
+  \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{%
+      \GetAppendixSubSectionNumberingFormatString}}%
+  }%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{%
+      \GetGeneralSubSectionNumberingFormatString}}%
+  }%
 } % End of \DeclareDocumentCommand{}
 
 % Sub-Sub-Section
 \DeclareDocumentCommand{\StartSubSubSection}{+m +g}
 {%
-  \subsubsection{#1}{#2}%
+  \subsubsection{#1}%
+  \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{%
+      \GetAppendixSubSubSectionNumberingFormatString}}%
+  }%
+  {%
+    \IfNoValueF{#2}{\LabelThisAs{#2}{%
+      \GetGeneralSubSubSectionNumberingFormatString}}%
+  }%
 } % End of \DeclareDocumentCommand{}
 
 % ----------------------------------------------------------------------------
