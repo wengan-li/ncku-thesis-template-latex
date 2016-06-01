@@ -189,7 +189,7 @@
 
   \item
   {
-    \textbf{目錄 Index}
+    \textbf{目錄 Index}\\
     設定可獨立使用, 但只有最後設定的一方有效.
 
     可設定目錄的標題文字使用預設的中文或是英文\\
@@ -205,21 +205,6 @@
     \verb|\SetIndexTitleText|: 設定目錄標題\\
     \verb|\SetTablesIndexTitleText|: 設定表格目錄標題\\
     \verb|\SetFiguresIndexTitleText|: 設定圖片目錄標題
-
-    另外可個別設定目錄中章節號碼跟章節題目中的分隔符號.\\
-    正常在目錄中會顯示 'Chapter 1. ABCDEF' 或 '第一章. ABCDEF'\\
-    但因個人喜好, 做法不一樣, 如 'Chapter 1: ABCDEF' 或 '第一章 ABCDEF'\\
-    故這邊可設定你想要的符號或不需要符號\\
-    \verb|\\SetChapterTitleIndexSep| 設定'章'的符號\\
-    \verb|\\SetSectionTitleIndexSep| 設定'節'的符號\\
-    \verb|\\SetSubSectionTitleIndexSep| 設定'小節'的符號\\
-    \verb|\\SetSubSubSectionTitleIndexSep| 設定'小小節'的符號\\
-
-    如想換'章'的由'Chapter 1. ABCDEF'換成'Chapter 1: ABCDEF'\\
-    則使用\verb|\\SetChapterTitleIndexSep{:}|
-
-    如想換'章'的由'第一章. ABCDEF'換成'第一章 ABCDEF'\\
-    則使用\verb|\\SetChapterTitleIndexSep{}| 空掉內容則可.
   } % End of \item{}
 
   \item
@@ -249,162 +234,207 @@
     預設的行距: 1.2
   } % End of \item{}
 
-%  \newpage
+  \newpage
   \item
   {
-    \textbf{章節標題的設定}
+    \textbf{章節標題的設定}\\
+    除非對章節標題格式有任何要求, 否則這部份內容是不用管的.
 
-    \begin{description}
+    模版的章節有一個預設的格式:
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+一般章節:
+  Chapter: Chapter 1
+  Section: 1.1
+  SubSection: 1.1.1
+  SubSubSection: (空白, 只有題目)
 
-    \item [數字]\hfill\\
-        可自行設計你想要的數字和格式
+附錄章節:
+  Chapter: Appendix A
+  Section: A.1
+  SubSection: A.1.1
+  SubSubSection: (空白, 只有題目)
+    \end{verbatim}
+    \end{DescriptionFrame}
 
-        有以下的數字類型提供\\
-            1. 阿拉伯數字\\
-            2. 羅馬數字 (大小寫)\\
-            3. 英文字母  (大小寫)\\
-            4. 天干 (如: 甲乙丙丁戊癸)\\
-            5. 中文數字 (如: 一二三)\\
+    如對格式有什麼的要求, 請使用\verb|'\SetTitleNumberFormat'|.
 
-        由於是可組合出不同的例子,  請同學自行慢慢研究和嘗試去弄出自己想要的樣子.
+    \textbf{--- 使用方式 ---}\\
+    \verb|'\SetTitleNumberFormat[ < 章節類型 > ]{ < 設定 >}'|
 
-    \item [使用方式]\hfill\\
-        章節意思\\
-        Chapter (章序號): 1\\
-        Section (節): 1.1\\
-        SubSection (小節): 1.1.1\\
-        SubSubSection (小小節): 1.1.1.1\\
+    \textbf{< 章節類型 >}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+針對每一種的章節都可自設自己需要的格式, 有8種類型提供,
+包括一般章節和附錄章節.
+  Chapter (章)
+  Section (節)
+  SubSection (小節)
+  SubSubSection (小小節)
+  AppendixChapter (附錄中的章)
+  AppendixSection (附錄中的節)
+  AppendixSubSection (附錄中的小節)
+  AppendixSubSubSection (附錄中的小小節)
+    \end{verbatim}
+    \end{DescriptionFrame}
 
-        使用以下的寫法去設定不同地方數字和格式\\
-            \verb|\ChapterTitleNumFormat{ < 格式 >}    % chapter 	(章序號)|\\
-            \verb|\SectionTitleNumFormat{ < 格式 >}    % section 	(節)|\\
-            \verb|\SubSectionTitleNumFormat{ < 格式 >}    % subsection 	(小節)|\\
-            \verb|\SubSubSectionTitleNumFormat{ < 格式 >}    % subsubsection 	(小小節)|
+  \newpage
+    \textbf{< 設定 >}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+以下的設定針對標題中不同內容的設定.
+  BeginText (章節號碼前面的文字)
+  EndText (章節號碼後面的文字)
+  CNumStyle ('章' 的數字類型)
+  SNumStyle ('節' 的數字類型)
+  SSNumStyle ('小節' 的數字類型)
+  SSSNumStyle ('小小節' 的數字類型)
+  SepAtIndex (目錄中章節號碼跟章節題目中的分隔符號)
+  SepBetweenCnS ('章' 號碼跟 '節' 號碼中間的分隔符號)
+  SepBetweenSnSS ('節' 號碼跟 '小節' 號碼中間的分隔符號)
+  SepBetweenSSCnSSS ('小節' 號碼跟 '小小節' 號碼中間的分隔符號)
+    \end{verbatim}
+    \end{DescriptionFrame}
 
-    \item [數字類型]\hfill\\
-     Chapter (章序號)\\
-        \verb|\StyleCNumChiNum| 章序號是使用 `中文數字' 方式\\
-        \verb|\StyleCNumTiangan| 章序號是使用 `天干' 方式\\
-        \verb|\StyleCNumArabic| 章序號是使用 `阿拉伯數字' 方式\\
-        \verb|\StyleCNumLowerRoman| 章序號是使用 `小寫羅馬數字' 方式\\
-        \verb|\StyleCNumUpperRoman| 章序號是使用 `大寫羅馬數字' 方式\\
-        \verb|\StyleCNumLowerAlph| 章序號是使用 `小寫英文字母' 方式\\
-        \verb|\StyleCNumUpperAlph| 章序號是使用 `大寫英文字母' 方式
+    標題在不同位置使用的內容都不一樣:
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+內文:
+  <BeginText> @NUMBER@ <EndText>
+  例如: 第2章
 
-     Section (節)\\
-        \verb|\StyleSNumChiNum| 節是使用 `中文數字' 方式\\
-        \verb|\StyleSNumTiangan| 節是使用 `天干' 方式\\
-        \verb|\StyleSNumArabic| 節是使用 `阿拉伯數字' 方式\\
-        \verb|\StyleSNumLowerRoman| 節是使用 `小寫羅馬數字' 方式\\
-        \verb|\StyleSNumUpperRoman| 節是使用 `大寫羅馬數字' 方式\\
-        \verb|\StyleSNumLowerAlph| 節是使用 `小寫英文字母' 方式\\
-        \verb|\StyleSNumUpperAlph| 節是使用 `大寫英文字母' 方式
+  @NUMBER@為第幾章節的那個數字
+    <CNumStyle> <SepBetweenCnS>
+      <SNumStyle> <SepBetweenSnSS>
+        <SSNumStyle> <SepBetweenSSCnSSS> <SSSNumStyle>
+  例如: 2.1, 3.1.2, A.2
 
-     SubSection (小節)\\
-        \verb|\StyleSSNumChiNum| 小節是使用 `中文數字' 方式\\
-        \verb|\StyleSSNumTiangan| 小節是使用 `天干' 方式\\
-        \verb|\StyleSSNumArabic| 小節是使用 `阿拉伯數字' 方式\\
-        \verb|\StyleSSNumLowerRoman| 小節是使用 `小寫羅馬數字' 方式\\
-        \verb|\StyleSSNumUpperRoman| 小節是使用 `大寫羅馬數字' 方式\\
-        \verb|\StyleSSNumLowerAlph| 小節是使用 `小寫英文字母' 方式\\
-        \verb|\StyleSSNumUpperAlph| 小節是使用 `大寫英文字母' 方式
+目錄:
+  <BeginText> @NUMBER@ <EndText> <SepAtIndex> @TITLE@
+  例如: 第2章. 介紹
 
-     SubSubSection (小小節)\\
-        \verb|\StyleSSSNumChiNum| 小小節是使用 `中文數字' 方式\\
-        \verb|\StyleSSSNumTiangan| 小小節是使用 `天干' 方式\\
-        \verb|\StyleSSSNumArabic| 小小節是使用 `阿拉伯數字' 方式\\
-        \verb|\StyleSSSNumLowerRoman| 小小節是使用 `小寫羅馬數字' 方式\\
-        \verb|\StyleSSSNumUpperRoman| 小小節是使用 `大寫羅馬數字' 方式\\
-        \verb|\StyleSSSNumLowerAlph| 小小節是使用 `小寫英文字母' 方式\\
-        \verb|\StyleSSSNumUpperAlph| 小小節是使用 `大寫英文字母' 方式
+被引用時:
+  @NUMBER@
+  例如: 2.1, 3.1.2, A.2
+    \end{verbatim}
+    \end{DescriptionFrame}
 
-    \item [格式]\hfill\\
-     < 格式 > 正是由文字和數字類型所組出來
+  \newpage
+    \textbf{--- 數字類型 ---}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+模版提供以下的數字類型使用
+  ChiNum (使用 '中文數字' 方式, 如: 一二三)
+  Tiangan 使用 '天干' 方式, 如: 甲乙丙丁戊癸)
+  Arabic (使用 '阿拉伯數字' 方式, 如: 1 2 3 4 5 6)
+  LowerRoman (使用 '小寫羅馬數字' 方式, 如: i ii iii vi x)
+  UpperRoman (使用 '大寫羅馬數字' 方式, 如: I II III VI X)
+  LowerAlph (使用 '小寫英文字母' 方式, 如: a b c)
+  UpperAlph (使用 '大寫英文字母' 方式, 如: A B C)
 
-     預設的格式:\\
-     Chapter: Chapter 1
-     Section: 1.1\\
-     SubSection: 1.1.1\\
-     SubSubSection: (空白, 只有題目)
+選擇你想要的數字類型後, 在<設定>中的這些位置填寫你要的類型
+  CNumStyle
+  SNumStyle
+  SSNumStyle
+  SSSNumStyle
+  
+例如: CNumStyle={Arabic}
+    \end{verbatim}
+    \end{DescriptionFrame}
 
-    如果 `章' 要由文字改使用為:\verb|'Chapter 1' -> '第 1 章'|\\
-    則使用\verb|\ChapterTitleNumFormat{第\StyleCNumArabic 章}|\\
-    (注意在'章'字前必須有一個空白, 否則會被當成\verb|\StyleCNumArabic|的字元之一, 這是基於LaTex的寫法, 所以請慢慢嘗試和注意Style前後字元能不能連在一起)
+    一個完整的 \verb|'\SetTitleNumberFormat'| 的樣子:
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+\SetTitleNumberFormat[ < 章節類型 > ]{%
+  BeginText = { @文字/符號@ },
+  EndText = { @文字/符號@ },%
+  CNumStyle = { < 數字類型 > },
+  SNumStyle = { < 數字類型 > },%
+  SSNumStyle = { < 數字類型 > },
+  SSSNumStyle = { < 數字類型 > },%
+  SepAtIndex = { @文字/符號@ },
+  SepBetweenCnS = { @文字/符號@ },%
+  SepBetweenSnSS = { @文字/符號@ },
+  SepBetweenSSCnSSS = { @文字/符號@ },%
+} % End of \SetTitleNumberFormat{}
+    \end{verbatim}
+    \end{DescriptionFrame}
 
-     如果 `章' 要由數字改使用為:\verb|'1' -> '-A-'|\\
-     則使用\verb|\ChapterTitleNumFormat{Chapter -\StyleCNumUpperAlph-}|
-     
-     如果 `節' 要由數字改使用為:\verb|'1.2' -> '一 -乙-'|\\
-     則使用\verb|\SectionTitleNumFormat{\StyleCNumChiNum -\StyleCNumTiangan-}|
-     
-     如果 `節' 不想看到 `章' 的數字:\verb|'1.2' -> '2'|\\
-     則使用\verb|\SectionTitleNumFormat{\StyleSNumArabic}|\\
-     直接不提供 `章' 的數字在格式中則可
+    \textbf{--- 例子 ---}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+如果 '章' 要由文字改使用為:
+       'Chapter 1' -> '第1章'
+則使用
+  \SetTitleNumberFormat[Chapter]{%
+    BeginText = {第}, EndText = {章}%
+  }%
+   
+-----------
+   
+如果 '附錄的章' 要由文字改使用為:
+       'Appendix A' -> '附錄 A'
+則使用
+  \SetTitleNumberFormat[AppendixChapter]{%
+    BeginText = {附錄 }%
+  }%
+   
+-----------
 
-    \end{description}
-  } % End of \item{}
+如果 '章' 要由數字改使用為:
+       '1' -> '-A-'
+則使用
+  \SetTitleNumberFormat[Chapter]{%
+   BeginText = {Chapter -}, EndText = {-},%
+    CNumStyle = {UpperAlph},%
+   }%
+   
+-----------
+   
+如果 '節' 要由數字改使用為:
+       '1.2' -> '一 -乙-'
+則使用
+  \SetTitleNumberFormat[Section]{%
+    EndText = {)},%
+    CNumStyle = {ChiNum}, SNumStyle = {Tiangan},%
+    SepBetweenCnS = { (},%
+   }%
+   
+-----------
+   
+如果 '節' 不想看到 '章' 的數字:
+       '1.2' -> '(2)'
+則使用
+  \SetTitleNumberFormat[Section]{%
+    BeginText = {(}, EndText = {)},%
+    CNumStyle = {}, SNumStyle = {Arabic},%
+    SepBetweenCnS = {},%
+   }%
+不提供 '章' 的數字類型跟中間的分隔符號
+    \end{verbatim}
+    \end{DescriptionFrame}
 
-  \item
-  {
-    \textbf{附錄標題的設定}
-
-    請先參考`章節標題的設定'的使用說明, 使用方式幾乎一樣的.\\
-    但為了分開2邊的使用方式, 故使用不同的名稱.
-
-    \begin{description}
-
-    \item [數字類型]\hfill\\
-     Chapter (章序號)\\
-        \verb|\StyleAppixCNumChiNum| 章序號是使用 `中文數字' 方式\\
-        \verb|\StyleAppixCNumTiangan| 章序號是使用 `天干' 方式\\
-        \verb|\StyleAppixCNumArabic| 章序號是使用 `阿拉伯數字' 方式\\
-        \verb|\StyleAppixCNumLowerRoman| 章序號是使用 `小寫羅馬數字' 方式\\
-        \verb|\StyleAppixCNumUpperRoman| 章序號是使用 `大寫羅馬數字' 方式\\
-        \verb|\StyleAppixCNumLowerAlph| 章序號是使用 `小寫英文字母' 方式\\
-        \verb|\StyleAppixCNumUpperAlph| 章序號是使用 `大寫英文字母' 方式
-
-     Section (節)\\
-        \verb|\StyleAppixSNumChiNum| 節是使用 `中文數字' 方式\\
-        \verb|\StyleAppixSNumTiangan| 節是使用 `天干' 方式\\
-        \verb|\StyleAppixSNumArabic| 節是使用 `阿拉伯數字' 方式\\
-        \verb|\StyleAppixSNumLowerRoman| 節是使用 `小寫羅馬數字' 方式\\
-        \verb|\StyleAppixSNumUpperRoman| 節是使用 `大寫羅馬數字' 方式\\
-        \verb|\StyleAppixSNumLowerAlph| 節是使用 `小寫英文字母' 方式\\
-        \verb|\StyleAppixSNumUpperAlph| 節是使用 `大寫英文字母' 方式
-
-     SubSection (小節)\\
-        \verb|\StyleAppixSSNumChiNum| 小節是使用 `中文數字' 方式\\
-        \verb|\StyleAppixSSNumTiangan| 小節是使用 `天干' 方式\\
-        \verb|\StyleAppixSSNumArabic| 小節是使用 `阿拉伯數字' 方式\\
-        \verb|\StyleAppixSSNumLowerRoman| 小節是使用 `小寫羅馬數字' 方式\\
-        \verb|\StyleAppixSSNumUpperRoman| 小節是使用 `大寫羅馬數字' 方式\\
-        \verb|\StyleAppixSSNumLowerAlph| 小節是使用 `小寫英文字母' 方式\\
-        \verb|\StyleAppixSSNumUpperAlph| 小節是使用 `大寫英文字母' 方式
-
-     SubSubSection (小小節)\\
-        \verb|\StyleAppixSSSNumChiNum| 小小節是使用 `中文數字' 方式\\
-        \verb|\StyleAppixSSSNumTiangan| 小小節是使用 `天干' 方式\\
-        \verb|\StyleAppixSSSNumArabic| 小小節是使用 `阿拉伯數字' 方式\\
-        \verb|\StyleAppixSSSNumLowerRoman| 小小節是使用 `小寫羅馬數字' 方式\\
-        \verb|\StyleAppixSSSNumUpperRoman| 小小節是使用 `大寫羅馬數字' 方式\\
-        \verb|\StyleAppixSSSNumLowerAlph| 小小節是使用 `小寫英文字母' 方式\\
-        \verb|\StyleAppixSSSNumUpperAlph| 小小節是使用 `大寫英文字母' 方式
-
-    \item [格式]\hfill\\
-     < 格式 > 正是由文字和數字類型所組出來
-
-     預設的格式:\\
-     Chapter: Appendix A
-     Section: A.1\\
-     SubSection: A.1.1\\
-     SubSubSection: (空白, 只有題目)
-
-    如果 `章' 要由文字改使用為:\verb|'Appendix A' -> '附錄 A'|\\
-    則使用\verb|\AppendixChapterTitleNumFormat{附錄 \StyleAppixCNumUpperAlph}|
-
-     其他的使用方式跟`章節標題的設定'相同.
-
-    \end{description}
+    目錄中章節號碼跟章節題目中的分隔符號\\
+    正常在目錄中會顯示 'Chapter 1. ABCDEF' 或 '第一章. ABCDEF'\\
+    但因個人喜好, 做法不一樣,\\
+    如 'Chapter 1: ABCDEF' 或 '第一章 ABCDEF'\\
+    故使用 SepAtIndex 可設定你想要的符號或不需要符號
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+如想換'章'的由'Chapter 1. ABCDEF'換成'Chapter 1: ABCDEF'
+則使用
+  \SetTitleNumberFormat[Chapter]{%
+    SepAtIndex = {:},%
+   }%
+   
+如想換'章'的由'第一章. ABCDEF'換成'第一章 ABCDEF'
+  \SetTitleNumberFormat[Chapter]{%
+    BeginText = {第}, EndText = {章},%
+    CNumStyle = {ChiNum},%
+    SepAtIndex = {},%
+  }%
+    \end{verbatim}
+    \end{DescriptionFrame}
   } % End of \item{}
 
 %  \newpage
