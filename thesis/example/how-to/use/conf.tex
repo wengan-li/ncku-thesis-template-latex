@@ -1,5 +1,5 @@
 % ------------------------------------------------
-\StartSection{論文基本資料設定 Tesis base configure}{chapter:how-to:use:conf}
+\StartSection{論文基本資料設定 Thesis's configuration}{chapter:how-to:use:conf}
 % ------------------------------------------------
 
 `conf/conf.tex'是用來設定一些論文需要的資料: 如題目, 人名等. 故以下的內容會一個一個資料說明要怎麼填寫或修改:
@@ -285,6 +285,7 @@
 以下的設定針對標題中不同內容的設定.
   BeginText (章節號碼前面的文字)
   EndText (章節號碼後面的文字)
+  TextAlign (標題文字的位置)
   CNumStyle ('章' 的數字類型)
   SNumStyle ('節' 的數字類型)
   SSNumStyle ('小節' 的數字類型)
@@ -320,6 +321,39 @@
     \end{DescriptionFrame}
 
   \newpage
+    一個完整的 \verb|'\SetNumberingFormat'| 的樣子:
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+\SetNumberingFormat[ < 章節類型 > ]{
+  BeginText = { @文字/符號@ },
+  EndText = { @文字/符號@ },
+  TextAlign = { @Left/Center/Right@ },
+  CNumStyle = { < 數字類型 > },
+  SNumStyle = { < 數字類型 > },
+  SSNumStyle = { < 數字類型 > },
+  SSSNumStyle = { < 數字類型 > },
+  SepAtIndex = { @文字/符號@ },
+  SepBetweenCnS = { @文字/符號@ },
+  SepBetweenSnSS = { @文字/符號@ },
+  SepBetweenSSCnSSS = { @文字/符號@ },
+} % End of \SetNumberingFormat{}
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+    \textbf{--- 標題文字位置 ---}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+模版提供以下的位置使用
+  Left: 左邊
+  Center: 置中
+  Right: 右邊
+預設上所有章節都是Left.
+
+例如: TextAlign={Center}
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+  \newpage
     \textbf{--- 數字類型 ---}
     \begin{DescriptionFrame}
     \begin{verbatim}
@@ -342,24 +376,6 @@
     \end{verbatim}
     \end{DescriptionFrame}
 
-    一個完整的 \verb|'\SetNumberingFormat'| 的樣子:
-    \begin{DescriptionFrame}
-    \begin{verbatim}
-\SetNumberingFormat[ < 章節類型 > ]{%
-  BeginText = { @文字/符號@ },
-  EndText = { @文字/符號@ },%
-  CNumStyle = { < 數字類型 > },
-  SNumStyle = { < 數字類型 > },%
-  SSNumStyle = { < 數字類型 > },
-  SSSNumStyle = { < 數字類型 > },%
-  SepAtIndex = { @文字/符號@ },
-  SepBetweenCnS = { @文字/符號@ },%
-  SepBetweenSnSS = { @文字/符號@ },
-  SepBetweenSSCnSSS = { @文字/符號@ },%
-} % End of \SetNumberingFormat{}
-    \end{verbatim}
-    \end{DescriptionFrame}
-
     \textbf{--- 例子 ---}
     \begin{DescriptionFrame}
     \begin{verbatim}
@@ -378,9 +394,11 @@
   \SetNumberingFormat[AppendixChapter]{%
     BeginText = {附錄 }%
   }%
-   
------------
+    \end{verbatim}
+    \end{DescriptionFrame}
 
+    \begin{DescriptionFrame}
+    \begin{verbatim}
 如果 '章' 要由數字改使用為:
        '1' -> '-A-'
 則使用
@@ -414,6 +432,7 @@
     \end{verbatim}
     \end{DescriptionFrame}
 
+\newpage
     目錄中章節號碼跟章節題目中的分隔符號\\
     正常在目錄中會顯示 'Chapter 1. ABCDEF' 或 '第一章. ABCDEF'\\
     但因個人喜好, 做法不一樣,\\
@@ -437,7 +456,7 @@
     \end{DescriptionFrame}
   } % End of \item{}
 
-%  \newpage
+  \newpage
   \item
   {
     \textbf{參考文獻 Reference}
@@ -476,7 +495,7 @@
  \textbf{已知:} 由abbrv轉去apacite必定需要刪除檔案才能進行.
   } % End of \item{}
 
-%  \newpage
+  \newpage
   \item
   {
     \textbf{系所 Department or Institute}
@@ -493,8 +512,8 @@
 
     設定系所名字則請參考下面的名單.
 
-    \newpage
     \begin{table}[h]
+    \begin{center}
       \caption{系所名字 Part 1}
       \begin{tabular}{|l|l|}
         \hline
@@ -571,6 +590,17 @@
           化學系\\
           Department of Chemistry
         \end{tabular} \\ \hline
+      \end{tabular}
+    \end{center}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+    \begin{center}
+      \caption{系所名字 Part 2}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
 
         \verb|\SetDeptEarth| &
         \begin{tabular}[c]{@{}l@{}}
@@ -613,16 +643,6 @@
           材料科學及工程學系\\
           Department of Materials Science and Engineering
         \end{tabular} \\ \hline
-
-      \end{tabular}
-    \end{table}
-
-    \newpage
-    \begin{table}[h]
-      \caption{系所名字 Part 2}
-      \begin{tabular}{|l|l|}
-        \hline
-        寫法 & 系所名字 \\ \hline
 
         \verb|\SetDeptHyd| &
         \begin{tabular}[c]{@{}l@{}}
@@ -702,6 +722,17 @@
           International Master Program on \\
           Natural Hazards Mitigation and Management
         \end{tabular} \\ \hline
+      \end{tabular}
+    \end{center}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+    \begin{center}
+      \caption{系所名字 Part 3}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
 
         \verb|\SetDeptICEM| &
         \begin{tabular}[c]{@{}l@{}}
@@ -739,16 +770,6 @@
           製造資訊與系統研究所\\
           Institute of Manufacturing Information and Systems
         \end{tabular} \\ \hline
-
-      \end{tabular}
-    \end{table}
-
-    \newpage
-    \begin{table}[h]
-      \caption{系所名字 Part 3}
-      \begin{tabular}{|l|l|}
-        \hline
-        寫法 & 系所名字 \\ \hline
 
         \verb|\SetDeptIMI| &
         \begin{tabular}[c]{@{}l@{}}
@@ -823,6 +844,17 @@
           經營管理碩士班\\
           Advanced Master of Business Administration (AMBA)
         \end{tabular} \\ \hline
+      \end{tabular}
+    \end{center}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+    \begin{center}
+      \caption{系所名字 Part 4}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
 
         \verb|\SetDeptPolSci| &
         \begin{tabular}[c]{@{}l@{}}
@@ -866,17 +898,6 @@
           政治經濟學研究所\\
           Institute of Political Economy
         \end{tabular} \\ \hline
-
-      \end{tabular}
-    \end{table}
-
-    \newpage
-    \begin{table}[h]
-      \caption{系所名字 Part 4}
-      \begin{tabular}{|l|l|}
-        \hline
-        寫法 & 系所名字 \\ \hline
-
         \verb|\SetDeptFMRI| &
         \begin{tabular}[c]{@{}l@{}}
           心智影像研究中心\\
@@ -954,6 +975,17 @@
           內科學科\\
           Department of Internal Medicine
         \end{tabular} \\ \hline
+      \end{tabular}
+    \end{center}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+    \begin{center}
+      \caption{系所名字 Part 5}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
 
         \verb|\SetDeptPhysMed| &
         \begin{tabular}[c]{@{}l@{}}
@@ -996,16 +1028,6 @@
           公共衛生學科暨公共衛生研究所\\
           Department of Public Health
         \end{tabular} \\ \hline
-
-      \end{tabular}
-    \end{table}
-
-    \newpage
-    \begin{table}[h]
-      \caption{系所名字 Part 5}
-      \begin{tabular}{|l|l|}
-        \hline
-        寫法 & 系所名字 \\ \hline
 
         \verb|\SetDeptNeuro| &
         \begin{tabular}[c]{@{}l@{}}
@@ -1084,6 +1106,17 @@
           放射線學科\\
           Department of Diagnostic Radiology
         \end{tabular} \\ \hline
+      \end{tabular}
+    \end{center}
+    \end{table}
+
+    \newpage
+    \begin{table}[h]
+    \begin{center}
+      \caption{系所名字 Part 6}
+      \begin{tabular}{|l|l|}
+        \hline
+        寫法 & 系所名字 \\ \hline
 
         \verb|\SetDeptNM| &
         \begin{tabular}[c]{@{}l@{}}
@@ -1126,16 +1159,6 @@
           護理學系\\
           Department of Nursing
         \end{tabular} \\ \hline
-
-      \end{tabular}
-    \end{table}
-
-    \newpage
-    \begin{table}[h]
-      \caption{系所名字 Part 6}
-      \begin{tabular}{|l|l|}
-        \hline
-        寫法 & 系所名字 \\ \hline
 
         \verb|\SetDeptMT| &
         \begin{tabular}[c]{@{}l@{}}
@@ -1208,8 +1231,8 @@
           老年學研究所\\
           Institute of Gerontology
         \end{tabular} \\ \hline
-
       \end{tabular}
+    \end{center}
     \end{table}
   } % End of \item{}
 \end{enumerate}

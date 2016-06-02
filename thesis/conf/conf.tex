@@ -377,6 +377,7 @@
 % 以下的設定針對標題中不同內容的設定.
 %    BeginText (章節號碼前面的文字)
 %    EndText (章節號碼後面的文字)
+%    TextAlign (標題文字的位置)
 %    CNumStyle ('章' 的數字類型)
 %    SNumStyle ('節' 的數字類型)
 %    SSNumStyle ('小節' 的數字類型)
@@ -408,6 +409,18 @@
 %
 % ----------------------
 %
+% 一個完整的 \SetNumberingFormat 的樣子:
+% \SetNumberingFormat[ < 章節類型 > ]{%
+%   BeginText = { @文字/符號@ }, EndText = { @文字/符號@ },%
+%   TextAlign = { @Left/Center/Right@ },%
+%   CNumStyle = { < 數字類型 > }, SNumStyle = { < 數字類型 > },%
+%   SSNumStyle = { < 數字類型 > }, SSSNumStyle = { < 數字類型 > },%
+%   SepAtIndex = { @文字/符號@ }, SepBetweenCnS = { @文字/符號@ },%
+%   SepBetweenSnSS = { @文字/符號@ }, SepBetweenSSCnSSS = { @文字/符號@ },%
+% } % End of \SetNumberingFormat{}
+%
+% ----------------------
+%
 % --- 數字類型 ---
 %
 % 模版提供以下的數字類型使用
@@ -429,14 +442,15 @@
 %
 % ----------------------
 %
-% 一個完整的 \SetNumberingFormat 的樣子:
-% \SetNumberingFormat[ < 章節類型 > ]{%
-%   BeginText = { @文字/符號@ }, EndText = { @文字/符號@ },%
-%   CNumStyle = { < 數字類型 > }, SNumStyle = { < 數字類型 > },%
-%   SSNumStyle = { < 數字類型 > }, SSSNumStyle = { < 數字類型 > },%
-%   SepAtIndex = { @文字/符號@ }, SepBetweenCnS = { @文字/符號@ },%
-%   SepBetweenSnSS = { @文字/符號@ }, SepBetweenSSCnSSS = { @文字/符號@ },%
-% } % End of \SetNumberingFormat{}
+% --- 標題文字位置 ---
+%
+% 模版提供以下的位置使用
+%   Left: 左邊
+%   Center: 置中
+%   Right: 右邊
+% 預設上所有章節都是Left.
+%
+% 例如: TextAlign={Center}
 %
 % ----------------------
 %
