@@ -66,14 +66,14 @@
   \begin{minipage}[c][5cm][c]{\textwidth}
   \parbox{\textwidth}{\center\large\textbf{\GetEngTitle}}
   \vspace{0.3cm}%
-  \center\normalsize\GetAuthorEngName\\%
-  \center\normalsize Dr. \GetAdvisorEngNameA\\%
+  \center\normalsize\GetAuthorEngName\par%
+  \center\normalsize Dr. \GetAdvisorEngNameA\par%
   \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}{}%
-    {\center\normalsize Dr. \GetAdvisorEngNameB\\}
+    {\center\normalsize Dr. \GetAdvisorEngNameB\par}
   \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}{}%
-    {\center\normalsize Dr. \GetAdvisorEngNameC\\}
-  \center\normalsize\GetDeptEngName\\%
-  \center\normalsize\GetCollEngName\\%
+    {\center\normalsize Dr. \GetAdvisorEngNameC\par}
+  \center\normalsize\GetDeptEngName\par%
+  \center\normalsize\GetCollEngName\par%
 %  \center\normalsize\textit{\GetDeptEngName}\\%
 %  \center\normalsize\textit{\GetCollEngName}\\%
   \end{minipage}%
@@ -112,14 +112,15 @@
 } % End of \mdfdefinestyle{}
 \newcommand{\ExtAbstractSummary}[1]
 {%
+  \par%
   \vspace{0.3cm}%
   \begin{mdframed}[style=ExtAbstractSummaryStyle]%
   \vspace{0.3cm}%
   \parbox{\textwidth}{\center\textbf{SUMMARY}}%
-  \vspace{0.3cm}\\%
+  \vspace{0.3cm}\par%
   #1%
   \EmptyLine%
-  \vspace{0.3cm}\\%
+  \vspace{0.3cm}\par%
   \textbf{Keyword:} \GetAbstractExtKeywords%
   \end{mdframed}%
 } % End of \newcommand{}
@@ -127,9 +128,10 @@
 % Chapter in Extended Abstract
 %\newcommand{\ExtAbstractChapter}[1]
 \DeclareDocumentCommand{\ExtAbstractChapter}{+m +g} % Back-porting
-{
+{%
+  \par%
   \vspace{0.5cm}%
-  \centerline{\textbf{\MakeUppercase{#1}}}
+  \centerline{\textbf{\MakeUppercase{#1}}}\par%
   \vspace{0.3cm}%
   \IfNoValueF{#2}{#2}%
 } % End of \newcommand{}
@@ -137,11 +139,11 @@
 % Section in Extended Abstract
 %\newcommand{\ExtAbstractSection}[1]
 \DeclareDocumentCommand{\ExtAbstractSection}{+m +g} % Back-porting
-{
+{%
+  \par%
   \vspace{0.3cm}%
-  \textbf{#1}%
+  \textbf{#1}\par%
   \vspace{0.1cm}%
-
   \IfNoValueF{#2}{#2}%
 } % End of \newcommand{}
 
