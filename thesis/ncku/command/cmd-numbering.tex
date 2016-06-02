@@ -497,11 +497,13 @@
   {
     BeginText = {Chapter },
     EndText = \empty,
+    TextAlign = {Left}, % Useless for Chapter
     CNumStyle = Arabic,
     SepAtIndex = {.},
   },
   BeginText/.estore in = \GetCTitleNumberFormatBeginText,
   EndText/.estore in = \GetCTitleNumberFormatEndText,
+  TextAlign/.estore in = \GetCTitleNumberFormatTextAlign,
   CNumStyle/.estore in = \GetCTitleNumberFormatCNumStyle,
   SepAtIndex/.estore in = \GetCTitleNumberFormatSepAtIndex,
 } % End of \pgfkeys{}
@@ -527,6 +529,7 @@
   {
     BeginText = \empty,
     EndText = \empty,
+    TextAlign = {Left},
     CNumStyle = Arabic,
     SNumStyle = Arabic,
     SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
@@ -534,6 +537,7 @@
   },
   BeginText/.estore in = \GetSTitleNumberFormatBeginText,
   EndText/.estore in = \GetSTitleNumberFormatEndText,
+  TextAlign/.estore in = \GetSTitleNumberFormatTextAlign,
   CNumStyle/.estore in = \GetSTitleNumberFormatCNumStyle,
   SNumStyle/.estore in = \GetSTitleNumberFormatSNumStyle,
   SepAtIndex/.estore in = \GetSTitleNumberFormatSepAtIndex,
@@ -565,6 +569,7 @@
   {
     BeginText = \empty,
     EndText = \empty,
+    TextAlign = {Left},
     CNumStyle = Arabic,
     SNumStyle = Arabic,
     SSNumStyle = Arabic,
@@ -574,6 +579,7 @@
   },
   BeginText/.estore in = \GetSSTitleNumberFormatBeginText,
   EndText/.estore in = \GetSSTitleNumberFormatEndText,
+  TextAlign/.estore in = \GetSSTitleNumberFormatTextAlign,
   CNumStyle/.estore in = \GetSSTitleNumberFormatCNumStyle,
   SNumStyle/.estore in = \GetSSTitleNumberFormatSNumStyle,
   SSNumStyle/.estore in = \GetSSTitleNumberFormatSSNumStyle,
@@ -610,6 +616,7 @@
   {
     BeginText = \empty,
     EndText = \empty,
+    TextAlign = {Left},
     CNumStyle = Arabic,
     SNumStyle = Arabic,
     SSNumStyle = Arabic,
@@ -621,6 +628,7 @@
   },
   BeginText/.estore in = \GetSSSTitleNumberFormatBeginText,
   EndText/.estore in = \GetSSSTitleNumberFormatEndText,
+  TextAlign/.estore in = \GetSSSTitleNumberFormatTextAlign,
   CNumStyle/.estore in = \GetSSSTitleNumberFormatCNumStyle,
   SNumStyle/.estore in = \GetSSSTitleNumberFormatSNumStyle,
   SSNumStyle/.estore in = \GetSSSTitleNumberFormatSSNumStyle,
@@ -662,11 +670,13 @@
   {
     BeginText = {Appendix },
     EndText = \empty,
+    TextAlign = {Left}, % Useless for Chapter
     CNumStyle = UpperAlph,
     SepAtIndex = {.},
   },
   BeginText/.estore in = \GetAppendixCTitleNumberFormatBeginText,
   EndText/.estore in = \GetAppendixCTitleNumberFormatEndText,
+  TextAlign/.estore in = \GetAppendixCTitleNumberFormatTextAlign,
   CNumStyle/.estore in = \GetAppendixCTitleNumberFormatCNumStyle,
   SepAtIndex/.estore in = \GetAppendixCTitleNumberFormatSepAtIndex,
 } % End of \pgfkeys{}
@@ -692,6 +702,7 @@
   {
     BeginText = \empty,
     EndText = \empty,
+    TextAlign = {Left},
     CNumStyle = UpperAlph,
     SNumStyle = Arabic,
     SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
@@ -699,6 +710,7 @@
   },
   BeginText/.estore in = \GetAppendixSTitleNumberFormatBeginText,
   EndText/.estore in = \GetAppendixSTitleNumberFormatEndText,
+  TextAlign/.estore in = \GetAppendixSTitleNumberFormatTextAlign,
   CNumStyle/.estore in = \GetAppendixSTitleNumberFormatCNumStyle,
   SNumStyle/.estore in = \GetAppendixSTitleNumberFormatSNumStyle,
   SepAtIndex/.estore in = \GetAppendixSTitleNumberFormatSepAtIndex,
@@ -730,6 +742,7 @@
   {
     BeginText = \empty,
     EndText = \empty,
+    TextAlign = {Left},
     CNumStyle = UpperAlph,
     SNumStyle = Arabic,
     SSNumStyle = Arabic,
@@ -739,6 +752,7 @@
   },
   BeginText/.estore in = \GetAppendixSSTitleNumberFormatBeginText,
   EndText/.estore in = \GetAppendixSSTitleNumberFormatEndText,
+  TextAlign/.estore in = \GetAppendixSSTitleNumberFormatTextAlign,
   CNumStyle/.estore in = \GetAppendixSSTitleNumberFormatCNumStyle,
   SNumStyle/.estore in = \GetAppendixSSTitleNumberFormatSNumStyle,
   SSNumStyle/.estore in = \GetAppendixSSTitleNumberFormatSSNumStyle,
@@ -775,6 +789,7 @@
   {
     BeginText = \empty,
     EndText = \empty,
+    TextAlign = {Left},
     CNumStyle = UpperAlph,
     SNumStyle = Arabic,
     SSNumStyle = Arabic,
@@ -786,6 +801,7 @@
   },
   BeginText/.estore in = \GetAppendixSSSTitleNumberFormatBeginText,
   EndText/.estore in = \GetAppendixSSSTitleNumberFormatEndText,
+  TextAlign/.estore in = \GetAppendixSSSTitleNumberFormatTextAlign,
   CNumStyle/.estore in = \GetAppendixSSSTitleNumberFormatCNumStyle,
   SNumStyle/.estore in = \GetAppendixSSSTitleNumberFormatSNumStyle,
   SSNumStyle/.estore in = \GetAppendixSSSTitleNumberFormatSSNumStyle,
@@ -1345,24 +1361,28 @@
 % SubSubSection: __EMPTY__
 \SetNumberingFormat[Chapter]{%
   BeginText = {Chapter }, EndText = {},
+  TextAlign = {Left},
   CNumStyle = {Arabic},
   SepAtIndex = {.},
 } % End of \SetNumberingFormat{}
 
 \SetNumberingFormat[Section]{%
   BeginText = {}, EndText = {},
+  TextAlign = {Left},
   CNumStyle = {Arabic}, SNumStyle = {Arabic},
   SepAtIndex = {.}, SepBetweenCnS = {.},
 } % End of \SetNumberingFormat{}
 
 \SetNumberingFormat[SubSection]{%
   BeginText = {}, EndText = {},
+  TextAlign = {Left},
   CNumStyle = {Arabic}, SNumStyle = {Arabic}, SSNumStyle = {Arabic},
   SepAtIndex = {.}, SepBetweenCnS = {.}, SepBetweenSnSS = {.},
 } % End of \SetNumberingFormat{}
 
 \SetNumberingFormat[SubSubSection]{%
   BeginText = {}, EndText = {},
+  TextAlign = {Left},
   CNumStyle = {}, SNumStyle = {}, SSNumStyle = {}, SSSNumStyle = {},
   SepAtIndex = {}, SepBetweenCnS = {},
   SepBetweenSnSS = {}, SepBetweenSSCnSSS = {},
@@ -1375,24 +1395,28 @@
 % SubSubSection: __EMPTY__
 \SetNumberingFormat[AppendixChapter]{%
   BeginText = {Appendix }, EndText = {},
+  TextAlign = {Left},
   CNumStyle = {UpperAlph},
   SepAtIndex = {.},
 } % End of \SetNumberingFormat{}
 
 \SetNumberingFormat[AppendixSection]{%
   BeginText = {}, EndText = {},
+  TextAlign = {Left},
   CNumStyle = {UpperAlph}, SNumStyle = {Arabic},
   SepAtIndex = {.}, SepBetweenCnS = {.},
 } % End of \SetNumberingFormat{}
 
 \SetNumberingFormat[AppendixSubSection]{%
   BeginText = {}, EndText = {},
+  TextAlign = {Left},
   CNumStyle = {UpperAlph}, SNumStyle = {Arabic}, SSNumStyle = {Arabic},
   SepAtIndex = {.}, SepBetweenCnS = {.}, SepBetweenSnSS = {.},
 } % End of \SetNumberingFormat{}
 
 \SetNumberingFormat[AppendixSubSubSection]{%
   BeginText = {}, EndText = {},
+  TextAlign = {Left},
   CNumStyle = {}, SNumStyle = {}, SSNumStyle = {}, SSSNumStyle = {},
   SepAtIndex = {}, SepBetweenCnS = {},
   SepBetweenSnSS = {}, SepBetweenSSCnSSS = {},

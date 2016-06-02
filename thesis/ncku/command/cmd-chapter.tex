@@ -172,18 +172,34 @@
 \end{comment}
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySectionHeader}[2]%
+\newcommand{\DisplaySectionHeader}[3]%
 {%
   \par%
   \vspace{0.5cm}%
+  %
+  \ifthenelse{\equal{#3}{Left}}%
+    {\begin{flushleft}\par}{}%
+  \ifthenelse{\equal{#3}{Center}}%
+    {\begin{center}\par}{}%
+  \ifthenelse{\equal{#3}{Right}}%
+    {\begin{flushright}\par}{}%
+  %
   \ifthenelse{\equal{#1}{\empty}}%
   {%
     \parindent 0pt \textbf{#2} \par%
   }%
   {%
-    \parindent 0pt \textbf{#1\hspace{0.5cm}#2} \par%
+    \textbf{#1\hspace{0.5cm}#2} \par%
   }%
-  \vspace{0.1cm}%
+%  \vspace{0.1cm}%
+  %
+  \ifthenelse{\equal{#3}{Left}}%
+    {\end{flushleft}\par}{}%
+  \ifthenelse{\equal{#3}{Center}}%
+    {\end{center}\par}{}%
+  \ifthenelse{\equal{#3}{Right}}%
+    {\end{flushright}\par}{}%
+  %
   \addcontentsline{%
     toc}{section}{#1\GetSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
 } % End of \newcommand{}
@@ -205,12 +221,14 @@
     {%
       \refstepcounter{appendixsection}%
       \SetupAppendixSectionTitleNumberFormatString%
-      \DisplaySectionHeader{\GetAppendixSectionTitleNumberFormatString}{#2}
+      \DisplaySectionHeader{\GetAppendixSectionTitleNumberFormatString}{#2}%
+        {\GetAppendixSTitleNumberFormatTextAlign}%
     }%
     {%
       \refstepcounter{section}%
       \SetupSectionTitleNumberFormatString%
-      \DisplaySectionHeader{\GetSectionTitleNumberFormatString}{#2}
+      \DisplaySectionHeader{\GetSectionTitleNumberFormatString}{#2}%
+        {\GetSTitleNumberFormatTextAlign}%
     }%
   }%
   % Reset counters
@@ -220,10 +238,18 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySubSectionHeader}[2]%
+\newcommand{\DisplaySubSectionHeader}[3]%
 {%
   \par%
   \vspace{0.5cm}%
+  %
+  \ifthenelse{\equal{#3}{Left}}%
+    {\begin{flushleft}\par}{}%
+  \ifthenelse{\equal{#3}{Center}}%
+    {\begin{center}\par}{}%
+  \ifthenelse{\equal{#3}{Right}}%
+    {\begin{flushright}\par}{}%
+  %
   \ifthenelse{\equal{#1}{\empty}}%
   {%
     \parindent 0pt \textbf{#2} \par%
@@ -231,7 +257,15 @@
   {%
     \parindent 0pt \textbf{#1\hspace{0.5cm}#2} \par%
   }%
-  \vspace{0.1cm}%
+%  \vspace{0.1cm}%
+  %
+  \ifthenelse{\equal{#3}{Left}}%
+    {\end{flushleft}\par}{}%
+  \ifthenelse{\equal{#3}{Center}}%
+    {\end{center}\par}{}%
+  \ifthenelse{\equal{#3}{Right}}%
+    {\end{flushright}\par}{}%
+  %
   \addcontentsline{%
     toc}{subsection}{#1\GetSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
 } % End of \newcommand{}
@@ -254,13 +288,15 @@
       \refstepcounter{appendixsubsection}%
       \SetupAppendixSubSectionTitleNumberFormatString%
       \DisplaySubSectionHeader{%
-        \GetAppendixSubSectionTitleNumberFormatString}{#2}
+        \GetAppendixSubSectionTitleNumberFormatString}{#2}%
+        {\GetAppendixSSTitleNumberFormatTextAlign}%
     }%
     {%
       \refstepcounter{subsection}%
       \SetupSubSectionTitleNumberFormatString%
       \DisplaySubSectionHeader{%
-        \GetSubSectionTitleNumberFormatString}{#2}
+        \GetSubSectionTitleNumberFormatString}{#2}%
+        {\GetSSTitleNumberFormatTextAlign}%
     }%
   }%
   % Reset counters
@@ -270,10 +306,18 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySubSubSectionHeader}[2]%
+\newcommand{\DisplaySubSubSectionHeader}[3]%
 {%
   \par%
   \vspace{0.5cm}%
+  %
+  \ifthenelse{\equal{#3}{Left}}%
+    {\begin{flushleft}\par}{}%
+  \ifthenelse{\equal{#3}{Center}}%
+    {\begin{center}\par}{}%
+  \ifthenelse{\equal{#3}{Right}}%
+    {\begin{flushright}\par}{}%
+  %
   \ifthenelse{\equal{#1}{\empty}}%
   {%
     \parindent 0pt \textbf{#2} \par%
@@ -281,7 +325,15 @@
   {%
     \parindent 0pt \textbf{#1\hspace{0.5cm}#2} \par%
   }%
-  \vspace{0.1cm}%
+%  \vspace{0.1cm}%
+  %
+  \ifthenelse{\equal{#3}{Left}}%
+    {\end{flushleft}\par}{}%
+  \ifthenelse{\equal{#3}{Center}}%
+    {\end{center}\par}{}%
+  \ifthenelse{\equal{#3}{Right}}%
+    {\end{flushright}\par}{}%
+  %
   \addcontentsline{%
     toc}{subsubsection}{#1\GetSSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
 } % End of \newcommand{}
@@ -304,13 +356,15 @@
       \refstepcounter{appendixsubsubsection}%
       \SetupAppendixSubSubSectionTitleNumberFormatString%
       \DisplaySubSubSectionHeader{%
-        \GetAppendixSubSubSectionTitleNumberFormatString}{#2}
+        \GetAppendixSubSubSectionTitleNumberFormatString}{#2}%
+        {\GetAppendixSSSTitleNumberFormatTextAlign}%
     }%
     {%
       \refstepcounter{subsubsection}%
       \SetupSubSubSectionTitleNumberFormatString%
       \DisplaySubSubSectionHeader{%
-        \GetSubSubSectionTitleNumberFormatString}{#2}
+        \GetSubSubSectionTitleNumberFormatString}{#2}%
+        {\GetSSSTitleNumberFormatTextAlign}%
     }%
   }%
 } % End of \RenewDocumentCommand{}
