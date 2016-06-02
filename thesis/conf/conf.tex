@@ -352,10 +352,10 @@
 %   SubSection: A.1.1
 %   SubSubSection: (空白, 只有題目)
 %
-% 如對格式有什麼的要求, 請使用\SetTitleNumberFormat.
+% 如對格式有什麼的要求, 請使用\SetNumberingFormat.
 
 % --- 使用方式 ---
-%\SetTitleNumberFormat[ < 章節類型 > ]{ < 設定 >}
+%\SetNumberingFormat[ < 章節類型 > ]{ < 設定 >}
 
 % ----------------------
 %
@@ -429,14 +429,14 @@
 %
 % ----------------------
 %
-% 一個完整的 \SetTitleNumberFormat 的樣子:
-% \SetTitleNumberFormat[ < 章節類型 > ]{%
+% 一個完整的 \SetNumberingFormat 的樣子:
+% \SetNumberingFormat[ < 章節類型 > ]{%
 %   BeginText = { @文字/符號@ }, EndText = { @文字/符號@ },%
 %   CNumStyle = { < 數字類型 > }, SNumStyle = { < 數字類型 > },%
 %   SSNumStyle = { < 數字類型 > }, SSSNumStyle = { < 數字類型 > },%
 %   SepAtIndex = { @文字/符號@ }, SepBetweenCnS = { @文字/符號@ },%
 %   SepBetweenSnSS = { @文字/符號@ }, SepBetweenSSCnSSS = { @文字/符號@ },%
-% } % End of \SetTitleNumberFormat{}
+% } % End of \SetNumberingFormat{}
 %
 % ----------------------
 %
@@ -445,7 +445,7 @@
 % 如果 '章' 要由文字改使用為:
 %        'Chapter 1' -> '第1章'
 % 則使用
-%   \SetTitleNumberFormat[Chapter]{%
+%   \SetNumberingFormat[Chapter]{%
 %     BeginText = {第}, EndText = {章}%
 %   }%
 %
@@ -454,7 +454,7 @@
 % 如果 '附錄的章' 要由文字改使用為:
 %        'Appendix A' -> '附錄 A'
 % 則使用
-%   \SetTitleNumberFormat[AppendixChapter]{%
+%   \SetNumberingFormat[AppendixChapter]{%
 %     BeginText = {附錄 }%
 %   }%
 %
@@ -463,7 +463,7 @@
 % 如果 '章' 要由數字改使用為:
 %        '1' -> '-A-'
 % 則使用
-%   \SetTitleNumberFormat[Chapter]{%
+%   \SetNumberingFormat[Chapter]{%
 %     BeginText = {Chapter -}, EndText = {-},%
 %     CNumStyle = {UpperAlph},%
 %    }%
@@ -473,7 +473,7 @@
 % 如果 '節' 要由數字改使用為:
 %        '1.2' -> '一 -乙-'
 % 則使用
-%   \SetTitleNumberFormat[Section]{%
+%   \SetNumberingFormat[Section]{%
 %     EndText = {)},%
 %     CNumStyle = {ChiNum}, SNumStyle = {Tiangan},%
 %     SepBetweenCnS = { (},%
@@ -484,7 +484,7 @@
 % 如果 '節' 不想看到 '章' 的數字:
 %        '1.2' -> '(2)'
 % 則使用
-%   \SetTitleNumberFormat[Section]{%
+%   \SetNumberingFormat[Section]{%
 %     BeginText = {(}, EndText = {)},%
 %     CNumStyle = {}, SNumStyle = {Arabic},%
 %     SepBetweenCnS = {},%
@@ -500,12 +500,12 @@
 %
 % 如想換'章'的由'Chapter 1. ABCDEF'換成'Chapter 1: ABCDEF'
 % 則使用
-%   \SetTitleNumberFormat[Chapter]{%
+%   \SetNumberingFormat[Chapter]{%
 %     SepAtIndex = {:},%
 %    }%
 %
 % 如想換'章'的由'第一章. ABCDEF'換成'第一章 ABCDEF'
-%   \SetTitleNumberFormat[Chapter]{%
+%   \SetNumberingFormat[Chapter]{%
 %     BeginText = {第}, EndText = {章},%
 %     CNumStyle = {ChiNum},%
 %     SepAtIndex = {},%
@@ -516,61 +516,61 @@
 %
 
 % Chapter (章)
-%\SetTitleNumberFormat[Chapter]{%
+%\SetNumberingFormat[Chapter]{%
 %  BeginText = {Chapter }, EndText = {},
 %  CNumStyle = {Arabic},
 %  SepAtIndex = {.},
-%} % End of \SetTitleNumberFormat{}
+%} % End of \SetNumberingFormat{}
 
 % Section (節)
-%\SetTitleNumberFormat[Section]{%
+%\SetNumberingFormat[Section]{%
 %  BeginText = {}, EndText = {},
 %  CNumStyle = {Arabic}, SNumStyle = {Arabic},
 %  SepAtIndex = {.}, SepBetweenCnS = {.},
-%} % End of \SetTitleNumberFormat{}
+%} % End of \SetNumberingFormat{}
 
 % SubSection (小節)
-%\SetTitleNumberFormat[SubSection]{%
+%\SetNumberingFormat[SubSection]{%
 %  BeginText = {}, EndText = {},
 %  CNumStyle = {Arabic}, SNumStyle = {Arabic}, SSNumStyle = {Arabic},
 %  SepAtIndex = {.}, SepBetweenCnS = {.}, SepBetweenSnSS = {.},
-%} % End of \SetTitleNumberFormat{}
+%} % End of \SetNumberingFormat{}
 
 % SubSubSection (小小節)
-%\SetTitleNumberFormat[SubSubSection]{%
+%\SetNumberingFormat[SubSubSection]{%
 %  BeginText = {}, EndText = {},
 %  CNumStyle = {}, SNumStyle = {}, SSNumStyle = {}, SSSNumStyle = {},
 %  SepAtIndex = {}, SepBetweenCnS = {},
 %  SepBetweenSnSS = {}, SepBetweenSSCnSSS = {},
-%} % End of \SetTitleNumberFormat{}
+%} % End of \SetNumberingFormat{}
 
 % AppendixChapter (附錄中的章)
-%\SetTitleNumberFormat[AppendixChapter]{%
+%\SetNumberingFormat[AppendixChapter]{%
 %  BeginText = {Appendix }, EndText = {},
 %  CNumStyle = {UpperAlph},
 %  SepAtIndex = {.},
-%} % End of \SetTitleNumberFormat{}
+%} % End of \SetNumberingFormat{}
 
 % AppendixSection (附錄中的節)
-%\SetTitleNumberFormat[AppendixSection]{%
+%\SetNumberingFormat[AppendixSection]{%
 %  BeginText = {}, EndText = {},
 %  CNumStyle = {UpperAlph}, SNumStyle = {Arabic},
 %  SepAtIndex = {.}, SepBetweenCnS = {.},
-%} % End of \SetTitleNumberFormat{}
+%} % End of \SetNumberingFormat{}
 
 % AppendixSubSection (附錄中的小節)
-%\SetTitleNumberFormat[AppendixSubSection]{%
+%\SetNumberingFormat[AppendixSubSection]{%
 %  BeginText = {}, EndText = {},
 %  CNumStyle = {UpperAlph}, SNumStyle = {Arabic}, SSNumStyle = {Arabic},
 %  SepAtIndex = {.}, SepBetweenCnS = {.}, SepBetweenSnSS = {.},
-%} % End of \SetTitleNumberFormat{}
+%} % End of \SetNumberingFormat{}
 
 % AppendixSubSubSection (附錄中的小小節)
-%\SetTitleNumberFormat[AppendixSubSubSection]{%
+%\SetNumberingFormat[AppendixSubSubSection]{%
 %  BeginText = {}, EndText = {},
 %  CNumStyle = {}, SNumStyle = {}, SSNumStyle = {}, SSSNumStyle = {},
 %  SepAtIndex = {}, SepBetweenCnS = {},
 %  SepBetweenSnSS = {}, SepBetweenSSCnSSS = {},
-%} % End of \SetTitleNumberFormat{}
+%} % End of \SetNumberingFormat{}
 
 % ----------------------------------------------------------------------------

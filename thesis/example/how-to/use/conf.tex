@@ -257,10 +257,10 @@
     \end{verbatim}
     \end{DescriptionFrame}
 
-    如對格式有什麼的要求, 請使用\verb|'\SetTitleNumberFormat'|.
+    如對格式有什麼的要求, 請使用\verb|'\SetNumberingFormat'|.
 
     \textbf{--- 使用方式 ---}\\
-    \verb|'\SetTitleNumberFormat[ < 章節類型 > ]{ < 設定 >}'|
+    \verb|'\SetNumberingFormat[ < 章節類型 > ]{ < 設定 >}'|
 
     \textbf{< 章節類型 >}
     \begin{DescriptionFrame}
@@ -342,10 +342,10 @@
     \end{verbatim}
     \end{DescriptionFrame}
 
-    一個完整的 \verb|'\SetTitleNumberFormat'| 的樣子:
+    一個完整的 \verb|'\SetNumberingFormat'| 的樣子:
     \begin{DescriptionFrame}
     \begin{verbatim}
-\SetTitleNumberFormat[ < 章節類型 > ]{%
+\SetNumberingFormat[ < 章節類型 > ]{%
   BeginText = { @文字/符號@ },
   EndText = { @文字/符號@ },%
   CNumStyle = { < 數字類型 > },
@@ -356,7 +356,7 @@
   SepBetweenCnS = { @文字/符號@ },%
   SepBetweenSnSS = { @文字/符號@ },
   SepBetweenSSCnSSS = { @文字/符號@ },%
-} % End of \SetTitleNumberFormat{}
+} % End of \SetNumberingFormat{}
     \end{verbatim}
     \end{DescriptionFrame}
 
@@ -366,7 +366,7 @@
 如果 '章' 要由文字改使用為:
        'Chapter 1' -> '第1章'
 則使用
-  \SetTitleNumberFormat[Chapter]{%
+  \SetNumberingFormat[Chapter]{%
     BeginText = {第}, EndText = {章}%
   }%
    
@@ -375,7 +375,7 @@
 如果 '附錄的章' 要由文字改使用為:
        'Appendix A' -> '附錄 A'
 則使用
-  \SetTitleNumberFormat[AppendixChapter]{%
+  \SetNumberingFormat[AppendixChapter]{%
     BeginText = {附錄 }%
   }%
    
@@ -384,7 +384,7 @@
 如果 '章' 要由數字改使用為:
        '1' -> '-A-'
 則使用
-  \SetTitleNumberFormat[Chapter]{%
+  \SetNumberingFormat[Chapter]{%
    BeginText = {Chapter -}, EndText = {-},%
     CNumStyle = {UpperAlph},%
    }%
@@ -394,7 +394,7 @@
 如果 '節' 要由數字改使用為:
        '1.2' -> '一 -乙-'
 則使用
-  \SetTitleNumberFormat[Section]{%
+  \SetNumberingFormat[Section]{%
     EndText = {)},%
     CNumStyle = {ChiNum}, SNumStyle = {Tiangan},%
     SepBetweenCnS = { (},%
@@ -405,7 +405,7 @@
 如果 '節' 不想看到 '章' 的數字:
        '1.2' -> '(2)'
 則使用
-  \SetTitleNumberFormat[Section]{%
+  \SetNumberingFormat[Section]{%
     BeginText = {(}, EndText = {)},%
     CNumStyle = {}, SNumStyle = {Arabic},%
     SepBetweenCnS = {},%
@@ -423,12 +423,12 @@
     \begin{verbatim}
 如想換'章'的由'Chapter 1. ABCDEF'換成'Chapter 1: ABCDEF'
 則使用
-  \SetTitleNumberFormat[Chapter]{%
+  \SetNumberingFormat[Chapter]{%
     SepAtIndex = {:},%
    }%
    
 如想換'章'的由'第一章. ABCDEF'換成'第一章 ABCDEF'
-  \SetTitleNumberFormat[Chapter]{%
+  \SetNumberingFormat[Chapter]{%
     BeginText = {第}, EndText = {章},%
     CNumStyle = {ChiNum},%
     SepAtIndex = {},%

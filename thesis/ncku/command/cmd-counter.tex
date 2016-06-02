@@ -1267,7 +1267,7 @@
 \begin{comment}
 \pgfkeys
 {
-  /SetTitleNumberFormat/.is family, /SetTitleNumberFormat,
+  /SetNumberingFormat/.is family, /SetNumberingFormat,
   default/.style =
   {
     BeginText = \empty,
@@ -1295,7 +1295,7 @@
 \end{comment}
 % Parse the setting based on title type
 % Chapter, Section, SubSection, SubSubSection
-\newcommand{\SetTitleNumberFormat}[2][\empty]
+\newcommand{\SetNumberingFormat}[2][\empty]
 {%
   \ifthenelse{\equal{#1}{Chapter}}
   {%
@@ -1343,60 +1343,60 @@
 % Section: 1.1
 % SubSection: 1.1.1
 % SubSubSection: __EMPTY__
-\SetTitleNumberFormat[Chapter]{%
+\SetNumberingFormat[Chapter]{%
   BeginText = {Chapter }, EndText = {},
   CNumStyle = {Arabic},
   SepAtIndex = {.},
-} % End of \SetTitleNumberFormat{}
+} % End of \SetNumberingFormat{}
 
-\SetTitleNumberFormat[Section]{%
+\SetNumberingFormat[Section]{%
   BeginText = {}, EndText = {},
   CNumStyle = {Arabic}, SNumStyle = {Arabic},
   SepAtIndex = {.}, SepBetweenCnS = {.},
-} % End of \SetTitleNumberFormat{}
+} % End of \SetNumberingFormat{}
 
-\SetTitleNumberFormat[SubSection]{%
+\SetNumberingFormat[SubSection]{%
   BeginText = {}, EndText = {},
   CNumStyle = {Arabic}, SNumStyle = {Arabic}, SSNumStyle = {Arabic},
   SepAtIndex = {.}, SepBetweenCnS = {.}, SepBetweenSnSS = {.},
-} % End of \SetTitleNumberFormat{}
+} % End of \SetNumberingFormat{}
 
-\SetTitleNumberFormat[SubSubSection]{%
+\SetNumberingFormat[SubSubSection]{%
   BeginText = {}, EndText = {},
   CNumStyle = {}, SNumStyle = {}, SSNumStyle = {}, SSSNumStyle = {},
   SepAtIndex = {}, SepBetweenCnS = {},
   SepBetweenSnSS = {}, SepBetweenSSCnSSS = {},
-} % End of \SetTitleNumberFormat{}
+} % End of \SetNumberingFormat{}
 
 % Default
 % Chapter: Appendix A
 % Section: A.1
 % SubSection: A.1.1
 % SubSubSection: __EMPTY__
-\SetTitleNumberFormat[AppendixChapter]{%
+\SetNumberingFormat[AppendixChapter]{%
   BeginText = {Appendix }, EndText = {},
   CNumStyle = {UpperAlph},
   SepAtIndex = {.},
-} % End of \SetTitleNumberFormat{}
+} % End of \SetNumberingFormat{}
 
-\SetTitleNumberFormat[AppendixSection]{%
+\SetNumberingFormat[AppendixSection]{%
   BeginText = {}, EndText = {},
   CNumStyle = {UpperAlph}, SNumStyle = {Arabic},
   SepAtIndex = {.}, SepBetweenCnS = {.},
-} % End of \SetTitleNumberFormat{}
+} % End of \SetNumberingFormat{}
 
-\SetTitleNumberFormat[AppendixSubSection]{%
+\SetNumberingFormat[AppendixSubSection]{%
   BeginText = {}, EndText = {},
   CNumStyle = {UpperAlph}, SNumStyle = {Arabic}, SSNumStyle = {Arabic},
   SepAtIndex = {.}, SepBetweenCnS = {.}, SepBetweenSnSS = {.},
-} % End of \SetTitleNumberFormat{}
+} % End of \SetNumberingFormat{}
 
-\SetTitleNumberFormat[AppendixSubSubSection]{%
+\SetNumberingFormat[AppendixSubSubSection]{%
   BeginText = {}, EndText = {},
   CNumStyle = {}, SNumStyle = {}, SSNumStyle = {}, SSSNumStyle = {},
   SepAtIndex = {}, SepBetweenCnS = {},
   SepBetweenSnSS = {}, SepBetweenSSCnSSS = {},
-} % End of \SetTitleNumberFormat{}
+} % End of \SetNumberingFormat{}
 
 % ----------------------------------------------------------------------------
 
