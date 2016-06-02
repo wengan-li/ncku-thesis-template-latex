@@ -39,7 +39,7 @@
     \verb|\SetTitle{題目題目}{New equation \mbox{$E = mc^4$} here}|\\
 
     而如果覺得自動產生出來的題目斷行位置不適合, 可以手動加`\verb|\\|'來強制斷行. 如:\\
-    \verb|\SetTitle{題目題目}{Title Tooooooooooo \\ Longgggggggggggg}|\\
+    \verb|\SetTitle{題目題目}{Title Is Tooooooooooo \\ Longgggggggggggg}|\\
 
     有3種可使用, 可獨立使用, 但只有最後設定的一方有效\\
     \verb|\SetTitle{你的題目}{Your Title}|: 同時設定中英文題目\\
@@ -165,10 +165,10 @@
 
     `\verb|\SetKeywords|'是設定所產出來的PDF中的Keyword項目, 可同時填寫中英文.
     e.g\\
-    \verb|\SetKeywords|{Keyword A (關鍵字 A)}{Keyword B (關鍵字 B)}{Keyword C (關鍵字 C)}\\
+    \verb|\SetKeywords{Keyword A (關鍵字 A)}{Keyword B (關鍵字 B)}{Keyword C (關鍵字 C)}|\\
     或單純中文或英文\\
-    \verb|\SetKeywords|{Keyword A}{Keyword B}{Keyword C}\\
-    \verb|\SetKeywords|{關鍵字 A}{關鍵字 B}{關鍵字 C}
+    \verb|\SetKeywords{Keyword A}{Keyword B}{Keyword C}|\\
+    \verb|\SetKeywords{關鍵字 A}{關鍵字 B}{關鍵字 C}|
 
     而摘要中的關鍵字, 為了方便同學們能達到以下情況:\\
     a. 只寫中文版摘要\\
@@ -181,9 +181,9 @@
     所以只要使用你需要寫的版本則可. 但如果2個版本都要寫, 則2個都同時使用則可. 沒有填寫的話, 則摘要中的關鍵字部份是不會顯示出來.
 
     e.g\\
-    \verb|\SetAbstractChiKeywords|{關鍵字 A}{關鍵字 B}{關鍵字 C}\\
-    \verb|\SetAbstractEngKeywords|{Keyword A}{Keyword B}{Keyword C}\\
-    \verb|\SetAbstractExtKeywords|{Keyword A}{Keyword B}{Keyword C}\\
+    \verb|\SetAbstractChiKeywords{關鍵字 A}{關鍵字 B}{關鍵字 C}|\\
+    \verb|\SetAbstractEngKeywords{Keyword A}{Keyword B}{Keyword C}|\\
+    \verb|\SetAbstractExtKeywords{Keyword A}{Keyword B}{Keyword C}|\\
     英文延伸摘要的關鍵字理應會跟英文版摘要的關鍵字是一樣, 但為了同學能編寫不同內容和關鍵字, 故可獨立設定.
   } % End of \item{}
 
@@ -194,14 +194,14 @@
 
     可設定目錄的標題文字使用預設的中文或是英文\\
     \verb|\IndexChiMode|:  標題文字為中文\\
-    \verb|\IndexEngMode|:  標題文字為英文
+    \verb|\IndexEngMode|:  標題文字為英文\\
     預設的目錄標題為: 目錄 (中文) / Table of Contents (英文)\\
     預設的表格目錄標題為: 表格 (中文) / List of Tables (英文)\\
     預設的圖片目錄標題為: 圖片 (中文) / List of Figures (英文)\\
     預設使用\verb|\IndexEngMode|
 
     另外可個別設定標題文字.\\
-    如應為預設文字不是你所希望的, 那可以使用這邊去個別設定你所希望的文字, 不分中英文.
+    如應為預設文字不是你所希望的, 那可以使用這邊去個別設定你所希望的文字, 不分中英文.\\
     \verb|\SetIndexTitleText|: 設定目錄標題\\
     \verb|\SetTablesIndexTitleText|: 設定表格目錄標題\\
     \verb|\SetFiguresIndexTitleText|: 設定圖片目錄標題
@@ -229,7 +229,8 @@
   {
     \textbf{行距}
 
-    同學可使用\verb|\SetLineStretch|來自行設定每行的距離, 這邊是以放大縮小方式來使用.\\
+    同學可使用\verb|\SetLineStretch|來自行設定每行的距離,\\
+    這邊是以放大縮小方式來使用.\\
     所以是輸入 0.1, 0.5, 1, 1.0, 1.5, 2.0, 2 等數字.\\
     預設的行距: 1.2
   } % End of \item{}

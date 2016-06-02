@@ -196,15 +196,23 @@
 在編譯LaTex時成PDF時, 必須注意內部的引用(\verb|\RefBib{}|)情況.\\
 
 如果只是編寫內容, 引用的內容和號碼不是重要的話, 那直接使用:\\
-XeLaTeX -> 瀏覽PDF\\
+\centerline{XeLaTeX -> 瀏覽PDF}
 即可.\\
 
 但如果你的PDF是最終版本, 那你的流程則需要使用:\\
-XeLaTeX -> BibTex -> XeLaTeX -> 瀏覽PDF\\
+\centerline{XeLaTeX -> BibTex -> XeLaTeX -> 瀏覽PDF}
 才對.\\
 
 因為第一次的XeLaTeX是用來產生`thesis.aux', 而有這個檔案才能對你的內容中Reference的引用來進行連接, 而BibTex正是做這個的處理以產出`thesis.bbl', 而第二次的XeLaTeX會使用`thesis.bbl'來把你的Reference中的號碼在內容中設定.\\
 
-以上步驟只需用在`thesis.tex'的部份, 而`cover.tex'則不用做這個行為.
+以上步驟只需用在`thesis.tex'的部份, 而`cover.tex'則不用做這個行為. `cover.tex'直接使用:\\
+\centerline{XeLaTeX -> 瀏覽PDF}
+即可.\\
+
+如果你在以上的產生流程發現PDF還是有些內容沒法正確顯示, 推薦以下的做法:
+\centerline{XeLaTeX -> XeLaTeX -> BibTex -> BibTex -> XeLaTeX -> XeLaTeX -> 瀏覽PDF}
+這是為了確保LaTex所使用的內容都是以最新的內容來產生.
+
+\textbf{備註:} 如果碰到一些不明原因的錯誤, 先把所有除了`thesis.tex'外的所有thesis開頭或以thesis為檔名的檔案全刪掉. 例如`thesis.bbl', `thesis.aux', `thesis.lof'等所有檔案. 否則有可能在產生論文時遇到錯誤, 如果遇到錯誤, 請不斷重新刪掉和重新產生論文, 直到解決問題為止. 已知這問題在Reference轉換其他格式時會發生.
 
 % ------------------------------------------------
