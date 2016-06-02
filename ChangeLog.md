@@ -1,82 +1,65 @@
-#### v1.4.5 [May 25, 2016]:
-**緊急修正v1.4.4所產生的問題**
-**這版影響到`conf.tex`的內容, 如同學不需要使用在conf.tex的新功能則不受影響.**
+#### v1.4.5 [June 2, 2016]:
+**緊急修正v1.4.4所產生的問題.**
+**重新設計更新了模版的排版底層使用方式, 故建議升級到這一版.**
+**這版影響到部份`conf.tex`的內容, 如同學不需要使用在conf.tex的新功能則不受影響.**
 
 + **修正錯誤**:
-1. 修正`\StartSection`, `\StartSubSection`和`\StartSubSubSection`前如果沒有\\符號或空行的話, 標題會接續在前段後面出現. 同樣錯誤都有出現在Extended Abstract, 故連同修正. \([Issue #10](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10#issuecomment-222079658)\)
-
+  1. 修正`\StartSection`, `\StartSubSection`和`\StartSubSubSection`前如果沒有 `\\\\` 符號或空行的話, 標題會接續在前段後面出現. 同樣錯誤都有出現在Extended Abstract, 故連同修正. \([由loveakai在Issue \#10中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10#issuecomment-222079658)\)
 
 + **提供/移除的APIs**:
-1. 放棄使用由`v1.4.4`提供的
-```
-\ChapterTitleNumFormat
-\SectionTitleNumFormat
-\SubSectionTitleNumFormat
-\SubSubSectionTitleNumFormat
-\AppendixChapterTitleNumFormat
-\AppendixSectionTitleNumFormat
-\AppendixSubSectionTitleNumFormat
-\AppendixSubSubSectionTitleNumFormat
-以及相關的\StyleXXXXX所有APIs
-```
+  1. 放棄使用由`v1.4.4`提供的
+      1. \ChapterTitleNumFormat
+      2. \SectionTitleNumFormat
+      3. \SubSectionTitleNumFormat
+      4. \SubSubSectionTitleNumFormat
+      5. \AppendixChapterTitleNumFormat
+      6. \AppendixSectionTitleNumFormat
+      7. \AppendixSubSectionTitleNumFormat
+      8. \AppendixSubSubSectionTitleNumFormat
+      9. 以及相關的\StyleXXXXX所有APIs
 
-理由為:
-  ```
-  1. 使用方式過於複雜, 增加同學的困擾.
-  2. 使用方式不直覺, 如同一種的數字類型會因應用在哪, 必須使用對應的API. 故產生同一個位置(如 Chapter)卻有7種對應的API去使用7種的數字類型.
-  3. 由[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)發現, 之前的底層設計方式沒法提供因不同的數字類型在引用時還能使用新的類型, 同時都沒法修改原有的API來修正這問題.
-  4. 正由於這個的使用方式和底層設計方式複雜, 對維護這模版造成很大的困擾和難度.
-  ```
+    理由為:
+      1. 使用方式過於複雜, 增加同學的困擾.
+      2. 使用方式不直覺, 如同一種的數字類型會因應用在哪, 必須使用對應的API. 故產生同一個位置 (如 Chapter) 卻有7種對應的API去使用7種的數字類型.
+      3. [由ujmyhn在Issue \#12中的回報](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issuecomment-221553312)才發現, 之前的在`v1.4.4`的底層新設計方式令到沒法提供因不同的數字類型在引用時保持使用所設定的數字類型, 同時發現沒法修改原有的API來修正這問題. 故只好完全重新設計.
+      4. 正由於這個的使用方式和底層設計方式複雜, 對維護這模版造成很大的困擾和難度.
 
-一律改使用新的`\SetNumberingFormat`去對應以上的功能和提供更多的設定.
+    一律改使用新的`\SetNumberingFormat`去對應以上的功能和提供更多的設定. 並能在未來增加功能時, 不必增加同學的重新學習的麻煩.
 
-
-2. 在`\SetNumberingFormat`中提供`TextAlign`去設定章節題目的位置 (Left: 左, Center: 中, Right: 右), 但對固定位置的章題目無效. \([Issue \#13](https://github.com/wengan-li/ncku-thesis-template-latex/issues/13#issue-157839778)\).
-
-
-
+  2. 在`\SetNumberingFormat`中提供`TextAlign`去設定章節題目的位置 (Left: 左, Center: 中, Right: 右), 但對固定位置的章題目無效. \([由loveakai在Issue \#13中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/13#issue-157839778)\).
 
 + **更新**:
-
-1. 在目錄中, 在章節號碼跟章節題目中增加了一下空白, 以提高可閱讀性.
-
-10. 重新編寫`v1.4.4`的更新內容, 以更清楚的方式來說明.
-
-
-
-
+  1. 在目錄中, 在`章節號碼`跟`章節題目`中增加了一些空白, 以提高可閱讀性.
+  2. 更新相關的說明文件.
+  3. 重新編寫`v1.4.4`的ChangeLog部份內容, 以更清楚的方式來說明.
 
 
 #### v1.4.4 [May 25, 2016]:
-`conf.tex`
-**建議升級到這一版, 因為更新了整個模版的排版和設計. 修正由`v1.3.4`到`v1.4.3`所產生出來的錯誤, 並新增/修正/移除了一些的使用方式.**
+**修正由`v1.3.4`到`v1.4.3`所產生出來的錯誤, 並新增/修正/移除了一些的使用方式, 和更新了整個模版的排版和設計. 故建議升級到這一版.**
+**這版影響到`conf.tex`的內容, 如同學不需要使用在conf.tex的新功能則不受影響.**
 
-1. 由[Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)發現太容易因修改章節數字的格式而影響其他大量的事物, 故重新設計`ncku.sty`的格式.
-2. 因應`ncku.sty`的新修改, 故同時對部份底層的APIs進行重新設計以對應新的簡化使用, 例如:
-  1. `\StartAppendix`, `\EndAppendix`
-  2. `\StartChapter`, `\EndChapter`
-  3. `\StartAbstractChi`, `\StartAbstract`, `\EndAbstractChi`, `\EndAbstract`
-  4. `\tableofcontents`, `\listoftables`, `\listoffigures`
-  5. `\InsertTable`, `\InsertFigure`
-  6. `\chapter`
-  7. `\section`
-  8. `\subsection`
-  9. `\subsubsection`
-3. 因修改和出現功能重複的關係, 故拿掉了原本正在提供的APIs: `\ChapterTitleInChi` -> 請改使用`\ChapterTitleNumFormat`, 並以Error方式進行提醒.
-4. 重新設計行距的使用方式, 故`ThesisWroteInChi`由這版被移除, 改以Error方式進行提醒.
-5. 在`conf.tex`中新增提供`\SetLineStretch`來自定行距.
-6. 在Appendix中, 章節號碼的錯誤, 如'6.1'卻不是'A.1' \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-7. 使用equation時, equation的號碼受新的格式而影響 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-8. 使用table時, table的號碼受新的格式而影響 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-9. 新增可使用`\ChapterTitleNumFormat`或`\AppendixChapterTitleNumFormat`同時自定號碼和旁邊的一些內容, 相關的使用方式請看`conf.tex`和說明文件 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-10. 更新`\InsertFigure`, `\InsertTable`, Table/Figure可以新增`opacity`的設定, 以控制背景白底的透明度 \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-11. 在`conf.tex`提供`\SetCustomFigureName`和`\SetCustomTableName`以自定圖表的文字, 如Table 2.1 -> 表 2.1 或 Figure 2.1 -> 圖 2.1  \([Issue \#12](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12)\).
-12. 修正英文延伸摘要中的Table和Figure都不會顯示在目錄中.
-13. 修正由`v1.1.2`跟[Issue \#6](https://github.com/wengan-li/ncku-thesis-template-latex/issues/6)提到的一直殘下來的錯字(templete -> template).
-14. 更新了`ncku.sty`中的內容說明.
-15. 更新核心檔案的版權資料的說明.
-16. 重新調整整份模版說明文件的排版.
-17. 更新所有範例相關的文件到這一版.
++ **修正錯誤**:
+  1. [由ujmyhn在Issue \#12中的回報](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issue-156131650)而發現, 太容易因修改章節數字的格式而影響其他大量事物, 故重新設計`ncku.sty`的格式.
+  2. 在Appendix中, 章節號碼的錯誤, 如'6.1'卻不是'A.1' \([由ujmyhn在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issue-156131650)\).
+  3. 使用equation時, equation的號碼受新的格式而影響 \([由loveakai在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issuecomment-220825783)\).
+  4. 使用table時, table的號碼受新的格式而影響 \([由ujmyhn在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issue-156131650)\).
+  5. 修正英文延伸摘要中的Table和Figure都不會顯示在目錄中.
+  6. 修正由`v1.1.2`跟[Issue \#6](https://github.com/wengan-li/ncku-thesis-template-latex/issues/6)提到的一直殘下來的錯字(templete -> template).
+
++ **提供/移除的APIs**:
+  1. 因修改和出現功能重複的關係, 故拿掉了原本正在提供的APIs: `\ChapterTitleInChi` -> 請改使用`\ChapterTitleNumFormat`, 並以Error方式進行提醒.
+  2. 重新設計行距的使用方式, 故`ThesisWroteInChi`由這版被移除, 改以Error方式進行提醒.
+  3. 在`conf.tex`中新增提供`\SetLineStretch`來自定行距.
+  4. 新增可使用`\ChapterTitleNumFormat`或`\AppendixChapterTitleNumFormat`同時自定號碼和旁邊的一些內容, 相關的使用方式請看`conf.tex`和說明文件 \([由ujmyhn在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issue-156131650)\).
+  5. 更新`\InsertFigure`, `\InsertTable`, Table/Figure可以新增`opacity`的設定, 以控制背景白底的透明度 \([由ujmyhn在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issue-156131650)\).
+  6. 在`conf.tex`提供`\SetCustomFigureName`和`\SetCustomTableName`以自定圖表的文字, 如Table 2.1 -> 表 2.1 或 Figure 2.1 -> 圖 2.1 \([由ujmyhn在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issue-156131650)\).
+
++ **更新**:
+  1. 因應`ncku.sty`的新修改, 故同時對部份底層的APIs進行重新設計.
+  2. 更新了`ncku.sty`中的內容說明.
+  3. 更新核心檔案的版權資料的說明.
+  4. 重新調整整份模版說明文件的排版.
+  5. 更新所有範例相關的文件到這一版.
 
 #### v1.4.3 [May 21, 2016]:
 1. 提供可自定章節`參考文獻`的題目, 而非固定的`References`. 請參考`conf.tex`中的`\ChapterReferenceTitleInChi`, `\ChapterReferenceTitleInEng`, `\SetChapterReferenceTitle`.
