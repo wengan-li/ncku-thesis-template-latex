@@ -3,6 +3,7 @@
 **這版影響到`conf.tex`的內容, 如同學不需要使用在conf.tex的新功能則不受影響.**
 
 + **修正錯誤**:
+1. 修正`\StartSection`, `\StartSubSection`和`\StartSubSubSection`前如果沒有\\符號或空行的話, 標題會接續在前段後面出現. 同樣錯誤都有出現在Extended Abstract, 故連同修正. \([Issue #10](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10#issuecomment-222079658)\)
 
 
 + **提供/移除的APIs**:
@@ -29,6 +30,8 @@
 
 一律改使用新的`\SetNumberingFormat`去對應以上的功能和提供更多的設定.
 
+
+2. 在`\SetNumberingFormat`中提供`TextAlign`去設定章節題目的位置 (Left: 左, Center: 中, Right: 右), 但對固定位置的章題目無效. \([Issue \#13](https://github.com/wengan-li/ncku-thesis-template-latex/issues/13#issue-157839778)\).
 
 
 
