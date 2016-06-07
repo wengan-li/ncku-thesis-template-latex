@@ -835,13 +835,13 @@
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
-%\begin{comment}
+
 \newcommand\SetupGeneralFigureNumberFormatString
 {%
   \renewcommand\GetGeneralFigureNumberFormatString{}%
   \AppendCounterStringToFormatString{%
     \GetGeneralFigureNumberFormatString}{%
-    \GetCTitleNumberFormatCNumStyle}{chapter}%
+    Arabic}{chapter}%
   \appto\GetGeneralFigureNumberFormatString{.}
   \AppendCounterStringToFormatString{%
     \GetGeneralFigureNumberFormatString}{Arabic}{figure}%
@@ -854,7 +854,7 @@
   \renewcommand\GetGeneralTableNumberFormatString{}%
   \AppendCounterStringToFormatString{%
     \GetGeneralTableNumberFormatString}{%
-    \GetCTitleNumberFormatCNumStyle}{chapter}%
+    Arabic}{chapter}%
   \appto\GetGeneralTableNumberFormatString{.}
   \AppendCounterStringToFormatString{%
     \GetGeneralTableNumberFormatString}{Arabic}{table}%
@@ -867,7 +867,7 @@
   \renewcommand\GetGeneralEquationNumberFormatString{}%
   \AppendCounterStringToFormatString{%
     \GetGeneralEquationNumberFormatString}{%
-    \GetCTitleNumberFormatCNumStyle}{chapter}%
+    Arabic}{chapter}%
   \appto\GetGeneralEquationNumberFormatString{.}
   \AppendCounterStringToFormatString{%
     \GetGeneralEquationNumberFormatString}{Arabic}{equation}%
@@ -880,7 +880,7 @@
   \renewcommand\GetAppendixFigureNumberFormatString{}%
   \AppendCounterStringToFormatString{%
     \GetAppendixFigureNumberFormatString}{%
-    \GetAppendixCTitleNumberFormatCNumStyle}{appendixchapter}%
+    Arabic}{appendixchapter}%
   \appto\GetAppendixFigureNumberFormatString{.}
   \AppendCounterStringToFormatString{%
     \GetAppendixFigureNumberFormatString}{Arabic}{figure}%
@@ -893,7 +893,7 @@
   \renewcommand\GetAppendixTableNumberFormatString{}%
   \AppendCounterStringToFormatString{%
     \GetAppendixTableNumberFormatString}{%
-    \GetAppendixCTitleNumberFormatCNumStyle}{appendixchapter}%
+    Arabic}{appendixchapter}%
   \appto\GetAppendixTableNumberFormatString{.}
   \AppendCounterStringToFormatString{%
     \GetAppendixTableNumberFormatString}{Arabic}{table}%
@@ -906,12 +906,12 @@
   \appto\GetAppendixEquationNumberFormatString{}%
   \AppendCounterStringToFormatString{%
     \GetAppendixEquationNumberFormatString}{%
-    \GetAppendixCTitleNumberFormatCNumStyle}{appendixchapter}%
+    Arabic}{appendixchapter}%
   \appto\GetAppendixEquationNumberFormatString{.}
   \AppendCounterStringToFormatString{%
     \GetAppendixEquationNumberFormatString}{Arabic}{equation}%
 } % End of \newcommand{}
-%\end{comment}
+
 % ---------------------------
 
 \pgfkeys

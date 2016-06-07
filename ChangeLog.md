@@ -1,3 +1,9 @@
+#### v1.4.6 [June 7, 2016]:
++ **修正錯誤**:
+  1. 修正Figure/Table/Equation預設使用阿拉伯數字. \([由loveakai在Issue \#10中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10#issuecomment-223983366)\)
+
+
+
 #### v1.4.5 [June 2, 2016]:
 **緊急修正v1.4.4所產生的問題.**
 **重新設計更新了模版的排版底層使用方式, 故建議升級到這一版.**
