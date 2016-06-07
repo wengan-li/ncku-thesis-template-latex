@@ -1,8 +1,21 @@
 #### v1.4.6 [June 7, 2016]:
 + **修正錯誤**:
-  1. 修正Figure/Table/Equation預設使用阿拉伯數字. \([由loveakai在Issue \#10中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10#issuecomment-223983366)\)
+  1. 修正Figure/Table/Equation預設使用阿拉伯數字, 即使用 [1.2] 這種格式來顯示. \([由loveakai在Issue \#10中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10#issuecomment-223983366)\)
 
++ **提供/移除的APIs**:
+  1. 放棄使用
+      1. \SetChapterReferenceTitle
+      2. \ChapterReferenceTitleInChi
+      3. \ChapterReferenceTitleInEng
+      4. \BibStyleUseAbbrv
+      5. \BibStyleUsePlain
+      6. \BibStyleUseAlpha
+      7. \BibStyleUseApacite
 
+    統一使用`\SetupReference`, 修改的想法和理由跟`v1.4.5`中改使用`\SetNumberingFormat`是幾乎相同的, 主要都是原有使用方式過於複雜, 增加同學的困擾. 並舊有方式鎖死只能用4種格式而已.
+
++ **更新**:
+  1. 更新相關的說明文件.
 
 #### v1.4.5 [June 2, 2016]:
 **緊急修正v1.4.4所產生的問題.**
@@ -38,7 +51,6 @@
   1. 在目錄中, 在`章節號碼`跟`章節題目`中增加了一些空白, 以提高可閱讀性.
   2. 更新相關的說明文件.
   3. 重新編寫`v1.4.4`的ChangeLog部份內容, 以更清楚的方式來說明.
-
 
 #### v1.4.4 [May 25, 2016]:
 **修正由`v1.3.4`到`v1.4.3`所產生出來的錯誤, 並新增/修正/移除了一些的使用方式, 和更新了整個模版的排版和設計. 故建議升級到這一版.**
