@@ -460,39 +460,44 @@
   \newpage
   \item
   {
-    \textbf{參考文獻 Reference}
+    \textbf{參考文獻 Reference}\\
 
+    \textbf{--- 使用方式 ---}
     \begin{DescriptionFrame}
     \begin{verbatim}
- --- 使用方式 ---
-    \SetupReference{ < 設定 >}
-
- < 設定 >
-    Title (Reference的標題文字)
-    BibStyle (Reference引用時的格式)
+\SetupReference{ < 設定 >}
     \end{verbatim}
     \end{DescriptionFrame}
 
+    \textbf{< 設定 >}
     \begin{DescriptionFrame}
     \begin{verbatim}
- < Title >
- 模版提供了一些預設的文字
-    \TextDefaultTitleReferenceChi: 參考文獻
-    \TextDefaultTitleReferenceEng: References
-    \TextDefaultTitleBibliographyEng: Bibliography
-
- 預設上是使用\TextDefaultTitleReferenceEng.
-
- 使用時:
-    Title={\TextDefaultTitleBibliographyEng}
-
- 或自定你的文字:
-    Title={我的參考文獻標題}
+Title (Reference的標題文字)
+BibStyle (Reference引用時的格式)
     \end{verbatim}
     \end{DescriptionFrame}
 
+    \textbf{< Title >}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+模版提供了一些預設的文字
+  \TextDefaultTitleReferenceChi: 參考文獻
+  \TextDefaultTitleReferenceEng: References
+  \TextDefaultTitleBibliographyEng: Bibliography
+
+預設上是使用 \TextDefaultTitleReferenceEng .
+
+使用時:
+  Title = { \TextDefaultTitleBibliographyEng }
+
+或自定你的文字:
+  Title = { 我的參考文獻標題 }
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+  \newpage
     \textbf{< BibStyle >}\\
-    除非有特殊的格式要求, 否則這個是不用管的.\\
+    除非有特殊的格式要求, 否則這個是不用管的.
 
   \InsertTable
     {
@@ -511,20 +516,22 @@
 模版提供了:
 
 LaTex基本格式:
-    abbrv, acm, alpha, apalike, ieeetr, plain, siam, unsrt\\
-   可參考<https://www.sharelatex.com/learn/Bibtex_bibliography_styles>
+    abbrv, acm, alpha, apalike, ieeetr, plain, siam, unsrt
 
 額外的格式:
     apacite
-  可參考<https://www.overleaf.com/latex/examples/package-example-apacite/jkssmfcpzwmy>
 
 預設使用plain.
     \end{verbatim}
     \end{DescriptionFrame}
 
- \textbf{注意:} 如果你要轉換使用格式時, 推薦在重新產生論文前, 先把所有除了thesis.tex外的所有thesis開頭或以thesis為檔名的檔案全刪掉. 例如`thesis.bbl', `thesis.aux', `thesis.lof'等所有檔案.  否則有可能在產生論文時遇到錯誤, 如果遇到錯誤, 請不斷重新刪掉和重新產生論文, 直到解決問題為止.\\
+   可參考基本格式 \RefBib{web:bibstyle:latex-basic}, Apacite格式 \RefBib{web:bibstyle:apacite}.\\
 
- \textbf{已知:} 由abbrv轉去apacite必定需要刪除檔案才能進行.
+ \textbf{注意:}\\
+如果你要轉換使用格式時, 推薦在重新產生論文前, 先把所有除了thesis.tex外的所有thesis開頭或以thesis為檔名的檔案全刪掉. 例如`thesis.bbl', `thesis.aux', `thesis.lof'等所有檔案.  否則有可能在產生論文時遇到錯誤, 如果遇到錯誤, 請不斷重新刪掉和重新產生論文, 直到解決問題為止.\\
+
+ \textbf{已知:}\\
+由abbrv/plain轉去apacite必定需要刪除檔案才能進行.
   } % End of \item{}
 
   \newpage
