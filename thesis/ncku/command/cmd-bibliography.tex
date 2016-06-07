@@ -42,6 +42,13 @@
 
 % ----------------------------------------------------------------------------
 
+\newcommand{\TextDefaultTitleReferenceChi}{參考文獻}
+\newcommand{\TextDefaultTitleReferenceEng}{References}
+\newcommand{\TextDefaultTitleBibliographyEng}{Bibliography}
+
+% ----------------------------------------------------------------------------
+
+\begin{comment}
 % Bibliography style 使用的變數
 \newcommand{\BibStyleTypeAbbrv}{1}
 \newcommand{\BibStyleTypePlain}{2}
@@ -74,7 +81,7 @@
 \newcommand{\SetChapterReferenceTitle}[1]{\SetReferenceTitle{#1}}
 
 \ChapterReferenceTitleInEng % Default
-
+\end{comment}
 % ----------------------------------------------------------------------------
 
 \DeclareDocumentCommand{\ReferencesFiles}{%
@@ -84,22 +91,11 @@
 {%
   \singlespacing%
   \StartNewPage%
-  % Add to "Table of Contents"
-%  \addcontentsline{toc}{chapter}{\GetReferenceTitle}
-  % Change the title of bibliography
-%  \renewcommand\bibname{\centerline{\Large\GetReferenceTitle}}
-  \renewcommand\bibname{\GetReferenceTitle}
-%  \renewcommand\refname{\Large\GetReferenceTitle}}
   % ------------------------------------------------
   %
-  \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeAbbrv}}%
-  {\bibliographystyle{abbrv}}{}
-  \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypePlain}}%
-  {\bibliographystyle{plain}}{}
-  \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeAlpha}}%
-  {\bibliographystyle{alpha}}{}
-  \ifthenelse{\equal{\GetBibStyleTypeVar}{\BibStyleTypeApacite}}%
-  {\bibliographystyle{apacite}}{}
+  \renewcommand\bibname{\GetReferenceTitle}
+  %
+  \bibliographystyle{\GetReferenceBibStyle}
   %
   % ------------------------------------------------
   % Bib files
@@ -159,3 +155,50 @@
 } % End of \DeclareDocumentCommand{}
 
 % ----------------------------------------------------------------------------
+
+\pgfkeys
+{
+  /SetupReference/.is family, /SetupReference,
+  default/.style =
+  {
+    Title = {\TextDefaultTitleReferenceEng},
+    BibStyle = {plain},
+  },
+  Title/.estore in = \GetReferenceTitle,
+  BibStyle/.estore in = \GetReferenceBibStyle,
+} % End of \pgfkeys{}
+
+\newcommand\SetupReference[1]
+{%
+  \pgfkeys{/SetupReference, default, #1}%
+  %
+  % Include package<apacite> if needed
+  \ifthenelse{\equal{\GetReferenceBibStyle}{apacite}}%
+  {\usepackage[notocbib]{apacite}}{}
+} % End of \newcommand{}
+
+% -----------------------------------------------
+
+% Default
+% Title: References
+% Style: plain
+\SetupReference{%
+  Title = {\TextDefaultTitleReferenceEng},
+  BibStyle = {plain},
+} % End of \SetupReference{}
+
+% ----------------------------------------------------------------------------
+
+\newcommand{\SetChapterReferenceTitle}{\errmessage{模版: 由v1.4.6開始, SetChapterReferenceTitle已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+
+\newcommand{\ChapterReferenceTitleInChi}{\errmessage{模版: 由v1.4.6開始, ChapterReferenceTitleInChi已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+
+\newcommand{\ChapterReferenceTitleInEng}{\errmessage{模版: 由v1.4.6開始, ChapterReferenceTitleInEng已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+
+\newcommand{\BibStyleUseAbbrv}{\errmessage{模版: 由v1.4.6開始, BibStyleUseAbbrv已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+
+\newcommand{\BibStyleUsePlain}{\errmessage{模版: 由v1.4.6開始, BibStyleUsePlain已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+
+\newcommand{\BibStyleUseAlpha}{\errmessage{模版: 由v1.4.6開始, BibStyleUseAlpha已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+
+\newcommand{\BibStyleUseApacite}{\errmessage{模版: 由v1.4.6開始, BibStyleUseApacite已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}

@@ -462,21 +462,36 @@
   {
     \textbf{參考文獻 Reference}
 
-     設定可獨立使用, 但只有最後設定的一方有效\\
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+ --- 使用方式 ---
+    \SetupReference{ < 設定 >}
 
-     Reference的標題文字使用預設的中文或是英文\\
-     預設的標題為: 參考文獻 (中文) / References (英文)\\
-     \verb|\ChapterReferenceTitleInChi|:  標題文字為中文\\
-     \verb|\ChapterReferenceTitleInEng|:  標題文字為英文\\
-     預設使用\verb|\ChapterReferenceTitleInEng|\\
+ < 設定 >
+    Title (Reference的標題文字)
+    BibStyle (Reference引用時的格式)
+    \end{verbatim}
+    \end{DescriptionFrame}
 
-     如應為預設文字不是你所希望的,  則可使用\verb|\SetChapterReferenceTitle|去設定你所希望的文字, 不分中英文.
-  } % End of \item{}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+ < Title >
+ 模版提供了一些預設的文字
+    \TextDefaultTitleReferenceChi: 參考文獻
+    \TextDefaultTitleReferenceEng: References
+    \TextDefaultTitleBibliographyEng: Bibliography
 
-  \item
-  {
-    \textbf{Reference引用時的格式}
+ 預設上是使用\TextDefaultTitleReferenceEng.
 
+ 使用時:
+    Title={\TextDefaultTitleBibliographyEng}
+
+ 或自定你的文字:
+    Title={我的參考文獻標題}
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+    \textbf{< BibStyle >}\\
     除非有特殊的格式要求, 否則這個是不用管的.\\
 
   \InsertTable
@@ -490,6 +505,22 @@
         apacite & Homer J. S.       & Homer, 1995 \\ \hline
         \end{tabular}
     }
+
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+模版提供了:
+
+LaTex基本格式:
+    abbrv, acm, alpha, apalike, ieeetr, plain, siam, unsrt\\
+   可參考<https://www.sharelatex.com/learn/Bibtex_bibliography_styles>
+
+額外的格式:
+    apacite
+  可參考<https://www.overleaf.com/latex/examples/package-example-apacite/jkssmfcpzwmy>
+
+預設使用plain.
+    \end{verbatim}
+    \end{DescriptionFrame}
 
  \textbf{注意:} 如果你要轉換使用格式時, 推薦在重新產生論文前, 先把所有除了thesis.tex外的所有thesis開頭或以thesis為檔名的檔案全刪掉. 例如`thesis.bbl', `thesis.aux', `thesis.lof'等所有檔案.  否則有可能在產生論文時遇到錯誤, 如果遇到錯誤, 請不斷重新刪掉和重新產生論文, 直到解決問題為止.\\
 
