@@ -71,8 +71,28 @@ equation (\verb|\ref*{}|): \ref*{testpage:ref-cite:eq}\\
 equation (\verb|\RefEquationB{}|): \RefEquationB{testpage:ref-cite:eq}\\
 equation (\verb|\eqref{}|): \eqref{testpage:ref-cite:eq}\\
 
-\begin{comment}
-\end{comment}
+\newpage
+
+Paper:\\
+(\verb|\RefBib{}|):\\
+MapReduce: \RefBib{testpage:bib:paper:mapreduce}\\
+Google File System:\\
+-- Paper 1 \RefBib{testpage:bib:paper:gfs}\\
+-- Paper 2 \RefBib{testpage:bib:paper:gfs2}
+
+(\verb|\cite{}|):\\
+MapReduce: \cite{testpage:bib:paper:mapreduce}\\
+Google File System:\\
+-- Paper 1 \cite{testpage:bib:paper:gfs}\\
+-- Paper 2 \cite{testpage:bib:paper:gfs2}
+
+Book:\\
+(\verb|\RefBib{}|):\\
+Hadoop: \RefBib{testpage:bib:book:hadoop}\\
+
+(\verb|\cite{}|):\\
+Hadoop: \cite{testpage:bib:book:hadoop}\\
+
 % ------------------------------------------------
 \EndChapter
 % ------------------------------------------------
