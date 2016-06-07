@@ -1,0 +1,12 @@
+**/Thumbs.db
+**/*.aux
+**/*.blg
+**/*.lof
+**/*.log
+**/*.lot
+**/*.out
+**/*.pdf
+**/*.bbl
+**/*.synctex.gz*
+**/*.toc
+**/*~
