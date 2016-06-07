@@ -21,24 +21,6 @@
 % Some helper function about chapter and section
 
 % ----------------------------------------------------------------------------
-\begin{comment}
-\newcommand{\VarChapterHeaderSeparatorInToc}{.} % Default
-\newcommand{\SetChapterTitleIndexSep}[1]{%
-  \renewcommand{\VarChapterHeaderSeparatorInToc}{#1}}
-
-\newcommand{\VarSectionHeaderSeparatorInToc}{.} % Default
-\newcommand{\SetSectionTitleIndexSep}[1]{%
-  \renewcommand{\VarSectionHeaderSeparatorInToc}{#1}}
-
-\newcommand{\VarSubSectionHeaderSeparatorInToc}{.} % Default
-\newcommand{\SetSubSectionTitleIndexSep}[1]{%
-  \renewcommand{\VarSubSectionHeaderSeparatorInToc}{#1}}
-
-\newcommand{\VarSubSubSectionHeaderSeparatorInToc}{.} % Default
-\newcommand{\SetSubSubSectionTitleIndexSep}[1]{%
-  \renewcommand{\VarSubSubSectionHeaderSeparatorInToc}{#1}}
-\end{comment}
-% ----------------------------------------------------------------------------
 
 \newcommand{\DisplayChapterHeader}[2]%
 {%
@@ -144,32 +126,6 @@
   \setcounter{equation}{0}%
 } % End of \RenewDocumentCommand{}
 
-% ----------------------------------------------------------------------------
-\begin{comment}
-\makeatletter
-
-%%% Restored from latex.ltx--Glenn G. Lai
-
-\def\@startsection#1#2#3#4#5#6{\if@noskipsec \leavevmode \fi
-   \par \@tempskipa #4\relax
-   \@afterindenttrue
-   \ifdim \@tempskipa <\z@
-     \@tempskipa -\@tempskipa \@afterindentfalse
-   \fi
-   \if@nobreak \everypar{}\else
-     \addpenalty{\@secpenalty}\addvspace{\@tempskipa}\fi \@ifstar
-     {\@ssect{#3}{#4}{#5}{#6}}%
-     {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
-
- \def\section{\@startsection{section}{1}{\z@}%
-    {4.6ex plus -1ex minus -.2ex}{.3ex plus .2ex}{\bf}}
-\def\subsection{\@startsection{subsection}{2}{\z@}%
-    {3.9ex plus -1ex minus -.2ex}{.2ex plus .2ex}{\bf}}
-\def\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-    {3.25ex plus -1ex minus -.2ex}{.1ex plus .2ex}{\bf}}
-
-\makeatother
-\end{comment}
 % ----------------------------------------------------------------------------
 
 \newcommand{\DisplaySectionHeader}[3]%
@@ -453,21 +409,6 @@
       \GetGeneralSubSubSectionNumberingFormatString}}%
   }%
 } % End of \DeclareDocumentCommand{}
-
-% ----------------------------------------------------------------------------
-
-% Chapter標題改使用 第1章 的方式來顯示
-%\newcommand\VarChapterTitleLangChi{1}
-%\newcommand\VarChapterTitleLangEng{0}
-%\newcommand\VarChapterTitleLang{\VarChapterTitleLangEng}
-%\newcommand\GetChapterTitleLang{\VarChapterTitleLang}
-%\newcommand{\ChapterTitleInChi}{\renewcommand{\VarChapterTitleLang}{\VarChapterTitleLangChi}}
-
-% A wrapper to handle \ChapterSectionTitleInChi
-%\newcommand{\ChapterSectionTitleInChi}
-%{
-%  \ChapterTitleInChi
-%} % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
 
