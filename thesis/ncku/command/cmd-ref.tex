@@ -47,20 +47,7 @@
 
 % For figure, table, chapter, section, subsection, .etc
 \newcommand{\RefTo}[1]
-{
-%  \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
-%  {%
-%    \refstepcounter{appendixchapter}
-%    \refstepcounter{appendixsection}
-%    \refstepcounter{appendixsubsection}
-%    \refstepcounter{appendixsubsubsection}
-%  }%
-%  {%
-%    \refstepcounter{chapter}
-%    \refstepcounter{section}
-%    \refstepcounter{subsection}
-%    \refstepcounter{subsubsection}
-%  }%
+{%
   \ref{#1}%
 } % End of \newcommand{}
 
