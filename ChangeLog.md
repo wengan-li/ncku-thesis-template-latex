@@ -1,3 +1,9 @@
+#### v1.4.7 [Jule 6, 2016]:
+**緊急修正**
+
++ **修正錯誤**:
+  修正英文延伸摘頁碼顯示問題. \([由ujmyhn在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issuecomment-230395774)\)
+
 #### v1.4.6 [June 7, 2016]:
 + **修正錯誤**:
   修正Figure/Table/Equation預設使用阿拉伯數字, 即使用 [1.2] 這種格式來顯示. \([由loveakai在Issue \#10中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10#issuecomment-223983366)\)
