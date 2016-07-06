@@ -9,4 +9,5 @@
 **/*.bbl
 **/*.synctex.gz*
 **/*.toc
+**/*.DS_Store*
 **/*~
