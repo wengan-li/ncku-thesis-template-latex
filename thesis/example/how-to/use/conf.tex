@@ -372,7 +372,7 @@
   SNumStyle
   SSNumStyle
   SSSNumStyle
-  
+
 例如: CNumStyle={Arabic}
     \end{verbatim}
     \end{DescriptionFrame}
@@ -386,9 +386,9 @@
   \SetNumberingFormat[Chapter]{%
     BeginText = {第}, EndText = {章}%
   }%
-   
+
 -----------
-   
+
 如果 '附錄的章' 要由文字改使用為:
        'Appendix A' -> '附錄 A'
 則使用
@@ -407,9 +407,9 @@
    BeginText = {Chapter -}, EndText = {-},%
     CNumStyle = {UpperAlph},%
    }%
-   
+
 -----------
-   
+
 如果 '節' 要由數字改使用為:
        '1.2' -> '一 -乙-'
 則使用
@@ -418,9 +418,9 @@
     CNumStyle = {ChiNum}, SNumStyle = {Tiangan},%
     SepBetweenCnS = { (},%
    }%
-   
+
 -----------
-   
+
 如果 '節' 不想看到 '章' 的數字:
        '1.2' -> '(2)'
 則使用
@@ -446,7 +446,7 @@
   \SetNumberingFormat[Chapter]{%
     SepAtIndex = {:},%
    }%
-   
+
 如想換'章'的由'第一章. ABCDEF'換成'第一章 ABCDEF'
   \SetNumberingFormat[Chapter]{%
     BeginText = {第}, EndText = {章},%
@@ -1275,4 +1275,3 @@ LaTex基本格式:
     \end{table}
   } % End of \item{}
 \end{enumerate}
-
