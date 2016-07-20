@@ -1,9 +1,9 @@
 #### v1.4.8 [Jule 20, 2016]:
 + **修正錯誤**:
-  修正圖書館要求中/英文摘要是由羅馬數字頁碼`i`開始, 而非由封面算起.
+  修正圖書館要求中/英文摘要是由羅馬數字頁碼`i`開始, 而非由封面算起. \([由spotdy在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issuecomment-233812581)\)
 
 + **更新**:
-  重新對所有檔案進行編碼成UTF-8, 並修改行尾是使用*nix系統的的`\n`, 而非Windows的`\r\n`, 以增加對所有平台的相容性.
+  重新對所有檔案進行編碼成UTF-8, 並修改行尾是使用*nix系統的的`\n`, 而非Windows的`\r\n`, 以增加對所有平台的相容性. \([由KuoE0在Pull request \#15中提供](https://github.com/wengan-li/ncku-thesis-template-latex/pull/15)\)
 
 #### v1.4.7 [Jule 6, 2016]:
 **緊急修正**
