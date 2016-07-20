@@ -36,3 +36,22 @@
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
+
+% 圖書館要求中/英文摘要是由羅馬數字頁碼'i'開始, 而非由封面算起.
+
+\def\ValueEnablePageNumberCounting{1}
+\def\ValueDisablePageNumberCounting{0}
+\def\VarPageNumberCounting{\ValueEnablePageNumberCounting}
+\def\GetPageNumberCounting{\VarPageNumberCounting}
+\newcommand{\SetPageNumberCounting}[1]{\renewcommand{\VarPageNumberCounting}{#1}}
+
+\def\ResetPageNumberCounting{%
+  \ifthenelse{\equal{\GetPageNumberCounting}{\ValueEnablePageNumberCounting}}%
+  {%
+    \setcounter{page}{1}
+    \SetPageNumberCounting{\ValueDisablePageNumberCounting}%
+  }%
+  {}%
+} % End of \def{}
+
+% ----------------------------------------------------------------------------
