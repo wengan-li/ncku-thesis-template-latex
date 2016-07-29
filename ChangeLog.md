@@ -1,3 +1,9 @@
+#### v1.4.9 [Jule 29, 2016]:
++ **更新**:
+  1. 在`conf.tex`中增加圖書館對封面的日期要求說明. \([由loveakai在Issue \#18中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/18#issue-168091165)\)
+  2. 由於圖書館的人員認為英文延伸摘要部分的浮水印太過淡, 幾乎看不到, 故把所有使用到的預設透明值調回高一點. \([由loveakai在Issue \#18中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/18#issue-168091165)\)
+  3. 修正了一些在README.md中的說明文字.
+
 #### v1.4.8 [Jule 20, 2016]:
 + **修正錯誤**:
   修正圖書館要求中/英文摘要是由羅馬數字頁碼`i`開始, 而非由封面算起. \([由spotdy在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issuecomment-233812581)\)
