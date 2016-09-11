@@ -1,3 +1,11 @@
+#### v1.5.0 [Sep 11, 2016]:
+
+**這版的更新是為了讓非成大的同學或人士都能建基於這模版以改成自己所需的模版. 故任何同學如已經在使用這模版, 同時要準備用來交出最終版給學校的話, 是不用更新到這一版的.**
+
++ **更新**:
+  1. 重構模版的設定檔的檔案路徑和一些模版的APIs名字, 這變動是為了讓非成大的同學或人士都能建基於這模版以建立出自己所需的模版, 同時保留能使用本模版提供的功能. 詳細[請看Customization.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/thesis/template/style/Customization.md)這檔案中的內容.
+  2. 在README.md中補上學校對論文要求的URL.
+
 #### v1.4.9 [Jule 29, 2016]:
 + **更新**:
   1. 在`conf.tex`中增加圖書館對封面的日期要求說明. \([由loveakai在Issue \#18中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/18#issue-168091165)\)
