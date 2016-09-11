@@ -48,6 +48,7 @@
 % 引用需要的LaTex packages
 
 % Some base packages
+\usepackage{geometry}
 \usepackage{fp}
 \usepackage{ifthen}
 \usepackage{pgfkeys}
@@ -124,7 +125,7 @@
 % --------------------------
 
 % 一些用來設定function和variable的command
-\input{./ncku/command/command}
+\input{./template/command/command}
 
 % --------------------------
 
@@ -134,12 +135,7 @@
 % --------------------------
 
 % 學校排版 Arrangement style
-\usepackage{./ncku/style/ncku}
-
-% --------------------------
-
-% 設定學校浮水印 Watermark
-\UseSchoolWatermark
+\input{./template/style/style}
 
 % --------------------------
 

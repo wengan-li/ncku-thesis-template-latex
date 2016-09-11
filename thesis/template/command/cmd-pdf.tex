@@ -18,37 +18,42 @@
 % Have fun !!!
 %
 
-% Some helper function about watermark
+% Some common helper function
 
 % ----------------------------------------------------------------------------
 
-% 學校Logo watermark
-\newcommand{\UseSchoolWatermark}
+% 使用 hyperref 在 pdf 簡介欄裡填入相關資料
+\newcommand{\FillInPDFData}
 {
-  \AddToShipoutPicture{
-  \put(0,0){
-  \parbox[b][\paperheight]{\paperwidth}{
-  \vfill
-  \centering
-  \includegraphics[]{./ncku/watermark/watermark-20160509_v2-a4.pdf}
-  \vfill
-  }}}
-} % End of \newcommand{}
+  \ifx \hypersetup \undefined
+    % do nothing
+    \relax
+  \else
+    \ifx \GetChiTitle \undefined
+      \hypersetup
+      {
+        pdftitle  = {\GetEngTitle},
+        pdfauthor = {\GetAuthorEngName},
+      }
+    \else
+      \hypersetup
+      {
+        pdftitle  = {\GetEngTitle\ (\GetChiTitle)},
+        pdfauthor = {\GetAuthorEngName\ (\GetAuthorChiName)},
+      }
+    \fi
 
-% 學校文字的watermark
-\newcommand{\UseSchoolTextWatermark}
-{
-  \AddToShipoutPicture*{
-  \put(0,0){
-  \parbox[b][\paperheight]{\paperwidth}{
-  \vfill
-  \centering
-   \makebox(0,0){\rotatebox{45}{\textcolor[gray]{0.75}%
-          {\fontsize{2.0cm}{2.0cm}\selectfont{\GetSchoolChiName}}}}
-  \vfill
-  }}}
-} % End of \newcommand{}
+    \hypersetup
+    {
+      unicode     = true,
+      pdfcreator  = {\GetUniversityEngName},
+%      pdfproducer = {\GetUniversityEngName},
+      pdfsubject  = {},
+    }
 
-\newcommand{\ClearWatermark}{\ClearShipoutPicture}
+    \ifthenelse{\equal{\GetPDFKeywords}{\empty}}{}{%
+      \hypersetup{pdfkeywords = {\GetPDFKeywords}}}
+  \fi
+} % End of \newcommand{}
 
 % ----------------------------------------------------------------------------

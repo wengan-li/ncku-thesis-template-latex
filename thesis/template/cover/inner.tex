@@ -1,0 +1,35 @@
+%
+% This file is part of the project of
+% National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex.
+% This project is hold at
+%     <https://github.com/wengan-li/ncku-thesis-template-latex>
+% by Wen-Gan Li.
+%
+% This project is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify it under the terms of the
+% Attribution-NonCommercial-ShareAlike 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with this project.
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
+% Please feel free to fork it, modify it, and try it.
+% Have fun !!!
+%
+
+% ------------------------------------------------
+
+% 根據user的需求去選用中文或英文封面內頁
+%
+% 封面: 顯示所有封面內容, 但沒有學校Logo
+% 內頁: 顯示所有封面內容, 但有學校Logo
+% 不論是精裝版或平裝版都是 封面 (殼/皮) + 內頁
+%
+\if \GetDisplayCoverLang \ValueDisplayCoverLangEng
+  \input{./template/cover/cover-eng}
+\else
+  \input{./template/cover/cover-chi}
+\fi
+
+% ------------------------------------------------

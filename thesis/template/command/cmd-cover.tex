@@ -48,19 +48,25 @@
 % ----------------------------------------------------------------------------
 
 % --- University name 學校名字 ---
-% 基本上是寫死, 但是如果是別校的人, 可直接使用\SetSchoolName來修改
 \newcommand\VarUniversityChiName{國立成功大學}           % Default
 \newcommand\VarUniversityEngName{National Cheng Kung University} % Default
-\newcommand{\SetSchoolChiName}[1]{\renewcommand{\VarUniversityChiName}{#1}}
-\newcommand{\SetSchoolEngName}[1]{\renewcommand{\VarUniversityEngName}{#1}}
-\newcommand{\SetSchoolName}[2]
-{
-  \SetSchoolChiName{#1}
-  \SetSchoolEngName{#2}
+
+\newcommand{\SetUniversityChiName}[1]{%
+  \renewcommand{\VarUniversityChiName}{#1}%
 } % End of \newcommand{}
 
-\newcommand{\GetSchoolChiName}{\VarUniversityChiName}
-\newcommand{\GetSchoolEngName}{\VarUniversityEngName}
+\newcommand{\SetUniversityEngName}[1]{%
+  \renewcommand{\VarUniversityEngName}{#1}%
+} % End of \newcommand{}
+
+\newcommand{\SetUniversityName}[2]
+{%
+  \SetUniversityChiName{#1}%
+  \SetUniversityEngName{#2}%
+} % End of \newcommand{}
+
+\newcommand{\GetUniversityChiName}{\VarUniversityChiName}
+\newcommand{\GetUniversityEngName}{\VarUniversityEngName}
 % ----------------------------------------------------------------------------
 
 % --- Chinese / English title 中英文論文題目 ---
@@ -292,12 +298,12 @@
 \newcommand{\CreateCover}%
 {
   \begin{document}
-  \input{./ncku/cover/cover}
+  \input{./template/cover/cover}
   \end{document}
 } % End of \newcommand{}
 
 % Use to include and display inner cover
-\newcommand{\DisplayInnerCover}{\input{./ncku/cover/inner.tex}}
+\newcommand{\DisplayInnerCover}{\input{./template/cover/inner.tex}}
 
 % ----------------------------------------------------------------------------
 

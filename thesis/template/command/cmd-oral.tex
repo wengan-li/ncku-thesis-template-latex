@@ -27,10 +27,10 @@
 \newcommand{\StartOralTemplateDocChi}
 {
   % 由於中文版的watermark是用文字, 所以先把Logo版關掉
-  \ClearWatermark
+  \ClearWatermarkStyle
   %
   % 使用文字版watermark
-  \UseSchoolTextWatermark
+  \UseWatermarkTextStyle
   %
   \singlespacing%
   %
@@ -67,7 +67,8 @@
   \UseDefaultLineStretch
   %
   % 重新使用學校浮水印 Watermark
-  \UseSchoolWatermark
+  \ClearWatermarkStyle
+  \UseWatermarkFigureStyle
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
@@ -289,6 +290,6 @@
 % ----------------------------------------------------------------------------
 
 % Use to include the oral files
-\newcommand{\DisplayOral}{\input{./ncku/oral/oral}}
+\newcommand{\DisplayOral}{\input{./template/oral/oral}}
 
 % ----------------------------------------------------------------------------

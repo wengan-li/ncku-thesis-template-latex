@@ -1,0 +1,74 @@
+%
+% This file is part of the project of
+% National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex.
+% This project is hold at
+%     <https://github.com/wengan-li/ncku-thesis-template-latex>
+% by Wen-Gan Li.
+%
+% This project is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify it under the terms of the
+% Attribution-NonCommercial-ShareAlike 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with this project.
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
+% Please feel free to fork it, modify it, and try it.
+% Have fun !!!
+%
+
+% Some helper function about watermark
+
+% ----------------------------------------------------------------------------
+
+% 學校圖案版的watermark
+% 預設使用NCKU的浮水印
+\newcommand{\VarWatermaskTextStyle}{%
+  \vfill%
+  \centering%
+  \makebox(0,0){\rotatebox{45}{\textcolor[gray]{0.75}%
+    {\fontsize{2.0cm}{2.0cm}\selectfont{\GetUniversityChiName}}}}%
+  \vfill%
+} % End of \newcommand{}
+
+% 學校文字版的watermark
+% 預設使用NCKU的浮水印
+\newcommand{\VarWatermaskFigureStyle}{%
+  \vfill%
+  \centering%
+  \includegraphics[]{./template/style/ncku/watermark-20160509_v2-a4.pdf}%
+  \vfill%
+} % End of \newcommand{}
+
+% Prodive re-define APIs
+\newcommand{\SetWatermaskTextStyle}[1]{%
+  \renewcommand{\VarWatermaskTextStyle}{#1}%
+} % End of \newcommand{}
+
+\newcommand{\SetWatermaskFigureStyle}[1]{%
+  \renewcommand{\VarWatermaskFigureStyle}{#1}%
+} % End of \newcommand{}
+
+\newcommand{\UseWatermarkFigureStyle}{%
+  \AddToShipoutPicture{%
+    \put(0,0){%
+    \parbox[b][\paperheight]{\paperwidth}{%
+      \VarWatermaskFigureStyle%
+  }}}%
+} % End of \newcommand{}
+
+\newcommand{\UseWatermarkTextStyle}{%
+  \AddToShipoutPicture{%
+    \put(0,0){%
+    \parbox[b][\paperheight]{\paperwidth}{%
+      \VarWatermaskTextStyle%
+  }}}%
+} % End of \newcommand{}
+
+\newcommand{\ClearWatermarkStyle}{\ClearShipoutPicture}
+
+% 設定預設使用學校浮水印 Watermark
+\UseWatermarkFigureStyle
+
+% ----------------------------------------------------------------------------

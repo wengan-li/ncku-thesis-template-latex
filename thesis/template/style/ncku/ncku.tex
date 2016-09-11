@@ -31,6 +31,7 @@
 %         v1.4.1 [May 19, 2016]
 %         v1.4.4 [May 25, 2016]
 %         v1.4.5 [June 2, 2016]
+%         v1.5.0 [Sep 11, 2016]
 %
 % 原生自utdiss.sty
 % utdiss.sty --- Version 2.1.1 (April 1992)
@@ -43,28 +44,60 @@
 % 頁面邊界
 
 % 國立成功大學各系(所)博碩士撰寫論文須知102.5.14日101學年第2次教務會議通過
-% 論文封面及內頁紙張規格:寬21 公分,長29.6 公分(即A4 尺寸)80 磅模造紙。
+% 論文封面及內頁紙張規格:寬21 公分,長29.6 公分 (即A4尺寸) 80磅模造紙。
 % 封面邊界: 直式:上2.3cm、下3cm、左2cm、右2cm
 % 內頁邊界: 直式:上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm
 
 % 預設邊界為: 內頁邊界
-\usepackage{geometry}
-\geometry{a4paper,
-  paperwidth=21cm,paperheight=29.6cm,
-  top=2.3cm,bottom=3.5cm,left=2.5cm,right=3cm,
-  nohead}
+\geometry{a4paper,%
+  paperwidth=21cm,paperheight=29.6cm,%
+  top=2.3cm,bottom=3.5cm,left=2.5cm,right=3cm,%
+  nohead%
+} % End of \geometry{}
 
 % API用來 '開始使用' 和 '停止使用' 封面邊界
-\newcommand{\EnableCoverPageStyle}{
-  \newgeometry{
-  top=2.3cm,bottom=3cm,left=2cm,right=2cm,
-  nohead,nofoot}
+\newcommand{\EnableCoverPageStyle}{%
+  \newgeometry{%
+    top=2.3cm,bottom=3cm,left=2cm,right=2cm,%
+    nohead,nofoot%
+  }%
 } % End of \newcommand{}
+
 \newcommand{\DisableCoverPageStyle}{\restoregeometry}
+
+% ------------------------------------------------
+
+% 設定學校名字
+\SetUniversityName{國立成功大學}{National Cheng Kung University}
 
 % ------------------------------------------------
 
 % 預設前幾頁的頁碼是用羅馬數字
 \pagenumbering{roman}
+
+% ------------------------------------------------
+
+% 設定學校圖案版的浮水印樣子
+\SetWatermaskFigureStyle{%
+  \vfill%
+  \centering%
+  \includegraphics[]{./template/style/ncku/watermark-20160509_v2-a4.pdf}%
+  \vfill%
+} % End of \SetWatermaskFigureStyle{}
+
+% 設定學校文字版的浮水印樣子
+% \GetUniversityChiName: 拿學校中文名字
+% \GetUniversityEngName: 拿學校英文名字
+\SetWatermaskTextStyle{%
+  \vfill%
+  \centering%
+  \makebox(0,0){\rotatebox{45}{\textcolor[gray]{0.75}%
+    {\fontsize{2.0cm}{2.0cm}\selectfont{\GetUniversityChiName}}}}%
+  \vfill%
+} % End of \SetWatermaskTextStyle{}
+
+% 設定預設使用學校浮水印的類型
+\UseWatermarkFigureStyle
+%\UseWatermarkTextStyle
 
 % ------------------------------------------------

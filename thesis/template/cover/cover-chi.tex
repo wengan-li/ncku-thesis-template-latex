@@ -19,8 +19,8 @@
 %
 
 % ----------------------------------------------------------------------------
-%                English cover
-%                   英文封面
+%                Chinese cover
+%                   中文封面
 % ----------------------------------------------------------------------------
 
 % ------------------------------------------------
@@ -30,37 +30,34 @@
 % 顯示 校名, 系所名, 論文種類
 \begin{minipage}[c][5cm][t]{\textwidth}
   \begin{center}
-    \vspace{0.8cm}
-    \makebox[\textwidth][c]{\Huge \GetSchoolEngName} \\
+    \makebox[10cm][s]{\Huge \GetUniversityChiName} \\
 
-    \vspace{0.5cm}
-    \makebox[\textwidth][c]{\LARGE \GetDeptEngName} \\
+    \vspace{1cm}
 
-    \vspace{0.5cm}
-    \makebox[\textwidth][c]{\LARGE \GetEngDegreeThesis} \\
+    \makebox[8cm][s]{\Huge \GetDeptChiName} \\
+
+    \vspace{1cm}
+
+    \makebox[5cm][s]{\Huge \GetChiDegree 論文}%
 
     \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}%
-      {\vspace{0.5cm}\makebox[5cm][c]{\LARGE \GetTextDraftEng}}{}
+      {\vspace{1cm}\makebox[5cm][c]{\Huge \GetTextDraftChi}}{}
   \end{center}
 \end{minipage}
-
 % ------------------------------------------------
 
 \vspace{5.5cm}
 
 % ------------------------------------------------
 
-% English title 英文題目
+% Chinese and English title 中英文題目
 \begin{minipage}[c][5cm][t]{\textwidth}
   \begin{center}
-%    \parbox{\textwidth}{\center \LARGE \GetEngTitle}
-%    \parbox{\textwidth}{\center \Large \GetChiTitle}
-    \makebox[\textwidth][c]{\parbox{\paperwidth }{\center \Large \GetChiTitle}}
+    \makebox[\textwidth][c]{\parbox{\paperwidth}{\center \Large \GetChiTitle}}
 
     \vspace{0.5cm}
-
 %    \parbox{\textwidth}{\center \Large \GetEngTitle}
-    \makebox[\textwidth][c]{\parbox{\paperwidth }{\center \Large \GetEngTitle}}
+    \makebox[\textwidth][c]{\parbox{\paperwidth}{\center \Large \GetEngTitle}}
   \end{center}
 \end{minipage}
 
@@ -148,32 +145,32 @@
         % --------------------------
       }%
       {%
-        % ----- 只顯示英文 -----
+        % ----- 只顯示中文 -----
         % --------------------------
         % 顯示 學生 的名字
-        \makebox[7em][r]{\Large Student：}
-        \makebox[10.0em][l]{\Large \GetAuthorEngName}\\
+        \makebox[7em][r]{\Large 研究生：}
+        \makebox[10.0em][l]{\Large \GetAuthorChiName}\\
         % --------------------------
         \vspace{0.5cm}
         % --------------------------
         % 顯示 指導老師 A 的名字
-        \makebox[7em][r]{\Large Advisor：}
-        \makebox[10.0em][l]{\Large Dr. \thinspace \GetAdvisorEngNameA} \\
+        \makebox[7em][r]{\Large 指導老師：}
+        \makebox[10.0em][l]{\Large \GetAdvisorChiNameA \thinspace 博士} \\
         % --------------------------
         \vspace{0.1cm}
         % --------------------------
         % 顯示 指導老師 B 的名字
         \makebox[7em][r]
         {%
-          \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
+          \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
             {}%
-            {\Large Co-Advisor：}%
+            {\Large 共同指導：}%
         }
         \makebox[10.0em][l]
         {%
-          \ifthenelse{\equal{\GetAdvisorEngNameB}{\empty}}%
+          \ifthenelse{\equal{\GetAdvisorChiNameB}{\empty}}%
             {}%
-            {\Large Dr. \thinspace \GetAdvisorEngNameB}%
+            {\Large \GetAdvisorChiNameB \thinspace 博士}%
         } \\
         % --------------------------
         \vspace{0.1cm}
@@ -182,9 +179,9 @@
         \makebox[7em][r]{}
         \makebox[10.0em][l]
         {%
-          \ifthenelse{\equal{\GetAdvisorEngNameC}{\empty}}%
+          \ifthenelse{\equal{\GetAdvisorChiNameC}{\empty}}%
             {}%
-            {\Large Dr. \thinspace \GetAdvisorEngNameC}%
+            {\Large \GetAdvisorChiNameC \thinspace 博士}%
         } \\
         % --------------------------
       }%
@@ -194,13 +191,17 @@
 
 % Date 日期
 \vspace{0.5cm}
-\begin{minipage}{\textwidth}
-  \begin{center}\Large %
-    \ifthenelse{\equal{\GetFlagDegreeType}{\ValueDegreeMaster}}%
-      {\GetThesisMonthInEng \thinspace \GetThesisYear}%
-      {\GetOralEngDay \thinspace \thinspace \GetThesisMonthInEng \thinspace \thinspace \GetThesisYear}
-  \end{center}
-\end{minipage}
+\ifthenelse{\equal{\GetFlagDegreeType}{\ValueDegreeMaster}}%
+{%
+  \ifthenelse{\equal{\VarDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
+  {\makebox[8cm][s]{\Large 中華民國\zhnumber{\GetThesisYearInTaiwanYear}年\zhnumber{\GetThesisMonth}月}}%
+  {\makebox[8cm][s]{\Large 中華民國 \GetThesisYearInTaiwanYear 年 \GetThesisMonth 月}}%
+}%
+{
+  \ifthenelse{\equal{\VarDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
+  {\makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYearNumInChi 年 \GetThesisMonthNumInChi 月 \GetOralEngDayNumInChi 日}}%
+  {\makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYear 年 \GetThesisMonth 月 \GetOralEngDay 日}}%
+}
 
 % ------------------------------------------------
 \EndCover

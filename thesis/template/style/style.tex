@@ -20,26 +20,17 @@
 
 % ------------------------------------------------
 
-% 根據user的需求去選用中文或英文封面
-%
-% 封面:    顯示封面 (顯示所有封面內容, 但沒有學校Logo)
-%         主要用在印刷版, 如精裝版 或 平裝版
-%
-% 內頁:   顯示內頁 (顯示所有封面內容, 但有學校Logo)
-%         主要用在電子版 + 印刷版
-%
-% 只要是印刷版, 不論是精裝版或平裝版, 都是 封面 (殼/皮) + 內頁.
+% 學校排版 Arrangement style
 
-% 封面沒有學校Logo
-\ClearWatermark
+% 國立成功大學排版設定
+\input{./template/style/ncku/ncku}
 
-\if \GetDisplayCoverLang \ValueDisplayCoverLangEng
-  \input{./ncku/cover/cover-eng}
-\else
-  \input{./ncku/cover/cover-chi}
-\fi
+% ----------------------
 
-% 重新使用學校浮水印 Watermark
-\UseSchoolWatermark
+% 自定的排版設定
+%   請參考'template/style/ncku'的檔案和當中的'ncku.tex'
+%   或'template/style/Customization.md'.
+
+%\input{./template/style/custom/custom}
 
 % ------------------------------------------------
