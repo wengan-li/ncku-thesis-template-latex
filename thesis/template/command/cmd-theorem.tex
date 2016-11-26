@@ -1,0 +1,179 @@
+%
+% This file is part of the project of
+% National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex.
+% This project is hold at
+%     <https://github.com/wengan-li/ncku-thesis-template-latex>
+% by Wen-Gan Li.
+%
+% This project is distributed in the hope of usefuling to someone,
+% you can redistribute it and/or modify it under the terms of the
+% Attribution-NonCommercial-ShareAlike 4.0 International.
+%
+% You should have received a copy of the
+% Attribution-NonCommercial-ShareAlike 4.0 International
+% along with this project.
+% If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt>.
+%
+% Please feel free to fork it, modify it, and try it.
+% Have fun !!!
+%
+
+% Reference from:
+%   <https://www.sharelatex.com/learn/Theorems_and_proofs>
+
+% ----------------------------------------------------------------------------
+
+  %    definition       (定義)
+  %    condition        (條件)
+  %    theorem          (定理)
+  %    lemma            (引理)
+  %    example          (例子)
+  %    corollary        (推論)
+  %    proposition      (主張)
+  %    remark           (備註)
+  %    proof            (證明)
+  %    conjectures      (猜想)
+  %    note             (附註)
+  %    annotation       (註解)
+  %    claim            (主張)
+  %    case             (情況)
+  %    acknowledgment   (確認)
+  %    conclusion       (結論)
+
+  % ----------------------------------------------------------------------------
+
+\pgfkeys
+{
+  /InsertTheoremOptions/.is family, /InsertTheoremOptions,
+  default/.style =
+  {
+    title = \empty,
+    label = \empty,
+  },
+  title/.estore in = \TmpValueTitle,
+  label/.estore in = \TmpValueLabel,
+} % End of \pgfkeys{}
+
+\newcommand{\SetTheoremContentLabel}[1][\empty]
+{
+  \ifthenelse{\equal{#1}{\empty}}{}{\IfNoValueF{#1}{\label{#1}}}
+} % End of \DeclareDocumentCommand{}
+
+\newcommand{\InsertTheoremContent}[3][\empty]
+{%
+  % Parse the input
+  \pgfkeys{/InsertTheoremOptions, default, #1}%
+  %
+  \ifthenelse{\equal{\TmpValueTitle}{\empty}}
+  {%
+    \begin{#2}%
+    \SetTheoremContentLabel{\TmpValueLabel}%
+    #3%
+    \end{#2}%
+  }%
+  {%
+    \begin{#2}[\TmpValueTitle]%
+    \SetTheoremContentLabel{\TmpValueLabel}%
+    #3%
+    \end{#2}%
+  }%
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
+\pgfkeys
+{
+  /TheoremFormat/.is family, /TheoremFormat,
+  default/.style =
+  {
+    EnvironmentName = {EnvTheorem},
+    ShowText = {Theorem},
+    FollowCounter = section,
+  },
+  EnvironmentName/.estore in = \GetTheoremFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremFormatShowText,
+  FollowCounter/.estore in = \GetTheoremFormatFollowCounter,
+} % End of \pgfkeys{}
+
+\newcommand{\InsertTheorem}[2][\empty]
+{%
+  \InsertTheoremContent[#1]{\GetTheoremFormatEnvironmentName}{#2}%
+} % End of \newcommand{}
+
+\newcommand{\InitTheoremFormat}
+{%
+  \ifthenelse{\equal{\GetTheoremFormatFollowCounter}{\empty}}
+  {%
+    \newtheorem{%
+      \GetTheoremFormatEnvironmentName}{%
+      \GetTheoremFormatShowText}%
+  }%
+  {%
+    \newtheorem{%
+      \GetTheoremFormatEnvironmentName}{%
+      \GetTheoremFormatShowText}[\GetTheoremFormatFollowCounter]%
+  }%
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
+\pgfkeys
+{
+  /ProofFormat/.is family, /ProofFormat,
+  default/.style =
+  {
+    EnvironmentName = {EnvProof},
+    ShowText = {Proof},
+    FollowCounter = \empty,
+  },
+  EnvironmentName/.estore in = \GetProofFormatEnvironmentName,
+  ShowText/.estore in = \GetProofFormatShowText,
+  FollowCounter/.estore in = \GetProofFormatFollowCounter,
+} % End of \pgfkeys{}
+
+\newcommand{\InsertProof}[1]
+{%
+  \InsertTheoremContent[\empty]{\GetProofFormatEnvironmentName}{#1}%
+} % End of \newcommand{}
+
+\newcommand{\InitProofFormat}
+{%
+  \ifthenelse{\equal{\GetProofFormatFollowCounter}{\empty}}
+  {%
+    \newtheorem*{\GetProofFormatEnvironmentName}{\GetProofFormatShowText}
+  }%
+  {%
+    \newtheorem{%
+      \GetProofFormatEnvironmentName}{%
+      \GetProofFormatShowText}[\GetProofFormatFollowCounter]%
+  }%
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
+\newcommand{\InitTheoremFormats}
+{%
+  \InitTheoremFormat%
+  \InitProofFormat%
+} % End of \newcommand{}
+
+\newcommand{\SetTheoremFormat}[2][\empty]
+{%
+  \ifthenelse{\equal{#1}{Theorem}}
+  {%
+    \pgfkeys{/TheoremFormat, default, #2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Proof}}
+  {%
+    \pgfkeys{/ProofFormat, default, #2}%
+  }{}%
+  %
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
+\SetTheoremFormat[Theorem]{ShowText = {Theorem}}%
+\SetTheoremFormat[Proof]{ShowText = {Proof}}%
+
+% ----------------------------------------------------------------------------
