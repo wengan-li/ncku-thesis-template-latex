@@ -403,7 +403,7 @@
     \begin{DescriptionFrame}
     \begin{verbatim}
 如果 '章' 要由數字改使用為:
-       '1' -> '-A-'
+       'Chapter 1' -> 'Chapter -A-'
 則使用
   \SetNumberingFormat[Chapter]{%
    BeginText = {Chapter -}, EndText = {-},%
@@ -416,9 +416,9 @@
        '1.2' -> '一 -乙-'
 則使用
   \SetNumberingFormat[Section]{%
-    EndText = {)},%
+    EndText = {-},%
     CNumStyle = {ChiNum}, SNumStyle = {Tiangan},%
-    SepBetweenCnS = { (},%
+    SepBetweenCnS = { -},%
    }%
 
 -----------
