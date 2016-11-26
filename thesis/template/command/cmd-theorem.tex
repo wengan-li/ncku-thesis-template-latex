@@ -75,16 +75,19 @@
   \ifthenelse{\equal{\TmpValueTitle}{\empty}}%
   {%
     \begin{#2}%
-    \SetTheoremContentLabel{\TmpValueLabel}%
-    #3%
-    \end{#2}%
   }%
   {%
     \begin{#2}[\TmpValueTitle]%
-    \SetTheoremContentLabel{\TmpValueLabel}%
-    #3%
-    \end{#2}%
   }%
+  %
+  \SetTheoremContentLabel{\TmpValueLabel}%
+  %
+  #3%
+  %
+  \ifthenelse{\equal{#2}{\GetTheoremProofFormatEnvironmentName}}%
+    {$\quad\blacksquare$}{}%
+  %
+  \end{#2}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -110,6 +113,7 @@
 
 \newcommand{\InitTheoremTheoremFormat}
 {%
+  \theoremstyle{plain}%
   \ifthenelse{\equal{\GetTheoremTheoremFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -147,6 +151,7 @@
 
 \newcommand{\InitTheoremDefinitionFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremDefinitionFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -184,6 +189,7 @@
 
 \newcommand{\InitTheoremConditionFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremConditionFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -221,6 +227,7 @@
 
 \newcommand{\InitTheoremProblemFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremProblemFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -258,6 +265,7 @@
 
 \newcommand{\InitTheoremExampleFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremExampleFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -295,6 +303,7 @@
 
 \newcommand{\InitTheoremLemmaFormat}
 {%
+  \theoremstyle{plain}%
   \ifthenelse{\equal{\GetTheoremLemmaFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -332,6 +341,7 @@
 
 \newcommand{\InitTheoremCorollarieFormat}
 {%
+  \theoremstyle{plain}%
   \ifthenelse{\equal{\GetTheoremCorollarieFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -369,6 +379,7 @@
 
 \newcommand{\InitTheoremPropositionFormat}
 {%
+  \theoremstyle{plain}%
   \ifthenelse{\equal{\GetTheoremPropositionFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -406,6 +417,7 @@
 
 \newcommand{\InitTheoremConjectureFormat}
 {%
+  \theoremstyle{plain}%
   \ifthenelse{\equal{\GetTheoremConjectureFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -443,6 +455,7 @@
 
 \newcommand{\InitTheoremHypothesisFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremHypothesisFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -480,6 +493,7 @@
 
 \newcommand{\InitTheoremQuestionFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremQuestionFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -517,6 +531,7 @@
 
 \newcommand{\InitTheoremAssertionFormat}
 {%
+  \theoremstyle{plain}%
   \ifthenelse{\equal{\GetTheoremAssertionFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -554,6 +569,7 @@
 
 \newcommand{\InitTheoremCriterionFormat}
 {%
+  \theoremstyle{plain}%
   \ifthenelse{\equal{\GetTheoremCriterionFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
@@ -592,6 +608,7 @@
 
 \newcommand{\InitTheoremProofFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremProofFormatFollowCounter}{\empty}}%
   {%
     \newtheorem*{%
@@ -630,6 +647,7 @@
 
 \newcommand{\InitTheoremNoteFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremNoteFormatFollowCounter}{\empty}}%
   {%
     \newtheorem*{%
@@ -668,6 +686,7 @@
 
 \newcommand{\InitTheoremAnnotationFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremAnnotationFormatFollowCounter}{\empty}}%
   {%
     \newtheorem*{%
@@ -706,6 +725,7 @@
 
 \newcommand{\InitTheoremClaimFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremClaimFormatFollowCounter}{\empty}}%
   {%
     \newtheorem*{%
@@ -744,6 +764,7 @@
 
 \newcommand{\InitTheoremCaseFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremCaseFormatFollowCounter}{\empty}}%
   {%
     \newtheorem*{%
@@ -782,6 +803,7 @@
 
 \newcommand{\InitTheoremAcknowledgmentFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremAcknowledgmentFormatFollowCounter}{\empty}}%
   {%
     \newtheorem*{%
@@ -820,6 +842,7 @@
 
 \newcommand{\InitTheoremConclusionFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremConclusionFormatFollowCounter}{\empty}}%
   {%
     \newtheorem*{%
@@ -858,6 +881,7 @@
 
 \newcommand{\InitTheoremSummaryFormat}
 {%
+  \theoremstyle{definition}%
   \ifthenelse{\equal{\GetTheoremSummaryFormatFollowCounter}{\empty}}%
   {%
     \newtheorem*{%
