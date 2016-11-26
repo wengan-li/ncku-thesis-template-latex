@@ -23,22 +23,28 @@
 % Reference from:
 %   <https://www.sharelatex.com/learn/Theorems_and_proofs>
 
-%    definition       (定義)
-%    condition        (條件)
-%    theorem          (定理)
-%    lemma            (引理)
-%    example          (例子)
-%    corollary        (推論)
-%    proposition      (主張)
-%    remark           (備註)
-%    proof            (證明)
-%    conjectures      (猜想)
-%    note             (附註)
-%    annotation       (註解)
-%    claim            (主張)
-%    case             (情況)
-%    acknowledgment   (確認)
-%    conclusion       (結論)
+%    Definition       (定義)
+%    Condition        (條件)
+%    Theorem          (定理)
+%    Lemma            (引理)
+%    Example          (例子)
+%    Corollary        (推論)
+%    Proposition      (主張)
+%    Remark           (備註)
+%    Proof            (證明)
+%    Conjectures      (猜想)
+%    Note             (附註)
+%    Annotation       (註解)
+%    Claim            (主張)
+%    Case             (情況)
+%    Acknowledgment   (確認)
+%    Conclusion       (結論)
+%    Criterion        (標準)
+%    Assertion        (斷言)
+%    Problem          (問題)
+%    Question         (問題)
+%    Hypothesis       (假設)
+%    Summary          (總結)
 
 % ----------------------------------------------------------------------------
 
@@ -418,6 +424,154 @@
 
 \pgfkeys
 {
+  /TheoremHypothesisFormat/.is family, /TheoremHypothesisFormat,
+  default/.style =
+  {
+    EnvironmentName = {EnvHypothesis},
+    ShowText = {Hypothesis},
+    FollowCounter = section,
+  },
+  EnvironmentName/.estore in = \GetTheoremHypothesisFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremHypothesisFormatShowText,
+  FollowCounter/.estore in = \GetTheoremHypothesisFormatFollowCounter,
+} % End of \pgfkeys{}
+
+\newcommand{\InsertHypothesis}[2][\empty]
+{%
+  \InsertTheoremContent[#1]{\GetTheoremHypothesisFormatEnvironmentName}{#2}%
+} % End of \newcommand{}
+
+\newcommand{\InitTheoremHypothesisFormat}
+{%
+  \ifthenelse{\equal{\GetTheoremHypothesisFormatFollowCounter}{\empty}}%
+  {%
+    \newtheorem{%
+      \GetTheoremHypothesisFormatEnvironmentName}{%
+      \GetTheoremHypothesisFormatShowText}%
+  }%
+  {%
+    \newtheorem{%
+      \GetTheoremHypothesisFormatEnvironmentName}{%
+      \GetTheoremHypothesisFormatShowText}[%
+      \GetTheoremHypothesisFormatFollowCounter]%
+  }%
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
+\pgfkeys
+{
+  /TheoremQuestionFormat/.is family, /TheoremQuestionFormat,
+  default/.style =
+  {
+    EnvironmentName = {EnvQuestion},
+    ShowText = {Question},
+    FollowCounter = section,
+  },
+  EnvironmentName/.estore in = \GetTheoremQuestionFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremQuestionFormatShowText,
+  FollowCounter/.estore in = \GetTheoremQuestionFormatFollowCounter,
+} % End of \pgfkeys{}
+
+\newcommand{\InsertQuestion}[2][\empty]
+{%
+  \InsertTheoremContent[#1]{\GetTheoremQuestionFormatEnvironmentName}{#2}%
+} % End of \newcommand{}
+
+\newcommand{\InitTheoremQuestionFormat}
+{%
+  \ifthenelse{\equal{\GetTheoremQuestionFormatFollowCounter}{\empty}}%
+  {%
+    \newtheorem{%
+      \GetTheoremQuestionFormatEnvironmentName}{%
+      \GetTheoremQuestionFormatShowText}%
+  }%
+  {%
+    \newtheorem{%
+      \GetTheoremQuestionFormatEnvironmentName}{%
+      \GetTheoremQuestionFormatShowText}[%
+      \GetTheoremQuestionFormatFollowCounter]%
+  }%
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
+\pgfkeys
+{
+  /TheoremAssertionFormat/.is family, /TheoremAssertionFormat,
+  default/.style =
+  {
+    EnvironmentName = {EnvAssertion},
+    ShowText = {Assertion},
+    FollowCounter = section,
+  },
+  EnvironmentName/.estore in = \GetTheoremAssertionFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremAssertionFormatShowText,
+  FollowCounter/.estore in = \GetTheoremAssertionFormatFollowCounter,
+} % End of \pgfkeys{}
+
+\newcommand{\InsertAssertion}[2][\empty]
+{%
+  \InsertTheoremContent[#1]{\GetTheoremAssertionFormatEnvironmentName}{#2}%
+} % End of \newcommand{}
+
+\newcommand{\InitTheoremAssertionFormat}
+{%
+  \ifthenelse{\equal{\GetTheoremAssertionFormatFollowCounter}{\empty}}%
+  {%
+    \newtheorem{%
+      \GetTheoremAssertionFormatEnvironmentName}{%
+      \GetTheoremAssertionFormatShowText}%
+  }%
+  {%
+    \newtheorem{%
+      \GetTheoremAssertionFormatEnvironmentName}{%
+      \GetTheoremAssertionFormatShowText}[%
+      \GetTheoremAssertionFormatFollowCounter]%
+  }%
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
+\pgfkeys
+{
+  /TheoremCriterionFormat/.is family, /TheoremCriterionFormat,
+  default/.style =
+  {
+    EnvironmentName = {EnvCriterion},
+    ShowText = {Criterion},
+    FollowCounter = section,
+  },
+  EnvironmentName/.estore in = \GetTheoremCriterionFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremCriterionFormatShowText,
+  FollowCounter/.estore in = \GetTheoremCriterionFormatFollowCounter,
+} % End of \pgfkeys{}
+
+\newcommand{\InsertCriterion}[2][\empty]
+{%
+  \InsertTheoremContent[#1]{\GetTheoremCriterionFormatEnvironmentName}{#2}%
+} % End of \newcommand{}
+
+\newcommand{\InitTheoremCriterionFormat}
+{%
+  \ifthenelse{\equal{\GetTheoremCriterionFormatFollowCounter}{\empty}}%
+  {%
+    \newtheorem{%
+      \GetTheoremCriterionFormatEnvironmentName}{%
+      \GetTheoremCriterionFormatShowText}%
+  }%
+  {%
+    \newtheorem{%
+      \GetTheoremCriterionFormatEnvironmentName}{%
+      \GetTheoremCriterionFormatShowText}[%
+      \GetTheoremCriterionFormatFollowCounter]%
+  }%
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
+\pgfkeys
+{
   /TheoremProofFormat/.is family, /TheoremProofFormat,
   default/.style =
   {
@@ -682,6 +836,44 @@
 
 % ---------------------------------------------------------
 
+\pgfkeys
+{
+  /TheoremSummaryFormat/.is family, /TheoremSummaryFormat,
+  default/.style =
+  {
+    EnvironmentName = {EnvSummary},
+    ShowText = {Summary},
+    FollowCounter = \empty,
+  },
+  EnvironmentName/.estore in = \GetTheoremSummaryFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremSummaryFormatShowText,
+  FollowCounter/.estore in = \GetTheoremSummaryFormatFollowCounter,
+} % End of \pgfkeys{}
+
+\newcommand{\InsertSummary}[1]
+{%
+  \InsertTheoremContent[\empty]{%
+    \GetTheoremSummaryFormatEnvironmentName}{#1}%
+} % End of \newcommand{}
+
+\newcommand{\InitTheoremSummaryFormat}
+{%
+  \ifthenelse{\equal{\GetTheoremSummaryFormatFollowCounter}{\empty}}%
+  {%
+    \newtheorem*{%
+      \GetTheoremSummaryFormatEnvironmentName}{%
+      \GetTheoremSummaryFormatShowText}
+  }%
+  {%
+    \newtheorem{%
+      \GetTheoremSummaryFormatEnvironmentName}{%
+      \GetTheoremSummaryFormatShowText}[%
+      \GetTheoremSummaryFormatFollowCounter]%
+  }%
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
 \newcommand{\InitTheoremFormats}
 {%
   \InitTheoremDefinitionFormat%
@@ -700,6 +892,11 @@
   \InitTheoremCaseFormat%
   \InitTheoremAcknowledgmentFormat%
   \InitTheoremConclusionFormat%
+  \InitTheoremCriterionFormat%
+  \InitTheoremAssertionFormat%
+  \InitTheoremQuestionFormat%
+  \InitTheoremHypothesisFormat%
+  \InitTheoremSummaryFormat%
 } % End of \newcommand{}
 
 \newcommand{\SetTheoremFormat}[2][\empty]
@@ -784,6 +981,31 @@
     \pgfkeys{/TheoremConclusionFormat, default, #2}%
   }{}%
   %
+  \ifthenelse{\equal{#1}{Criterion}}%
+  {%
+    \pgfkeys{/TheoremCriterionFormat, default, #2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Assertion}}%
+  {%
+    \pgfkeys{/TheoremAssertionFormat, default, #2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Question}}%
+  {%
+    \pgfkeys{/TheoremQuestionFormat, default, #2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Hypothesis}}%
+  {%
+    \pgfkeys{/TheoremHypothesisFormat, default, #2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Summary}}%
+  {%
+    \pgfkeys{/TheoremSummaryFormat, default, #2}%
+  }{}%
+  %
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -804,5 +1026,10 @@
 \SetTheoremFormat[Case]{ShowText = {Case}}%
 \SetTheoremFormat[Acknowledgment]{ShowText = {Acknowledgment}}%
 \SetTheoremFormat[Conclusion]{ShowText = {Conclusion}}%
+\SetTheoremFormat[Criterion]{ShowText = {Criterion}}%
+\SetTheoremFormat[Assertion]{ShowText = {Assertion}}%
+\SetTheoremFormat[Question]{ShowText = {Question}}%
+\SetTheoremFormat[Hypothesis]{ShowText = {Hypothesis}}%
+\SetTheoremFormat[Summary]{ShowText = {Summary}}%
 
 % ----------------------------------------------------------------------------
