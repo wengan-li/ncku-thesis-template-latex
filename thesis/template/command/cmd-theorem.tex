@@ -83,35 +83,36 @@
 
 \pgfkeys
 {
-  /TheoremFormat/.is family, /TheoremFormat,
+  /TheoremTheoremFormat/.is family, /TheoremTheoremFormat,
   default/.style =
   {
     EnvironmentName = {EnvTheorem},
     ShowText = {Theorem},
     FollowCounter = section,
   },
-  EnvironmentName/.estore in = \GetTheoremFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremFormatShowText,
-  FollowCounter/.estore in = \GetTheoremFormatFollowCounter,
+  EnvironmentName/.estore in = \GetTheoremTheoremFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremTheoremFormatShowText,
+  FollowCounter/.estore in = \GetTheoremTheoremFormatFollowCounter,
 } % End of \pgfkeys{}
 
 \newcommand{\InsertTheorem}[2][\empty]
 {%
-  \InsertTheoremContent[#1]{\GetTheoremFormatEnvironmentName}{#2}%
+  \InsertTheoremContent[#1]{\GetTheoremTheoremFormatEnvironmentName}{#2}%
 } % End of \newcommand{}
 
-\newcommand{\InitTheoremFormat}
+\newcommand{\InitTheoremTheoremFormat}
 {%
-  \ifthenelse{\equal{\GetTheoremFormatFollowCounter}{\empty}}
+  \ifthenelse{\equal{\GetTheoremTheoremFormatFollowCounter}{\empty}}
   {%
     \newtheorem{%
-      \GetTheoremFormatEnvironmentName}{%
-      \GetTheoremFormatShowText}%
+      \GetTheoremTheoremFormatEnvironmentName}{%
+      \GetTheoremTheoremFormatShowText}%
   }%
   {%
     \newtheorem{%
-      \GetTheoremFormatEnvironmentName}{%
-      \GetTheoremFormatShowText}[\GetTheoremFormatFollowCounter]%
+      \GetTheoremTheoremFormatEnvironmentName}{%
+      \GetTheoremTheoremFormatShowText}[%
+      \GetTheoremTheoremFormatFollowCounter]%
   }%
 } % End of \newcommand{}
 
@@ -119,34 +120,37 @@
 
 \pgfkeys
 {
-  /ProofFormat/.is family, /ProofFormat,
+  /TheoremProofFormat/.is family, /TheoremProofFormat,
   default/.style =
   {
     EnvironmentName = {EnvProof},
     ShowText = {Proof},
     FollowCounter = \empty,
   },
-  EnvironmentName/.estore in = \GetProofFormatEnvironmentName,
-  ShowText/.estore in = \GetProofFormatShowText,
-  FollowCounter/.estore in = \GetProofFormatFollowCounter,
+  EnvironmentName/.estore in = \GetTheoremProofFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremProofFormatShowText,
+  FollowCounter/.estore in = \GetTheoremProofFormatFollowCounter,
 } % End of \pgfkeys{}
 
 \newcommand{\InsertProof}[1]
 {%
-  \InsertTheoremContent[\empty]{\GetProofFormatEnvironmentName}{#1}%
+  \InsertTheoremContent[\empty]{%
+    \GetTheoremProofFormatEnvironmentName}{#1}%
 } % End of \newcommand{}
 
-\newcommand{\InitProofFormat}
+\newcommand{\InitTheoremProofFormat}
 {%
-  \ifthenelse{\equal{\GetProofFormatFollowCounter}{\empty}}
+  \ifthenelse{\equal{\GetTheoremProofFormatFollowCounter}{\empty}}
   {%
     \newtheorem*{%
-      \GetProofFormatEnvironmentName}{\GetProofFormatShowText}
+      \GetTheoremProofFormatEnvironmentName}{%
+      \GetTheoremProofFormatShowText}
   }%
   {%
     \newtheorem{%
-      \GetProofFormatEnvironmentName}{%
-      \GetProofFormatShowText}[\GetProofFormatFollowCounter]%
+      \GetTheoremProofFormatEnvironmentName}{%
+      \GetTheoremProofFormatShowText}[%
+      \GetTheoremProofFormatFollowCounter]%
   }%
 } % End of \newcommand{}
 
@@ -154,34 +158,37 @@
 
 \pgfkeys
 {
-  /NoteFormat/.is family, /NoteFormat,
+  /TheoremNoteFormat/.is family, /TheoremNoteFormat,
   default/.style =
   {
     EnvironmentName = {EnvNote},
     ShowText = {Note},
     FollowCounter = \empty,
   },
-  EnvironmentName/.estore in = \GetNoteFormatEnvironmentName,
-  ShowText/.estore in = \GetNoteFormatShowText,
-  FollowCounter/.estore in = \GetNoteFormatFollowCounter,
+  EnvironmentName/.estore in = \GetTheoremNoteFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremNoteFormatShowText,
+  FollowCounter/.estore in = \GetTheoremNoteFormatFollowCounter,
 } % End of \pgfkeys{}
 
 \newcommand{\InsertNote}[1]
 {%
-  \InsertTheoremContent[\empty]{\GetNoteFormatEnvironmentName}{#1}%
+  \InsertTheoremContent[\empty]{%
+    \GetTheoremNoteFormatEnvironmentName}{#1}%
 } % End of \newcommand{}
 
-\newcommand{\InitNoteFormat}
+\newcommand{\InitTheoremNoteFormat}
 {%
-  \ifthenelse{\equal{\GetNoteFormatFollowCounter}{\empty}}
+  \ifthenelse{\equal{\GetTheoremNoteFormatFollowCounter}{\empty}}
   {%
     \newtheorem*{%
-      \GetNoteFormatEnvironmentName}{\GetNoteFormatShowText}
+      \GetTheoremNoteFormatEnvironmentName}{%
+      \GetTheoremNoteFormatShowText}
   }%
   {%
     \newtheorem{%
-      \GetNoteFormatEnvironmentName}{%
-      \GetNoteFormatShowText}[\GetNoteFormatFollowCounter]%
+      \GetTheoremNoteFormatEnvironmentName}{%
+      \GetTheoremNoteFormatShowText}[%
+      \GetTheoremNoteFormatFollowCounter]%
   }%
 } % End of \newcommand{}
 
@@ -189,34 +196,37 @@
 
 \pgfkeys
 {
-  /AnnotationFormat/.is family, /AnnotationFormat,
+  /TheoremAnnotationFormat/.is family, /TheoremAnnotationFormat,
   default/.style =
   {
     EnvironmentName = {EnvAnnotation},
     ShowText = {Annotation},
     FollowCounter = \empty,
   },
-  EnvironmentName/.estore in = \GetAnnotationFormatEnvironmentName,
-  ShowText/.estore in = \GetAnnotationFormatShowText,
-  FollowCounter/.estore in = \GetAnnotationFormatFollowCounter,
+  EnvironmentName/.estore in = \GetTheoremAnnotationFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremAnnotationFormatShowText,
+  FollowCounter/.estore in = \GetTheoremAnnotationFormatFollowCounter,
 } % End of \pgfkeys{}
 
 \newcommand{\InsertAnnotation}[1]
 {%
-  \InsertTheoremContent[\empty]{\GetAnnotationFormatEnvironmentName}{#1}%
+  \InsertTheoremContent[\empty]{%
+    \GetTheoremAnnotationFormatEnvironmentName}{#1}%
 } % End of \newcommand{}
 
-\newcommand{\InitAnnotationFormat}
+\newcommand{\InitTheoremAnnotationFormat}
 {%
-  \ifthenelse{\equal{\GetAnnotationFormatFollowCounter}{\empty}}
+  \ifthenelse{\equal{\GetTheoremAnnotationFormatFollowCounter}{\empty}}
   {%
     \newtheorem*{%
-      \GetAnnotationFormatEnvironmentName}{\GetAnnotationFormatShowText}
+      \GetTheoremAnnotationFormatEnvironmentName}{%
+      \GetTheoremAnnotationFormatShowText}
   }%
   {%
     \newtheorem{%
-      \GetAnnotationFormatEnvironmentName}{%
-      \GetAnnotationFormatShowText}[\GetAnnotationFormatFollowCounter]%
+      \GetTheoremAnnotationFormatEnvironmentName}{%
+      \GetTheoremAnnotationFormatShowText}[%
+      \GetTheoremAnnotationFormatFollowCounter]%
   }%
 } % End of \newcommand{}
 
@@ -224,34 +234,37 @@
 
 \pgfkeys
 {
-  /ClaimFormat/.is family, /ClaimFormat,
+  /TheoremClaimFormat/.is family, /TheoremClaimFormat,
   default/.style =
   {
     EnvironmentName = {EnvClaim},
     ShowText = {Claim},
     FollowCounter = \empty,
   },
-  EnvironmentName/.estore in = \GetClaimFormatEnvironmentName,
-  ShowText/.estore in = \GetClaimFormatShowText,
-  FollowCounter/.estore in = \GetClaimFormatFollowCounter,
+  EnvironmentName/.estore in = \GetTheoremClaimFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremClaimFormatShowText,
+  FollowCounter/.estore in = \GetTheoremClaimFormatFollowCounter,
 } % End of \pgfkeys{}
 
 \newcommand{\InsertClaim}[1]
 {%
-  \InsertTheoremContent[\empty]{\GetClaimFormatEnvironmentName}{#1}%
+  \InsertTheoremContent[\empty]{%
+    \GetTheoremClaimFormatEnvironmentName}{#1}%
 } % End of \newcommand{}
 
-\newcommand{\InitClaimFormat}
+\newcommand{\InitTheoremClaimFormat}
 {%
-  \ifthenelse{\equal{\GetClaimFormatFollowCounter}{\empty}}
+  \ifthenelse{\equal{\GetTheoremClaimFormatFollowCounter}{\empty}}
   {%
     \newtheorem*{%
-      \GetClaimFormatEnvironmentName}{\GetClaimFormatShowText}
+      \GetTheoremClaimFormatEnvironmentName}{%
+      \GetTheoremClaimFormatShowText}
   }%
   {%
     \newtheorem{%
-      \GetClaimFormatEnvironmentName}{%
-      \GetClaimFormatShowText}[\GetClaimFormatFollowCounter]%
+      \GetTheoremClaimFormatEnvironmentName}{%
+      \GetTheoremClaimFormatShowText}[%
+      \GetTheoremClaimFormatFollowCounter]%
   }%
 } % End of \newcommand{}
 
@@ -259,34 +272,37 @@
 
 \pgfkeys
 {
-  /CaseFormat/.is family, /CaseFormat,
+  /TheoremCaseFormat/.is family, /TheoremCaseFormat,
   default/.style =
   {
     EnvironmentName = {EnvCase},
     ShowText = {Case},
     FollowCounter = \empty,
   },
-  EnvironmentName/.estore in = \GetCaseFormatEnvironmentName,
-  ShowText/.estore in = \GetCaseFormatShowText,
-  FollowCounter/.estore in = \GetCaseFormatFollowCounter,
+  EnvironmentName/.estore in = \GetTheoremCaseFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremCaseFormatShowText,
+  FollowCounter/.estore in = \GetTheoremCaseFormatFollowCounter,
 } % End of \pgfkeys{}
 
 \newcommand{\InsertCase}[1]
 {%
-  \InsertTheoremContent[\empty]{\GetCaseFormatEnvironmentName}{#1}%
+  \InsertTheoremContent[\empty]{%
+    \GetTheoremCaseFormatEnvironmentName}{#1}%
 } % End of \newcommand{}
 
-\newcommand{\InitCaseFormat}
+\newcommand{\InitTheoremCaseFormat}
 {%
-  \ifthenelse{\equal{\GetCaseFormatFollowCounter}{\empty}}
+  \ifthenelse{\equal{\GetTheoremCaseFormatFollowCounter}{\empty}}
   {%
     \newtheorem*{%
-      \GetCaseFormatEnvironmentName}{\GetCaseFormatShowText}
+      \GetTheoremCaseFormatEnvironmentName}{%
+      \GetTheoremCaseFormatShowText}
   }%
   {%
     \newtheorem{%
-      \GetCaseFormatEnvironmentName}{%
-      \GetCaseFormatShowText}[\GetCaseFormatFollowCounter]%
+      \GetTheoremCaseFormatEnvironmentName}{%
+      \GetTheoremCaseFormatShowText}[%
+      \GetTheoremCaseFormatFollowCounter]%
   }%
 } % End of \newcommand{}
 
@@ -294,34 +310,37 @@
 
 \pgfkeys
 {
-  /AcknowledgmentFormat/.is family, /AcknowledgmentFormat,
+  /TheoremAcknowledgmentFormat/.is family, /TheoremAcknowledgmentFormat,
   default/.style =
   {
     EnvironmentName = {EnvAcknowledgment},
     ShowText = {Acknowledgment},
     FollowCounter = \empty,
   },
-  EnvironmentName/.estore in = \GetAcknowledgmentFormatEnvironmentName,
-  ShowText/.estore in = \GetAcknowledgmentFormatShowText,
-  FollowCounter/.estore in = \GetAcknowledgmentFormatFollowCounter,
+  EnvironmentName/.estore in = \GetTheoremAcknowledgmentFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremAcknowledgmentFormatShowText,
+  FollowCounter/.estore in = \GetTheoremAcknowledgmentFormatFollowCounter,
 } % End of \pgfkeys{}
 
 \newcommand{\InsertAcknowledgment}[1]
 {%
-  \InsertTheoremContent[\empty]{\GetAcknowledgmentFormatEnvironmentName}{#1}%
+  \InsertTheoremContent[\empty]{%
+    \GetTheoremAcknowledgmentFormatEnvironmentName}{#1}%
 } % End of \newcommand{}
 
-\newcommand{\InitAcknowledgmentFormat}
+\newcommand{\InitTheoremAcknowledgmentFormat}
 {%
-  \ifthenelse{\equal{\GetAcknowledgmentFormatFollowCounter}{\empty}}
+  \ifthenelse{\equal{\GetTheoremAcknowledgmentFormatFollowCounter}{\empty}}
   {%
     \newtheorem*{%
-      \GetAcknowledgmentFormatEnvironmentName}{\GetAcknowledgmentFormatShowText}
+      \GetTheoremAcknowledgmentFormatEnvironmentName}{%
+      \GetTheoremAcknowledgmentFormatShowText}
   }%
   {%
     \newtheorem{%
-      \GetAcknowledgmentFormatEnvironmentName}{%
-      \GetAcknowledgmentFormatShowText}[\GetAcknowledgmentFormatFollowCounter]%
+      \GetTheoremAcknowledgmentFormatEnvironmentName}{%
+      \GetTheoremAcknowledgmentFormatShowText}[%
+      \GetTheoremAcknowledgmentFormatFollowCounter]%
   }%
 } % End of \newcommand{}
 
@@ -329,34 +348,37 @@
 
 \pgfkeys
 {
-  /ConclusionFormat/.is family, /ConclusionFormat,
+  /TheoremConclusionFormat/.is family, /TheoremConclusionFormat,
   default/.style =
   {
     EnvironmentName = {EnvConclusion},
     ShowText = {Conclusion},
     FollowCounter = \empty,
   },
-  EnvironmentName/.estore in = \GetConclusionFormatEnvironmentName,
-  ShowText/.estore in = \GetConclusionFormatShowText,
-  FollowCounter/.estore in = \GetConclusionFormatFollowCounter,
+  EnvironmentName/.estore in = \GetTheoremConclusionFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremConclusionFormatShowText,
+  FollowCounter/.estore in = \GetTheoremConclusionFormatFollowCounter,
 } % End of \pgfkeys{}
 
 \newcommand{\InsertConclusion}[1]
 {%
-  \InsertTheoremContent[\empty]{\GetConclusionFormatEnvironmentName}{#1}%
+  \InsertTheoremContent[\empty]{%
+    \GetTheoremConclusionFormatEnvironmentName}{#1}%
 } % End of \newcommand{}
 
-\newcommand{\InitConclusionFormat}
+\newcommand{\InitTheoremConclusionFormat}
 {%
-  \ifthenelse{\equal{\GetConclusionFormatFollowCounter}{\empty}}
+  \ifthenelse{\equal{\GetTheoremConclusionFormatFollowCounter}{\empty}}
   {%
     \newtheorem*{%
-      \GetConclusionFormatEnvironmentName}{\GetConclusionFormatShowText}
+      \GetTheoremConclusionFormatEnvironmentName}{%
+      \GetTheoremConclusionFormatShowText}
   }%
   {%
     \newtheorem{%
-      \GetConclusionFormatEnvironmentName}{%
-      \GetConclusionFormatShowText}[\GetConclusionFormatFollowCounter]%
+      \GetTheoremConclusionFormatEnvironmentName}{%
+      \GetTheoremConclusionFormatShowText}[%
+      \GetTheoremConclusionFormatFollowCounter]%
   }%
 } % End of \newcommand{}
 
@@ -364,56 +386,56 @@
 
 \newcommand{\InitTheoremFormats}
 {%
-  \InitTheoremFormat%
-  \InitProofFormat%
-  \InitNoteFormat%
-  \InitAnnotationFormat%
-  \InitClaimFormat%
-  \InitCaseFormat%
-  \InitAcknowledgmentFormat%
-  \InitConclusionFormat%
+  \InitTheoremTheoremFormat%
+  \InitTheoremProofFormat%
+  \InitTheoremNoteFormat%
+  \InitTheoremAnnotationFormat%
+  \InitTheoremClaimFormat%
+  \InitTheoremCaseFormat%
+  \InitTheoremAcknowledgmentFormat%
+  \InitTheoremConclusionFormat%
 } % End of \newcommand{}
 
 \newcommand{\SetTheoremFormat}[2][\empty]
 {%
   \ifthenelse{\equal{#1}{Theorem}}
   {%
-    \pgfkeys{/TheoremFormat, default, #2}%
+    \pgfkeys{/TheoremTheoremFormat, default, #2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{Proof}}
   {%
-    \pgfkeys{/ProofFormat, default, #2}%
+    \pgfkeys{/TheoremProofFormat, default, #2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{Note}}
   {%
-    \pgfkeys{/NoteFormat, default, #2}%
+    \pgfkeys{/TheoremNoteFormat, default, #2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{Annotation}}
   {%
-    \pgfkeys{/AnnotationFormat, default, #2}%
+    \pgfkeys{/TheoremAnnotationFormat, default, #2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{Claim}}
   {%
-    \pgfkeys{/ClaimFormat, default, #2}%
+    \pgfkeys{/TheoremClaimFormat, default, #2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{Case}}
   {%
-    \pgfkeys{/CaseFormat, default, #2}%
+    \pgfkeys{/TheoremCaseFormat, default, #2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{Acknowledgment}}
   {%
-    \pgfkeys{/AcknowledgmentFormat, default, #2}%
+    \pgfkeys{/TheoremAcknowledgmentFormat, default, #2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{Conclusion}}
   {%
-    \pgfkeys{/ConclusionFormat, default, #2}%
+    \pgfkeys{/TheoremConclusionFormat, default, #2}%
   }{}%
   %
 } % End of \newcommand{}
