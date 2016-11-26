@@ -90,6 +90,154 @@
   \end{#2}%
 } % End of \newcommand{}
 
+\newcommand{\MappingTheoremCounterResetCounter}[2][\empty]
+{%
+  \ifthenelse{\equal{#1}{Definition}}%
+  {%
+    \renewcommand{\GetTheoremDefinitionFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Condition}}%
+  {%
+    \renewcommand{\GetTheoremConditionFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Theorem}}%
+  {%
+  \PackageWarning{fred}{MappingTheoremCounter}
+  \PackageWarning{fred}{#2}
+  \PackageWarning{fred}{#1}
+    \renewcommand{\GetTheoremTheoremFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Lemma}}%
+  {%
+    \renewcommand{\GetTheoremLemmaFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Example}}%
+  {%
+    \renewcommand{\GetTheoremExampleFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Corollary}}%
+  {%
+    \renewcommand{\GetTheoremCorollaryFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Proposition}}%
+  {%
+    \renewcommand{\GetTheoremPropositionFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Conjectures}}%
+  {%
+    \renewcommand{\GetTheoremConjecturesFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Criterion}}%
+  {%
+    \renewcommand{\GetTheoremCriterionFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Assertion}}%
+  {%
+    \renewcommand{\GetTheoremAssertionFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Question}}%
+  {%
+    \renewcommand{\GetTheoremQuestionFormatFollowCounter}{#2}%
+  }{}%
+  %
+  \ifthenelse{\equal{#1}{Hypothesis}}%
+  {%
+    \renewcommand{\GetTheoremHypothesisFormatFollowCounter}{#2}%
+  }{}%
+  %
+} % End of \newcommand{}
+
+\newcommand{\MappingTheoremCounter}[2][\empty]
+{%
+  \ifthenelse{\equal{#2}{Section}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{section}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Definition}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremDefinitionFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Condition}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremConditionFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Theorem}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremTheoremFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Lemma}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremLemmaFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Example}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremExampleFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Corollary}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremCorollaryFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Proposition}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremPropositionFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Conjectures}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremConjecturesFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Criterion}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremCriterionFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Assertion}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremAssertionFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Question}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremQuestionFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Hypothesis}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremHypothesisFormatFollowCounter}%
+  }{}%
+  %
+} % End of \newcommand{}
+
 % ---------------------------------------------------------
 
 \pgfkeys
@@ -99,7 +247,7 @@
   {
     EnvironmentName = {EnvTheorem},
     ShowText = {Theorem},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremTheoremFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremTheoremFormatShowText,
@@ -121,10 +269,12 @@
       \GetTheoremTheoremFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Theorem]{\GetTheoremTheoremFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremTheoremFormatEnvironmentName}{%
-      \GetTheoremTheoremFormatShowText}[%
-      \GetTheoremTheoremFormatFollowCounter]%
+      \GetTheoremTheoremFormatShowText}[section]%
   }%
 } % End of \newcommand{}
 
@@ -137,7 +287,7 @@
   {
     EnvironmentName = {EnvDefinition},
     ShowText = {Definition},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremDefinitionFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremDefinitionFormatShowText,
@@ -159,6 +309,9 @@
       \GetTheoremDefinitionFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Definition]{\GetTheoremDefinitionFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremDefinitionFormatEnvironmentName}{%
       \GetTheoremDefinitionFormatShowText}[%
@@ -175,7 +328,7 @@
   {
     EnvironmentName = {EnvCondition},
     ShowText = {Condition},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremConditionFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremConditionFormatShowText,
@@ -197,6 +350,9 @@
       \GetTheoremConditionFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Condition]{\GetTheoremConditionFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremConditionFormatEnvironmentName}{%
       \GetTheoremConditionFormatShowText}[%
@@ -213,7 +369,7 @@
   {
     EnvironmentName = {EnvProblem},
     ShowText = {Problem},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremProblemFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremProblemFormatShowText,
@@ -235,6 +391,9 @@
       \GetTheoremProblemFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Problem]{\GetTheoremProblemFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremProblemFormatEnvironmentName}{%
       \GetTheoremProblemFormatShowText}[%
@@ -251,7 +410,7 @@
   {
     EnvironmentName = {EnvExample},
     ShowText = {Example},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremExampleFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremExampleFormatShowText,
@@ -273,6 +432,9 @@
       \GetTheoremExampleFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Example]{\GetTheoremExampleFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremExampleFormatEnvironmentName}{%
       \GetTheoremExampleFormatShowText}[%
@@ -289,7 +451,7 @@
   {
     EnvironmentName = {EnvLemma},
     ShowText = {Lemma},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremLemmaFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremLemmaFormatShowText,
@@ -311,6 +473,9 @@
       \GetTheoremLemmaFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Lemma]{\GetTheoremLemmaFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremLemmaFormatEnvironmentName}{%
       \GetTheoremLemmaFormatShowText}[%
@@ -327,7 +492,7 @@
   {
     EnvironmentName = {EnvCorollarie},
     ShowText = {Corollarie},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremCorollarieFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremCorollarieFormatShowText,
@@ -349,6 +514,9 @@
       \GetTheoremCorollarieFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Corollarie]{\GetTheoremCorollarieFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremCorollarieFormatEnvironmentName}{%
       \GetTheoremCorollarieFormatShowText}[%
@@ -365,7 +533,7 @@
   {
     EnvironmentName = {EnvProposition},
     ShowText = {Proposition},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremPropositionFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremPropositionFormatShowText,
@@ -387,6 +555,9 @@
       \GetTheoremPropositionFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Proposition]{\GetTheoremPropositionFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremPropositionFormatEnvironmentName}{%
       \GetTheoremPropositionFormatShowText}[%
@@ -403,7 +574,7 @@
   {
     EnvironmentName = {EnvConjecture},
     ShowText = {Conjecture},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremConjectureFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremConjectureFormatShowText,
@@ -425,6 +596,9 @@
       \GetTheoremConjectureFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Conjecture]{\GetTheoremConjectureFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremConjectureFormatEnvironmentName}{%
       \GetTheoremConjectureFormatShowText}[%
@@ -441,7 +615,7 @@
   {
     EnvironmentName = {EnvHypothesis},
     ShowText = {Hypothesis},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremHypothesisFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremHypothesisFormatShowText,
@@ -463,6 +637,9 @@
       \GetTheoremHypothesisFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Hypothesis]{\GetTheoremHypothesisFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremHypothesisFormatEnvironmentName}{%
       \GetTheoremHypothesisFormatShowText}[%
@@ -479,7 +656,7 @@
   {
     EnvironmentName = {EnvQuestion},
     ShowText = {Question},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremQuestionFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremQuestionFormatShowText,
@@ -501,6 +678,9 @@
       \GetTheoremQuestionFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Question]{\GetTheoremQuestionFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremQuestionFormatEnvironmentName}{%
       \GetTheoremQuestionFormatShowText}[%
@@ -517,7 +697,7 @@
   {
     EnvironmentName = {EnvAssertion},
     ShowText = {Assertion},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremAssertionFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremAssertionFormatShowText,
@@ -539,6 +719,9 @@
       \GetTheoremAssertionFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Assertion]{\GetTheoremAssertionFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremAssertionFormatEnvironmentName}{%
       \GetTheoremAssertionFormatShowText}[%
@@ -555,7 +738,7 @@
   {
     EnvironmentName = {EnvCriterion},
     ShowText = {Criterion},
-    FollowCounter = section,
+    FollowCounter = Section,
   },
   EnvironmentName/.estore in = \GetTheoremCriterionFormatEnvironmentName,
   ShowText/.estore in = \GetTheoremCriterionFormatShowText,
@@ -577,6 +760,9 @@
       \GetTheoremCriterionFormatShowText}%
   }%
   {%
+    %
+    \MappingTheoremCounter[Criterion]{\GetTheoremCriterionFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremCriterionFormatEnvironmentName}{%
       \GetTheoremCriterionFormatShowText}[%
@@ -616,6 +802,9 @@
       \GetTheoremProofFormatShowText}
   }%
   {%
+    %
+    \MappingTheoremCounter[Proof]{\GetTheoremProofFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremProofFormatEnvironmentName}{%
       \GetTheoremProofFormatShowText}[%
@@ -655,6 +844,9 @@
       \GetTheoremNoteFormatShowText}
   }%
   {%
+    %
+    \MappingTheoremCounter[Note]{\GetTheoremNoteFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremNoteFormatEnvironmentName}{%
       \GetTheoremNoteFormatShowText}[%
@@ -694,6 +886,9 @@
       \GetTheoremAnnotationFormatShowText}
   }%
   {%
+    %
+    \MappingTheoremCounter[Annotation]{\GetTheoremAnnotationFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremAnnotationFormatEnvironmentName}{%
       \GetTheoremAnnotationFormatShowText}[%
@@ -733,6 +928,9 @@
       \GetTheoremClaimFormatShowText}
   }%
   {%
+    %
+    \MappingTheoremCounter[Claim]{\GetTheoremClaimFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremClaimFormatEnvironmentName}{%
       \GetTheoremClaimFormatShowText}[%
@@ -772,6 +970,9 @@
       \GetTheoremCaseFormatShowText}
   }%
   {%
+    %
+    \MappingTheoremCounter[Case]{\GetTheoremCaseFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremCaseFormatEnvironmentName}{%
       \GetTheoremCaseFormatShowText}[%
@@ -811,6 +1012,9 @@
       \GetTheoremAcknowledgmentFormatShowText}
   }%
   {%
+    %
+    \MappingTheoremCounter[Acknowledgment]{\GetTheoremAcknowledgmentFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremAcknowledgmentFormatEnvironmentName}{%
       \GetTheoremAcknowledgmentFormatShowText}[%
@@ -850,6 +1054,9 @@
       \GetTheoremConclusionFormatShowText}
   }%
   {%
+    %
+    \MappingTheoremCounter[Conclusion]{\GetTheoremConclusionFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremConclusionFormatEnvironmentName}{%
       \GetTheoremConclusionFormatShowText}[%
@@ -889,6 +1096,9 @@
       \GetTheoremSummaryFormatShowText}
   }%
   {%
+    %
+    \MappingTheoremCounter[Summary]{\GetTheoremSummaryFormatFollowCounter}%
+    %
     \newtheorem{%
       \GetTheoremSummaryFormatEnvironmentName}{%
       \GetTheoremSummaryFormatShowText}[%
