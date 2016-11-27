@@ -1,0 +1,49 @@
+%%
+%% This is file `apptools.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% apptools.dtx  (with options: `package')
+%% 
+%% This is a generated file.
+%% 
+%% Project: apptools
+%% Version: 2012/11/28 v1.0
+%% 
+%% Copyright (c) 2012 by Sebastian Kuhnert <mail at sebastian-kuhnert.de>
+%% 
+%% This work may be distributed and/or modified under the conditions of the LaTeX
+%% Project Public License, either version 1.3c of this license or (at your
+%% option) any later version. The latest version of this license is available at
+%% http://www.latex-project.org/lppl.txt and version 1.3c or later is part of all
+%% distributions of LaTeX version 2008/05/04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained', the Current Maintainer
+%% of this work is Sebastian Kuhnert.
+%% 
+%% This work consists of the main source file apptools.dtx and the derived files
+%%    apptools.sty, apptools.pdf, apptools.ins, apptools.drv, apptools-test.tex.
+%% 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{apptools}
+  [2012/11/28 v1.0 Tools for customizing appendices]%
+\def\apptools@hook{\appendixtrue}
+\newcommand{\AtAppendix}{%
+  \g@addto@macro\apptools@hook
+}
+\let\apptools@origappendix\appendix
+\def\appendix{%
+  \apptools@hook \apptools@origappendix
+}
+\newif\ifappendix
+\newcommand*{\IfAppendix}{%
+  \ifappendix
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+\endinput
+%%
+%% End of file `apptools.sty'.

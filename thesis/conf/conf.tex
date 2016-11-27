@@ -298,7 +298,7 @@
 % --- 參考文獻 Reference ---
 %
 % --- 使用方式 ---
-%    \SetupReference{ < 設定 >}
+%    \SetupReference{ < 設定 > }
 %
 % < 設定 >
 %    Title (Reference的標題文字)
@@ -383,7 +383,7 @@
 % 如對格式有什麼的要求, 請使用\SetNumberingFormat.
 
 % --- 使用方式 ---
-%    \SetNumberingFormat[ < 章節類型 > ]{ < 設定 >}
+%    \SetNumberingFormat[ < 章節類型 > ]{ < 設定 > }
 
 % ----------------------
 %
@@ -620,5 +620,136 @@
 %  SepAtIndex = {}, SepBetweenCnS = {},
 %  SepBetweenSnSS = {}, SepBetweenSSCnSSS = {},
 %} % End of \SetNumberingFormat{}
+
+% ----------------------------------------------------------------------------
+
+% --- Theorems的設定 ---
+% 除非對Theorems格式有任何要求, 否則這部份內容是不用管的.
+%
+% 提供以下的Theorems的使用:
+%
+%    Definition       (定義)
+%    Condition        (條件)
+%    Theorem          (定理)
+%    Lemma            (引理)
+%    Example          (例子)
+%    Corollary        (推論)
+%    Proposition      (主張)
+%    Proof            (證明)
+%    Conjecture       (猜想)
+%    Note             (附註)
+%    Annotation       (註解)
+%    Claim            (主張)
+%    Case             (情況)
+%    Acknowledgment   (確認)
+%    Conclusion       (結論)
+%    Criterion        (標準)
+%    Assertion        (斷言)
+%    Problem          (問題)
+%    Question         (問題)
+%    Hypothesis       (假設)
+%    Summary          (總結)
+%
+% 如對格式有什麼的要求, 請使用\SetNumberingFormat.
+% 而插入新內容的話則使用\InsertXXXX.
+%
+% --- 使用方式 ---
+%   \SetTheoremFormat[ < Theorem類型 > ]{ < 設定 > }
+%     和
+%   \InsertXXXX[ < 設定 > ]{ < 內容 >} (XXXX為Theorem類型), 如
+%     \InsertTheorem{ abc }
+%     \InsertLemma{ abc }
+%     \InsertProof{ abc }
+%
+% ----------------------
+%
+% 一個完整的 \SetTheoremFormat 的樣子:
+%
+% \SetTheoremFormat[ < Theorem類型 > ]{%
+%   ShowText = { @文字/符號@ },
+%   FollowCounter = { < Counter類型 > },%
+% } % End of \SetTheoremFormat{}
+%
+% ----------------------
+%
+% --- ShowText ---
+%
+% ShowText是指所顯示在文章中的文字. 如Proof可修改成:
+%    ShowText = {證明}
+%
+% ----------------------
+%
+% --- Counter類型 ---
+%
+% 模版提供以下的Counter類型使用:
+%
+%    Section
+%    Definition
+%    Condition
+%    Theorem
+%    Lemma
+%    Example
+%    Corollary
+%    Proposition
+%    Proof
+%    Conjecture
+%    Note
+%    Annotation
+%    Claim
+%    Case
+%    Acknowledgment
+%    Conclusion
+%    Criterion
+%    Assertion
+%    Problem
+%    Question
+%    Hypothesis
+%    Summary
+%
+%  有一些Theorem是不需要Counter, 故那些是不會需要這設定. 如Proof/Note.
+%  而需要的則全預設跟隨Section Counter.
+%
+%  以下為預設使用Counter的清單:
+%
+%    Definition
+%    Condition
+%    Theorem
+%    Lemma
+%    Example
+%    Corollary
+%    Proposition
+%    Conjecture
+%    Criterion
+%    Assertion
+%    Problem
+%    Question
+%    Hypothesis
+%
+% ----------------------
+%
+% --- 請在這邊設定你要的樣子 ---
+%
+
+%\SetTheoremFormat[Definition]{ShowText = {Definition}}%
+%\SetTheoremFormat[Condition]{ShowText = {Condition}}%
+%\SetTheoremFormat[Problem]{ShowText = {Problem}}%
+%\SetTheoremFormat[Example]{ShowText = {Example}}%
+%\SetTheoremFormat[Theorem]{ShowText = {Theorem}}%
+%\SetTheoremFormat[Lemma]{ShowText = {Lemma}}%
+%\SetTheoremFormat[Corollary]{ShowText = {Corollary}}%
+%\SetTheoremFormat[Proposition]{ShowText = {Proposition}}%
+%\SetTheoremFormat[Conjecture]{ShowText = {Conjecture}}%
+%\SetTheoremFormat[Proof]{ShowText = {Proof}}%
+%\SetTheoremFormat[Note]{ShowText = {Note}}%
+%\SetTheoremFormat[Annotation]{ShowText = {Annotation}}%
+%\SetTheoremFormat[Claim]{ShowText = {Claim}}%
+%\SetTheoremFormat[Case]{ShowText = {Case}}%
+%\SetTheoremFormat[Acknowledgment]{ShowText = {Acknowledgment}}%
+%\SetTheoremFormat[Conclusion]{ShowText = {Conclusion}}%
+%\SetTheoremFormat[Criterion]{ShowText = {Criterion}}%
+%\SetTheoremFormat[Assertion]{ShowText = {Assertion}}%
+%\SetTheoremFormat[Question]{ShowText = {Question}}%
+%\SetTheoremFormat[Hypothesis]{ShowText = {Hypothesis}}%
+%\SetTheoremFormat[Summary]{ShowText = {Summary}}%
 
 % ----------------------------------------------------------------------------

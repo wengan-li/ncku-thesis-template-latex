@@ -462,6 +462,179 @@
   \newpage
   \item
   {
+    \textbf{Theorems的設定}\\
+    除非對Theorems格式有任何要求, 否則這部份內容是不用管的.
+
+    提供以下的Theorems的使用:
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+Definition       (定義)
+Condition        (條件)
+Theorem          (定理)
+Lemma            (引理)
+Example          (例子)
+Corollary        (推論)
+Proposition      (主張)
+Proof            (證明)
+Conjecture       (猜想)
+Note             (附註)
+Annotation       (註解)
+Claim            (主張)
+Case             (情況)
+Acknowledgment   (確認)
+Conclusion       (結論)
+Criterion        (標準)
+Assertion        (斷言)
+Problem          (問題)
+Question         (問題)
+Hypothesis       (假設)
+Summary          (總結)
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+    如對格式有什麼的要求, 請使用\verb|'\SetNumberingFormat'|.\\
+    而插入新內容的話則使用\verb|'\InsertXXXX'|.
+
+  \newpage
+    \textbf{--- 使用方式 ---}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+\SetTheoremFormat[ < Theorem類型 > ]{ < 設定 > }
+     和
+\InsertXXXX[ < 設定 > ]{ < 內容 >} (XXXX為Theorem類型), 如
+  \InsertTheorem{ abc }
+  \InsertLemma{ abc }
+  \InsertProof{ abc }
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+    一個完整的 \verb|'\SetTheoremFormat'| 的樣子:
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+\SetTheoremFormat[ < Theorem類型 > ]{%
+  ShowText = { @文字/符號@ },
+  FollowCounter = { < Counter類型 > },%
+} % End of \SetTheoremFormat{}
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+    \textbf{--- ShowText ---}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+ShowText是指所顯示在文章中的文字. 如Proof可修改成:
+    ShowText = {證明}
+    \end{verbatim}
+    \end{DescriptionFrame}
+  \newpage
+    \textbf{--- Counter類型 ---}
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+模版提供以下的Counter類型使用:
+
+  Section
+  Definition
+  Condition
+  Theorem
+  Lemma
+  Example
+  Corollary
+  Proposition
+  Proof
+  Conjecture
+  Note
+  Annotation
+  Claim
+  Case
+  Acknowledgment
+  Conclusion
+  Criterion
+  Assertion
+  Problem
+  Question
+  Hypothesis
+  Summary
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+    \newpage
+    有一些Theorem是不需要Counter, 故那些是不會需要這設定. 如Proof/Note.\\
+    而需要的則全預設跟隨Section Counter.
+
+    以下為預設使用Counter的清單:
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+  Definition
+  Condition
+  Theorem
+  Lemma
+  Example
+  Corollary
+  Proposition
+  Conjecture
+  Criterion
+  Assertion
+  Problem
+  Question
+  Hypothesis
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+  \newpage
+    \verb|'\InsertXXXX'|的使用例子:
+    \begin{DescriptionFrame}
+    \begin{verbatim}
+\InsertDefinition{Definition here.}
+\InsertCondition{Condition here.}
+\InsertProblem{Problem here.}
+\InsertExample{Example here.}
+\InsertTheorem{Theorem here.}
+\InsertLemma{Lemma here.}
+\InsertCorollary{Corollary here.}
+\InsertProposition{Proposition here.}
+\InsertConjecture{Conjecture here.}
+\InsertCriterion{Criterion here.}
+\InsertAssertion{Assertion here.}
+\InsertQuestion{Question here.}
+\InsertHypothesis{Hypothesis here.}
+\InsertProof{Proof here.}
+\InsertNote{Note here.}
+\InsertAnnotation{Annotation here.}
+\InsertClaim{Claim here.}
+\InsertCase{Case here.}
+\InsertAcknowledgment{Acknowledgment here.}
+\InsertConclusion{Conclusion here.}
+\InsertSummary{Summary here.}
+    \end{verbatim}
+    \end{DescriptionFrame}
+
+  \newpage
+    效果:
+    \InsertDefinition{Definition here.}
+    \InsertCondition{Condition here.}
+    \InsertProblem{Problem here.}
+    \InsertExample{Example here.}
+    \InsertTheorem{Theorem here.}
+    \InsertLemma{Lemma here.}
+    \InsertCorollary{Corollary here.}
+    \InsertProposition{Proposition here.}
+    \InsertConjecture{Conjecture here.}
+    \InsertCriterion{Criterion here.}
+    \InsertAssertion{Assertion here.}
+    \InsertQuestion{Question here.}
+    \InsertHypothesis{Hypothesis here.}
+    \InsertProof{Proof here.}
+    \InsertNote{Note here.}
+    \InsertAnnotation{Annotation here.}
+    \InsertClaim{Claim here.}
+    \InsertCase{Case here.}
+    \InsertAcknowledgment{Acknowledgment here.}
+    \InsertConclusion{Conclusion here.}
+    \InsertSummary{Summary here.}
+  } % End of \item{}
+
+  \newpage
+  \item
+  {
     \textbf{參考文獻 Reference}\\
 
     \textbf{--- 使用方式 ---}
