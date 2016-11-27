@@ -32,7 +32,7 @@
 %    Proposition      (主張)
 %    Remark           (備註)
 %    Proof            (證明)
-%    Conjectures      (猜想)
+%    Conjecture       (猜想)
 %    Note             (附註)
 %    Annotation       (註解)
 %    Claim            (主張)
@@ -104,9 +104,6 @@
   %
   \ifthenelse{\equal{#1}{Theorem}}%
   {%
-  \PackageWarning{fred}{MappingTheoremCounter}
-  \PackageWarning{fred}{#2}
-  \PackageWarning{fred}{#1}
     \renewcommand{\GetTheoremTheoremFormatFollowCounter}{#2}%
   }{}%
   %
@@ -120,6 +117,11 @@
     \renewcommand{\GetTheoremExampleFormatFollowCounter}{#2}%
   }{}%
   %
+  \ifthenelse{\equal{#1}{Problem}}%
+  {%
+    \renewcommand{\GetTheoremProblemFormatFollowCounter}{#2}%
+  }{}%
+  %
   \ifthenelse{\equal{#1}{Corollary}}%
   {%
     \renewcommand{\GetTheoremCorollaryFormatFollowCounter}{#2}%
@@ -130,9 +132,9 @@
     \renewcommand{\GetTheoremPropositionFormatFollowCounter}{#2}%
   }{}%
   %
-  \ifthenelse{\equal{#1}{Conjectures}}%
+  \ifthenelse{\equal{#1}{Conjecture}}%
   {%
-    \renewcommand{\GetTheoremConjecturesFormatFollowCounter}{#2}%
+    \renewcommand{\GetTheoremConjectureFormatFollowCounter}{#2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{Criterion}}%
@@ -194,22 +196,16 @@
       \GetTheoremExampleFormatFollowCounter}%
   }{}%
   %
-  \ifthenelse{\equal{#2}{Corollary}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremCorollaryFormatFollowCounter}%
-  }{}%
-  %
   \ifthenelse{\equal{#2}{Proposition}}%
   {%
     \MappingTheoremCounterResetCounter[#1]{%
       \GetTheoremPropositionFormatFollowCounter}%
   }{}%
   %
-  \ifthenelse{\equal{#2}{Conjectures}}%
+  \ifthenelse{\equal{#2}{Conjecture}}%
   {%
     \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremConjecturesFormatFollowCounter}%
+      \GetTheoremConjectureFormatFollowCounter}%
   }{}%
   %
   \ifthenelse{\equal{#2}{Criterion}}%
@@ -234,6 +230,18 @@
   {%
     \MappingTheoremCounterResetCounter[#1]{%
       \GetTheoremHypothesisFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Problem}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremProblemFormatFollowCounter}%
+  }{}%
+  %
+  \ifthenelse{\equal{#2}{Corollary}}%
+  {%
+    \MappingTheoremCounterResetCounter[#1]{%
+      \GetTheoremCorollaryFormatFollowCounter}%
   }{}%
   %
 } % End of \newcommand{}
@@ -487,40 +495,40 @@
 
 \pgfkeys
 {
-  /TheoremCorollarieFormat/.is family, /TheoremCorollarieFormat,
+  /TheoremCorollaryFormat/.is family, /TheoremCorollaryFormat,
   default/.style =
   {
-    EnvironmentName = {EnvCorollarie},
-    ShowText = {Corollarie},
+    EnvironmentName = {EnvCorollary},
+    ShowText = {Corollary},
     FollowCounter = Section,
   },
-  EnvironmentName/.estore in = \GetTheoremCorollarieFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremCorollarieFormatShowText,
-  FollowCounter/.estore in = \GetTheoremCorollarieFormatFollowCounter,
+  EnvironmentName/.estore in = \GetTheoremCorollaryFormatEnvironmentName,
+  ShowText/.estore in = \GetTheoremCorollaryFormatShowText,
+  FollowCounter/.estore in = \GetTheoremCorollaryFormatFollowCounter,
 } % End of \pgfkeys{}
 
-\newcommand{\InsertCorollarie}[2][\empty]
+\newcommand{\InsertCorollary}[2][\empty]
 {%
-  \InsertTheoremContent[#1]{\GetTheoremCorollarieFormatEnvironmentName}{#2}%
+  \InsertTheoremContent[#1]{\GetTheoremCorollaryFormatEnvironmentName}{#2}%
 } % End of \newcommand{}
 
-\newcommand{\InitTheoremCorollarieFormat}
+\newcommand{\InitTheoremCorollaryFormat}
 {%
   \theoremstyle{plain}%
-  \ifthenelse{\equal{\GetTheoremCorollarieFormatFollowCounter}{\empty}}%
+  \ifthenelse{\equal{\GetTheoremCorollaryFormatFollowCounter}{\empty}}%
   {%
     \newtheorem{%
-      \GetTheoremCorollarieFormatEnvironmentName}{%
-      \GetTheoremCorollarieFormatShowText}%
+      \GetTheoremCorollaryFormatEnvironmentName}{%
+      \GetTheoremCorollaryFormatShowText}%
   }%
   {%
     %
-    \MappingTheoremCounter[Corollarie]{\GetTheoremCorollarieFormatFollowCounter}%
+    \MappingTheoremCounter[Corollary]{\GetTheoremCorollaryFormatFollowCounter}%
     %
     \newtheorem{%
-      \GetTheoremCorollarieFormatEnvironmentName}{%
-      \GetTheoremCorollarieFormatShowText}[%
-      \GetTheoremCorollarieFormatFollowCounter]%
+      \GetTheoremCorollaryFormatEnvironmentName}{%
+      \GetTheoremCorollaryFormatShowText}[%
+      \GetTheoremCorollaryFormatFollowCounter]%
   }%
 } % End of \newcommand{}
 
@@ -1116,7 +1124,7 @@
   \InitTheoremExampleFormat%
   \InitTheoremTheoremFormat%
   \InitTheoremLemmaFormat%
-  \InitTheoremCorollarieFormat%
+  \InitTheoremCorollaryFormat%
   \InitTheoremPropositionFormat%
   \InitTheoremConjectureFormat%
   \InitTheoremProofFormat%
@@ -1165,9 +1173,9 @@
     \pgfkeys{/TheoremLemmaFormat, default, #2}%
   }{}%
   %
-  \ifthenelse{\equal{#1}{Corollarie}}%
+  \ifthenelse{\equal{#1}{Corollary}}%
   {%
-    \pgfkeys{/TheoremCorollarieFormat, default, #2}%
+    \pgfkeys{/TheoremCorollaryFormat, default, #2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{Proposition}}%
@@ -1250,7 +1258,7 @@
 \SetTheoremFormat[Example]{ShowText = {Example}}%
 \SetTheoremFormat[Theorem]{ShowText = {Theorem}}%
 \SetTheoremFormat[Lemma]{ShowText = {Lemma}}%
-\SetTheoremFormat[Corollarie]{ShowText = {Corollarie}}%
+\SetTheoremFormat[Corollary]{ShowText = {Corollary}}%
 \SetTheoremFormat[Proposition]{ShowText = {Proposition}}%
 \SetTheoremFormat[Conjecture]{ShowText = {Conjecture}}%
 \SetTheoremFormat[Proof]{ShowText = {Proof}}%
