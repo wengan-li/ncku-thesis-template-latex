@@ -27,7 +27,7 @@
    * `\InsertSummary`
 
 + **已知問題**:
-  Table/Equation/Figure/Theorem在Appendix(附錄)中的Numbering顯示正常, 但沒法轉換成正確的英文符號. \([定為Issue 22](https://github.com/wengan-li/ncku-thesis-template-latex/issues/22#issue-168091165)\)
+  Table/Equation/Figure/Theorem在Appendix(附錄)中的Numbering顯示正常, 但沒法轉換成正確的英文符號. \([定為Issue 22](https://github.com/wengan-li/ncku-thesis-template-latex/issues/22#issue-191855677)\)
 
 #### v1.5.0 [Sep 11, 2016]:
 
