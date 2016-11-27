@@ -36,7 +36,7 @@
 [有關 樣版/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-template-latex-sample)
 
 ### Style Customization 自定成其他學校的模版
-由[v1.5.0](https://github.com/wengan-li/ncku-thesis-template-latex/releases)開始, 本模版改造成可讓非國立成功大學的同學或人士都能建基於這模版以建立出自己學校所需的模版, 同時保留能使用本模版所提供的功能.
+由[v1.5.1](https://github.com/wengan-li/ncku-thesis-template-latex/releases)開始, 本模版改造成可讓非國立成功大學的同學或人士都能建基於這模版以建立出自己學校所需的模版, 同時保留能使用本模版所提供的功能.
 
 詳細[請看Customization.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/thesis/template/style/Customization.md)這檔案中的內容.
 

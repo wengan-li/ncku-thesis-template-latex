@@ -1,3 +1,34 @@
+#### v1.5.1 [Nov 26, 2016]:
++ **更新**:
+  修正微量在`conf.tex`中的`章節標題的設定`提到的例子的說明錯誤.
+
++ **提供的APIs**:
+  [感謝yusie1978在Issue \#18中提議](https://github.com/wengan-li/ncku-thesis-template-latex/issues/20)\, 故新增以下APIs:
+   * `\InsertDefinition`
+   * `\InsertCondition`
+   * `\InsertProblem`
+   * `\InsertExample`
+   * `\InsertTheorem`
+   * `\InsertLemma`
+   * `\InsertCorollary`
+   * `\InsertProposition`
+   * `\InsertConjecture`
+   * `\InsertCriterion`
+   * `\InsertAssertion`
+   * `\InsertQuestion`
+   * `\InsertHypothesis`
+   * `\InsertProof`
+   * `\InsertNote`
+   * `\InsertAnnotation`
+   * `\InsertClaim`
+   * `\InsertCase`
+   * `\InsertAcknowledgment`
+   * `\InsertConclusion`
+   * `\InsertSummary`
+
++ **已知問題**:
+  Table/Equation/Figure/Theorem在Appendix(附錄)中的Numbering顯示正常, 但沒法轉換成正確的英文符號. \([定為Issue 22](https://github.com/wengan-li/ncku-thesis-template-latex/issues/22#issue-168091165)\)
+
 #### v1.5.0 [Sep 11, 2016]:
 
 **這版的更新是為了讓非成大的同學或人士都能建基於這模版以改成自己所需的模版. 故任何同學如已經在使用這模版, 同時要準備用來交出最終版給學校的話, 是不用更新到這一版的.**
@@ -17,7 +48,7 @@
   修正圖書館要求中/英文摘要是由羅馬數字頁碼`i`開始, 而非由封面算起. \([由spotdy在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issuecomment-233812581)\)
 
 + **更新**:
-  重新對所有檔案進行編碼成UTF-8, 並修改行尾是使用*nix系統的的`\n`, 而非Windows的`\r\n`, 以增加對所有平台的相容性. \([由KuoE0在Pull request \#15中提供](https://github.com/wengan-li/ncku-thesis-template-latex/pull/15)\)
+  重新對所有檔案進行編碼成UTF-8, 並修改行尾是使用*nix系統的的`\n`, 而非Windows的`\r\n`, 以增加對所有平台的相容性. \([感謝KuoE0提供Pull request \#15](https://github.com/wengan-li/ncku-thesis-template-latex/pull/15)\)
 
 #### v1.4.7 [Jule 6, 2016]:
 **緊急修正**
@@ -282,7 +313,7 @@
 #### v1.2.4:
 1. 增加英文封面可同時顯示中英文 \([Issue \#3](https://github.com/wengan-li/ncku-thesis-template-latex/issues/3)\)
 
-#### v1.2.3: 
+#### v1.2.3:
 1. 修正統一使用'Fig'去取代'Fig.', 因為當使用'Fig.'時會產生更大的空格
 2. 修正在'表格 Table'中的圖片位置
 3. 移除在'圖片 Image'的'多張'中舊API的說明文字
