@@ -98,34 +98,8 @@
 
 % --- Date 日期 ---
 
-% 依本校研究生學位考試細則第十條規定：
-%
-% 碩士班:
-%   論文日期：上學期為〇〇〇年1月；下學期為〇〇〇年6月，以該學期結束日期(一月或六月)為準。
-%   (如：在上學期101年9月~102年1月期間口試，
-%       不論是在此期間何月份口試，其日期均固定為102年1月).
-%   另碩士生如101上學期完成口試，101下學期申請出國，102上學期辦理離校，
-%   則論文封面為103年1月
-%
-%   即是說封面的日期是要等於或晚於口試日期的,
-%   故假如口試為7月, 即要設定為7月或以後, 不能寫同年的6月或以前.
-%
-% 博士班:
-%   以當學期通過學位口試，則論文日期為口試日期(如〇〇〇年〇〇月〇〇日)，
-%   若論文有修改致延至次學期，則以論文上傳日期為主。
-%
-% 故本模版會根據你的學位, 來選擇顯示在封面的日期格式.
-% 即碩士: 年月, 博士: 年月日
-%
-
-% --- 論文封面上的日期 ---
-% 設定西元的年月, 會自動計算出民國的年份, 和英文的月份轉換
-% 次序: {年份}{月份}
-% \SetCoverDate{2014}{12}
-
-\SetCoverDate{2014}{12}
-
-%--------------------------------------------------
+% 封面日期是統一使用學位考試合格(口試合格單)單為主要參考日期 (年、月(學位考試通過日期)).
+% 例如105年7月口試，則封面日期為 中華民國105年7月 或 2016年7月.
 
 % --- 口試的日期 ---
 % 設定西元的年月日, 會自動計算出民國的年份, 和英文的月份轉換
@@ -133,6 +107,19 @@
 % \SetOralDate{2014}{12}{31}
 
 \SetOralDate{2014}{12}{31}
+
+%--------------------------------------------------
+
+% --- 論文封面上的日期 ---
+
+% 如是你是國立成功大學的學生, 則封面日期直接使用口試日期, 故不需再另設定.
+% 但如果你不是國立成功大學的學生, 那本模版則不清楚 貴學校所定的規範是否要分開, 故先保留這功能.
+
+% 設定西元的年月, 會自動計算出民國的年份, 和英文的月份轉換
+% 次序: {年份}{月份}
+% \SetCoverDate{2014}{12}
+
+%\SetCoverDate{2014}{12}
 
 % ----------------------------------------------------------------------------
 
@@ -565,20 +552,20 @@
 %} % End of \SetNumberingFormat{}
 
 % Section (節)
-%\SetNumberingFormat[Section]{%
-%  BeginText = {}, EndText = {},
-%  TextAlign = {Left},
-%  CNumStyle = {Arabic}, SNumStyle = {Arabic},
-%  SepAtIndex = {.}, SepBetweenCnS = {.},
-%} % End of \SetNumberingFormat{}
+\SetNumberingFormat[Section]{%
+  BeginText = {}, EndText = {},
+  TextAlign = {Left},
+  CNumStyle = {}, SNumStyle = {},
+  SepAtIndex = {}, SepBetweenCnS = {},
+} % End of \SetNumberingFormat{}
 
 % SubSection (小節)
-%\SetNumberingFormat[SubSection]{%
-%  BeginText = {}, EndText = {},
-%  TextAlign = {Left},
-%  CNumStyle = {Arabic}, SNumStyle = {Arabic}, SSNumStyle = {Arabic},
-%  SepAtIndex = {.}, SepBetweenCnS = {.}, SepBetweenSnSS = {.},
-%} % End of \SetNumberingFormat{}
+\SetNumberingFormat[SubSection]{%
+  BeginText = {}, EndText = {},
+  TextAlign = {Left},
+  CNumStyle = {}, SNumStyle = {}, SSNumStyle = {},
+  SepAtIndex = {.}, SepBetweenCnS = {}, SepBetweenSnSS = {},
+} % End of \SetNumberingFormat{}
 
 % SubSubSection (小小節)
 %\SetNumberingFormat[SubSubSection]{%

@@ -32,6 +32,7 @@
 %         v1.4.4 [May 25, 2016]
 %         v1.4.5 [June 2, 2016]
 %         v1.5.0 [Sep 11, 2016]
+%         v1.5.2 [Jan 14, 2017]
 %
 % 原生自utdiss.sty
 % utdiss.sty --- Version 2.1.1 (April 1992)
@@ -101,3 +102,16 @@
 %\UseWatermarkTextStyle
 
 % ------------------------------------------------
+
+% 因每個學校所要求的內容不一樣, 故overwrite一些內容或APIs.
+
+% 封面日期是統一使用學位考試合格(口試合格單)單為主要參考日期 (年、月(學位考試通過日期)).
+\renewcommand{\SetOralDate}[3]
+{%
+  \SetOralChiDate{#1}{#2}{#3}%
+  \SetOralEngDate{#1}{#2}{#3}%
+  %
+  \SetThesisTaiwanYear{#1}%
+  \renewcommand{\ThesisYear}{#1}%
+  \renewcommand{\ThesisMonth}{#2}%
+} % End of \renewcommand{}
