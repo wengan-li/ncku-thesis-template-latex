@@ -199,8 +199,14 @@
 }%
 {
   \ifthenelse{\equal{\VarDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
-  {\makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYearNumInChi 年 \GetThesisMonthNumInChi 月 \GetOralEngDayNumInChi 日}}%
-  {\makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYear 年 \GetThesisMonth 月 \GetOralEngDay 日}}%
+  {%
+    \makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYearNumInChi 年 \GetThesisMonthNumInChi 月}%
+    %\makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYearNumInChi 年 \GetThesisMonthNumInChi 月 \GetOralEngDayNumInChi 日}%
+  }%
+  {%
+    \makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYear 年 \GetThesisMonth 月}%
+    %\makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYear 年 \GetThesisMonth 月 \GetOralEngDay 日}%
+  }%
 }
 
 % ------------------------------------------------

@@ -1,9 +1,28 @@
+#### v1.5.2 [Jan 14, 2017]:
+
++ **更新原因**:
+
+  得到 '成大圖書館 系統管理組-數位論文小組' 的通知, 以跟隨學校的最新所訂的[\[105.12.15 105學年度第2次教務會議修正過的國立成功大學博碩士學位論文格式規範\]](http://cid.acad.ncku.edu.tw/ezfiles/56/1056/img/730/degree4-1.pdf). 新的論文格式規範更新內容為：
+    * 舊版: 在封面上, 碩士班跟博士班是顯示不同的日期 (年、月、(日)).
+    * 新版: 封面日期是統一使用學位考試合格(口試合格單)單為主要參考日期 (年、月(學位考試通過日期)). 例如105年7月口試，則封面日期為 中華民國105年7月 或 2016年7月.
+
++ **更新**:
+  1. 更新Appendix中'國立成功大學博碩士學位論文格式規範'的說明文件.
+  2. 更新Appendix中'2016論文提交說明簡報檔'的簡報檔.
+  3. 在`conf.tex`中關掉`\SetCoverDate`, 因為封面日期直接使用口試日期, 故不需再另設定. 但是不知道其他的學校所定的規範是否要分開, 故保留這功能.
+  4. 中文封面的日期由`年月日`變成`年月`.
+  5. 拿掉Extended Abstract中紅字的顏色.
+  6. 更新模版有關論文格式規範變更的內容說明.
+  7. 更新封面日期固定為口試日期.
+  8. 更新.gitignore會無視掉內文中所使用的PDF檔的問題.
+  9. 更新CONTRIBUTE名單
+
 #### v1.5.1 [Nov 26, 2016]:
 + **更新**:
   修正微量在`conf.tex`中的`章節標題的設定`提到的例子的說明錯誤.
 
 + **提供的APIs**:
-  [感謝yusie1978在Issue \#18中提議](https://github.com/wengan-li/ncku-thesis-template-latex/issues/20)\, 故新增以下APIs:
+  [感謝yusie1978在Issue \#18中提議](https://github.com/wengan-li/ncku-thesis-template-latex/issues/20), 故新增以下APIs:
    * `\InsertDefinition`
    * `\InsertCondition`
    * `\InsertProblem`
