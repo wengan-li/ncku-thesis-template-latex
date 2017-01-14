@@ -1,7 +1,7 @@
 ## National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex ##
 ### 台灣國立成功大學碩博士用畢業論文LaTex模版 ###
 
-這是國立成功大學碩博士用畢業論文的LaTex模版. 這模版是以 [102.5.14日101學年第2次教務會議通過](http://cid.acad.ncku.edu.tw/ezfiles/56/1056/img/730/degree4-1.pdf) 的畢業論文要求來設計, 請留意學校的最新所訂的要求能否使用這模版.
+這是國立成功大學碩博士用畢業論文的LaTex模版. 這模版是以 [105.12.15 105學年度第2次教務會議修正過](http://cid.acad.ncku.edu.tw/ezfiles/56/1056/img/730/degree4-1.pdf) 的畢業論文要求來設計, 請留意學校的最新所訂的要求能否使用這模版.
 
 ### Main feature 主要功能
   1. 能同時讓你編寫中英文內容 (建基於XeLaTex)
@@ -36,7 +36,7 @@
 [有關 樣版/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-template-latex-sample)
 
 ### Style Customization 自定成其他學校的模版
-由[v1.5.1](https://github.com/wengan-li/ncku-thesis-template-latex/releases)開始, 本模版改造成可讓非國立成功大學的同學或人士都能建基於這模版以建立出自己學校所需的模版, 同時保留能使用本模版所提供的功能.
+由[v1.5.0](https://github.com/wengan-li/ncku-thesis-template-latex/releases)開始, 本模版改造成可讓非國立成功大學的同學或人士都能建基於這模版以建立出自己學校所需的模版, 同時保留能使用本模版所提供的功能.
 
 詳細[請看Customization.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/thesis/template/style/Customization.md)這檔案中的內容.
 
@@ -44,7 +44,7 @@
 如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog 版本修改
-最新版本為: [v1.5.0](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
+最新版本為: [v1.5.2](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
 
 詳細[請看ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
 
