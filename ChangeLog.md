@@ -1,6 +1,7 @@
 #### v1.5.3 [Jul 11, 2018]:
 
 + **修正錯誤**:
+
   [感謝abby50066在Issue \#28中的回報](https://github.com/wengan-li/ncku-thesis-template-latex/issues/28), 修正學校的最新所訂的[\[105.12.15 105學年度第2次教務會議修正過的國立成功大學博碩士學位論文格式規範\]](http://cid.acad.ncku.edu.tw/ezfiles/56/1056/img/730/degree4-1.pdf)漏掉修正的內頁邊界:
     * 舊版: 上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm
     * 新版: 上23mm、下35mm（含頁碼）、左30mm、右25mm
@@ -8,6 +9,7 @@
 #### v1.5.2 [Jan 14, 2017]:
 
 + **更新原因**:
+
   得到 '成大圖書館 系統管理組-數位論文小組' 的通知, 以跟隨學校的最新所訂的[\[105.12.15 105學年度第2次教務會議修正過的國立成功大學博碩士學位論文格式規範\]](http://cid.acad.ncku.edu.tw/ezfiles/56/1056/img/730/degree4-1.pdf). 新的論文格式規範更新內容為：
     * 舊版: 在封面上, 碩士班跟博士班是顯示不同的日期 (年、月、(日)).
     * 新版: 封面日期是統一使用學位考試合格(口試合格單)單為主要參考日期 (年、月(學位考試通過日期)). 例如105年7月口試，則封面日期為 中華民國105年7月 或 2016年7月.
@@ -25,9 +27,11 @@
 
 #### v1.5.1 [Nov 26, 2016]:
 + **更新**:
+
   修正微量在`conf.tex`中的`章節標題的設定`提到的例子的說明錯誤.
 
 + **提供的APIs**:
+
   [感謝yusie1978在Issue \#18中提議](https://github.com/wengan-li/ncku-thesis-template-latex/issues/20), 故新增以下APIs:
    * `\InsertDefinition`
    * `\InsertCondition`
@@ -52,6 +56,7 @@
    * `\InsertSummary`
 
 + **已知問題**:
+
   Table/Equation/Figure/Theorem在Appendix(附錄)中的Numbering顯示正常, 但沒法轉換成正確的英文符號. \([定為Issue 22](https://github.com/wengan-li/ncku-thesis-template-latex/issues/22#issue-191855677)\)
 
 #### v1.5.0 [Sep 11, 2016]:
@@ -70,19 +75,23 @@
 
 #### v1.4.8 [Jule 20, 2016]:
 + **修正錯誤**:
+
   修正圖書館要求中/英文摘要是由羅馬數字頁碼`i`開始, 而非由封面算起. \([由spotdy在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issuecomment-233812581)\)
 
 + **更新**:
+
   重新對所有檔案進行編碼成UTF-8, 並修改行尾是使用*nix系統的的`\n`, 而非Windows的`\r\n`, 以增加對所有平台的相容性. \([感謝KuoE0提供Pull request \#15](https://github.com/wengan-li/ncku-thesis-template-latex/pull/15)\)
 
 #### v1.4.7 [Jule 6, 2016]:
 **緊急修正**
 
 + **修正錯誤**:
+
   修正英文延伸摘頁碼顯示問題. \([由ujmyhn在Issue \#12中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/12#issuecomment-230395774)\)
 
 #### v1.4.6 [June 7, 2016]:
 + **修正錯誤**:
+
   修正Figure/Table/Equation預設使用阿拉伯數字, 即使用 [1.2] 這種格式來顯示. \([由loveakai在Issue \#10中提出](https://github.com/wengan-li/ncku-thesis-template-latex/issues/10#issuecomment-223983366)\)
 
 + **提供/移除的APIs**:
