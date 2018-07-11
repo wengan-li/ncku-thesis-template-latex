@@ -1,10 +1,9 @@
 #### v1.5.3 [Jul 11, 2018]:
 
 + **修正錯誤**:
-  修正學校的最新所訂的[\[105.12.15 105學年度第2次教務會議修正過的國立成功大學博碩士學位論文格式規範\]](http://cid.acad.ncku.edu.tw/ezfiles/56/1056/img/730/degree4-1.pdf)漏掉修正的內頁邊界:
+  [感謝abby50066在Issue \#28中的回報](https://github.com/wengan-li/ncku-thesis-template-latex/issues/28), 修正學校的最新所訂的[\[105.12.15 105學年度第2次教務會議修正過的國立成功大學博碩士學位論文格式規範\]](http://cid.acad.ncku.edu.tw/ezfiles/56/1056/img/730/degree4-1.pdf)漏掉修正的內頁邊界:
     * 舊版: 上2.3cm、下3.5cm(含頁碼)、左2.5cm、右3cm
     * 新版: 上23mm、下35mm（含頁碼）、左30mm、右25mm
-  [感謝abby50066在Issue \#28中的回報](https://github.com/wengan-li/ncku-thesis-template-latex/issues/28)
 
 #### v1.5.2 [Jan 14, 2017]:
 
