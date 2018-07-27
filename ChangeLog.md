@@ -1,3 +1,9 @@
+#### v1.5.5 [Jul 28, 2018]:
+
++ **修正錯誤**:
+
+  [感謝abby50066在Issue \#31中的回報](https://github.com/wengan-li/ncku-thesis-template-latex/issues/31), 修正`Institute of Computer Science and Information Engineering` 而不是 `Insitute of Computer Science and Information Engineering`.
+
 #### v1.5.4 [Jul 19, 2018]:
 
 + **修正錯誤**:
