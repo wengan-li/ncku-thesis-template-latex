@@ -13,8 +13,8 @@
 ### Available to use 已被學校負責單位接受
 
 這模版的
-* 格式/設計: 已經經過 `成大圖書館 系統管理組-數位論文小組` 所檢查和接受.
-* 口試合格證明文件: 已經經過 `教務處-課務組` 所檢查和接受.
+* 格式/設計: 在2015年經過 `成大圖書館 系統管理組-數位論文小組` 所檢查和接受.
+* 學位考試論文證明書: 在2015年經過 `教務處-課務組` 所檢查和接受 (但在2018年時被提出不被授權, 請參考`模版和學位考試系統的學位考試論文證明書的FAQ`).
 
 即是可使用本模版來編寫你畢業論文, 並能交給圖書館收藏存放. 但如有任何因模版而造成的問題, 請馬上回報以幫助處理你的問題.
 
@@ -40,11 +40,23 @@
 
 詳細[請看Customization.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/thesis/template/style/Customization.md)這檔案中的內容.
 
+### 模版和學位考試系統的學位考試論文證明書的FAQ
+在2015年左右時, 在這模版還在`資訊工程學系`內部同學們之間使用時, 相關的中英文版的學位考試論文證明書 (口試合格證明文件) 拿了去`教務處-課務組` 所檢查.
+而當時`課務組`相關負責人的意見為, 只要能看清楚學校名稱和相關的內容, 就算不是由學校系統所產出的, 都能被接受. 同時都講得很清楚, 因為不是由學校系統, 所以不能算是學校正式認可的.
+但在2018年7月的時候, 這時的`課務組`對本模版所產出的中文版的學位考試論文證明書, 說這是不被授權的. 但未有被正式提出不可使用由模版產出的學位考試論文證明書.
+
+相關討論請參考[Issue 30 - 學位考試合格證明書與成大學校學位考試系統中列印的證明書並不相符](https://github.com/wengan-li/ncku-thesis-template-latex/issues/30).
+暫時得出以下結論:
+  1. 中文版本的學位考試論文證明書**理應**(非強迫性的)使用由`學位考試系統`中所產出的版本 ([可參考此檔案](https://github.com/wengan-li/ncku-thesis-template-latex-sample/blob/master/example-ncku-std_oral-matser.pdf)).
+  2. 英文版論文證明書由各系所自行處理, 而本模版到現時都暫未知道有任何系所對此有任何的要求或有樣板可看. (如有任何同學或老師知道, 請跟本人聯絡, 以讓我可更新通知同學們)
+  3. 暫時未知道有任何同學，因使用本模版的學位考試論文證明書而被`圖書館典藏組`或`電子學位論文小組`拒收畢業論文.
+  4. 如有同學欲使用本模版的學位考試論文證明書, 推薦在口試期間, 同時印出`學位考試系統`的版本來簽, 以作後備.
+
 ### Other 其他
 如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog 版本修改
-最新版本為: [v1.5.5](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
+最新版本為: [v1.5.6](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
 
 詳細[請看ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
 
