@@ -47,7 +47,7 @@
 
 相關討論請參考[Issue 30 - 學位考試合格證明書與成大學校學位考試系統中列印的證明書並不相符](https://github.com/wengan-li/ncku-thesis-template-latex/issues/30).
 暫時得出以下結論:
-  1. 中文版本的學位考試論文證明書**理應**(非強迫性的)使用由`學位考試系統`中所產出的版本 ([可參考此檔案](https://github.com/wengan-li/ncku-thesis-template-latex-sample/blob/master/example-ncku-std_oral-matser.pdf)).
+  1. 中文版本的學位考試論文證明書**理應**(非強迫性的)使用由`學位考試系統`中所產出的版本 ([可參考此檔案](https://github.com/wengan-li/ncku-thesis-template-latex-sample/blob/master/defense-certificate-ncku-std_origial.pdf)).
   2. 英文版論文證明書由各系所自行處理, 而本模版到現時都暫未知道有任何系所對此有任何的要求或有樣板可看. (如有任何同學或老師知道, 請跟本人聯絡, 以讓我可更新通知同學們)
   3. 暫時未知道有任何同學，因使用本模版的學位考試論文證明書而被`圖書館典藏組`或`電子學位論文小組`拒收畢業論文.
   4. 如有同學欲使用本模版的學位考試論文證明書, 推薦在口試期間, 同時印出`學位考試系統`的版本來簽, 以作後備.
