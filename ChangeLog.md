@@ -4,6 +4,8 @@
 
   增加`模版和學位考試系統的學位考試論文證明書的FAQ`.
 
++ **修正錯誤**:
+  跟隨[學位考試系統](https://campus4.ncku.edu.tw/wwwmenu/program/mou/)中, `口試証明文件 (Oral presentation document)` 改為 `學位考試論文證明書 (Defense Certificate)`.
 
 #### v1.5.5 [Jul 28, 2018]:
 

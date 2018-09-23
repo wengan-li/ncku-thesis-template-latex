@@ -14,7 +14,7 @@
 
 這模版的
 * 格式/設計: 在2015年經過 `成大圖書館 系統管理組-數位論文小組` 所檢查和接受.
-* 口試合格證明文件: 在2015年經過 `教務處-課務組` 所檢查和接受 (但在2018年時被提出不被授權, 請參考`模版和學位考試系統的學位考試論文證明書的FAQ`).
+* 學位考試論文證明書: 在2015年經過 `教務處-課務組` 所檢查和接受 (但在2018年時被提出不被授權, 請參考`模版和學位考試系統的學位考試論文證明書的FAQ`).
 
 即是可使用本模版來編寫你畢業論文, 並能交給圖書館收藏存放. 但如有任何因模版而造成的問題, 請馬上回報以幫助處理你的問題.
 
@@ -56,7 +56,7 @@
 如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog 版本修改
-最新版本為: [v1.5.5](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
+最新版本為: [v1.5.6](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
 
 詳細[請看ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
 
