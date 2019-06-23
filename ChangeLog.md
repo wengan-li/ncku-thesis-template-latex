@@ -1,3 +1,11 @@
+#### v1.5.7 [Jun 23, 2019]:
+
++ **更新**:
+  根據[論文上傳要求](http://etds.lib.ncku.edu.tw/files/2012050003.pdf), 在2018年下學期時，開始需要插入DOI碼，故在`conf.tex`中加入`\ShowDOI{}`. \([感謝ChampDBG提供Pull request \#35](https://github.com/wengan-li/ncku-thesis-template-latex/pull/35)\)
+
++ **修正錯誤**:
+  修正編譯*.bib時會出現的bug. \([感謝ygLinc9012提供Pull request \#38](https://github.com/wengan-li/ncku-thesis-template-latex/pull/38)\)
+
 #### v1.5.6 [Sep 23, 2018]:
 
 + **更新**:
