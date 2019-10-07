@@ -33,14 +33,10 @@
   %
   \EnableCoverPageStyle
   %
-  % Aligned to the center of the page
-  \begin{center}
 } % End of \newcommand{}
 
 \newcommand{\EndCover}
 {
-  % End of alignment
-  \end{center}
   \DisableCoverPageStyle
   \EndOfPage
   \UseDefaultLineStretch
@@ -303,7 +299,10 @@
 } % End of \newcommand{}
 
 % Use to include and display inner cover
-\newcommand{\DisplayInnerCover}{\input{./template/cover/inner.tex}}
+\newcommand{\DisplayInnerCover}%
+{
+	\input{./template/cover/inner}
+} % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
 
