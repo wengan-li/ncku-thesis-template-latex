@@ -1,0 +1,56 @@
+\documentclass[conference]{IEEEtran}
+
+\ifCLASSINFOpdf
+\usepackage[pdftex]{graphicx}
+% declare the path(s) where your graphic files are
+\graphicspath{{../pdf/}{../jpeg/}}
+% and their extensions so you won't have to specify these with
+% every instance of \includegraphics
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+
+\fi
+
+\usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amssymb} % assumes amsmath package installed
+\usepackage{color}
+\usepackage{cite}
+\usepackage{algorithmic}
+
+\renewcommand{\citedash}{--}
+\renewcommand{\citepunct}{,}
+
+\begin{document}
+
+\title{Balance Control of Reaction Wheel Pendulum}
+
+\maketitle
+
+\begin{abstract}
+%\boldmath
+This paper presents the balance control of reaction wheel pendulum system...
+\end{abstract}
+
+\IEEEpeerreviewmaketitle
+
+%----------------------------------------------------
+\section{Introduction}
+%----------------------------------------------------
+% no \IEEEPARstart
+This is an example of the problem being asked \cite{rizal2015point,chen2017dynamic,rizal2014balance}, another example is this \cite{zhu2015adaptive,chen2017dynamic}, and this \cite{chen2017dynamic}.
+
+\bibliographystyle{IEEEtran}
+
+\begin{thebibliography}{1}
+
+\bibitem{rizal2015point}
+Y. Rizal, CT Ke, and MT Ho, "Point-to-point motion control of a unicycle robot: Design, implementation, and validation," in Proc. IEEE Int. Conf. Robotics and Automation, pp. 4379--4384, 2015.
+\bibitem{chen2017dynamic}
+Z Chen, X Ruan, and Y Li, "Dynamic Modeling of a Cubical Robot Balancing on Its Corner," in Proc. MATEC Web of Conferences, pp. 1--6, 2017.
+\bibitem{rizal2014balance}
+Y. Rizal, JW Syu, and MT Ho, "Balance control of an inverted pendulum system using second-order sliding mode control," in Proc. CACS Int. Automatic Control Conf. pp. 191--196, 2014.
+\bibitem{zhu2015adaptive}
+YH Zhu, YS Gao, CH Xu, J Zao, H Jin, and J Lee, "Adaptive control of a gyroscopically stabilized pendulum and its application to a single-wheel pendulum robot," \emph{IEEE/ASME Transactions on Mechatronics}, vol. 20, no. 5, pp. 2095--2106, 2015
+\end{thebibliography}
+
+\end{document}
