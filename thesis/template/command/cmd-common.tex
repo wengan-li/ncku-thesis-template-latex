@@ -27,14 +27,23 @@
 \newcommand{\GetMonthInEng}[1]
 {%
   \ifthenelse{\equal{#1}{1}}{January}{}%
+  \ifthenelse{\equal{#1}{01}}{January}{}%
   \ifthenelse{\equal{#1}{2}}{February}{}%
+  \ifthenelse{\equal{#1}{02}}{February}{}%
   \ifthenelse{\equal{#1}{3}}{March}{}%
+  \ifthenelse{\equal{#1}{03}}{March}{}%
   \ifthenelse{\equal{#1}{4}}{April}{}%
+  \ifthenelse{\equal{#1}{04}}{April}{}%
   \ifthenelse{\equal{#1}{5}}{May}{}%
+  \ifthenelse{\equal{#1}{05}}{May}{}%
   \ifthenelse{\equal{#1}{6}}{June}{}%
+  \ifthenelse{\equal{#1}{06}}{June}{}%
   \ifthenelse{\equal{#1}{7}}{July}{}%
+  \ifthenelse{\equal{#1}{07}}{July}{}%
   \ifthenelse{\equal{#1}{8}}{August}{}%
+  \ifthenelse{\equal{#1}{08}}{August}{}%
   \ifthenelse{\equal{#1}{9}}{September}{}%
+  \ifthenelse{\equal{#1}{09}}{September}{}%
   \ifthenelse{\equal{#1}{10}}{October}{}%
   \ifthenelse{\equal{#1}{11}}{November}{}%
   \ifthenelse{\equal{#1}{12}}{December}{}%
