@@ -1,6 +1,11 @@
+#### v1.5.9 [Nov 27, 2019]:
+
++ **更新**:
+  增加使用IEEEtran style \([感謝yusie1978的Issue \#37](https://github.com/wengan-li/ncku-thesis-template-latex/issues/37)\)
+
 #### v1.5.8 [Nov 27, 2019]:
 + **修正錯誤**:
-  封面日期的產出問題 \([感謝MOHOAzure提供Pull request \#44](https://github.com/wengan-li/ncku-thesis-template-latex/pull/44)\)
+  封面日期的產出問題 \([感謝MOHOAzure的Issue \#44](https://github.com/wengan-li/ncku-thesis-template-latex/issues/44)\)
 
 #### v1.5.7 [Jun 23, 2019]:
 
