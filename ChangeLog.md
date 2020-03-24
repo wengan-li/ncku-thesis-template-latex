@@ -1,3 +1,8 @@
+#### v1.5.10 [Mar 25, 2020]:
+
++ **修正錯誤**:
+  部份系所英文名稱在產生封面時會出現error \([感謝medicalwei的Issue \#47](https://github.com/wengan-li/ncku-thesis-template-latex/issues/47)\)
+
 #### v1.5.9 [Nov 27, 2019]:
 
 + **更新**:

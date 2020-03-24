@@ -5,6 +5,7 @@
 **/*.log
 **/*.lot
 **/*.out
+reference/*.pdf
 thesis/*.pdf
 **/*.bbl
 **/*.synctex.gz*
