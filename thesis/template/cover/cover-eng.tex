@@ -30,19 +30,19 @@
 
 % 顯示 校名, 系所名, 論文種類
 \begin{minipage}[c][5cm][t]{\textwidth}
-  \begin{center}
-    \vspace{0.8cm}
-    \makebox[\textwidth][c]{\Huge \GetUniversityEngName} \\
+  \centering
 
-    \vspace{0.5cm}
-    \parbox[s]{\textwidth}{\center \LARGE \GetDeptEngName} \\
+  \vspace{0.8cm}
+  \makebox[\textwidth][c]{\Huge \GetUniversityEngName} \\
 
-    \vspace{0.5cm}
-    \makebox[\textwidth][c]{\LARGE \GetEngDegreeThesis} \\
+  \vspace{0.5cm}
+  \parbox{\textwidth}{\centering \LARGE \GetDeptEngName}
+    
+  \vspace{0.5cm}
+  \makebox[\textwidth][c]{\LARGE \GetEngDegreeThesis} \\
 
-    \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}%
-      {\vspace{0.5cm}\makebox[5cm][c]{\LARGE \GetTextDraftEng}}{}
-  \end{center}
+  \ifthenelse{\equal{\GetFlagDisplayDraft}{1}}%
+    {\vspace{0.5cm}\makebox[5cm][c]{\LARGE \GetTextDraftEng}}{}
 \end{minipage}
 
 % ------------------------------------------------
