@@ -1,3 +1,13 @@
+#### v1.5.11 [Jun 14, 2021]:
+
++ **修正錯誤**:
+  Missing tocstyle.sty \([Issue \#53](https://github.com/wengan-li/ncku-thesis-template-latex/issues/53)\)
+
++ **提供的APIs**:
+
+  [感謝kuangyoli在Issue \#51中提議](https://github.com/wengan-li/ncku-thesis-template-latex/issues/51), 故新增以下APIs:
+   * `\SetDeptIDS`
+
 #### v1.5.10 [Mar 25, 2020]:
 
 + **修正錯誤**:
