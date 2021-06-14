@@ -1,3 +1,8 @@
+#### v1.5.12 [Jun 14, 2021]:
+
++ **修正錯誤**:
+  修正bug在使用`\InsertFigures`並使用perrow＝3配3張圖出現error \([感謝Ting199708的Issue \#52](https://github.com/wengan-li/ncku-thesis-template-latex/issues/52)\)
+
 #### v1.5.11 [Jun 14, 2021]:
 
 + **修正錯誤**:
