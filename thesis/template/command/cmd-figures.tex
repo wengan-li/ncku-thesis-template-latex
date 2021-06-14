@@ -250,8 +250,11 @@
   {
     \ifthenelse{\equal{#5}{\empty}}%
     {
-
-      \InsertSubfigureOneFigure{#4}%
+      \ifthenelse{\equal{#4}{\empty}}{}%
+      {
+        
+        \InsertSubfigureOneFigure{#4}%
+      }
     }%
     {
 
