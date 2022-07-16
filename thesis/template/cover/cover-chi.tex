@@ -194,11 +194,14 @@
 \vspace{0.5cm}
 \ifthenelse{\equal{\GetFlagDegreeType}{\ValueDegreeMaster}}%
 {%
+  \begin{center}%
   \ifthenelse{\equal{\VarDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
   {\makebox[8cm][s]{\Large 中華民國\zhnumber{\GetThesisYearInTaiwanYear}年\zhnumber{\GetThesisMonth}月}}%
   {\makebox[8cm][s]{\Large 中華民國 \GetThesisYearInTaiwanYear 年 \GetThesisMonth 月}}%
+  \end{center}%
 }%
 {
+  \begin{center}%
   \ifthenelse{\equal{\VarDisplayCoverDateNum}{\ValueDisplayCoverDateNumInChi}}%
   {%
     \makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYearNumInChi 年 \GetThesisMonthNumInChi 月}%
@@ -208,6 +211,7 @@
     \makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYear 年 \GetThesisMonth 月}%
     %\makebox[8cm][s]{\Large 中華民國 \GetOralYearInTaiwanYear 年 \GetThesisMonth 月 \GetOralEngDay 日}%
   }%
+  \end{center}%
 }
 
 % ------------------------------------------------
