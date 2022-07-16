@@ -1,3 +1,8 @@
+#### v1.5.13 [Jul 16, 2022]:
+
++ **修正錯誤**:
+  修正封面的中文日期沒有置中 \([感謝kevinmaura和maglili的Issue \#57](https://github.com/wengan-li/ncku-thesis-template-latex/issues/57)\)
+
 #### v1.5.12 [Jun 14, 2021]:
 
 + **修正錯誤**:

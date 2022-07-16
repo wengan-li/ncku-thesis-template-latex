@@ -36,7 +36,7 @@
 [有關 樣版/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-template-latex-sample)
 
 ### Style Customization 自定成其他學校的模版
-由[v1.5.0](https://github.com/wengan-li/ncku-thesis-template-latex/releases)開始, 本模版改造成可讓非國立成功大學的同學或人士都能建基於這模版以建立出自己學校所需的模版, 同時保留能使用本模版所提供的功能.
+由v1.5.0開始, 本模版改造成可讓非國立成功大學的同學或人士都能建基於這模版以建立出自己學校所需的模版, 同時保留能使用本模版所提供的功能.
 
 詳細[請看Customization.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/thesis/template/style/Customization.md)這檔案中的內容.
 
@@ -56,9 +56,9 @@
 如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
 
 ### ChangeLog 版本修改
-最新版本為: [v1.5.10](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
+最新版本[請到Releases中查看](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
 
-詳細[請看ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
+詳細的修改內容[請看ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
 
 ### License 授權條款
 本著作採用創用 CC 姓名標示-非商業性-相同方式分享 4.0 授權條款
