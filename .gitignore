@@ -12,3 +12,4 @@ thesis/*.pdf
 **/*.toc
 **/*.DS_Store*
 **/*~
+*.synctex(busy)
