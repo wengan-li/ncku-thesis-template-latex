@@ -53,7 +53,7 @@
 由於學位論文提交的流程可能會改變, 在這提供暫知最新所知道的流程和論文列印的注意. 這部份內容為[成功大學博碩士論文系統的建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/).
 
 1. 到[成功大學博碩士論文系統](https://thesis.lib.ncku.edu.tw/)登記
-2. 在系統中上傳由這模版所產出的PDF檔案 (`PDF檔請勿插入浮水印及加上保全`. 詳細請留意系統網頁中的 `電子檔案上傳作業說明 Guide to ETDS File Conversion and Service Workflow`). 
+2. 在系統中上傳由這模版所產出的PDF檔案 (`PDF檔請勿插入浮水印, DOI及加上保全`. 詳細請留意系統網頁中的 `電子檔案上傳作業說明 Guide to ETDS File Conversion and Service Workflow`). 
 3. 上傳後, 請等待數天的審核.
 4. 審核後，接到核准通知信，請再回到[成功大學博碩士論文系統](https://thesis.lib.ncku.edu.tw/)登入, 下載`授權書`和`電子全文`拿去影印店列印. **(這邊的論文已經由圖書館系統加上了浮水印)**
 
