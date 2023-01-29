@@ -4,7 +4,6 @@
   1. 移除國立成功大學版本的模版內頁不需要浮水印 \([感謝 Josh-WANGJS 的 Issue \#59](https://github.com/wengan-li/ncku-thesis-template-latex/issues/59)\).
   2. 更新國立成功大學博碩士學位論文格式規範 (Guidelines on Writing Dissertations for PhD and Master’s Students) 的版本到 110.01.06 (109 學年度版本), (來源: [成功大學法規彙編系統](https://www.cc.ncku.edu.tw/rule/content.php?sn=684) 和 [教務處課務組](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)).
   3. 在`README.md`新增`學位論文上傳和列印說明`, 提供同學快速知道當年的上傳和列印的基本流程.
-  4. 修正錯字`模版`為`模板`.
 
 #### v1.5.13 [Jul 16, 2022]:
 
