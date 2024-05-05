@@ -20,7 +20,7 @@
 
 % ------------------------------------------------
 
-\documentclass[12pt, a4paper, onecolumn, english]{report}
+\documentclass[12pt, a4paper, onecolumn]{report}
 
 % ------------------------------------------------
 
@@ -95,9 +95,13 @@
 \usepackage{comment}
 
 % For 目錄
-\usepackage[tocgraduated]{./template/tocstyle}
-\usetocstyle{standard}
+% \documentclass{scrreprt}[2020/07/22]
+% \usepackage[tocgraduated]{./template/tocstyle}
+% \usetocstyle{standard}
 %\setcounter{tocdepth}{4} % 目錄會顯示subsubsection
+\def\thesection{\Roman{section}}
+\def\thesubsection{\Roman{section}.\Roman{subsection}}
+\def\thesubsubsection{\Roman{section}.\Roman{subsection}.\Roman{subsubsection}}
 
 % For chinese number in title
 % http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/zhnumber/zhnumber.pdf
