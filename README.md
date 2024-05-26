@@ -81,7 +81,7 @@
 
 最新版本[請到 Releases 中查看](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
 
-詳細的修改內容[請看 ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/ChangeLog.md)這檔案中的內容.
+詳細的修改內容[請看 ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/CHANGELOG.md)這檔案中的內容.
 
 ### License 授權條款
 
