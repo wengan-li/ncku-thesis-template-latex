@@ -75,7 +75,10 @@
 
 ### Other 其他
 
-如果對本模版沒有興趣, 有[另一位同學提供的模版](https://github.com/lycsjm/nckuthesis)可使用.
+如果對本模版沒有興趣, 有其他同學們所提供的模版 (不定期更新)：
+
+1. [lycsjm/nckuthesis](https://github.com/lycsjm/nckuthesis)
+2. [windwalker661/Thesis-NCKU](https://github.com/windwalker661/Thesis-NCKU)
 
 ### ChangeLog 版本修改
 
