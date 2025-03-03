@@ -1,4 +1,4 @@
-#### v1.7.1 [March 03, 2025]:
+#### v1.7.3 [March 03, 2025]:
 - **更新**:
 
   1.更新企業管理學系碩士班名稱 \([感謝 楊同學 的 Issue \#68](https://github.com/wengan-li/ncku-thesis-template-latex/issues/68)\).
