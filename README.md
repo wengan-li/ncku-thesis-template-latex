@@ -79,6 +79,7 @@
 
 1. [lycsjm/nckuthesis](https://github.com/lycsjm/nckuthesis)
 2. [windwalker661/Thesis-NCKU](https://github.com/windwalker661/Thesis-NCKU)
+3. [nckuasrlab/ASRLab_Thesis_Template](https://github.com/nckuasrlab/ASRLab_Thesis_Template)
 
 ### ChangeLog 版本修改
 
