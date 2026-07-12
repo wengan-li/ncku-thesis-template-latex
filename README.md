@@ -52,6 +52,14 @@
 
 舊 sample repository 不再是最新樣板的來源。完整的歷史保存、artifact provenance 及刪除條件記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。
 
+### 其他同學提供的模版
+
+如果對本模版沒有興趣，也可以參考其他同學提供、但不定期更新的社群模版：
+
+- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — 使用 Typst 的成大論文模版
+
+以上外部專案並非由本專案維護；使用前請自行核對其版本、授權及學校最新規定。
+
 ### Build 產生論文
 
 本專案使用 [`just`](https://just.systems/) 作為統一指令入口，不使用 Makefile：
