@@ -43,7 +43,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-diagnostics _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark
+test: check _test-diagnostics _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]
@@ -85,6 +85,17 @@ _test-metadata-bookmark:
     grep -q 'NCKU-TEST-PASS: Unicode metadata and bookmark strings compile cleanly' "{{ build_dir }}/tests/metadata-bookmark.log"
     ! grep -Eiq 'Token not allowed in a PDF string|already defined|destination with the same identifier' "{{ build_dir }}/tests/metadata-bookmark.log"
     pdfinfo "{{ build_dir }}/tests/metadata-bookmark.pdf" | grep -Fq 'Title:           NCKU Metadata Line (成大中繼資料標題)'
+
+# Internal regression test for bundled Latin/CJK font policy.
+[private]
+_test-font-cjk:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=font-cjk ../tests/font-cjk.tex
+    grep -q 'NCKU-TEST-PASS: bundled Latin and CJK font policies compile' "{{ build_dir }}/tests/font-cjk.log"
+    ! grep -q 'Unknown CJK family' "{{ build_dir }}/tests/font-cjk.log"
+    grep -Eq "Font shape .*m/sc.*undefined" "{{ build_dir }}/tests/font-cjk.log"
+    pdftotext "{{ build_dir }}/tests/font-cjk.pdf" "{{ build_dir }}/tests/font-cjk.txt"
+    grep -q 'Monospaced Latin and 中文等寬語境' "{{ build_dir }}/tests/font-cjk.txt"
 
 # Run the complete local CI gate.
 ci: test

@@ -186,6 +186,15 @@
     AutoFakeBold = true,
     AutoFakeSlant = true,
   ]{#2}%
+  % The project does not bundle a separate CJK monospaced face. Keep CJK text
+  % inside \texttt on the selected CJK family instead of xeCJK's undefined
+  % \CJKttdefault fallback; Latin monospaced text remains unchanged.
+  \setCJKmonofont[%
+    Path = \GetFontDirPath,
+    UprightFont = \TmpValueNormalFont,
+    AutoFakeBold = true,
+    AutoFakeSlant = true,
+  ]{#2}%
   %
   \ifthenelse{\equal{\TmpValueItalicFont}{\empty}}{}{%
     \addCJKfontfeatures*{ItalicFont = \TmpValueItalicFont}}%

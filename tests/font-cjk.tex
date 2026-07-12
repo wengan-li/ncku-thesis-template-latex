@@ -1,0 +1,18 @@
+% Focused regression fixture for bundled Latin/CJK font behavior.
+\input{./template/configure}
+
+\begin{document}
+\chapter*{Font and CJK fixture}
+
+Normal English and 中文字型。
+
+\textbf{Bold English and 粗體中文。}
+
+\textit{Italic English and 斜體中文。}
+
+\texttt{Monospaced Latin and 中文等寬語境。}
+
+\textsc{Small caps fallback sentinel.}
+
+\typeout{NCKU-TEST-PASS: bundled Latin and CJK font policies compile}
+\end{document}
