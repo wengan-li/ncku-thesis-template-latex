@@ -50,7 +50,7 @@
 - `example-legacy-defense-certificate-master.pdf`
 - `example-legacy-defense-certificate-phd.pdf`
 
-舊 sample repository 不再是最新樣板的來源。完整的歷史保存、artifact provenance 及刪除條件記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及build→release promotion流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。
+舊 sample repository 不再是最新樣板的來源。完整的 artifact provenance 及刪除記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及 build→release promotion 流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。完整的 XeLaTeX source optimization、測試及現代化 review 記錄在 [`docs/source-optimization-review.md`](docs/source-optimization-review.md)。
 
 ### 其他同學提供的模版
 
