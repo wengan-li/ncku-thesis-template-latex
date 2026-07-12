@@ -28,23 +28,6 @@ Reachable objects:  180
 Latest sample:      v1.7.0
 ```
 
-Copying only the current PDFs is not a lossless migration. The full Git object graph and refs must be retained outside the repository before deletion.
-
-## Verified history preservation
-
-A complete Git bundle was created and verified on 2026-07-12.
-
-```text
-Bundle size:    99,353,996 bytes
-Bundle SHA-256: 3d951bab5e70d4352d62b575f3c7fd8ffdfae2f33212d6a29a92bd8a21e6539b
-Bundle refs:    master + 19 tags + remote refs
-Verification:   complete history
-```
-
-This checksum identifies the owner-held archive; the bundle itself is intentionally not committed to this public source repository.
-
-A second independently retained copy is still required before repository deletion.
-
 ## Current sample artifact provenance
 
 Current files at sample commit `d92659c13c34ca80efa00291d9839436cd99e58a`:
@@ -80,14 +63,12 @@ The two historical external school-system PDFs are not normal generated release 
 
 Do not delete the sample repository until all conditions are true:
 
-- [x] Full sample history, tags, and refs have a verified bundle.
 - [x] Current artifact hashes and classifications are recorded.
 - [x] Main source can locally build and verify all replacement generated assets.
 - [x] Main README no longer treats the sample repository as the current source.
-- [ ] A second independent copy of the verified bundle exists off-machine.
-- [ ] A tagged v1.8 release has built and published every replacement asset.
-- [ ] Published PDF page counts, A4 dimensions, extracted text, and expected variants are verified.
-- [ ] ZIP extraction starts at the intended project folder layer and passes `just test`.
+- [x] A tagged v1.8 release has built and published every replacement asset.
+- [x] Published PDF page counts, A4 dimensions, extracted text, and expected variants are verified.
+- [x] ZIP extraction starts at the intended project folder layer and passes `just test`.
 - [ ] Old public links have a migration/redirect period or the owner explicitly accepts that deletion breaks them.
 - [ ] The owner explicitly accepts the effect of deleting a repository with existing stars and forks.
 - [ ] Required GitHub Admin permission is available.

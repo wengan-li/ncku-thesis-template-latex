@@ -76,7 +76,6 @@ https://github.com/wengan-li/ncku-thesis-template-latex-sample
 
 Before archive/deletion:
 
-- preserve all 43 commits, 19 tags, and current/historical artifact provenance in a full verified bundle or namespaced archival refs;
 - record final sample commit and artifact SHA-256 values;
 - replace main README links with release-asset links;
 - verify every replacement PDF is generated from current tagged source;

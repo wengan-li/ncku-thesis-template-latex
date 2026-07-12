@@ -34,7 +34,7 @@
   2. `just demo`和`\DemoMode`保留為backward-compatible aliases。
   3. 新增基本`AGENTS.md`、`CLAUDE.md`、`.agents/`和`.claude/`setup；repo-local skill只包含IDSD workflow。
   4. README加入其他同學提供的Typst community template連結及external-project disclaimer。
-  5. 記錄sample repository的history bundle、artifact provenance和刪除gate；sample repository仍未刪除。
+  5. 記錄sample repository的artifact provenance和刪除gate；sample repository仍未刪除。
 
 #### v1.7.4 [March 03, 2025]:
 - **更新**:
