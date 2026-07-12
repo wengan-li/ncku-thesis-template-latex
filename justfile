@@ -33,8 +33,11 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
     git diff --check
 
+# Run the required build and verification test gate.
+test: check
+
 # Run the complete local CI gate.
-ci: check
+ci: test
 
 # Remove generated LaTeX build artifacts.
 clean:
