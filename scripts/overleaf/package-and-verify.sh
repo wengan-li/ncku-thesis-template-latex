@@ -30,6 +30,51 @@ if text.count(needle) != 1:
 path.write_text(text.replace(needle, "\n\\StudentMode % Overleaf package default\n"), encoding="utf-8")
 PY
 
+# Overleaf detects a project's main document by looking for a direct
+# \documentclass declaration. Keep the canonical source layout unchanged, but
+# make the generated Overleaf entry point unambiguous and root-local.
+python3 - "$source_dir/thesis.tex" "$source_dir/template/configure.tex" "$source_dir/README.md" <<'PY'
+from pathlib import Path
+import sys
+
+thesis = Path(sys.argv[1])
+configure = Path(sys.argv[2])
+readme = Path(sys.argv[3])
+
+declaration = "\\NeedsTeXFormat{LaTeX2e}[2020-10-01]\n\\documentclass[12pt, a4paper, onecolumn]{report}\n"
+
+thesis_text = thesis.read_text(encoding="utf-8")
+thesis_needle = "% 基本設定 Basic configuration\n\\input{./template/configure}"
+if thesis_text.count(thesis_needle) != 1:
+    raise SystemExit("expected one basic-configuration entry point in thesis.tex")
+thesis.write_text(
+    thesis_text.replace(
+        thesis_needle,
+        f"{declaration}\n% 基本設定 Basic configuration\n\\input{{./template/configure}}",
+    ),
+    encoding="utf-8",
+)
+
+configure_text = configure.read_text(encoding="utf-8")
+configure_needle = declaration + "\n"
+if configure_text.count(configure_needle) != 1:
+    raise SystemExit("expected one document declaration in template/configure.tex")
+configure.write_text(configure_text.replace(configure_needle, ""), encoding="utf-8")
+
+readme_text = readme.read_text(encoding="utf-8")
+readme.write_text(
+    readme_text
+    + "\n\n## Overleaf quick start\n\n"
+      "After uploading this ZIP, open **Settings → Compiler** and select:\n\n"
+      "- Compiler: **XeLaTeX**\n"
+      "- TeX Live: the latest available version\n"
+      "- Main document: **thesis.tex**\n\n"
+      "Then choose **Recompile from scratch**. Overleaf defaults new ZIP uploads "
+      "to pdfLaTeX, which this template intentionally rejects.\n",
+    encoding="utf-8",
+)
+PY
+
 rm -f "$output_dir_abs/$archive_name"
 (
   cd "$source_dir"
@@ -53,6 +98,12 @@ with ZipFile(archive) as zf:
         raise SystemExit("Overleaf package contains the teaching example corpus")
     if "cover.tex" in names:
         raise SystemExit("Overleaf package contains a second main document")
+    thesis = zf.read("thesis.tex").decode("utf-8")
+    configure = zf.read("template/configure.tex").decode("utf-8")
+    if thesis.count("\\documentclass") != 1:
+        raise SystemExit("Overleaf root thesis.tex must contain exactly one direct documentclass declaration")
+    if any(line.lstrip().startswith("\\documentclass") for line in configure.splitlines()):
+        raise SystemExit("nested template/configure.tex still contains an active documentclass declaration")
     if len(files) > 180:
         raise SystemExit(f"Overleaf package has {len(files)} files; limit is 180")
     too_large = [item.filename for item in files if item.file_size > 50 * 1024 * 1024]
