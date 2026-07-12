@@ -57,11 +57,14 @@ The exact menu name differs by editor version. The important behavior is that th
 
 ## Other 其他
 
-If you prefer Typst instead of XeLaTeX, see the independently maintained community project:
+如果對本模版沒有興趣，也可以參考其他同學提供、但不定期更新的社群模版：
 
-- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — a Typst thesis template for National Cheng Kung University
+- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — 使用 Typst 的成大論文模版
+- [`lycsjm/nckuthesis`](https://github.com/lycsjm/nckuthesis) — 使用 LaTeX 的成大論文模版
+- [`windwalker661/Thesis-NCKU`](https://github.com/windwalker661/Thesis-NCKU) — 使用 LaTeX 的成大論文模版
+- [`nckuasrlab/ASRLab_Thesis_Template`](https://github.com/nckuasrlab/ASRLab_Thesis_Template) — 使用 LaTeX 的成大論文模版
 
-This external project is not maintained by this repository. Check its current version, license, and the latest university requirements before use.
+以上外部專案並非由本專案維護；使用前請自行核對其版本、授權及學校最新規定。
 
 ## Before submission
 

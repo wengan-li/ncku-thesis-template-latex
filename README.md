@@ -49,14 +49,6 @@
 
 舊 sample repository 不再是最新樣板的來源。完整的 artifact provenance 及刪除記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及 build→release promotion 流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。完整的 XeLaTeX source optimization、測試及現代化 review 記錄在 [`docs/source-optimization-review.md`](docs/source-optimization-review.md)。
 
-### 其他同學提供的模版
-
-如果對本模版沒有興趣，也可以參考其他同學提供、但不定期更新的社群模版：
-
-- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — 使用 Typst 的成大論文模版
-
-以上外部專案並非由本專案維護；使用前請自行核對其版本、授權及學校最新規定。
-
 ### Student build 學生使用
 
 從 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 下載版本化的 `ncku-thesis-template-latex-<version>.zip` 後，請先閱讀壓縮檔內的 [`README.md`](thesis/README.md)。學生專案以 `thesis.tex` 為主檔，使用：
@@ -114,11 +106,14 @@ just clean    # 清除可重新產生的檔案
 
 ### Other 其他
 
-如果對本模版沒有興趣, 有其他同學們所提供的模版 (不定期更新)：
+如果對本模版沒有興趣，也可以參考其他同學提供、但不定期更新的社群模版：
 
-1. [lycsjm/nckuthesis](https://github.com/lycsjm/nckuthesis)
-2. [windwalker661/Thesis-NCKU](https://github.com/windwalker661/Thesis-NCKU)
-3. [nckuasrlab/ASRLab_Thesis_Template](https://github.com/nckuasrlab/ASRLab_Thesis_Template)
+- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — 使用 Typst 的成大論文模版
+- [`lycsjm/nckuthesis`](https://github.com/lycsjm/nckuthesis) — 使用 LaTeX 的成大論文模版
+- [`windwalker661/Thesis-NCKU`](https://github.com/windwalker661/Thesis-NCKU) — 使用 LaTeX 的成大論文模版
+- [`nckuasrlab/ASRLab_Thesis_Template`](https://github.com/nckuasrlab/ASRLab_Thesis_Template) — 使用 LaTeX 的成大論文模版
+
+以上外部專案並非由本專案維護；使用前請自行核對其版本、授權及學校最新規定。
 
 ### ChangeLog 版本修改
 
