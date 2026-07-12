@@ -54,10 +54,11 @@ _test-sectioning-numbering:
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=sectioning-numbering ../tests/sectioning-numbering.tex
     grep -q 'NCKU-TEST-PASS: sectioning headings and numbered references compile' "{{ build_dir }}/tests/sectioning-numbering.log"
     ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/sectioning-numbering.log"
-    pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" - | grep -q 'NCKU Star Chapter Sentinel'
-    pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" - | grep -q 'NCKU Star Section Sentinel'
-    pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" - | grep -q 'NCKU Star Subsection Sentinel'
-    pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" - | grep -q 'NCKU Star Subsubsection Sentinel'
+    pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" "{{ build_dir }}/tests/sectioning-numbering.txt"
+    grep -q 'NCKU Star Chapter Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
+    grep -q 'NCKU Star Section Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
+    grep -q 'NCKU Star Subsection Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
+    grep -q 'NCKU Star Subsubsection Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
 
 # Internal regression test for the oral-certificate default state.
 [private]
