@@ -5,10 +5,20 @@
 \SetThesisDate{2024}{7}
 \SetCoverDate{2024}{7}
 \renewcommand{\NckuDateSentinel}{1}
+\renewcommand{\ValueDemoMode}{\VarDemoModeOff}
+\DemoMode
 
 \begin{document}
 \ifnum\NckuDateSentinel=1\else
   \errmessage{The cover-date command consumed the following command}
+\fi
+\ifnum\GetDemoMode=\VarDemoModeOn\else
+  \errmessage{The backward-compatible DemoMode command did not enable example content}
+\fi
+\renewcommand{\ValueDemoMode}{\VarDemoModeOff}
+\ExampleMode
+\ifnum\GetDemoMode=\VarDemoModeOn\else
+  \errmessage{ExampleMode did not enable example content}
 \fi
 \typeout{NCKU-TEST-PASS: legacy and current cover-date commands terminate safely}
 \end{document}

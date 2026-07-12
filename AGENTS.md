@@ -31,7 +31,7 @@ Use `just`, not Makefile or ad-hoc public shell commands:
 ```bash
 just                 # list recipes
 just thesis          # build canonical thesis PDF + SyncTeX
-just demo            # build full teaching/demo document
+just example         # build full teaching example document
 just test            # required local and CI test gate
 just check           # build and verify canonical artifacts
 just ci              # complete local CI gate
@@ -57,10 +57,10 @@ ncku-thesis-template-latex.zip
 example-cover.pdf
 example-thesis-chi.pdf
 example-thesis-eng.pdf
-example-thesis-demo.pdf
+example-thesis-full.pdf
 ```
 
-The ZIP starts at the `thesis/` folder layer: extracting it gives the usable thesis project contents, not an extra repository wrapper directory.
+The ZIP extracts to one `ncku-thesis-template-latex/` project directory containing the canonical `justfile`, `latexmkrc`, tests, and `thesis/` source tree. The extracted package must run `just test` without the Git repository.
 
 Generated master/doctoral defense-certificate examples may be published only as clearly named legacy examples. School-system-produced certificates are external official artifacts: do not regenerate, alter, or imply endorsement/ownership. Preserve historical copies and provenance separately from normal generated release assets.
 
@@ -103,7 +103,7 @@ Archiving is safer than deletion. If deletion remains the explicit owner decisio
 - Do not migrate bibliography systems in this slice.
 - Do not claim tagged PDF or PDF/UA compliance; current output is untagged.
 - The ETDS upload path should not add internal watermark, DOI overlay, encryption, or security when current official guidance says the school system applies required processing.
-- Prefer inserting the school-system defense certificate as an external file; keep generated certificate templates explicitly legacy/demo only.
+- Prefer inserting the school-system defense certificate as an external file; keep generated certificate templates explicitly legacy/example only.
 - Record official policy URL and checked date for any compliance change.
 
 ## Verification

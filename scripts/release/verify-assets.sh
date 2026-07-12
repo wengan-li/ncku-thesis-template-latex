@@ -8,7 +8,7 @@ required=(
   example-cover.pdf
   example-thesis-chi.pdf
   example-thesis-eng.pdf
-  example-thesis-demo.pdf
+  example-thesis-full.pdf
   example-legacy-defense-certificate-master.pdf
   example-legacy-defense-certificate-phd.pdf
 )
@@ -38,7 +38,7 @@ check_pdf() {
 check_pdf example-cover.pdf 2
 check_pdf example-thesis-chi.pdf +10
 check_pdf example-thesis-eng.pdf +10
-check_pdf example-thesis-demo.pdf +100
+check_pdf example-thesis-full.pdf +100
 check_pdf example-legacy-defense-certificate-master.pdf 6
 check_pdf example-legacy-defense-certificate-phd.pdf 10
 

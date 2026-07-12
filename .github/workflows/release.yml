@@ -75,7 +75,7 @@ jobs:
             build/release/example-cover.pdf
             build/release/example-thesis-chi.pdf
             build/release/example-thesis-eng.pdf
-            build/release/example-thesis-demo.pdf
+            build/release/example-thesis-full.pdf
             build/release/example-legacy-defense-certificate-master.pdf
             build/release/example-legacy-defense-certificate-phd.pdf
           if-no-files-found: error

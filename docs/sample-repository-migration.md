@@ -69,7 +69,7 @@ ncku-thesis-template-latex.zip
 example-cover.pdf
 example-thesis-chi.pdf
 example-thesis-eng.pdf
-example-thesis-demo.pdf
+example-thesis-full.pdf
 example-legacy-defense-certificate-master.pdf
 example-legacy-defense-certificate-phd.pdf
 ```

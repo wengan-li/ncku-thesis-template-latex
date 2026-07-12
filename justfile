@@ -21,8 +21,12 @@ thesis:
     mkdir -p "{{ build_dir }}"
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}" thesis.tex
 
-# Build the full teaching/demo document selected by the checked-in configuration.
-demo: thesis
+# Build the full teaching example selected by the checked-in configuration.
+example: thesis
+
+# Backward-compatible recipe name.
+[private]
+demo: example
 
 # Build and verify the canonical artifacts and resolved references.
 check: thesis
@@ -52,7 +56,7 @@ release: test
     test -z "$(git status --porcelain --untracked-files=all)" || { echo 'Release requires a clean Git worktree.' >&2; exit 1; }
     rm -rf "{{ build_dir }}/release"
     mkdir -p "{{ build_dir }}/release"
-    cp "{{ artifact }}" "{{ build_dir }}/release/example-thesis-demo.pdf"
+    cp "{{ artifact }}" "{{ build_dir }}/release/example-thesis-full.pdf"
     just _release-pdf ../scripts/release/cover.tex example-cover
     just _release-pdf ../scripts/release/thesis-chi.tex example-thesis-chi
     just _release-pdf ../scripts/release/thesis-eng.tex example-thesis-eng
