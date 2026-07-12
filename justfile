@@ -43,12 +43,20 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-diagnostics _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk
+test: check _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]
 _test-diagnostics:
     python3 scripts/test/check-diagnostics.py "{{ log }}"
+
+# Internal negative regression test for the XeLaTeX-only engine gate.
+[private]
+_test-engine-gate:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/engine-gate."*
+    ! (cd "{{ source_dir }}" && pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=engine-gate ../tests/engine-gate.tex)
+    grep -q '請使用XeLaTeX來產生論文' "{{ build_dir }}/tests/engine-gate.log"
 
 # Internal regression test for the legacy cover-date command.
 [private]

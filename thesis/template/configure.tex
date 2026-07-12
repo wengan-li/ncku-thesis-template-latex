@@ -20,13 +20,14 @@
 
 % ------------------------------------------------
 
+\NeedsTeXFormat{LaTeX2e}[2020-10-01]
 \documentclass[12pt, a4paper, onecolumn]{report}
 
 % ------------------------------------------------
 
-% XeLaTex檢查點, 以要求必須使用XeLaTex來處理模版
-\usepackage{ifxetex}
-\ifxetex\else\errmessage{模版: 請使用XeLaTex來產生論文.}\stop\fi
+% XeLaTeX檢查點, 以要求必須使用XeLaTeX來處理模版
+\usepackage{iftex}
+\ifXeTeX\else\errmessage{模版: 請使用XeLaTeX來產生論文.}\stop\fi
 
 % ------------------------------------------------
 
@@ -52,7 +53,6 @@
 \usepackage{fp}
 \usepackage{ifthen}
 \usepackage{pgfkeys}
-\usepackage{xparse}
 \usepackage{amsmath}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{url}

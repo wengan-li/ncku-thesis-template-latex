@@ -13,7 +13,7 @@ The large document selected by `\ExampleMode` is the complete teaching example. 
 
 ## Build the final document
 
-Install a current TeX Live or MiKTeX distribution with XeLaTeX, BibTeX, and `latexmk`, then run this command from the project directory:
+Install a distribution with XeLaTeX, BibTeX, `latexmk`, and LaTeX2e format 2020-10-01 or newer. TeX Live 2021 or newer is recommended; release CI uses TeX Live 2026. Then run this command from the project directory:
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
@@ -61,4 +61,4 @@ The exact menu name differs by editor version. The important behavior is that th
 2. Run the normal final build command again.
 3. Check the log for unresolved references or citations.
 4. Review the complete PDF, page numbering, contents, lists, bibliography, fonts, and official school requirements.
-5. Use the official school-generated defense-certificate document when required; generated legacy examples are not official documents.
+5. Use the official school-generated defense-certificate document when required; template-generated demonstrations are not official documents.
