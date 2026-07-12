@@ -55,6 +55,14 @@ latexmk -xelatex -pvc -view=none -synctex=1 -interaction=nonstopmode thesis.tex
 
 The exact menu name differs by editor version. The important behavior is that the editor invokes `latexmk` with XeLaTeX and opens/reloads `thesis.pdf`; it should not require you to run XeLaTeX and BibTeX manually in a guessed order.
 
+## Other 其他
+
+If you prefer Typst instead of XeLaTeX, see the independently maintained community project:
+
+- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — a Typst thesis template for National Cheng Kung University
+
+This external project is not maintained by this repository. Check its current version, license, and the latest university requirements before use.
+
 ## Before submission
 
 1. Stop any continuous-preview process.
