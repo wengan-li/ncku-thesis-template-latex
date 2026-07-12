@@ -40,7 +40,30 @@
 
 ### Sample 樣板/範例
 
-[有關 樣版/範例 請到這邊 <--](https://github.com/wengan-li/ncku-thesis-template-latex-sample)
+由 v1.8.0 開始，樣板 PDF 會由相同版本的 source tag 自動產生，並放在 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 內。每個 release 包含：
+
+- `ncku-thesis-template-latex.zip`
+- `example-cover.pdf`
+- `example-thesis-chi.pdf`
+- `example-thesis-eng.pdf`
+- `example-thesis-demo.pdf`
+- `example-defense-certificate-master.pdf`
+- `example-defense-certificate-phd.pdf`
+
+舊 sample repository 不再是最新樣板的來源。
+
+### Build 產生論文
+
+本專案使用 [`just`](https://just.systems/) 作為統一指令入口，不使用 Makefile：
+
+```bash
+just          # 顯示可用指令
+just thesis   # 產生完整 PDF 和 SyncTeX
+just test     # 完整 build 並檢查輸出
+just clean    # 清除可重新產生的檔案
+```
+
+底層仍使用 XeLaTeX、BibTeX 和 `latexmk` 處理所需的多輪編譯。原本直接執行 XeLaTeX 的方式仍然保留相容性。
 
 ### Style Customization 自定成其他學校的模版
 
@@ -68,7 +91,7 @@
 相關討論請參考[Issue 30 - 學位考試合格證明書與成大學校學位考試系統中列印的證明書並不相符](https://github.com/wengan-li/ncku-thesis-template-latex/issues/30).
 暫時得出以下結論:
 
-1. 中文版本的學位考試論文證明書**理應**(非強迫性的)使用由`學位考試系統`中所產出的版本 ([可參考此檔案](https://github.com/wengan-li/ncku-thesis-template-latex-sample/blob/master/defense-certificate-ncku-std_origial.pdf)).
+1. 中文版本的學位考試論文證明書應優先使用由`學位考試系統`產出的正式版本，並以學校當時的最新規定為準。本模版所產生的證明書只作為 legacy/example，不代表學校正式文件。
 2. 英文版論文證明書由各系所自行處理, 而本模版到現時都暫未知道有任何系所對此有任何的要求或有樣板可看. (如有任何同學或老師知道, 請跟本人聯絡, 以讓我可更新通知同學們)
 3. 暫時未知道有任何同學，因使用本模版的學位考試論文證明書而被`圖書館典藏組`或`電子學位論文小組`拒收畢業論文.
 4. 如有同學欲使用本模版的學位考試論文證明書, 推薦在口試期間, 同時印出`學位考試系統`的版本來簽, 以作後備.
