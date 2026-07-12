@@ -6,11 +6,11 @@ Checked: 2026-07-12
 
 ## Implementation status
 
-- Complete: sectioning/star behavior fixture and fix; core numbering/reference fixture; explicit oral default state; continuous preview and student-mode guidance; versioned student/examples release packages; CI cache/runner decision.
+- Complete: sectioning/star behavior fixture and fix; core numbering/reference fixture; explicit oral default state; final-log diagnostics baseline; Unicode metadata/bookmark and font/CJK fixtures; continuous preview and student-mode guidance; versioned student/examples release packages; CI cache/runner decision; `iftex`/kernel document-command cleanup with an explicit minimum LaTeX format.
+- Complete safe P2 simplification: shared figure/table caption-label implementation, shared optional-keyword appending, and removal of commented-out caption/column experiments. Public wrappers and argument signatures remain unchanged.
 - Rejected after measurement: a separate chapter-preview entry point, because a real student-mode chapter edit rebuilt in approximately 1.45 seconds and another document mode would add numbering/reference risk.
-- In progress: final-log diagnostics baseline plus Unicode metadata/bookmark and font/CJK fixtures.
-- Pending: evidence-backed low-risk platform cleanup, fixture-protected private-helper simplification, Overleaf publication research/verification, final release, and integration into `main`.
-- Deferred to a major-version experiment: class/package redesign, broad `expl3` conversion, `l3build`, engine migration, and tagged-PDF/PDF-UA work.
+- Pending: Overleaf publication research/verification, final release, and integration into `main`.
+- Deferred to a major-version experiment: numbering/theorem registry rewrites (the v1.8 fixtures do not cover every custom-format combination), class/package redesign, broad `expl3` conversion, `l3build`, engine migration, and tagged-PDF/PDF-UA work.
 
 ## Intent
 

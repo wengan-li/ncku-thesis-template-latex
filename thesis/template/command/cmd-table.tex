@@ -22,14 +22,7 @@
 
 \DeclareDocumentCommand{\SetTableCaptionAndLabel}{+m +m}
 {%
-  \ifthenelse{\equal{#1}{\empty}}{}%
-  {%
-    \ifthenelse{\equal{%
-      \GetStartExtendedAbstractFigureTableControl}{%
-      \ValueDisableExtendedAbstractFigureTableControl}}%
-      {\caption{#1}}{\caption[]{#1}}
-    \ifthenelse{\equal{#2}{\empty}}{}{\label{#2}}%
-  }%
+  \SetFloatCaptionAndLabel{#1}{#2}%
 } % End of \DeclareDocumentCommand{}
 
 \DeclareDocumentCommand{\SetTableCaptionStarAndLabel}{+m +m}
@@ -128,18 +121,6 @@
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
-%\newcolumntype{LT}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
-%\newcolumntype{LC}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{LB}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
-
-%\newcolumntype{CT}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
-%\newcolumntype{CC}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{CB}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
-
-%\newcolumntype{RT}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
-%\newcolumntype{RC}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{RB}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
-
 % -----------------------------------------------------------------
 
 \def\ValueTableNameDefault{Table}
@@ -153,53 +134,9 @@
 
 \UseTableNameCustom % Default
 
-% -----------------------------------------------------------------
-\begin{comment}
-\def\ValueTableNameBoldOn{1}
-\def\ValueTableNameBoldOff{0}
-\def\VarTableNameBoldOption{\ValueTableNameBoldOn} %Default
-\def\GetTableNameBoldOption{\VarTableNameBoldOption}
-\newcommand{\EnableTableNameBold}{%
-  \renewcommand{\VarTableNameBoldOption}{\ValueTableNameBoldOn}}
-\newcommand{\DisableTableNameBold}{%
-  \renewcommand{\VarTableNameBoldOption}{\ValueTableNameBoldOff}}
-
-% ------------------------------------------
-
-\def\ValueTableTextBoldOn{3}
-\def\ValueTableTextBoldOff{2}
-\def\VarTableTextBoldOption{\ValueTableTextBoldOff} %Default
-\def\GetTableTextBoldOption{\VarTableTextBoldOption}
-\newcommand{\EnableTableTextBold}{%
-  \renewcommand{\VarTableTextBoldOption}{\ValueTableTextBoldOn}}
-\newcommand{\DisableTableTextBold}{%
-  \renewcommand{\VarTableTextBoldOption}{\ValueTableTextBoldOff}}
-\end{comment}
-% ------------------------------------------
-
-%\newcommand\TableCaptionFormatStyleLabel[1]{#1}
-%\newcommand\TableCaptionFormatStyleText[1]{\begin{bfseries}#1\end{bfseries}}
-%\begin{bfseries} Text to bold \end{bfseries}
-%\DeclareCaptionFormat{TableCaptionFormatStyle}{\TableCaptionFormatStyleLabel{#1#2}\TableCaptionFormatStyleText{#3}}
-
 % Default style
 \newcommand{\UseTableCaptionDefaultStyle}
 {%
-%  \ifthenelse{\equal{\GetTableNameBoldOption}{\ValueTableNameBoldOn}}
-%  {%
-%    \captionsetup[table]{labelfont=bf}
-%  }%
-%  {%
-%    \captionsetup[table]{labelfont=normalfont}
-%  }%
-  %
-%  \ifthenelse{\equal{\GetTableTextBoldOption}{\ValueTableTextBoldOn}}
-%  {%
-%    \captionsetup[table]{textfont=bf}%
-%  }%
-%  {%
-%    \captionsetup[table]{textfont=normalfont}%
-%  }%
   \captionsetup[table]{labelfont=bf, textfont=normalfont}%
 } % End of \newcommand{}
 

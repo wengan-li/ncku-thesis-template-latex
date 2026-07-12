@@ -1,0 +1,27 @@
+% Focused regression fixture for keyword helper equivalence.
+\input{./template/configure}
+
+\def\VarPDFKeywords{\empty}
+\def\VarAbstractChiKeywords{\empty}
+\def\VarAbstractEngKeywords{\empty}
+\def\VarAbstractExtKeywords{\empty}
+
+\SetKeywords{Alpha}{Beta}
+\SetAbstractChiKeywords{一}{二}{三}{四}{五}{六}{七}{八}{九}
+\SetAbstractEngKeywords{One}{Two}{Three}
+\SetAbstractExtKeywords{Extended}
+\FillInPDFData
+
+\newcommand{\AssertKeywordValue}[3]{%
+  \ifthenelse{\equal{#1}{#2}}%
+    {\typeout{NCKU-TEST-PASS: #3}}%
+    {\errmessage{NCKU-TEST-FAIL: #3}}%
+}
+
+\begin{document}
+\AssertKeywordValue{\GetPDFKeywords}{Alpha, Beta}{PDF keyword values preserved}
+\AssertKeywordValue{\GetAbstractChiKeywords}{一, 二, 三, 四, 五, 六, 七, 八, 九}{Chinese nine-keyword maximum preserved}
+\AssertKeywordValue{\GetAbstractEngKeywords}{One, Two, Three}{English keyword values preserved}
+\AssertKeywordValue{\GetAbstractExtKeywords}{Extended}{Extended-abstract keyword value preserved}
+Keyword helper fixture sentinel.
+\end{document}

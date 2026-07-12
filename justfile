@@ -43,7 +43,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk
+test: check _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]
@@ -104,6 +104,15 @@ _test-font-cjk:
     grep -Eq "Font shape .*m/sc.*undefined" "{{ build_dir }}/tests/font-cjk.log"
     pdftotext "{{ build_dir }}/tests/font-cjk.pdf" "{{ build_dir }}/tests/font-cjk.txt"
     grep -q 'Monospaced Latin and 中文等寬語境' "{{ build_dir }}/tests/font-cjk.txt"
+
+# Internal regression test for keyword helper equivalence.
+[private]
+_test-keyword-values:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=keyword-values ../tests/keyword-values.tex
+    test "$(grep -c 'NCKU-TEST-PASS:' "{{ build_dir }}/tests/keyword-values.log")" -eq 4
+    ! grep -q 'NCKU-TEST-FAIL:' "{{ build_dir }}/tests/keyword-values.log"
+    pdfinfo "{{ build_dir }}/tests/keyword-values.pdf" | grep -Fq 'Keywords:        Alpha, Beta'
 
 # Run the complete local CI gate.
 ci: test

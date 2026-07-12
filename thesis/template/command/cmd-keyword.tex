@@ -24,6 +24,17 @@
 
 % Common function
 \def\AppendKeywordString#1#2{\edef#1{#1#2}}
+\newcommand{\AppendOptionalKeywords}[9]
+{%
+  \ifthenelse{\equal{#2}{\empty}}{}{\AppendKeywordString{#1}{, #2}}%
+  \ifthenelse{\equal{#3}{\empty}}{}{\AppendKeywordString{#1}{, #3}}%
+  \ifthenelse{\equal{#4}{\empty}}{}{\AppendKeywordString{#1}{, #4}}%
+  \ifthenelse{\equal{#5}{\empty}}{}{\AppendKeywordString{#1}{, #5}}%
+  \ifthenelse{\equal{#6}{\empty}}{}{\AppendKeywordString{#1}{, #6}}%
+  \ifthenelse{\equal{#7}{\empty}}{}{\AppendKeywordString{#1}{, #7}}%
+  \ifthenelse{\equal{#8}{\empty}}{}{\AppendKeywordString{#1}{, #8}}%
+  \ifthenelse{\equal{#9}{\empty}}{}{\AppendKeywordString{#1}{, #9}}%
+}
 
 % --- 關鍵字 Keyword ---
 \def\VarPDFKeywords{\empty} % initialize
@@ -36,14 +47,7 @@
   G{\empty} G{\empty} G{\empty}}
 {
   \AppendPDFKeyword{#1}
-  \ifthenelse{\equal{#2}{\empty}}{}{\AppendPDFKeyword{, #2}}
-  \ifthenelse{\equal{#3}{\empty}}{}{\AppendPDFKeyword{, #3}}
-  \ifthenelse{\equal{#4}{\empty}}{}{\AppendPDFKeyword{, #4}}
-  \ifthenelse{\equal{#5}{\empty}}{}{\AppendPDFKeyword{, #5}}
-  \ifthenelse{\equal{#6}{\empty}}{}{\AppendPDFKeyword{, #6}}
-  \ifthenelse{\equal{#7}{\empty}}{}{\AppendPDFKeyword{, #7}}
-  \ifthenelse{\equal{#8}{\empty}}{}{\AppendPDFKeyword{, #8}}
-  \ifthenelse{\equal{#9}{\empty}}{}{\AppendPDFKeyword{, #9}}
+  \AppendOptionalKeywords{\VarPDFKeywords}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 } % End of \newcommand{}
 
 \def\VarAbstractChiKeywords{\empty} % initialize
@@ -54,14 +58,7 @@
   G{\empty} G{\empty} G{\empty}}
 {
   \AppendKeywordString{\VarAbstractChiKeywords}{#1}
-  \ifthenelse{\equal{#2}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #2}}
-  \ifthenelse{\equal{#3}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #3}}
-  \ifthenelse{\equal{#4}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #4}}
-  \ifthenelse{\equal{#5}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #5}}
-  \ifthenelse{\equal{#6}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #6}}
-  \ifthenelse{\equal{#7}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #7}}
-  \ifthenelse{\equal{#8}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #8}}
-  \ifthenelse{\equal{#9}{\empty}}{}{\AppendKeywordString{\VarAbstractChiKeywords}{, #9}}
+  \AppendOptionalKeywords{\VarAbstractChiKeywords}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 } % End of \newcommand{}
 
 \def\VarAbstractEngKeywords{\empty} % initialize
@@ -72,14 +69,7 @@
   G{\empty} G{\empty} G{\empty}}
 {
   \AppendKeywordString{\VarAbstractEngKeywords}{#1}
-  \ifthenelse{\equal{#2}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #2}}
-  \ifthenelse{\equal{#3}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #3}}
-  \ifthenelse{\equal{#4}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #4}}
-  \ifthenelse{\equal{#5}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #5}}
-  \ifthenelse{\equal{#6}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #6}}
-  \ifthenelse{\equal{#7}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #7}}
-  \ifthenelse{\equal{#8}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #8}}
-  \ifthenelse{\equal{#9}{\empty}}{}{\AppendKeywordString{\VarAbstractEngKeywords}{, #9}}
+  \AppendOptionalKeywords{\VarAbstractEngKeywords}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 } % End of \newcommand{}
 
 \def\VarAbstractExtKeywords{\empty} % initialize
@@ -90,14 +80,7 @@
   G{\empty} G{\empty} G{\empty}}
 {
   \AppendKeywordString{\VarAbstractExtKeywords}{#1}
-  \ifthenelse{\equal{#2}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #2}}
-  \ifthenelse{\equal{#3}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #3}}
-  \ifthenelse{\equal{#4}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #4}}
-  \ifthenelse{\equal{#5}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #5}}
-  \ifthenelse{\equal{#6}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #6}}
-  \ifthenelse{\equal{#7}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #7}}
-  \ifthenelse{\equal{#8}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #8}}
-  \ifthenelse{\equal{#9}{\empty}}{}{\AppendKeywordString{\VarAbstractExtKeywords}{, #9}}
+  \AppendOptionalKeywords{\VarAbstractExtKeywords}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------

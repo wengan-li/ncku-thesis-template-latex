@@ -85,6 +85,21 @@
 
 % ----------------------------------------------------------------------------
 
+% Shared implementation for public figure/table caption-and-label wrappers.
+\DeclareDocumentCommand{\SetFloatCaptionAndLabel}{+m +m}
+{%
+  \ifthenelse{\equal{#1}{\empty}}{}%
+  {%
+    \ifthenelse{\equal{%
+      \GetStartExtendedAbstractFigureTableControl}{%
+      \ValueDisableExtendedAbstractFigureTableControl}}%
+      {\caption{#1}}{\caption[]{#1}}%
+    \ifthenelse{\equal{#2}{\empty}}{}{\label{#2}}%
+  }%
+}
+
+% ----------------------------------------------------------------------------
+
 \global\mdfdefinestyle{DescriptionFrameStyle}{%
   linewidth=1pt, apptotikzsetting={%
     \tikzset{mdfbackground/.append style={opacity=0.75}}}%
