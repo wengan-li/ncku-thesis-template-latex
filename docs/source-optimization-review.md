@@ -74,6 +74,34 @@ Normal students should write with `\ExampleMode` disabled so `context/context.te
 - The custom student ZIP contains only the tracked `thesis/` contents and compiles through the direct XeLaTeX/`latexmk` path.
 - Command files are already separated by feature even though they are not yet a formal class/package.
 
+## CI cache and runner architecture decision
+
+Status: documented issue; no migration
+
+The required GitHub Actions jobs currently use:
+
+```yaml
+runs-on: ubuntu-24.04
+```
+
+GitHub documents this standard public-repository label as a four-CPU, 16 GB **x64** runner. Arm64 would require an explicit label such as `ubuntu-24.04-arm`; the workflow is not currently running on Arm.
+
+The repository has no Actions cache entries and does not use `actions/cache`. A measured successful test run took approximately 4 minutes 19 seconds; the TeX action occupied approximately 4 minutes 10 seconds, including approximately 2 minutes to pull `ghcr.io/xu-cheng/texlive-alpine:latest`. The dominant repeat cost is therefore the full TeX Live container pull, not `latexmk` dependency analysis.
+
+Caching `build/` auxiliary files could reduce a clean or edited LaTeX build by tens of seconds, but it would not remove the dominant image pull and would weaken the required proof that a fresh checkout converges without stale `.aux`, `.bbl`, `.toc`, `.fdb_latexmk`, or `.fls` state. The required test and release lanes must remain clean and reproducible, so no LaTeX-output cache migration is planned.
+
+Caching the full Docker image through `actions/cache` is also not adopted: the image is large, cache upload/download and `docker load` can offset the network saving, and it adds storage and invalidation complexity. The small Alpine packages installed by the job take only seconds and are not a meaningful cache target.
+
+An Arm migration is not currently viable with the selected container. Its live image manifest exposes `linux/amd64` and no native `linux/arm64` image. Merely changing `runs-on` would therefore create an architecture mismatch or require emulation; Arm is not assumed to be faster for XeLaTeX.
+
+Revisit this decision only if a smaller, digest-pinned TeX Live 2026 image can be built with both `linux/amd64` and `linux/arm64` variants. Benchmark cold image pull plus `just test` and `just release`, and migrate only if all release gates pass and the total workflow time improves materially enough to justify maintaining the custom image.
+
+Maintainer references:
+
+- GitHub-hosted runner architectures: <https://docs.github.com/en/actions/reference/runners/github-hosted-runners>
+- GitHub dependency caching: <https://docs.github.com/en/actions/concepts/workflows-and-actions/dependency-caching>
+- `xu-cheng/texlive-action`: <https://github.com/xu-cheng/texlive-action>
+
 ## P0 — correctness and regression protection
 
 Do these before simplifying core macros.
