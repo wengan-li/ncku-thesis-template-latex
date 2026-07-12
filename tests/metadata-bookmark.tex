@@ -1,0 +1,13 @@
+% Focused regression fixture for Unicode PDF metadata and bookmarks.
+\input{./template/configure}
+
+\SetTitle{成大中繼資料標題}{NCKU Metadata \\Line}
+\SetMyName{測試作者}{Metadata Author}
+\FillInPDFData
+
+\begin{document}
+\pdfbookmark[0]{Unicode 書籤 Metadata Bookmark}{ncku.metadata.bookmark}
+\chapter*{Unicode 書籤 Metadata Bookmark}
+NCKU metadata fixture sentinel.
+\typeout{NCKU-TEST-PASS: Unicode metadata and bookmark strings compile cleanly}
+\end{document}

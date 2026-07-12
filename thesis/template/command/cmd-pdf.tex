@@ -22,6 +22,11 @@
 
 % ----------------------------------------------------------------------------
 
+% Keep display-only line breaks out of PDF metadata strings and bookmarks.
+\pdfstringdefDisableCommands{%
+  \def\\{}%
+}
+
 % 使用 hyperref 在 pdf 簡介欄裡填入相關資料
 \newcommand{\FillInPDFData}
 {

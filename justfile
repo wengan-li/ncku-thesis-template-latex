@@ -43,7 +43,12 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state
+test: check _test-diagnostics _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark
+
+# Internal regression budget for final canonical-build diagnostics.
+[private]
+_test-diagnostics:
+    python3 scripts/test/check-diagnostics.py "{{ log }}"
 
 # Internal regression test for the legacy cover-date command.
 [private]
@@ -71,6 +76,15 @@ _test-oral-default-state:
     mkdir -p "{{ build_dir }}/tests"
     cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=oral-default-state ../tests/oral-default-state.tex
     grep -q 'NCKU-TEST-PASS: oral certificate defaults to the external-image path' "{{ build_dir }}/tests/oral-default-state.log"
+
+# Internal regression test for Unicode PDF metadata and bookmarks.
+[private]
+_test-metadata-bookmark:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=metadata-bookmark ../tests/metadata-bookmark.tex
+    grep -q 'NCKU-TEST-PASS: Unicode metadata and bookmark strings compile cleanly' "{{ build_dir }}/tests/metadata-bookmark.log"
+    ! grep -Eiq 'Token not allowed in a PDF string|already defined|destination with the same identifier' "{{ build_dir }}/tests/metadata-bookmark.log"
+    pdfinfo "{{ build_dir }}/tests/metadata-bookmark.pdf" | grep -Fq 'Title:           NCKU Metadata Line (成大中繼資料標題)'
 
 # Run the complete local CI gate.
 ci: test

@@ -1,8 +1,16 @@
 # XeLaTeX source optimization and modernization review
 
-Status: reviewed; implementation not started
+Status: implementation in progress
 
 Checked: 2026-07-12
+
+## Implementation status
+
+- Complete: sectioning/star behavior fixture and fix; core numbering/reference fixture; explicit oral default state; continuous preview and student-mode guidance; versioned student/examples release packages; CI cache/runner decision.
+- Rejected after measurement: a separate chapter-preview entry point, because a real student-mode chapter edit rebuilt in approximately 1.45 seconds and another document mode would add numbering/reference risk.
+- In progress: final-log diagnostics baseline plus Unicode metadata/bookmark and font/CJK fixtures.
+- Pending: evidence-backed low-risk platform cleanup, fixture-protected private-helper simplification, Overleaf publication research/verification, final release, and integration into `main`.
+- Deferred to a major-version experiment: class/package redesign, broad `expl3` conversion, `l3build`, engine migration, and tagged-PDF/PDF-UA work.
 
 ## Intent
 
