@@ -19,6 +19,9 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v6
 
+      - name: Check committed whitespace
+        run: git show --check --format= HEAD
+
       - name: Run required test gate
         uses: xu-cheng/texlive-action@v3
         with:

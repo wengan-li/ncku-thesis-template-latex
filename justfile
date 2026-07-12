@@ -31,13 +31,13 @@ check: thesis
     pdfinfo "{{ artifact }}" | grep -q '^Pages:'
     pdfinfo "{{ artifact }}" | grep -q '^Page size:.*A4'
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
-    git diff --check
 
 # Run the required build and verification test gate.
 test: check
 
 # Run the complete local CI gate.
 ci: test
+    git diff --check
 
 # Remove generated LaTeX build artifacts.
 clean:
