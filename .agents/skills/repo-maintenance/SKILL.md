@@ -26,6 +26,8 @@ Read only the focused sources needed for the task:
    version, packaging, promotion, and public-verification contract.
 5. [`docs/sample-repository-migration.md`](../../../docs/sample-repository-migration.md)
    — generated-example provenance and migration record.
+6. [`docs/overleaf-distribution.md`](../../../docs/overleaf-distribution.md) —
+   unofficial-template policy, import package limits, and publication blockers.
 
 Inspect current source and Git state before trusting historical notes. When a
 rule changes, update its canonical repository source in the same slice.
@@ -42,6 +44,7 @@ just example
 just test
 just check
 just ci
+just overleaf <version>
 just release <version>
 just clean
 ```
@@ -143,6 +146,8 @@ a local or workflow artifact alone is insufficient.
 - Treating the 271-page teaching document as the normal student rebuild cost.
 - Caching LaTeX auxiliary state in required clean test/release lanes.
 - Switching to an Arm runner while the selected TeX container is amd64-only.
+- Submitting this unofficial university thesis template to the Overleaf Gallery;
+  use the documented API/direct-upload alternative unless NCKU endorses it.
 - Publishing loose example PDFs in addition to the examples ZIP.
 - Using `legacy` in a public filename when `generated` plus a clear package
   notice communicates the institutional-document boundary more accurately.

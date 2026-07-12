@@ -45,7 +45,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values
+test: check _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]
@@ -118,9 +118,23 @@ _test-keyword-values:
     pdfinfo "{{ build_dir }}/tests/keyword-values.pdf" > "{{ build_dir }}/tests/keyword-values.pdfinfo"
     grep -Fq 'Keywords:        Alpha, Beta' "{{ build_dir }}/tests/keyword-values.pdfinfo"
 
+# Internal integration test for the student-only dependency path.
+[private]
+_test-student-mode:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=student-mode ../tests/student-mode.tex
+    grep -q 'NCKU-TEST-PASS: student mode compiles without teaching examples' "{{ build_dir }}/tests/student-mode.log"
+    ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/student-mode.log"
+    ! grep -F '/example/' "{{ build_dir }}/tests/student-mode.fls"
+
 # Run the complete local CI gate.
 ci: test
     git diff --check
+
+# Build and verify an Overleaf-compatible StudentMode import package from HEAD.
+overleaf version="dev":
+    test -z "$(git status --porcelain --untracked-files=all)" || { echo 'Overleaf packaging requires a clean Git worktree.' >&2; exit 1; }
+    scripts/overleaf/package-and-verify.sh "{{ version }}" "{{ build_dir }}/overleaf"
 
 # Build and verify the complete same-source release asset set.
 release version="dev": test
