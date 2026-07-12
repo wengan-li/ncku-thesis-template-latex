@@ -54,12 +54,12 @@ The workflow also parses the final 12 digits as a real UTC date and time, so imp
 
 `just release` requires a clean Git worktree. This prevents release PDFs built from uncommitted files from being combined with a ZIP produced from `HEAD`.
 
-The custom ZIP is a student-ready download containing only the tracked contents of `thesis/`. It expands to one `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/`, and `template/` directly inside. It intentionally excludes repository tooling and tests because GitHub already provides automatic full-source archives.
+The custom ZIP is a student-ready download containing only the tracked contents of `thesis/`. Its filename includes the complete release tag as `ncku-thesis-template-latex-<version>.zip`; for example, tag `v1.8.0.260712074004` produces `ncku-thesis-template-latex-v1.8.0.260712074004.zip`. It expands to one stable `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/`, and `template/` directly inside. The version belongs in the archive filename, not the extracted project directory, so editor paths and student instructions remain stable. The ZIP intentionally excludes repository tooling and tests because GitHub already provides automatic full-source archives.
 
 The promoted release contains:
 
 ```text
-ncku-thesis-template-latex.zip
+ncku-thesis-template-latex-<version>.zip
 example-cover.pdf
 example-thesis-chi.pdf
 example-thesis-eng.pdf
@@ -83,7 +83,7 @@ Two GitHub Actions portability details are required:
 
 The custom ZIP and GitHub's automatic source archives have different purposes:
 
-- `ncku-thesis-template-latex.zip` is for students and contains only the tracked contents of `thesis/`, placed directly under one `ncku-thesis-template-latex/` directory;
+- `ncku-thesis-template-latex-<version>.zip` is for students and contains only the tracked contents of `thesis/`, placed directly under one stable `ncku-thesis-template-latex/` directory;
 - GitHub's automatic Source code archives are for contributors who need the full repository, CI, tests, scripts, and documentation.
 
 A release is not considered verified merely because the workflow is green. Download the public assets again, confirm the exact seven-file allowlist, inspect PDF page size/count, extract the custom ZIP, confirm that repository tooling and a redundant `thesis/` layer are absent, and compile the downloaded `thesis.tex` directly with XeLaTeX/`latexmk`.

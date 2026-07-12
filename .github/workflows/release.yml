@@ -65,14 +65,14 @@ jobs:
             apk add --no-cache git just poppler-utils unzip
             git config --global --add safe.directory "$GITHUB_WORKSPACE"
             just test
-            just release
+            just release "$VERSION"
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v6
         with:
           name: release-assets-${{ env.VERSION }}
           path: |
-            build/release/ncku-thesis-template-latex.zip
+            build/release/ncku-thesis-template-latex-${{ env.VERSION }}.zip
             build/release/example-cover.pdf
             build/release/example-thesis-chi.pdf
             build/release/example-thesis-eng.pdf

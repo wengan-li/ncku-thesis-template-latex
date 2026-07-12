@@ -71,7 +71,7 @@ ci: test
     git diff --check
 
 # Build and verify the complete same-source release asset set.
-release: test
+release version="dev": test
     test -z "$(git status --porcelain --untracked-files=all)" || { echo 'Release requires a clean Git worktree.' >&2; exit 1; }
     rm -rf "{{ build_dir }}/release"
     mkdir -p "{{ build_dir }}/release"
@@ -81,8 +81,8 @@ release: test
     just _release-pdf ../scripts/release/thesis-eng.tex example-thesis-eng
     just _release-pdf ../scripts/release/defense-certificate-master.tex example-legacy-defense-certificate-master
     just _release-pdf ../scripts/release/defense-certificate-phd.tex example-legacy-defense-certificate-phd
-    git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex.zip" HEAD:thesis
-    scripts/release/verify-assets.sh "{{ build_dir }}/release"
+    git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex-{{ version }}.zip" HEAD:thesis
+    scripts/release/verify-assets.sh "{{ build_dir }}/release" "ncku-thesis-template-latex-{{ version }}.zip"
 
 # Internal helper: build one named release PDF from the thesis source directory.
 [private]

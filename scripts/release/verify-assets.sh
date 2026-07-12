@@ -2,9 +2,10 @@
 set -euo pipefail
 
 asset_dir=${1:-build/release}
+student_zip=${2:-ncku-thesis-template-latex-dev.zip}
 
 required=(
-  ncku-thesis-template-latex.zip
+  "$student_zip"
   example-cover.pdf
   example-thesis-chi.pdf
   example-thesis-eng.pdf
@@ -46,7 +47,7 @@ while IFS= read -r log; do
   ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "$log"
 done < <(find "$asset_dir" -maxdepth 1 -name '*.log' -type f -print)
 
-archived=$(unzip -Z1 "${asset_dir}/ncku-thesis-template-latex.zip")
+archived=$(unzip -Z1 "${asset_dir}/${student_zip}")
 test -n "$archived"
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis.tex'
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/conf/conf.tex'
