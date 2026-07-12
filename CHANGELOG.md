@@ -1,3 +1,29 @@
+#### v1.8.0.260712122736 [2026-07-12]
+
+本版本完成v1.8 maintenance後續驗證與distribution hardening；保持XeLaTeX、既有public APIs和可見版面相容。
+
+- **Diagnostics / Tests**:
+  1. 新增final-log diagnostics budget，拒絕新增warning classes、未收斂references/citations、duplicate PDF destinations和超出baseline的layout warnings。
+  2. 新增Unicode PDF metadata/bookmark、bundled Latin/CJK font、XeLaTeX engine gate、keyword values和StudentMode focused fixtures。
+  3. 修正GitHub Actions中`pdfinfo | grep -q`在`pipefail`下可能產生SIGPIPE 141的問題，改為先保存metadata再驗證。
+
+- **XeLaTeX / Template**:
+  1. 將display title中的`\\`從PDF metadata strings安全移除，保留cover換行並避免hyperref token leakage。
+  2. 明確設定CJK monospaced context使用目前bundled CJK family，消除undefined `CJKttdefault` warning；Latin mono不變。
+  3. 改用maintained `iftex` engine detection，宣告最低LaTeX2e format為`2020-10-01`，並移除repo對`ifxetex`和explicit `xparse`的直接依賴。
+  4. 新增對稱`\StudentMode` API，並修正student context誤讀`example/nomenclature`的dependency leakage。
+  5. 合併重複的figure/table caption-label與keyword private helpers；保留public wrappers、signatures及deprecated compatibility commands。
+
+- **Release / Examples**:
+  1. Public custom assets收斂為兩個versioned ZIP：editable student project及包含六份generated PDFs的examples package。
+  2. Examples ZIP內使用stable filenames，移除重複`example-`prefix；generated defense certificates清楚標示為unofficial demonstrations。
+  3. 新增repo-local`repo-maintenance`skill，集中build、test、release、institutional-document及verification contract。
+
+- **Overleaf**:
+  1. 記錄Overleaf官方policy：Gallery不接受non-official university thesis templates；本repo在未獲NCKU正式endorsement前不得冒充official Gallery template。
+  2. 新增`just overleaf <version>`，由committed HEAD生成root-level StudentMode import ZIP，檢查官方file/size/editable-data limits並cold build驗證。
+  3. 實測package為66 files、297,607 editable bytes、4,965,387-byte ZIP、11頁A4，local cold XeLaTeX build為3.88秒；authenticated Overleaf runtime與asset provenance audit仍是public Open-in-Overleaf publication前的必要gate。
+
 #### v1.8.0.260712074004 [2026-07-12]
 
 本版本是保守的維護更新：保留 XeLaTeX、`thesis.tex`、`conf/conf.tex` 和既有 public APIs，同時加入可重複的 build、test、release 和 migration 流程。
