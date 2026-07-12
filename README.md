@@ -108,10 +108,10 @@ just clean    # 清除可重新產生的檔案
 
 如果對本模版沒有興趣，也可以參考其他同學提供、但不定期更新的社群模版：
 
-- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — 使用 Typst 的成大論文模版
-- [`lycsjm/nckuthesis`](https://github.com/lycsjm/nckuthesis) — 使用 LaTeX 的成大論文模版
-- [`windwalker661/Thesis-NCKU`](https://github.com/windwalker661/Thesis-NCKU) — 使用 LaTeX 的成大論文模版
-- [`nckuasrlab/ASRLab_Thesis_Template`](https://github.com/nckuasrlab/ASRLab_Thesis_Template) — 使用 LaTeX 的成大論文模版
+- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — Typst 模版
+- [`lycsjm/nckuthesis`](https://github.com/lycsjm/nckuthesis)
+- [`windwalker661/Thesis-NCKU`](https://github.com/windwalker661/Thesis-NCKU)
+- [`nckuasrlab/ASRLab_Thesis_Template`](https://github.com/nckuasrlab/ASRLab_Thesis_Template)
 
 以上外部專案並非由本專案維護；使用前請自行核對其版本、授權及學校最新規定。
 
