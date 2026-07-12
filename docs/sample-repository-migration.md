@@ -1,6 +1,6 @@
 # Sample repository migration record
 
-Status: in progress
+Status: completed — owner deleted the sample repository on 2026-07-12
 
 Checked: 2026-07-12
 
@@ -69,8 +69,8 @@ Do not delete the sample repository until all conditions are true:
 - [x] A tagged v1.8 release has built and published every replacement asset.
 - [x] Published PDF page counts, A4 dimensions, extracted text, and expected variants are verified.
 - [x] The student ZIP contains only the `thesis/` contents at the intended project layer and compiles after public download.
-- [ ] Old public links have a migration/redirect period or the owner explicitly accepts that deletion breaks them.
-- [ ] The owner explicitly accepts the effect of deleting a repository with existing stars and forks.
-- [ ] Required GitHub Admin permission is available.
+- [x] The owner explicitly chose direct deletion without a redirect/archive period and accepted that old public links would break.
+- [x] The owner explicitly accepted the effect of deleting a repository with 12 stars and 6 forks at the checked state.
+- [x] The owner used their GitHub permission to delete the repository; REST verification returned HTTP 404.
 
-Archiving with a redirect notice for at least one release cycle is safer than immediate deletion. If deletion remains the owner decision, the unchecked gates still apply.
+No Git bundle, NAS copy, off-machine archive, redirect, or archived-repository period is required. The owner explicitly rejected those additions as unnecessary. The replacement source and generated examples are the main repository and its verified timestamped GitHub Release.
