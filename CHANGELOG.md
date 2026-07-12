@@ -1,4 +1,4 @@
-#### v1.8.0 [Unreleased; prepared 2026-07-12]
+#### v1.8.0.260712070548 [2026-07-12]
 
 本版本是保守的維護更新：保留 XeLaTeX、`thesis.tex`、`conf/conf.tex` 和既有 public APIs，同時加入可重複的 build、test、release 和 migration 流程。
 
