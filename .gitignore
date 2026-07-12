@@ -5,6 +5,9 @@
 **/*.log
 **/*.lot
 **/*.out
+**/*.fdb_latexmk
+**/*.fls
+**/*.xdv
 reference/*.pdf
 thesis/*.pdf
 **/*.bbl
@@ -13,3 +16,4 @@ thesis/*.pdf
 **/*.DS_Store*
 **/*~
 *.synctex(busy)
+/build/
