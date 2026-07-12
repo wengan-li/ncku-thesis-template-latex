@@ -30,6 +30,7 @@ check: thesis
     test -s "{{ synctex }}"
     pdfinfo "{{ artifact }}" | grep -q '^Pages:'
     pdfinfo "{{ artifact }}" | grep -q '^Page size:.*A4'
+    ! pdftotext "{{ artifact }}" - | grep -q 'doi:10.6844/ncku.latex.template'
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.

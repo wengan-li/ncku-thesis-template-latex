@@ -50,6 +50,7 @@ archived=$(unzip -Z1 "${asset_dir}/ncku-thesis-template-latex.zip")
 test -n "$archived"
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis.tex'
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/conf/conf.tex'
+printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/example/abstract/extended.tex'
 if printf '%s\n' "$archived" | grep -qv '^ncku-thesis-template-latex/'; then
   printf 'ZIP contains a path outside the release project folder\n' >&2
   exit 1
