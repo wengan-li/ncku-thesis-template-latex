@@ -57,6 +57,19 @@ The command:
 
 A local build under ten seconds is useful evidence but is not proof of Overleaf free-plan performance because Overleaf infrastructure differs. An authenticated Overleaf import/recompile remains the final runtime check before publishing an Open-in-Overleaf link.
 
+### Verified result on 2026-07-12
+
+`just overleaf 20260712-test` produced and re-imported a package with:
+
+- 66 files;
+- 297,607 bytes of editable material;
+- a 4,965,387-byte ZIP;
+- an 11-page A4 StudentMode PDF;
+- a 3.88-second cold local XeLaTeX/latexmk build;
+- no teaching-example dependency and no unresolved reference/citation state.
+
+The command printed a SHA-256 for the generated artifact. That test artifact remains under ignored `build/overleaf/`; it is not a GitHub Release asset or a permanent public URL.
+
 ## Required Overleaf settings
 
 After ZIP upload/import:
