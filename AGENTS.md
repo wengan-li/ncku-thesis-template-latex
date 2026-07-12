@@ -31,6 +31,7 @@ Use `just`, not Makefile or ad-hoc public shell commands:
 ```bash
 just                 # list recipes
 just thesis          # build canonical thesis PDF + SyncTeX
+just watch           # continuously rebuild changed thesis dependencies
 just example         # build full teaching example document
 just test            # required local and CI test gate
 just check           # build and verify canonical artifacts

@@ -49,6 +49,7 @@ done < <(find "$asset_dir" -maxdepth 1 -name '*.log' -type f -print)
 
 archived=$(unzip -Z1 "${asset_dir}/${student_zip}")
 test -n "$archived"
+printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/README.md'
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis.tex'
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/conf/conf.tex'
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/example/abstract/extended.tex'

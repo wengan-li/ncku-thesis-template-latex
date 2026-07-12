@@ -40,7 +40,17 @@ Isolated and local benchmarks agree:
 | Warm build without changes | 0.10–0.33 s | No compiler run |
 | Edit to a real dependency in the 271-page example | 12.51–12.93 s | XeLaTeX ×1, xdvipdfmx ×1, BibTeX ×0 |
 
-`latexmk` dependency tracking is working correctly. The rewrite bottleneck is full-document XeLaTeX layout and PDF generation, not unnecessary BibTeX runs.
+`latexmk` dependency tracking is working correctly. The rewrite bottleneck in the integration document is full-document XeLaTeX layout and PDF generation, not unnecessary BibTeX runs.
+
+A separate student-facing benchmark used an isolated copy containing only `thesis/`, disabled the standalone `\ExampleMode` command, and invoked `latexmk -xelatex` directly without the repository `justfile` or root `latexmkrc`:
+
+| Student scenario | Wall time | Work performed |
+|---|---:|---|
+| Clean 11-page thesis build | 3.84 s | XeLaTeX ×3, BibTeX ×2 |
+| Warm build without changes | 0.07 s | No compiler run |
+| Edit to `context/introduction/introduction.tex` | 1.45 s | XeLaTeX ×1, BibTeX ×0 |
+
+This validates the intended student workflow: disabling `\ExampleMode` is the primary build-time optimization, and continuous `latexmk -pvc` removes manual rebuild steps. A separate chapter-preview entry point is not currently justified because a real student-mode edit already rebuilds in approximately 1.5 seconds; adding another document mode would increase student complexity for little demonstrated benefit.
 
 The full teaching example is intentionally heavy:
 

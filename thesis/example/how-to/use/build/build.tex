@@ -146,7 +146,7 @@
       label={fig:how-to:use:build:texmaker:thesis.tex}]
     {./example/how-to/use/build/pic/texmaker/1.png}
 
-產生論文的方式為在上方(Fig \RefTo{fig:how-to:use:build:texmaker:to_xelatex})由`快速編譯'改成`XeLaTeX', 之後按左方的箭頭就可以進行產生的處理(註: 如果是第一次使用, 那這時候背後MiKTeX會自動下載一些工具回來, 所以會等待比較久).
+建議將Texmaker的編譯命令設為\verb|latexmk -xelatex -synctex=1 -interaction=nonstopmode %.tex|，並以`thesis.tex'作為主文件。\texttt{latexmk}會按需要自動執行XeLaTeX、BibTeX及重複編譯，不需要人手猜測次序。圖\RefTo{fig:how-to:use:build:texmaker:to_xelatex}所示的直接XeLaTeX模式仍可作基本相容用法，但正式文件應以\texttt{latexmk}完成所有引用及目錄收斂。(註: 第一次使用時MiKTeX可能會自動下載工具，所以會等待比較久。)
 
   \InsertFigure
     [scale=0.8,
@@ -193,26 +193,24 @@
 \newpage
 \StartSubSection{產生PDF的流程}
 
-在編譯LaTex時成PDF時, 必須注意內部的引用(\verb|\RefBib{}|)情況.\\
+在編譯LaTeX成PDF時，必須讓目錄、交叉引用及參考文獻(例如\verb|\RefBib{}|)完成所需的多輪處理。請在專案目錄執行：
 
-如果只是編寫內容, 引用的內容和號碼不是重要的話, 那直接使用:\\
-\centerline{XeLaTeX -> 瀏覽PDF}
-即可.\\
+\begin{center}
+\verb|latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex|
+\end{center}
 
-但如果你的PDF是最終版本, 那你的流程則需要使用:\\
-\centerline{XeLaTeX -> BibTex -> XeLaTeX -> 瀏覽PDF}
-才對.\\
+\texttt{latexmk}會讀取dependency及auxiliary files，只執行當次需要的XeLaTeX及BibTeX passes；一般正文修改通常不需要重新執行BibTeX。
 
-因為第一次的XeLaTeX是用來產生`thesis.aux', 而有這個檔案才能對你的內容中Reference的引用來進行連接, 而BibTex正是做這個的處理以產出`thesis.bbl', 而第二次的XeLaTeX會使用`thesis.bbl'來把你的Reference中的號碼在內容中設定.\\
+寫作時可以保持continuous preview：
 
-以上步驟只需用在`thesis.tex'的部份, 而`cover.tex'則不用做這個行為. `cover.tex'直接使用:\\
-\centerline{XeLaTeX -> 瀏覽PDF}
-即可.\\
+\begin{center}
+\verb|latexmk -xelatex -pvc -view=none -synctex=1 thesis.tex|
+\end{center}
 
-如果你在以上的產生流程發現PDF還是有些內容沒法正確顯示, 推薦以下的做法:
-\centerline{XeLaTeX -> XeLaTeX -> BibTex -> BibTex -> XeLaTeX -> XeLaTeX -> 瀏覽PDF}
-這是為了確保LaTex所使用的內容都是以最新的內容來產生.
+儲存任何被引用的TeX、BibTeX或圖片檔後，PDF會自動重建。\verb|-view=none|避免另外打開第二個viewer；可繼續使用Texmaker或TeXstudio內置、能自動重新載入的PDF viewer。停止監察可按\texttt{Ctrl-C}。
 
-\textbf{備註:} 如果碰到一些不明原因的錯誤, 先把所有除了`thesis.tex'外的所有thesis開頭或以thesis為檔名的檔案全刪掉. 例如`thesis.bbl', `thesis.aux', `thesis.lof'等所有檔案. 否則有可能在產生論文時遇到錯誤, 如果遇到錯誤, 請不斷重新刪掉和重新產生論文, 直到解決問題為止. 已知這問題在Reference轉換其他格式時會發生.
+實際編寫自己論文時，請在\verb|conf/conf.tex|關閉\verb|\ExampleMode|，讓主文件使用\verb|context/context.tex|；完整教學範例包含大量圖片及附錄PDF，重建時間會較長。
+
+如果auxiliary files損壞，可執行\verb|latexmk -C thesis.tex|清除可重新產生的檔案，再重新build。不要把反覆刪檔及猜測XeLaTeX/BibTeX次序當成正常流程。正式提交前應再執行一次普通\texttt{latexmk} build，並檢查完整PDF、頁碼、目錄、引用及參考文獻。
 
 % ------------------------------------------------

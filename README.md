@@ -42,7 +42,7 @@
 
 由 v1.8.0 開始，樣板 PDF 會由相同版本的 source tag 自動產生，並放在 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 內。每個 release 包含：
 
-- `ncku-thesis-template-latex.zip`（只包含可直接使用的 `thesis/` 樣板內容；完整 repository source 可使用 GitHub 自動提供的 Source code ZIP）
+- `ncku-thesis-template-latex-<version>.zip`（只包含可直接使用的 `thesis/` 樣板內容；完整 repository source 可使用 GitHub 自動提供的 Source code ZIP）
 - `example-cover.pdf`
 - `example-thesis-chi.pdf`
 - `example-thesis-eng.pdf`
@@ -60,18 +60,29 @@
 
 以上外部專案並非由本專案維護；使用前請自行核對其版本、授權及學校最新規定。
 
-### Build 產生論文
+### Student build 學生使用
 
-本專案使用 [`just`](https://just.systems/) 作為統一指令入口，不使用 Makefile：
+從 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 下載版本化的 `ncku-thesis-template-latex-<version>.zip` 後，請先閱讀壓縮檔內的 [`README.md`](thesis/README.md)。學生專案以 `thesis.tex` 為主檔，使用：
+
+```bash
+latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
+```
+
+實際撰寫自己的論文時，請在 `conf/conf.tex` 關閉 `\ExampleMode`。271 頁的完整教學文件主要供範例與整合驗證使用；一般論文會改用較小的 `context/context.tex`。
+
+### Repository development 專案開發
+
+完整repository使用 [`just`](https://just.systems/) 作為maintainer統一指令入口，不使用Makefile：
 
 ```bash
 just          # 顯示可用指令
 just thesis   # 產生完整 PDF 和 SyncTeX
+just watch    # 儲存 TeX 後自動增量重建；不另開PDF viewer
 just test     # 完整 build 並檢查輸出
 just clean    # 清除可重新產生的檔案
 ```
 
-底層仍使用 XeLaTeX、BibTeX 和 `latexmk` 處理所需的多輪編譯。原本直接執行 XeLaTeX 的方式仍然保留相容性。
+`just`底層使用XeLaTeX、BibTeX和`latexmk`自動處理依賴及多輪編譯。`just watch`只係完整repository嘅development convenience；它不會被放入學生ZIP。學生使用方式及Texmaker／TeXstudio設定記錄在 [`thesis/README.md`](thesis/README.md)。
 
 ### Style Customization 自定成其他學校的模版
 

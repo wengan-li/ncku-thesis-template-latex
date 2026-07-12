@@ -21,6 +21,11 @@ thesis:
     mkdir -p "{{ build_dir }}"
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}" thesis.tex
 
+# Watch thesis sources and rebuild automatically without opening another PDF viewer.
+watch:
+    mkdir -p "{{ build_dir }}"
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}" -pvc -view=none thesis.tex
+
 # Build the full teaching example selected by the checked-in configuration.
 example: thesis
 
