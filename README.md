@@ -4,6 +4,8 @@
 
 這是國立成功大學碩博士用畢業論文的 LaTex 模版. 這模版是以[博碩士學位論文格式規範 (110.01.06 109學年度第2次教務會議修正通過)](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw) 的要求來設計, 請留意學校的最新所訂的要求能否使用這模版.
 
+本專案由社群維護，並不是國立成功大學官方認可或背書的軟體。學校、圖書館、學位考試系統及各系所的最新規定永遠優先於本模版。官方指引最後查核日期：`2026-07-12`（[博碩士論文系統](https://thesis.lib.ncku.edu.tw/)、[建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)、[教務處課務組](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)）。
+
 ### Main feature 主要功能
 
 1. 能同時讓你編寫中英文內容 (建基於 XeLaTex)
@@ -19,9 +21,7 @@
 - 格式/設計: 在 2015 年經過 `成大圖書館 系統管理組-數位論文小組` 所檢查和接受.
 - 學位考試論文證明書: 在 2015 年經過 `教務處-課務組` 所檢查和接受 (但在 2018 年時被提出不被授權, 請參考`模版和學位考試系統的學位考試論文證明書的FAQ`).
 
-即是可使用本模版來編寫你畢業論文, 並能交給圖書館收藏存放. 但如有任何因模版而造成的問題, 請馬上回報以幫助處理你的問題.
-
-**注意**: 是`接受`, 而不是`認可`, 即是不屬於學校認可, 但可以使用並且不會有任何問題.
+以上是歷史查核記錄，不代表目前所有系所或流程都會接受每一項設定。使用前必須核對當年度規定；如發現模版與官方要求不一致，請回報並以官方要求為準。
 
 ### 可使用的系所
 
@@ -69,7 +69,7 @@ just clean    # 清除可重新產生的檔案
 
 由 v1.5.0 開始, 本模版改造成可讓非國立成功大學的同學或人士都能建基於這模版以建立出自己學校所需的模版, 同時保留能使用本模版所提供的功能.
 
-詳細[請看 Customization.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/thesis/template/style/Customization.md)這檔案中的內容.
+詳細請看 [`thesis/template/style/Customization.md`](thesis/template/style/Customization.md).
 
 ### 學位論文上傳和列印說明
 
@@ -108,7 +108,7 @@ just clean    # 清除可重新產生的檔案
 
 最新版本[請到 Releases 中查看](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
 
-詳細的修改內容[請看 ChangeLog.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/CHANGELOG.md)這檔案中的內容.
+詳細的修改內容請看 [`CHANGELOG.md`](CHANGELOG.md).
 
 ### License 授權條款
 
@@ -120,6 +120,6 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
   <img src='https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png' alt="CC-BY-NC-SA-4.0"/>
 </p>
 
-詳細[請看 LICENSE](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/LICENSE)這檔案中的條款說明.
+詳細請看 [`LICENSE`](LICENSE) 中的條款說明.
 
 而本模版所使用到的國立成功大學浮水印則由國立成功大學擁有**所有**相關的權利. 故如使用這浮水印到論文以外的應用, 請跟'成大圖書館 系統管理組-數位論文小組'聯絡.
