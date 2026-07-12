@@ -1,4 +1,4 @@
-#### v1.8.0.260712122736 [2026-07-12]
+#### v1.8.0.260712123948 [2026-07-12]
 
 本版本完成v1.8 maintenance後續驗證與distribution hardening；保持XeLaTeX、既有public APIs和可見版面相容。
 

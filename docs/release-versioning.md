@@ -76,6 +76,7 @@ The release system has three explicit layers:
 Two GitHub Actions portability details are required:
 
 - the TeX container must mark `$GITHUB_WORKSPACE` as a Git safe directory before `git status` or `git archive`;
+- values written to the runner's `$GITHUB_ENV` are not automatically visible inside `xu-cheng/texlive-action`; interpolate the resolved version into the action's `run` input and assert the exact host-side artifact paths before upload;
 - a promotion job without a checkout must set `GH_REPO=${{ github.repository }}` so `gh release` does not try to discover the repository from `.git`.
 
 The custom packages and GitHub's automatic source archives have different purposes:
