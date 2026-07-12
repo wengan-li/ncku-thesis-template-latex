@@ -1,0 +1,14 @@
+% Regression fixture for the backward-compatible \SetThesisDate command.
+% Build from the thesis/ directory.
+\input{./template/configure}
+\newcommand{\NckuDateSentinel}{0}
+\SetThesisDate{2024}{7}
+\SetCoverDate{2024}{7}
+\renewcommand{\NckuDateSentinel}{1}
+
+\begin{document}
+\ifnum\NckuDateSentinel=1\else
+  \errmessage{The cover-date command consumed the following command}
+\fi
+\typeout{NCKU-TEST-PASS: legacy and current cover-date commands terminate safely}
+\end{document}

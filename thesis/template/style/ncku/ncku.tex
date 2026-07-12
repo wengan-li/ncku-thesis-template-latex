@@ -122,7 +122,9 @@
   \renewcommand{\ThesisMonth}{#2}%
 } % End of \renewcommand{}
 
-\renewcommand{\SetCoverDate}[3]
+% NCKU uses the oral date as the authoritative cover date. Keep this
+% two-argument command as a compatibility no-op without consuming the next token.
+\renewcommand{\SetCoverDate}[2]
 {%
 %  \SetThesisTaiwanYear{\GetOralEngYear}
 %  \renewcommand{\ThesisYear}{\GetOralEngYear}

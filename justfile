@@ -32,8 +32,15 @@ check: thesis
     pdfinfo "{{ artifact }}" | grep -q '^Page size:.*A4'
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
-# Run the required build and verification test gate.
-test: check
+# Run the required build and focused regression test gate.
+test: check _test-set-thesis-date
+
+# Internal regression test for the legacy cover-date command.
+[private]
+_test-set-thesis-date:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=set-thesis-date ../tests/set-thesis-date.tex
+    grep -q 'NCKU-TEST-PASS: legacy and current cover-date commands terminate safely' "{{ build_dir }}/tests/set-thesis-date.log"
 
 # Run the complete local CI gate.
 ci: test
