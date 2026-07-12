@@ -1,3 +1,41 @@
+#### v1.8.0 [Unreleased; prepared 2026-07-12]
+
+本版本是保守的維護更新：保留 XeLaTeX、`thesis.tex`、`conf/conf.tex` 和既有 public APIs，同時加入可重複的 build、test、release 和 migration 流程。
+
+- **Build / CI**:
+  1. 新增 root `justfile`，提供 `just thesis`、`just example`、`just test`、`just ci`、`just release` 和 `just clean`。
+  2. 新增 `latexmkrc`，固定使用 XeLaTeX、SyncTeX、BibTeX 和 isolated `build/` output。
+  3. 修正 bundled bibliography paths，令 TeX/BibTeX 在 isolated output directory 仍能找到 source resources。
+  4. 新增 GitHub Actions test workflow；CI 必須執行 `just test`並上傳測試 PDF。
+  5. 補齊正常 XeLaTeX/latexmk generated files 的 `.gitignore`規則。
+
+- **Release**:
+  1. 新增 tag-driven build→workflow artifact→GitHub Release promotion流程；manual dispatch只build，不publish。
+  2. Release tag格式為`vMAJOR.MINOR.PATCH.YYMMDDhhmmss`，timestamp固定使用UTC並驗證為真實日期時間。
+  3. `just release`要求clean Git worktree，避免working-tree PDFs與`HEAD` ZIP來自不同source。
+  4. Release ZIP解壓成單一`ncku-thesis-template-latex/`project directory，包含`justfile`、`latexmkrc`、tests和`thesis/`；解壓後可獨立執行`just test`。
+  5. 同一source commit產生`example-cover.pdf`、中文／英文／完整論文examples，以及明確標示為legacy的碩士／博士學位考試證明書examples。
+
+- **修正錯誤**:
+  1. 修正A4紙張高度由`29.6cm`到標準`29.7cm`。
+  2. 修正legacy `\SetThesisDate` self-recursion，並保留轉到`\SetCoverDate`的相容性。
+  3. 修正NCKU `\SetCoverDate`錯誤的三參數signature，避免吞掉下一個TeX command。
+  4. 新增focused TeX regression fixture，驗證date commands、`\ExampleMode`和legacy `\DemoMode`alias。
+  5. Demo/example extended abstract改為讀取`example/`tree，不再意外依賴user `context/`內容。
+
+- **Defaults / Policy**:
+  1. Default submission config不再自行加入DOI overlay；保留`\ShowDOI`作legacy/custom API。
+  2. Default certificate path改為使用學位考試系統產出的external file；generated certificates只作明確legacy examples。
+  3. Generated certificates不再內嵌於正常中文、英文或完整thesis example PDFs。
+  4. 更新README的community-maintained、official-guidance boundary和checked date。
+
+- **Naming / Documentation**:
+  1. Public naming統一使用`example`：canonical command為`just example`，canonical TeX API為`\ExampleMode`。
+  2. `just demo`和`\DemoMode`保留為backward-compatible aliases。
+  3. 新增基本`AGENTS.md`、`CLAUDE.md`、`.agents/`和`.claude/`setup；repo-local skill只包含IDSD workflow。
+  4. README加入其他同學提供的Typst community template連結及external-project disclaimer。
+  5. 記錄sample repository的history bundle、artifact provenance和刪除gate；sample repository仍未刪除。
+
 #### v1.7.4 [March 03, 2025]:
 - **更新**:
 
