@@ -1,23 +1,29 @@
 # Overleaf distribution decision
 
-Status: verified package workflow; public Gallery submission rejected by policy
+Status: Gallery package submitted; publication intent confirmed; moderation pending
 
 Checked: 2026-07-12
 
 ## Decision
 
-Do not submit this project to the Overleaf Template Gallery while it remains an unofficial university thesis template.
+Maintain two reproducible Overleaf profiles without changing the canonical teaching/student source:
 
-Overleaf's current Gallery policy explicitly lists non-official university-based templates, including thesis templates, as not accepted. It requires an official university template to link to the university's own style guidelines or submission instructions. This repository must continue to describe itself as community-maintained and unofficial unless National Cheng Kung University provides explicit institutional ownership or endorsement.
+1. `just overleaf <version>` produces the editable StudentMode import package;
+2. `just overleaf-gallery <version>` produces the public Gallery preview package.
 
-Use these supported alternatives instead:
+The Gallery profile is deliberately final-looking: it removes Draft markers, suppresses the institutional logo watermark, excludes unused watermark/oral-example PDFs, keeps dummy metadata, and retains XeLaTeX and the same thesis layout/API surface. The original student configuration remains suitable for writing and is not edited by hand for publication.
 
-1. keep the versioned student ZIP as the complete offline source package;
-2. generate and verify a smaller StudentMode-only Overleaf import package with `just overleaf <version>`;
-3. after asset provenance is confirmed and a permanent public ZIP URL exists, expose an **Open in Overleaf** link using Overleaf's documented API;
-4. retain direct ZIP upload instructions as a fallback.
+Overleaf's current policy generally lists non-official university thesis templates as unsuitable, but it also reserves discretion to accept templates outside its listed categories and already hosts older community NCKU templates. The repository therefore submitted an accurately labelled community template for moderation rather than claiming institutional endorsement or assuming automatic acceptance.
 
-The Overleaf-specific ZIP is a maintainer verification artifact, not a third GitHub Release asset. The public Release contract remains exactly two versioned ZIP files.
+The submitted public title is:
+
+```text
+National Cheng Kung University Thesis and Dissertation Template — XeLaTeX
+```
+
+The description identifies the project as unofficial/community-maintained, links to NCKU guidance and the source repository, and instructs students to verify current university and departmental requirements.
+
+The Overleaf-specific ZIPs remain maintainer/import artifacts, not additional GitHub Release assets. The public GitHub Release contract remains exactly two versioned ZIP files.
 
 ## Why the complete student ZIP is not the Overleaf import artifact
 
@@ -33,42 +39,56 @@ The generated Overleaf package contains only:
 
 Generation also disables the repository's active `\ExampleMode` line so the imported project opens in StudentMode. The package excludes `example/` and `cover.tex` but does not alter the committed teaching source.
 
-## Verified workflow
+## Verified workflows
 
 Run from a clean worktree:
 
 ```bash
 just overleaf <version>
+just overleaf-gallery <version>
 ```
 
-The command:
+Both commands:
 
-1. exports committed `HEAD:thesis` rather than uncommitted files;
-2. removes the teaching corpus and second main document;
-3. changes the packaged `conf/conf.tex` to default to StudentMode;
-4. creates `build/overleaf/ncku-thesis-template-latex-overleaf-<version>.zip` with files at the ZIP root;
-5. checks required files and official upload/resource limits;
-6. extracts the ZIP into a fresh temporary directory;
-7. runs a cold `latexmk -xelatex` build of `thesis.tex`;
-8. rejects unresolved references/citations and missing PDF output;
-9. records the local cold-build duration and SHA-256.
+1. export committed `HEAD:thesis` rather than uncommitted files;
+2. remove the teaching corpus and second main document;
+3. change the packaged `conf/conf.tex` to default to StudentMode;
+4. move the active `\documentclass` declaration into root `thesis.tex`, allowing Overleaf to detect the correct main document rather than nested `template/configure.tex`;
+5. create a root-level ZIP and check required files plus official upload/resource limits;
+6. extract the ZIP into a fresh temporary directory;
+7. run a cold `latexmk -xelatex` build of `thesis.tex`;
+8. reject unresolved references/citations and missing PDF output;
+9. record the local cold-build duration and SHA-256.
+
+The Gallery command additionally copies `scripts/overleaf/config/gallery.tex` into the package, loads it after canonical `conf/conf.tex`, rejects Draft markers in extracted PDF text, removes the unused logo/oral-example PDFs, and verifies that the overlay and exclusions are present. This avoids hand-editing and restoring the student configuration.
 
 `tests/student-mode.tex` separately proves that StudentMode has no `example/` dependency. This caught and corrected a prior student-path leak from `context/context.tex` to `example/nomenclature/nomenclature.tex`.
 
-A local build under ten seconds is useful evidence but is not proof of Overleaf free-plan performance because Overleaf infrastructure differs. An authenticated Overleaf import/recompile remains the final runtime check before publishing an Open-in-Overleaf link.
+### Upload/import failures caught on 2026-07-12
 
-### Verified result on 2026-07-12
+Two real Overleaf uploads exposed requirements that a local XeLaTeX build alone did not prove:
 
-`just overleaf 20260712-test` produced and re-imported a package with:
+1. A newly uploaded ZIP defaulted to pdfLaTeX and correctly hit the template's XeLaTeX engine gate. Overleaf users must select XeLaTeX explicitly.
+2. Overleaf auto-detected nested `template/configure.tex` as the main document because root `thesis.tex` did not directly contain `\documentclass`. Relative paths then failed with a misleading missing `template/command/command.tex` error even though that file was present in the ZIP. The generator now creates an unambiguous root main document and verifies that the nested configure file has no active document-class declaration.
 
-- 66 files;
-- 297,607 bytes of editable material;
-- a 4,965,387-byte ZIP;
+The clean StudentMode starter also removed three inherited diagnostics seen during the authenticated import: an empty bibliography, an unused figure-caption setup, and an underfull nomenclature paragraph. The starter now includes one replaceable sample citation, uses caption's starred type-specific setup, and uses explicit vertical space instead of an empty paragraph.
+
+### Verified Gallery result on 2026-07-12
+
+`just overleaf-gallery v1.8.0.260712123948` produced:
+
+- `ncku-thesis-template-latex-overleaf-gallery-v1.8.0.260712123948.zip`;
+- 64 files;
+- 298,715 bytes of editable material;
+- a 4,681,568-byte ZIP;
+- SHA-256 `178b8872ec70461b0acdeda2f9d02ed7cf272c3dc0c5a26d7859435f3adcc5c6`;
 - an 11-page A4 StudentMode PDF;
-- a 3.88-second cold local XeLaTeX/latexmk build;
-- no teaching-example dependency and no unresolved reference/citation state.
+- a 3.95-second cold local XeLaTeX/latexmk build;
+- no teaching-example dependency, unresolved reference/citation state, Draft marker, institutional logo watermark, or excluded institutional PDF.
 
-The command printed a SHA-256 for the generated artifact. That test artifact remains under ignored `build/overleaf/`; it is not a GitHub Release asset or a permanent public URL.
+The cover, abstract, and acknowledgements pages were rendered to images and visually checked as clean white final-state pages without Draft text or a logo watermark. The exact ZIP was uploaded to a new Overleaf project, configured for XeLaTeX, root `thesis.tex`, and the latest TeX Live, and compiled cleanly in the authenticated Overleaf runtime.
+
+The Overleaf import artifacts remain under ignored `build/overleaf/`; they are not GitHub Release assets or permanent public URLs.
 
 ## Required Overleaf settings
 
@@ -101,22 +121,24 @@ As checked on 2026-07-12:
 
 ## Licensing and asset provenance
 
-Overleaf requires clear license information for Gallery content and recommends LPPL for templates. This repository currently declares CC BY-NC-SA 4.0, which Overleaf says may be accepted only at its discretion; however, Gallery eligibility is already blocked by the unofficial-university-template rule.
+Overleaf requires clear license information for Gallery content and recommends LPPL for templates. This repository currently declares CC BY-NC-SA 4.0; the submission must not silently claim a different license without agreement from the relevant copyright holders.
 
-More importantly, a project-level license does not prove redistribution rights for every bundled third-party asset. The package includes bundled Times-family and KaiU font files and institutional graphics, but no adjacent font-license files were found during this review. Before promoting a permanent public Open-in-Overleaf artifact, record provenance and redistribution permission for each bundled font/logo or replace it through a separately approved, visual-regression-tested change. Do not silently assume the repository license relicenses third-party assets.
+A project-level license does not prove redistribution rights for every bundled third-party asset. The Gallery profile removes the institutional logo watermark and example oral PDFs, but it still includes bundled Times-family and KaiU font files because the verified layout currently depends on them and no adjacent font-license files were found during this review. Font provenance and redistribution permission remain a possible moderation issue. Do not claim that the repository license relicenses those fonts; if Overleaf requests a licensing correction, replace them only through a separately approved, visual-regression-tested Gallery change rather than silently changing the canonical thesis output.
 
 ## Publication and update ownership
 
-If NCKU later endorses an official Gallery submission:
+The Gallery project was submitted on 2026-07-12. Overleaf sent a public-intent confirmation email; the required confirmation sentence was sent in reply, so the submission is now awaiting moderation. This is not approval or publication.
 
-- the description must link to official NCKU style/submission instructions;
-- the template must contain dummy data, not personal information;
-- the original Overleaf project used for submission becomes the update identity;
-- future updates must edit and resubmit that same project;
-- changes do not replace the Gallery version until Overleaf approves them;
-- ownership of the Overleaf project and the responsible institutional maintainer must be recorded outside student-facing documentation.
+Operational rules:
 
-Until that endorsement exists, use the documented API/direct-upload alternative and label the project unofficial.
+- preserve the original submitted Overleaf project; it is the update identity if the template is approved;
+- do not open a different project to submit future updates;
+- changes to the original project do not replace a published Gallery version until the same project is resubmitted and Overleaf approves the update;
+- keep dummy data and the unofficial/community-maintained description;
+- retain the official NCKU guidance link without implying institutional endorsement;
+- treat moderation requests about similarity, licensing, fonts, or institutional status as unresolved gates rather than working around them in a replacement submission.
+
+No further Overleaf action is required until the moderation response arrives. If approved, record the public Gallery URL and re-download/open the published template to verify its compiler, main document, files, and PDF independently. If changes are requested, update the source generator first, rebuild and verify the Gallery ZIP, then update and resubmit the original Overleaf project.
 
 ## Official sources
 
