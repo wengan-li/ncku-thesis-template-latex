@@ -1,6 +1,7 @@
-You must follow Intent-Driven Software Development (IDSD) for every task: clarify intent, expectations, and context first, and use the repo-local IDSD skill before implementation.
+You must follow Intent-Driven Software Development (IDSD) for every task: clarify intent, expectations, and context first, and use the repo-local IDSD and repository-maintenance skills before implementation.
 
 IDSD skill: `.agents/skills/idsd-workflow/SKILL.md`
+Repository maintenance skill: `.agents/skills/repo-maintenance/SKILL.md`
 
 # AGENTS.md
 
@@ -51,19 +52,18 @@ before a maintenance change or release is considered valid.
 
 ## Release asset contract
 
-Every release must package artifacts from the exact tagged source. The intended public assets are:
+Every release must package artifacts from the exact tagged source. The intended custom public assets are exactly:
 
 ```text
-ncku-thesis-template-latex.zip
-example-cover.pdf
-example-thesis-chi.pdf
-example-thesis-eng.pdf
-example-thesis-full.pdf
+ncku-thesis-template-latex-<version>.zip
+ncku-thesis-template-latex-examples-<version>.zip
 ```
 
 The custom release ZIP is the student-ready contents of `thesis/`, not a duplicate full-repository archive. It extracts to one `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/`, and `template/` directly inside. Repository tooling, tests, and a redundant `thesis/` wrapper must not be included; GitHub already provides automatic full-source archives.
 
-Generated master/doctoral defense-certificate examples may be published only as clearly named legacy examples. School-system-produced certificates are external official artifacts: do not regenerate, alter, or imply endorsement/ownership. Preserve historical copies and provenance separately from normal generated release assets.
+The examples ZIP extracts to one stable `ncku-thesis-template-latex-examples/` directory containing its public README and the six verified PDFs. The outer archive carries the version; inner filenames remain stable and omit a redundant `example-` prefix. Loose generated PDFs are build intermediates and must not also be published as Release assets.
+
+Generated master/doctoral defense-certificate examples may be published only inside the clearly documented generated-examples package. School-system-produced certificates are external official artifacts: do not regenerate, alter, or imply endorsement/ownership. The package README must tell current students to use the university degree-examination system's official files.
 
 Do not commit generated PDFs or release ZIPs to the source tree. Build them under ignored output directories and upload them as GitHub Release assets.
 
@@ -138,6 +138,6 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 
 - `AGENTS.md` is canonical.
 - `CLAUDE.md` points here and stays short.
-- The only repo-local skill is `.agents/skills/idsd-workflow/`.
+- Repo-local skills are `.agents/skills/idsd-workflow/` and `.agents/skills/repo-maintenance/`.
 - `.claude/skills` is a symlink to `../.agents/skills`.
 - `.claude/settings.json` contains only repo-safe Claude Code settings; never store credentials.
