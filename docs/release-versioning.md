@@ -68,4 +68,26 @@ example-legacy-defense-certificate-master.pdf
 example-legacy-defense-certificate-phd.pdf
 ```
 
+## Release implementation lessons
+
+The release system has three explicit layers:
+
+1. `scripts/release/*.tex` and `thesis/thesis.tex` define the document cases. Each case selects its own language, degree, committee-size, or cover behavior in TeX rather than relying on a maintainer to edit and restore `conf.tex` by hand.
+2. `just release` is the single local/CI orchestration command. It runs the required test gate, builds every case with XeLaTeX through `latexmk`, creates the student ZIP from `HEAD:thesis`, and verifies the complete asset allowlist.
+3. `.github/workflows/release.yml` supplies the reproducible TeX environment and promotes only the workflow artifact produced by the successful build job. The workflow must not duplicate the case logic.
+
+Two GitHub Actions portability details are required:
+
+- the TeX container must mark `$GITHUB_WORKSPACE` as a Git safe directory before `git status` or `git archive`;
+- a promotion job without a checkout must set `GH_REPO=${{ github.repository }}` so `gh release` does not try to discover the repository from `.git`.
+
+The custom ZIP and GitHub's automatic source archives have different purposes:
+
+- `ncku-thesis-template-latex.zip` is for students and contains only the tracked contents of `thesis/`, placed directly under one `ncku-thesis-template-latex/` directory;
+- GitHub's automatic Source code archives are for contributors who need the full repository, CI, tests, scripts, and documentation.
+
+A release is not considered verified merely because the workflow is green. Download the public assets again, confirm the exact seven-file allowlist, inspect PDF page size/count, extract the custom ZIP, confirm that repository tooling and a redundant `thesis/` layer are absent, and compile the downloaded `thesis.tex` directly with XeLaTeX/`latexmk`.
+
+If a newly published release fails this contract and has not been announced as stable, publish and verify a corrected immutable timestamp tag first, then remove the superseded release and tag. Do not move an existing tag to a different commit.
+
 The two generated defense-certificate assets are explicitly labelled `legacy`. Normal thesis example PDFs do not embed generated defense certificates; current official documents should come from the school system.
