@@ -58,7 +58,7 @@ release: test
     just _release-pdf ../scripts/release/thesis-eng.tex example-thesis-eng
     just _release-pdf ../scripts/release/defense-certificate-master.tex example-legacy-defense-certificate-master
     just _release-pdf ../scripts/release/defense-certificate-phd.tex example-legacy-defense-certificate-phd
-    git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex.zip" HEAD -- justfile latexmkrc README.md LICENSE thesis
+    git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex.zip" HEAD -- justfile latexmkrc README.md LICENSE tests thesis
     scripts/release/verify-assets.sh "{{ build_dir }}/release"
 
 # Internal helper: build one named release PDF from the thesis source directory.

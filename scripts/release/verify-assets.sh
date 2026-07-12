@@ -50,6 +50,7 @@ archived=$(unzip -Z1 "${asset_dir}/ncku-thesis-template-latex.zip")
 test -n "$archived"
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/justfile'
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/latexmkrc'
+printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/tests/set-thesis-date.tex'
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis/thesis.tex'
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis/conf/conf.tex'
 printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis/example/abstract/extended.tex'
