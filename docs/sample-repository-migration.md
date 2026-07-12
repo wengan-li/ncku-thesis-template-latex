@@ -70,8 +70,8 @@ example-cover.pdf
 example-thesis-chi.pdf
 example-thesis-eng.pdf
 example-thesis-demo.pdf
-example-defense-certificate-master.pdf
-example-defense-certificate-phd.pdf
+example-legacy-defense-certificate-master.pdf
+example-legacy-defense-certificate-phd.pdf
 ```
 
 The two historical external school-system PDFs are not normal generated release assets. Current students should obtain the current official certificate from the school system and follow current university/department guidance.

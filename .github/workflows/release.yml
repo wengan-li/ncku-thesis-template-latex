@@ -1,29 +1,56 @@
 name: Release
 
 on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Artifact version. Leave empty for dev-<short-sha>; release versions use vMAJOR.MINOR.PATCH.YYMMDDhhmmss (UTC)."
+        required: false
+        type: string
   push:
     tags:
       - "v*"
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: Existing version tag to publish
-        required: true
-        type: string
 
 permissions:
   contents: write
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
+  build:
+    name: Build and verify release assets
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
-      - name: Check out tagged source
+      - name: Check out source
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+
+      - name: Resolve and validate version
+        shell: bash
+        run: |
+          if [[ -n "${{ inputs.version }}" ]]; then
+            VERSION="${{ inputs.version }}"
+          elif [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            VERSION="${GITHUB_REF_NAME}"
+          else
+            VERSION="dev-${GITHUB_SHA::7}"
+          fi
+
+          if [[ "$VERSION" != dev-* ]]; then
+            if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+\.[0-9]{12}$ ]]; then
+              echo "Invalid release version: $VERSION" >&2
+              echo "Expected vMAJOR.MINOR.PATCH.YYMMDDhhmmss using UTC." >&2
+              exit 1
+            fi
+            python3 - "${VERSION##*.}" <<'PY'
+          import datetime
+          import sys
+
+          datetime.datetime.strptime(sys.argv[1], "%y%m%d%H%M%S")
+          PY
+          fi
+
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
 
       - name: Check committed whitespace
         run: git show --check --format= HEAD
@@ -39,37 +66,60 @@ jobs:
             just test
             just release
 
-      - name: Preserve generated assets as workflow artifact
+      - name: Upload workflow artifact
         uses: actions/upload-artifact@v6
         with:
-          name: release-assets
+          name: release-assets-${{ env.VERSION }}
           path: |
             build/release/ncku-thesis-template-latex.zip
             build/release/example-cover.pdf
             build/release/example-thesis-chi.pdf
             build/release/example-thesis-eng.pdf
             build/release/example-thesis-demo.pdf
-            build/release/example-defense-certificate-master.pdf
-            build/release/example-defense-certificate-phd.pdf
+            build/release/example-legacy-defense-certificate-master.pdf
+            build/release/example-legacy-defense-certificate-phd.pdf
           if-no-files-found: error
           retention-days: 30
+
+  github-release:
+    name: Attach verified assets to GitHub release
+    if: github.ref_type == 'tag'
+    needs: build
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Validate tag version
+        shell: bash
+        run: |
+          VERSION="$GITHUB_REF_NAME"
+          if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+\.[0-9]{12}$ ]]; then
+            echo "Invalid release tag: $VERSION" >&2
+            exit 1
+          fi
+          python3 - "${VERSION##*.}" <<'PY'
+          import datetime
+          import sys
+
+          datetime.datetime.strptime(sys.argv[1], "%y%m%d%H%M%S")
+          PY
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Download verified workflow artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: release-assets-${{ env.VERSION }}
+          path: release-artifacts
 
       - name: Create or update GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+        shell: bash
         run: |
-          assets=(
-            build/release/ncku-thesis-template-latex.zip
-            build/release/example-cover.pdf
-            build/release/example-thesis-chi.pdf
-            build/release/example-thesis-eng.pdf
-            build/release/example-thesis-demo.pdf
-            build/release/example-defense-certificate-master.pdf
-            build/release/example-defense-certificate-phd.pdf
-          )
-          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" "${assets[@]}" --clobber
+          assets=(release-artifacts/*)
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "${assets[@]}" --clobber
           else
-            gh release create "$RELEASE_TAG" "${assets[@]}" --verify-tag --generate-notes --title "$RELEASE_TAG"
+            gh release create "$GITHUB_REF_NAME" "${assets[@]}" \
+              --verify-tag \
+              --generate-notes \
+              --title "$GITHUB_REF_NAME"
           fi

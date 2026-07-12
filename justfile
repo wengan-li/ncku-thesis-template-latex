@@ -49,15 +49,16 @@ ci: test
 
 # Build and verify the complete same-source release asset set.
 release: test
+    test -z "$(git status --porcelain --untracked-files=all)" || { echo 'Release requires a clean Git worktree.' >&2; exit 1; }
     rm -rf "{{ build_dir }}/release"
     mkdir -p "{{ build_dir }}/release"
     cp "{{ artifact }}" "{{ build_dir }}/release/example-thesis-demo.pdf"
     just _release-pdf ../scripts/release/cover.tex example-cover
     just _release-pdf ../scripts/release/thesis-chi.tex example-thesis-chi
     just _release-pdf ../scripts/release/thesis-eng.tex example-thesis-eng
-    just _release-pdf ../scripts/release/defense-certificate-master.tex example-defense-certificate-master
-    just _release-pdf ../scripts/release/defense-certificate-phd.tex example-defense-certificate-phd
-    git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex.zip" HEAD:thesis
+    just _release-pdf ../scripts/release/defense-certificate-master.tex example-legacy-defense-certificate-master
+    just _release-pdf ../scripts/release/defense-certificate-phd.tex example-legacy-defense-certificate-phd
+    git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex.zip" HEAD -- justfile latexmkrc README.md LICENSE thesis
     scripts/release/verify-assets.sh "{{ build_dir }}/release"
 
 # Internal helper: build one named release PDF from the thesis source directory.
