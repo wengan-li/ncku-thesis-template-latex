@@ -1,0 +1,75 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to publish
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out tagged source
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+
+      - name: Check committed whitespace
+        run: git show --check --format= HEAD
+
+      - name: Build and verify release assets
+        uses: xu-cheng/texlive-action@v3
+        with:
+          texlive_version: 2026
+          os: alpine
+          scheme: full
+          run: |
+            apk add --no-cache git just poppler-utils unzip
+            just test
+            just release
+
+      - name: Preserve generated assets as workflow artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: release-assets
+          path: |
+            build/release/ncku-thesis-template-latex.zip
+            build/release/example-cover.pdf
+            build/release/example-thesis-chi.pdf
+            build/release/example-thesis-eng.pdf
+            build/release/example-thesis-demo.pdf
+            build/release/example-defense-certificate-master.pdf
+            build/release/example-defense-certificate-phd.pdf
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+        run: |
+          assets=(
+            build/release/ncku-thesis-template-latex.zip
+            build/release/example-cover.pdf
+            build/release/example-thesis-chi.pdf
+            build/release/example-thesis-eng.pdf
+            build/release/example-thesis-demo.pdf
+            build/release/example-defense-certificate-master.pdf
+            build/release/example-defense-certificate-phd.pdf
+          )
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" "${assets[@]}" --clobber
+          else
+            gh release create "$RELEASE_TAG" "${assets[@]}" --verify-tag --generate-notes --title "$RELEASE_TAG"
+          fi

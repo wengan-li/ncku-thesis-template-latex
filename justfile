@@ -39,6 +39,24 @@ test: check
 ci: test
     git diff --check
 
+# Build and verify the complete same-source release asset set.
+release: test
+    rm -rf "{{ build_dir }}/release"
+    mkdir -p "{{ build_dir }}/release"
+    cp "{{ artifact }}" "{{ build_dir }}/release/example-thesis-demo.pdf"
+    just _release-pdf ../scripts/release/cover.tex example-cover
+    just _release-pdf ../scripts/release/thesis-chi.tex example-thesis-chi
+    just _release-pdf ../scripts/release/thesis-eng.tex example-thesis-eng
+    just _release-pdf ../scripts/release/defense-certificate-master.tex example-defense-certificate-master
+    just _release-pdf ../scripts/release/defense-certificate-phd.tex example-defense-certificate-phd
+    git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex.zip" HEAD:thesis
+    scripts/release/verify-assets.sh "{{ build_dir }}/release"
+
+# Internal helper: build one named release PDF from the thesis source directory.
+[private]
+_release-pdf source job:
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/release" -jobname="{{ job }}" "{{ source }}"
+
 # Remove generated LaTeX build artifacts.
 clean:
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}" -C thesis.tex

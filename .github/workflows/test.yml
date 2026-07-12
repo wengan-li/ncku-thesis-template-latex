@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
 
       - name: Check committed whitespace
         run: git show --check --format= HEAD
