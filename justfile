@@ -134,7 +134,12 @@ ci: test
 # Build and verify an Overleaf-compatible StudentMode import package from HEAD.
 overleaf version="dev":
     test -z "$(git status --porcelain --untracked-files=all)" || { echo 'Overleaf packaging requires a clean Git worktree.' >&2; exit 1; }
-    scripts/overleaf/package-and-verify.sh "{{ version }}" "{{ build_dir }}/overleaf"
+    scripts/overleaf/package-and-verify.sh "{{ version }}" "{{ build_dir }}/overleaf" student
+
+# Build and verify a clean public Gallery preview package from HEAD.
+overleaf-gallery version="dev":
+    test -z "$(git status --porcelain --untracked-files=all)" || { echo 'Overleaf Gallery packaging requires a clean Git worktree.' >&2; exit 1; }
+    scripts/overleaf/package-and-verify.sh "{{ version }}" "{{ build_dir }}/overleaf" gallery
 
 # Build and verify the complete same-source release asset set.
 release version="dev": test

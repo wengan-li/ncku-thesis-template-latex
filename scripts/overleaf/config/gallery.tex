@@ -1,0 +1,14 @@
+% Overleaf Gallery publication profile.
+% Loaded after conf/conf.tex by the Gallery packaging workflow only.
+% The canonical student configuration remains unchanged.
+
+% Publish a clean final-state preview rather than a writing-stage draft.
+\renewcommand{\VarCoverDisplayDraft}{0}
+\SetWatermarkText{}
+
+% The public Gallery preview does not use an institutional logo watermark.
+% Clear the watermark already registered during template initialization and
+% prevent cover/oral helpers from adding it back later in the document.
+\ClearWatermarkStyle
+\renewcommand{\UseWatermarkFigureStyle}{\ClearWatermarkStyle}
+\renewcommand{\UseWatermarkTextStyle}{\ClearWatermarkStyle}
