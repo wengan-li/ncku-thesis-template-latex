@@ -68,7 +68,7 @@ Do not delete the sample repository until all conditions are true:
 - [x] Main README no longer treats the sample repository as the current source.
 - [x] A tagged v1.8 release has built and published every replacement asset.
 - [x] Published PDF page counts, A4 dimensions, extracted text, and expected variants are verified.
-- [ ] The student ZIP contains only the `thesis/` contents at the intended project layer and compiles after public download.
+- [x] The student ZIP contains only the `thesis/` contents at the intended project layer and compiles after public download.
 - [ ] Old public links have a migration/redirect period or the owner explicitly accepts that deletion breaks them.
 - [ ] The owner explicitly accepts the effect of deleting a repository with existing stars and forks.
 - [ ] Required GitHub Admin permission is available.
