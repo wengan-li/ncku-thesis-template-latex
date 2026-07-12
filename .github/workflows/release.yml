@@ -62,7 +62,7 @@ jobs:
           os: alpine
           scheme: full
           run: |
-            apk add --no-cache git just poppler-utils unzip
+            apk add --no-cache git just poppler-utils unzip zip
             git config --global --add safe.directory "$GITHUB_WORKSPACE"
             just test
             just release "$VERSION"
@@ -73,12 +73,7 @@ jobs:
           name: release-assets-${{ env.VERSION }}
           path: |
             build/release/ncku-thesis-template-latex-${{ env.VERSION }}.zip
-            build/release/example-cover.pdf
-            build/release/example-thesis-chi.pdf
-            build/release/example-thesis-eng.pdf
-            build/release/example-thesis-full.pdf
-            build/release/example-legacy-defense-certificate-master.pdf
-            build/release/example-legacy-defense-certificate-phd.pdf
+            build/release/ncku-thesis-template-latex-examples-${{ env.VERSION }}.zip
           if-no-files-found: error
           retention-days: 30
 

@@ -88,7 +88,8 @@ release version="dev": test
     just _release-pdf ../scripts/release/defense-certificate-master.tex example-legacy-defense-certificate-master
     just _release-pdf ../scripts/release/defense-certificate-phd.tex example-legacy-defense-certificate-phd
     git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex-{{ version }}.zip" HEAD:thesis
-    scripts/release/verify-assets.sh "{{ build_dir }}/release" "ncku-thesis-template-latex-{{ version }}.zip"
+    scripts/release/package-examples.sh "{{ build_dir }}/release" "ncku-thesis-template-latex-examples-{{ version }}.zip" "{{ version }}"
+    scripts/release/verify-assets.sh "{{ build_dir }}/release" "ncku-thesis-template-latex-{{ version }}.zip" "ncku-thesis-template-latex-examples-{{ version }}.zip" "{{ version }}"
 
 # Internal helper: build one named release PDF from the thesis source directory.
 [private]

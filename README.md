@@ -40,15 +40,12 @@
 
 ### Sample 樣板/範例
 
-由 v1.8.0 開始，樣板 PDF 會由相同版本的 source tag 自動產生，並放在 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 內。每個 release 包含：
+由 v1.8.0 開始，樣板 PDF 會由相同版本的 source tag 自動產生，並放在 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 內。每個 release 提供兩個版本化下載：
 
 - `ncku-thesis-template-latex-<version>.zip`（只包含可直接使用的 `thesis/` 樣板內容；完整 repository source 可使用 GitHub 自動提供的 Source code ZIP）
-- `example-cover.pdf`
-- `example-thesis-chi.pdf`
-- `example-thesis-eng.pdf`
-- `example-thesis-full.pdf`
-- `example-legacy-defense-certificate-master.pdf`
-- `example-legacy-defense-certificate-phd.pdf`
+- `ncku-thesis-template-latex-examples-<version>.zip`（包含相同 source revision 產生並驗證的封面、中英文論文、完整教學文件及證明書示範 PDF）
+
+如要查看輸出效果，請在 Releases 下載 `ncku-thesis-template-latex-examples-<version>.zip`；解壓後先閱讀內附的 `README.md`。證明書 PDF 只供 template-generated 示範與 regression 驗證，正式提交應使用學校學位考試系統產出的文件。
 
 舊 sample repository 不再是最新樣板的來源。完整的 artifact provenance 及刪除記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及 build→release promotion 流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。完整的 XeLaTeX source optimization、測試及現代化 review 記錄在 [`docs/source-optimization-review.md`](docs/source-optimization-review.md)。
 

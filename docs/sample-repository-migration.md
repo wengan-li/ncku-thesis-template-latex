@@ -48,14 +48,11 @@ Current files at sample commit `d92659c13c34ca80efa00291d9839436cd99e58a`:
 `just release` builds and verifies:
 
 ```text
-ncku-thesis-template-latex.zip
-example-cover.pdf
-example-thesis-chi.pdf
-example-thesis-eng.pdf
-example-thesis-full.pdf
-example-legacy-defense-certificate-master.pdf
-example-legacy-defense-certificate-phd.pdf
+ncku-thesis-template-latex-<version>.zip
+ncku-thesis-template-latex-examples-<version>.zip
 ```
+
+The examples package contains the six generated PDFs under stable, context-appropriate names. The generated defense-certificate files remain demonstrations/regression outputs and are not official school-system documents.
 
 The two historical external school-system PDFs are not normal generated release assets. Current students should obtain the current official certificate from the school system and follow current university/department guidance.
 
