@@ -42,7 +42,7 @@
 
 由 v1.8.0 開始，樣板 PDF 會由相同版本的 source tag 自動產生，並放在 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 內。每個 release 包含：
 
-- `ncku-thesis-template-latex.zip`
+- `ncku-thesis-template-latex.zip`（只包含可直接使用的 `thesis/` 樣板內容；完整 repository source 可使用 GitHub 自動提供的 Source code ZIP）
 - `example-cover.pdf`
 - `example-thesis-chi.pdf`
 - `example-thesis-eng.pdf`

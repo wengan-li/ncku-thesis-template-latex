@@ -1,4 +1,4 @@
-#### v1.8.0.260712070548 [2026-07-12]
+#### v1.8.0.260712074004 [2026-07-12]
 
 本版本是保守的維護更新：保留 XeLaTeX、`thesis.tex`、`conf/conf.tex` 和既有 public APIs，同時加入可重複的 build、test、release 和 migration 流程。
 
@@ -13,7 +13,7 @@
   1. 新增 tag-driven build→workflow artifact→GitHub Release promotion流程；manual dispatch只build，不publish。
   2. Release tag格式為`vMAJOR.MINOR.PATCH.YYMMDDhhmmss`，timestamp固定使用UTC並驗證為真實日期時間。
   3. `just release`要求clean Git worktree，避免working-tree PDFs與`HEAD` ZIP來自不同source。
-  4. Release ZIP解壓成單一`ncku-thesis-template-latex/`project directory，包含`justfile`、`latexmkrc`、tests和`thesis/`；解壓後可獨立執行`just test`。
+  4. Release ZIP只包含可直接使用的`thesis/`內容，解壓成單一`ncku-thesis-template-latex/`directory；完整repository可使用GitHub自動提供的Source code ZIP。
   5. 同一source commit產生`example-cover.pdf`、中文／英文／完整論文examples，以及明確標示為legacy的碩士／博士學位考試證明書examples。
 
 - **修正錯誤**:

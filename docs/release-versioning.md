@@ -54,7 +54,7 @@ The workflow also parses the final 12 digits as a real UTC date and time, so imp
 
 `just release` requires a clean Git worktree. This prevents release PDFs built from uncommitted files from being combined with a ZIP produced from `HEAD`.
 
-The ZIP expands to one `ncku-thesis-template-latex/` project directory. It includes the canonical `justfile`, `latexmkrc`, and focused test fixture beside the `thesis/` source directory, so the extracted package can run `just test` without the rest of the Git repository.
+The custom ZIP is a student-ready download containing only the tracked contents of `thesis/`. It expands to one `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/`, and `template/` directly inside. It intentionally excludes repository tooling and tests because GitHub already provides automatic full-source archives.
 
 The promoted release contains:
 

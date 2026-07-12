@@ -48,12 +48,14 @@ done < <(find "$asset_dir" -maxdepth 1 -name '*.log' -type f -print)
 
 archived=$(unzip -Z1 "${asset_dir}/ncku-thesis-template-latex.zip")
 test -n "$archived"
-printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/justfile'
-printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/latexmkrc'
-printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/tests/set-thesis-date.tex'
-printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis/thesis.tex'
-printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis/conf/conf.tex'
-printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis/example/abstract/extended.tex'
+printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/thesis.tex'
+printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/conf/conf.tex'
+printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/example/abstract/extended.tex'
+printf '%s\n' "$archived" | grep -qx 'ncku-thesis-template-latex/template/configure.tex'
+if printf '%s\n' "$archived" | grep -Eq '^ncku-thesis-template-latex/(justfile|latexmkrc|tests/|thesis/)'; then
+  printf 'ZIP contains repository tooling or a redundant thesis/ layer\n' >&2
+  exit 1
+fi
 if printf '%s\n' "$archived" | grep -qv '^ncku-thesis-template-latex/'; then
   printf 'ZIP contains a path outside the release project folder\n' >&2
   exit 1

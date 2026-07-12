@@ -60,7 +60,7 @@ example-thesis-eng.pdf
 example-thesis-full.pdf
 ```
 
-The ZIP extracts to one `ncku-thesis-template-latex/` project directory containing the canonical `justfile`, `latexmkrc`, tests, and `thesis/` source tree. The extracted package must run `just test` without the Git repository.
+The custom release ZIP is the student-ready contents of `thesis/`, not a duplicate full-repository archive. It extracts to one `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/`, and `template/` directly inside. Repository tooling, tests, and a redundant `thesis/` wrapper must not be included; GitHub already provides automatic full-source archives.
 
 Generated master/doctoral defense-certificate examples may be published only as clearly named legacy examples. School-system-produced certificates are external official artifacts: do not regenerate, alter, or imply endorsement/ownership. Preserve historical copies and provenance separately from normal generated release assets.
 
