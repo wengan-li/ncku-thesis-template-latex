@@ -50,7 +50,7 @@
 - `example-defense-certificate-master.pdf`
 - `example-defense-certificate-phd.pdf`
 
-舊 sample repository 不再是最新樣板的來源。
+舊 sample repository 不再是最新樣板的來源。完整的歷史保存、artifact provenance 及刪除條件記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。
 
 ### Build 產生論文
 
