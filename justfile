@@ -37,9 +37,11 @@ demo: example
 check: thesis
     test -s "{{ artifact }}"
     test -s "{{ synctex }}"
-    pdfinfo "{{ artifact }}" | grep -q '^Pages:'
-    pdfinfo "{{ artifact }}" | grep -q '^Page size:.*A4'
-    ! pdftotext "{{ artifact }}" - | grep -q 'doi:10.6844/ncku.latex.template'
+    pdfinfo "{{ artifact }}" > "{{ build_dir }}/thesis.pdfinfo"
+    grep -q '^Pages:' "{{ build_dir }}/thesis.pdfinfo"
+    grep -q '^Page size:.*A4' "{{ build_dir }}/thesis.pdfinfo"
+    pdftotext "{{ artifact }}" "{{ build_dir }}/thesis.txt"
+    ! grep -q 'doi:10.6844/ncku.latex.template' "{{ build_dir }}/thesis.txt"
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
@@ -92,7 +94,8 @@ _test-metadata-bookmark:
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=metadata-bookmark ../tests/metadata-bookmark.tex
     grep -q 'NCKU-TEST-PASS: Unicode metadata and bookmark strings compile cleanly' "{{ build_dir }}/tests/metadata-bookmark.log"
     ! grep -Eiq 'Token not allowed in a PDF string|already defined|destination with the same identifier' "{{ build_dir }}/tests/metadata-bookmark.log"
-    pdfinfo "{{ build_dir }}/tests/metadata-bookmark.pdf" | grep -Fq 'Title:           NCKU Metadata Line (成大中繼資料標題)'
+    pdfinfo "{{ build_dir }}/tests/metadata-bookmark.pdf" > "{{ build_dir }}/tests/metadata-bookmark.pdfinfo"
+    grep -Fq 'Title:           NCKU Metadata Line (成大中繼資料標題)' "{{ build_dir }}/tests/metadata-bookmark.pdfinfo"
 
 # Internal regression test for bundled Latin/CJK font policy.
 [private]
@@ -112,7 +115,8 @@ _test-keyword-values:
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=keyword-values ../tests/keyword-values.tex
     test "$(grep -c 'NCKU-TEST-PASS:' "{{ build_dir }}/tests/keyword-values.log")" -eq 4
     ! grep -q 'NCKU-TEST-FAIL:' "{{ build_dir }}/tests/keyword-values.log"
-    pdfinfo "{{ build_dir }}/tests/keyword-values.pdf" | grep -Fq 'Keywords:        Alpha, Beta'
+    pdfinfo "{{ build_dir }}/tests/keyword-values.pdf" > "{{ build_dir }}/tests/keyword-values.pdfinfo"
+    grep -Fq 'Keywords:        Alpha, Beta' "{{ build_dir }}/tests/keyword-values.pdfinfo"
 
 # Run the complete local CI gate.
 ci: test

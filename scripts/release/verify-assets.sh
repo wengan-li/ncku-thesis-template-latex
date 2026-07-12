@@ -43,9 +43,11 @@ check_pdf() {
   local expected_pages=$2
   local pdf=${asset_dir}/${name}
   local pages
+  local info
 
-  pdfinfo "$pdf" | grep -q '^Page size:.*A4'
-  pages=$(pdfinfo "$pdf" | awk '/^Pages:/ { print $2 }')
+  info=$(pdfinfo "$pdf")
+  grep -q '^Page size:.*A4' <<< "$info"
+  pages=$(awk '/^Pages:/ { print $2 }' <<< "$info")
   if [[ $expected_pages == +* ]]; then
     test "$pages" -ge "${expected_pages#+}"
   else
@@ -66,16 +68,16 @@ done < <(find "$asset_dir" -maxdepth 1 -name '*.log' -type f -print)
 
 student_entries=$(unzip -Z1 "${asset_dir}/${student_zip}")
 test -n "$student_entries"
-printf '%s\n' "$student_entries" | grep -qx 'ncku-thesis-template-latex/README.md'
-printf '%s\n' "$student_entries" | grep -qx 'ncku-thesis-template-latex/thesis.tex'
-printf '%s\n' "$student_entries" | grep -qx 'ncku-thesis-template-latex/conf/conf.tex'
-printf '%s\n' "$student_entries" | grep -qx 'ncku-thesis-template-latex/example/abstract/extended.tex'
-printf '%s\n' "$student_entries" | grep -qx 'ncku-thesis-template-latex/template/configure.tex'
-if printf '%s\n' "$student_entries" | grep -Eq '^ncku-thesis-template-latex/(justfile|latexmkrc|tests/|thesis/)'; then
+grep -qx 'ncku-thesis-template-latex/README.md' <<< "$student_entries"
+grep -qx 'ncku-thesis-template-latex/thesis.tex' <<< "$student_entries"
+grep -qx 'ncku-thesis-template-latex/conf/conf.tex' <<< "$student_entries"
+grep -qx 'ncku-thesis-template-latex/example/abstract/extended.tex' <<< "$student_entries"
+grep -qx 'ncku-thesis-template-latex/template/configure.tex' <<< "$student_entries"
+if grep -Eq '^ncku-thesis-template-latex/(justfile|latexmkrc|tests/|thesis/)' <<< "$student_entries"; then
   printf 'student ZIP contains repository tooling or a redundant thesis/ layer\n' >&2
   exit 1
 fi
-if printf '%s\n' "$student_entries" | grep -qv '^ncku-thesis-template-latex/'; then
+if grep -qv '^ncku-thesis-template-latex/' <<< "$student_entries"; then
   printf 'student ZIP contains a path outside the project folder\n' >&2
   exit 1
 fi
