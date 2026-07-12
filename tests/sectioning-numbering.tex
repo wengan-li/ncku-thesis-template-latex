@@ -1,0 +1,22 @@
+% Regression fixture for starred section headings and numbered references.
+% Build from the thesis/ directory.
+\input{./template/configure}
+
+\begin{document}
+\chapter*{NCKU Star Chapter Sentinel}
+\section*{NCKU Star Section Sentinel}
+\subsection*{NCKU Star Subsection Sentinel}
+\subsubsection*{NCKU Star Subsubsection Sentinel}
+
+\chapter{NCKU Numbered Chapter Sentinel}\label{ncku:test:chapter}
+\section{NCKU Numbered Section Sentinel}\label{ncku:test:section}
+\subsection{NCKU Numbered Subsection Sentinel}\label{ncku:test:subsection}
+\subsubsection{NCKU Numbered Subsubsection Sentinel}\label{ncku:test:subsubsection}
+
+Chapter reference: \ref{ncku:test:chapter}.
+Section reference: \ref{ncku:test:section}.
+Subsection reference: \ref{ncku:test:subsection}.
+Subsubsection reference: \ref{ncku:test:subsubsection}.
+
+\typeout{NCKU-TEST-PASS: sectioning headings and numbered references compile}
+\end{document}

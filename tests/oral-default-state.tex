@@ -1,0 +1,13 @@
+% Regression fixture for the default oral-certificate document state.
+% Build from the thesis/ directory.
+\input{./template/configure}
+
+\begin{document}
+\edef\NckuActualOralDocumentType{\GetOralDocumentType}
+\edef\NckuExpectedOralDocumentType{\ValueOralDocumentTypeImage}
+\ifx\NckuActualOralDocumentType\NckuExpectedOralDocumentType
+  \typeout{NCKU-TEST-PASS: oral certificate defaults to the external-image path}
+\else
+  \errmessage{The oral-certificate document type does not default to the external-image path}
+\fi
+\end{document}

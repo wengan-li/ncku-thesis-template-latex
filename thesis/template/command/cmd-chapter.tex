@@ -128,7 +128,7 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySectionHeader}[3]%
+\DeclareDocumentCommand{\DisplaySectionHeader}{m m m O{1}}%
 {%
   \par%
   \vspace{0.5cm}%
@@ -156,8 +156,10 @@
   \ifthenelse{\equal{#3}{Right}}%
     {\end{flushright}\par}{}%
   %
-  \addcontentsline{%
-    toc}{section}{#1\GetSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
+  \ifnum#4=1\relax%
+    \addcontentsline{%
+      toc}{section}{#1\GetSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
+  \fi%
 } % End of \newcommand{}
 
 \RenewDocumentCommand{\section}{s m}
@@ -167,7 +169,7 @@
   \IfBooleanTF{#1}%
   {%
     % \section*{}
-%        Starred
+    \DisplaySectionHeader{\empty}{#2}{\GetSTitleNumberFormatTextAlign}[0]%
   }%
   {%
     % \section{}
@@ -194,7 +196,7 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySubSectionHeader}[3]%
+\DeclareDocumentCommand{\DisplaySubSectionHeader}{m m m O{1}}%
 {%
   \par%
   \vspace{0.5cm}%
@@ -222,8 +224,10 @@
   \ifthenelse{\equal{#3}{Right}}%
     {\end{flushright}\par}{}%
   %
-  \addcontentsline{%
-    toc}{subsection}{#1\GetSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
+  \ifnum#4=1\relax%
+    \addcontentsline{%
+      toc}{subsection}{#1\GetSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
+  \fi%
 } % End of \newcommand{}
 
 \RenewDocumentCommand{\subsection}{s m}
@@ -233,7 +237,7 @@
   \IfBooleanTF{#1}%
   {%
     % \subsection*{}
-%        Starred
+    \DisplaySubSectionHeader{\empty}{#2}{\GetSSTitleNumberFormatTextAlign}[0]%
   }%
   {%
     % \subsection{}
@@ -262,7 +266,7 @@
 
 % ----------------------------------------------------------------------------
 
-\newcommand{\DisplaySubSubSectionHeader}[3]%
+\DeclareDocumentCommand{\DisplaySubSubSectionHeader}{m m m O{1}}%
 {%
   \par%
   \vspace{0.5cm}%
@@ -290,8 +294,10 @@
   \ifthenelse{\equal{#3}{Right}}%
     {\end{flushright}\par}{}%
   %
-  \addcontentsline{%
-    toc}{subsubsection}{#1\GetSSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
+  \ifnum#4=1\relax%
+    \addcontentsline{%
+      toc}{subsubsection}{#1\GetSSSTitleNumberFormatSepAtIndex{\ \ \ }#2}%
+  \fi%
 } % End of \newcommand{}
 
 \RenewDocumentCommand{\subsubsection}{s m}
@@ -301,7 +307,7 @@
   \IfBooleanTF{#1}%
   {%
     % \subsubsection*{}
-%        Starred
+    \DisplaySubSubSectionHeader{\empty}{#2}{\GetSSSTitleNumberFormatTextAlign}[0]%
   }%
   {%
     % \subsubsection{}

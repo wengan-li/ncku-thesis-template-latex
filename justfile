@@ -38,7 +38,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-set-thesis-date
+test: check _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state
 
 # Internal regression test for the legacy cover-date command.
 [private]
@@ -46,6 +46,25 @@ _test-set-thesis-date:
     mkdir -p "{{ build_dir }}/tests"
     cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=set-thesis-date ../tests/set-thesis-date.tex
     grep -q 'NCKU-TEST-PASS: legacy and current cover-date commands terminate safely' "{{ build_dir }}/tests/set-thesis-date.log"
+
+# Internal regression test for starred headings and numbered references.
+[private]
+_test-sectioning-numbering:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=sectioning-numbering ../tests/sectioning-numbering.tex
+    grep -q 'NCKU-TEST-PASS: sectioning headings and numbered references compile' "{{ build_dir }}/tests/sectioning-numbering.log"
+    ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/sectioning-numbering.log"
+    pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" - | grep -q 'NCKU Star Chapter Sentinel'
+    pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" - | grep -q 'NCKU Star Section Sentinel'
+    pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" - | grep -q 'NCKU Star Subsection Sentinel'
+    pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" - | grep -q 'NCKU Star Subsubsection Sentinel'
+
+# Internal regression test for the oral-certificate default state.
+[private]
+_test-oral-default-state:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=oral-default-state ../tests/oral-default-state.tex
+    grep -q 'NCKU-TEST-PASS: oral certificate defaults to the external-image path' "{{ build_dir }}/tests/oral-default-state.log"
 
 # Run the complete local CI gate.
 ci: test
