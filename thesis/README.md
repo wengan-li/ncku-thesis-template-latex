@@ -11,6 +11,12 @@ This directory is the complete student project. The versioned GitHub Release ZIP
 
 The large document selected by `\ExampleMode` is the complete teaching example. It is useful as a reference but is slower to rebuild than a normal thesis using `context/context.tex`.
 
+## Draft and institutional watermark
+
+The student project defaults to final-ready output: no `(Draft)` / `(初稿)` cover marker, no diagonal `DRAFT` text layer, and no institutional logo watermark. During writing or review, uncomment `\DisplayDraft` in `conf/conf.tex` only when you deliberately want the cover marked as a draft; keep it disabled for final output. A diagonal text watermark is a separate `draftwatermark` package feature and must also be enabled explicitly.
+
+The template retains `\UseWatermarkFigureStyle` and `\UseWatermarkTextStyle` as explicit compatibility/customization APIs, but it does not enable either one by default. Do not add a template watermark to the submission PDF merely because the API exists. Follow the current university, library, and department instructions; the school system may apply its own watermark to the approved electronic copy.
+
 ## Build the final document
 
 Install a distribution with XeLaTeX, BibTeX, `latexmk`, and LaTeX2e format 2020-10-01 or newer. TeX Live 2021 or newer is recommended; release CI uses TeX Live 2026. Then run this command from the project directory:
@@ -71,5 +77,6 @@ The exact menu name differs by editor version. The important behavior is that th
 1. Stop any continuous-preview process.
 2. Run the normal final build command again.
 3. Check the log for unresolved references or citations.
-4. Review the complete PDF, page numbering, contents, lists, bibliography, fonts, and official school requirements.
-5. Use the official school-generated defense-certificate document when required; template-generated demonstrations are not official documents.
+4. Confirm that the final PDF has no `(Draft)` / `(初稿)` marker, diagonal `DRAFT` text, or template-added institutional logo watermark unless a current official requirement explicitly asks for one.
+5. Review the complete PDF, page numbering, contents, lists, bibliography, fonts, and official school requirements.
+6. Use the official school-generated defense-certificate document when required; template-generated demonstrations are not official documents.

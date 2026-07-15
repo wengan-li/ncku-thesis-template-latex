@@ -1,0 +1,18 @@
+% Focused regression fixture proving Draft and institutional watermark remain opt-in.
+% Build from the thesis/ directory.
+\input{./template/configure}
+\StudentMode
+\DisplayDraft
+\SetWatermarkText{DRAFT}
+\UseWatermarkFigureStyle
+
+\makeatletter
+\ifx\draftwatermark@text\@empty
+  \PackageError{ncku-test}{Explicit diagonal draft watermark text is empty}{}
+\else
+  \typeout{NCKU-TEST-PASS: diagonal draft watermark text remains an explicit opt-in}
+\fi
+\makeatother
+
+\typeout{NCKU-TEST-PASS: draft and institutional watermark remain explicit opt-ins}
+\CreateThesis

@@ -7,9 +7,11 @@ Checked: 2026-07-12
 ## Implementation status
 
 - Complete: sectioning/star behavior fixture and fix; core numbering/reference fixture; explicit oral default state; final-log diagnostics baseline; Unicode metadata/bookmark and font/CJK fixtures; continuous preview and student-mode guidance; versioned student/examples release packages; CI cache/runner decision; `iftex`/kernel document-command cleanup with an explicit minimum LaTeX format.
+- Complete on `main`, pending a future release: the cover Draft marker, diagonal text watermark, and institutional-logo watermark defaults now match the final-submission guidance; all three layers remain explicit opt-ins with default-off and opt-in regression coverage. Historical evidence and the distribution boundary are recorded in [`draft-watermark-history.md`](draft-watermark-history.md).
 - Complete safe P2 simplification: shared figure/table caption-label implementation, shared optional-keyword appending, and removal of commented-out caption/column experiments. Public wrappers and argument signatures remain unchanged.
 - Rejected after measurement: a separate chapter-preview entry point, because a real student-mode chapter edit rebuilt in approximately 1.45 seconds and another document mode would add numbering/reference risk.
-- Pending: Overleaf publication research/verification, final release, and integration into `main`.
+- Complete: Overleaf publication research/verification, v1.8.1 release, and integration into `main`; the public Gallery template was approved on 2026-07-15.
+- Pending: a future release containing the post-v1.8.1 diagnostics and safe-default fixes currently accumulated on `main`.
 - Deferred to a major-version experiment: numbering/theorem registry rewrites (the v1.8 fixtures do not cover every custom-format combination), class/package redesign, broad `expl3` conversion, `l3build`, engine migration, and tagged-PDF/PDF-UA work.
 
 ## Intent

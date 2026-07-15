@@ -2,5 +2,13 @@
 \input{./template/configure}
 \StudentMode
 
+\makeatletter
+\ifx\draftwatermark@text\@empty
+  \typeout{NCKU-TEST-PASS: default diagonal draft watermark text is empty}
+\else
+  \PackageError{ncku-test}{Default diagonal draft watermark text is not empty}{}
+\fi
+\makeatother
+
 \typeout{NCKU-TEST-PASS: student mode compiles without teaching examples}
 \CreateThesis

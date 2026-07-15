@@ -79,7 +79,14 @@
   \SetWatermarkVerCenter{28.4 cm}
 } % End of \newcommand{}
 
-% 設定預設使用學校浮水印 Watermark
-\UseWatermarkFigureStyle
+% The draftwatermark package defaults its text to `DRAFT` as soon as it is
+% loaded. Clear that independent text layer explicitly; \DisplayDraft controls
+% only the cover marker, while figure/text watermark APIs remain opt-ins below.
+\SetWatermarkText{}
+
+% Watermarks are explicit opt-ins. Student/final output must not receive an
+% institutional logo merely by loading the template. Use one of the public
+% \UseWatermark... APIs only when a current requirement explicitly calls for it.
+%\UseWatermarkFigureStyle
 
 % ----------------------------------------------------------------------------

@@ -49,7 +49,7 @@
 
 如要查看輸出效果，請在 Releases 下載 `ncku-thesis-template-latex-examples-<version>.zip`；解壓後先閱讀內附的 `README.md`。證明書 PDF 只供 template-generated 示範與 regression 驗證，正式提交應使用學校學位考試系統產出的文件。
 
-舊 sample repository 不再是最新樣板的來源。完整的 artifact provenance 及刪除記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及 build→release promotion 流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。完整的 XeLaTeX source optimization、測試及現代化 review 記錄在 [`docs/source-optimization-review.md`](docs/source-optimization-review.md)。
+舊 sample repository 不再是最新樣板的來源。完整的 artifact provenance 及刪除記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及 build→release promotion 流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。完整的 XeLaTeX source optimization、測試及現代化 review 記錄在 [`docs/source-optimization-review.md`](docs/source-optimization-review.md)。Draft／學校浮水印的歷史、舊預設矛盾、修正後政策及驗證 contract 記錄在 [`docs/draft-watermark-history.md`](docs/draft-watermark-history.md)。
 
 ### Student build 學生使用
 

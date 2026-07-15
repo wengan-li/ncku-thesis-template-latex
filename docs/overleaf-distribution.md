@@ -1,8 +1,8 @@
 # Overleaf distribution decision
 
-Status: Gallery package submitted; publication intent confirmed; moderation pending
+Status: Gallery template approved and published on 2026-07-15
 
-Checked: 2026-07-12
+Checked: 2026-07-15
 
 ## Decision
 
@@ -11,7 +11,7 @@ Maintain two reproducible Overleaf profiles without changing the canonical teach
 1. `just overleaf <version>` produces the editable StudentMode import package;
 2. `just overleaf-gallery <version>` produces the public Gallery preview package.
 
-The Gallery profile is deliberately final-looking: it removes Draft markers, suppresses the institutional logo watermark, excludes unused watermark/oral-example PDFs, keeps dummy metadata, and retains XeLaTeX and the same thesis layout/API surface. The original student configuration remains suitable for writing and is not edited by hand for publication.
+The canonical student configuration is final-ready by default: the cover Draft marker, diagonal `draftwatermark` text layer, and institutional logo watermark are explicit opt-ins. The Gallery profile independently enforces the same clean publication state as defence in depth, excludes unused watermark/oral-example PDFs, keeps dummy metadata, and retains XeLaTeX and the same thesis layout/API surface. The source configuration is never edited and restored by hand for publication.
 
 Overleaf's current policy generally lists non-official university thesis templates as unsuitable, but it also reserves discretion to accept templates outside its listed categories and already hosts older community NCKU templates. The repository therefore submitted an accurately labelled community template for moderation rather than claiming institutional endorsement or assuming automatic acceptance.
 
@@ -127,7 +127,9 @@ A project-level license does not prove redistribution rights for every bundled t
 
 ## Publication and update ownership
 
-The Gallery project was submitted on 2026-07-12. Overleaf sent a public-intent confirmation email; the required confirmation sentence was sent in reply, so the submission is now awaiting moderation. This is not approval or publication.
+The Gallery project was submitted on 2026-07-12 and approved/published by Overleaf on 2026-07-15. The public template is:
+
+<https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn>
 
 Operational rules:
 
@@ -138,7 +140,7 @@ Operational rules:
 - retain the official NCKU guidance link without implying institutional endorsement;
 - treat moderation requests about similarity, licensing, fonts, or institutional status as unresolved gates rather than working around them in a replacement submission.
 
-No further Overleaf action is required until the moderation response arrives. If approved, record the public Gallery URL and re-download/open the published template to verify its compiler, main document, files, and PDF independently. If changes are requested, update the source generator first, rebuild and verify the Gallery ZIP, then update and resubmit the original Overleaf project.
+The approved public template was independently re-opened and verified with XeLaTeX, `thesis.tex` as the main document, TeX Live 2025, and a clean publication preview. Future changes must update the source generator first, rebuild and verify the Gallery ZIP, then update and resubmit the original Overleaf project; editing GitHub alone does not update the Gallery.
 
 ## Official sources
 

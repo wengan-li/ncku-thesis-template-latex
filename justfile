@@ -41,11 +41,14 @@ check: thesis
     grep -q '^Pages:' "{{ build_dir }}/thesis.pdfinfo"
     grep -q '^Page size:.*A4' "{{ build_dir }}/thesis.pdfinfo"
     pdftotext "{{ artifact }}" "{{ build_dir }}/thesis.txt"
+    pdftotext -f 1 -l 1 "{{ artifact }}" "{{ build_dir }}/thesis-cover.txt"
+    ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ build_dir }}/thesis-cover.txt"
+    ! grep -F 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/thesis.fls"
     ! grep -q 'doi:10.6844/ncku.latex.template' "{{ build_dir }}/thesis.txt"
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode
+test: check _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]
@@ -124,8 +127,23 @@ _test-student-mode:
     mkdir -p "{{ build_dir }}/tests"
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=student-mode ../tests/student-mode.tex
     grep -q 'NCKU-TEST-PASS: student mode compiles without teaching examples' "{{ build_dir }}/tests/student-mode.log"
+    grep -q 'NCKU-TEST-PASS: default diagonal draft watermark text is empty' "{{ build_dir }}/tests/student-mode.log"
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/student-mode.log"
     ! grep -F '/example/' "{{ build_dir }}/tests/student-mode.fls"
+    pdftotext -f 1 -l 1 "{{ build_dir }}/tests/student-mode.pdf" "{{ build_dir }}/tests/student-mode-cover.txt"
+    ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ build_dir }}/tests/student-mode-cover.txt"
+    ! grep -F 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/tests/student-mode.fls"
+
+# Internal regression test proving Draft and institutional watermark remain opt-in.
+[private]
+_test-draft-watermark-opt-in:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=draft-watermark-opt-in ../tests/draft-watermark-opt-in.tex
+    grep -q 'NCKU-TEST-PASS: draft and institutional watermark remain explicit opt-ins' "{{ build_dir }}/tests/draft-watermark-opt-in.log"
+    grep -q 'NCKU-TEST-PASS: diagonal draft watermark text remains an explicit opt-in' "{{ build_dir }}/tests/draft-watermark-opt-in.log"
+    pdftotext -f 1 -l 1 "{{ build_dir }}/tests/draft-watermark-opt-in.pdf" "{{ build_dir }}/tests/draft-watermark-opt-in-cover.txt"
+    grep -Fq '(Draft)' "{{ build_dir }}/tests/draft-watermark-opt-in-cover.txt"
+    grep -Fq 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/tests/draft-watermark-opt-in.fls"
 
 # Run the complete local CI gate.
 ci: test
