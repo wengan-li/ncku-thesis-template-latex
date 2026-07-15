@@ -146,7 +146,13 @@
       label={fig:how-to:use:build:texmaker:thesis.tex}]
     {./example/how-to/use/build/pic/texmaker/1.png}
 
-建議將Texmaker的編譯命令設為\verb|latexmk -xelatex -synctex=1 -interaction=nonstopmode %.tex|，並以`thesis.tex'作為主文件。\texttt{latexmk}會按需要自動執行XeLaTeX、BibTeX及重複編譯，不需要人手猜測次序。圖\RefTo{fig:how-to:use:build:texmaker:to_xelatex}所示的直接XeLaTeX模式仍可作基本相容用法，但正式文件應以\texttt{latexmk}完成所有引用及目錄收斂。(註: 第一次使用時MiKTeX可能會自動下載工具，所以會等待比較久。)
+建議將Texmaker的編譯命令設為：
+
+\begin{center}
+\verb|latexmk -xelatex -synctex=1 -interaction=nonstopmode %.tex|
+\end{center}
+
+並以`thesis.tex'作為主文件。\texttt{latexmk}會按需要自動執行XeLaTeX、BibTeX及重複編譯，不需要人手猜測次序。圖\RefTo{fig:how-to:use:build:texmaker:to_xelatex}所示的直接XeLaTeX模式仍可作基本相容用法，但正式文件應以\texttt{latexmk}完成所有引用及目錄收斂。(註: 第一次使用時MiKTeX可能會自動下載工具，所以會等待比較久。)
 
   \InsertFigure
     [scale=0.8,
@@ -209,7 +215,9 @@
 
 儲存任何被引用的TeX、BibTeX或圖片檔後，PDF會自動重建。\verb|-view=none|避免另外打開第二個viewer；可繼續使用Texmaker或TeXstudio內置、能自動重新載入的PDF viewer。停止監察可按\texttt{Ctrl-C}。
 
-實際編寫自己論文時，請在\verb|conf/conf.tex|關閉\verb|\ExampleMode|，讓主文件使用\verb|context/context.tex|；完整教學範例包含大量圖片及附錄PDF，重建時間會較長。
+實際編寫自己論文時，請在\verb|conf/conf.tex|關閉\verb|\ExampleMode|。
+
+主文件會改用\verb|context/context.tex|；完整教學範例包含大量圖片及附錄PDF，重建時間會較長。
 
 如果auxiliary files損壞，可執行\verb|latexmk -C thesis.tex|清除可重新產生的檔案，再重新build。不要把反覆刪檔及猜測XeLaTeX/BibTeX次序當成正常流程。正式提交前應再執行一次普通\texttt{latexmk} build，並檢查完整PDF、頁碼、目錄、引用及參考文獻。
 

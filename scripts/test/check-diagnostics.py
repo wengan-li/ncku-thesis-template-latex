@@ -68,7 +68,7 @@ layout_counts = {
 }
 layout_budget = {
     "underfull-hbox": 130,
-    "overfull-hbox": 21,
+    "overfull-hbox": 18,
     "underfull-vbox": 0,
     "overfull-vbox": 0,
 }
