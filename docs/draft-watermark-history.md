@@ -1,6 +1,6 @@
 # Draft and institutional watermark history and policy
 
-Status: default-output bug fixed on `main`; not yet included in a release
+Status: fixed and included in `v1.8.2.260715154703`
 
 Checked: 2026-07-15
 
@@ -132,9 +132,9 @@ When these defaults change, lower-level tests are not enough: verify the exact s
 
 ## Release and distribution boundary
 
-Release `v1.8.1.260715130936` predates this fix and retains the legacy student-package defaults. The source correction is intentionally being accumulated on `main` without moving the immutable v1.8.1 tag or publishing a replacement release.
+Release `v1.8.1.260715130936` predates this fix and retains the legacy student-package defaults. Release `v1.8.2.260715154703` is the first immutable release whose student package uses the corrected final-ready defaults.
 
-A future release should include this fix only after the full source, student package, examples package, and Gallery profile pass their respective gates. Updating the public Overleaf Gallery is a separate owner action: edit and resubmit the original Overleaf project; source changes on GitHub do not update the Gallery automatically.
+The v1.8.2 release must pass the full source, student package, examples package, and Gallery-profile gates plus public asset re-download verification. Updating the public Overleaf Gallery remains a separate owner action: edit and resubmit the original Overleaf project; source changes or a GitHub release do not update the Gallery automatically.
 
 ## Evidence locations
 

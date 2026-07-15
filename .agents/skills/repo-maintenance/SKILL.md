@@ -146,8 +146,9 @@ a local or workflow artifact alone is insufficient.
 - Treating the 271-page teaching document as the normal student rebuild cost.
 - Caching LaTeX auxiliary state in required clean test/release lanes.
 - Switching to an Arm runner while the selected TeX container is amd64-only.
-- Submitting this unofficial university thesis template to the Overleaf Gallery;
-  use the documented API/direct-upload alternative unless NCKU endorses it.
+- Treating Overleaf's accepted community-maintained Gallery listing as NCKU
+  endorsement. Keep the unofficial label, and update only through the original
+  Overleaf project followed by resubmission and reapproval.
 - Publishing loose example PDFs in addition to the examples ZIP.
 - Using `legacy` in a public filename when `generated` plus a clear package
   notice communicates the institutional-document boundary more accurately.

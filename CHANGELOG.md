@@ -1,3 +1,26 @@
+#### v1.8.2.260715154703 [2026-07-15]
+
+本版本修正長期存在的Draft／浮水印預設錯誤及教學文件文字超出版面；保持XeLaTeX、既有public APIs和StudentMode正文內容相容。
+
+- **Defaults / Bug fixes**:
+  1. 正常StudentMode及完整teaching example預設不再顯示封面`(Draft)`／`(初稿)`、`draftwatermark`斜向`DRAFT`文字或NCKU校印／logo浮水印。
+  2. 保留`\DisplayDraft`、`\SetWatermarkText`、`\UseWatermarkFigureStyle`、`\UseWatermarkTextStyle`及`\ClearWatermarkStyle`作明確opt-in APIs，沒有移除或重新命名public commands。
+  3. 修正v1.6.0只註解NCKU style call、但generic watermark module仍自動啟用校印的歷史遺留問題；同時明確清除`draftwatermark`package自帶的`text=DRAFT`預設。
+
+- **Layout / Diagnostics**:
+  1. 將三個可見超出版面邊界的teaching-guide例子改成可讀的獨立／多行格式：Texmaker `latexmk`command、`ExampleMode`source-path說明及`\SetKeywords`example。
+  2. Full teaching document的`overfull-hbox`diagnostics budget由21收緊至18，防止三個已修正問題回歸。
+
+- **Tests / Verification**:
+  1. 新增default-off及explicit opt-in regression coverage，分別驗證封面marker、`draftwatermark`internal text state和NCKU watermark asset dependency。
+  2. 以修正前commit與修正後StudentMode逐頁比較；11頁A4 page count不變，移除預期Draft fragments後每頁normalized body token counts完全一致，`thesis/context/`正文source tree亦沒有改動。
+  3. 實際render並檢查cover、abstract、TOC、nomenclature及最後references頁，確認正文完整、無clipping、無遮擋；explicit opt-in fixture仍可重現三層Draft／watermark效果。
+
+- **Documentation / Distribution**:
+  1. 新增`docs/draft-watermark-history.md`，記錄2015 Draft feature、2016 generic watermark default、v1.6.0不完整移除、第三方package預設、Gallery overlay及release boundary。
+  2. 更新student README、teaching content、Overleaf distribution及source optimization記錄，說明final-ready defaults與正式提交前檢查。
+  3. 記錄Overleaf Gallery已於2026-07-15核准並公開；Gallery後續更新仍須使用並resubmit原本Overleaf project。
+
 #### v1.8.1.260715130936 [2026-07-15]
 
 本版本新增已核准的Overleaf Gallery公開入口；不修改XeLaTeX模版source、public APIs或PDF輸出。
