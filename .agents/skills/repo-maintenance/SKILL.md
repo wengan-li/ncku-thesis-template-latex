@@ -140,6 +140,13 @@ After pushing, verify the exact GitHub Actions run. After publishing or changing
 Release assets, download them from their public URLs and verify the public state;
 a local or workflow artifact alone is insufficient.
 
+For GitHub Actions dependency maintenance, enumerate every repository-owned
+`uses:` reference across all workflow files and check each action's official
+latest stable release plus `action.yml` runtime. After pushing, run the normal
+Test workflow and a manual build-only Release workflow, then inspect job
+annotations; a green status alone does not prove runtime deprecation warnings
+are gone. Manual Release dispatch must not promote a GitHub Release.
+
 ## Pitfalls
 
 - Mixing student instructions with maintainer-only `just` or CI commands.

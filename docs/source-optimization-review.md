@@ -12,6 +12,7 @@ Checked: 2026-07-15
 - Rejected after measurement: a separate chapter-preview entry point, because a real student-mode chapter edit rebuilt in approximately 1.45 seconds and another document mode would add numbering/reference risk.
 - Complete: Overleaf publication research/verification, v1.8.1 release, and integration into `main`; the public Gallery template was approved on 2026-07-15.
 - Complete in v1.8.2: post-v1.8.1 visible-overflow diagnostics cleanup and final-ready Draft/watermark safe defaults.
+- Complete after v1.8.2: all repository-owned GitHub Actions references use their latest stable major versions checked on 2026-07-15 (`actions/checkout@v7`, `actions/upload-artifact@v7`, `actions/download-artifact@v8`, and the already-current `xu-cheng/texlive-action@v3`). The JavaScript actions declare Node.js 24 and remove the runner's Node.js 20 compatibility warning.
 - Deferred to a major-version experiment: numbering/theorem registry rewrites (the v1.8 fixtures do not cover every custom-format combination), class/package redesign, broad `expl3` conversion, `l3build`, engine migration, and tagged-PDF/PDF-UA work.
 
 ## Intent
