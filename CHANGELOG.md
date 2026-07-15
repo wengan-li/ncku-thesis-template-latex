@@ -1,3 +1,11 @@
+#### v1.8.1.260715130936 [2026-07-15]
+
+本版本新增已核准的Overleaf Gallery公開入口；不修改XeLaTeX模版source、public APIs或PDF輸出。
+
+- **Documentation / Overleaf**:
+  1. 在root `README.md`頂部加入`Open as Template in Overleaf`連結，讓使用者直接由GitHub進入公開Gallery模版。
+  2. 連結指向Overleaf已核准並公開的`National Cheng Kung University Thesis and Dissertation Template — XeLaTeX`頁面。
+
 #### v1.8.0.260712123948 [2026-07-12]
 
 本版本完成v1.8 maintenance後續驗證與distribution hardening；保持XeLaTeX、既有public APIs和可見版面相容。

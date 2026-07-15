@@ -2,6 +2,8 @@
 
 ### 台灣國立成功大學碩博士用畢業論文 LaTex 模版
 
+[**Open as Template in Overleaf**](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn)
+
 這是國立成功大學碩博士用畢業論文的 LaTex 模版. 這模版是以[博碩士學位論文格式規範 (110.01.06 109學年度第2次教務會議修正通過)](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw) 的要求來設計, 請留意學校的最新所訂的要求能否使用這模版.
 
 本專案由社群維護，並不是國立成功大學官方認可或背書的軟體。學校、圖書館、學位考試系統及各系所的最新規定永遠優先於本模版。官方指引最後查核日期：`2026-07-12`（[博碩士論文系統](https://thesis.lib.ncku.edu.tw/)、[建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)、[教務處課務組](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)）。
