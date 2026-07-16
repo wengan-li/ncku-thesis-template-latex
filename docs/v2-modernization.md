@@ -1,6 +1,6 @@
 # V2 Modernization IDSD Brief
 
-Status: Active on `v2.x`
+Status: Active on `feat/v2.x`
 Owner: Wen-Gan Li
 
 ## Intent
@@ -101,6 +101,21 @@ Open decisions discovered during implementation must be recorded here or in the
 migration guide before changing an observable contract. The accepted defaults
 are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 
+## Final Validation Evidence
+
+The completed v2 slice was validated from a clean committed worktree:
+
+- `just ci`: pass, including canonical build and all focused fixtures;
+- v1 API gate: 612/612 declarations preserved, with 66 additive v2 declarations;
+- canonical NCKU PDF: 271 A4 pages;
+- diagnostic budgets: all pass, including zero empty-hyperlink and zero unknown
+  CJK-family warnings;
+- profile-extraction comparison: canonical extracted text identical, cover word
+  count/bounding boxes identical, and 150-DPI cover raster RMSE `0 (0)`;
+- custom profile: two A4 pages, distinct `July 2024` cover and
+  `31 December 2023` oral dates, no NCKU visible text/logo/watermark asset, and
+  no clipping or overlap on rendered inspection.
+
 ## Progress
 
 - [x] Create and enforce the v1 command/environment baseline.
@@ -109,4 +124,4 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 - [x] Add the v1 compatibility adapter and style profile contract.
 - [x] Extract NCKU policy/data and add a neutral custom profile.
 - [x] Complete migration and customization documentation.
-- [ ] Run final compatibility, PDF, and rendered-page validation.
+- [x] Run final compatibility, PDF, and rendered-page validation.

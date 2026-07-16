@@ -16,9 +16,9 @@ Repository maintenance skill: `.agents/skills/repo-maintenance/SKILL.md`
 
 ## V2 modernization outcome
 
-The `v2.x` branch is the only planned development line after v1.8. It skips a
-separate v1.9 release and delivers a compatibility-preserving v2 architecture
-that:
+The `feat/v2.x` branch is the only planned development branch after v1.8. It
+skips a separate v1.9 release and delivers a compatibility-preserving v2
+architecture that:
 
 1. keeps the visible NCKU layout and top-level student project structure;
 2. preserves every explicitly declared v1 command/environment throughout 2.x;
