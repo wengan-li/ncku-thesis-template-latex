@@ -38,5 +38,47 @@
 
 References: \ref{ncku:test:definition}, \ref{ncku:test:theorem-first}, \ref{ncku:test:theorem-second}, \ref{ncku:test:theorem-reset}.
 Named reference: \nameref{ncku:test:theorem-first}.
+
+% Exercise every public setter route after rendering so getter mutation cannot
+% affect the established PDF contract above.
+\newcommand{\ExerciseTheoremFormatRoute}[1]{%
+  \SetTheoremFormat[#1]{ShowText = {Registry#1}}%
+  \typeout{NCKU-TEST-ROUTE-#1: \csname GetTheorem#1FormatShowText\endcsname}%
+}
+\ExerciseTheoremFormatRoute{Definition}
+\ExerciseTheoremFormatRoute{Condition}
+\ExerciseTheoremFormatRoute{Problem}
+\ExerciseTheoremFormatRoute{Example}
+\ExerciseTheoremFormatRoute{Theorem}
+\ExerciseTheoremFormatRoute{Lemma}
+\ExerciseTheoremFormatRoute{Corollary}
+\ExerciseTheoremFormatRoute{Proposition}
+\ExerciseTheoremFormatRoute{Conjecture}
+\ExerciseTheoremFormatRoute{Proof}
+\ExerciseTheoremFormatRoute{Note}
+\ExerciseTheoremFormatRoute{Annotation}
+\ExerciseTheoremFormatRoute{Claim}
+\ExerciseTheoremFormatRoute{Case}
+\ExerciseTheoremFormatRoute{Acknowledgment}
+\ExerciseTheoremFormatRoute{Conclusion}
+\ExerciseTheoremFormatRoute{Criterion}
+\ExerciseTheoremFormatRoute{Assertion}
+\ExerciseTheoremFormatRoute{Question}
+\ExerciseTheoremFormatRoute{Hypothesis}
+\ExerciseTheoremFormatRoute{Summary}
+
+\SetTheoremFormat[Unknown]{ShowText = {UnexpectedUnknownRoute}}
+\ifcsname GetTheoremUnknownFormatShowText\endcsname
+  \typeout{NCKU-TEST-UNKNOWN-ROUTE: FAIL}
+\else
+  \typeout{NCKU-TEST-UNKNOWN-ROUTE: no-op}
+\fi
+\SetTheoremFormat[]{ShowText = {UnexpectedEmptyRoute}}
+\ifcsname GetTheoremFormatShowText\endcsname
+  \typeout{NCKU-TEST-EMPTY-ROUTE: FAIL}
+\else
+  \typeout{NCKU-TEST-EMPTY-ROUTE: no-op}
+\fi
+
 \typeout{NCKU-TEST-PASS: all 21 public theorem insertion helpers compiled}
 \end{document}

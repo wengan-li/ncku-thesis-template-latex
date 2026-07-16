@@ -1121,138 +1121,55 @@
 
 % ---------------------------------------------------------
 
+% Private ordered registry. Keep per-type wrappers, key families, styles, and
+% counter implementations independent until a later fixture-backed slice.
+\newcommand{\NCKUPrivateForEachTheoremFormat}[1]
+{%
+  #1{Definition}%
+  #1{Condition}%
+  #1{Problem}%
+  #1{Example}%
+  #1{Theorem}%
+  #1{Lemma}%
+  #1{Corollary}%
+  #1{Proposition}%
+  #1{Conjecture}%
+  #1{Proof}%
+  #1{Note}%
+  #1{Annotation}%
+  #1{Claim}%
+  #1{Case}%
+  #1{Acknowledgment}%
+  #1{Conclusion}%
+  #1{Criterion}%
+  #1{Assertion}%
+  #1{Question}%
+  #1{Hypothesis}%
+  #1{Summary}%
+} % End of \newcommand{}
+
+\newcommand{\NCKUPrivateRegisterTheoremFormat}[1]
+{%
+  \expandafter\def\csname NCKUPrivateTheoremFormatRegistered@#1\endcsname{}%
+} % End of \newcommand{}
+
+\NCKUPrivateForEachTheoremFormat{\NCKUPrivateRegisterTheoremFormat}
+
+\newcommand{\NCKUPrivateInitTheoremFormat}[1]
+{%
+  \csname InitTheorem#1Format\endcsname%
+} % End of \newcommand{}
+
 \newcommand{\InitTheoremFormats}
 {%
-  \InitTheoremDefinitionFormat%
-  \InitTheoremConditionFormat%
-  \InitTheoremProblemFormat%
-  \InitTheoremExampleFormat%
-  \InitTheoremTheoremFormat%
-  \InitTheoremLemmaFormat%
-  \InitTheoremCorollaryFormat%
-  \InitTheoremPropositionFormat%
-  \InitTheoremConjectureFormat%
-  \InitTheoremProofFormat%
-  \InitTheoremNoteFormat%
-  \InitTheoremAnnotationFormat%
-  \InitTheoremClaimFormat%
-  \InitTheoremCaseFormat%
-  \InitTheoremAcknowledgmentFormat%
-  \InitTheoremConclusionFormat%
-  \InitTheoremCriterionFormat%
-  \InitTheoremAssertionFormat%
-  \InitTheoremQuestionFormat%
-  \InitTheoremHypothesisFormat%
-  \InitTheoremSummaryFormat%
+  \NCKUPrivateForEachTheoremFormat{\NCKUPrivateInitTheoremFormat}%
 } % End of \newcommand{}
 
 \newcommand{\SetTheoremFormat}[2][\empty]
 {%
-  \ifthenelse{\equal{#1}{Definition}}%
-  {%
-    \pgfkeys{/TheoremDefinitionFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Condition}}%
-  {%
-    \pgfkeys{/TheoremConditionFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Problem}}%
-  {%
-    \pgfkeys{/TheoremProblemFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Example}}%
-  {%
-    \pgfkeys{/TheoremExampleFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Theorem}}%
-  {%
-    \pgfkeys{/TheoremTheoremFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Lemma}}%
-  {%
-    \pgfkeys{/TheoremLemmaFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Corollary}}%
-  {%
-    \pgfkeys{/TheoremCorollaryFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Proposition}}%
-  {%
-    \pgfkeys{/TheoremPropositionFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Conjecture}}%
-  {%
-    \pgfkeys{/TheoremConjectureFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Proof}}%
-  {%
-    \pgfkeys{/TheoremProofFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Note}}%
-  {%
-    \pgfkeys{/TheoremNoteFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Annotation}}%
-  {%
-    \pgfkeys{/TheoremAnnotationFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Claim}}%
-  {%
-    \pgfkeys{/TheoremClaimFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Case}}%
-  {%
-    \pgfkeys{/TheoremCaseFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Acknowledgment}}%
-  {%
-    \pgfkeys{/TheoremAcknowledgmentFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Conclusion}}%
-  {%
-    \pgfkeys{/TheoremConclusionFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Criterion}}%
-  {%
-    \pgfkeys{/TheoremCriterionFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Assertion}}%
-  {%
-    \pgfkeys{/TheoremAssertionFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Question}}%
-  {%
-    \pgfkeys{/TheoremQuestionFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Hypothesis}}%
-  {%
-    \pgfkeys{/TheoremHypothesisFormat, default, #2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Summary}}%
-  {%
-    \pgfkeys{/TheoremSummaryFormat, default, #2}%
-  }{}%
-  %
+  \ifcsname NCKUPrivateTheoremFormatRegistered@#1\endcsname
+    \pgfkeys{/Theorem#1Format, default, #2}%
+  \fi
 } % End of \newcommand{}
 
 % ---------------------------------------------------------

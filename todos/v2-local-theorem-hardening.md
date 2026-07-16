@@ -73,14 +73,14 @@ pdftotext/pdftotext -bbox normalized comparison
 
 - Local base fix commit: `0e98dcb`.
 - Theorem fixture covers all 21 insertion helpers, 15 labels, title/ref/nameref, section reset, and proof marker.
-- Full v1 declaration gate preserves 612 entries with 90 additive v2 declarations.
-- Canonical 271-page output had zero text or normalized bbox changes; theorem pages 50, 51, and 269 were raster-identical.
+- Full v1 declaration gate preserves 612 entries with 93 additive v2 declarations.
+- Canonical 271-page output has zero text or normalized bbox changes; theorem pages 50, 51, and 269 remain raster-identical after the registry slice.
 
 ## Progress
 
 - [x] Correct theorem label-key leakage and mutable title metadata.
 - [x] Add focused theorem runtime contract.
 - [x] Record reusable optional-argument/title-state lessons.
-- [ ] Extend registry routing/no-op fixture coverage.
-- [ ] Introduce private ordered theorem type registry.
-- [ ] Validate and create a local-only implementation commit.
+- [x] Extend registry routing/no-op fixture coverage.
+- [x] Introduce private ordered theorem type registry.
+- [x] Validate and create a local-only implementation commit.

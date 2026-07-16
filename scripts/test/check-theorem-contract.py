@@ -33,6 +33,38 @@ def main() -> None:
     for marker in markers:
         require(marker in log, f"missing log marker: {marker}")
 
+    theorem_types = (
+        "Definition",
+        "Condition",
+        "Problem",
+        "Example",
+        "Theorem",
+        "Lemma",
+        "Corollary",
+        "Proposition",
+        "Conjecture",
+        "Proof",
+        "Note",
+        "Annotation",
+        "Claim",
+        "Case",
+        "Acknowledgment",
+        "Conclusion",
+        "Criterion",
+        "Assertion",
+        "Question",
+        "Hypothesis",
+        "Summary",
+    )
+    require(log.count("NCKU-TEST-ROUTE-") == len(theorem_types), "unexpected setter route count")
+    for theorem_type in theorem_types:
+        marker = f"NCKU-TEST-ROUTE-{theorem_type}: Registry{theorem_type}"
+        require(marker in log, f"missing setter route marker: {theorem_type}")
+    require("NCKU-TEST-UNKNOWN-ROUTE: no-op" in log, "unknown theorem type is not a no-op")
+    require("NCKU-TEST-EMPTY-ROUTE: no-op" in log, "empty theorem type is not a no-op")
+    require("NCKU-TEST-UNKNOWN-ROUTE: FAIL" not in log, "unknown theorem type created state")
+    require("NCKU-TEST-EMPTY-ROUTE: FAIL" not in log, "empty theorem type created state")
+
     forbidden_warnings = (
         "undefined references",
         "Rerun to get (cross-references|outlines) right",
@@ -102,7 +134,10 @@ def main() -> None:
         "titled theorem did not freeze nameref metadata",
     )
 
-    print(f"Theorem contract PASS: 21 insertion helpers, {len(labels)} labels, title/ref/nameref, section reset, proof marker")
+    print(
+        f"Theorem contract PASS: {len(theorem_types)} insertion/setter routes, "
+        f"{len(labels)} labels, unknown/empty no-op, title/ref/nameref, section reset, proof marker"
+    )
 
 
 if __name__ == "__main__":
