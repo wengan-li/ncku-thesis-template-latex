@@ -13,9 +13,12 @@ tests/v1-public-api.json
 ```
 
 It contains the command/environment name, argument signature, and historical
-definition path for 612 entries. The path is inventory context; compatibility
-requires the name and argument shape, so implementations may move behind an
-adapter.
+definition path for 597 runtime-visible entries. The path is inventory context;
+compatibility requires the name and argument shape, so implementations may move
+behind an adapter. `tests/v1-comment-environment-artifacts.json` separately records
+22 declarations that the original scanner found only inside runtime-dead LaTeX
+`comment` environments, including 15 comment-only names and 7 overlaps with live
+tombstones.
 
 Run the gate with:
 
@@ -32,8 +35,9 @@ for a later major version and a migration record.
 ## Runtime Project Migration Contract
 
 The API baseline proves declaration and argument-shape availability; it does not
-claim that all 612 helpers have been individually behavior-tested. Runtime
-migration coverage is separate:
+claim that all 597 runtime-visible helpers have been individually behavior-tested.
+The 22 audited comment-environment declarations are historical scanner artifacts,
+not runtime APIs. Runtime migration coverage is separate:
 
 ```text
 tests/v1-project-migration.json

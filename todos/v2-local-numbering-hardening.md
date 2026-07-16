@@ -64,8 +64,8 @@ fixed-DPI focused and canonical raster comparisons
 - The focused matrix also reproduced prefix/separator/counter-name contamination: defaults collapsed to `2/23/234`, and all custom titles followed the final `ASSS[...]` setup.
 - Three private append helpers now freeze parsed values/counter names while leaving counter formatter commands dynamic; first/second appendix F/T/E values are both `2.6/2.7/2.8`.
 - Focused output covers eight selectors, seven styles, default/custom and dynamic general/appendix values on one A4 page with no box/reference warnings.
-- `just ci`, 612/612 v1 declarations with 105 v2 additions, unchanged 18-file migration input, canonical 271-page text/bbox, and pages 40/44/143/144 rasters all pass.
-- The three disabled numbering blocks remain because manifest-visible runtime-dead declarations require a separate policy correction before removal.
+- `just ci`, 597/597 runtime v1 declarations plus 22 audited comment-environment declarations with 105 v2 additions, unchanged 18-file migration input, canonical 271-page text/bbox, and pages 40/44/143/144 rasters all pass.
+- The source manifest now strips LaTeX comment environments; three disabled numbering blocks were removed only after their 22-declaration audit boundary was preserved separately.
 
 ## Progress
 

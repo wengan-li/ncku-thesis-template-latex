@@ -49,42 +49,6 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{comment}
-% Bibliography style 使用的變數
-\newcommand{\BibStyleTypeAbbrv}{1}
-\newcommand{\BibStyleTypePlain}{2}
-\newcommand{\BibStyleTypeAlpha}{3}
-\newcommand{\BibStyleTypeApacite}{4}
-\newcommand{\BibStyleTypeVar}{\BibStyleTypePlain} % Default style: 'plain'
-\newcommand{\SetBibStyleTypeVar}[1]{\renewcommand{\BibStyleTypeVar}{#1}}
-\newcommand{\GetBibStyleTypeVar}{\BibStyleTypeVar}
-
-% 公開使用的APIs
-\newcommand{\BibStyleUseAbbrv}{\SetBibStyleTypeVar{\BibStyleTypeAbbrv}}
-\newcommand{\BibStyleUsePlain}{\SetBibStyleTypeVar{\BibStyleTypePlain}}
-\newcommand{\BibStyleUseAlpha}{\SetBibStyleTypeVar{\BibStyleTypeAlpha}}
-\newcommand{\BibStyleUseApacite}{\SetBibStyleTypeVar{\BibStyleTypeApacite}}
-
-% ----------------------------------------------------------------------------
-
-\newcommand{\VarReferenceTitle}{\VarReferenceTitleCustom}
-\newcommand{\SetReferenceTitle}[1]{\renewcommand{\VarReferenceTitle}{#1}}
-\newcommand{\GetReferenceTitle}{\VarReferenceTitle}
-
-\newcommand{\VarReferenceTitleChi}{參考文獻}
-\newcommand{\VarReferenceTitleEng}{References}
-\newcommand{\VarReferenceTitleCustom}{References / 參考文獻}
-
-\newcommand{\ChapterReferenceTitleInChi}{%
-  \SetReferenceTitle{\VarReferenceTitleChi}}
-\newcommand{\ChapterReferenceTitleInEng}{%
-  \SetReferenceTitle{\VarReferenceTitleEng}}
-\newcommand{\SetChapterReferenceTitle}[1]{\SetReferenceTitle{#1}}
-
-\ChapterReferenceTitleInEng % Default
-\end{comment}
-% ----------------------------------------------------------------------------
-
 \DeclareDocumentCommand{\ReferencesFiles}{%
   G{\empty} G{\empty} G{\empty} %
   G{\empty} G{\empty} G{\empty} %

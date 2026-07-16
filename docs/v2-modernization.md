@@ -84,8 +84,9 @@ cover plus affected pages.
 
 ### Implemented Evidence
 
-- The v1 tree declares 612 commands/environments captured and enforced by
-  `tests/v1-public-api.json`.
+- The v1 tree has 597 runtime-visible command/environment declarations captured
+  and enforced by `tests/v1-public-api.json`; 22 declarations previously found
+  inside LaTeX `comment` environments are recorded separately as audit artifacts.
 - `tests/v1-project-migration.json` pins 18 student-owned files byte-for-byte to
   v1.8.2. Runtime evidence is split between the unchanged entry/configuration
   build and exact StudentMode content/BibTeX dependency assertions.
@@ -116,7 +117,8 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 The completed v2 slice was validated from a clean committed worktree:
 
 - `just ci`: pass, including canonical build and all focused fixtures;
-- v1 API gate: 612/612 declarations preserved, with 105 additive v2 declarations;
+- v1 API gate: 597/597 runtime declarations preserved, with 22 audited
+  comment-environment declarations and 105 additive v2 declarations;
 - migration source gate: 18 student-owned files (296,726 bytes) match v1.8.2
   exactly;
 - migration runtime gates: unchanged entry/configuration plus active StudentMode

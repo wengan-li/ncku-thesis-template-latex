@@ -89,8 +89,8 @@ def main() -> None:
         "numbering output retains mutable pgf scratch value",
     )
     require(
-        source.count(r"\begin{comment}") == 3,
-        "disabled blocks changed before source-manifest boundary was repaired",
+        source.count(r"\begin{comment}") == 0,
+        "runtime-dead numbering comment blocks reappeared",
     )
 
     print(

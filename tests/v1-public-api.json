@@ -56,46 +56,6 @@
         "latex:0"
       ]
     },
-    "BibStyleTypeAbbrv": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
-    "BibStyleTypeAlpha": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
-    "BibStyleTypeApacite": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
-    "BibStyleTypePlain": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
-    "BibStyleTypeVar": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
     "BibStyleUseAbbrv": {
       "defined_in": [
         "thesis/template/command/cmd-bibliography.tex"
@@ -752,14 +712,6 @@
         "latex:0"
       ]
     },
-    "GetBibStyleTypeVar": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
     "GetCDBothName": {
       "defined_in": [
         "thesis/template/command/cmd-cover.tex"
@@ -1099,14 +1051,6 @@
     "GetOralYearInTaiwanYearNumInChi": {
       "defined_in": [
         "thesis/template/command/cmd-cover.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
-    "GetReferenceTitle": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
       ],
       "signatures": [
         "latex:0"
@@ -2112,14 +2056,6 @@
         "latex:2"
       ]
     },
-    "SetBibStyleTypeVar": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:1"
-      ]
-    },
     "SetCDBothName": {
       "defined_in": [
         "thesis/template/command/cmd-cover.tex"
@@ -2133,8 +2069,7 @@
         "thesis/template/command/cmd-bibliography.tex"
       ],
       "signatures": [
-        "latex:0",
-        "latex:1"
+        "latex:0"
       ]
     },
     "SetChiDegree": {
@@ -3443,14 +3378,6 @@
         "latex:1"
       ]
     },
-    "SetReferenceTitle": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:1"
-      ]
-    },
     "SetStyleEnumItemLevelFour": {
       "defined_in": [
         "thesis/template/command/cmd-list.tex"
@@ -3643,14 +3570,6 @@
         "latex:0"
       ]
     },
-    "SetupAppendixFTENumberFormat": {
-      "defined_in": [
-        "thesis/template/command/cmd-numbering.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
     "SetupAppendixFigureNumberFormatString": {
       "defined_in": [
         "thesis/template/command/cmd-numbering.tex"
@@ -3700,14 +3619,6 @@
       ]
     },
     "SetupChapterTitleNumberFormatString": {
-      "defined_in": [
-        "thesis/template/command/cmd-numbering.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
-    "SetupFTENumberFormat": {
       "defined_in": [
         "thesis/template/command/cmd-numbering.tex"
       ],
@@ -4565,38 +4476,6 @@
         "latex:0"
       ]
     },
-    "VarReferenceTitle": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
-    "VarReferenceTitleChi": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
-    "VarReferenceTitleCustom": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
-    "VarReferenceTitleEng": {
-      "defined_in": [
-        "thesis/template/command/cmd-bibliography.tex"
-      ],
-      "signatures": [
-        "latex:0"
-      ]
-    },
     "VarStartAppendixChapter": {
       "defined_in": [
         "thesis/template/command/cmd-appendix.tex"
@@ -4904,6 +4783,6 @@
       ]
     }
   },
-  "policy": "Every explicitly declared v1 command and environment remains available with a compatible argument shape throughout v2.x.",
+  "policy": "Every runtime-visible v1 command and environment declaration remains available with a compatible argument shape throughout v2.x; LaTeX comment-environment artifacts are audited separately.",
   "schema": 1
 }

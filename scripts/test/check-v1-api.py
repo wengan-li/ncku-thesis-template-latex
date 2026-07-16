@@ -21,6 +21,11 @@ ApiEntry = dict[str, list[str]]
 ROOT = Path(__file__).resolve().parents[2]
 TEMPLATE_ROOT = ROOT / "thesis" / "template"
 BASELINE = ROOT / "tests" / "v1-public-api.json"
+COMMENT_ARTIFACTS = ROOT / "tests" / "v1-comment-environment-artifacts.json"
+
+LATEX_COMMENT_ENVIRONMENT = re.compile(
+    r"\\begin\s*\{comment\}.*?\\end\s*\{comment\}", re.DOTALL
+)
 
 LATEX_COMMAND = re.compile(
     r"\\(?P<kind>newcommand|renewcommand|providecommand)\*?"
@@ -47,6 +52,7 @@ XPARSE_ENVIRONMENT = re.compile(
 
 
 def strip_comments(text: str) -> str:
+    text = LATEX_COMMENT_ENVIRONMENT.sub("", text)
     cleaned: list[str] = []
     for line in text.splitlines():
         match = re.search(r"(?<!\\)%", line)
@@ -100,8 +106,9 @@ def write_baseline() -> int:
     payload = {
         "schema": 1,
         "policy": (
-            "Every explicitly declared v1 command and environment remains "
-            "available with a compatible argument shape throughout v2.x."
+            "Every runtime-visible v1 command and environment declaration remains "
+            "available with a compatible argument shape throughout v2.x; LaTeX "
+            "comment-environment artifacts are audited separately."
         ),
         "entries": api,
     }
@@ -118,11 +125,44 @@ def check_baseline() -> int:
         raise SystemExit(
             f"Missing {BASELINE.relative_to(ROOT)}; generate it before v2 changes"
         )
+    if not COMMENT_ARTIFACTS.exists():
+        raise SystemExit(f"Missing {COMMENT_ARTIFACTS.relative_to(ROOT)}")
+
+    scanner_probe = r"""
+\newcommand{\RuntimeVisible}{}
+\begin{comment}
+\newcommand{\CommentOnly}{}
+\end{comment}
+"""
+    stripped_probe = strip_comments(scanner_probe)
+    if "RuntimeVisible" not in stripped_probe or "CommentOnly" in stripped_probe:
+        print("V1 API compatibility FAIL: LaTeX comment-environment scanner contract")
+        return 1
 
     baseline = cast(
         dict[str, ApiEntry],
         json.loads(BASELINE.read_text(encoding="utf-8"))["entries"],
     )
+    artifact_doc = json.loads(COMMENT_ARTIFACTS.read_text(encoding="utf-8"))
+    artifacts = cast(dict[str, ApiEntry], artifact_doc["entries"])
+    overlapping_artifacts = cast(
+        dict[str, object], artifact_doc["overlapping_runtime_entries"]
+    )
+    overlap = sorted(set(baseline) & set(artifacts))
+    if overlap:
+        print("V1 API compatibility FAIL: comment-only names remain in runtime baseline")
+        for name in overlap:
+            print(f"  - {name}")
+        return 1
+    audited_declarations = len(artifacts) + len(overlapping_artifacts)
+    if len(artifacts) != 15 or len(overlapping_artifacts) != 7:
+        print(
+            "V1 API compatibility FAIL: expected 15 comment-only names and 7 "
+            "overlapping comment declarations, got "
+            f"{len(artifacts)} and {len(overlapping_artifacts)}"
+        )
+        return 1
+
     current = collect_api()
     missing: list[str] = []
     incompatible: list[str] = []
@@ -152,7 +192,8 @@ def check_baseline() -> int:
 
     added = sorted(set(current) - set(baseline))
     print(
-        f"V1 API compatibility PASS: {len(baseline)} preserved; "
+        f"V1 API compatibility PASS: {len(baseline)} runtime declarations preserved; "
+        f"{audited_declarations} audited comment-environment declarations; "
         f"{len(added)} v2 additions"
     )
     return 0

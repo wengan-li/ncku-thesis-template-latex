@@ -77,7 +77,7 @@ pdftotext/pdftotext -bbox normalized comparison
 
 - Local base fix commit: `0e98dcb`.
 - Theorem fixture covers all 21 insertion helpers, 15 labels, title/ref/nameref, section reset, and proof marker.
-- Full v1 declaration gate preserves 612 entries with 100 additive v2 declarations.
+- At this checkpoint the original scanner reported 612 entries with 100 additive v2 declarations; the later comment-aware audit corrected that boundary to 597 runtime declarations plus 22 audited comment-environment declarations without changing theorem behavior.
 - Canonical 271-page output has zero layout-text or normalized bbox word-tuple changes; theorem pages 50, 51, and 269 remain raster-identical, and the theorem contract raster matches the pre-registry fixture.
 - The custom matrix now renders 26 entries covering all 21 custom environment/text routes, plain/definition styles, global/Section/arbitrary-custom/forward/multi-hop/chained-empty counters, and optional-type numbering.
 - The negative cycle fixture produces the package diagnostic without recursive TeX-capacity overflow.

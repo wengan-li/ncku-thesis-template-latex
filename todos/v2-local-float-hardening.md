@@ -72,7 +72,7 @@ visual inspection of focused float pages
 - Caption wrappers now freeze literal current-label names before labels. The one-page contract passes with eight names, four images/four masks, no box/reference warnings, and exact top/bottom/star order.
 - The corrected pre-refactor baseline is `/tmp/ncku-float-contract-fixed-baseline.pdf`; canonical text/bbox and float pages 82/258--261 remain identical.
 - One two-argument private helper now owns the three exact minipage/mdframed/opacity wrappers. Combined source size is 773 to 770 lines; the small net reduction is secondary to having one framing policy.
-- Post-extraction focused text, bbox word tuples, and raster are identical to the corrected baseline. `just ci`, 612/612 v1 declarations with 102 v2 additions, unchanged 18-file v1 migration input, canonical 271-page text/bbox, and selected float-page rasters all pass.
+- Post-extraction focused text, bbox word tuples, and raster are identical to the corrected baseline. `just ci`, the then-current 612-entry scanner gate (later corrected to 597 runtime declarations plus 22 audited comment-environment declarations), 102 v2 additions, unchanged 18-file v1 migration input, canonical 271-page text/bbox, and selected float-page rasters all pass.
 
 ## Progress
 

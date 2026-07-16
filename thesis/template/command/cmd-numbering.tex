@@ -879,86 +879,6 @@
   %
 } % End of \newcommand{}
 
-  \begin{comment}
-  \SetupGeneralAppendixNumberFormatString{Figure}%
-  {%
-    CNumStyle=\GetCTitleNumberFormatCNumStyle,%
-    CCounterName=chapter,%
-    FigureNumStyle=Arabic,%
-    FigureCounterName=figure,%
-    FigureSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetGeneralFigureNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{AppendixFigure}%
-  {%
-    CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
-    CCounterName=appendixchapter,%
-    FigureNumStyle=Arabic,%
-    FigureCounterName=figure,%
-    FigureSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetAppendixFigureNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{Table}%
-  {%
-    CNumStyle=\GetCTitleNumberFormatCNumStyle,%
-    CCounterName=chapter,%
-    TableNumStyle=Arabic,%
-    TableCounterName=table,%
-    TableSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetGeneralTableNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{AppendixTable}%
-  {%
-    CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
-    CCounterName=appendixchapter,%
-    TableNumStyle=Arabic,%
-    TableCounterName=table,%
-    TableSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetAppendixTableNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{Equation}%
-  {%
-    CNumStyle=\GetCTitleNumberFormatCNumStyle,%
-    CCounterName=chapter,%
-    EquationNumStyle=Arabic,%
-    EquationCounterName=equation,%
-    EquationSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetGeneralEquationNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{AppendixEquation}%
-  {%
-    CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
-    CCounterName=appendixchapter,%
-    EquationNumStyle=Arabic,%
-    EquationCounterName=equation,%
-    EquationSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetAppendixEquationNumberFormatString}%
-  %
-  \end{comment}
-
-% ---------------------------
-\begin{comment}
-% Set numbering format of general figure/table/equation
-\newcommand\SetupFTENumberFormat
-{%
-  \SetupGeneralFigureNumberFormatString%
-  \SetupGeneralTableNumberFormatString%
-  \SetupGeneralEquationNumberFormatString%
-  \renewcommand{\thefigure}{\GetGeneralFigureNumberFormatString}%
-  \renewcommand{\thetable}{\GetGeneralTableNumberFormatString}%
-  \renewcommand{\theequation}{\GetGeneralEquationNumberFormatString}%
-} % End of \newcommand{}
-
-\newcommand\SetupAppendixFTENumberFormat
-{%
-  \SetupAppendixFigureNumberFormatString%
-  \SetupAppendixTableNumberFormatString%
-  \SetupAppendixEquationNumberFormatString%
-  \renewcommand{\thefigure}{\GetAppendixFigureNumberFormatString}
-  \renewcommand{\thetable}{\GetAppendixTableNumberFormatString}
-  \renewcommand{\theequation}{\GetAppendixEquationNumberFormatString}
-} % End of \newcommand{}
-\end{comment}
 % ----------------------------------------------------------------------------
 
 % Setup all custom numbering format
@@ -998,35 +918,6 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{comment}
-\pgfkeys
-{
-  /SetNumberingFormat/.is family, /SetNumberingFormat,
-  default/.style =
-  {
-    BeginText = \empty,
-    EndText = \empty,
-    CNumStyle = Arabic,
-    SNumStyle = Arabic,
-    SSNumStyle = Arabic,
-    SSSNumStyle = Arabic,
-    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
-    SepBetweenSSCnSSS = {.}, % 小節號碼跟小小節號碼中的分隔符號
-  },
-  BeginText/.estore in = \TmpValueBeginText,
-  EndText/.estore in = \TmpValueEndText,
-  CNumStyle/.estore in = \TmpValueCNumStyle,
-  SNumStyle/.estore in = \TmpValueSNumStyle,
-  SSNumStyle/.estore in = \TmpValueSSNumStyle,
-  SSSNumStyle/.estore in = \TmpValueSSSNumStyle,
-  SepAtIndex/.estore in = \TmpValueSepAtIndex,
-  SepBetweenCnS/.estore in = \TmpValueSepBetweenCnS,
-  SepBetweenSnSS/.estore in = \TmpValueSepBetweenSnSS,
-  SepBetweenSSCnSSS/.estore in = \TmpValueSepBetweenSSCnSSS,
-} % End of \pgfkeys{}
-\end{comment}
 % Parse the setting based on title type
 % Chapter, Section, SubSection, SubSubSection
 \newcommand{\SetNumberingFormat}[2][\empty]

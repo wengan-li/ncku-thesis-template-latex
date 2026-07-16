@@ -66,7 +66,7 @@ template/
 
 ## Public Helper Compatibility
 
-The conservative baseline in `../tests/v1-public-api.json` records 612 explicitly declared 1.x commands/environments. Their names and argument shapes remain available throughout 2.x and are checked by:
+The conservative baseline in `../tests/v1-public-api.json` records 597 runtime-visible 1.x commands/environments. Their names and argument shapes remain available throughout 2.x. A separate `../tests/v1-comment-environment-artifacts.json` audit records 22 declarations that the original regex scanner found inside runtime-dead LaTeX `comment` environments; these are not removed public APIs. Both boundaries are checked by:
 
 ```bash
 python3 scripts/test/check-v1-api.py
@@ -200,7 +200,8 @@ git diff --check
 
 The v2 architecture acceptance evidence includes:
 
-- 612/612 v1 commands/environments preserved;
+- 597/597 runtime-visible v1 commands/environments preserved, with 22
+  runtime-dead comment-environment declarations retained in a separate audit;
 - 18 student-owned files match v1.8.2 byte-for-byte; the unchanged entry/config
   and active StudentMode content/bibliography paths pass separate v2 runtime
   gates;

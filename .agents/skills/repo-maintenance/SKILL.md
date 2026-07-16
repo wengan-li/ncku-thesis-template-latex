@@ -115,9 +115,11 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 - Numbering compatibility: freeze parsed title prefixes, separators, and counter
   names into each format getter, but keep the counter formatter/value dynamic.
   Exercise all general/appendix title and F/T/E paths after later setup calls and
-  counter mutations, and require repeated setup to be idempotent. Do not remove
-  `comment`-environment blocks while the regex API manifest still discovers
-  declarations inside them; repair that manifest/runtime boundary explicitly.
+  counter mutations, and require repeated setup to be idempotent.
+- Source-manifest cleanup: remove `comment`-environment blocks only after the
+  scanner strips them, the runtime baseline is corrected, and every comment-only
+  or overlapping declaration is retained in the separate audit artifact; compare
+  names and signatures.
 - Do not claim tagged PDF or PDF/UA compliance from metadata alone.
 - Current university and department requirements override template guidance.
 
