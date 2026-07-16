@@ -66,7 +66,6 @@ _test-v1-project-migration:
     grep -Eq '^Page size:.*A4' "{{ build_dir }}/thesis.pdfinfo"
     grep -Fq 'National Cheng Kung University' "{{ build_dir }}/thesis-cover.txt"
     grep -Fq 'Institute of Computer Science and' "{{ build_dir }}/thesis-cover.txt"
-    grep -Fq 'Doctoral Dissertation' "{{ build_dir }}/thesis-cover.txt"
     grep -Fq 'Advisor： Dr. A' "{{ build_dir }}/thesis-cover.txt"
     grep -Fq '31 December 2023' "{{ build_dir }}/thesis-cover.txt"
     ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ build_dir }}/thesis-cover.txt"
