@@ -147,6 +147,24 @@ After pushing, verify the exact GitHub Actions run. After publishing or changing
 Release assets, download them from their public URLs and verify the public state;
 a local or workflow artifact alone is insufficient.
 
+## Development Branch and Hosted Test Gate
+
+The Test workflow push filter covers `main` and `feat/**`. Use the `feat/**`
+namespace for development branches (for example, `feat/v2.x`) so every pushed
+update automatically enters the required hosted test gate. A bare
+version-shaped branch such as `v2.x` does not match that filter.
+
+After every feature-branch push:
+
+1. find the Test run whose `headSha` exactly matches the pushed commit;
+2. wait for that run to complete successfully;
+3. inspect annotations and the expected test artifact when relevant;
+4. call the update hosted-tested only after those checks pass.
+
+If no run appears, inspect the workflow branch trigger before treating the push
+as tested. A successful run for an older SHA is not evidence for the latest
+update.
+
 For GitHub Actions dependency maintenance, enumerate every repository-owned
 `uses:` reference across all workflow files and check each action's official
 latest stable release plus `action.yml` runtime. After pushing, run the normal
