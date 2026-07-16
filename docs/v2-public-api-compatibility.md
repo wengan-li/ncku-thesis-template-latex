@@ -122,6 +122,16 @@ month/year unless the selected profile explicitly injects another date token.
 English degree display wording may change without changing the Master/Doctoral
 branch.
 
+Committee-size validation follows the same ownership boundary:
+
+```text
+SetCommitteeSize -> selected profile's ApplyCommitteeSizePolicy
+```
+
+The generic renderer retains its 2--9 capacity. The NCKU profile enforces
+Master 3--5 and Doctoral 5--9 from numeric degree state; custom profiles may
+retain the generic range or supply their own institutional policy.
+
 ## Behavior Corrections
 
 Compatibility does not preserve verified defects. Each correction must include:

@@ -126,6 +126,7 @@ This table is normative and must be updated for every observable helper correcti
 | `\SetDeptDPS` produced `Departmment of Photonics`. | The catalogue value is corrected to `Department of Photonics`. | Rebuild to receive the corrected text. |
 | The English oral certificate combined oral day with cover month/year. This was hidden by NCKU's rule because both dates normally matched. | English oral output uses oral day, oral month, and oral year consistently. | Non-NCKU projects with distinct dates receive the correct oral date automatically. |
 | The Doctoral English cover borrowed its day from oral metadata even though `\SetCoverDate` owns only cover year/month. | Master/Doctoral English cover date tokens are profile-owned. Generic/custom profiles render only cover-owned month/year; NCKU explicitly retains its established oral-day policy. | None for NCKU; non-NCKU profiles may customize the two date tokens if their rules require another format. |
+| `\SetCommitteeSize` accepted the renderer's full 2--9 capacity for every degree even though the NCKU teaching text stated Master 3--5 and Doctoral 5--9, and another teaching line incorrectly said 4--9. | Committee-size validation is profile-owned. The NCKU profile clamps Master requests to 3--5 and Doctoral requests to 5--9; the neutral/custom policy retains the generic 2--9 renderer capacity. | Select `\MasterDegree` or `\PhdDegree` before calling `\SetCommitteeSize`, then rebuild. |
 
 ## Date Migration
 
@@ -153,10 +154,11 @@ The v1.5.0 placement intent remains: institutional ports belong under `template/
 3. Call exactly one `\RegisterTemplateStyle{<profile>}`.
 4. Select the profile through `\TemplateStyleName` in `template/style/style.tex`.
 5. Replace old overrides of `\SetOralDate`／`\SetCoverDate` with policy-hook overrides.
-6. Move institution-specific cover/oral wording and English cover-date formats to the provided profile-token setters.
-7. Use `\SetCollName`／`\SetDeptName` for project metadata or maintain an institution-owned catalogue inside the new profile.
-8. Build the custom cover and oral certificate with different oral/cover dates to prove policy separation.
-9. Confirm the `.fls` recorder output does not load an unintended institutional asset.
+6. Override `\ApplyCommitteeSizePolicy` only when the institution has degree-specific committee ranges; keep `\SetCommitteeSize` unchanged.
+7. Move institution-specific cover/oral wording and English cover-date formats to the provided profile-token setters.
+8. Use `\SetCollName`／`\SetDeptName` for project metadata or maintain an institution-owned catalogue inside the new profile.
+9. Build the custom cover and oral certificate with different oral/cover dates to prove policy separation.
+10. Confirm the `.fls` recorder output does not load an unintended institutional asset.
 
 The executable example is [`../tests/custom-style.tex`](../tests/custom-style.tex).
 

@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-custom-style _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -149,6 +149,8 @@ _test-custom-style:
     grep -Fq 'NCKU-TEST-CUSTOM-COVER-DATE: 2024-7' "{{ build_dir }}/tests/custom-style.log"
     grep -Fq 'NCKU-TEST-CUSTOM-REQUESTED-DATE: 2024-7' "{{ build_dir }}/tests/custom-style.log"
     grep -Fq 'NCKU-TEST-CUSTOM-ORAL-CHI-YEAR: 2023' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-COMMITTEE-MIN: 2' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-COMMITTEE-MAX: 9' "{{ build_dir }}/tests/custom-style.log"
     grep -Fq 'NCKU-TEST-PASS: custom style profile builds without NCKU visible policy' "{{ build_dir }}/tests/custom-style.log"
     ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/custom-style.log"
     ! grep -Fq 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/tests/custom-style.fls"
@@ -177,6 +179,15 @@ _test-custom-style:
     ! grep -Fq '中華民國' "{{ build_dir }}/tests/custom-style.txt"
     ! grep -Fq 'National Cheng Kung University' "{{ build_dir }}/tests/custom-style.txt"
     ! grep -Fq '國立成功大學' "{{ build_dir }}/tests/custom-style.txt"
+
+# Internal regression test for NCKU degree-specific committee-size policy.
+[private]
+_test-committee-size-policy:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/committee-size-policy."*
+    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=committee-size-policy ../tests/committee-size-policy.tex
+    test "$(grep -c 'NCKU-TEST-PASS: committee request' "{{ build_dir }}/tests/committee-size-policy.log")" -eq 6
+    ! grep -q 'NCKU-TEST-FAIL:' "{{ build_dir }}/tests/committee-size-policy.log"
 
 # Internal regression test for the oral-certificate default state.
 [private]

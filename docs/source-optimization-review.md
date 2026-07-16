@@ -214,7 +214,9 @@ Extract a private framed-content helper. Preserve all public signatures. Keep hi
 - Move deprecated public-command tombstones into one compatibility module; remove only truly unreachable private dead blocks.
 - Replace isolated `fp`/long `ifthen` calculations only when exact-output fixtures exist.
 - Document that the second abbreviation argument to `\SetDeptName` is currently ignored rather than silently changing the public signature.
-- Reconcile the committee-size implementation range with the teaching text.
+- Completed on the v2 profile branch: committee-size validation is profile-owned;
+  NCKU uses Master 3--5 and Doctoral 5--9, while neutral/custom keeps the generic
+  2--9 renderer capacity. A focused boundary fixture rejects future drift.
 
 ## P3 — major-version experiments
 

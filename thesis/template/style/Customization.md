@@ -146,6 +146,12 @@ English oral renderer使用`\GetFlagDegreeType`選擇Master／Doctoral statement
 
 如只使用英文 oral certificate，仍建議完整設定 contract，避免其他使用者切換語言時出現空白 label。
 
+### 口試委員人數 Policy
+
+Generic renderer支援2至9個簽名欄位，neutral/custom profile保留這個範圍。`\SetCommitteeSize{n}`的public signature不變；如果institution按學位限制不同範圍，profile應覆寫`\ApplyCommitteeSizePolicy{n}`，並使用`\GetFlagDegreeType`判斷Master／Doctoral semantic state。不要比較顯示用degree文字。
+
+NCKU profile會把Master request收斂到3至5、Doctoral request收斂到5至9。使用者應先呼叫`\MasterDegree`或`\PhdDegree`，再呼叫`\SetCommitteeSize`。自訂profile如無degree-specific規則，不需要覆寫hook。
+
 ### 日期 Policy
 
 Public commands 保持不變：

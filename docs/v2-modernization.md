@@ -97,6 +97,8 @@ cover plus affected pages.
   through hooks/getters instead of overriding public setters.
 - Generic watermark storage is empty; the selected profile owns any text style
   or figure asset.
+- Committee-size validation is profile-owned: NCKU enforces Master 3--5 and
+  Doctoral 5--9, while the neutral/custom policy retains renderer capacity 2--9.
 - `template/style/custom/custom.tex` builds Chinese and English cover/oral pages
   with Gregorian Chinese dates and without NCKU visible policy or watermark
   assets.
@@ -114,7 +116,7 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 The completed v2 slice was validated from a clean committed worktree:
 
 - `just ci`: pass, including canonical build and all focused fixtures;
-- v1 API gate: 612/612 declarations preserved, with 89 additive v2 declarations;
+- v1 API gate: 612/612 declarations preserved, with 90 additive v2 declarations;
 - migration source gate: 18 student-owned files (296,726 bytes) match v1.8.2
   exactly;
 - migration runtime gates: unchanged entry/configuration plus active StudentMode
@@ -135,7 +137,10 @@ The completed v2 slice was validated from a clean committed worktree:
   cover; Gregorian Chinese years, distinct `July 2024` cover and
   `31 December 2023` oral dates, no oral-day leakage into the Doctoral cover,
   custom degree display/submission wording, no NCKU visible policy or watermark
-  asset, and no clipping or overlap on rendered inspection;
+  asset, generic committee capacity 2--9, and no clipping or overlap on rendered
+  inspection;
+- committee policy fixture: six NCKU boundary/interior cases prove Master 3--5
+  and Doctoral 5--9 clamping from numeric degree state;
 - generated NCKU English oral comparison: extracted text, word coordinates, and
   150-DPI raster remain identical after submission-text token extraction.
 

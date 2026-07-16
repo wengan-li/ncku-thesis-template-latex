@@ -75,6 +75,9 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   rather than localized display strings. Cover date formats are profile tokens:
   generic/custom output must not borrow an oral day that `\SetCoverDate` does
   not own; an institution profile may inject that policy explicitly.
+- Keep committee renderer capacity separate from institution rules.
+  `\SetCommitteeSize` delegates to the selected profile's policy hook; NCKU
+  clamps Master to 3--5 and Doctoral to 5--9, while neutral/custom retains 2--9.
 - Keep student data in `conf/` and institution-level style ports under
   `template/style/`; never introduce `conf/style.tex`.
 - Preserve direct XeLaTeX and Overleaf compatibility; `just` is maintainer

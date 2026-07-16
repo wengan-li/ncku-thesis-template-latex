@@ -80,6 +80,26 @@
   \GetThesisMonthInEng \thinspace \thinspace \GetThesisYear%
 }
 
+% NCKU degree-examination committee ranges. Keep the generic renderer capable
+% of 2--9 signatures; this profile owns the degree-specific policy.
+\renewcommand{\ApplyCommitteeSizePolicy}[1]{%
+  \ifthenelse{\equal{\GetFlagDegreeType}{\ValueDegreeMaster}}%
+    {%
+      \ifthenelse{#1 < 3}
+        {\renewcommand{\CommitteeSize}{3}}
+        {\ifthenelse{#1 > 5}
+          {\renewcommand{\CommitteeSize}{5}}
+          {\renewcommand{\CommitteeSize}{#1}}}%
+    }%
+    {%
+      \ifthenelse{#1 < 5}
+        {\renewcommand{\CommitteeSize}{5}}
+        {\ifthenelse{#1 > 9}
+          {\renewcommand{\CommitteeSize}{9}}
+          {\renewcommand{\CommitteeSize}{#1}}}%
+    }%
+}
+
 % Preserve the historical NCKU Chinese-year rendering exactly.
 \renewcommand{\ApplyOralChiYearPolicy}[1]{%
   \renewcommand{\OralChiYear}{\OralTaiwanYearResult}%
