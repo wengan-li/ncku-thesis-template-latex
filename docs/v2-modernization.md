@@ -141,6 +141,10 @@ The completed v2 slice was validated from a clean committed worktree:
   inspection;
 - committee policy fixture: six NCKU boundary/interior cases prove Master 3--5
   and Doctoral 5--9 clamping from numeric degree state;
+- theorem contract fixture: all 21 public insertion helpers compile with exact
+  default metadata, numbered/unnumbered text, 15 labels, `\ref`/`\nameref`,
+  section reset, and proof-marker assertions; the label option no longer leaks
+  into visible text and titled labels retain stable nameref metadata;
 - generated NCKU English oral comparison: extracted text, word coordinates, and
   150-DPI raster remain identical after submission-text token extraction.
 

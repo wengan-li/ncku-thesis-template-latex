@@ -84,6 +84,10 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   orchestration, not a student requirement.
 - Keep the full teaching document as integration coverage and add focused
   fixtures before changing output-sensitive macros.
+- Keep `tests/theorem-contract.tex` in the test gate before consolidating theorem
+  internals. Its label option must create an auxiliary label without visible key
+  leakage, and titled labels must freeze nameref metadata before temporary pgf
+  key state is reused.
 - Do not claim tagged PDF or PDF/UA compliance from metadata alone.
 - Current university and department requirements override template guidance.
 

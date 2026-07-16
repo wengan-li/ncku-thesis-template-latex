@@ -9,6 +9,7 @@ Checked: 2026-07-15
 - Complete: sectioning/star behavior fixture and fix; core numbering/reference fixture; explicit oral default state; final-log diagnostics baseline; Unicode metadata/bookmark and font/CJK fixtures; continuous preview and student-mode guidance; versioned student/examples release packages; CI cache/runner decision; `iftex`/kernel document-command cleanup with an explicit minimum LaTeX format.
 - Complete in v1.8.2: the cover Draft marker, diagonal text watermark, and institutional-logo watermark defaults now match the final-submission guidance; all three layers remain explicit opt-ins with default-off and opt-in regression coverage. Historical evidence and the distribution boundary are recorded in [`draft-watermark-history.md`](draft-watermark-history.md).
 - Complete safe P2 simplification: shared figure/table caption-label implementation, shared optional-keyword appending, and removal of commented-out caption/column experiments. Public wrappers and argument signatures remain unchanged.
+- Complete theorem hardening fixture: all 21 public insertion helpers compile through one focused runtime contract covering default format metadata, numbered and unnumbered forms, optional titles, 15 labels, `\ref`/`\nameref`, section reset, and the proof marker. The fixture exposed and now protects the corrected optional-label and mutable-title metadata defects.
 - Rejected after measurement: a separate chapter-preview entry point, because a real student-mode chapter edit rebuilt in approximately 1.45 seconds and another document mode would add numbering/reference risk.
 - Complete: Overleaf publication research/verification, v1.8.1 release, and integration into `main`; the public Gallery template was approved on 2026-07-15.
 - Complete in v1.8.2: post-v1.8.1 visible-overflow diagnostics cleanup and final-ready Draft/watermark safe defaults.
@@ -200,7 +201,9 @@ Keep `\SetNumberingFormat[...]` and all existing key names, but drive the intern
 
 ### 2. Theorem registry
 
-`cmd-theorem.tex` duplicates setup, key parsing, initialization, and dispatch across approximately 21 theorem types. Replace the internal repetition with a declarative registry containing name, style, counter, and numbered/un-numbered policy. Preserve public aliases such as `\InsertTheorem` and `\InsertDefinition`.
+`cmd-theorem.tex` duplicates setup, key parsing, initialization, and dispatch across approximately 21 theorem types. A focused runtime contract now covers all 21 public insertion helpers, default metadata, numbered/unnumbered forms, optional titles, labels, `\ref`/`\nameref`, section reset, and the proof marker. It also protects the corrected label-key and title-metadata behavior.
+
+Any registry refactor must preserve that fixture while replacing the internal repetition with a declarative registry containing name, style, counter, and numbered/un-numbered policy. Preserve public aliases such as `\InsertTheorem` and `\InsertDefinition`.
 
 ### 3. Shared float internals
 

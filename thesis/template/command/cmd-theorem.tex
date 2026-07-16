@@ -79,8 +79,13 @@
   {%
     \begin{#2}[\TmpValueTitle]%
   }%
+  % Freeze the optional title before \label writes nameref metadata. Without this
+  % copy the auxiliary file stores the mutable \TmpValueTitle control sequence,
+  % which is reset by the next insertion.
+  \ifthenelse{\equal{\TmpValueTitle}{\empty}}{}%
+    {\expandafter\let\csname @currentlabelname\endcsname\TmpValueTitle}%
   %
-  \SetTheoremContentLabel{\TmpValueLabel}%
+  \SetTheoremContentLabel[\TmpValueLabel]%
   %
   #3%
   %

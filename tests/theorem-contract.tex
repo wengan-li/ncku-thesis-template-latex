@@ -1,0 +1,42 @@
+% Focused runtime contract for all public theorem insertion helpers.
+% Build from the thesis/ directory after the template has initialized formats.
+\input{./template/configure}
+
+\begin{document}
+\typeout{NCKU-TEST-THEOREM-DEFAULT: \GetTheoremTheoremFormatEnvironmentName/\GetTheoremTheoremFormatShowText/\GetTheoremTheoremFormatFollowCounter}
+\typeout{NCKU-TEST-DEFINITION-DEFAULT: \GetTheoremDefinitionFormatEnvironmentName/\GetTheoremDefinitionFormatShowText/\GetTheoremDefinitionFormatFollowCounter}
+\typeout{NCKU-TEST-PROOF-DEFAULT: \GetTheoremProofFormatEnvironmentName/\GetTheoremProofFormatShowText/\GetTheoremProofFormatFollowCounter}
+
+\stepcounter{section}
+
+\InsertDefinition[label={ncku:test:definition}]{NCKU Definition Body.}
+\InsertCondition[label={ncku:test:condition}]{NCKU Condition Body.}
+\InsertProblem[label={ncku:test:problem}]{NCKU Problem Body.}
+\InsertExample[label={ncku:test:example}]{NCKU Example Body.}
+\InsertTheorem[title={Named Theorem},label={ncku:test:theorem-first}]{NCKU Theorem Body One.}
+\InsertLemma[label={ncku:test:lemma}]{NCKU Lemma Body.}
+\InsertCorollary[label={ncku:test:corollary}]{NCKU Corollary Body.}
+\InsertProposition[label={ncku:test:proposition}]{NCKU Proposition Body.}
+\InsertConjecture[label={ncku:test:conjecture}]{NCKU Conjecture Body.}
+\InsertCriterion[label={ncku:test:criterion}]{NCKU Criterion Body.}
+\InsertAssertion[label={ncku:test:assertion}]{NCKU Assertion Body.}
+\InsertQuestion[label={ncku:test:question}]{NCKU Question Body.}
+\InsertHypothesis[label={ncku:test:hypothesis}]{NCKU Hypothesis Body.}
+\InsertTheorem[label={ncku:test:theorem-second}]{NCKU Theorem Body Two.}
+
+\InsertProof{NCKU Proof Body.}
+\InsertNote{NCKU Note Body.}
+\InsertAnnotation{NCKU Annotation Body.}
+\InsertClaim{NCKU Claim Body.}
+\InsertCase{NCKU Case Body.}
+\InsertAcknowledgment{NCKU Acknowledgment Body.}
+\InsertConclusion{NCKU Conclusion Body.}
+\InsertSummary{NCKU Summary Body.}
+
+\stepcounter{section}
+\InsertTheorem[label={ncku:test:theorem-reset}]{NCKU Theorem Reset Body.}
+
+References: \ref{ncku:test:definition}, \ref{ncku:test:theorem-first}, \ref{ncku:test:theorem-second}, \ref{ncku:test:theorem-reset}.
+Named reference: \nameref{ncku:test:theorem-first}.
+\typeout{NCKU-TEST-PASS: all 21 public theorem insertion helpers compiled}
+\end{document}
