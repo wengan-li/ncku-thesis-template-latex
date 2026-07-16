@@ -37,32 +37,27 @@
 
 \newcommand{\DisplayTableContent}[5]
 {%
-  \begin{minipage}[c]{\textwidth}%
-  \begin{mdframed}[skipabove=0pt, skipbelow=0pt, leftmargin=0pt, rightmargin=0pt,
-    innerleftmargin=0pt, innerrightmargin=0pt, innertopmargin=0pt,
-    innerbottommargin=0pt, linewidth=0pt, apptotikzsetting={%
-    \tikzset{mdfbackground/.append style={opacity=#4}}}]%
-  \ifthenelse{\equal{#1}{0.0}}%
-  {%
-    \makebox[\textwidth]%
+  \NCKUPrivateDisplayFramedFloatContent{#4}{%
+    \ifthenelse{\equal{#1}{0.0}}%
     {%
-      \setlength{\tabcolsep}{#2}%
-      \renewcommand{\arraystretch}{#3}%
-      #5%
-    }%
-  }{%
-    \makebox[\textwidth]%
-    {%
-      \resizebox{#1\paperwidth}{!}%
+      \makebox[\textwidth]%
       {%
         \setlength{\tabcolsep}{#2}%
         \renewcommand{\arraystretch}{#3}%
         #5%
       }%
+    }{%
+      \makebox[\textwidth]%
+      {%
+        \resizebox{#1\paperwidth}{!}%
+        {%
+          \setlength{\tabcolsep}{#2}%
+          \renewcommand{\arraystretch}{#3}%
+          #5%
+        }%
+      }%
     }%
   }%
-  \end{mdframed}%
-  \end{minipage}%
 } % End of \newcommand{}
 
 \pgfkeys

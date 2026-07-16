@@ -211,7 +211,7 @@ All established public insertion and initializer commands remain literally decla
 
 A focused one-page contract now covers single/multi/subfigure paths, all numbered labels and names, top/bottom/star table forms, key-state/no-op placement, four embedded images, and visual order. It reproduced an existing caption-metadata defect: mutable pgf caption tokens were written to `\@currentlabelname`, so later parsing changed names and a closed subfigure scope made `\nameref` fail with an undefined `\TmpMISubValueCaption`. Caption wrappers now freeze the title after `\caption`/`\caption*` and before `\label`; the auxiliary file contains literal names.
 
-Next, extract only the identical private framed-content wrapper against the corrected focused baseline. Preserve all public signatures and `[H]` placement. Keep historical no-op keys documented as compatibility behavior; making placement keys active is a separate visible-layout change.
+The identical full-width minipage plus zero-line `mdframed`/opacity wrapper is now owned by one private helper and reused by `\InsertFigure`, `\InsertFigures`, and the public `\DisplayTableContent` adapter. The public float commands and signatures, forced `[H]` placement, inactive `pos`/`align` compatibility keys, row dispatch, transforms, table scaling/spacing, and caption order remain unchanged. Against the corrected pre-refactor fixture, layout text, normalized bbox word tuples, four-image inventory, and 180-DPI raster are identical; canonical text/bbox and float pages 82/258--261 are also unchanged.
 
 ### 4. Small duplicate helpers
 

@@ -1,6 +1,6 @@
 # V2 Local Float Hardening
 
-Status: active, local-only
+Status: complete, local-only
 Owner: Leon / Tachikoma
 
 ## Intent
@@ -71,12 +71,14 @@ visual inspection of focused float pages
 - The focused contract reproduced `Undefined control sequence: \TmpMISubValueCaption` when `\nameref` read subfigure metadata after scope exit; other names retained mutable `\TmpValueCaption`/`\TmpMIValueCaption` tokens.
 - Caption wrappers now freeze literal current-label names before labels. The one-page contract passes with eight names, four images/four masks, no box/reference warnings, and exact top/bottom/star order.
 - The corrected pre-refactor baseline is `/tmp/ncku-float-contract-fixed-baseline.pdf`; canonical text/bbox and float pages 82/258--261 remain identical.
+- One two-argument private helper now owns the three exact minipage/mdframed/opacity wrappers. Combined source size is 773 to 770 lines; the small net reduction is secondary to having one framing policy.
+- Post-extraction focused text, bbox word tuples, and raster are identical to the corrected baseline. `just ci`, 612/612 v1 declarations with 102 v2 additions, unchanged 18-file v1 migration input, canonical 271-page text/bbox, and selected float-page rasters all pass.
 
 ## Progress
 
 - [x] Record theorem closeout learning before continuing.
 - [x] Inventory float implementations and public API boundary.
 - [x] Add and baseline the focused float contract.
-- [ ] Extract the shared private framed-content helper.
-- [ ] Run focused/full artifact validation.
-- [ ] Write durable lessons and create the local-only implementation commit.
+- [x] Extract the shared private framed-content helper.
+- [x] Run focused/full artifact validation.
+- [x] Write durable lessons and create the local-only implementation commit.

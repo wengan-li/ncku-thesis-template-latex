@@ -94,6 +94,19 @@
 } % End of \newcommand{}
 \makeatother
 
+% Shared full-width, zero-line frame for figure and table content.
+\newcommand{\NCKUPrivateDisplayFramedFloatContent}[2]
+{%
+  \begin{minipage}[c]{\textwidth}%
+  \begin{mdframed}[skipabove=0pt, skipbelow=0pt, leftmargin=0pt, rightmargin=0pt,
+    innerleftmargin=0pt, innerrightmargin=0pt, innertopmargin=0pt,
+    innerbottommargin=0pt, linewidth=0pt, apptotikzsetting={%
+    \tikzset{mdfbackground/.append style={opacity=#1}}}]%
+  #2%
+  \end{mdframed}%
+  \end{minipage}%
+} % End of \newcommand{}
+
 % Shared implementation for public figure/table caption-and-label wrappers.
 \DeclareDocumentCommand{\SetFloatCaptionAndLabel}{+m +m}
 {%
