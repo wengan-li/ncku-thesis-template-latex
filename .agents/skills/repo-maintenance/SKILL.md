@@ -105,6 +105,13 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   final registry row. Keep the 13 numbered-counter getter declarations literal:
   the v1 source manifest historically discovered them through repeated
   `\renewcommand` branches even though registry-owned keys now populate values.
+- Float compatibility: caption text stored in pgf temporaries must be frozen
+  into `\@currentlabelname` after `\caption`/`\caption*` and before `\label`.
+  Test `\nameref` after a later key parse and after subfigure scope exit, and
+  require literal caption text rather than temporary macros in the auxiliary
+  file. Extract only the exact minipage/mdframed/opacity wrapper shared by
+  figure, multi-figure, and table paths; keep `[H]` and no-op compatibility
+  placement/alignment keys unchanged.
 - Do not claim tagged PDF or PDF/UA compliance from metadata alone.
 - Current university and department requirements override template guidance.
 

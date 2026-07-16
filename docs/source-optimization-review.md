@@ -209,7 +209,9 @@ All established public insertion and initializer commands remain literally decla
 
 `cmd-figure.tex`, `cmd-figures.tex`, and `cmd-table.tex` repeat float/minipage/frame/opacity behavior and currently force `[H]` while retaining compatibility keys that do not affect placement.
 
-Extract a private framed-content helper. Preserve all public signatures. Keep historical no-op keys documented as compatibility behavior; making placement keys active is a separate visible-layout change.
+A focused one-page contract now covers single/multi/subfigure paths, all numbered labels and names, top/bottom/star table forms, key-state/no-op placement, four embedded images, and visual order. It reproduced an existing caption-metadata defect: mutable pgf caption tokens were written to `\@currentlabelname`, so later parsing changed names and a closed subfigure scope made `\nameref` fail with an undefined `\TmpMISubValueCaption`. Caption wrappers now freeze the title after `\caption`/`\caption*` and before `\label`; the auxiliary file contains literal names.
+
+Next, extract only the identical private framed-content wrapper against the corrected focused baseline. Preserve all public signatures and `[H]` placement. Keep historical no-op keys documented as compatibility behavior; making placement keys active is a separate visible-layout change.
 
 ### 4. Small duplicate helpers
 

@@ -35,7 +35,8 @@
 
 \DeclareDocumentCommand{\SetFigureCaption}{+m}
 {
-  \ifthenelse{\equal{#1}{\empty}}{}{\IfNoValueF{#1}{\caption{#1}}}
+  \ifthenelse{\equal{#1}{\empty}}{}%
+    {\IfNoValueF{#1}{\caption{#1}\NCKUPrivateFreezeCurrentLabelName{#1}}}
 } % End of \DeclareDocumentCommand{}
 
 \DeclareDocumentCommand{\SetImageLabel}{+m}

@@ -85,6 +85,15 @@
 
 % ----------------------------------------------------------------------------
 
+% Freeze caption text before a later pgf parse or subfigure scope invalidates
+% the temporary macro that supplied it to caption/nameref metadata.
+\makeatletter
+\newcommand{\NCKUPrivateFreezeCurrentLabelName}[1]
+{%
+  \protected@edef\@currentlabelname{#1}%
+} % End of \newcommand{}
+\makeatother
+
 % Shared implementation for public figure/table caption-and-label wrappers.
 \DeclareDocumentCommand{\SetFloatCaptionAndLabel}{+m +m}
 {%
@@ -94,6 +103,7 @@
       \GetStartExtendedAbstractFigureTableControl}{%
       \ValueDisableExtendedAbstractFigureTableControl}}%
       {\caption{#1}}{\caption[]{#1}}%
+    \NCKUPrivateFreezeCurrentLabelName{#1}%
     \ifthenelse{\equal{#2}{\empty}}{}{\label{#2}}%
   }%
 }

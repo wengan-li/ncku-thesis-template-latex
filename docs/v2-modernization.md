@@ -116,7 +116,7 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 The completed v2 slice was validated from a clean committed worktree:
 
 - `just ci`: pass, including canonical build and all focused fixtures;
-- v1 API gate: 612/612 declarations preserved, with 100 additive v2 declarations;
+- v1 API gate: 612/612 declarations preserved, with 101 additive v2 declarations;
 - migration source gate: 18 student-owned files (296,726 bytes) match v1.8.2
   exactly;
 - migration runtime gates: unchanged entry/configuration plus active StudentMode
@@ -155,6 +155,10 @@ The completed v2 slice was validated from a clean committed worktree:
   default/setter/counter routes plus self/unknown/empty behavior are asserted;
 - theorem cycle fixture: cyclic parents fail with a deterministic package error
   and never reach recursive TeX-capacity overflow;
+- float caption contract: single/multi/subfigure and top/bottom/star table paths
+  preserve key state, numbering, visible order, and eight literal nameref titles;
+  caption wrappers freeze `\@currentlabelname` before writing labels so later
+  pgf parses and subfigure scope exit cannot corrupt auxiliary metadata;
 - generated NCKU English oral comparison: extracted text, word coordinates, and
   150-DPI raster remain identical after submission-text token extraction.
 
