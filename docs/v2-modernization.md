@@ -80,17 +80,20 @@ cover plus affected pages.
 
 ## Context
 
-### Current Evidence
+### Implemented Evidence
 
-- The v1 tree explicitly declares 612 commands/environments captured in
+- The v1 tree declares 612 commands/environments captured and enforced by
   `tests/v1-public-api.json`.
-- `template/command/command.tex` currently loads NCKU college and department
-  catalogues as generic commands.
-- `template/style/style.tex` currently hard-codes NCKU and references a custom
-  profile that does not exist.
-- `template/style/ncku/ncku.tex` currently overrides public date setters.
-- `thesis/template/style/Customization.md` and the v1.5.0 changelog establish
-  `template/style/` as the historical non-NCKU port boundary.
+- `template/command/command.tex` loads `template/compat/v1.tex`; historical NCKU
+  catalogue helpers remain available while their data is owned by
+  `template/style/ncku/`.
+- `template/style/style.tex` dynamically loads exactly one registered profile.
+- `template/style/ncku/ncku.tex` implements date policy through hooks instead of
+  overriding public setters.
+- `template/style/custom/custom.tex` builds an English cover and oral
+  certificate without NCKU visible policy or watermark assets.
+- `thesis/template/style/Customization.md` and the v1.5.0 changelog keep
+  `template/style/` as the non-NCKU port boundary.
 
 ### Open Questions
 
@@ -103,7 +106,7 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 - [x] Create and enforce the v1 command/environment baseline.
 - [x] Add exact helper contract fixtures.
 - [x] Correct the first verified helper defects.
-- [ ] Add the v1 compatibility adapter and style profile contract.
-- [ ] Extract NCKU policy/data and add a neutral custom profile.
-- [ ] Complete migration and customization documentation.
-- [ ] Run full compatibility, PDF, and rendered-page validation.
+- [x] Add the v1 compatibility adapter and style profile contract.
+- [x] Extract NCKU policy/data and add a neutral custom profile.
+- [x] Complete migration and customization documentation.
+- [ ] Run final compatibility, PDF, and rendered-page validation.

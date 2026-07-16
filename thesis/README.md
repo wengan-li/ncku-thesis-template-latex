@@ -11,6 +11,10 @@ This directory is the complete student project. The versioned GitHub Release ZIP
 
 The large document selected by `\ExampleMode` is the complete teaching example. It is useful as a reference but is slower to rebuild than a normal thesis using `context/context.tex`.
 
+## Migrating from 1.x
+
+V2 keeps the complete declared 1.x helper surface through a compatibility adapter. Existing projects should preserve `conf/conf.tex` and user content, replace template-owned files, then follow [`MIGRATION-1.x-TO-2.x.md`](MIGRATION-1.x-TO-2.x.md). Non-NCKU institutional forks should also follow [`template/style/Customization.md`](template/style/Customization.md); institution policy remains under `template/style/`, not `conf/`.
+
 ## Draft and institutional watermark
 
 The student project defaults to final-ready output: no `(Draft)` / `(初稿)` cover marker, no diagonal `DRAFT` text layer, and no institutional logo watermark. During writing or review, uncomment `\DisplayDraft` in `conf/conf.tex` only when you deliberately want the cover marked as a draft; keep it disabled for final output. A diagonal text watermark is a separate `draftwatermark` package feature and must also be enabled explicitly.

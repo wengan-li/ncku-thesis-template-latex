@@ -57,6 +57,30 @@ Profiles must not change public command arity. Institution policy should be
 implemented through profile hooks or resolved state rather than by redefining
 public setters.
 
+## Implemented Adapter Boundary
+
+The v2 command facade loads `template/compat/v1.tex`. The adapter preserves the
+historical college/department preset commands and old source paths, while the
+institution-owned data now lives in:
+
+```text
+template/style/ncku/college.tex
+template/style/ncku/department.tex
+```
+
+A custom profile therefore keeps the complete v1 command surface but does not
+load NCKU geometry, date hooks, or watermark assets. Removing the adapter or
+regenerating the baseline is not an acceptable 2.x cleanup.
+
+Public date setters now call profile policy hooks:
+
+```text
+SetOralDate  -> ApplyOralDatePolicy
+SetCoverDate -> ApplyCoverDatePolicy
+```
+
+Profiles override the hooks, not setter signatures or raw metadata storage.
+
 ## Behavior Corrections
 
 Compatibility does not preserve verified defects. Each correction must include:
