@@ -116,7 +116,7 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 The completed v2 slice was validated from a clean committed worktree:
 
 - `just ci`: pass, including canonical build and all focused fixtures;
-- v1 API gate: 612/612 declarations preserved, with 94 additive v2 declarations;
+- v1 API gate: 612/612 declarations preserved, with 100 additive v2 declarations;
 - migration source gate: 18 student-owned files (296,726 bytes) match v1.8.2
   exactly;
 - migration runtime gates: unchanged entry/configuration plus active StudentMode
@@ -146,14 +146,15 @@ The completed v2 slice was validated from a clean committed worktree:
   `\ref`/`\nameref`, section reset, proof-marker assertions, and unknown/empty
   setter no-op coverage; the label option no longer leaks into visible text and
   titled labels retain stable nameref metadata;
-- theorem registry slice: one private ordered type list now drives aggregate
-  initialization and setter dispatch without changing per-type public wrappers,
-  key families, styles, or counter implementations;
+- theorem registry: one 21-row source owns order, style/numbering policy,
+  defaults, key-family declarations, membership, aggregate initialization, and
+  default application while literal v1 public adapters remain;
 - theorem style/counter matrix: all 21 custom environment/text routes preserve
-  plain-versus-definition body styles; numbered formats cover global, Section,
-  and chained-to-unscoped parent counters. Parent resolution now occurs before
-  selecting the scoped/unscoped `\newtheorem` form, avoiding the historical
-  `No counter '' defined` failure;
+  plain-versus-definition styles and cover global, Section, custom-counter,
+  forward/multi-hop, chained-empty, and optional-type numbering; all 21
+  default/setter/counter routes plus self/unknown/empty behavior are asserted;
+- theorem cycle fixture: cyclic parents fail with a deterministic package error
+  and never reach recursive TeX-capacity overflow;
 - generated NCKU English oral comparison: extracted text, word coordinates, and
   150-DPI raster remain identical after submission-text token extraction.
 

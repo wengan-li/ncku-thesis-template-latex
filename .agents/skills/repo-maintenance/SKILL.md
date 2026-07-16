@@ -92,11 +92,17 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   dispatch while preserving every per-type public wrapper, initializer, key
   family, style, and counter implementation. Preserve unknown-type no-op
   behavior explicitly and cover every registered route plus an unknown sentinel.
-  For numbered custom formats, resolve a referenced theorem type's effective
-  parent counter before choosing the `\newtheorem` form, then re-check for an
-  empty result; otherwise a chained unscoped type becomes `No counter ''
-  defined`. Keep the custom style/counter matrix in the gate to protect global,
-  section-scoped, chained-empty, plain, and definition behavior.
+  The completed registry owns type order, style/numbering policy, default
+  metadata, key families, membership, aggregate initialization, and default
+  application. Keep every v1 insertion/initializer declaration literal as a
+  compatibility adapter. Resolve forward and multi-hop counter chains to a
+  frozen terminal value, including an existing non-registry LaTeX counter,
+  before choosing `\newtheorem`; optional types with a
+  configured parent become numbered, and cycles must fail with the package
+  diagnostic rather than recursive overflow. Keep both theorem fixtures and the
+  negative cycle fixture in the gate. Generic initializer scratch values must be
+  frozen into each environment declaration so headings cannot leak from the
+  final registry row.
 - Do not claim tagged PDF or PDF/UA compliance from metadata alone.
 - Current university and department requirements override template guidance.
 

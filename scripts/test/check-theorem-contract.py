@@ -24,14 +24,10 @@ def main() -> None:
     text = stem.with_suffix(".txt").read_text(errors="replace")
     pdfinfo = stem.with_suffix(".pdfinfo").read_text(errors="replace")
 
-    markers = (
-        "NCKU-TEST-THEOREM-DEFAULT: EnvTheorem/Theorem/section",
-        "NCKU-TEST-DEFINITION-DEFAULT: EnvDefinition/Definition/section",
-        "NCKU-TEST-PROOF-DEFAULT: EnvProof/Proof/",
-        "NCKU-TEST-PASS: all 21 public theorem insertion helpers compiled",
+    require(
+        "NCKU-TEST-PASS: all 21 public theorem insertion helpers compiled" in log,
+        "missing theorem pass marker",
     )
-    for marker in markers:
-        require(marker in log, f"missing log marker: {marker}")
 
     theorem_types = (
         "Definition",
@@ -56,6 +52,27 @@ def main() -> None:
         "Hypothesis",
         "Summary",
     )
+    numbered_types = {
+        "Definition",
+        "Condition",
+        "Problem",
+        "Example",
+        "Theorem",
+        "Lemma",
+        "Corollary",
+        "Proposition",
+        "Conjecture",
+        "Criterion",
+        "Assertion",
+        "Question",
+        "Hypothesis",
+    }
+    require(log.count("NCKU-TEST-DEFAULT-") == len(theorem_types), "unexpected default metadata count")
+    for theorem_type in theorem_types:
+        follow = "section" if theorem_type in numbered_types else ""
+        marker = f"NCKU-TEST-DEFAULT-{theorem_type}: Env{theorem_type}/{theorem_type}/{follow}"
+        require(marker in log, f"missing default metadata marker: {theorem_type}")
+
     require(log.count("NCKU-TEST-ROUTE-") == len(theorem_types), "unexpected setter route count")
     for theorem_type in theorem_types:
         marker = f"NCKU-TEST-ROUTE-{theorem_type}: Registry{theorem_type}"
@@ -64,6 +81,23 @@ def main() -> None:
     require("NCKU-TEST-EMPTY-ROUTE: no-op" in log, "empty theorem type is not a no-op")
     require("NCKU-TEST-UNKNOWN-ROUTE: FAIL" not in log, "unknown theorem type created state")
     require("NCKU-TEST-EMPTY-ROUTE: FAIL" not in log, "empty theorem type created state")
+
+    require(
+        log.count("NCKU-TEST-COUNTER-ROUTE-") == len(theorem_types) + 1,
+        "unexpected counter target route count",
+    )
+    for theorem_type in theorem_types:
+        follow = "section" if theorem_type in numbered_types else ""
+        source = theorem_type if theorem_type == "Definition" else "Definition"
+        marker = f"NCKU-TEST-COUNTER-ROUTE-{theorem_type}: {source}/{follow}"
+        require(marker in log, f"missing counter target route: {theorem_type}")
+    require(
+        "NCKU-TEST-COUNTER-ROUTE-Section: Definition/section" in log,
+        "Section counter target did not normalize",
+    )
+    require("NCKU-TEST-COUNTER-UNKNOWN: Section" in log, "unknown counter target is not a no-op")
+    require("NCKU-TEST-COUNTER-EMPTY: Section" in log, "empty counter target is not a no-op")
+    require("NCKU-TEST-COUNTER-CHAIN: " in log, "multi-hop empty counter chain did not resolve")
 
     forbidden_warnings = (
         "undefined references",
@@ -135,8 +169,8 @@ def main() -> None:
     )
 
     print(
-        f"Theorem contract PASS: {len(theorem_types)} insertion/setter routes, "
-        f"{len(labels)} labels, unknown/empty no-op, title/ref/nameref, section reset, proof marker"
+        f"Theorem contract PASS: {len(theorem_types)} defaults/insertion/setter/counter routes, "
+        f"{len(labels)} labels, self/unknown/empty, multi-hop, title/ref/nameref, section reset, proof marker"
     )
 
 

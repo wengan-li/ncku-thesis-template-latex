@@ -44,21 +44,29 @@ def main() -> None:
     )
     unnumbered_definition = (
         "Proof",
-        "Note",
         "Annotation",
         "Claim",
         "Case",
         "Acknowledgment",
         "Conclusion",
+    )
+    optional_numbered_definition = (
+        "Note",
         "Summary",
     )
-    theorem_types = numbered_plain + numbered_definition + unnumbered_definition
+    theorem_types = numbered_plain + numbered_definition + unnumbered_definition + optional_numbered_definition
 
+    compact_log = "".join(log.split())
     require(log.count("NCKU-TEST-MATRIX-") == len(theorem_types), "unexpected matrix marker count")
     for theorem_type in theorem_types:
-        follow = "section" if theorem_type == "Condition" else ""
+        if theorem_type in {"Condition", "Summary"}:
+            follow = "section"
+        elif theorem_type in {"Question", "Hypothesis"}:
+            follow = "MatrixCustomCounter"
+        else:
+            follow = ""
         marker = f"NCKU-TEST-MATRIX-{theorem_type}: EnvMatrix{theorem_type}/Matrix {theorem_type}/{follow}"
-        require(marker in log, f"missing or incorrect matrix marker: {theorem_type}")
+        require("".join(marker.split()) in compact_log, f"missing or incorrect matrix marker: {theorem_type}")
     require(
         "NCKU-TEST-PASS: custom theorem style/counter matrix compiled" in log,
         "missing pass marker",
@@ -89,8 +97,10 @@ def main() -> None:
         "Conjecture": "1",
         "Criterion": "1",
         "Assertion": "1",
-        "Question": "1",
-        "Hypothesis": "1",
+        "Question": "3.1",
+        "Hypothesis": "3.1",
+        "Note": "1",
+        "Summary": "I.1",
     }
     normalized_text = " ".join(text.split())
     for theorem_type, number in expected_first.items():
@@ -103,6 +113,8 @@ def main() -> None:
         "Matrix Definition 2. MATRIXDEFINITIONBODYTWO",
         "Matrix Theorem 2. MATRIXTHEOREMBODYTWO",
         "Matrix Condition II.1. MATRIXCONDITIONBODYTWO",
+        "Matrix Note 2. MATRIXNOTEBODYTWO",
+        "Matrix Summary II.1. MATRIXSUMMARYBODYTWO",
     ):
         require(fragment in normalized_text, f"missing second-section output: {fragment}")
     require("MATRIXPROOFBODYONE ■" in normalized_text, "proof marker is missing")
@@ -119,14 +131,14 @@ def main() -> None:
         marker = f"MATRIX{theorem_type.upper()}BODYONE"
         require(marker in styled, f"missing XML style token: {marker}")
         require(styled[marker], f"plain theorem body is not italic: {theorem_type}")
-    for theorem_type in numbered_definition + unnumbered_definition:
+    for theorem_type in numbered_definition + unnumbered_definition + optional_numbered_definition:
         marker = f"MATRIX{theorem_type.upper()}BODYONE"
         require(marker in styled, f"missing XML style token: {marker}")
         require(not styled[marker], f"definition theorem body became italic: {theorem_type}")
 
     print(
         "Theorem style/counter matrix PASS: 21 custom environments, "
-        "plain/definition styles, global/scoped/chained-empty counters"
+        "plain/definition styles, global/scoped/custom/forward/multi-hop/optional counters"
     )
 
 

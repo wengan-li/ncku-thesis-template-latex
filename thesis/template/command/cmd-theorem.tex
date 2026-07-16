@@ -95,199 +95,198 @@
   \end{#2}%
 } % End of \newcommand{}
 
+% Declarative theorem registry. Public per-type commands remain explicit, while
+% this table owns order, style/numbering policy, defaults, key storage, and
+% membership used by aggregate and counter-routing helpers.
+\newcommand{\NCKUPrivateForEachTheoremFormat}[1]
+{%
+  #1{Definition}{definition}{numbered}{EnvDefinition}{Definition}{Section}{\GetTheoremDefinitionFormatEnvironmentName}{\GetTheoremDefinitionFormatShowText}{\GetTheoremDefinitionFormatFollowCounter}%
+  #1{Condition}{definition}{numbered}{EnvCondition}{Condition}{Section}{\GetTheoremConditionFormatEnvironmentName}{\GetTheoremConditionFormatShowText}{\GetTheoremConditionFormatFollowCounter}%
+  #1{Problem}{definition}{numbered}{EnvProblem}{Problem}{Section}{\GetTheoremProblemFormatEnvironmentName}{\GetTheoremProblemFormatShowText}{\GetTheoremProblemFormatFollowCounter}%
+  #1{Example}{definition}{numbered}{EnvExample}{Example}{Section}{\GetTheoremExampleFormatEnvironmentName}{\GetTheoremExampleFormatShowText}{\GetTheoremExampleFormatFollowCounter}%
+  #1{Theorem}{plain}{numbered}{EnvTheorem}{Theorem}{Section}{\GetTheoremTheoremFormatEnvironmentName}{\GetTheoremTheoremFormatShowText}{\GetTheoremTheoremFormatFollowCounter}%
+  #1{Lemma}{plain}{numbered}{EnvLemma}{Lemma}{Section}{\GetTheoremLemmaFormatEnvironmentName}{\GetTheoremLemmaFormatShowText}{\GetTheoremLemmaFormatFollowCounter}%
+  #1{Corollary}{plain}{numbered}{EnvCorollary}{Corollary}{Section}{\GetTheoremCorollaryFormatEnvironmentName}{\GetTheoremCorollaryFormatShowText}{\GetTheoremCorollaryFormatFollowCounter}%
+  #1{Proposition}{plain}{numbered}{EnvProposition}{Proposition}{Section}{\GetTheoremPropositionFormatEnvironmentName}{\GetTheoremPropositionFormatShowText}{\GetTheoremPropositionFormatFollowCounter}%
+  #1{Conjecture}{plain}{numbered}{EnvConjecture}{Conjecture}{Section}{\GetTheoremConjectureFormatEnvironmentName}{\GetTheoremConjectureFormatShowText}{\GetTheoremConjectureFormatFollowCounter}%
+  #1{Proof}{definition}{optional}{EnvProof}{Proof}{\empty}{\GetTheoremProofFormatEnvironmentName}{\GetTheoremProofFormatShowText}{\GetTheoremProofFormatFollowCounter}%
+  #1{Note}{definition}{optional}{EnvNote}{Note}{\empty}{\GetTheoremNoteFormatEnvironmentName}{\GetTheoremNoteFormatShowText}{\GetTheoremNoteFormatFollowCounter}%
+  #1{Annotation}{definition}{optional}{EnvAnnotation}{Annotation}{\empty}{\GetTheoremAnnotationFormatEnvironmentName}{\GetTheoremAnnotationFormatShowText}{\GetTheoremAnnotationFormatFollowCounter}%
+  #1{Claim}{definition}{optional}{EnvClaim}{Claim}{\empty}{\GetTheoremClaimFormatEnvironmentName}{\GetTheoremClaimFormatShowText}{\GetTheoremClaimFormatFollowCounter}%
+  #1{Case}{definition}{optional}{EnvCase}{Case}{\empty}{\GetTheoremCaseFormatEnvironmentName}{\GetTheoremCaseFormatShowText}{\GetTheoremCaseFormatFollowCounter}%
+  #1{Acknowledgment}{definition}{optional}{EnvAcknowledgment}{Acknowledgment}{\empty}{\GetTheoremAcknowledgmentFormatEnvironmentName}{\GetTheoremAcknowledgmentFormatShowText}{\GetTheoremAcknowledgmentFormatFollowCounter}%
+  #1{Conclusion}{definition}{optional}{EnvConclusion}{Conclusion}{\empty}{\GetTheoremConclusionFormatEnvironmentName}{\GetTheoremConclusionFormatShowText}{\GetTheoremConclusionFormatFollowCounter}%
+  #1{Criterion}{plain}{numbered}{EnvCriterion}{Criterion}{Section}{\GetTheoremCriterionFormatEnvironmentName}{\GetTheoremCriterionFormatShowText}{\GetTheoremCriterionFormatFollowCounter}%
+  #1{Assertion}{plain}{numbered}{EnvAssertion}{Assertion}{Section}{\GetTheoremAssertionFormatEnvironmentName}{\GetTheoremAssertionFormatShowText}{\GetTheoremAssertionFormatFollowCounter}%
+  #1{Question}{definition}{numbered}{EnvQuestion}{Question}{Section}{\GetTheoremQuestionFormatEnvironmentName}{\GetTheoremQuestionFormatShowText}{\GetTheoremQuestionFormatFollowCounter}%
+  #1{Hypothesis}{definition}{numbered}{EnvHypothesis}{Hypothesis}{Section}{\GetTheoremHypothesisFormatEnvironmentName}{\GetTheoremHypothesisFormatShowText}{\GetTheoremHypothesisFormatFollowCounter}%
+  #1{Summary}{definition}{optional}{EnvSummary}{Summary}{\empty}{\GetTheoremSummaryFormatEnvironmentName}{\GetTheoremSummaryFormatShowText}{\GetTheoremSummaryFormatFollowCounter}%
+} % End of \newcommand{}
+
+% Literal compatibility declarations retained for the 13 v1 numbered-counter
+% getters. The registry-owned pgf keys populate their values before use.
+\providecommand{\GetTheoremDefinitionFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremConditionFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremProblemFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremExampleFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremTheoremFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremLemmaFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremCorollaryFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremPropositionFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremConjectureFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremCriterionFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremAssertionFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremQuestionFormatFollowCounter}{\empty}
+\providecommand{\GetTheoremHypothesisFormatFollowCounter}{\empty}
+
+\newcommand{\NCKUPrivateDeclareTheoremFormat}[9]
+{%
+  \expandafter\def\csname NCKUPrivateTheoremStyle@#1\endcsname{#2}%
+  \expandafter\def\csname NCKUPrivateTheoremPolicy@#1\endcsname{#3}%
+  \expandafter\def\csname NCKUPrivateTheoremFormatRegistered@#1\endcsname{}%
+  \pgfkeys
+  {
+    /Theorem#1Format/.is family, /Theorem#1Format,
+    default/.style =
+    {
+      EnvironmentName = {#4},
+      ShowText = {#5},
+      FollowCounter = #6,
+    },
+    EnvironmentName/.estore in = #7,
+    ShowText/.estore in = #8,
+    FollowCounter/.estore in = #9,
+  }%
+} % End of \newcommand{}
+
+\NCKUPrivateForEachTheoremFormat{\NCKUPrivateDeclareTheoremFormat}
+
+% Counter values can form chains (for example Problem -> Theorem -> Definition
+% -> empty). Resolve the complete chain before redefining the source getter so
+% forward references and self-lookups never leave mutable aliases behind.
+\newcount\NCKUPrivateTheoremCounterDepth
+
+\newcommand{\NCKUPrivateResolveTheoremCounter}[1]
+{%
+  \def\NCKUPrivateTheoremCounterOrigin{#1}%
+  \def\NCKUPrivateResolvedTheoremCounter{#1}%
+  \NCKUPrivateTheoremCounterDepth=0\relax
+  \NCKUPrivateResolveTheoremCounterStep
+} % End of \newcommand{}
+
+\newcommand{\NCKUPrivateResolveTheoremCounterStep}
+{%
+  \ifthenelse{\equal{\NCKUPrivateResolvedTheoremCounter}{Section}}%
+  {%
+    \def\NCKUPrivateResolvedTheoremCounter{section}%
+  }%
+  {%
+    \ifthenelse{\equal{\NCKUPrivateResolvedTheoremCounter}{section}}%
+    {}%
+    {%
+      \ifthenelse{\equal{\NCKUPrivateResolvedTheoremCounter}{\empty}}%
+      {}%
+      {%
+        \ifcsname NCKUPrivateTheoremFormatRegistered@\NCKUPrivateResolvedTheoremCounter\endcsname
+          \advance\NCKUPrivateTheoremCounterDepth by 1\relax
+          \ifnum\NCKUPrivateTheoremCounterDepth>21\relax
+            \PackageError{ncku-thesis-template}{Cyclic theorem counter configuration starting at `\NCKUPrivateTheoremCounterOrigin'}{Use Section, empty, or an acyclic registered theorem type.}%
+            \def\NCKUPrivateResolvedTheoremCounter{\empty}%
+          \else
+            \expandafter\let\expandafter\NCKUPrivateResolvedTheoremCounter
+              \csname GetTheorem\NCKUPrivateResolvedTheoremCounter FormatFollowCounter\endcsname
+            \NCKUPrivateResolveTheoremCounterStep
+          \fi
+        \else
+          % Preserve arbitrary existing LaTeX counters as terminal values. Only
+          % registered theorem names are traversed recursively.
+        \fi
+      }%
+    }%
+  }%
+} % End of \newcommand{}
+
 \newcommand{\MappingTheoremCounterResetCounter}[2][\empty]
 {%
-  \ifthenelse{\equal{#1}{Definition}}%
-  {%
-    \renewcommand{\GetTheoremDefinitionFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Condition}}%
-  {%
-    \renewcommand{\GetTheoremConditionFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Theorem}}%
-  {%
-    \renewcommand{\GetTheoremTheoremFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Lemma}}%
-  {%
-    \renewcommand{\GetTheoremLemmaFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Example}}%
-  {%
-    \renewcommand{\GetTheoremExampleFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Problem}}%
-  {%
-    \renewcommand{\GetTheoremProblemFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Corollary}}%
-  {%
-    \renewcommand{\GetTheoremCorollaryFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Proposition}}%
-  {%
-    \renewcommand{\GetTheoremPropositionFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Conjecture}}%
-  {%
-    \renewcommand{\GetTheoremConjectureFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Criterion}}%
-  {%
-    \renewcommand{\GetTheoremCriterionFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Assertion}}%
-  {%
-    \renewcommand{\GetTheoremAssertionFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Question}}%
-  {%
-    \renewcommand{\GetTheoremQuestionFormatFollowCounter}{#2}%
-  }{}%
-  %
-  \ifthenelse{\equal{#1}{Hypothesis}}%
-  {%
-    \renewcommand{\GetTheoremHypothesisFormatFollowCounter}{#2}%
-  }{}%
-  %
+  \ifcsname NCKUPrivateTheoremFormatRegistered@#1\endcsname
+    \expandafter\edef\csname GetTheorem#1FormatFollowCounter\endcsname{#2}%
+  \fi
 } % End of \newcommand{}
 
 \newcommand{\MappingTheoremCounter}[2][\empty]
 {%
   \ifthenelse{\equal{#2}{Section}}%
   {%
-    \MappingTheoremCounterResetCounter[#1]{section}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Definition}}%
+    \NCKUPrivateResolveTheoremCounter{#2}%
+    \MappingTheoremCounterResetCounter[#1]{\NCKUPrivateResolvedTheoremCounter}%
+  }%
   {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremDefinitionFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Condition}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremConditionFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Theorem}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremTheoremFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Lemma}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremLemmaFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Example}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremExampleFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Proposition}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremPropositionFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Conjecture}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremConjectureFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Criterion}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremCriterionFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Assertion}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremAssertionFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Question}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremQuestionFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Hypothesis}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremHypothesisFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Problem}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremProblemFormatFollowCounter}%
-  }{}%
-  %
-  \ifthenelse{\equal{#2}{Corollary}}%
-  {%
-    \MappingTheoremCounterResetCounter[#1]{%
-      \GetTheoremCorollaryFormatFollowCounter}%
-  }{}%
-  %
+    \ifcsname NCKUPrivateTheoremFormatRegistered@#2\endcsname
+      \NCKUPrivateResolveTheoremCounter{#2}%
+      \MappingTheoremCounterResetCounter[#1]{\NCKUPrivateResolvedTheoremCounter}%
+    \fi
+  }%
 } % End of \newcommand{}
 
-% ---------------------------------------------------------
-
-% Resolve the configured parent counter before choosing the numbered or
-% unscoped \newtheorem form. A followed type may itself be unscoped.
-\newcommand{\NCKUPrivateInitNumberedTheoremFormat}[4]
+\newcommand{\NCKUPrivateLoadTheoremFormatState}[1]
 {%
-  \ifthenelse{\equal{#4}{\empty}}%
+  \expandafter\let\expandafter\NCKUPrivateTheoremStyle
+    \csname NCKUPrivateTheoremStyle@#1\endcsname
+  \expandafter\let\expandafter\NCKUPrivateTheoremPolicy
+    \csname NCKUPrivateTheoremPolicy@#1\endcsname
+  \expandafter\let\expandafter\NCKUPrivateTheoremEnvironmentName
+    \csname GetTheorem#1FormatEnvironmentName\endcsname
+  \expandafter\let\expandafter\NCKUPrivateTheoremShowText
+    \csname GetTheorem#1FormatShowText\endcsname
+  \expandafter\let\expandafter\NCKUPrivateTheoremFollowCounter
+    \csname GetTheorem#1FormatFollowCounter\endcsname
+} % End of \newcommand{}
+
+\newcommand{\NCKUPrivateCreateNumberedTheorem}
+{%
+  % Freeze registry state into the environment definition. Reusing the private
+  % scratch getters directly would make every heading follow the final row.
+  \ifthenelse{\equal{\NCKUPrivateTheoremFollowCounter}{\empty}}%
   {%
-    \newtheorem{#2}{#3}%
+    \edef\NCKUPrivateCreateTheoremCommand{%
+      \noexpand\newtheorem{\NCKUPrivateTheoremEnvironmentName}{\NCKUPrivateTheoremShowText}}%
   }%
   {%
-    \MappingTheoremCounter[#1]{#4}%
-    \ifthenelse{\equal{#4}{\empty}}%
+    \edef\NCKUPrivateCreateTheoremCommand{%
+      \noexpand\newtheorem{\NCKUPrivateTheoremEnvironmentName}{\NCKUPrivateTheoremShowText}[\NCKUPrivateTheoremFollowCounter]}%
+  }%
+  \NCKUPrivateCreateTheoremCommand
+} % End of \newcommand{}
+
+\newcommand{\NCKUPrivateCreateUnnumberedTheorem}
+{%
+  \edef\NCKUPrivateCreateTheoremCommand{%
+    \noexpand\newtheorem*{\NCKUPrivateTheoremEnvironmentName}{\NCKUPrivateTheoremShowText}}%
+  \NCKUPrivateCreateTheoremCommand
+} % End of \newcommand{}
+
+\newcommand{\NCKUPrivateInitRegisteredTheoremFormat}[1]
+{%
+  \NCKUPrivateLoadTheoremFormatState{#1}%
+  \expandafter\theoremstyle\expandafter{\NCKUPrivateTheoremStyle}%
+  \ifthenelse{\equal{\NCKUPrivateTheoremFollowCounter}{\empty}}%
+  {%
+    \ifthenelse{\equal{\NCKUPrivateTheoremPolicy}{optional}}%
     {%
-      \newtheorem{#2}{#3}%
+      \NCKUPrivateCreateUnnumberedTheorem
     }%
     {%
-      \newtheorem{#2}{#3}[#4]%
+      \NCKUPrivateCreateNumberedTheorem
     }%
+  }%
+  {%
+    \MappingTheoremCounter[#1]{\NCKUPrivateTheoremFollowCounter}%
+    \NCKUPrivateLoadTheoremFormatState{#1}%
+    \NCKUPrivateCreateNumberedTheorem
   }%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremTheoremFormat/.is family, /TheoremTheoremFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvTheorem},
-    ShowText = {Theorem},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremTheoremFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremTheoremFormatShowText,
-  FollowCounter/.estore in = \GetTheoremTheoremFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertTheorem}[2][\empty]
 {%
@@ -296,28 +295,10 @@
 
 \newcommand{\InitTheoremTheoremFormat}
 {%
-  \theoremstyle{plain}%
-  \NCKUPrivateInitNumberedTheoremFormat{Theorem}{%
-    \GetTheoremTheoremFormatEnvironmentName}{%
-    \GetTheoremTheoremFormatShowText}{%
-    \GetTheoremTheoremFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Theorem}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremDefinitionFormat/.is family, /TheoremDefinitionFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvDefinition},
-    ShowText = {Definition},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremDefinitionFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremDefinitionFormatShowText,
-  FollowCounter/.estore in = \GetTheoremDefinitionFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertDefinition}[2][\empty]
 {%
@@ -326,28 +307,10 @@
 
 \newcommand{\InitTheoremDefinitionFormat}
 {%
-  \theoremstyle{definition}%
-  \NCKUPrivateInitNumberedTheoremFormat{Definition}{%
-    \GetTheoremDefinitionFormatEnvironmentName}{%
-    \GetTheoremDefinitionFormatShowText}{%
-    \GetTheoremDefinitionFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Definition}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremConditionFormat/.is family, /TheoremConditionFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvCondition},
-    ShowText = {Condition},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremConditionFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremConditionFormatShowText,
-  FollowCounter/.estore in = \GetTheoremConditionFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertCondition}[2][\empty]
 {%
@@ -356,28 +319,10 @@
 
 \newcommand{\InitTheoremConditionFormat}
 {%
-  \theoremstyle{definition}%
-  \NCKUPrivateInitNumberedTheoremFormat{Condition}{%
-    \GetTheoremConditionFormatEnvironmentName}{%
-    \GetTheoremConditionFormatShowText}{%
-    \GetTheoremConditionFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Condition}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremProblemFormat/.is family, /TheoremProblemFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvProblem},
-    ShowText = {Problem},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremProblemFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremProblemFormatShowText,
-  FollowCounter/.estore in = \GetTheoremProblemFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertProblem}[2][\empty]
 {%
@@ -386,28 +331,10 @@
 
 \newcommand{\InitTheoremProblemFormat}
 {%
-  \theoremstyle{definition}%
-  \NCKUPrivateInitNumberedTheoremFormat{Problem}{%
-    \GetTheoremProblemFormatEnvironmentName}{%
-    \GetTheoremProblemFormatShowText}{%
-    \GetTheoremProblemFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Problem}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremExampleFormat/.is family, /TheoremExampleFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvExample},
-    ShowText = {Example},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremExampleFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremExampleFormatShowText,
-  FollowCounter/.estore in = \GetTheoremExampleFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertExample}[2][\empty]
 {%
@@ -416,28 +343,10 @@
 
 \newcommand{\InitTheoremExampleFormat}
 {%
-  \theoremstyle{definition}%
-  \NCKUPrivateInitNumberedTheoremFormat{Example}{%
-    \GetTheoremExampleFormatEnvironmentName}{%
-    \GetTheoremExampleFormatShowText}{%
-    \GetTheoremExampleFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Example}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremLemmaFormat/.is family, /TheoremLemmaFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvLemma},
-    ShowText = {Lemma},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremLemmaFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremLemmaFormatShowText,
-  FollowCounter/.estore in = \GetTheoremLemmaFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertLemma}[2][\empty]
 {%
@@ -446,28 +355,10 @@
 
 \newcommand{\InitTheoremLemmaFormat}
 {%
-  \theoremstyle{plain}%
-  \NCKUPrivateInitNumberedTheoremFormat{Lemma}{%
-    \GetTheoremLemmaFormatEnvironmentName}{%
-    \GetTheoremLemmaFormatShowText}{%
-    \GetTheoremLemmaFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Lemma}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremCorollaryFormat/.is family, /TheoremCorollaryFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvCorollary},
-    ShowText = {Corollary},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremCorollaryFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremCorollaryFormatShowText,
-  FollowCounter/.estore in = \GetTheoremCorollaryFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertCorollary}[2][\empty]
 {%
@@ -476,28 +367,10 @@
 
 \newcommand{\InitTheoremCorollaryFormat}
 {%
-  \theoremstyle{plain}%
-  \NCKUPrivateInitNumberedTheoremFormat{Corollary}{%
-    \GetTheoremCorollaryFormatEnvironmentName}{%
-    \GetTheoremCorollaryFormatShowText}{%
-    \GetTheoremCorollaryFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Corollary}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremPropositionFormat/.is family, /TheoremPropositionFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvProposition},
-    ShowText = {Proposition},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremPropositionFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremPropositionFormatShowText,
-  FollowCounter/.estore in = \GetTheoremPropositionFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertProposition}[2][\empty]
 {%
@@ -506,28 +379,10 @@
 
 \newcommand{\InitTheoremPropositionFormat}
 {%
-  \theoremstyle{plain}%
-  \NCKUPrivateInitNumberedTheoremFormat{Proposition}{%
-    \GetTheoremPropositionFormatEnvironmentName}{%
-    \GetTheoremPropositionFormatShowText}{%
-    \GetTheoremPropositionFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Proposition}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremConjectureFormat/.is family, /TheoremConjectureFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvConjecture},
-    ShowText = {Conjecture},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremConjectureFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremConjectureFormatShowText,
-  FollowCounter/.estore in = \GetTheoremConjectureFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertConjecture}[2][\empty]
 {%
@@ -536,28 +391,10 @@
 
 \newcommand{\InitTheoremConjectureFormat}
 {%
-  \theoremstyle{plain}%
-  \NCKUPrivateInitNumberedTheoremFormat{Conjecture}{%
-    \GetTheoremConjectureFormatEnvironmentName}{%
-    \GetTheoremConjectureFormatShowText}{%
-    \GetTheoremConjectureFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Conjecture}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremHypothesisFormat/.is family, /TheoremHypothesisFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvHypothesis},
-    ShowText = {Hypothesis},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremHypothesisFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremHypothesisFormatShowText,
-  FollowCounter/.estore in = \GetTheoremHypothesisFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertHypothesis}[2][\empty]
 {%
@@ -566,28 +403,10 @@
 
 \newcommand{\InitTheoremHypothesisFormat}
 {%
-  \theoremstyle{definition}%
-  \NCKUPrivateInitNumberedTheoremFormat{Hypothesis}{%
-    \GetTheoremHypothesisFormatEnvironmentName}{%
-    \GetTheoremHypothesisFormatShowText}{%
-    \GetTheoremHypothesisFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Hypothesis}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremQuestionFormat/.is family, /TheoremQuestionFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvQuestion},
-    ShowText = {Question},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremQuestionFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremQuestionFormatShowText,
-  FollowCounter/.estore in = \GetTheoremQuestionFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertQuestion}[2][\empty]
 {%
@@ -596,28 +415,10 @@
 
 \newcommand{\InitTheoremQuestionFormat}
 {%
-  \theoremstyle{definition}%
-  \NCKUPrivateInitNumberedTheoremFormat{Question}{%
-    \GetTheoremQuestionFormatEnvironmentName}{%
-    \GetTheoremQuestionFormatShowText}{%
-    \GetTheoremQuestionFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Question}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremAssertionFormat/.is family, /TheoremAssertionFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvAssertion},
-    ShowText = {Assertion},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremAssertionFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremAssertionFormatShowText,
-  FollowCounter/.estore in = \GetTheoremAssertionFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertAssertion}[2][\empty]
 {%
@@ -626,28 +427,10 @@
 
 \newcommand{\InitTheoremAssertionFormat}
 {%
-  \theoremstyle{plain}%
-  \NCKUPrivateInitNumberedTheoremFormat{Assertion}{%
-    \GetTheoremAssertionFormatEnvironmentName}{%
-    \GetTheoremAssertionFormatShowText}{%
-    \GetTheoremAssertionFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Assertion}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremCriterionFormat/.is family, /TheoremCriterionFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvCriterion},
-    ShowText = {Criterion},
-    FollowCounter = Section,
-  },
-  EnvironmentName/.estore in = \GetTheoremCriterionFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremCriterionFormatShowText,
-  FollowCounter/.estore in = \GetTheoremCriterionFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertCriterion}[2][\empty]
 {%
@@ -656,28 +439,10 @@
 
 \newcommand{\InitTheoremCriterionFormat}
 {%
-  \theoremstyle{plain}%
-  \NCKUPrivateInitNumberedTheoremFormat{Criterion}{%
-    \GetTheoremCriterionFormatEnvironmentName}{%
-    \GetTheoremCriterionFormatShowText}{%
-    \GetTheoremCriterionFormatFollowCounter}%
+  \NCKUPrivateInitRegisteredTheoremFormat{Criterion}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremProofFormat/.is family, /TheoremProofFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvProof},
-    ShowText = {Proof},
-    FollowCounter = \empty,
-  },
-  EnvironmentName/.estore in = \GetTheoremProofFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremProofFormatShowText,
-  FollowCounter/.estore in = \GetTheoremProofFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertProof}[1]
 {%
@@ -687,39 +452,10 @@
 
 \newcommand{\InitTheoremProofFormat}
 {%
-  \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremProofFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem*{%
-      \GetTheoremProofFormatEnvironmentName}{%
-      \GetTheoremProofFormatShowText}
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Proof]{\GetTheoremProofFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremProofFormatEnvironmentName}{%
-      \GetTheoremProofFormatShowText}[%
-      \GetTheoremProofFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitRegisteredTheoremFormat{Proof}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremNoteFormat/.is family, /TheoremNoteFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvNote},
-    ShowText = {Note},
-    FollowCounter = \empty,
-  },
-  EnvironmentName/.estore in = \GetTheoremNoteFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremNoteFormatShowText,
-  FollowCounter/.estore in = \GetTheoremNoteFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertNote}[1]
 {%
@@ -729,39 +465,10 @@
 
 \newcommand{\InitTheoremNoteFormat}
 {%
-  \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremNoteFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem*{%
-      \GetTheoremNoteFormatEnvironmentName}{%
-      \GetTheoremNoteFormatShowText}
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Note]{\GetTheoremNoteFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremNoteFormatEnvironmentName}{%
-      \GetTheoremNoteFormatShowText}[%
-      \GetTheoremNoteFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitRegisteredTheoremFormat{Note}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremAnnotationFormat/.is family, /TheoremAnnotationFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvAnnotation},
-    ShowText = {Annotation},
-    FollowCounter = \empty,
-  },
-  EnvironmentName/.estore in = \GetTheoremAnnotationFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremAnnotationFormatShowText,
-  FollowCounter/.estore in = \GetTheoremAnnotationFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertAnnotation}[1]
 {%
@@ -771,39 +478,10 @@
 
 \newcommand{\InitTheoremAnnotationFormat}
 {%
-  \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremAnnotationFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem*{%
-      \GetTheoremAnnotationFormatEnvironmentName}{%
-      \GetTheoremAnnotationFormatShowText}
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Annotation]{\GetTheoremAnnotationFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremAnnotationFormatEnvironmentName}{%
-      \GetTheoremAnnotationFormatShowText}[%
-      \GetTheoremAnnotationFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitRegisteredTheoremFormat{Annotation}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremClaimFormat/.is family, /TheoremClaimFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvClaim},
-    ShowText = {Claim},
-    FollowCounter = \empty,
-  },
-  EnvironmentName/.estore in = \GetTheoremClaimFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremClaimFormatShowText,
-  FollowCounter/.estore in = \GetTheoremClaimFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertClaim}[1]
 {%
@@ -813,39 +491,10 @@
 
 \newcommand{\InitTheoremClaimFormat}
 {%
-  \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremClaimFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem*{%
-      \GetTheoremClaimFormatEnvironmentName}{%
-      \GetTheoremClaimFormatShowText}
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Claim]{\GetTheoremClaimFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremClaimFormatEnvironmentName}{%
-      \GetTheoremClaimFormatShowText}[%
-      \GetTheoremClaimFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitRegisteredTheoremFormat{Claim}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremCaseFormat/.is family, /TheoremCaseFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvCase},
-    ShowText = {Case},
-    FollowCounter = \empty,
-  },
-  EnvironmentName/.estore in = \GetTheoremCaseFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremCaseFormatShowText,
-  FollowCounter/.estore in = \GetTheoremCaseFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertCase}[1]
 {%
@@ -855,39 +504,10 @@
 
 \newcommand{\InitTheoremCaseFormat}
 {%
-  \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremCaseFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem*{%
-      \GetTheoremCaseFormatEnvironmentName}{%
-      \GetTheoremCaseFormatShowText}
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Case]{\GetTheoremCaseFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremCaseFormatEnvironmentName}{%
-      \GetTheoremCaseFormatShowText}[%
-      \GetTheoremCaseFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitRegisteredTheoremFormat{Case}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremAcknowledgmentFormat/.is family, /TheoremAcknowledgmentFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvAcknowledgment},
-    ShowText = {Acknowledgment},
-    FollowCounter = \empty,
-  },
-  EnvironmentName/.estore in = \GetTheoremAcknowledgmentFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremAcknowledgmentFormatShowText,
-  FollowCounter/.estore in = \GetTheoremAcknowledgmentFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertAcknowledgment}[1]
 {%
@@ -897,39 +517,10 @@
 
 \newcommand{\InitTheoremAcknowledgmentFormat}
 {%
-  \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremAcknowledgmentFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem*{%
-      \GetTheoremAcknowledgmentFormatEnvironmentName}{%
-      \GetTheoremAcknowledgmentFormatShowText}
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Acknowledgment]{\GetTheoremAcknowledgmentFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremAcknowledgmentFormatEnvironmentName}{%
-      \GetTheoremAcknowledgmentFormatShowText}[%
-      \GetTheoremAcknowledgmentFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitRegisteredTheoremFormat{Acknowledgment}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremConclusionFormat/.is family, /TheoremConclusionFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvConclusion},
-    ShowText = {Conclusion},
-    FollowCounter = \empty,
-  },
-  EnvironmentName/.estore in = \GetTheoremConclusionFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremConclusionFormatShowText,
-  FollowCounter/.estore in = \GetTheoremConclusionFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertConclusion}[1]
 {%
@@ -939,39 +530,10 @@
 
 \newcommand{\InitTheoremConclusionFormat}
 {%
-  \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremConclusionFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem*{%
-      \GetTheoremConclusionFormatEnvironmentName}{%
-      \GetTheoremConclusionFormatShowText}
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Conclusion]{\GetTheoremConclusionFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremConclusionFormatEnvironmentName}{%
-      \GetTheoremConclusionFormatShowText}[%
-      \GetTheoremConclusionFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitRegisteredTheoremFormat{Conclusion}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
-
-\pgfkeys
-{
-  /TheoremSummaryFormat/.is family, /TheoremSummaryFormat,
-  default/.style =
-  {
-    EnvironmentName = {EnvSummary},
-    ShowText = {Summary},
-    FollowCounter = \empty,
-  },
-  EnvironmentName/.estore in = \GetTheoremSummaryFormatEnvironmentName,
-  ShowText/.estore in = \GetTheoremSummaryFormatShowText,
-  FollowCounter/.estore in = \GetTheoremSummaryFormatFollowCounter,
-} % End of \pgfkeys{}
 
 \newcommand{\InsertSummary}[1]
 {%
@@ -981,61 +543,13 @@
 
 \newcommand{\InitTheoremSummaryFormat}
 {%
-  \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremSummaryFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem*{%
-      \GetTheoremSummaryFormatEnvironmentName}{%
-      \GetTheoremSummaryFormatShowText}
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Summary]{\GetTheoremSummaryFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremSummaryFormatEnvironmentName}{%
-      \GetTheoremSummaryFormatShowText}[%
-      \GetTheoremSummaryFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitRegisteredTheoremFormat{Summary}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
 
-% Private ordered registry. Keep per-type wrappers, key families, styles, and
-% counter implementations independent until a later fixture-backed slice.
-\newcommand{\NCKUPrivateForEachTheoremFormat}[1]
-{%
-  #1{Definition}%
-  #1{Condition}%
-  #1{Problem}%
-  #1{Example}%
-  #1{Theorem}%
-  #1{Lemma}%
-  #1{Corollary}%
-  #1{Proposition}%
-  #1{Conjecture}%
-  #1{Proof}%
-  #1{Note}%
-  #1{Annotation}%
-  #1{Claim}%
-  #1{Case}%
-  #1{Acknowledgment}%
-  #1{Conclusion}%
-  #1{Criterion}%
-  #1{Assertion}%
-  #1{Question}%
-  #1{Hypothesis}%
-  #1{Summary}%
-} % End of \newcommand{}
-
-\newcommand{\NCKUPrivateRegisterTheoremFormat}[1]
-{%
-  \expandafter\def\csname NCKUPrivateTheoremFormatRegistered@#1\endcsname{}%
-} % End of \newcommand{}
-
-\NCKUPrivateForEachTheoremFormat{\NCKUPrivateRegisterTheoremFormat}
-
-\newcommand{\NCKUPrivateInitTheoremFormat}[1]
+% Aggregate operations consume the same declarative registry.
+\newcommand{\NCKUPrivateInitTheoremFormat}[9]
 {%
   \csname InitTheorem#1Format\endcsname%
 } % End of \newcommand{}
@@ -1052,28 +566,9 @@
   \fi
 } % End of \newcommand{}
 
-% ---------------------------------------------------------
+\newcommand{\NCKUPrivateSetDefaultTheoremFormat}[9]
+{%
+  \SetTheoremFormat[#1]{}%
+} % End of \newcommand{}
 
-\SetTheoremFormat[Definition]{ShowText = {Definition}}%
-\SetTheoremFormat[Condition]{ShowText = {Condition}}%
-\SetTheoremFormat[Problem]{ShowText = {Problem}}%
-\SetTheoremFormat[Example]{ShowText = {Example}}%
-\SetTheoremFormat[Theorem]{ShowText = {Theorem}}%
-\SetTheoremFormat[Lemma]{ShowText = {Lemma}}%
-\SetTheoremFormat[Corollary]{ShowText = {Corollary}}%
-\SetTheoremFormat[Proposition]{ShowText = {Proposition}}%
-\SetTheoremFormat[Conjecture]{ShowText = {Conjecture}}%
-\SetTheoremFormat[Proof]{ShowText = {Proof}}%
-\SetTheoremFormat[Note]{ShowText = {Note}}%
-\SetTheoremFormat[Annotation]{ShowText = {Annotation}}%
-\SetTheoremFormat[Claim]{ShowText = {Claim}}%
-\SetTheoremFormat[Case]{ShowText = {Case}}%
-\SetTheoremFormat[Acknowledgment]{ShowText = {Acknowledgment}}%
-\SetTheoremFormat[Conclusion]{ShowText = {Conclusion}}%
-\SetTheoremFormat[Criterion]{ShowText = {Criterion}}%
-\SetTheoremFormat[Assertion]{ShowText = {Assertion}}%
-\SetTheoremFormat[Question]{ShowText = {Question}}%
-\SetTheoremFormat[Hypothesis]{ShowText = {Hypothesis}}%
-\SetTheoremFormat[Summary]{ShowText = {Summary}}%
-
-% ----------------------------------------------------------------------------
+\NCKUPrivateForEachTheoremFormat{\NCKUPrivateSetDefaultTheoremFormat}

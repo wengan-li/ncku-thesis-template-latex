@@ -1,6 +1,6 @@
 # V2 Local Theorem Hardening
 
-Status: active, local-only
+Status: complete, local-only
 Owner: Leon / Tachikoma
 
 ## Intent
@@ -29,11 +29,12 @@ Make theorem internals safer to maintain without changing the public 1.x/2.x com
 
 ### Done Means
 
-- One private ordered registry drives only aggregate theorem initialization and `\SetTheoremFormat` dispatch.
-- Existing per-type public insertion helpers, initializers, key families, styles, and counter implementations remain intact.
-- The focused fixture exercises every registered setter route and an unknown-type no-op sentinel.
+- One private ordered registry owns theorem type order, default environment/text/counter metadata, style policy, key-family declaration, membership, aggregate initialization, and default setter dispatch.
+- Existing per-type public insertion helpers and initializers remain explicitly declared with their established signatures; their bodies delegate to registry-backed internals.
+- Counter routing resolves registered targets dynamically, freezes effective values, handles self-reference without recursive aliases, preserves unknown/empty no-op behavior, and supports optional types becoming numbered.
+- Focused fixtures exercise all defaults, known setter/counter routes, self/unknown/empty sentinels, styles, labels, and counter policies.
 - Focused checks, v1 compatibility, `just ci`, and output comparisons pass.
-- Learning and implementation are separate local commits.
+- All work remains in reviewable local commits.
 
 ### Success Scenarios
 
@@ -66,16 +67,21 @@ pdftotext/pdftotext -bbox normalized comparison
 1. Optional-call syntax is semantic in TeX: braces passed to an optional helper become document input instead of the optional argument.
 2. Reusable pgf key state must not be written by name to label metadata; freeze the current title before `\label` so later insertions cannot blank `\nameref`.
 3. Declaration compatibility alone does not protect runtime behavior; the focused theorem contract must remain in `just test`.
-4. A first registry slice should centralize only type membership/order and dispatch. Combining declaration generation, counter mapping, styles, and rendering in one rewrite would hide regressions.
+4. Start registry work with only membership/order/dispatch; promote metadata, key declarations, and initialization into the registry only after focused custom/default/counter fixtures pass.
 5. Preserve old unknown-type no-op behavior explicitly; direct construction of `/Theorem<Type>Format` for arbitrary input would create a new pgfkeys error path.
+6. Resolve and freeze an effective parent counter before redefining the source getter. Storing a getter alias can create recursive self-follow definitions or later state coupling.
+7. Historically unnumbered helpers expose `FollowCounter`; an empty value keeps the starred form, while an explicitly configured parent must create a numbered global/scoped form after resolution.
+8. Generic initializer scratch macros must be frozen into each `\newtheorem` declaration; otherwise every environment can render the final registry row's heading.
 
 ### Current Evidence
 
 - Local base fix commit: `0e98dcb`.
 - Theorem fixture covers all 21 insertion helpers, 15 labels, title/ref/nameref, section reset, and proof marker.
-- Full v1 declaration gate preserves 612 entries with 94 additive v2 declarations.
-- Canonical 271-page output has zero text or normalized bbox changes; theorem pages 50, 51, and 269 remain raster-identical after theorem registry/initializer slices.
-- Custom theorem probe reproduced `No counter '' defined` when a numbered type followed an unscoped theorem; the matrix now covers all 21 custom environment/text routes, plain/definition styles, and global/Section/chained-empty counters.
+- Full v1 declaration gate preserves 612 entries with 100 additive v2 declarations.
+- Canonical 271-page output has zero layout-text or normalized bbox word-tuple changes; theorem pages 50, 51, and 269 remain raster-identical, and the theorem contract raster matches the pre-registry fixture.
+- The custom matrix now renders 26 entries covering all 21 custom environment/text routes, plain/definition styles, global/Section/arbitrary-custom/forward/multi-hop/chained-empty counters, and optional-type numbering.
+- The negative cycle fixture produces the package diagnostic without recursive TeX-capacity overflow.
+- `cmd-theorem.tex` is 574 lines, 505 lines (46.8%) smaller than the 1,079-line pre-consolidation source.
 
 ## Progress
 
@@ -88,3 +94,7 @@ pdftotext/pdftotext -bbox normalized comparison
 - [x] Add custom theorem style/counter matrix coverage.
 - [x] Correct chained-to-unscoped numbered initialization.
 - [x] Validate and create the next local-only commit.
+- [x] Freeze all 21 default metadata and counter-routing contracts.
+- [x] Make one registry own key declarations, style/policy metadata, and defaults.
+- [x] Consolidate all numbered/optional initializer branches and counter mapping.
+- [x] Run final local compatibility/output proof and commit the completed theorem cleanup.

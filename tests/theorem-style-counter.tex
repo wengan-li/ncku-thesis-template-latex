@@ -3,18 +3,19 @@
 % unique environments so the public customization contract can be exercised.
 \input{./template/configure}
 
+\newcounter{MatrixCustomCounter}
+
 \newcommand{\ConfigureMatrixTheorem}[2]{%
   \SetTheoremFormat[#1]{%
     EnvironmentName = {EnvMatrix#1},
     ShowText = {Matrix #1},
     FollowCounter = #2,
   }%
-  \csname InitTheorem#1Format\endcsname%
 }
 
-% Definition is unscoped. Theorem follows Definition and therefore resolves to
-% unscoped. Other normally numbered types follow that resolved Theorem state,
-% except Condition, which remains scoped to Section.
+% Configure every type before aggregate initialization. This deliberately makes
+% Problem/Example forward-reference Theorem, whose own two-hop chain resolves
+% through Definition to an empty effective parent.
 \ConfigureMatrixTheorem{Definition}{\empty}
 \ConfigureMatrixTheorem{Theorem}{Definition}
 \ConfigureMatrixTheorem{Condition}{Section}
@@ -26,18 +27,24 @@
 \ConfigureMatrixTheorem{Conjecture}{Theorem}
 \ConfigureMatrixTheorem{Criterion}{Theorem}
 \ConfigureMatrixTheorem{Assertion}{Theorem}
-\ConfigureMatrixTheorem{Question}{Theorem}
-\ConfigureMatrixTheorem{Hypothesis}{Theorem}
+% Preserve arbitrary existing LaTeX counters as terminal values, including a
+% registered theorem chain that resolves to the custom counter.
+\ConfigureMatrixTheorem{Question}{MatrixCustomCounter}
+\ConfigureMatrixTheorem{Hypothesis}{Question}
 
-% Historically unnumbered forms remain unnumbered with custom environment/text.
+% Optional-numbering forms keep starred behavior when empty, but Note follows
+% the unscoped theorem chain and Summary explicitly follows Section.
 \ConfigureMatrixTheorem{Proof}{\empty}
-\ConfigureMatrixTheorem{Note}{\empty}
+\ConfigureMatrixTheorem{Note}{Theorem}
 \ConfigureMatrixTheorem{Annotation}{\empty}
 \ConfigureMatrixTheorem{Claim}{\empty}
 \ConfigureMatrixTheorem{Case}{\empty}
 \ConfigureMatrixTheorem{Acknowledgment}{\empty}
 \ConfigureMatrixTheorem{Conclusion}{\empty}
-\ConfigureMatrixTheorem{Summary}{\empty}
+\ConfigureMatrixTheorem{Summary}{Section}
+
+\InitTheoremFormats
+\setcounter{MatrixCustomCounter}{3}
 
 \newcommand{\TypeoutMatrixTheorem}[1]{%
   \typeout{NCKU-TEST-MATRIX-#1: \csname GetTheorem#1FormatEnvironmentName\endcsname/\csname GetTheorem#1FormatShowText\endcsname/\csname GetTheorem#1FormatFollowCounter\endcsname}%
@@ -93,6 +100,8 @@
 \InsertDefinition{MATRIXDEFINITIONBODYTWO}
 \InsertTheorem{MATRIXTHEOREMBODYTWO}
 \InsertCondition{MATRIXCONDITIONBODYTWO}
+\InsertNote{MATRIXNOTEBODYTWO}
+\InsertSummary{MATRIXSUMMARYBODYTWO}
 
 \typeout{NCKU-TEST-PASS: custom theorem style/counter matrix compiled}
 \end{document}
