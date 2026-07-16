@@ -73,7 +73,7 @@ The release system has three explicit layers:
 2. `just release` is the single local/CI orchestration command. It runs the required test gate, builds every case with XeLaTeX through `latexmk`, creates the student ZIP from `HEAD:thesis`, verifies that its regular-file list exactly matches the complete tracked `HEAD:thesis` tree, bundles the six verified PDFs plus a public README into the examples ZIP, and verifies both package allowlists. The focused test gate also removes the packaged migration guide from a temporary copy and requires the exact-tree checker to fail. Loose PDFs remain build intermediates and are not promoted.
 3. `.github/workflows/release.yml` supplies the reproducible TeX environment and promotes only the workflow artifact produced by the successful build job. The workflow must not duplicate the case logic.
 
-Two GitHub Actions portability details are required:
+GitHub Actions portability details include:
 
 - the TeX container must mark `$GITHUB_WORKSPACE` as a Git safe directory before `git status` or `git archive`;
 - values written to the runner's `$GITHUB_ENV` are not automatically visible inside `xu-cheng/texlive-action`; interpolate the resolved version into the action's `run` input and assert the exact host-side artifact paths before upload;
