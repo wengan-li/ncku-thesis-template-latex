@@ -197,9 +197,10 @@ The v2 architecture acceptance evidence includes:
 - 18 student-owned files match v1.8.2 byte-for-byte; the unchanged entry/config
   and active StudentMode content/bibliography paths pass separate v2 runtime
   gates;
-- neutral custom profile builds four A4 Chinese/English cover and oral pages
-  without NCKU visible policy or watermark asset;
-- custom Chinese dates remain Gregorian while explicit cover and oral dates stay
-  distinct;
+- neutral custom profile builds five A4 pages covering Chinese/English cover,
+  Chinese oral, and both Master/Doctoral English oral branches without NCKU
+  visible policy or watermark asset;
+- custom Chinese dates remain Gregorian, explicit cover and oral dates stay
+  distinct, and custom degree display names do not change the numeric branch;
 - canonical NCKU output remains 271 A4 pages;
 - canonical extracted text and cover word bounding boxes/raster remain identical across the profile extraction.

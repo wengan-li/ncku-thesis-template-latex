@@ -133,7 +133,12 @@ template/style/custom/   可直接 build 的 non-NCKU skeleton
 \SetOralChairChiText{系(所)主管}
 \SetOralChairEngText{Chair}
 \SetOralDateChiPrefix{西元}
+\SetOralAuthorByEngText{prepared by}
+\SetOralMasterSubmissionEngText{Example master's submission in}
+\SetOralDoctoralSubmissionEngText{Example doctoral submission in}
 ```
+
+English oral renderer使用`\GetFlagDegreeType`選擇Master／Doctoral statement；唔會比較`\GetEngDegree`顯示文字。因此profile可自訂degree name，而唔會誤入另一個degree branch。
 
 如只使用英文 oral certificate，仍建議完整設定 contract，避免其他使用者切換語言時出現空白 label。
 
@@ -199,7 +204,7 @@ cd thesis
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 ```
 
-`tests/custom-style.tex`是可執行reference：它選擇`custom` profile、產生中／英文cover與oral certificate共四頁A4、驗證Chinese dates使用Gregorian year、保持不同cover/oral dates，並確認output沒有NCKU校名或watermark asset。
+`tests/custom-style.tex`是可執行reference：它選擇`custom` profile、產生中／英文cover、Chinese oral，以及Master／Doctoral English oral共五頁A4；驗證Chinese dates使用Gregorian year、不同cover/oral dates、custom degree wording與numeric degree branch，並確認output沒有NCKU校名或watermark asset。
 
 ## 不應修改的地方
 

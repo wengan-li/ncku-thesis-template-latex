@@ -69,8 +69,10 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 - Keep `tests/v1-project-migration.json` passing. It pins the v1.8.2
   student-owned inputs byte-for-byte; `just test` separately proves the unchanged
   entry/configuration path and active StudentMode content/BibTeX dependencies.
-- Keep generic command/renderer layers free of NCKU assets and Taiwan-year
-  policy. The selected profile owns institutional watermark and date behavior.
+- Keep generic command/renderer layers free of NCKU assets, Taiwan-year policy,
+  and institution-specific degree-submission wording. The selected profile owns
+  these values, while Master/Doctoral branching follows numeric degree state
+  rather than localized display strings.
 - Keep student data in `conf/` and institution-level style ports under
   `template/style/`; never introduce `conf/style.tex`.
 - Preserve direct XeLaTeX and Overleaf compatibility; `just` is maintainer

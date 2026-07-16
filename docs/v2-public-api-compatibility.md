@@ -111,11 +111,13 @@ SetOralDate    -> ApplyOralDatePolicy
 SetCoverDate   -> ApplyCoverDatePolicy
 SetOralChiDate -> ApplyOralChiYearPolicy
 Chinese cover  -> profile cover-prefix/year display getters
+English oral   -> profile author/submission tokens + numeric degree flag
 ```
 
-Profiles override the hooks/getters, not setter signatures or raw metadata
+Profiles override the hooks/getters/tokens, not setter signatures or raw metadata
 storage. Generic Chinese dates remain Gregorian; the NCKU profile explicitly
-selects Taiwan-year rendering.
+selects Taiwan-year rendering. English degree display wording may change without
+changing the Master/Doctoral branch.
 
 ## Behavior Corrections
 
