@@ -72,7 +72,9 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 - Keep generic command/renderer layers free of NCKU assets, Taiwan-year policy,
   and institution-specific degree-submission wording. The selected profile owns
   these values, while Master/Doctoral branching follows numeric degree state
-  rather than localized display strings.
+  rather than localized display strings. Cover date formats are profile tokens:
+  generic/custom output must not borrow an oral day that `\SetCoverDate` does
+  not own; an institution profile may inject that policy explicitly.
 - Keep student data in `conf/` and institution-level style ports under
   `template/style/`; never introduce `conf/style.tex`.
 - Preserve direct XeLaTeX and Overleaf compatibility; `just` is maintainer

@@ -120,7 +120,11 @@ template/style/custom/   可直接 build 的 non-NCKU skeleton
 \SetCoverAdvisorChiSuffix{博士}
 \SetCoverAdvisorEngPrefix{Dr.}
 \SetCoverDateChiPrefix{西元}
+\SetCoverMasterDateEng{\GetThesisMonthInEng \thinspace \GetThesisYear}
+\SetCoverDoctoralDateEng{\GetThesisMonthInEng \thinspace \GetThesisYear}
 ```
+
+`\SetCoverDate{year}{month}`沒有day參數，因此neutral profile的Doctoral English cover不應由oral metadata借day。若institution規則需要oral day，應由該profile明確將`\GetOralEngDay`加入`\SetCoverDoctoralDateEng`，而唔係由generic renderer硬編碼。
 
 對應 oral certificate 的 profile setters 包括：
 
@@ -204,7 +208,7 @@ cd thesis
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 ```
 
-`tests/custom-style.tex`是可執行reference：它選擇`custom` profile、產生中／英文cover、Chinese oral，以及Master／Doctoral English oral共五頁A4；驗證Chinese dates使用Gregorian year、不同cover/oral dates、custom degree wording與numeric degree branch，並確認output沒有NCKU校名或watermark asset。
+`tests/custom-style.tex`是可執行reference：它選擇`custom` profile、產生中／英文Master cover、Chinese oral、Master／Doctoral English oral，以及Doctoral English cover共六頁A4；驗證Chinese dates使用Gregorian year、不同cover/oral dates、Doctoral cover不借oral day、custom degree wording與numeric degree branch，並確認output沒有NCKU校名或watermark asset。
 
 ## 不應修改的地方
 

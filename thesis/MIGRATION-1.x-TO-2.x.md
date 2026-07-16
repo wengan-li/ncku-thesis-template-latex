@@ -125,6 +125,7 @@ This table is normative and must be updated for every observable helper correcti
 | The second argument of `\SetDeptName{chi}{short}{full}` was discarded. | The short name is stored and available through `\GetDeptEngShortName`; `\GetDeptEngName` still returns the full name. | None; code may optionally use the new getter. |
 | `\SetDeptDPS` produced `Departmment of Photonics`. | The catalogue value is corrected to `Department of Photonics`. | Rebuild to receive the corrected text. |
 | The English oral certificate combined oral day with cover month/year. This was hidden by NCKU's rule because both dates normally matched. | English oral output uses oral day, oral month, and oral year consistently. | Non-NCKU projects with distinct dates receive the correct oral date automatically. |
+| The Doctoral English cover borrowed its day from oral metadata even though `\SetCoverDate` owns only cover year/month. | Master/Doctoral English cover date tokens are profile-owned. Generic/custom profiles render only cover-owned month/year; NCKU explicitly retains its established oral-day policy. | None for NCKU; non-NCKU profiles may customize the two date tokens if their rules require another format. |
 
 ## Date Migration
 
@@ -141,7 +142,7 @@ V2 separates raw input from profile-resolved display policy:
 - `\GetThesisYear`／`\GetThesisMonth`: resolved cover display values;
 - oral getters: independent oral metadata.
 
-The NCKU profile still makes oral date authoritative for the cover, so existing NCKU output remains unchanged. A non-NCKU profile uses explicit cover date by default. Institutional forks should override `\ApplyOralDatePolicy`／`\ApplyCoverDatePolicy`, not the public setters.
+The NCKU profile still makes oral date authoritative for the cover, so existing NCKU output remains unchanged. A non-NCKU profile uses explicit cover date by default and does not borrow an oral day for its Doctoral English cover. Institutional forks should override `\ApplyOralDatePolicy`／`\ApplyCoverDatePolicy` and the profile-owned Master/Doctoral English cover-date tokens, not the public setters.
 
 ## Migrating a 1.x Non-NCKU Style Port
 
@@ -152,7 +153,7 @@ The v1.5.0 placement intent remains: institutional ports belong under `template/
 3. Call exactly one `\RegisterTemplateStyle{<profile>}`.
 4. Select the profile through `\TemplateStyleName` in `template/style/style.tex`.
 5. Replace old overrides of `\SetOralDate`／`\SetCoverDate` with policy-hook overrides.
-6. Move institution-specific cover/oral wording to the provided text-token setters.
+6. Move institution-specific cover/oral wording and English cover-date formats to the provided profile-token setters.
 7. Use `\SetCollName`／`\SetDeptName` for project metadata or maintain an institution-owned catalogue inside the new profile.
 8. Build the custom cover and oral certificate with different oral/cover dates to prove policy separation.
 9. Confirm the `.fls` recorder output does not load an unintended institutional asset.
@@ -200,10 +201,11 @@ The v2 architecture acceptance evidence includes:
 - the student ZIP matches the complete tracked `thesis/` tree exactly, retains
   the migration guide/adapter/profile files, and its direct `latexmk -xelatex
   thesis.tex` path produces the canonical 271-page A4 PDF;
-- neutral custom profile builds five A4 pages covering Chinese/English cover,
-  Chinese oral, and both Master/Doctoral English oral branches without NCKU
-  visible policy or watermark asset;
+- neutral custom profile builds six A4 pages covering Chinese/English Master
+  cover, Chinese oral, both Master/Doctoral English oral branches, and the
+  Doctoral English cover without NCKU visible policy or watermark asset;
 - custom Chinese dates remain Gregorian, explicit cover and oral dates stay
-  distinct, and custom degree display names do not change the numeric branch;
+  distinct, the Doctoral English cover does not borrow the oral day, and custom
+  degree display names do not change the numeric branch;
 - canonical NCKU output remains 271 A4 pages;
 - canonical extracted text and cover word bounding boxes/raster remain identical across the profile extraction.
