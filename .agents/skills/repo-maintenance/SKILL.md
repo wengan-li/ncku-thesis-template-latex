@@ -112,6 +112,11 @@ The student archive extracts to stable `ncku-thesis-template-latex/`; its regula
 files must exactly equal the tracked `HEAD:thesis` tree, including the migration
 guide, v1 adapter, and base/NCKU/custom profiles. Keep a focused negative test
 that deletes one required migration file and proves the archive checker fails.
+When this gate runs inside `xu-cheng/texlive-action`, configure
+`$GITHUB_WORKSPACE` as a Git safe directory before `git archive`/`git ls-tree`
+and install full Info-ZIP `unzip`/`zip`; BusyBox `unzip` does not support
+`unzip -Z1`, and the negative mutation requires `zip -d`. A local macOS pass
+is not sufficient evidence for this container-specific path.
 The examples archive extracts to stable `ncku-thesis-template-latex-examples/`
 and contains exactly:
 
