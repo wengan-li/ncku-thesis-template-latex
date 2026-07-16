@@ -87,7 +87,11 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 - Keep `tests/theorem-contract.tex` in the test gate before consolidating theorem
   internals. Its label option must create an auxiliary label without visible key
   leakage, and titled labels must freeze nameref metadata before temporary pgf
-  key state is reused.
+  key state is reused. Introduce registry behavior in bounded slices: first let
+  one private ordered type list drive aggregate initialization and setter
+  dispatch while preserving every per-type public wrapper, initializer, key
+  family, style, and counter implementation. Preserve unknown-type no-op
+  behavior explicitly and cover every registered route plus an unknown sentinel.
 - Do not claim tagged PDF or PDF/UA compliance from metadata alone.
 - Current university and department requirements override template guidance.
 

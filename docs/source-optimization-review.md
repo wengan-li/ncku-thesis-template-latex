@@ -203,7 +203,7 @@ Keep `\SetNumberingFormat[...]` and all existing key names, but drive the intern
 
 `cmd-theorem.tex` duplicates setup, key parsing, initialization, and dispatch across approximately 21 theorem types. A focused runtime contract now covers all 21 public insertion helpers, default metadata, numbered/unnumbered forms, optional titles, labels, `\ref`/`\nameref`, section reset, and the proof marker. It also protects the corrected label-key and title-metadata behavior.
 
-Any registry refactor must preserve that fixture while replacing the internal repetition with a declarative registry containing name, style, counter, and numbered/un-numbered policy. Preserve public aliases such as `\InsertTheorem` and `\InsertDefinition`.
+Any registry refactor must preserve that fixture and proceed in bounded slices. The first slice should introduce one private ordered type registry used only for aggregate initialization and `\SetTheoremFormat` dispatch. Keep every per-type public wrapper, initializer, key family, theorem style, and counter implementation intact; preserve unknown-type no-op behavior explicitly. Only after every registered route and an unknown sentinel are covered should a later slice consider generating declarations or counter logic.
 
 ### 3. Shared float internals
 
