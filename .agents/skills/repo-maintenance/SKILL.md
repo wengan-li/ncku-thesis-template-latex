@@ -66,6 +66,9 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 - Preserve `thesis.tex`, `conf/conf.tex`, every entry in
   `tests/v1-public-api.json`, and the visible NCKU layout unless a focused
   fixture and authoritative evidence justify a documented correction.
+- Keep `tests/v1-project-migration.json` passing. It pins the v1.8.2
+  student-owned inputs byte-for-byte; `just test` must also prove that those
+  inputs build through the current v2 adapter and profile layers.
 - Keep student data in `conf/` and institution-level style ports under
   `template/style/`; never introduce `conf/style.tex`.
 - Preserve direct XeLaTeX and Overleaf compatibility; `just` is maintainer
@@ -128,6 +131,7 @@ read-back, byte-comparison, and exact-allowlist gates.
 For source or build changes, run at minimum:
 
 ```bash
+python3 scripts/test/check-v1-project-migration.py
 just test
 just ci
 git diff --check
