@@ -38,7 +38,8 @@ The outcome fails if any of these occur:
 
 ### Done Means
 
-- The v1 API manifest is enforced by `just test`.
+- The v1 API manifest and unchanged-project migration manifest are enforced by
+  `just test`.
 - Known helper defects are covered by exact focused fixtures before correction.
 - Generic helper/state mechanisms no longer own NCKU college/department data or
   NCKU date policy.
@@ -69,6 +70,7 @@ The outcome fails if any of these occur:
 
 ```bash
 python3 scripts/test/check-v1-api.py
+python3 scripts/test/check-v1-project-migration.py
 just test
 just ci
 git diff --check
@@ -84,6 +86,8 @@ cover plus affected pages.
 
 - The v1 tree declares 612 commands/environments captured and enforced by
   `tests/v1-public-api.json`.
+- `tests/v1-project-migration.json` pins 18 student-owned files byte-for-byte to
+  v1.8.2; their canonical build exercises the current v2 adapter and profiles.
 - `template/command/command.tex` loads `template/compat/v1.tex`; historical NCKU
   catalogue helpers remain available while their data is owned by
   `template/style/ncku/`.
@@ -107,6 +111,8 @@ The completed v2 slice was validated from a clean committed worktree:
 
 - `just ci`: pass, including canonical build and all focused fixtures;
 - v1 API gate: 612/612 declarations preserved, with 66 additive v2 declarations;
+- unchanged-project gate: 18 student-owned files (296,726 bytes) match v1.8.2
+  exactly and build through the v2 adapter/base/NCKU profile layers;
 - canonical NCKU PDF: 271 A4 pages;
 - diagnostic budgets: all pass, including zero empty-hyperlink and zero unknown
   CJK-family warnings;
@@ -119,6 +125,7 @@ The completed v2 slice was validated from a clean committed worktree:
 ## Progress
 
 - [x] Create and enforce the v1 command/environment baseline.
+- [x] Pin and build the unchanged v1.8.2 student-project inputs on v2.
 - [x] Add exact helper contract fixtures.
 - [x] Correct the first verified helper defects.
 - [x] Add the v1 compatibility adapter and style profile contract.

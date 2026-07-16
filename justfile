@@ -48,12 +48,29 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-custom-style _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-custom-style _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
 _test-v1-api:
     python3 scripts/test/check-v1-api.py
+
+# Internal integration gate for an unchanged v1.8.2 student project on v2.
+[private]
+_test-v1-project-migration:
+    python3 scripts/test/check-v1-project-migration.py
+    grep -Fq 'INPUT ./template/compat/v1.tex' "{{ build_dir }}/thesis.fls"
+    grep -Fq 'INPUT ./template/style/base/base.tex' "{{ build_dir }}/thesis.fls"
+    grep -Fq 'INPUT ./template/style/ncku/ncku.tex' "{{ build_dir }}/thesis.fls"
+    grep -Eq '^Pages:[[:space:]]+271$' "{{ build_dir }}/thesis.pdfinfo"
+    grep -Eq '^Page size:.*A4' "{{ build_dir }}/thesis.pdfinfo"
+    grep -Fq 'National Cheng Kung University' "{{ build_dir }}/thesis-cover.txt"
+    grep -Fq 'Institute of Computer Science and' "{{ build_dir }}/thesis-cover.txt"
+    grep -Fq 'Doctoral Dissertation' "{{ build_dir }}/thesis-cover.txt"
+    grep -Fq 'Advisor： Dr. A' "{{ build_dir }}/thesis-cover.txt"
+    grep -Fq '31 December 2023' "{{ build_dir }}/thesis-cover.txt"
+    ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ build_dir }}/thesis-cover.txt"
+    ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right|Suppressing empty link' "{{ log }}"
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]

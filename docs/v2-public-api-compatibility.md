@@ -29,6 +29,33 @@ The baseline must not be regenerated after v2 implementation starts merely to
 make a deletion pass. A deliberate future removal requires an owner decision
 for a later major version and a migration record.
 
+## Runtime Project Migration Contract
+
+The API baseline proves declaration and argument-shape availability; it does not
+claim that all 612 helpers have been individually behavior-tested. Runtime
+migration coverage is separate:
+
+```text
+tests/v1-project-migration.json
+scripts/test/check-v1-project-migration.py
+```
+
+The manifest pins 18 student-owned project files (296,726 bytes) to the immutable
+`v1.8.2.260715154703` release at commit
+`2c9557a74983023bba7a8f0cf233e1eb812edec7`. It covers the root entry point,
+student configuration/content, bibliography data, and oral-certificate assets.
+The canonical test builds those exact inputs through the current v2
+compatibility adapter, base profile contract, and NCKU profile, then verifies the
+271-page A4 output and legacy cover/date/department sentinels.
+
+Run the source half directly with:
+
+```bash
+python3 scripts/test/check-v1-project-migration.py
+```
+
+The complete source-plus-runtime gate is part of `just test` and `just ci`.
+
 ## Compatibility Classes
 
 | Class | V2 treatment |

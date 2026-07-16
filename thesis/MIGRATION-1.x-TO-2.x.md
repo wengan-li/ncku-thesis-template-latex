@@ -74,6 +74,26 @@ python3 scripts/test/check-v1-api.py
 
 Native v2 internals may delegate old helpers to profile hooks. Compatibility preserves the API, not a verified defect.
 
+### Unchanged V1.8.2 Project Gate
+
+The declaration baseline above is paired with a runtime migration contract:
+
+```text
+../tests/v1-project-migration.json
+../scripts/test/check-v1-project-migration.py
+```
+
+The manifest pins 18 student-owned files (296,726 bytes) to release
+`v1.8.2.260715154703`. It covers the unchanged root `thesis.tex`, `conf/conf.tex`,
+student content, bibliography data, and oral-certificate assets. The repository
+canonical build uses those exact bytes with the v2 template implementation and
+asserts that the v1 adapter, base profile contract, and NCKU profile are loaded.
+It also checks the 271-page A4 result, legacy cover/date/department values, and
+final reference convergence.
+
+This proves a representative unchanged v1 project runs on v2. It complements,
+but does not replace, the focused semantic tests for corrected helpers.
+
 ### V1 Adapter Layout
 
 ```text
@@ -157,6 +177,7 @@ Verify:
 ```bash
 just _test-custom-style
 python3 scripts/test/check-v1-api.py
+python3 scripts/test/check-v1-project-migration.py
 just test
 just ci
 git diff --check
@@ -165,6 +186,8 @@ git diff --check
 The v2 architecture acceptance evidence includes:
 
 - 612/612 v1 commands/environments preserved;
+- 18 student-owned files match v1.8.2 byte-for-byte and build through the v2
+  compatibility/profile layers;
 - neutral custom profile builds cover and oral output without NCKU visible policy or watermark asset;
 - custom explicit cover date and oral date remain distinct;
 - canonical NCKU output remains 271 A4 pages;

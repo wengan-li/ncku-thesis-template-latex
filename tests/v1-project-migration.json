@@ -1,0 +1,82 @@
+{
+  "entries": {
+    "thesis/conf/conf.tex": {
+      "sha256": "ca7232190705e4dbc6ff1f6fe2613c0ce1cfdb6dcd6486ee15df6a07b195b4e0",
+      "size": 24780
+    },
+    "thesis/context/abstract/chi.tex": {
+      "sha256": "dcd33e682870c40b16fb69c84614763b5e1bcea7815544d7efb4673e3cc30c19",
+      "size": 556
+    },
+    "thesis/context/abstract/eng.tex": {
+      "sha256": "a68d6abc37464944ceab10f2623c9ff83068bd6c04eb7a7950e83f790bc23f7b",
+      "size": 260
+    },
+    "thesis/context/abstract/extended.tex": {
+      "sha256": "7197a73921945d99500c7ecc91f80fdeeb6fa84a9106f39ab84318304cd0e4df",
+      "size": 5122
+    },
+    "thesis/context/acknowledgments/chi.tex": {
+      "sha256": "d81c817e244698971ad9ccb651ec20494819cca344654f4e6e658e06c8442780",
+      "size": 325
+    },
+    "thesis/context/acknowledgments/eng.tex": {
+      "sha256": "2f3e4420c812488241acbc1f2d8bae2768e1e654674027ab6a0008f1ef4b9b14",
+      "size": 281
+    },
+    "thesis/context/conclusion/conclusion.tex": {
+      "sha256": "9aaadc0bc8af82af8710aab009544ebe91cc04c69ff598cd92a31b766a2b4368",
+      "size": 292
+    },
+    "thesis/context/context.tex": {
+      "sha256": "67e225c2bb457b7b203c08176139f8c07f81a8ce819d7efd2bcad1eb9a939e3c",
+      "size": 3372
+    },
+    "thesis/context/introduction/introduction.tex": {
+      "sha256": "ae8fbbed6660aa9f8be67a35c1a3d72231633004df1daa7193253defc0e35a88",
+      "size": 371
+    },
+    "thesis/context/nomenclature/nomenclature.tex": {
+      "sha256": "55576860e9542b62dc413f89b60407999adf29d85a161589ae4168df1c45cca2",
+      "size": 1092
+    },
+    "thesis/context/oral/example-oral-chi.pdf": {
+      "sha256": "269a2a87f60d228d7dbf25e61930303a32c4f5d132dbe3c2a8a5c350a76df269",
+      "size": 116133
+    },
+    "thesis/context/oral/example-oral-eng.pdf": {
+      "sha256": "040421d52ae541ca026e900949dc346451dc09a911e90123e11d638389762f66",
+      "size": 140030
+    },
+    "thesis/context/references/book.bib": {
+      "sha256": "03d2205696514d8a13c0e3df43b57e4eea43df4808ec3aa14ed19b467c1fa59c",
+      "size": 972
+    },
+    "thesis/context/references/misc.bib": {
+      "sha256": "155ebb4a5dfb6eb0374bc4fc12b383c62a8ffe9764815f7b58f3a291ff5eb50f",
+      "size": 948
+    },
+    "thesis/context/references/paper.bib": {
+      "sha256": "8ad5e7c7b21b781748e950acde0c790151ab571835796a0a8101f3a543550b74",
+      "size": 1058
+    },
+    "thesis/context/references/references.tex": {
+      "sha256": "26fb2290e56beff9ac4233251e5729ee6441c448503482a91b2beb8e6d486e30",
+      "size": 265
+    },
+    "thesis/context/related-work/related-work.tex": {
+      "sha256": "e22d42de5b990b2f5abd036a6bdd915408bbb5ec7ec77abfbc15adc004fe8ae2",
+      "size": 297
+    },
+    "thesis/thesis.tex": {
+      "sha256": "fb9f8c611cb350f7ea07d5ad000e8e603a8a86b30e4c42b32207cc3ae01e595f",
+      "size": 572
+    }
+  },
+  "policy": "These student-owned project inputs remain byte-identical to v1.8.2 while building through the v2 compatibility and profile layers.",
+  "schema": 1,
+  "source": {
+    "commit": "2c9557a74983023bba7a8f0cf233e1eb812edec7",
+    "tag": "v1.8.2.260715154703"
+  }
+}
