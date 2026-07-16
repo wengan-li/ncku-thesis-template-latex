@@ -92,6 +92,11 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   dispatch while preserving every per-type public wrapper, initializer, key
   family, style, and counter implementation. Preserve unknown-type no-op
   behavior explicitly and cover every registered route plus an unknown sentinel.
+  For numbered custom formats, resolve a referenced theorem type's effective
+  parent counter before choosing the `\newtheorem` form, then re-check for an
+  empty result; otherwise a chained unscoped type becomes `No counter ''
+  defined`. Keep the custom style/counter matrix in the gate to protect global,
+  section-scoped, chained-empty, plain, and definition behavior.
 - Do not claim tagged PDF or PDF/UA compliance from metadata alone.
 - Current university and department requirements override template guidance.
 

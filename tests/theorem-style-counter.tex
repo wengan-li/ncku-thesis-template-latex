@@ -1,0 +1,98 @@
+% Focused custom theorem style/counter matrix.
+% Build from thesis/ after the default formats have initialized, then create
+% unique environments so the public customization contract can be exercised.
+\input{./template/configure}
+
+\newcommand{\ConfigureMatrixTheorem}[2]{%
+  \SetTheoremFormat[#1]{%
+    EnvironmentName = {EnvMatrix#1},
+    ShowText = {Matrix #1},
+    FollowCounter = #2,
+  }%
+  \csname InitTheorem#1Format\endcsname%
+}
+
+% Definition is unscoped. Theorem follows Definition and therefore resolves to
+% unscoped. Other normally numbered types follow that resolved Theorem state,
+% except Condition, which remains scoped to Section.
+\ConfigureMatrixTheorem{Definition}{\empty}
+\ConfigureMatrixTheorem{Theorem}{Definition}
+\ConfigureMatrixTheorem{Condition}{Section}
+\ConfigureMatrixTheorem{Problem}{Theorem}
+\ConfigureMatrixTheorem{Example}{Theorem}
+\ConfigureMatrixTheorem{Lemma}{Theorem}
+\ConfigureMatrixTheorem{Corollary}{Theorem}
+\ConfigureMatrixTheorem{Proposition}{Theorem}
+\ConfigureMatrixTheorem{Conjecture}{Theorem}
+\ConfigureMatrixTheorem{Criterion}{Theorem}
+\ConfigureMatrixTheorem{Assertion}{Theorem}
+\ConfigureMatrixTheorem{Question}{Theorem}
+\ConfigureMatrixTheorem{Hypothesis}{Theorem}
+
+% Historically unnumbered forms remain unnumbered with custom environment/text.
+\ConfigureMatrixTheorem{Proof}{\empty}
+\ConfigureMatrixTheorem{Note}{\empty}
+\ConfigureMatrixTheorem{Annotation}{\empty}
+\ConfigureMatrixTheorem{Claim}{\empty}
+\ConfigureMatrixTheorem{Case}{\empty}
+\ConfigureMatrixTheorem{Acknowledgment}{\empty}
+\ConfigureMatrixTheorem{Conclusion}{\empty}
+\ConfigureMatrixTheorem{Summary}{\empty}
+
+\newcommand{\TypeoutMatrixTheorem}[1]{%
+  \typeout{NCKU-TEST-MATRIX-#1: \csname GetTheorem#1FormatEnvironmentName\endcsname/\csname GetTheorem#1FormatShowText\endcsname/\csname GetTheorem#1FormatFollowCounter\endcsname}%
+}
+
+\begin{document}
+\TypeoutMatrixTheorem{Definition}
+\TypeoutMatrixTheorem{Theorem}
+\TypeoutMatrixTheorem{Condition}
+\TypeoutMatrixTheorem{Problem}
+\TypeoutMatrixTheorem{Example}
+\TypeoutMatrixTheorem{Lemma}
+\TypeoutMatrixTheorem{Corollary}
+\TypeoutMatrixTheorem{Proposition}
+\TypeoutMatrixTheorem{Conjecture}
+\TypeoutMatrixTheorem{Criterion}
+\TypeoutMatrixTheorem{Assertion}
+\TypeoutMatrixTheorem{Question}
+\TypeoutMatrixTheorem{Hypothesis}
+\TypeoutMatrixTheorem{Proof}
+\TypeoutMatrixTheorem{Note}
+\TypeoutMatrixTheorem{Annotation}
+\TypeoutMatrixTheorem{Claim}
+\TypeoutMatrixTheorem{Case}
+\TypeoutMatrixTheorem{Acknowledgment}
+\TypeoutMatrixTheorem{Conclusion}
+\TypeoutMatrixTheorem{Summary}
+
+\stepcounter{section}
+\InsertDefinition{MATRIXDEFINITIONBODYONE}
+\InsertTheorem{MATRIXTHEOREMBODYONE}
+\InsertCondition{MATRIXCONDITIONBODYONE}
+\InsertProblem{MATRIXPROBLEMBODYONE}
+\InsertExample{MATRIXEXAMPLEBODYONE}
+\InsertLemma{MATRIXLEMMABODYONE}
+\InsertCorollary{MATRIXCOROLLARYBODYONE}
+\InsertProposition{MATRIXPROPOSITIONBODYONE}
+\InsertConjecture{MATRIXCONJECTUREBODYONE}
+\InsertCriterion{MATRIXCRITERIONBODYONE}
+\InsertAssertion{MATRIXASSERTIONBODYONE}
+\InsertQuestion{MATRIXQUESTIONBODYONE}
+\InsertHypothesis{MATRIXHYPOTHESISBODYONE}
+\InsertProof{MATRIXPROOFBODYONE}
+\InsertNote{MATRIXNOTEBODYONE}
+\InsertAnnotation{MATRIXANNOTATIONBODYONE}
+\InsertClaim{MATRIXCLAIMBODYONE}
+\InsertCase{MATRIXCASEBODYONE}
+\InsertAcknowledgment{MATRIXACKNOWLEDGMENTBODYONE}
+\InsertConclusion{MATRIXCONCLUSIONBODYONE}
+\InsertSummary{MATRIXSUMMARYBODYONE}
+
+\stepcounter{section}
+\InsertDefinition{MATRIXDEFINITIONBODYTWO}
+\InsertTheorem{MATRIXTHEOREMBODYTWO}
+\InsertCondition{MATRIXCONDITIONBODYTWO}
+
+\typeout{NCKU-TEST-PASS: custom theorem style/counter matrix compiled}
+\end{document}

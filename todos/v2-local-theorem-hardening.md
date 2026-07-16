@@ -73,8 +73,9 @@ pdftotext/pdftotext -bbox normalized comparison
 
 - Local base fix commit: `0e98dcb`.
 - Theorem fixture covers all 21 insertion helpers, 15 labels, title/ref/nameref, section reset, and proof marker.
-- Full v1 declaration gate preserves 612 entries with 93 additive v2 declarations.
-- Canonical 271-page output has zero text or normalized bbox changes; theorem pages 50, 51, and 269 remain raster-identical after the registry slice.
+- Full v1 declaration gate preserves 612 entries with 94 additive v2 declarations.
+- Canonical 271-page output has zero text or normalized bbox changes; theorem pages 50, 51, and 269 remain raster-identical after theorem registry/initializer slices.
+- Custom theorem probe reproduced `No counter '' defined` when a numbered type followed an unscoped theorem; the matrix now covers all 21 custom environment/text routes, plain/definition styles, and global/Section/chained-empty counters.
 
 ## Progress
 
@@ -84,3 +85,6 @@ pdftotext/pdftotext -bbox normalized comparison
 - [x] Extend registry routing/no-op fixture coverage.
 - [x] Introduce private ordered theorem type registry.
 - [x] Validate and create a local-only implementation commit.
+- [x] Add custom theorem style/counter matrix coverage.
+- [x] Correct chained-to-unscoped numbered initialization.
+- [x] Validate and create the next local-only commit.

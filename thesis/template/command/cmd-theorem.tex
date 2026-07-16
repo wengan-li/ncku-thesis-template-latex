@@ -253,6 +253,28 @@
 
 % ---------------------------------------------------------
 
+% Resolve the configured parent counter before choosing the numbered or
+% unscoped \newtheorem form. A followed type may itself be unscoped.
+\newcommand{\NCKUPrivateInitNumberedTheoremFormat}[4]
+{%
+  \ifthenelse{\equal{#4}{\empty}}%
+  {%
+    \newtheorem{#2}{#3}%
+  }%
+  {%
+    \MappingTheoremCounter[#1]{#4}%
+    \ifthenelse{\equal{#4}{\empty}}%
+    {%
+      \newtheorem{#2}{#3}%
+    }%
+    {%
+      \newtheorem{#2}{#3}[#4]%
+    }%
+  }%
+} % End of \newcommand{}
+
+% ---------------------------------------------------------
+
 \pgfkeys
 {
   /TheoremTheoremFormat/.is family, /TheoremTheoremFormat,
@@ -275,20 +297,10 @@
 \newcommand{\InitTheoremTheoremFormat}
 {%
   \theoremstyle{plain}%
-  \ifthenelse{\equal{\GetTheoremTheoremFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremTheoremFormatEnvironmentName}{%
-      \GetTheoremTheoremFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Theorem]{\GetTheoremTheoremFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremTheoremFormatEnvironmentName}{%
-      \GetTheoremTheoremFormatShowText}[section]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Theorem}{%
+    \GetTheoremTheoremFormatEnvironmentName}{%
+    \GetTheoremTheoremFormatShowText}{%
+    \GetTheoremTheoremFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -315,21 +327,10 @@
 \newcommand{\InitTheoremDefinitionFormat}
 {%
   \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremDefinitionFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremDefinitionFormatEnvironmentName}{%
-      \GetTheoremDefinitionFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Definition]{\GetTheoremDefinitionFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremDefinitionFormatEnvironmentName}{%
-      \GetTheoremDefinitionFormatShowText}[%
-      \GetTheoremDefinitionFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Definition}{%
+    \GetTheoremDefinitionFormatEnvironmentName}{%
+    \GetTheoremDefinitionFormatShowText}{%
+    \GetTheoremDefinitionFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -356,21 +357,10 @@
 \newcommand{\InitTheoremConditionFormat}
 {%
   \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremConditionFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremConditionFormatEnvironmentName}{%
-      \GetTheoremConditionFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Condition]{\GetTheoremConditionFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremConditionFormatEnvironmentName}{%
-      \GetTheoremConditionFormatShowText}[%
-      \GetTheoremConditionFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Condition}{%
+    \GetTheoremConditionFormatEnvironmentName}{%
+    \GetTheoremConditionFormatShowText}{%
+    \GetTheoremConditionFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -397,21 +387,10 @@
 \newcommand{\InitTheoremProblemFormat}
 {%
   \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremProblemFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremProblemFormatEnvironmentName}{%
-      \GetTheoremProblemFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Problem]{\GetTheoremProblemFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremProblemFormatEnvironmentName}{%
-      \GetTheoremProblemFormatShowText}[%
-      \GetTheoremProblemFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Problem}{%
+    \GetTheoremProblemFormatEnvironmentName}{%
+    \GetTheoremProblemFormatShowText}{%
+    \GetTheoremProblemFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -438,21 +417,10 @@
 \newcommand{\InitTheoremExampleFormat}
 {%
   \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremExampleFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremExampleFormatEnvironmentName}{%
-      \GetTheoremExampleFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Example]{\GetTheoremExampleFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremExampleFormatEnvironmentName}{%
-      \GetTheoremExampleFormatShowText}[%
-      \GetTheoremExampleFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Example}{%
+    \GetTheoremExampleFormatEnvironmentName}{%
+    \GetTheoremExampleFormatShowText}{%
+    \GetTheoremExampleFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -479,21 +447,10 @@
 \newcommand{\InitTheoremLemmaFormat}
 {%
   \theoremstyle{plain}%
-  \ifthenelse{\equal{\GetTheoremLemmaFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremLemmaFormatEnvironmentName}{%
-      \GetTheoremLemmaFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Lemma]{\GetTheoremLemmaFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremLemmaFormatEnvironmentName}{%
-      \GetTheoremLemmaFormatShowText}[%
-      \GetTheoremLemmaFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Lemma}{%
+    \GetTheoremLemmaFormatEnvironmentName}{%
+    \GetTheoremLemmaFormatShowText}{%
+    \GetTheoremLemmaFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -520,21 +477,10 @@
 \newcommand{\InitTheoremCorollaryFormat}
 {%
   \theoremstyle{plain}%
-  \ifthenelse{\equal{\GetTheoremCorollaryFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremCorollaryFormatEnvironmentName}{%
-      \GetTheoremCorollaryFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Corollary]{\GetTheoremCorollaryFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremCorollaryFormatEnvironmentName}{%
-      \GetTheoremCorollaryFormatShowText}[%
-      \GetTheoremCorollaryFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Corollary}{%
+    \GetTheoremCorollaryFormatEnvironmentName}{%
+    \GetTheoremCorollaryFormatShowText}{%
+    \GetTheoremCorollaryFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -561,21 +507,10 @@
 \newcommand{\InitTheoremPropositionFormat}
 {%
   \theoremstyle{plain}%
-  \ifthenelse{\equal{\GetTheoremPropositionFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremPropositionFormatEnvironmentName}{%
-      \GetTheoremPropositionFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Proposition]{\GetTheoremPropositionFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremPropositionFormatEnvironmentName}{%
-      \GetTheoremPropositionFormatShowText}[%
-      \GetTheoremPropositionFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Proposition}{%
+    \GetTheoremPropositionFormatEnvironmentName}{%
+    \GetTheoremPropositionFormatShowText}{%
+    \GetTheoremPropositionFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -602,21 +537,10 @@
 \newcommand{\InitTheoremConjectureFormat}
 {%
   \theoremstyle{plain}%
-  \ifthenelse{\equal{\GetTheoremConjectureFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremConjectureFormatEnvironmentName}{%
-      \GetTheoremConjectureFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Conjecture]{\GetTheoremConjectureFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremConjectureFormatEnvironmentName}{%
-      \GetTheoremConjectureFormatShowText}[%
-      \GetTheoremConjectureFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Conjecture}{%
+    \GetTheoremConjectureFormatEnvironmentName}{%
+    \GetTheoremConjectureFormatShowText}{%
+    \GetTheoremConjectureFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -643,21 +567,10 @@
 \newcommand{\InitTheoremHypothesisFormat}
 {%
   \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremHypothesisFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremHypothesisFormatEnvironmentName}{%
-      \GetTheoremHypothesisFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Hypothesis]{\GetTheoremHypothesisFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremHypothesisFormatEnvironmentName}{%
-      \GetTheoremHypothesisFormatShowText}[%
-      \GetTheoremHypothesisFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Hypothesis}{%
+    \GetTheoremHypothesisFormatEnvironmentName}{%
+    \GetTheoremHypothesisFormatShowText}{%
+    \GetTheoremHypothesisFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -684,21 +597,10 @@
 \newcommand{\InitTheoremQuestionFormat}
 {%
   \theoremstyle{definition}%
-  \ifthenelse{\equal{\GetTheoremQuestionFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremQuestionFormatEnvironmentName}{%
-      \GetTheoremQuestionFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Question]{\GetTheoremQuestionFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremQuestionFormatEnvironmentName}{%
-      \GetTheoremQuestionFormatShowText}[%
-      \GetTheoremQuestionFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Question}{%
+    \GetTheoremQuestionFormatEnvironmentName}{%
+    \GetTheoremQuestionFormatShowText}{%
+    \GetTheoremQuestionFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -725,21 +627,10 @@
 \newcommand{\InitTheoremAssertionFormat}
 {%
   \theoremstyle{plain}%
-  \ifthenelse{\equal{\GetTheoremAssertionFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremAssertionFormatEnvironmentName}{%
-      \GetTheoremAssertionFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Assertion]{\GetTheoremAssertionFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremAssertionFormatEnvironmentName}{%
-      \GetTheoremAssertionFormatShowText}[%
-      \GetTheoremAssertionFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Assertion}{%
+    \GetTheoremAssertionFormatEnvironmentName}{%
+    \GetTheoremAssertionFormatShowText}{%
+    \GetTheoremAssertionFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------
@@ -766,21 +657,10 @@
 \newcommand{\InitTheoremCriterionFormat}
 {%
   \theoremstyle{plain}%
-  \ifthenelse{\equal{\GetTheoremCriterionFormatFollowCounter}{\empty}}%
-  {%
-    \newtheorem{%
-      \GetTheoremCriterionFormatEnvironmentName}{%
-      \GetTheoremCriterionFormatShowText}%
-  }%
-  {%
-    %
-    \MappingTheoremCounter[Criterion]{\GetTheoremCriterionFormatFollowCounter}%
-    %
-    \newtheorem{%
-      \GetTheoremCriterionFormatEnvironmentName}{%
-      \GetTheoremCriterionFormatShowText}[%
-      \GetTheoremCriterionFormatFollowCounter]%
-  }%
+  \NCKUPrivateInitNumberedTheoremFormat{Criterion}{%
+    \GetTheoremCriterionFormatEnvironmentName}{%
+    \GetTheoremCriterionFormatShowText}{%
+    \GetTheoremCriterionFormatFollowCounter}%
 } % End of \newcommand{}
 
 % ---------------------------------------------------------

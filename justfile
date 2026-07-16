@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-theorem-contract _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-theorem-contract _test-theorem-style-counter _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -148,6 +148,17 @@ _test-theorem-contract:
     pdfinfo "{{ build_dir }}/tests/theorem-contract.pdf" > "{{ build_dir }}/tests/theorem-contract.pdfinfo"
     pdftotext -layout "{{ build_dir }}/tests/theorem-contract.pdf" "{{ build_dir }}/tests/theorem-contract.txt"
     python3 scripts/test/check-theorem-contract.py "{{ build_dir }}/tests"
+
+# Internal custom theorem style/counter matrix, including chained-empty counters.
+[private]
+_test-theorem-style-counter:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/theorem-style-counter."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=theorem-style-counter ../tests/theorem-style-counter.tex
+    pdfinfo "{{ build_dir }}/tests/theorem-style-counter.pdf" > "{{ build_dir }}/tests/theorem-style-counter.pdfinfo"
+    pdftotext -layout "{{ build_dir }}/tests/theorem-style-counter.pdf" "{{ build_dir }}/tests/theorem-style-counter.txt"
+    pdftohtml -xml -hidden -nodrm -i "{{ build_dir }}/tests/theorem-style-counter.pdf" "{{ build_dir }}/tests/theorem-style-counter"
+    python3 scripts/test/check-theorem-style-counter.py "{{ build_dir }}/tests"
 
 # Internal integration test for the neutral non-NCKU style profile.
 [private]
