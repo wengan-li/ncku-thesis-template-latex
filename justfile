@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-v1-project-migration _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-custom-style _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-custom-style _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -72,6 +72,20 @@ _test-v1-project-migration:
     grep -Fq '31 December 2023' "{{ build_dir }}/thesis-cover.txt"
     ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ build_dir }}/thesis-cover.txt"
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right|Suppressing empty link' "{{ log }}"
+
+# Internal release gate: the student ZIP is the exact tracked thesis tree.
+[private]
+_test-release-student-archive:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/student-archive."*
+    git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/tests/student-archive.zip" HEAD:thesis
+    scripts/release/verify-student-archive.sh "{{ build_dir }}/tests/student-archive.zip"
+    cp "{{ build_dir }}/tests/student-archive.zip" "{{ build_dir }}/tests/student-archive-negative.zip"
+    zip -dq "{{ build_dir }}/tests/student-archive-negative.zip" ncku-thesis-template-latex/MIGRATION-1.x-TO-2.x.md
+    ! scripts/release/verify-student-archive.sh "{{ build_dir }}/tests/student-archive-negative.zip" > "{{ build_dir }}/tests/student-archive-negative.log" 2>&1
+    grep -Fq 'student ZIP contents differ from the exact HEAD:thesis file list' "{{ build_dir }}/tests/student-archive-negative.log"
+    grep -Fq -- '-ncku-thesis-template-latex/MIGRATION-1.x-TO-2.x.md' "{{ build_dir }}/tests/student-archive-negative.log"
+    rm -f "{{ build_dir }}/tests/student-archive-negative.zip"
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]

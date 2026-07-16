@@ -119,6 +119,12 @@ The completed v2 slice was validated from a clean committed worktree:
   exactly;
 - migration runtime gates: unchanged entry/configuration plus active StudentMode
   content and all three BibTeX databases pass through v2;
+- student-package gate: the ZIP regular-file list exactly matches the tracked
+  `HEAD:thesis` tree, including migration/compatibility/profile files; deleting
+  the migration guide from a temporary ZIP is detected;
+- direct unpacked student ZIP build: all 18 pinned v1 files retain exact
+  SHA-256/size and `latexmk -xelatex thesis.tex` produces 271 A4 pages through
+  the v1 adapter plus base/NCKU profiles without Draft or template watermark;
 - canonical NCKU PDF: 271 A4 pages;
 - diagnostic budgets: all pass, including zero empty-hyperlink and zero unknown
   CJK-family warnings;

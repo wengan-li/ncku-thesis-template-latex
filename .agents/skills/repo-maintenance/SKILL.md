@@ -108,9 +108,12 @@ ncku-thesis-template-latex-<version>.zip
 ncku-thesis-template-latex-examples-<version>.zip
 ```
 
-The student archive extracts to stable `ncku-thesis-template-latex/`. The
-examples archive extracts to stable `ncku-thesis-template-latex-examples/` and
-contains exactly:
+The student archive extracts to stable `ncku-thesis-template-latex/`; its regular
+files must exactly equal the tracked `HEAD:thesis` tree, including the migration
+guide, v1 adapter, and base/NCKU/custom profiles. Keep a focused negative test
+that deletes one required migration file and proves the archive checker fails.
+The examples archive extracts to stable `ncku-thesis-template-latex-examples/`
+and contains exactly:
 
 ```text
 README.md

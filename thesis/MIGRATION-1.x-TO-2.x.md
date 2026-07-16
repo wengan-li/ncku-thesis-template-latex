@@ -197,6 +197,9 @@ The v2 architecture acceptance evidence includes:
 - 18 student-owned files match v1.8.2 byte-for-byte; the unchanged entry/config
   and active StudentMode content/bibliography paths pass separate v2 runtime
   gates;
+- the student ZIP matches the complete tracked `thesis/` tree exactly, retains
+  the migration guide/adapter/profile files, and its direct `latexmk -xelatex
+  thesis.tex` path produces the canonical 271-page A4 PDF;
 - neutral custom profile builds five A4 pages covering Chinese/English cover,
   Chinese oral, and both Master/Doctoral English oral branches without NCKU
   visible policy or watermark asset;
