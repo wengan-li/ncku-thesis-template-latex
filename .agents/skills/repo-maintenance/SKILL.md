@@ -102,7 +102,9 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   diagnostic rather than recursive overflow. Keep both theorem fixtures and the
   negative cycle fixture in the gate. Generic initializer scratch values must be
   frozen into each environment declaration so headings cannot leak from the
-  final registry row.
+  final registry row. Keep the 13 numbered-counter getter declarations literal:
+  the v1 source manifest historically discovered them through repeated
+  `\renewcommand` branches even though registry-owned keys now populate values.
 - Do not claim tagged PDF or PDF/UA compliance from metadata alone.
 - Current university and department requirements override template guidance.
 
