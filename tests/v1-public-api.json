@@ -1,0 +1,4909 @@
+{
+  "entries": {
+    "AppendCounterStringToFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:3"
+      ]
+    },
+    "AppendOptionalKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "latex:9"
+      ]
+    },
+    "AppendixChapterTitleNumFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "AppendixSectionTitleNumFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "AppendixSubSectionTitleNumFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "AppendixSubSubSectionTitleNumFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BeginThesis": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleTypeAbbrv": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleTypeAlpha": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleTypeApacite": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleTypePlain": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleTypeVar": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleUseAbbrv": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleUseAlpha": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleUseApacite": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleUsePlain": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "CDBothName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ChapterReferenceTitleInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ChapterReferenceTitleInEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ChapterSectionTitleInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ChapterTitleInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ChapterTitleNumFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ChapterTitleNumInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ClearWatermarkStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-watermark.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "CommitteeSize": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "CoverDateNumInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "CoverDisplayNameChiEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "CreateCover": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "CreateThesis": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DemoMode": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisableCoverPageStyle": {
+      "defined_in": [
+        "thesis/template/style/ncku/ncku.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayChapterHeader": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "DisplayChapterHeaderStar": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "DisplayCommitteeSignatureArea": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayCoverInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayCoverInEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayCoverPeoplesBothNames": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayDraft": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayFiguresIndex": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayIndex": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayInnerCover": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayOral": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayOralChiTemplate": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayOralEngTemplate": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayOralImage": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplayOralTemplate": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "DisplaySectionHeader": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:m m m O{1"
+      ]
+    },
+    "DisplaySubSectionHeader": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:m m m O{1"
+      ]
+    },
+    "DisplaySubSubSectionHeader": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:m m m O{1"
+      ]
+    },
+    "DisplayTableContent": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "latex:5"
+      ]
+    },
+    "DisplayTablesIndex": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EmptyLine": {
+      "defined_in": [
+        "thesis/template/command/cmd-common.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EnableCoverPageStyle": {
+      "defined_in": [
+        "thesis/template/style/ncku/ncku.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EnableFlagDisplayDraft": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndAbstract": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndAbstractChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndAcknowledgments": {
+      "defined_in": [
+        "thesis/template/command/cmd-acknowledgments.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndAppendix": {
+      "defined_in": [
+        "thesis/template/command/cmd-appendix.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndChiAbstract": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndCover": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndExtendedAbstract": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndNomChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-nomenclature.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndOfPage": {
+      "defined_in": [
+        "thesis/template/command/cmd-page.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndOralTemplateDoc": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EndThesis": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "EquationBegin": {
+      "defined_in": [
+        "thesis/template/command/cmd-equation.tex"
+      ],
+      "signatures": [
+        "xparse:G{\\empty"
+      ]
+    },
+    "EquationEnd": {
+      "defined_in": [
+        "thesis/template/command/cmd-equation.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ExampleMode": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ExtAbstractChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "xparse:+m +g"
+      ]
+    },
+    "ExtAbstractSection": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "xparse:+m +g"
+      ]
+    },
+    "ExtAbstractSummary": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "FillInPDFData": {
+      "defined_in": [
+        "thesis/template/command/cmd-pdf.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "FlagDegreeType": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "FlagOralDocumentType": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAdvisorChiNameA": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAdvisorChiNameB": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAdvisorChiNameC": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAdvisorEngNameA": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAdvisorEngNameB": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAdvisorEngNameC": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixChapterNumberingFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixChapterTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixEquationNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixFigureNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixSectionNumberingFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixSubSectionNumberingFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixSubSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixSubSubSectionNumberingFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixSubSubSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAppendixTableNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAuthorChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetAuthorEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetBibStyleTypeVar": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetCDBothName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetChapterTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetChiDegree": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetChiTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetCollChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetCollEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetCommitteeSize": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetDefaultLineStretchType": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetDemoMode": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetDeptChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetDeptEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetDisplayCoverDateNum": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetDisplayCoverLang": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetDisplayOralChiTemplate": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetDisplayOralTemplateEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetEngDegree": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetEngDegreeThesis": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetEngTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetFiguresIndexTitleText": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetFlagDegreeType": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetFlagDisplayDraft": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetFontUseType": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetGeneralChapterNumberingFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetGeneralEquationNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetGeneralFigureNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetGeneralSectionNumberingFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetGeneralSubSectionNumberingFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetGeneralSubSubSectionNumberingFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetGeneralTableNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetIndexTitleText": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetMonthInEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-common.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "GetOralChiDay": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralChiMonth": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralChiYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralDocumentType": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralEngDay": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralEngDayNumInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralEngMonth": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralEngYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralImageChiPath": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralImageEngPath": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralYearInTaiwanYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetOralYearInTaiwanYearNumInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetReferenceTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetSubSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetSubSubSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTablesIndexTitleText": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTextDraftChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTextDraftEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremAssertionFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremConditionFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremConjectureFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremCorollaryFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremCriterionFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremDefinitionFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremExampleFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremHypothesisFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremLemmaFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremProblemFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremPropositionFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremQuestionFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetTheoremTheoremFormatFollowCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetThesisMonth": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetThesisMonthInEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetThesisMonthNumInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetThesisYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetThesisYearInTaiwanYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetUniversityChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetUniversityEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetValuePageInMainmatter": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "IndexChiMode": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "IndexEngMode": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitDefaultFontType": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremAcknowledgmentFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremAnnotationFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremAssertionFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremCaseFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremClaimFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremConclusionFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremConditionFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremConjectureFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremCorollaryFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremCriterionFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremDefinitionFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremExampleFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremFormats": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremHypothesisFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremLemmaFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremNoteFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremProblemFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremProofFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremPropositionFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremQuestionFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremSummaryFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitTheoremTheoremFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InitinalGeneralAppendixNumberingFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InsertAcknowledgment": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "InsertAnnotation": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "InsertAssertion": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertCase": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "InsertCenterImage": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InsertClaim": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "InsertConclusion": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "InsertCondition": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertConjecture": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertCorollary": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertCriterion": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertDefinition": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertExample": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertFigure": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertFigures": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "xparse:+O{\\empty"
+      ]
+    },
+    "InsertFiguresFourPerRow": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "xparse:+m +G{\\empty"
+      ]
+    },
+    "InsertFiguresOnePerRow": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "xparse:+m +G{\\empty"
+      ]
+    },
+    "InsertFiguresSubFigure": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertFiguresThreePerRow": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "xparse:+m +G{\\empty"
+      ]
+    },
+    "InsertFiguresTwoPerRow": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "xparse:+m +G{\\empty"
+      ]
+    },
+    "InsertHypothesis": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertImage": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InsertLemma": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertMultiImages": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "InsertNote": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "InsertProblem": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertProof": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "InsertProposition": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertQuestion": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertSubfigureBox": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertSubfigureFourFigure": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "latex:4"
+      ]
+    },
+    "InsertSubfigureOneFigure": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "InsertSubfigureThreeFigure": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "latex:3"
+      ]
+    },
+    "InsertSubfigureTwoFigure": {
+      "defined_in": [
+        "thesis/template/command/cmd-figures.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertSummary": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "InsertTable": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertTheorem": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "InsertTheoremContent": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:3"
+      ]
+    },
+    "LabelThisAs": {
+      "defined_in": [
+        "thesis/template/command/cmd-ref.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "MappingTheoremCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "MappingTheoremCounterResetCounter": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "MasterDegree": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "OralChiDay": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "OralChiMonth": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "OralChiYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "OralDocumentImageChiPath": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "OralDocumentImageEngPath": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "OralEngDay": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "OralEngMonth": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "OralEngYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "PhdDegree": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "RefBib": {
+      "defined_in": [
+        "thesis/template/command/cmd-ref.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "RefEquation": {
+      "defined_in": [
+        "thesis/template/command/cmd-ref.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "RefEquationB": {
+      "defined_in": [
+        "thesis/template/command/cmd-ref.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "RefFigure": {
+      "defined_in": [
+        "thesis/template/command/cmd-ref.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "RefPage": {
+      "defined_in": [
+        "thesis/template/command/cmd-ref.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "RefTable": {
+      "defined_in": [
+        "thesis/template/command/cmd-ref.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "RefTo": {
+      "defined_in": [
+        "thesis/template/command/cmd-ref.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "ReferencesFiles": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "xparse:G{\\empty"
+      ]
+    },
+    "SectionTitleNumFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetAbstractChiKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "xparse:m G{\\empty"
+      ]
+    },
+    "SetAbstractEngKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "xparse:m G{\\empty"
+      ]
+    },
+    "SetAbstractExtKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "xparse:m G{\\empty"
+      ]
+    },
+    "SetAdvisorChiNameA": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetAdvisorChiNameB": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetAdvisorChiNameC": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetAdvisorEngNameA": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetAdvisorEngNameB": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetAdvisorEngNameC": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetAdvisorNameA": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetAdvisorNameB": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetAdvisorNameC": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetBibStyleTypeVar": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetCDBothName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetChapterReferenceTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0",
+        "latex:1"
+      ]
+    },
+    "SetChiDegree": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetChiFontFamily": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetChiMainFont": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetChiTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetCollChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetCollEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetCollName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetCollegeBioscienceAndBiotechnology": {
+      "defined_in": [
+        "thesis/template/command/cmd-college.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetCollegeElectricalEngineeringAndComputerScience": {
+      "defined_in": [
+        "thesis/template/command/cmd-college.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetCollegeEngineering": {
+      "defined_in": [
+        "thesis/template/command/cmd-college.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetCollegeLiberalArts": {
+      "defined_in": [
+        "thesis/template/command/cmd-college.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetCollegeManagement": {
+      "defined_in": [
+        "thesis/template/command/cmd-college.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetCollegeMedicine": {
+      "defined_in": [
+        "thesis/template/command/cmd-college.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetCollegePlanningAndDesign": {
+      "defined_in": [
+        "thesis/template/command/cmd-college.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetCollegeSciences": {
+      "defined_in": [
+        "thesis/template/command/cmd-college.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetCollegeSocialScience": {
+      "defined_in": [
+        "thesis/template/command/cmd-college.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetCommitteeSize": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetCoverDate": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex",
+        "thesis/template/style/ncku/ncku.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetCustomChiFontFiles": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetCustomEngFontFiles": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetCustomFigureName": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetCustomTableName": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetDefaultLineStretchType": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetDeptACC": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptAMBA": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptAlliedHealth": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptAnatomy": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptAnesth": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptArch": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptArt": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptBME": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptBasicMed": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptBehMed": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptBio": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptBioTech": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptBiohem": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptBone": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptCCE": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptCLPARM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptCSIE": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptCh": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptChe": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetDeptChinese": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptCivil": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptDEOH": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptDPS": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptDentistry": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptDerm": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptED": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptEDUC": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptEE": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptEMBA": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptES": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptEV": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptEarth": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptEconomic": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptEmergency": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptEngFullName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetDeptFLLD": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptFMRI": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptFamily": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptFin": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptForensic": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptGIPE": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptGeomatics": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptHis": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptHyd": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIAA": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIBBT": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIBDPE": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptICA": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptICAMP": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptICEM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptICID": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptICMMed": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptID": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIDS": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIIM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIMBA": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIME": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIMI": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIMIS": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIMM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptINHMM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIOCS": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIOG": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIOM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIOTMA": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptITPS": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptIntMed": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptKCLC": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptLang": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptLaw": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptMBA": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptME": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptMP": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptMSE": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptMT": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptMath": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptMicrobio": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptMinNan": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptNCTS": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptNM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:3"
+      ]
+    },
+    "SetDeptNeuro": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptNursing": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptOEM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptOT": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptObsGyn": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptOphth": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptOtolaryngo": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPHEI": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPSSC": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPT": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptParasite": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPath": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPed": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPhMed": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPharmaco": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPharmacy": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPhys": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPhysMed": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPolSci": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPsy": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptPsychology": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptRad": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptRehab": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptSNAME": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptSTAT": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptSurgery": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptTCM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptTM": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptTWL": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptUP": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetDeptUro": {
+      "defined_in": [
+        "thesis/template/command/cmd-department.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetEngDegree": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetEngDegreeThesis": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetEngFontFamily": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetEngMainFont": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetEngTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetEquationLabel": {
+      "defined_in": [
+        "thesis/template/command/cmd-equation.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetFigureCaption": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "xparse:+m"
+      ]
+    },
+    "SetFigureCaptionAndLabel": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "xparse:+m +m"
+      ]
+    },
+    "SetFiguresIndexTitleText": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetFlagDegreeType": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetFloatCaptionAndLabel": {
+      "defined_in": [
+        "thesis/template/command/cmd-common.tex"
+      ],
+      "signatures": [
+        "xparse:+m +m"
+      ]
+    },
+    "SetFontUseType": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetImageLabel": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "xparse:+m"
+      ]
+    },
+    "SetIndexTitleText": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "xparse:m G{\\empty"
+      ]
+    },
+    "SetLineStretch": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetMyChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetMyEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetMyName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetNumberingFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetOralChiDate": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:3"
+      ]
+    },
+    "SetOralDate": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex",
+        "thesis/template/style/ncku/ncku.tex"
+      ],
+      "signatures": [
+        "latex:3"
+      ]
+    },
+    "SetOralEngDate": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:3"
+      ]
+    },
+    "SetOralImageChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetOralImageEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetOralTaiwanYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-common.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetPageNumberCounting": {
+      "defined_in": [
+        "thesis/template/command/cmd-page.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetReferenceTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetStyleEnumItemLevelFour": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetStyleEnumItemLevelOne": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetStyleEnumItemLevelThree": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetStyleEnumItemLevelTwo": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetStyleItemizeItemLevelFour": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetStyleItemizeItemLevelOne": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetStyleItemizeItemLevelThree": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetStyleItemizeItemLevelTwo": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetTableCaptionAndLabel": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "xparse:+m +m"
+      ]
+    },
+    "SetTableCaptionStarAndLabel": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "xparse:+m +m"
+      ]
+    },
+    "SetTablesIndexTitleText": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetTheoremContentLabel": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetTheoremFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-theorem.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetThesisDate": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetThesisTaiwanYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-common.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetUniversityChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetUniversityEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetUniversityName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "SetValuePageInMainmatter": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetWatermaskFigureStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-watermark.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetWatermaskTextStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-watermark.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetupAppendixChapterTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupAppendixEquationNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupAppendixFTENumberFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupAppendixFigureNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupAppendixNumberingFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupAppendixSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupAppendixSubSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupAppendixSubSubSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupAppendixTableNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupChapterTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupFTENumberFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupGeneralAppendixNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:3"
+      ]
+    },
+    "SetupGeneralEquationNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupGeneralFigureNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupGeneralTableNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupNumberingFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupReference": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetupSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupSubSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupSubSubSectionTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupTitleNumberFormatString": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:3"
+      ]
+    },
+    "ShowDOI": {
+      "defined_in": [
+        "thesis/template/command/cmd-watermark.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "StartAbstract": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartAbstractChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartAcknowledgments": {
+      "defined_in": [
+        "thesis/template/command/cmd-acknowledgments.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartAcknowledgmentsChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-acknowledgments.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartAppendix": {
+      "defined_in": [
+        "thesis/template/command/cmd-appendix.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:+m +g"
+      ]
+    },
+    "StartChapterStar": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:+m +g"
+      ]
+    },
+    "StartChiAbstract": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartCover": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartExtendedAbstract": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartNewPage": {
+      "defined_in": [
+        "thesis/template/command/cmd-page.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartNomChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-nomenclature.tex"
+      ],
+      "signatures": [
+        "xparse:+m +g"
+      ]
+    },
+    "StartOralTemplateDocChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartOralTemplateDocEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "StartSection": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:+m +g"
+      ]
+    },
+    "StartSubSection": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:+m +g"
+      ]
+    },
+    "StartSubSubSection": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:+m +g"
+      ]
+    },
+    "StudentMode": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SubSectionTitleNumFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SubSubSectionTitleNumFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "TextDefaultTitleBibliographyEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "TextDefaultTitleReferenceChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "TextDefaultTitleReferenceEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ThesisMonth": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex",
+        "thesis/template/style/ncku/ncku.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ThesisWroteInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ThesisYear": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex",
+        "thesis/template/style/ncku/ncku.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "UseDefaultFontType": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "UseDefaultLineStretch": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "UseFigureCaptionDefaultStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "UseFigureCaptionExtendedAbstractStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "UseTableCaptionDefaultStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "UseTableCaptionExtendedAbstractStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "UseWatermarkFigureStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-watermark.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "UseWatermarkTextStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-watermark.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueCustomLineStretch": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDefaultLineStretch": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDefaultLineStretchTypeCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDefaultLineStretchTypeDefault": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDegreeMaster": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDegreePhd": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDemoMode": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDisplayCoverDateNumInChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDisplayCoverDateNumInNum": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDisplayCoverLangChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDisplayCoverLangEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDisplayOralTemplateOff": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueDisplayOralTemplateOn": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueFigureNameCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueOralDocumentTypeImage": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueOralDocumentTypeTemplate": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValuePageInMainmatter": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "ValueTableNameCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarAdvisorChiNameA": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarAdvisorChiNameB": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarAdvisorChiNameC": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarAdvisorEngNameA": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarAdvisorEngNameB": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarAdvisorEngNameC": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarCollegeChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarCollegeEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarCoverDisplayDraft": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDefaultLineStretchType": {
+      "defined_in": [
+        "thesis/template/command/cmd-spacing.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDegreeChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDegreeEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDemoModeOff": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDemoModeOn": {
+      "defined_in": [
+        "thesis/template/command/cmd-thesis.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDepartmentChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDepartmentEngFullName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDisplayCoverDateNum": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDisplayCoverLang": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDisplayOralTemplateChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarDisplayOralTemplateEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFiguresIndexTitleChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFiguresIndexTitleEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFiguresIndexTitleText": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeCustomChiFileNameBold": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeCustomChiFileNameBoldItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeCustomChiFileNameItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeCustomChiFileNameNormal": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeCustomEngFileNameBold": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeCustomEngFileNameBoldItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeCustomEngFileNameItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeCustomEngFileNameNormal": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeNotoSansCJK": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontTypeTimesKaiu": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarFontUseType": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarIndexTitleChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarIndexTitleEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarIndexTitleText": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarMyChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarMyEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarPageInMainmatter": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarPageNotInMainmatter": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarPageNumberCounting": {
+      "defined_in": [
+        "thesis/template/command/cmd-page.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarReferenceTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarReferenceTitleChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarReferenceTitleCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarReferenceTitleEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarStartAppendixChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-appendix.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarStartExtendedAbstractFigureTableControl": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarTablesIndexTitleChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarTablesIndexTitleEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarTablesIndexTitleText": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarThesisChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarThesisEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarUniversityChiName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarUniversityEngName": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarWatermaskFigureStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-watermark.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarWatermaskTextStyle": {
+      "defined_in": [
+        "thesis/template/command/cmd-watermark.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "arraystretch": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "bibname": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "chapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:s m"
+      ]
+    },
+    "degreeThesisEname": {
+      "defined_in": [
+        "thesis/template/command/cmd-cover.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "environment:DescriptionFrame": {
+      "defined_in": [
+        "thesis/template/command/cmd-common.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "environment:fmpage": {
+      "defined_in": [
+        "thesis/template/command/cmd-common.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "figurename": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "labelenumi": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "labelenumii": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "labelenumiii": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "labelenumiv": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "labelitemi": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "labelitemii": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "labelitemiii": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "labelitemiv": {
+      "defined_in": [
+        "thesis/template/command/cmd-list.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "listoffigures": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "listoftables": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "modulo": {
+      "defined_in": [
+        "thesis/template/command/cmd-common.tex"
+      ],
+      "signatures": [
+        "latex:2"
+      ]
+    },
+    "namesigdate": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "section": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:s m"
+      ]
+    },
+    "subsection": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:s m"
+      ]
+    },
+    "subsubsection": {
+      "defined_in": [
+        "thesis/template/command/cmd-chapter.tex"
+      ],
+      "signatures": [
+        "xparse:s m"
+      ]
+    },
+    "tablename": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "tableofcontents": {
+      "defined_in": [
+        "thesis/template/command/cmd-index.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "theequation": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "thefigure": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex",
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "thetable": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex",
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    }
+  },
+  "policy": "Every explicitly declared v1 command and environment remains available with a compatible argument shape throughout v2.x.",
+  "schema": 1
+}

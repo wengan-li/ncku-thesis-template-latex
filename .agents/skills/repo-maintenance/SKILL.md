@@ -20,13 +20,17 @@ Read only the focused sources needed for the task:
 
 1. [`AGENTS.md`](../../../AGENTS.md) — canonical project rules and boundaries.
 2. [`justfile`](../../../justfile) — canonical maintainer command surface.
-3. [`docs/source-optimization-review.md`](../../../docs/source-optimization-review.md)
-   — prioritized modernization, performance, and CI decisions.
-4. [`docs/release-versioning.md`](../../../docs/release-versioning.md) — release
+3. [`docs/v2-modernization.md`](../../../docs/v2-modernization.md) — active v2
+   intent, expectations, evidence, and progress.
+4. [`docs/v2-public-api-compatibility.md`](../../../docs/v2-public-api-compatibility.md)
+   — 1.x helper compatibility policy and machine-checked baseline.
+5. [`docs/source-optimization-review.md`](../../../docs/source-optimization-review.md)
+   — prioritized modernization, performance, and CI evidence.
+6. [`docs/release-versioning.md`](../../../docs/release-versioning.md) — release
    version, packaging, promotion, and public-verification contract.
-5. [`docs/sample-repository-migration.md`](../../../docs/sample-repository-migration.md)
+7. [`docs/sample-repository-migration.md`](../../../docs/sample-repository-migration.md)
    — generated-example provenance and migration record.
-6. [`docs/overleaf-distribution.md`](../../../docs/overleaf-distribution.md) —
+8. [`docs/overleaf-distribution.md`](../../../docs/overleaf-distribution.md) —
    unofficial-template policy, import package limits, and publication blockers.
 
 Inspect current source and Git state before trusting historical notes. When a
@@ -58,9 +62,12 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 
 ## Compatibility Boundary
 
-- XeLaTeX remains the supported v1.8 engine; do not silently migrate engines.
-- Preserve `thesis.tex`, `conf/conf.tex`, public commands, and visible layout
-  unless a focused fixture and authoritative evidence justify a change.
+- XeLaTeX remains the supported v2 engine; do not silently migrate engines.
+- Preserve `thesis.tex`, `conf/conf.tex`, every entry in
+  `tests/v1-public-api.json`, and the visible NCKU layout unless a focused
+  fixture and authoritative evidence justify a documented correction.
+- Keep student data in `conf/` and institution-level style ports under
+  `template/style/`; never introduce `conf/style.tex`.
 - Preserve direct XeLaTeX and Overleaf compatibility; `just` is maintainer
   orchestration, not a student requirement.
 - Keep the full teaching document as integration coverage and add focused

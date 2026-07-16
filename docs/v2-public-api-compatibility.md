@@ -1,0 +1,68 @@
+# V1 Public API Compatibility in V2
+
+V2 changes ownership and internals, not the availability of existing helpers.
+Every explicitly declared command and environment captured before v2 work is
+preserved throughout the 2.x line.
+
+## Machine-Checked Contract
+
+The committed baseline is:
+
+```text
+tests/v1-public-api.json
+```
+
+It contains the command/environment name, argument signature, and historical
+definition path for 612 entries. The path is inventory context; compatibility
+requires the name and argument shape, so implementations may move behind an
+adapter.
+
+Run the gate with:
+
+```bash
+python3 scripts/test/check-v1-api.py
+```
+
+It is also part of `just test` and `just ci`.
+
+The baseline must not be regenerated after v2 implementation starts merely to
+make a deletion pass. A deliberate future removal requires an owner decision
+for a later major version and a migration record.
+
+## Compatibility Classes
+
+| Class | V2 treatment |
+| --- | --- |
+| Documented/user-facing helper | Keep name and arguments; delegate internally when useful. |
+| Style-extension helper | Keep as a protected extension API for institution profiles. |
+| Legacy/deprecated helper | Keep through 2.x; emit a bounded migration warning only when safe. |
+| Proven bug | Keep the API, correct behavior, add a fixture, document the change. |
+| Internal state macro captured by the conservative manifest | Keep an alias during 2.x even if native v2 code stops using it. |
+
+Because v1 did not formally mark private macros, the baseline is deliberately
+conservative. This prevents a cleanup from silently breaking real student
+projects or non-NCKU forks.
+
+## Architecture Rule
+
+```text
+v1 command/environment
+        -> compatibility adapter when needed
+        -> v2 mechanism/state
+        -> selected template/style profile policy
+        -> existing renderer/output
+```
+
+Profiles must not change public command arity. Institution policy should be
+implemented through profile hooks or resolved state rather than by redefining
+public setters.
+
+## Behavior Corrections
+
+Compatibility does not preserve verified defects. Each correction must include:
+
+1. a focused fixture that fails against the old behavior;
+2. the smallest source correction;
+3. unchanged public name and argument shape;
+4. an entry in `thesis/MIGRATION-1.x-TO-2.x.md`;
+5. integration proof that unrelated NCKU output remains intact.
