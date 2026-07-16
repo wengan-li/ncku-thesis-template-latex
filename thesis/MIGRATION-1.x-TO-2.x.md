@@ -84,15 +84,23 @@ The declaration baseline above is paired with a runtime migration contract:
 ```
 
 The manifest pins 18 student-owned files (296,726 bytes) to release
-`v1.8.2.260715154703`. It covers the unchanged root `thesis.tex`, `conf/conf.tex`,
-student content, bibliography data, and oral-certificate assets. The repository
-canonical build uses those exact bytes with the v2 template implementation and
-asserts that the v1 adapter, base profile contract, and NCKU profile are loaded.
-It also checks the 271-page A4 result, legacy cover/date/department values, and
-final reference convergence.
+`v1.8.2.260715154703`. It covers the root `thesis.tex`, `conf/conf.tex`, student
+content, bibliography data, and oral-certificate assets as a byte-for-byte
+source-integrity contract.
 
-This proves a representative unchanged v1 project runs on v2. It complements,
-but does not replace, the focused semantic tests for corrected helpers.
+Runtime evidence is deliberately split:
+
+- the unchanged v1 entry point and configuration build through the v2 adapter,
+  base contract, and NCKU profile, producing the 271-page A4 canonical result;
+- the StudentMode fixture disables teaching examples and asserts the active
+  student content files through the XeLaTeX `.fls` recorder plus all three
+  bibliography databases through the BibTeX `.blg` record.
+
+Files disabled by the v1 configuration (for example alternate abstracts and
+external oral-certificate PDFs) remain source-pinned but are not falsely
+claimed as runtime-loaded. Together these gates prove a representative v1
+project and its active student-content path run on v2. They complement, but do
+not replace, focused semantic tests for corrected helpers.
 
 ### V1 Adapter Layout
 
@@ -186,9 +194,12 @@ git diff --check
 The v2 architecture acceptance evidence includes:
 
 - 612/612 v1 commands/environments preserved;
-- 18 student-owned files match v1.8.2 byte-for-byte and build through the v2
-  compatibility/profile layers;
-- neutral custom profile builds cover and oral output without NCKU visible policy or watermark asset;
-- custom explicit cover date and oral date remain distinct;
+- 18 student-owned files match v1.8.2 byte-for-byte; the unchanged entry/config
+  and active StudentMode content/bibliography paths pass separate v2 runtime
+  gates;
+- neutral custom profile builds four A4 Chinese/English cover and oral pages
+  without NCKU visible policy or watermark asset;
+- custom Chinese dates remain Gregorian while explicit cover and oral dates stay
+  distinct;
 - canonical NCKU output remains 271 A4 pages;
 - canonical extracted text and cover word bounding boxes/raster remain identical across the profile extraction.

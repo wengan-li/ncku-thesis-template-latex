@@ -43,10 +43,15 @@ scripts/test/check-v1-project-migration.py
 The manifest pins 18 student-owned project files (296,726 bytes) to the immutable
 `v1.8.2.260715154703` release at commit
 `2c9557a74983023bba7a8f0cf233e1eb812edec7`. It covers the root entry point,
-student configuration/content, bibliography data, and oral-certificate assets.
-The canonical test builds those exact inputs through the current v2
-compatibility adapter, base profile contract, and NCKU profile, then verifies the
-271-page A4 output and legacy cover/date/department sentinels.
+student configuration/content, bibliography data, and oral-certificate assets
+as a byte-for-byte source-integrity contract.
+
+Runtime coverage is intentionally split. The canonical test builds the exact v1
+entry/configuration through the current v2 compatibility adapter, base contract,
+and NCKU profile, then verifies the 271-page A4 output and legacy sentinels. The
+StudentMode test separately asserts its active content inputs from `.fls` and all
+three bibliography databases from `.blg`. Manifest files disabled by the v1
+configuration remain source-pinned without being misreported as runtime-loaded.
 
 Run the source half directly with:
 
@@ -102,11 +107,15 @@ regenerating the baseline is not an acceptable 2.x cleanup.
 Public date setters now call profile policy hooks:
 
 ```text
-SetOralDate  -> ApplyOralDatePolicy
-SetCoverDate -> ApplyCoverDatePolicy
+SetOralDate    -> ApplyOralDatePolicy
+SetCoverDate   -> ApplyCoverDatePolicy
+SetOralChiDate -> ApplyOralChiYearPolicy
+Chinese cover  -> profile cover-prefix/year display getters
 ```
 
-Profiles override the hooks, not setter signatures or raw metadata storage.
+Profiles override the hooks/getters, not setter signatures or raw metadata
+storage. Generic Chinese dates remain Gregorian; the NCKU profile explicitly
+selects Taiwan-year rendering.
 
 ## Behavior Corrections
 

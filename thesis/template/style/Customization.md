@@ -119,6 +119,7 @@ template/style/custom/   可直接 build 的 non-NCKU skeleton
 \SetCoverCoAdvisorEngText{Co-Advisor}
 \SetCoverAdvisorChiSuffix{博士}
 \SetCoverAdvisorEngPrefix{Dr.}
+\SetCoverDateChiPrefix{西元}
 ```
 
 對應 oral certificate 的 profile setters 包括：
@@ -145,9 +146,9 @@ Public commands 保持不變：
 \SetCoverDate{year}{month}
 ```
 
-Generic/default policy 將 `\SetCoverDate`視為封面日期，並將 oral date 保持為獨立 metadata。NCKU profile 則透過 hooks 將口試合格日期視為 authoritative cover date。
+Generic/default policy 將 `\SetCoverDate`視為封面日期，並將 oral date 保持為獨立 metadata。Generic Chinese cover/oral renderers使用Gregorian year；`\SetCoverDateChiPrefix`與`\SetOralDateChiPrefix`控制顯示prefix。NCKU profile則透過hooks/getters將口試合格日期視為authoritative cover date，並明確選擇民國年。
 
-如果另一間學校亦使用 oral date 作封面日期，只覆寫 hooks：
+如果另一間學校亦使用oral date作封面日期，只覆寫hooks：
 
 ```tex
 \renewcommand{\ApplyOralDatePolicy}[3]{%
@@ -156,6 +157,18 @@ Generic/default policy 將 `\SetCoverDate`視為封面日期，並將 oral date 
   \renewcommand{\ThesisMonth}{#2}%
 }
 \renewcommand{\ApplyCoverDatePolicy}[2]{}
+```
+
+如果profile需要民國年，亦必須明確覆寫Chinese-year policy/display getters；唔好將台灣年轉換留喺generic setters：
+
+```tex
+\renewcommand{\ApplyOralChiYearPolicy}[1]{%
+  \renewcommand{\OralChiYear}{\OralTaiwanYearResult}%
+}
+\renewcommand{\GetCoverMasterYearChi}{\GetThesisYearInTaiwanYear}
+\renewcommand{\GetCoverMasterYearNumInChi}{\zhnumber{\GetThesisYearInTaiwanYear}}
+\renewcommand{\GetCoverDoctoralYearChi}{\GetOralYearInTaiwanYear}
+\renewcommand{\GetCoverDoctoralYearNumInChi}{\GetOralYearInTaiwanYearNumInChi}
 ```
 
 不要 `\renewcommand{\SetOralDate}` 或 `\renewcommand{\SetCoverDate}`；public setter 需要繼續保存 raw metadata 與維持 1.x signature。
@@ -186,7 +199,7 @@ cd thesis
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 ```
 
-`tests/custom-style.tex`是可執行 reference：它選擇 `custom` profile、產生英文 cover 與 oral certificate、使用不同 cover/oral dates，並驗證 output 沒有 NCKU 校名或 watermark asset。
+`tests/custom-style.tex`是可執行reference：它選擇`custom` profile、產生中／英文cover與oral certificate共四頁A4、驗證Chinese dates使用Gregorian year、保持不同cover/oral dates，並確認output沒有NCKU校名或watermark asset。
 
 ## 不應修改的地方
 

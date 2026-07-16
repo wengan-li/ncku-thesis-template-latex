@@ -59,6 +59,8 @@ _test-v1-api:
 [private]
 _test-v1-project-migration:
     python3 scripts/test/check-v1-project-migration.py
+    grep -Eq '^INPUT .*/thesis/thesis\.tex$' "{{ build_dir }}/thesis.fls"
+    grep -Fq 'INPUT ./conf/conf.tex' "{{ build_dir }}/thesis.fls"
     grep -Fq 'INPUT ./template/compat/v1.tex' "{{ build_dir }}/thesis.fls"
     grep -Fq 'INPUT ./template/style/base/base.tex' "{{ build_dir }}/thesis.fls"
     grep -Fq 'INPUT ./template/style/ncku/ncku.tex' "{{ build_dir }}/thesis.fls"
@@ -113,7 +115,7 @@ _test-sectioning-numbering:
 _test-helper-values:
     mkdir -p "{{ build_dir }}/tests"
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=helper-values ../tests/helper-values.tex
-    test "$(grep -c 'NCKU-TEST-PASS:' "{{ build_dir }}/tests/helper-values.log")" -eq 3
+    test "$(grep -c 'NCKU-TEST-PASS:' "{{ build_dir }}/tests/helper-values.log")" -eq 4
     ! grep -q 'NCKU-TEST-FAIL:' "{{ build_dir }}/tests/helper-values.log"
     ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/helper-values.log"
     pdftotext "{{ build_dir }}/tests/helper-values.pdf" "{{ build_dir }}/tests/helper-values.txt"
@@ -132,16 +134,22 @@ _test-custom-style:
     grep -Fq 'NCKU-TEST-CUSTOM-PROFILE: custom' "{{ build_dir }}/tests/custom-style.log"
     grep -Fq 'NCKU-TEST-CUSTOM-COVER-DATE: 2024-7' "{{ build_dir }}/tests/custom-style.log"
     grep -Fq 'NCKU-TEST-CUSTOM-REQUESTED-DATE: 2024-7' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-ORAL-CHI-YEAR: 2023' "{{ build_dir }}/tests/custom-style.log"
     grep -Fq 'NCKU-TEST-PASS: custom style profile builds without NCKU visible policy' "{{ build_dir }}/tests/custom-style.log"
     ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/custom-style.log"
     ! grep -Fq 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/tests/custom-style.fls"
     pdftotext "{{ build_dir }}/tests/custom-style.pdf" "{{ build_dir }}/tests/custom-style.txt"
+    pdfinfo "{{ build_dir }}/tests/custom-style.pdf" > "{{ build_dir }}/tests/custom-style.pdfinfo"
+    grep -Eq '^Pages:[[:space:]]+4$' "{{ build_dir }}/tests/custom-style.pdfinfo"
+    grep -Eq '^Page size:.*A4' "{{ build_dir }}/tests/custom-style.pdfinfo"
     grep -Fq 'Example University' "{{ build_dir }}/tests/custom-style.txt"
     grep -Fq 'Department of Testing' "{{ build_dir }}/tests/custom-style.txt"
     grep -Fq 'Portable Thesis Style' "{{ build_dir }}/tests/custom-style.txt"
     grep -Fq 'July 2024' "{{ build_dir }}/tests/custom-style.txt"
     grep -Fq 'Example City, Example Country' "{{ build_dir }}/tests/custom-style.txt"
     grep -Fq '31 December 2023' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq '西 元' "{{ build_dir }}/tests/custom-style.txt"
+    ! grep -Fq '中華民國' "{{ build_dir }}/tests/custom-style.txt"
     ! grep -Fq 'National Cheng Kung University' "{{ build_dir }}/tests/custom-style.txt"
     ! grep -Fq '國立成功大學' "{{ build_dir }}/tests/custom-style.txt"
 
@@ -192,6 +200,18 @@ _test-student-mode:
     grep -q 'NCKU-TEST-PASS: default diagonal draft watermark text is empty' "{{ build_dir }}/tests/student-mode.log"
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/student-mode.log"
     ! grep -F '/example/' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'INPUT ./conf/conf.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'INPUT ./context/context.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'INPUT ./context/abstract/eng.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'INPUT ./context/acknowledgments/eng.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'INPUT ./context/nomenclature/nomenclature.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'INPUT ./context/introduction/introduction.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'INPUT ./context/related-work/related-work.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'INPUT ./context/conclusion/conclusion.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'INPUT ./context/references/references.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fq 'Database file #1: context/references/paper.bib' "{{ build_dir }}/tests/student-mode.blg"
+    grep -Fq 'Database file #2: context/references/misc.bib' "{{ build_dir }}/tests/student-mode.blg"
+    grep -Fq 'Database file #3: context/references/book.bib' "{{ build_dir }}/tests/student-mode.blg"
     pdftotext -f 1 -l 1 "{{ build_dir }}/tests/student-mode.pdf" "{{ build_dir }}/tests/student-mode-cover.txt"
     ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ build_dir }}/tests/student-mode-cover.txt"
     ! grep -F 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/tests/student-mode.fls"

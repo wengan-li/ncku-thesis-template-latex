@@ -67,8 +67,10 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   `tests/v1-public-api.json`, and the visible NCKU layout unless a focused
   fixture and authoritative evidence justify a documented correction.
 - Keep `tests/v1-project-migration.json` passing. It pins the v1.8.2
-  student-owned inputs byte-for-byte; `just test` must also prove that those
-  inputs build through the current v2 adapter and profile layers.
+  student-owned inputs byte-for-byte; `just test` separately proves the unchanged
+  entry/configuration path and active StudentMode content/BibTeX dependencies.
+- Keep generic command/renderer layers free of NCKU assets and Taiwan-year
+  policy. The selected profile owns institutional watermark and date behavior.
 - Keep student data in `conf/` and institution-level style ports under
   `template/style/`; never introduce `conf/style.tex`.
 - Preserve direct XeLaTeX and Overleaf compatibility; `just` is maintainer

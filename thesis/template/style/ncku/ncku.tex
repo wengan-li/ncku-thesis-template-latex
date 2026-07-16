@@ -57,6 +57,7 @@
 \SetCoverAdvisorChiSuffix{博士}
 \SetCoverAdvisorEngPrefix{Dr.}
 \SetInstitutionLocationEng{Tainan, Taiwan, R.O.C.}
+\SetCoverDateChiPrefix{中華民國}
 \SetOralApprovalChiText{本論文業經審查及口試合格特此證明}
 \SetOralApprovedByEngText{Approved by}
 \SetOralCommitteeChiText{論文考試委員}
@@ -64,6 +65,15 @@
 \SetOralChairChiText{系(所)主管}
 \SetOralChairEngText{Chairman}
 \SetOralDateChiPrefix{中華民國}
+
+% Preserve the historical NCKU Chinese-year rendering exactly.
+\renewcommand{\ApplyOralChiYearPolicy}[1]{%
+  \renewcommand{\OralChiYear}{\OralTaiwanYearResult}%
+}
+\renewcommand{\GetCoverMasterYearChi}{\GetThesisYearInTaiwanYear}
+\renewcommand{\GetCoverMasterYearNumInChi}{\zhnumber{\GetThesisYearInTaiwanYear}}
+\renewcommand{\GetCoverDoctoralYearChi}{\GetOralYearInTaiwanYear}
+\renewcommand{\GetCoverDoctoralYearNumInChi}{\GetOralYearInTaiwanYearNumInChi}
 
 % 頁面邊界
 

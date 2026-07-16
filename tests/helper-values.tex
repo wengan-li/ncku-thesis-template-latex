@@ -19,6 +19,12 @@ Oral year: \GetOralYearInTaiwanYear.
   \errmessage{Oral-year getter changed thesis-year state}
 \fi
 
+\SetOralDate{2023}{12}{31}
+\edef\NckuOralChiYearActual{\GetOralChiYear}
+\ifdefstring{\NckuOralChiYearActual}{112}
+  {\typeout{NCKU-TEST-PASS: NCKU oral Chinese year uses Taiwan-year policy}}
+  {\errmessage{NCKU oral Chinese year did not use Taiwan-year policy}}
+
 \edef\NckuDeptShortActual{\GetDeptEngShortName}
 \ifdefstring{\NckuDeptShortActual}{TEST}
   {\typeout{NCKU-TEST-PASS: SetDeptName preserves the short name}}

@@ -23,6 +23,7 @@
 \newcommand{\VarCoverAdvisorChiSuffix}{}
 \newcommand{\VarCoverAdvisorEngPrefix}{}
 \newcommand{\VarInstitutionLocationEng}{}
+\newcommand{\VarCoverDateChiPrefix}{}
 \newcommand{\VarOralApprovalChiText}{}
 \newcommand{\VarOralApprovedByEngText}{}
 \newcommand{\VarOralCommitteeChiText}{}
@@ -41,6 +42,7 @@
 \newcommand{\SetCoverAdvisorChiSuffix}[1]{\renewcommand{\VarCoverAdvisorChiSuffix}{#1}}
 \newcommand{\SetCoverAdvisorEngPrefix}[1]{\renewcommand{\VarCoverAdvisorEngPrefix}{#1}}
 \newcommand{\SetInstitutionLocationEng}[1]{\renewcommand{\VarInstitutionLocationEng}{#1}}
+\newcommand{\SetCoverDateChiPrefix}[1]{\renewcommand{\VarCoverDateChiPrefix}{#1}}
 \newcommand{\SetOralApprovalChiText}[1]{\renewcommand{\VarOralApprovalChiText}{#1}}
 \newcommand{\SetOralApprovedByEngText}[1]{\renewcommand{\VarOralApprovedByEngText}{#1}}
 \newcommand{\SetOralCommitteeChiText}[1]{\renewcommand{\VarOralCommitteeChiText}{#1}}
@@ -59,6 +61,7 @@
 \newcommand{\GetCoverAdvisorChiSuffix}{\VarCoverAdvisorChiSuffix}
 \newcommand{\GetCoverAdvisorEngPrefix}{\VarCoverAdvisorEngPrefix}
 \newcommand{\GetInstitutionLocationEng}{\VarInstitutionLocationEng}
+\newcommand{\GetCoverDateChiPrefix}{\VarCoverDateChiPrefix}
 \newcommand{\GetOralApprovalChiText}{\VarOralApprovalChiText}
 \newcommand{\GetOralApprovedByEngText}{\VarOralApprovedByEngText}
 \newcommand{\GetOralCommitteeChiText}{\VarOralCommitteeChiText}
@@ -66,3 +69,10 @@
 \newcommand{\GetOralChairChiText}{\VarOralChairChiText}
 \newcommand{\GetOralChairEngText}{\VarOralChairEngText}
 \newcommand{\GetOralDateChiPrefix}{\VarOralDateChiPrefix}
+
+% Generic Chinese cover dates use Gregorian years. Institution profiles may
+% override these display hooks without changing the public date setters.
+\newcommand{\GetCoverMasterYearChi}{\GetThesisYear}
+\newcommand{\GetCoverMasterYearNumInChi}{\zhnumber{\GetThesisYear}}
+\newcommand{\GetCoverDoctoralYearChi}{\GetThesisYear}
+\newcommand{\GetCoverDoctoralYearNumInChi}{\zhnumber{\GetThesisYear}}

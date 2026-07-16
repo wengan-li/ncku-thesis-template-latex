@@ -3,7 +3,6 @@
 \def\TemplateStyleName{custom}
 \input{./template/configure}
 
-\DisplayCoverInEng
 \MasterDegree
 \SetUniversityName{示例大學}{Example University}
 \SetCollName{示例學院}{Example College}
@@ -16,12 +15,17 @@
 \SetOralDate{2023}{12}{31}
 \SetCoverDate{2024}{7}
 \DisplayOralTemplate
+\DisplayOralChiTemplate
 \DisplayOralEngTemplate
 
 \begin{document}
 \typeout{NCKU-TEST-CUSTOM-PROFILE: \GetTemplateStyleName}
 \typeout{NCKU-TEST-CUSTOM-COVER-DATE: \GetThesisYear-\GetThesisMonth}
 \typeout{NCKU-TEST-CUSTOM-REQUESTED-DATE: \GetRequestedCoverYear-\GetRequestedCoverMonth}
+\typeout{NCKU-TEST-CUSTOM-ORAL-CHI-YEAR: \GetOralChiYear}
+\DisplayCoverInChi
+\input{./template/cover/cover}
+\DisplayCoverInEng
 \input{./template/cover/cover}
 \DisplayOral
 \typeout{NCKU-TEST-PASS: custom style profile builds without NCKU visible policy}

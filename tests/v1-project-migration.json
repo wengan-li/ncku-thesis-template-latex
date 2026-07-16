@@ -73,7 +73,7 @@
       "size": 572
     }
   },
-  "policy": "These student-owned project inputs remain byte-identical to v1.8.2 while building through the v2 compatibility and profile layers.",
+  "policy": "These student-owned project inputs remain byte-identical to v1.8.2. Runtime gates separately build the unchanged canonical entry/configuration and the active StudentMode content path through v2.",
   "schema": 1,
   "source": {
     "commit": "2c9557a74983023bba7a8f0cf233e1eb812edec7",

@@ -163,6 +163,7 @@
   \renewcommand{\ThesisMonth}{#2}%
 }
 \newcommand{\ApplyOralDatePolicy}[3]{}
+\newcommand{\ApplyOralChiYearPolicy}[1]{\renewcommand{\OralChiYear}{#1}}
 
 \newcommand{\SetThesisDate}[2]{\SetCoverDate{#1}{#2}} % Backward-compatible name
 \newcommand{\SetCoverDate}[2]
@@ -203,7 +204,7 @@
 \newcommand{\SetOralChiDate}[3]
 {
   \SetOralTaiwanYear{#1}
-  \renewcommand{\OralChiYear}{\OralTaiwanYearResult}
+  \ApplyOralChiYearPolicy{#1}
   \renewcommand{\OralChiMonth}{#2}
   \renewcommand{\OralChiDay}{#3}
 } % End of \newcommand{}

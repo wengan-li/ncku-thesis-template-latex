@@ -87,15 +87,19 @@ cover plus affected pages.
 - The v1 tree declares 612 commands/environments captured and enforced by
   `tests/v1-public-api.json`.
 - `tests/v1-project-migration.json` pins 18 student-owned files byte-for-byte to
-  v1.8.2; their canonical build exercises the current v2 adapter and profiles.
+  v1.8.2. Runtime evidence is split between the unchanged entry/configuration
+  build and exact StudentMode content/BibTeX dependency assertions.
 - `template/command/command.tex` loads `template/compat/v1.tex`; historical NCKU
   catalogue helpers remain available while their data is owned by
   `template/style/ncku/`.
 - `template/style/style.tex` dynamically loads exactly one registered profile.
-- `template/style/ncku/ncku.tex` implements date policy through hooks instead of
-  overriding public setters.
-- `template/style/custom/custom.tex` builds an English cover and oral
-  certificate without NCKU visible policy or watermark assets.
+- `template/style/ncku/ncku.tex` implements cover/oral and Chinese-year policy
+  through hooks/getters instead of overriding public setters.
+- Generic watermark storage is empty; the selected profile owns any text style
+  or figure asset.
+- `template/style/custom/custom.tex` builds Chinese and English cover/oral pages
+  with Gregorian Chinese dates and without NCKU visible policy or watermark
+  assets.
 - `thesis/template/style/Customization.md` and the v1.5.0 changelog keep
   `template/style/` as the non-NCKU port boundary.
 
@@ -110,17 +114,20 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 The completed v2 slice was validated from a clean committed worktree:
 
 - `just ci`: pass, including canonical build and all focused fixtures;
-- v1 API gate: 612/612 declarations preserved, with 66 additive v2 declarations;
-- unchanged-project gate: 18 student-owned files (296,726 bytes) match v1.8.2
-  exactly and build through the v2 adapter/base/NCKU profile layers;
+- v1 API gate: 612/612 declarations preserved, with 74 additive v2 declarations;
+- migration source gate: 18 student-owned files (296,726 bytes) match v1.8.2
+  exactly;
+- migration runtime gates: unchanged entry/configuration plus active StudentMode
+  content and all three BibTeX databases pass through v2;
 - canonical NCKU PDF: 271 A4 pages;
 - diagnostic budgets: all pass, including zero empty-hyperlink and zero unknown
   CJK-family warnings;
 - profile-extraction comparison: canonical extracted text identical, cover word
   count/bounding boxes identical, and 150-DPI cover raster RMSE `0 (0)`;
-- custom profile: two A4 pages, distinct `July 2024` cover and
-  `31 December 2023` oral dates, no NCKU visible text/logo/watermark asset, and
-  no clipping or overlap on rendered inspection.
+- custom profile: four A4 Chinese/English cover and oral pages, Gregorian
+  Chinese years, distinct `July 2024` cover and `31 December 2023` oral dates,
+  no NCKU visible text/logo/watermark asset, and no clipping or overlap on
+  rendered inspection.
 
 ## Progress
 

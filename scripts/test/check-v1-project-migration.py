@@ -3,8 +3,9 @@
 
 The committed manifest is generated from the immutable v1.8.2 release tag.  It
 covers student-owned configuration, content, bibliography, oral-certificate
-assets, and the root thesis entry point.  The canonical build then exercises
-those exact bytes against the current v2 template implementation.
+assets, and the root thesis entry point.  This source-integrity gate is paired
+with two runtime checks: the unchanged canonical entry/configuration build and
+a StudentMode build that asserts its active content and bibliography inputs.
 """
 
 from __future__ import annotations
