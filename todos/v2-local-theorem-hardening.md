@@ -1,6 +1,6 @@
 # V2 Local Theorem Hardening
 
-Status: complete, local-only
+Status: complete; promoted to `feat/v2.x`
 Owner: Leon / Tachikoma
 
 ## Intent
@@ -98,3 +98,11 @@ pdftotext/pdftotext -bbox normalized comparison
 - [x] Make one registry own key declarations, style/policy metadata, and defaults.
 - [x] Consolidate all numbered/optional initializer branches and counter mapping.
 - [x] Run final local compatibility/output proof and commit the completed theorem cleanup.
+
+## Promotion Decision
+
+On 2026-07-17 the owner lifted the local-only publication boundary for the
+completed hardening commits. The slice was fast-forwarded to `feat/v2.x` at
+implementation head `ce5c4943e9ce71029219590883eea090d1c022b5`; both the exact-SHA
+push and pull-request Test workflows passed. The original no-merge, no-tag,
+no-Release, and no-Overleaf boundaries remain in force.

@@ -1,6 +1,6 @@
 # V2 Modernization IDSD Brief
 
-Status: Active on `feat/v2.x`
+Status: Implementation complete on `feat/v2.x`; review pending
 Owner: Wen-Gan Li
 
 ## Intent
@@ -115,6 +115,10 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 ## Final Validation Evidence
 
 The completed v2 slice was validated from a clean committed worktree:
+
+- implementation head `ce5c4943e9ce71029219590883eea090d1c022b5` passed
+  exact-SHA push and pull-request Test workflows after the local-only hardening
+  commits were promoted to `feat/v2.x`;
 
 - `just ci`: pass, including canonical build and all focused fixtures;
 - v1 API gate: 597/597 runtime declarations preserved, with 22 audited

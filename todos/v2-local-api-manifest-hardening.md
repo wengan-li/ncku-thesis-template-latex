@@ -1,6 +1,6 @@
 # V2 Local API Manifest Hardening
 
-Status: complete, local-only
+Status: complete; promoted to `feat/v2.x`
 Owner: Leon / Tachikoma
 
 ## Intent
@@ -56,3 +56,11 @@ If a runtime declaration disappears or canonical output changes, revert the dead
 - [x] Update all current compatibility documentation and annotate historical checkpoints.
 - [x] Run focused/full/canonical validation.
 - [x] Create the local-only commit and verify remote immutability.
+
+## Promotion Decision
+
+On 2026-07-17 the owner lifted the local-only publication boundary for the
+completed hardening commits. The slice was fast-forwarded to `feat/v2.x` at
+implementation head `ce5c4943e9ce71029219590883eea090d1c022b5`; both the exact-SHA
+push and pull-request Test workflows passed. The original no-merge, no-tag,
+no-Release, and no-Overleaf boundaries remain in force.

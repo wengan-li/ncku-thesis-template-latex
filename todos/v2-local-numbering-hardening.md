@@ -1,6 +1,6 @@
 # V2 Local Numbering Hardening
 
-Status: complete, local-only
+Status: complete; promoted to `feat/v2.x`
 Owner: Leon / Tachikoma
 
 ## Intent
@@ -75,3 +75,11 @@ fixed-DPI focused and canonical raster comparisons
 - [x] Correct the repeatability defect.
 - [x] Run focused/full artifact validation.
 - [x] Write durable lessons and create local-only commit(s).
+
+## Promotion Decision
+
+On 2026-07-17 the owner lifted the local-only publication boundary for the
+completed hardening commits. The slice was fast-forwarded to `feat/v2.x` at
+implementation head `ce5c4943e9ce71029219590883eea090d1c022b5`; both the exact-SHA
+push and pull-request Test workflows passed. The original no-merge, no-tag,
+no-Release, and no-Overleaf boundaries remain in force.

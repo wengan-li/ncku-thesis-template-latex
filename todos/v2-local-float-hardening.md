@@ -1,6 +1,6 @@
 # V2 Local Float Hardening
 
-Status: complete, local-only
+Status: complete; promoted to `feat/v2.x`
 Owner: Leon / Tachikoma
 
 ## Intent
@@ -82,3 +82,11 @@ visual inspection of focused float pages
 - [x] Extract the shared private framed-content helper.
 - [x] Run focused/full artifact validation.
 - [x] Write durable lessons and create the local-only implementation commit.
+
+## Promotion Decision
+
+On 2026-07-17 the owner lifted the local-only publication boundary for the
+completed hardening commits. The slice was fast-forwarded to `feat/v2.x` at
+implementation head `ce5c4943e9ce71029219590883eea090d1c022b5`; both the exact-SHA
+push and pull-request Test workflows passed. The original no-merge, no-tag,
+no-Release, and no-Overleaf boundaries remain in force.
