@@ -20,17 +20,20 @@
 
 % ------------------------------------------------
 
-% 學校排版 Arrangement style
+% Institution style profile selection.
+%
+% The repository default is NCKU. A non-NCKU template maintainer changes this
+% value (or defines it before template/configure.tex) and maintains the profile
+% under template/style/<name>/<name>.tex. Exactly one profile is loaded.
+\providecommand{\TemplateStyleName}{ncku}
+\input{./template/style/base/base}
+\edef\TemplateStyleFile{./template/style/\TemplateStyleName/\TemplateStyleName.tex}
+\IfFileExists{\TemplateStyleFile}
+  {\input{\TemplateStyleFile}}
+  {\errmessage{Template style file '\TemplateStyleFile' was not found}}
 
-% 國立成功大學排版設定
-\input{./template/style/ncku/ncku}
-
-% ----------------------
-
-% 自定的排版設定
-%   請參考'template/style/ncku'的檔案和當中的'ncku.tex'
-%   或'template/style/Customization.md'.
-
-%\input{./template/style/custom/custom}
+\ifdefstring{\VarActiveTemplateStyle}{unregistered}
+  {\errmessage{Template style '\TemplateStyleName' did not register itself}}
+  {}
 
 % ------------------------------------------------

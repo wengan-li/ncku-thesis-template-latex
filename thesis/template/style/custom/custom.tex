@@ -1,0 +1,45 @@
+%
+% Neutral non-NCKU profile skeleton.
+%
+% Copy this directory to template/style/<institution>/<institution>.tex, change
+% TemplateStyleName in template/style/style.tex, then replace these policy
+% values. Do not load the NCKU profile first.
+%
+\RegisterTemplateStyle{custom}
+
+\geometry{a4paper,%
+  paperwidth=21cm,paperheight=29.7cm,%
+  top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,%
+  nohead%
+}
+
+\newcommand{\EnableCoverPageStyle}{%
+  \newgeometry{top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,nohead,nofoot}%
+}
+\newcommand{\DisableCoverPageStyle}{\restoregeometry}
+
+\SetUniversityName{示例大學}{Example University}
+\pagenumbering{roman}
+
+\SetCoverStudentChiBothText{學生}
+\SetCoverStudentChiText{研究生}
+\SetCoverStudentEngText{Student}
+\SetCoverAdvisorChiText{指導老師}
+\SetCoverAdvisorEngText{Advisor}
+\SetCoverCoAdvisorChiText{共同指導}
+\SetCoverCoAdvisorEngText{Co-Advisor}
+\SetCoverAdvisorChiSuffix{博士}
+\SetCoverAdvisorEngPrefix{Dr.}
+\SetInstitutionLocationEng{Example City, Example Country}
+\SetOralApprovalChiText{本論文業經審查及口試合格特此證明}
+\SetOralApprovedByEngText{Approved by}
+\SetOralCommitteeChiText{論文考試委員}
+\SetOralAdvisorChiText{指導教授}
+\SetOralChairChiText{系(所)主管}
+\SetOralChairEngText{Chair}
+\SetOralDateChiPrefix{西元}
+
+% A custom profile must deliberately choose its own watermark implementation.
+% Empty figure/text styles keep the neutral skeleton free of NCKU assets.
+\SetWatermaskFigureStyle{}
+\SetWatermaskTextStyle{}

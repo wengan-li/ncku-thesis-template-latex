@@ -1,0 +1,28 @@
+% V2 non-NCKU profile integration fixture.
+% Build from the thesis/ directory.
+\def\TemplateStyleName{custom}
+\input{./template/configure}
+
+\DisplayCoverInEng
+\MasterDegree
+\SetUniversityName{示例大學}{Example University}
+\SetCollName{示例學院}{Example College}
+\SetDeptName{測試學系}{TEST}{Department of Testing}
+\SetTitle{可移植的論文樣式}{Portable Thesis Style}
+\SetMyName{測試學生}{Test Student}
+\SetAdvisorNameA{測試教授}{Test Advisor}
+\SetAdvisorNameB{}{}
+\SetAdvisorNameC{}{}
+\SetOralDate{2023}{12}{31}
+\SetCoverDate{2024}{7}
+\DisplayOralTemplate
+\DisplayOralEngTemplate
+
+\begin{document}
+\typeout{NCKU-TEST-CUSTOM-PROFILE: \GetTemplateStyleName}
+\typeout{NCKU-TEST-CUSTOM-COVER-DATE: \GetThesisYear-\GetThesisMonth}
+\typeout{NCKU-TEST-CUSTOM-REQUESTED-DATE: \GetRequestedCoverYear-\GetRequestedCoverMonth}
+\input{./template/cover/cover}
+\DisplayOral
+\typeout{NCKU-TEST-PASS: custom style profile builds without NCKU visible policy}
+\end{document}

@@ -44,8 +44,8 @@
 % ----------------------------------------------------------------------------
 
 % --- University name 學校名字 ---
-\newcommand\VarUniversityChiName{國立成功大學}           % Default
-\newcommand\VarUniversityEngName{National Cheng Kung University} % Default
+\newcommand\VarUniversityChiName{University}           % Profile sets default
+\newcommand\VarUniversityEngName{University}           % Profile sets default
 
 \newcommand{\SetUniversityChiName}[1]{%
   \renewcommand{\VarUniversityChiName}{#1}%
@@ -149,17 +149,31 @@
 %\CoverDateNumInChi
 
 % --- 論文的日期 ---
-\newcommand{\ThesisYear}{2014}  % Default
-\newcommand{\ThesisMonth}{1}    % Default
+\newcommand{\ThesisYear}{2014}  % Resolved cover year
+\newcommand{\ThesisMonth}{1}    % Resolved cover month
+\newcommand{\VarRequestedCoverYear}{2014}
+\newcommand{\VarRequestedCoverMonth}{1}
 \SetThesisTaiwanYear{\ThesisYear}
+
+% Institution profiles customize these policy hooks instead of redefining the
+% public date setters.
+\newcommand{\ApplyCoverDatePolicy}[2]{%
+  \SetThesisTaiwanYear{#1}%
+  \renewcommand{\ThesisYear}{#1}%
+  \renewcommand{\ThesisMonth}{#2}%
+}
+\newcommand{\ApplyOralDatePolicy}[3]{}
 
 \newcommand{\SetThesisDate}[2]{\SetCoverDate{#1}{#2}} % Backward-compatible name
 \newcommand{\SetCoverDate}[2]
 {
-  \SetThesisTaiwanYear{#1}
-  \renewcommand{\ThesisYear}{#1}
-  \renewcommand{\ThesisMonth}{#2}
+  \renewcommand{\VarRequestedCoverYear}{#1}%
+  \renewcommand{\VarRequestedCoverMonth}{#2}%
+  \ApplyCoverDatePolicy{#1}{#2}%
 } % End of \newcommand{}
+
+\newcommand{\GetRequestedCoverYear}{\VarRequestedCoverYear}
+\newcommand{\GetRequestedCoverMonth}{\VarRequestedCoverMonth}
 
 \newcommand{\GetThesisYear}{\ThesisYear}
 \newcommand{\GetThesisYearInTaiwanYear}{\ThesisTaiwanYearResult}
@@ -206,6 +220,7 @@
 {
   \SetOralChiDate{#1}{#2}{#3}
   \SetOralEngDate{#1}{#2}{#3}
+  \ApplyOralDatePolicy{#1}{#2}{#3}
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------

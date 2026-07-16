@@ -67,9 +67,9 @@
   \GetDeptEngName\\%
   \GetCollEngName\\%
   \GetUniversityEngName\\%
-  Tainan, Taiwan, R.O.C.\\%
+  \GetInstitutionLocationEng\\%
   \vspace{0.1cm}
-  \GetOralEngDay \thinspace \thinspace \GetThesisMonthInEng \thinspace \thinspace \GetThesisYear%
+  \GetOralEngDay \thinspace \thinspace \GetOralEngMonth \thinspace \thinspace \GetOralEngYear%
   \end{center}
 \end{minipage}
 
@@ -79,7 +79,7 @@
 
 % ------------------------------------------------
 \begin{minipage}[c][9.0cm][t]{\textwidth}
-  \makebox[\textwidth][l]{\Large Approved by:} \\
+  \makebox[\textwidth][l]{\Large \GetOralApprovedByEngText:} \\
 
   \vspace{0.48cm}
 
@@ -94,13 +94,13 @@
 
 \begin{minipage}[c][2.0cm][t]{\textwidth}
   \begin{center}
-    \makebox[4.8em][r]{\Large Advisor}
+    \makebox[4.8em][r]{\Large \GetCoverAdvisorEngText}
     \makebox[1em][c]{\Large:}
     \makebox[7.2em][l]{\namesigdate}\\
 
     \vspace{1.0cm}
 
-    \makebox[4.8em][r]{\Large Chairman}
+    \makebox[4.8em][r]{\Large \GetOralChairEngText}
     \makebox[1em][c]{\Large:}
     \makebox[7.2em][l]{\namesigdate}\\
   \end{center}

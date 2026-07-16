@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-custom-style _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -106,6 +106,28 @@ _test-helper-values:
     grep -Fq 'Oral year: 112.' "{{ build_dir }}/tests/helper-values.txt"
     grep -Fq 'DPS department: Department of Photonics.' "{{ build_dir }}/tests/helper-values.txt"
     grep -Fq 'Equation reference: (0.1).' "{{ build_dir }}/tests/helper-values.txt"
+
+# Internal integration test for the neutral non-NCKU style profile.
+[private]
+_test-custom-style:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/custom-style."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=custom-style ../tests/custom-style.tex
+    grep -Fq 'NCKU-TEST-CUSTOM-PROFILE: custom' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-COVER-DATE: 2024-7' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-REQUESTED-DATE: 2024-7' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-PASS: custom style profile builds without NCKU visible policy' "{{ build_dir }}/tests/custom-style.log"
+    ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/custom-style.log"
+    ! grep -Fq 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/tests/custom-style.fls"
+    pdftotext "{{ build_dir }}/tests/custom-style.pdf" "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq 'Example University' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq 'Department of Testing' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq 'Portable Thesis Style' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq 'July 2024' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq 'Example City, Example Country' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq '31 December 2023' "{{ build_dir }}/tests/custom-style.txt"
+    ! grep -Fq 'National Cheng Kung University' "{{ build_dir }}/tests/custom-style.txt"
+    ! grep -Fq '國立成功大學' "{{ build_dir }}/tests/custom-style.txt"
 
 # Internal regression test for the oral-certificate default state.
 [private]
