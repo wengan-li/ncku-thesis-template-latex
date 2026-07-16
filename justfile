@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -80,13 +80,32 @@ _test-set-thesis-date:
 _test-sectioning-numbering:
     mkdir -p "{{ build_dir }}/tests"
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=sectioning-numbering ../tests/sectioning-numbering.tex
-    grep -q 'NCKU-TEST-PASS: sectioning headings and numbered references compile' "{{ build_dir }}/tests/sectioning-numbering.log"
-    ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/sectioning-numbering.log"
+    grep -q 'NCKU-TEST-PASS: Start section helpers preserve exact references' "{{ build_dir }}/tests/sectioning-numbering.log"
+    ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right|Suppressing empty link' "{{ build_dir }}/tests/sectioning-numbering.log"
+    grep -Eq 'newlabel\{ncku:test:chapter\}.*\{1\}\{' "{{ build_dir }}/tests/sectioning-numbering.aux"
+    grep -Eq 'newlabel\{ncku:test:section\}.*\{1\.1\}\{' "{{ build_dir }}/tests/sectioning-numbering.aux"
+    grep -Eq 'newlabel\{ncku:test:subsection\}.*\{1\.1\.1\}\{' "{{ build_dir }}/tests/sectioning-numbering.aux"
+    grep -Eq 'newlabel\{ncku:test:subsubsection\}.*\{1\.1\.1\.1\}\{' "{{ build_dir }}/tests/sectioning-numbering.aux"
     pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Chapter Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Section Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Subsection Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Subsubsection Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
+
+# Internal regression test for helper values, state isolation, and equation labels.
+[private]
+_test-helper-values:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=helper-values ../tests/helper-values.tex
+    test "$(grep -c 'NCKU-TEST-PASS:' "{{ build_dir }}/tests/helper-values.log")" -eq 3
+    ! grep -q 'NCKU-TEST-FAIL:' "{{ build_dir }}/tests/helper-values.log"
+    ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/helper-values.log"
+    pdftotext "{{ build_dir }}/tests/helper-values.pdf" "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'Months: January, February, March, April, May, June, July, August, September, October,' "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'November, December.' "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'Oral year: 112.' "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'DPS department: Department of Photonics.' "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'Equation reference: (0.1).' "{{ build_dir }}/tests/helper-values.txt"
 
 # Internal regression test for the oral-certificate default state.
 [private]

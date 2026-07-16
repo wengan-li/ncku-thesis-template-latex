@@ -1,0 +1,36 @@
+% Focused v2 regression fixture for helper values and state isolation.
+% Build from the thesis/ directory.
+\input{./template/configure}
+
+\SetThesisTaiwanYear{2024}
+\SetOralEngDate{2023}{12}{31}
+\SetDeptName{測試系}{TEST}{Department of Testing}
+
+\begin{document}
+Months: \GetMonthInEng{1}, \GetMonthInEng{02}, \GetMonthInEng{3},
+\GetMonthInEng{04}, \GetMonthInEng{5}, \GetMonthInEng{06},
+\GetMonthInEng{7}, \GetMonthInEng{08}, \GetMonthInEng{9},
+\GetMonthInEng{10}, \GetMonthInEng{11}, \GetMonthInEng{12}.
+
+Oral year: \GetOralYearInTaiwanYear.
+\ifnum\GetThesisYearInTaiwanYear=113\relax
+  \typeout{NCKU-TEST-PASS: oral-year getter preserves thesis-year state}
+\else
+  \errmessage{Oral-year getter changed thesis-year state}
+\fi
+
+\edef\NckuDeptShortActual{\GetDeptEngShortName}
+\ifdefstring{\NckuDeptShortActual}{TEST}
+  {\typeout{NCKU-TEST-PASS: SetDeptName preserves the short name}}
+  {\errmessage{SetDeptName discarded the short name}}
+
+\SetDeptDPS
+DPS department: \GetDeptEngName.
+
+\EquationBegin{eq:v2:helper}
+  1 + 1 = 2
+\EquationEnd
+Equation reference: \RefEquationB{eq:v2:helper}.
+
+\typeout{NCKU-TEST-PASS: helper values and equation labels compile}
+\end{document}

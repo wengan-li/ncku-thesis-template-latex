@@ -60,7 +60,10 @@ This section is normative and must be updated with every observable helper fix.
 
 | 1.x behavior | 2.x behavior | Required user action |
 | --- | --- | --- |
-| _No v2 corrections recorded yet._ | — | — |
+| `\StartSubSubSection{title}{label}` wrote an empty reference when the default heading intentionally hid its number. | The heading remains visually unnumbered, while the label records the stable hierarchical value such as `1.1.1.1`; empty-link warnings are rejected. | None; existing references become usable. |
+| `\GetOralYearInTaiwanYear` recalculated through thesis state and could change `\GetThesisYearInTaiwanYear`. | The getter reads oral-year state without modifying thesis-year state; `\SetOralEngDate` keeps oral Taiwan-year state synchronized. | None. |
+| The second argument of `\SetDeptName{chi}{short}{full}` was discarded. | The short name is stored and available through `\GetDeptEngShortName`; `\GetDeptEngName` still returns the full name. | None; code may optionally use the new getter. |
+| `\SetDeptDPS` produced `Departmment of Photonics`. | The visible catalogue value is corrected to `Department of Photonics`. | Rebuild to receive the corrected text. |
 
 ## Style-Port Migration
 

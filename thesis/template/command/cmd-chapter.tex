@@ -408,11 +408,11 @@
   \ifthenelse{\equal{\GetStartAppendixChapter}{\ValueEnableAppendixChapter}}%
   {%
     \IfNoValueF{#2}{\LabelThisAs{#2}{%
-      \GetAppendixSubSubSectionNumberingFormatString}}%
+      \GetAppendixSubSubSectionReferenceString}}%
   }%
   {%
     \IfNoValueF{#2}{\LabelThisAs{#2}{%
-      \GetGeneralSubSubSectionNumberingFormatString}}%
+      \GetGeneralSubSubSectionReferenceString}}%
   }%
 } % End of \DeclareDocumentCommand{}
 

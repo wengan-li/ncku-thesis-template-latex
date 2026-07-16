@@ -151,6 +151,7 @@
 % --- 論文的日期 ---
 \newcommand{\ThesisYear}{2014}  % Default
 \newcommand{\ThesisMonth}{1}    % Default
+\SetThesisTaiwanYear{\ThesisYear}
 
 \newcommand{\SetThesisDate}[2]{\SetCoverDate{#1}{#2}} % Backward-compatible name
 \newcommand{\SetCoverDate}[2]
@@ -173,12 +174,11 @@
 \newcommand{\OralEngYear}{2014}     % Default
 \newcommand{\OralEngMonth}{January} % Default
 \newcommand{\OralEngDay}{1}         % Default
+\SetOralTaiwanYear{\OralEngYear}
 
 \newcommand{\GetOralChiYear}{\OralChiYear}
-\newcommand{\GetOralYearInTaiwanYear}
-{\SetThesisTaiwanYear{\OralEngYear}\ThesisTaiwanYearResult}
-\newcommand{\GetOralYearInTaiwanYearNumInChi}
-{\SetThesisTaiwanYear{\OralEngYear}\zhdigits{\ThesisTaiwanYearResult}}
+\newcommand{\GetOralYearInTaiwanYear}{\OralTaiwanYearResult}
+\newcommand{\GetOralYearInTaiwanYearNumInChi}{\zhdigits{\OralTaiwanYearResult}}
 \newcommand{\GetOralChiMonth}{\OralChiMonth}
 \newcommand{\GetOralChiDay}{\OralChiDay}
 \newcommand{\GetOralEngYear}{\OralEngYear}
@@ -196,6 +196,7 @@
 
 \newcommand{\SetOralEngDate}[3]
 {
+  \SetOralTaiwanYear{#1}
   \renewcommand{\OralEngYear}{#1}
   \renewcommand{\OralEngMonth}{\GetMonthInEng{#2}}
   \renewcommand{\OralEngDay}{#3}
@@ -227,19 +228,20 @@
 
 % --------------------------- Department ---------------------------
 \newcommand{\VarDepartmentChiName}{A 系 / 所}
-%\newcommand{\VarDepartmentEngName}{DeptA} % Short form of department
-\newcommand{\VarDepartmentEngFullName}{Department / Insitute A} % Full name of department
+\newcommand{\VarDepartmentEngName}{DeptA} % Short form of department
+\newcommand{\VarDepartmentEngFullName}{Department / Institute A} % Full name of department
 \newcommand{\SetDeptChiName}[1]{\renewcommand{\VarDepartmentChiName}{#1}}
-%\newcommand{\SetDeptEngShortName}[1]{\renewcommand{\VarDepartmentEngName}{#1}}
+\newcommand{\SetDeptEngShortName}[1]{\renewcommand{\VarDepartmentEngName}{#1}}
 \newcommand{\SetDeptEngFullName}[1]{\renewcommand{\VarDepartmentEngFullName}{#1}}
 \newcommand{\SetDeptName}[3]
 {
   \SetDeptChiName{#1}
-%  \SetDeptEngShortName{#2}
+  \SetDeptEngShortName{#2}
   \SetDeptEngFullName{#3}
 } % End of \newcommand{}
 
 \newcommand{\GetDeptChiName}{\VarDepartmentChiName}
+\newcommand{\GetDeptEngShortName}{\VarDepartmentEngName}
 \newcommand{\GetDeptEngName}{\VarDepartmentEngFullName}
 
 % ----------------------------------------------------------------------------

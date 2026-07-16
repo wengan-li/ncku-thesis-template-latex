@@ -743,6 +743,23 @@
 \newcommand\GetAppendixTableNumberFormatString{}
 \newcommand\GetAppendixEquationNumberFormatString{}
 
+% Sub-subsection titles are intentionally unnumbered by default, but their
+% public Start* helpers still need stable, non-empty reference values.
+\newcommand\GetGeneralSubSubSectionReferenceString{%
+  \ifx\GetSSSTitleNumberFormatSSSNumStyle\empty
+    \arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}%
+  \else
+    \GetGeneralSubSubSectionNumberingFormatString%
+  \fi
+}
+\newcommand\GetAppendixSubSubSectionReferenceString{%
+  \ifx\GetAppendixSSSTitleNumberFormatSSSNumStyle\empty
+    \Alph{appendixchapter}.\arabic{appendixsection}.\arabic{appendixsubsection}.\arabic{appendixsubsubsection}%
+  \else
+    \GetAppendixSubSubSectionNumberingFormatString%
+  \fi
+}
+
 \newcommand\InitinalGeneralAppendixNumberingFormatString
 {%
   \SetupGeneralAppendixNumberFormatString{Chapter}%

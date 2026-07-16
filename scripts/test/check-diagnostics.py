@@ -48,7 +48,7 @@ def classify(line: str) -> str:
 warning_counts = Counter(classify(line) for line in warning_lines)
 warning_budget = {
     "xecjk-unknown-family": 0,
-    "hyperref-empty-link": 1,
+    "hyperref-empty-link": 0,
     "font-shape": 2,
     "float-placement-adjustment": 5,
 }

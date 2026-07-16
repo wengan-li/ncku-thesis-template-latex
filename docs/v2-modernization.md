@@ -101,8 +101,8 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 ## Progress
 
 - [x] Create and enforce the v1 command/environment baseline.
-- [ ] Add exact helper contract fixtures.
-- [ ] Correct verified helper defects.
+- [x] Add exact helper contract fixtures.
+- [x] Correct the first verified helper defects.
 - [ ] Add the v1 compatibility adapter and style profile contract.
 - [ ] Extract NCKU policy/data and add a neutral custom profile.
 - [ ] Complete migration and customization documentation.
