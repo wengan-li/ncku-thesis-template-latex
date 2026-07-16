@@ -82,30 +82,61 @@
   SepBetweenSSCnSSS/.estore in = \TmpValueSepBetweenSSCnSSS,
 } % End of \pgfkeys{}
 
+% Append a parsed key value without retaining the reusable pgf scratch macro.
+\makeatletter
+\newcommand\NCKUPrivateAppendFrozenValue[2]
+{%
+  \begingroup
+  \protected@edef\NCKUPrivateAppendNext{%
+    \endgroup
+    \noexpand\appto\noexpand#1{#2}}%
+  \NCKUPrivateAppendNext
+} % End of \newcommand{}
+
+% Freeze the counter name while leaving the counter value dynamic.
+\newcommand\NCKUPrivateAppendCounterFormatter[3]
+{%
+  \begingroup
+  \protected@edef\NCKUPrivateAppendNext{%
+    \endgroup
+    \noexpand\appto\noexpand#1{\noexpand#2{#3}}}%
+  \NCKUPrivateAppendNext
+} % End of \newcommand{}
+
+\newcommand\NCKUPrivateAppendCounterValueFormatter[3]
+{%
+  \begingroup
+  \protected@edef\NCKUPrivateAppendNext{%
+    \endgroup
+    \noexpand\appto\noexpand#1{\noexpand#2{\noexpand\value{#3}}}}%
+  \NCKUPrivateAppendNext
+} % End of \newcommand{}
+\makeatother
+
 % Append counter value in style to string
 \newcommand\AppendCounterStringToFormatString[3]
 {%
   \ifthenelse{\equal{#2}{ChiNum}}{%
-    \appto#1{\zhnum{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\zhnum}{#3}}{}%
   \ifthenelse{\equal{#2}{Tiangan}}{%
-    \appto#1{\zhtiangan{\value{#3}}}}{}%
+    \NCKUPrivateAppendCounterValueFormatter{#1}{\zhtiangan}{#3}}{}%
   \ifthenelse{\equal{#2}{Arabic}}{%
-    \appto#1{\arabic{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\arabic}{#3}}{}%
   \ifthenelse{\equal{#2}{LowerRoman}}{%
-    \appto#1{\roman{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\roman}{#3}}{}%
   \ifthenelse{\equal{#2}{UpperRoman}}{%
-    \appto#1{\Roman{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\Roman}{#3}}{}%
   \ifthenelse{\equal{#2}{LowerAlph}}{%
-    \appto#1{\alph{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\alph}{#3}}{}%
   \ifthenelse{\equal{#2}{UpperAlph}}{%
-    \appto#1{\Alph{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\Alph}{#3}}{}%
 } % End of \newcommand{}
 
 \newcommand\SetupTitleNumberFormatString[3]
 {%
   \pgfkeys{/SetupTitleNumberFormatString, default, #2}%
   \renewcommand#3{}%
-  \appto#3{\TmpValueBeginText}%
+  \NCKUPrivateAppendFrozenValue{#3}{\TmpValueBeginText}%
   \ifboolexpr{%
     test {\ifstrequal{#1}{Chapter}} or %
     test {\ifstrequal{#1}{AppendixChapter}} }
@@ -120,7 +151,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
       }{}%
@@ -131,10 +162,10 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
-        \appto#3{\TmpValueSepBetweenSnSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSnSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSNumStyle}{\TmpValueSSCounterName}%
       }{}%
@@ -145,17 +176,17 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
-        \appto#3{\TmpValueSepBetweenSnSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSnSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSNumStyle}{\TmpValueSSCounterName}%
-        \appto#3{\TmpValueSepBetweenSSCnSSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSSCnSSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSSNumStyle}{\TmpValueSSSCounterName}%
       }{}%
-  \appto#3{\TmpValueEndText}%
+  \NCKUPrivateAppendFrozenValue{#3}{\TmpValueEndText}%
 } % End of \newcommand{}
 
 % ---------------------------
@@ -573,7 +604,7 @@
 
 \newcommand\SetupAppendixEquationNumberFormatString
 {%
-  \appto\GetAppendixEquationNumberFormatString{}%
+  \renewcommand\GetAppendixEquationNumberFormatString{}%
   \AppendCounterStringToFormatString{%
     \GetAppendixEquationNumberFormatString}{%
     Arabic}{appendixchapter}%
@@ -656,7 +687,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
       }{}%
@@ -667,10 +698,10 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
-        \appto#3{\TmpValueSepBetweenSnSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSnSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSNumStyle}{\TmpValueSSCounterName}%
       }{}%
@@ -681,13 +712,13 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
-        \appto#3{\TmpValueSepBetweenSnSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSnSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSNumStyle}{\TmpValueSSCounterName}%
-        \appto#3{\TmpValueSepBetweenSSCnSSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSSCnSSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSSNumStyle}{\TmpValueSSSCounterName}%
       }{}%
@@ -698,7 +729,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueFigureSep}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueFigureSep}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueFigureNumStyle}{\TmpValueFigureCounterName}%
       }{}%
@@ -709,7 +740,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueTableSep}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueTableSep}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueTableNumStyle}{\TmpValueTableCounterName}%
       }{}%
@@ -720,7 +751,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueEquationSep}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueEquationSep}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueEquationNumStyle}{\TmpValueEquationCounterName}%
       }{}%

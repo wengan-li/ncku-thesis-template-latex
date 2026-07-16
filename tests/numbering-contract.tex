@@ -1,0 +1,182 @@
+% Focused general/appendix numbering compatibility and idempotence contract.
+\input{./template/configure}
+
+\newcommand{\NCKUCapture}[2]{%
+  \expandafter\edef\csname #1\endcsname{#2}%
+}
+\newcommand{\NCKUTmpStyle}{}
+\newcommand{\NCKUCaptureStyle}[2]{%
+  \renewcommand{\NCKUTmpStyle}{}%
+  \AppendCounterStringToFormatString{\NCKUTmpStyle}{#1}{chapter}%
+  \NCKUCapture{NCKUStyle#2}{\NCKUTmpStyle}%
+}
+
+\begin{document}
+\setcounter{chapter}{2}
+\setcounter{section}{3}
+\setcounter{subsection}{4}
+\setcounter{subsubsection}{5}
+\setcounter{figure}{6}
+\setcounter{table}{7}
+\setcounter{equation}{8}
+\setcounter{appendixchapter}{2}
+\setcounter{appendixsection}{3}
+\setcounter{appendixsubsection}{4}
+\setcounter{appendixsubsubsection}{5}
+
+\SetupNumberingFormat
+\SetupChapterTitleNumberFormatString
+\SetupSectionTitleNumberFormatString
+\SetupSubSectionTitleNumberFormatString
+\SetupSubSubSectionTitleNumberFormatString
+\SetupAppendixChapterTitleNumberFormatString
+\SetupAppendixSectionTitleNumberFormatString
+\SetupAppendixSubSectionTitleNumberFormatString
+\SetupAppendixSubSubSectionTitleNumberFormatString
+
+\NCKUCapture{NCKUDefaultGeneral}{%
+  \GetChapterTitleNumberFormatString/
+  \GetSectionTitleNumberFormatString/
+  \GetSubSectionTitleNumberFormatString/
+  \GetSubSubSectionTitleNumberFormatString/
+  \GetGeneralSubSubSectionReferenceString}
+\NCKUCapture{NCKUDefaultAppendix}{%
+  \GetAppendixChapterTitleNumberFormatString/
+  \GetAppendixSectionTitleNumberFormatString/
+  \GetAppendixSubSectionTitleNumberFormatString/
+  \GetAppendixSubSubSectionTitleNumberFormatString/
+  \GetAppendixSubSubSectionReferenceString}
+\NCKUCapture{NCKUDefaultGeneralNumbering}{%
+  \GetGeneralChapterNumberingFormatString/
+  \GetGeneralSectionNumberingFormatString/
+  \GetGeneralSubSectionNumberingFormatString/
+  \GetGeneralSubSubSectionNumberingFormatString}
+\NCKUCapture{NCKUDefaultAppendixNumbering}{%
+  \GetAppendixChapterNumberingFormatString/
+  \GetAppendixSectionNumberingFormatString/
+  \GetAppendixSubSectionNumberingFormatString/
+  \GetAppendixSubSubSectionNumberingFormatString}
+\NCKUCapture{NCKUGeneralFTE}{\thefigure/\thetable/\theequation}
+
+\SetupAppendixNumberingFormat
+\NCKUCapture{NCKUAppendixFTEFirst}{\thefigure/\thetable/\theequation}
+\SetupAppendixNumberingFormat
+\NCKUCapture{NCKUAppendixFTESecond}{\thefigure/\thetable/\theequation}
+
+\setcounter{chapter}{4}
+\NCKUCaptureStyle{ChiNum}{ChiNum}
+\NCKUCaptureStyle{Tiangan}{Tiangan}
+\NCKUCaptureStyle{Arabic}{Arabic}
+\NCKUCaptureStyle{LowerRoman}{LowerRoman}
+\NCKUCaptureStyle{UpperRoman}{UpperRoman}
+\NCKUCaptureStyle{LowerAlph}{LowerAlph}
+\NCKUCaptureStyle{UpperAlph}{UpperAlph}
+\NCKUCaptureStyle{UnknownStyle}{Unknown}
+
+\setcounter{section}{3}
+\setcounter{subsection}{2}
+\setcounter{subsubsection}{1}
+\NCKUCapture{NCKUDynamicGeneral}{%
+  \GetChapterTitleNumberFormatString/
+  \GetSectionTitleNumberFormatString/
+  \GetSubSectionTitleNumberFormatString/
+  \GetGeneralChapterNumberingFormatString/
+  \GetGeneralSectionNumberingFormatString/
+  \GetGeneralSubSectionNumberingFormatString}
+\setcounter{appendixchapter}{3}
+\setcounter{appendixsection}{4}
+\setcounter{appendixsubsection}{2}
+\setcounter{appendixsubsubsection}{1}
+\NCKUCapture{NCKUDynamicAppendix}{%
+  \GetAppendixChapterTitleNumberFormatString/
+  \GetAppendixSectionTitleNumberFormatString/
+  \GetAppendixSubSectionTitleNumberFormatString/
+  \GetAppendixChapterNumberingFormatString/
+  \GetAppendixSectionNumberingFormatString/
+  \GetAppendixSubSectionNumberingFormatString}
+\setcounter{appendixchapter}{2}
+\setcounter{appendixsection}{3}
+\setcounter{appendixsubsection}{2}
+\setcounter{appendixsubsubsection}{1}
+
+\SetNumberingFormat[Chapter]{%
+  BeginText={GC[}, EndText={]}, CNumStyle=Arabic}
+\SetNumberingFormat[Section]{%
+  BeginText={GS[}, EndText={]}, CNumStyle=Arabic, SNumStyle=Arabic,
+  SepBetweenCnS={-}}
+\SetNumberingFormat[SubSection]{%
+  BeginText={GSS[}, EndText={]}, CNumStyle=Arabic, SNumStyle=Arabic,
+  SSNumStyle=Arabic, SepBetweenCnS={-}, SepBetweenSnSS={-}}
+\SetNumberingFormat[SubSubSection]{%
+  BeginText={GSSS[}, EndText={]}, CNumStyle=Arabic, SNumStyle=Arabic,
+  SSNumStyle=Arabic, SSSNumStyle=Arabic, SepBetweenCnS={-},
+  SepBetweenSnSS={-}, SepBetweenSSCnSSS={-}}
+\SetNumberingFormat[AppendixChapter]{%
+  BeginText={AC[}, EndText={]}, CNumStyle=UpperAlph}
+\SetNumberingFormat[AppendixSection]{%
+  BeginText={AS[}, EndText={]}, CNumStyle=UpperAlph, SNumStyle=Arabic,
+  SepBetweenCnS={-}}
+\SetNumberingFormat[AppendixSubSection]{%
+  BeginText={ASS[}, EndText={]}, CNumStyle=UpperAlph, SNumStyle=Arabic,
+  SSNumStyle=Arabic, SepBetweenCnS={-}, SepBetweenSnSS={-}}
+\SetNumberingFormat[AppendixSubSubSection]{%
+  BeginText={ASSS[}, EndText={]}, CNumStyle=UpperAlph, SNumStyle=Arabic,
+  SSNumStyle=Arabic, SSSNumStyle=Arabic, SepBetweenCnS={-},
+  SepBetweenSnSS={-}, SepBetweenSSCnSSS={-}}
+
+\SetupChapterTitleNumberFormatString
+\SetupSectionTitleNumberFormatString
+\SetupSubSectionTitleNumberFormatString
+\SetupSubSubSectionTitleNumberFormatString
+\SetupAppendixChapterTitleNumberFormatString
+\SetupAppendixSectionTitleNumberFormatString
+\SetupAppendixSubSectionTitleNumberFormatString
+\SetupAppendixSubSubSectionTitleNumberFormatString
+\NCKUCapture{NCKUCustomGeneral}{%
+  \GetChapterTitleNumberFormatString/
+  \GetSectionTitleNumberFormatString/
+  \GetSubSectionTitleNumberFormatString/
+  \GetSubSubSectionTitleNumberFormatString}
+\NCKUCapture{NCKUCustomAppendix}{%
+  \GetAppendixChapterTitleNumberFormatString/
+  \GetAppendixSectionTitleNumberFormatString/
+  \GetAppendixSubSectionTitleNumberFormatString/
+  \GetAppendixSubSubSectionTitleNumberFormatString}
+
+\SetNumberingFormat[UnknownType]{BeginText={BROKEN}}
+\SetNumberingFormat[]{BeginText={BROKEN}}
+\NCKUCapture{NCKUNoopSelector}{\GetCTitleNumberFormatBeginText}
+
+\typeout{NCKU-NUMBERING-DEFAULT-GENERAL: \NCKUDefaultGeneral}
+\typeout{NCKU-NUMBERING-DEFAULT-APPENDIX: \NCKUDefaultAppendix}
+\typeout{NCKU-NUMBERING-DEFAULT-GENERAL-GETTERS: \NCKUDefaultGeneralNumbering}
+\typeout{NCKU-NUMBERING-DEFAULT-APPENDIX-GETTERS: \NCKUDefaultAppendixNumbering}
+\typeout{NCKU-NUMBERING-GENERAL-FTE: \NCKUGeneralFTE}
+\typeout{NCKU-NUMBERING-APPENDIX-FTE-FIRST: \NCKUAppendixFTEFirst}
+\typeout{NCKU-NUMBERING-APPENDIX-FTE-SECOND: \NCKUAppendixFTESecond}
+\typeout{NCKU-NUMBERING-STYLES: \NCKUStyleChiNum/\NCKUStyleTiangan/\NCKUStyleArabic/\NCKUStyleLowerRoman/\NCKUStyleUpperRoman/\NCKUStyleLowerAlph/\NCKUStyleUpperAlph/\NCKUStyleUnknown}
+\typeout{NCKU-NUMBERING-DYNAMIC-GENERAL: \NCKUDynamicGeneral}
+\typeout{NCKU-NUMBERING-DYNAMIC-APPENDIX: \NCKUDynamicAppendix}
+\typeout{NCKU-NUMBERING-CUSTOM-GENERAL: \NCKUCustomGeneral}
+\typeout{NCKU-NUMBERING-CUSTOM-APPENDIX: \NCKUCustomAppendix}
+\typeout{NCKU-NUMBERING-NOOP-SELECTOR: \NCKUNoopSelector}
+
+\section*{Numbering Contract}
+Default general: \NCKUDefaultGeneral.\\
+Default appendix: \NCKUDefaultAppendix.\\
+General getters: \NCKUDefaultGeneralNumbering.\\
+Appendix getters: \NCKUDefaultAppendixNumbering.\\
+General F/T/E: \NCKUGeneralFTE.\\
+Appendix F/T/E first: \NCKUAppendixFTEFirst.\\
+Appendix F/T/E second: \NCKUAppendixFTESecond.\\
+Styles: \NCKUStyleChiNum, \NCKUStyleTiangan, \NCKUStyleArabic,
+\NCKUStyleLowerRoman, \NCKUStyleUpperRoman, \NCKUStyleLowerAlph,
+\NCKUStyleUpperAlph, empty=[\NCKUStyleUnknown].\\
+Dynamic general: \NCKUDynamicGeneral.\\
+Dynamic appendix: \NCKUDynamicAppendix.\\
+Custom general: \NCKUCustomGeneral.\\
+Custom appendix: \NCKUCustomAppendix.\\
+Unknown/empty selector preserved: \NCKUNoopSelector.
+
+\typeout{NCKU-TEST-PASS: focused numbering contract compiled}
+\end{document}

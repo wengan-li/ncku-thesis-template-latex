@@ -116,7 +116,7 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 The completed v2 slice was validated from a clean committed worktree:
 
 - `just ci`: pass, including canonical build and all focused fixtures;
-- v1 API gate: 612/612 declarations preserved, with 102 additive v2 declarations;
+- v1 API gate: 612/612 declarations preserved, with 105 additive v2 declarations;
 - migration source gate: 18 student-owned files (296,726 bytes) match v1.8.2
   exactly;
 - migration runtime gates: unchanged entry/configuration plus active StudentMode
@@ -161,6 +161,11 @@ The completed v2 slice was validated from a clean committed worktree:
   pgf parses and subfigure scope exit cannot corrupt auxiliary metadata; one
   private framed-content helper now owns the identical figure/multi/table
   minipage and zero-line `mdframed` wrapper with exact focused/canonical output;
+- numbering state contract: all eight general/appendix selectors, seven styles,
+  dynamic counter mutation, fallback references, F/T/E output, and unknown/empty
+  no-ops pass; parsed prefixes/separators/counter names are frozen, counter values
+  remain dynamic, and repeated appendix equation setup stays `2.8` instead of
+  accumulating `2.82.8`;
 - generated NCKU English oral comparison: extracted text, word coordinates, and
   150-DPI raster remain identical after submission-text token extraction.
 

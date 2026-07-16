@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-helper-values _test-float-contract _test-theorem-contract _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-float-contract _test-theorem-contract _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -123,6 +123,16 @@ _test-sectioning-numbering:
     grep -q 'NCKU Star Section Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Subsection Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Subsubsection Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
+
+# Internal general/appendix numbering state and repeatability contract.
+[private]
+_test-numbering-contract:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/numbering-contract."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=numbering-contract ../tests/numbering-contract.tex
+    pdfinfo "{{ build_dir }}/tests/numbering-contract.pdf" > "{{ build_dir }}/tests/numbering-contract.pdfinfo"
+    pdftotext -layout "{{ build_dir }}/tests/numbering-contract.pdf" "{{ build_dir }}/tests/numbering-contract.txt"
+    python3 scripts/test/check-numbering-contract.py "{{ build_dir }}/tests"
 
 # Internal regression test for helper values, state isolation, and equation labels.
 [private]

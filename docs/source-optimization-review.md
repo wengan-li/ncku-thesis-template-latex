@@ -197,7 +197,9 @@ These changes preserve public commands and belong in separate, reviewable commit
 
 `cmd-numbering.tex` has near-duplicate generic and appendix title builders, repeated key families/dispatch, repeated figure/table/equation formatting, and disabled legacy code in the loaded runtime path.
 
-Keep `\SetNumberingFormat[...]` and all existing key names, but drive the internals from one type-to-counter/format schema.
+A focused one-page contract now freezes all eight title selectors, default/custom general and appendix titles/getters, fallback subsubsection references, seven counter styles, dynamic counter mutation, general/appendix figure-table-equation output, unknown/empty selector no-ops, and repeated setup. It reproduced two existing state defects: earlier getters retained the final pgf scratch prefix/separator/counter-name aliases, and `\SetupAppendixEquationNumberFormatString` appended without resetting (`2.8` became `2.82.8`). Parsed configuration and counter names are now frozen while counter values remain dynamic; every repeated setup is stable.
+
+The disabled blocks remain for now. The source API scanner reports 714 declarations but only 699 after stripping `comment` environments, so 15 names are manifest-visible despite being runtime-dead. A later registry/dead-code experiment must repair that source-manifest boundary deliberately rather than deleting blocks or weakening the 612-entry baseline. Full registry generation remains deferred; the current correction is compatibility-bounded and fixture-backed.
 
 ### 2. Theorem registry
 
