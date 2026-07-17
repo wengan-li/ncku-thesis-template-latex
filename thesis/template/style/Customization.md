@@ -200,7 +200,8 @@ Generic/default policy 將 `\SetCoverDate`視為封面日期，並將 oral date 
 
 ## 驗證
 
-完整 repository 可執行：
+以下maintainer commands只存在於完整Git repository，並由repository root
+執行；student ZIP刻意不包含`justfile`、`scripts/`或`tests/`：
 
 ```bash
 just _test-custom-style
@@ -209,14 +210,15 @@ just ci
 python3 scripts/test/check-v1-api.py
 ```
 
-不依賴 `just` 的直接 build 仍然是：
+Student ZIP解壓後，或任何包含`thesis.tex`的project root，不依賴`just`的
+直接build是：
 
 ```bash
-cd thesis
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
+pdfinfo thesis.pdf
 ```
 
-`tests/custom-style.tex`是可執行reference：它選擇`custom` profile、產生中／英文Master cover、Chinese oral、Master／Doctoral English oral，以及Doctoral English cover共六頁A4；驗證Chinese dates使用Gregorian year、不同cover/oral dates、Doctoral cover不借oral day、custom degree wording與numeric degree branch，並確認output沒有NCKU校名或watermark asset。
+完整Git repository內的`tests/custom-style.tex`是maintainer-only可執行reference：它選擇`custom` profile、產生中／英文Master cover、Chinese oral、Master／Doctoral English oral，以及Doctoral English cover共六頁A4；驗證Chinese dates使用Gregorian year、不同cover/oral dates、Doctoral cover不借oral day、custom degree wording與numeric degree branch，並確認output沒有NCKU校名或watermark asset。呢個fixture刻意不放入student ZIP。
 
 ## 不應修改的地方
 

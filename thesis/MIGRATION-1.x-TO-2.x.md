@@ -1,6 +1,6 @@
 # Migrating NCKU Thesis Template Projects from 1.x to 2.x
 
-V2 preserves every explicitly declared 1.x command/environment through the complete 2.x line. Existing projects can therefore migrate the template implementation first, verify unchanged NCKU output, and adopt native v2 profile structure gradually.
+V2 preserves the machine-audited 1.x LaTeX/xparse and literal `\def` declaration surfaces through the complete 2.x line. Existing projects can therefore migrate the template implementation first, verify unchanged NCKU output, and adopt native v2 profile structure gradually.
 
 ## Before You Start
 
@@ -25,10 +25,9 @@ Use this path for a thesis already in progress.
 2. Replace template-owned implementation files with the v2 package.
 3. Merge any local changes to `thesis.tex` instead of replacing them blindly.
 4. Keep existing helper calls; the v1 adapter loads automatically.
-5. Build directly with XeLaTeX/latexmk:
+5. From the project directory that contains `thesis.tex`, build directly with XeLaTeX/latexmk:
 
    ```bash
-   cd thesis
    latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
    ```
 
@@ -66,7 +65,16 @@ template/
 
 ## Public Helper Compatibility
 
-The conservative baseline in `../tests/v1-public-api.json` records 597 runtime-visible 1.x commands/environments. Their names and argument shapes remain available throughout 2.x. A separate `../tests/v1-comment-environment-artifacts.json` audit records 22 declarations that the original regex scanner found inside runtime-dead LaTeX `comment` environments; these are not removed public APIs. Both boundaries are checked by:
+The full Git repository's `tests/v1-public-api.json` records 597 runtime-visible
+1.x LaTeX/xparse commands/environments plus 65 literal `\def`-style
+declarations. Their names and complete audited argument shapes remain available
+throughout 2.x. A separate `tests/v1-comment-environment-artifacts.json` audit
+records 22 declarations found inside runtime-dead LaTeX `comment` environments;
+these are not removed public APIs.
+
+These test manifests and the checker are maintainer tooling in the full Git
+checkout; they are intentionally absent from the student ZIP. Maintainers run,
+from the repository root:
 
 ```bash
 python3 scripts/test/check-v1-api.py
@@ -76,11 +84,12 @@ Native v2 internals may delegate old helpers to profile hooks. Compatibility pre
 
 ### Unchanged V1.8.2 Project Gate
 
-The declaration baseline above is paired with a runtime migration contract:
+In the full Git repository, the declaration baseline above is paired with a
+runtime migration contract:
 
 ```text
-../tests/v1-project-migration.json
-../scripts/test/check-v1-project-migration.py
+tests/v1-project-migration.json
+scripts/test/check-v1-project-migration.py
 ```
 
 The manifest pins 18 student-owned files (296,726 bytes) to release
@@ -165,17 +174,20 @@ The v1.5.0 placement intent remains: institutional ports belong under `template/
 9. Build the custom cover and oral certificate with different oral/cover dates to prove policy separation.
 10. Confirm the `.fls` recorder output does not load an unintended institutional asset.
 
-The executable example is [`../tests/custom-style.tex`](../tests/custom-style.tex).
+The executable example is `tests/custom-style.tex` in the full Git repository;
+it is test tooling and is intentionally absent from the student ZIP.
 
 ## Verification Checklist
 
 ### Portable checks
 
+Run these commands from an extracted student ZIP or any migrated project
+directory that contains `thesis.tex`:
+
 ```bash
-cd thesis
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
-pdfinfo ../build/thesis.pdf
-pdftotext ../build/thesis.pdf ../build/thesis.txt
+pdfinfo thesis.pdf
+pdftotext thesis.pdf thesis.txt
 ```
 
 Verify:
@@ -190,6 +202,9 @@ Verify:
 
 ### Repository-maintainer checks
 
+The following commands require a complete Git checkout and run from the
+repository root. They are not available in the student ZIP:
+
 ```bash
 just _test-custom-style
 python3 scripts/test/check-v1-api.py
@@ -201,8 +216,9 @@ git diff --check
 
 The v2 architecture acceptance evidence includes:
 
-- 597/597 runtime-visible v1 commands/environments preserved, with 22
-  runtime-dead comment-environment declarations retained in a separate audit;
+- 597/597 runtime-visible v1 LaTeX/xparse commands/environments and 65/65
+  literal `\def`-style declarations preserved, with 22 runtime-dead
+  comment-environment declarations retained in a separate audit;
 - 18 student-owned files match v1.8.2 byte-for-byte; the unchanged entry/config
   and active StudentMode content/bibliography paths pass separate v2 runtime
   gates;
