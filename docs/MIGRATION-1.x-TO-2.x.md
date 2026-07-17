@@ -45,7 +45,7 @@ Use this path for a new thesis or a maintained institutional fork.
 2. Copy thesis content, figures, bibliography entries, and certificate files.
 3. Re-enter or merge thesis metadata in `conf/conf.tex`.
 4. Keep the repository default `ncku` profile for NCKU work.
-5. For another institution, create/select one profile under `template/style/` by following [`template/style/Customization.md`](template/style/Customization.md).
+5. For another institution, create/select one profile under `template/style/` by following [`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md).
 6. Keep compatibility calls if they remain useful; replacing them is optional during 2.x.
 7. Build after every migration step.
 
@@ -223,8 +223,9 @@ The v2 architecture acceptance evidence includes:
   and active StudentMode content/bibliography paths pass separate v2 runtime
   gates;
 - the student ZIP matches the complete tracked `thesis/` tree exactly, retains
-  the migration guide/adapter/profile files, and its direct `latexmk -xelatex
-  thesis.tex` path produces the canonical 271-page A4 PDF;
+  concise offline migration steps in its root `README.md` plus the compatibility
+  adapter/profile files, and its direct `latexmk -xelatex thesis.tex` path
+  produces the canonical 271-page A4 PDF;
 - neutral custom profile builds six A4 pages covering Chinese/English Master
   cover, Chinese oral, both Master/Doctoral English oral branches, and the
   Doctoral English cover without NCKU visible policy or watermark asset;

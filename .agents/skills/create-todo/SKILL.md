@@ -18,20 +18,36 @@ Owns the local paths and the requirements-first rule for this repo.
    its todo(s).
 
 A requirement records *what* is wanted and *why*; the todo records *how* and
-progress; shipped-state docs are `thesis/README.md` + `CHANGELOG.md` + `docs/`
-records.
+progress. Active requirements stay in `docs/requirements/`; completed
+requirements and durable todo knowledge graduate into `docs/features/`.
+Current user-facing state lives in `thesis/README.md`,
+`docs/MIGRATION-1.x-TO-2.x.md`, and `CHANGELOG.md`.
 
 ## Local paths and numbering
 
-- Todos: `todos/<NN>-<slug>.md` — two-digit sequence for new todos;
-  existing `v2-<slug>.md` files are grandfathered.
+- Todos: `todos/<NN>-<slug>.md` — two-digit sequence for active work. Create the
+  directory when the next active todo starts.
 - Requirements: `docs/requirements/<NN>-<slug>.md` — independent sequence.
+
+## Completion lifecycle
+
+When all acceptance and validation gates pass:
+
+1. move the completed requirement and durable todo knowledge into one indexed
+   `docs/features/<feature>/` record;
+2. keep current usage/migration/release surfaces synchronized;
+3. remove the completed todo and its active requirement entry;
+4. let Git history preserve the chronological implementation narrative.
 
 ## Validate the mapping
 
 ```bash
 grep -rhoE '`todos/[^`]+\.md`' docs/requirements/ | tr -d '`' | sort -u > /tmp/mapped
-(cd todos && find . -name '*.md' | sed 's|^\./|todos/|') | sort > /tmp/actual
+if [ -d todos ]; then
+  (cd todos && find . -name '*.md' | sed 's|^\./|todos/|') | sort > /tmp/actual
+else
+  : > /tmp/actual
+fi
 comm -23 /tmp/mapped /tmp/actual   # broken refs — want empty
 comm -13 /tmp/mapped /tmp/actual   # unmapped todos — want empty
 ```

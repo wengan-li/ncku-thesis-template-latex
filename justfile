@@ -81,10 +81,10 @@ _test-release-student-archive:
     git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/tests/student-archive.zip" HEAD:thesis
     scripts/release/verify-student-archive.sh "{{ build_dir }}/tests/student-archive.zip"
     cp "{{ build_dir }}/tests/student-archive.zip" "{{ build_dir }}/tests/student-archive-negative.zip"
-    zip -dq "{{ build_dir }}/tests/student-archive-negative.zip" ncku-thesis-template-latex/MIGRATION-1.x-TO-2.x.md
+    zip -dq "{{ build_dir }}/tests/student-archive-negative.zip" ncku-thesis-template-latex/README.md
     ! scripts/release/verify-student-archive.sh "{{ build_dir }}/tests/student-archive-negative.zip" > "{{ build_dir }}/tests/student-archive-negative.log" 2>&1
     grep -Fq 'student ZIP contents differ from the exact HEAD:thesis file list' "{{ build_dir }}/tests/student-archive-negative.log"
-    grep -Fq -- '-ncku-thesis-template-latex/MIGRATION-1.x-TO-2.x.md' "{{ build_dir }}/tests/student-archive-negative.log"
+    grep -Fq -- '-ncku-thesis-template-latex/README.md' "{{ build_dir }}/tests/student-archive-negative.log"
     rm -f "{{ build_dir }}/tests/student-archive-negative.zip"
 
 # Internal regression budget for final canonical-build diagnostics.

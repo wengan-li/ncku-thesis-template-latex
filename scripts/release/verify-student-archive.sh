@@ -21,7 +21,6 @@ if [[ "$student_files" != "$expected_student_files" ]]; then
 fi
 
 grep -qx "${package_root}/README.md" <<< "$student_entries"
-grep -qx "${package_root}/MIGRATION-1.x-TO-2.x.md" <<< "$student_entries"
 grep -qx "${package_root}/thesis.tex" <<< "$student_entries"
 grep -qx "${package_root}/conf/conf.tex" <<< "$student_entries"
 grep -qx "${package_root}/example/abstract/extended.tex" <<< "$student_entries"
@@ -31,6 +30,10 @@ grep -qx "${package_root}/template/style/Customization.md" <<< "$student_entries
 grep -qx "${package_root}/template/style/base/base.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/style/ncku/ncku.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/style/custom/custom.tex" <<< "$student_entries"
+
+student_readme=$(unzip -p "$student_zip" "${package_root}/README.md")
+grep -Fq '## Migrating from 1.x' <<< "$student_readme"
+grep -Fq 'docs/MIGRATION-1.x-TO-2.x.md' <<< "$student_readme"
 
 if grep -Eq "^${package_root}/(justfile|latexmkrc|tests/|scripts/|thesis/)" <<< "$student_entries"; then
   printf 'student ZIP contains repository tooling or a redundant thesis/ layer\n' >&2

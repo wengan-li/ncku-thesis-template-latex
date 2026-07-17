@@ -110,7 +110,8 @@ Archiving is safer than deletion. If deletion remains the explicit owner decisio
   internals, but their names and argument shapes remain available throughout
   2.x.
 - Correct proven bugs rather than preserving them; document behavior changes in
-  `thesis/MIGRATION-1.x-TO-2.x.md`.
+  `docs/MIGRATION-1.x-TO-2.x.md` and keep concise offline migration guidance in
+  the packaged `thesis/README.md`.
 - Keep `conf/` for student thesis data. Institution-level ports and style
   profiles remain under `template/style/`.
 - Do not migrate bibliography systems as part of the v2 profile extraction.
@@ -157,11 +158,14 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 
 ## Documentation Standard
 
-- `docs/requirements/` = what is wanted and WHY (the promise) — spec-grade,
-  written even before code catches up.
-- shipped-state docs (`thesis/README.md`, `CHANGELOG.md`, `docs/` records) = what actually SHIPPED and HOW it works (the
-  receipt) — claims line-anchored to code; code wins on drift.
-- `todos/` = how/progress only; a completed todo's durable knowledge
-  graduates into requirements/features, then the todo file is removed
-  (git history keeps the narrative).
+- `docs/requirements/` = active promises: what is wanted and WHY, written before
+  code catches up.
+- `docs/features/` = completed requirements plus durable records of what shipped
+  and HOW it works; current code and tests win on drift.
+- shipped-state docs (`thesis/README.md`, `docs/MIGRATION-1.x-TO-2.x.md`,
+  `CHANGELOG.md`, and active `docs/` policy records) route the current user and
+  maintainer workflows.
+- `todos/` = active how/progress only; a completed todo's durable knowledge
+  graduates into `docs/features/`, then the todo file is removed (Git history
+  keeps the work narrative).
 - Skills: `create-todo` (requirements-first), `feature-documentation`.

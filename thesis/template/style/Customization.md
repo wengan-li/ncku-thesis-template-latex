@@ -224,4 +224,5 @@ pdfinfo thesis.pdf
 
 優先使用 profile contract 與 `conf/conf.tex` public helpers。只有當共用 renderer 缺少真正跨學校需要的 hook，而且有 focused fixture 證明時，才修改 `template/command/`、`template/cover/`或`template/oral/`。
 
-1.x 專案升級請同時閱讀 [`../../MIGRATION-1.x-TO-2.x.md`](../../MIGRATION-1.x-TO-2.x.md)。
+1.x 專案升級請同時閱讀完整repository中的
+[`docs/MIGRATION-1.x-TO-2.x.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/MIGRATION-1.x-TO-2.x.md)。

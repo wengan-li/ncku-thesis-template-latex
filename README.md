@@ -8,6 +8,14 @@
 
 本專案由社群維護，並不是國立成功大學官方認可或背書的軟體。學校、圖書館、學位考試系統及各系所的最新規定永遠優先於本模版。官方指引最後查核日期：`2026-07-12`（[博碩士論文系統](https://thesis.lib.ncku.edu.tw/)、[建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)、[教務處課務組](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)）。
 
+### V2 update V2 更新
+
+V2 已完成更新並在 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) 發布；它保留 1.x 的公開設定方式和 XeLaTeX 使用路徑，同時整理了樣式、相容層、測試及學生下載套件。
+
+現有 [Overleaf Gallery 模版](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn) 已公開使用，V2 更新亦已透過原本的 Overleaf project 提交作 Gallery update review。在 Overleaf 完成更新審核前，最新 V2 source 和學生套件仍以 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) 為準；詳細發佈狀態記錄在 [`docs/overleaf-distribution.md`](docs/overleaf-distribution.md)。
+
+V2 亦優先整理了 **Style Customization 自定成其他學校的模版**：共用樣式、成大規則和自訂學校 profile 已分開，修改其他學校所需格式時不必直接改動整個成大樣式層。
+
 ### Main feature 主要功能
 
 1. 能同時讓你編寫中英文內容 (建基於 XeLaTex)
@@ -15,6 +23,16 @@
    (只留下要填寫的部份, 其他都由模版自動產生: 如封面, 目錄, 口試合格證明文件等)
 3. 內含非常基本的 LaTex 使用教學手冊
 4. 提供簡易的語法去使用一些複雜的 LaTex 功能
+
+### Style Customization 自定成其他學校的模版
+
+由 v1.5.0 開始，本模版可讓非國立成功大學的同學或維護者建基於現有功能，建立自己學校所需的模版。V2 進一步將 institution style 分成三層，並且每次只載入一個 institution profile：
+
+- `base/base.tex`：不綁定特定學校的共用樣式與安全預設；
+- `ncku/ncku.tex`：成大名稱、日期、版面及學校特定規則；
+- `custom/custom.tex`：其他學校的起始 profile，可集中修改校名、文字、日期和格式規則。
+
+因此，要自定成其他學校的模版時，可由 `custom/custom.tex` 開始，而不必直接修改共用 renderer 或成大 profile。完整檔案位置、切換方式、例子和驗證步驟請看 [`thesis/template/style/Customization.md`](thesis/template/style/Customization.md)；現有 1.x 專案升級步驟請看 [`docs/MIGRATION-1.x-TO-2.x.md`](docs/MIGRATION-1.x-TO-2.x.md)。
 
 ### Available to use 已被學校負責單位接受
 
@@ -49,7 +67,7 @@
 
 如要查看輸出效果，請在 Releases 下載 `ncku-thesis-template-latex-examples-<version>.zip`；解壓後先閱讀內附的 `README.md`。證明書 PDF 只供 template-generated 示範與 regression 驗證，正式提交應使用學校學位考試系統產出的文件。
 
-舊 sample repository 不再是最新樣板的來源。完整的 artifact provenance 及刪除記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及 build→release promotion 流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。完整的 XeLaTeX source optimization、測試及現代化 review 記錄在 [`docs/source-optimization-review.md`](docs/source-optimization-review.md)。Draft／學校浮水印的歷史、舊預設矛盾、修正後政策及驗證 contract 記錄在 [`docs/draft-watermark-history.md`](docs/draft-watermark-history.md)。V2 modernization contract 與 1.x API compatibility 分別記錄在 [`docs/v2-modernization.md`](docs/v2-modernization.md)及[`docs/v2-public-api-compatibility.md`](docs/v2-public-api-compatibility.md)。
+舊 sample repository 不再是最新樣板的來源。完整的 artifact provenance 及刪除記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及 build→release promotion 流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。完整的 XeLaTeX source optimization、測試及現代化 review 記錄在 [`docs/source-optimization-review.md`](docs/source-optimization-review.md)。Draft／學校浮水印的歷史、舊預設矛盾、修正後政策及驗證 contract 記錄在 [`docs/draft-watermark-history.md`](docs/draft-watermark-history.md)。已完成的V2 modernization、1.x API compatibility及implementation records集中在[`docs/features/v2/`](docs/features/v2/)。
 
 ### Student build 學生使用
 
@@ -74,12 +92,6 @@ just clean    # 清除可重新產生的檔案
 ```
 
 `just`底層使用XeLaTeX、BibTeX和`latexmk`自動處理依賴及多輪編譯。`just watch`只係完整repository嘅development convenience；它不會被放入學生ZIP。學生使用方式及Texmaker／TeXstudio設定記錄在 [`thesis/README.md`](thesis/README.md)。
-
-### Style Customization 自定成其他學校的模版
-
-由 v1.5.0 開始, 本模版改造成可讓非國立成功大學的同學或人士都能建基於這模版以建立出自己學校所需的模版, 同時保留能使用本模版所提供的功能.
-
-詳細請看 [`thesis/template/style/Customization.md`](thesis/template/style/Customization.md)。V2每次只載入一個institution profile；現有1.x專案升級步驟請看[`thesis/MIGRATION-1.x-TO-2.x.md`](thesis/MIGRATION-1.x-TO-2.x.md)。
 
 ### 學位論文上傳和列印說明
 
