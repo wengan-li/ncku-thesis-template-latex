@@ -131,7 +131,7 @@ clean committed worktree:
 - `just ci`: pass, including canonical build and all focused fixtures;
 - v1 API gate: 597/597 LaTeX/xparse declarations and 65/65 literal `\def`-style
   declarations preserved, with 22 audited comment-environment declarations,
-  105 primary v2 additions, and 4 literal-def v2 additions;
+  105 primary v2 additions, and 7 literal-def v2 additions;
 - API-scanner mutation probes: nested xparse defaults remain brace-balanced,
   optional-first defaults are part of the signature, parity-aware `%` comments
   do not expose dead declarations, dynamic `\def\csname` forms are excluded

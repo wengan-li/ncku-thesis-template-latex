@@ -219,7 +219,13 @@ The identical full-width minipage plus zero-line `mdframed`/opacity wrapper is n
 
 - Completed: repeated keyword accumulation now routes through one private helper while preserving append-not-replace semantics.
 - Completed: 23 deprecated zero-argument public-command tombstones now live literally in `template/compat/deprecated.tex`; the focused contract preserves every diagnostic and `\stop`, while the active one-argument `\RefTo` remains in `cmd-ref.tex`.
-- Replace isolated `fp`/long `ifthen` calculations only when exact-output fixtures exist.
+- Completed: the three `fp` calculations now use the LaTeX programming layer
+  already loaded by the template. Decimal Taiwan-year and negative-modulo
+  semantics are fixture-protected, all 12 `fp` package inputs leave the active
+  graph, and no replacement package is added. `\GetMonthInEng` now uses one
+  native 12-way branch table instead of 21 sequential `ifthen` comparisons;
+  leading-zero months, invalid ranges, canonical text/bbox, and reviewed rasters
+  remain identical.
 - Completed: `\SetDeptName{chi}{short}{full}` stores the second argument, `\GetDeptEngShortName` exposes it, and `\GetDeptEngName` continues to return the full name.
 - Completed on the v2 profile branch: committee-size validation is profile-owned;
   NCKU uses Master 3--5 and Doctoral 5--9, while neutral/custom keeps the generic
