@@ -154,3 +154,14 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 - Repo-local skills are `.agents/skills/idsd-workflow/` and `.agents/skills/repo-maintenance/`.
 - `.claude/skills` is a symlink to `../.agents/skills`.
 - `.claude/settings.json` contains only repo-safe Claude Code settings; never store credentials.
+
+## Documentation Standard
+
+- `docs/requirements/` = what is wanted and WHY (the promise) — spec-grade,
+  written even before code catches up.
+- shipped-state docs (`thesis/README.md`, `CHANGELOG.md`, `docs/` records) = what actually SHIPPED and HOW it works (the
+  receipt) — claims line-anchored to code; code wins on drift.
+- `todos/` = how/progress only; a completed todo's durable knowledge
+  graduates into requirements/features, then the todo file is removed
+  (git history keeps the narrative).
+- Skills: `create-todo` (requirements-first), `feature-documentation`.
