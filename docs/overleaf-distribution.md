@@ -1,8 +1,8 @@
 # Overleaf distribution decision
 
-Status: Gallery template approved and published on 2026-07-15
+Status: Gallery template published; V2 update submitted through the original project and pending update review
 
-Checked: 2026-07-15
+Checked: 2026-07-17
 
 ## Decision
 
@@ -130,6 +130,8 @@ A project-level license does not prove redistribution rights for every bundled t
 The Gallery project was submitted on 2026-07-12 and approved/published by Overleaf on 2026-07-15. The public template is:
 
 <https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn>
+
+Owner-confirmed on 2026-07-17: the V2 update has been submitted through that original Overleaf project and is pending Gallery update review. Until Overleaf approves the update and the public template is independently read back, GitHub Releases remains the canonical source for the latest V2 student package. Do not describe the public Gallery copy as V2 merely because the update has been submitted.
 
 Operational rules:
 
