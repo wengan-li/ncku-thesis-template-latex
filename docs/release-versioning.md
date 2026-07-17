@@ -79,6 +79,11 @@ GitHub Actions portability details include:
 - archive checks that use `unzip -Z1` or mutate a negative fixture with `zip -d` must install the full Info-ZIP `unzip` and `zip` packages; BusyBox applets are not interface-equivalent;
 - values written to the runner's `$GITHUB_ENV` are not automatically visible inside `xu-cheng/texlive-action`; interpolate the resolved version into the action's `run` input and assert the exact host-side artifact paths before upload;
 - a promotion job without a checkout must set `GH_REPO=${{ github.repository }}` so `gh release` does not try to discover the repository from `.git`.
+- Python contract checkers import sibling modules under the TeX container's
+  Python runtime and can create `scripts/test/__pycache__/*.pyc`. Keep standard
+  Python bytecode ignored so the post-test clean-worktree release guard rejects
+  real source changes rather than generated interpreter cache; do not weaken or
+  remove that guard.
 
 The custom packages and GitHub's automatic source archives have different purposes:
 

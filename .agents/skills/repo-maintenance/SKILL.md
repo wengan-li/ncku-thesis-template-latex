@@ -241,5 +241,8 @@ are gone. Manual Release dispatch must not promote a GitHub Release.
 - Publishing loose example PDFs in addition to the examples ZIP.
 - Using `legacy` in a public filename when `generated` plus a clear package
   notice communicates the institutional-document boundary more accurately.
+- Letting imported Python test modules leave unignored `__pycache__`/`*.pyc`
+  files. The release recipe intentionally checks for a clean worktree after its
+  test dependency; ignore interpreter bytecode instead of weakening that guard.
 - Using `pdftotext ... | grep -q` under `pipefail`; write text to a file first to
   avoid producer SIGPIPE failures in Alpine CI.
