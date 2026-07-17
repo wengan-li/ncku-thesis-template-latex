@@ -64,7 +64,6 @@ jobs:
           run: |
             apk add --no-cache git just poppler-utils unzip zip
             git config --global --add safe.directory "$GITHUB_WORKSPACE"
-            just test
             just release "${{ env.VERSION }}"
 
       - name: Check exact release artifact paths

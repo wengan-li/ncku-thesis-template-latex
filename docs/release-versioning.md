@@ -37,7 +37,7 @@ The fourth numeric component makes the tag unique and chronologically sortable. 
 
 The release workflow has two stages:
 
-1. **Build** — a tag push or manual dispatch runs `just test`, runs `just release`, and uploads the verified files as a temporary workflow artifact.
+1. **Build** — a tag push or manual dispatch runs `just release`, whose declared `test` dependency executes the complete required gate once before release packaging, then uploads the verified files as a temporary workflow artifact.
 2. **Promote** — only a matching Git tag event downloads that exact workflow artifact and attaches it to a GitHub Release.
 
 A manual dispatch is build-only. It does not create a GitHub Release.
