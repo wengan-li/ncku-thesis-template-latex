@@ -118,16 +118,25 @@ are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 
 ## Final Validation Evidence
 
-The completed v2 slice was validated from a clean committed worktree:
+The completed v2 slice plus the full-review repair batch was validated from a
+clean committed worktree:
 
-- implementation head `ce5c4943e9ce71029219590883eea090d1c022b5` passed
-  exact-SHA push and pull-request Test workflows after the local-only hardening
-  commits were promoted to `feat/v2.x`;
+- review-repair implementation head
+  `4e036df6dc3a648bf3136a0ea90ecaf75d860dc5` passed exact-SHA Push Test
+  `29557691733` and Pull-request Test `29557693565` after four focused commits
+  hardened the API scanner, corrected packaged migration commands, required
+  exact migration dependency records, and removed duplicate release-test
+  execution;
 
 - `just ci`: pass, including canonical build and all focused fixtures;
 - v1 API gate: 597/597 LaTeX/xparse declarations and 65/65 literal `\def`-style
   declarations preserved, with 22 audited comment-environment declarations,
   105 primary v2 additions, and 4 literal-def v2 additions;
+- API-scanner mutation probes: nested xparse defaults remain brace-balanced,
+  optional-first defaults are part of the signature, parity-aware `%` comments
+  do not expose dead declarations, dynamic `\def\csname` forms are excluded
+  from the literal audit, and baseline regeneration refuses any source other
+  than immutable pre-v2 commit `f80a2649232dd25761276ccf7043cf3f3a79e031`;
 - deprecated-command contract: all 23 literal zero-argument tombstones are
   compatibility-owned and preserve their exact diagnostics plus `\stop`; the
   live one-argument `\RefTo` keeps its original path/signature while its
@@ -142,6 +151,16 @@ The completed v2 slice was validated from a clean committed worktree:
 - direct unpacked student ZIP build: all 18 pinned v1 files retain exact
   SHA-256/size and `latexmk -xelatex thesis.tex` produces 271 A4 pages through
   the v1 adapter plus base/NCKU profiles without Draft or template watermark;
+- packaged migration/customization instructions distinguish student-project
+  root commands from full-repository-only `just`/`scripts`/`tests` tooling and
+  verify the direct output at `thesis.pdf` rather than a nonexistent
+  `../build/thesis.pdf`;
+- migration runtime assertions require complete `.fls`/`.blg` records, so a
+  suffix such as `conf.tex.bak` cannot satisfy a declared dependency;
+- `just release review`: pass, proving `just release` alone executes its
+  declared `test` dependency once and then verifies the two ZIP packages plus
+  six generated example PDFs; the Release workflow no longer invokes the same
+  full test gate twice;
 - canonical NCKU PDF: 271 A4 pages;
 - diagnostic budgets: all pass, including zero empty-hyperlink and zero unknown
   CJK-family warnings;
