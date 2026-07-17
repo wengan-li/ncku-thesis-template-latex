@@ -16,5 +16,17 @@
     "deny": []
   },
   "enabledMcpjsonServers": [],
-  "enabledPlugins": {}
+  "enabledPlugins": {},
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".agents/hooks/check-feature-docs.sh"
+          }
+        ]
+      }
+    ]
+  }
 }
