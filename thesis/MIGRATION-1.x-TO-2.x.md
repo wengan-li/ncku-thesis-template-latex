@@ -106,13 +106,14 @@ not replace, focused semantic tests for corrected helpers.
 
 ```text
 template/compat/v1.tex
-template/command/cmd-college.tex      compatibility wrapper
-template/command/cmd-department.tex   compatibility wrapper
-template/style/ncku/college.tex       NCKU-owned data
-template/style/ncku/department.tex    NCKU-owned data
+  template/command/cmd-college.tex      compatibility wrapper
+  template/command/cmd-department.tex   compatibility wrapper
+  template/compat/deprecated.tex        23 deprecated command tombstones
+  template/style/ncku/college.tex       NCKU-owned data
+  template/style/ncku/department.tex    NCKU-owned data
 ```
 
-The adapter is loaded even for a custom profile so old NCKU preset commands remain defined. A custom profile does **not** load NCKU geometry, date policy, or watermark asset. This source-level compatibility cost is intentional for 2.x.
+The adapter is loaded even for a custom profile so old NCKU preset commands remain defined. It also owns 23 public commands that had already become unsupported during 1.x: their names remain defined and still emit the same migration diagnostic followed by `\stop`, rather than degrading to an undefined-control-sequence error. The active one-argument `\RefTo{label}` helper remains available; only its historical commented-out zero-argument tombstone stays excluded. A custom profile does **not** load NCKU geometry, date policy, or watermark asset. This source-level compatibility cost is intentional for 2.x.
 
 ## Corrected Behaviors
 

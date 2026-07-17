@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-float-contract _test-theorem-contract _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-deprecated-command-contract _test-float-contract _test-theorem-contract _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -148,6 +148,17 @@ _test-helper-values:
     grep -Fq 'Oral year: 112.' "{{ build_dir }}/tests/helper-values.txt"
     grep -Fq 'DPS department: Department of Photonics.' "{{ build_dir }}/tests/helper-values.txt"
     grep -Fq 'Equation reference: (0.1).' "{{ build_dir }}/tests/helper-values.txt"
+
+# Internal runtime contract for all v1 deprecated public-command tombstones.
+[private]
+_test-deprecated-command-contract:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/deprecated-command-contract."*
+    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=deprecated-command-contract ../tests/deprecated-command-contract.tex
+    test "$(grep -c 'NCKU-DEPRECATED-ERROR-PASS:' "{{ build_dir }}/tests/deprecated-command-contract.log")" -eq 23
+    test "$(grep -c 'NCKU-DEPRECATED-STOP-PASS:' "{{ build_dir }}/tests/deprecated-command-contract.log")" -eq 23
+    grep -Fq 'NCKU-TEST-PASS: deprecated command contract' "{{ build_dir }}/tests/deprecated-command-contract.log"
+    python3 scripts/test/check-deprecated-command-contract.py
 
 # Internal figure/multi-figure/table runtime and metadata contract.
 [private]

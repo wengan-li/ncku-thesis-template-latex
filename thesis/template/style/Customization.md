@@ -66,6 +66,8 @@ template/style/custom/   可直接 build 的 non-NCKU skeleton
    \SetAdvisorNameA{老師姓名}{Advisor Name}
    ```
 
+   `\SetDeptName{chi}{short}{full}` 的第二參數會保存為英文縮寫，可由 `\GetDeptEngShortName` 取得；`\GetDeptEngName` 繼續回傳第三參數的英文全名。
+
    非 NCKU profile 不應使用 `\SetDeptCSIE`、`\SetCollEng` 等 NCKU catalog presets；這些 commands 在 2.x 仍存在只為兼容舊專案。
 
 6. 使用 XeLaTeX／latexmk build，並檢查封面、口試日期、front matter、references 與最後頁。
@@ -192,7 +194,7 @@ Generic/default policy 將 `\SetCoverDate`視為封面日期，並將 oral date 
 
 ## 2.x Compatibility Adapter
 
-`template/compat/v1.tex`在整個 2.x line 都會載入，確保既有 NCKU college／department preset commands 仍可用。其 data files 已移到 `template/style/ncku/`，舊的 `template/command/cmd-college.tex`與`cmd-department.tex`路徑保留為 wrappers。
+`template/compat/v1.tex`在整個 2.x line 都會載入，確保既有 NCKU college／department preset commands 仍可用。其 data files 已移到 `template/style/ncku/`，舊的 `template/command/cmd-college.tex`與`cmd-department.tex`路徑保留為 wrappers。`template/compat/deprecated.tex`集中保存23個已在1.x停用的public commands；它們維持原名、原 diagnostic及`\stop` behavior，避免舊專案只得到undefined-control-sequence。有效的一參數`\RefTo{label}`仍留在`cmd-ref.tex`，不會被comment-only的零參數舊tombstone取代。
 
 因此 custom profile 的 source graph 仍會定義 NCKU legacy presets；但它不會載入 NCKU geometry、date policy 或 watermark asset，也不會在 visible output 顯示 NCKU 內容。這是刻意的 2.x compatibility cost，不應以刪除舊 API 的方式「清理」。
 

@@ -217,10 +217,10 @@ The identical full-width minipage plus zero-line `mdframed`/opacity wrapper is n
 
 ### 4. Small duplicate helpers
 
-- Consolidate repeated keyword accumulation behind one private helper while preserving append-not-replace semantics.
-- Move deprecated public-command tombstones into one compatibility module; remove only truly unreachable private dead blocks.
+- Completed: repeated keyword accumulation now routes through one private helper while preserving append-not-replace semantics.
+- Completed: 23 deprecated zero-argument public-command tombstones now live literally in `template/compat/deprecated.tex`; the focused contract preserves every diagnostic and `\stop`, while the active one-argument `\RefTo` remains in `cmd-ref.tex`.
 - Replace isolated `fp`/long `ifthen` calculations only when exact-output fixtures exist.
-- Document that the second abbreviation argument to `\SetDeptName` is currently ignored rather than silently changing the public signature.
+- Completed: `\SetDeptName{chi}{short}{full}` stores the second argument, `\GetDeptEngShortName` exposes it, and `\GetDeptEngName` continues to return the full name.
 - Completed on the v2 profile branch: committee-size validation is profile-owned;
   NCKU uses Master 3--5 and Doctoral 5--9, while neutral/custom keeps the generic
   2--9 renderer capacity. A focused boundary fixture rejects future drift.

@@ -92,7 +92,10 @@ cover plus affected pages.
   build and exact StudentMode content/BibTeX dependency assertions.
 - `template/command/command.tex` loads `template/compat/v1.tex`; historical NCKU
   catalogue helpers remain available while their data is owned by
-  `template/style/ncku/`.
+  `template/style/ncku/`. The same adapter loads `template/compat/deprecated.tex`,
+  which owns 23 literal zero-argument tombstones and their exact migration
+  diagnostics without reviving the commented-out zero-argument `\RefTo` form;
+  the active one-argument `\RefTo` remains in `cmd-ref.tex`.
 - `template/style/style.tex` dynamically loads exactly one registered profile.
 - `template/style/ncku/ncku.tex` implements cover/oral and Chinese-year policy
   through hooks/getters instead of overriding public setters.
@@ -123,6 +126,10 @@ The completed v2 slice was validated from a clean committed worktree:
 - `just ci`: pass, including canonical build and all focused fixtures;
 - v1 API gate: 597/597 runtime declarations preserved, with 22 audited
   comment-environment declarations and 105 additive v2 declarations;
+- deprecated-command contract: all 23 literal zero-argument tombstones are
+  compatibility-owned and preserve their exact diagnostics plus `\stop`; the
+  live one-argument `\RefTo` keeps its original path/signature while its
+  comment-only zero-argument tombstone remains excluded;
 - migration source gate: 18 student-owned files (296,726 bytes) match v1.8.2
   exactly;
 - migration runtime gates: unchanged entry/configuration plus active StudentMode
@@ -182,6 +189,7 @@ The completed v2 slice was validated from a clean committed worktree:
 - [x] Add exact helper contract fixtures.
 - [x] Correct the first verified helper defects.
 - [x] Add the v1 compatibility adapter and style profile contract.
+- [x] Consolidate the 23 deprecated public-command tombstones behind a focused compatibility contract.
 - [x] Extract NCKU policy/data and add a neutral custom profile.
 - [x] Complete migration and customization documentation.
 - [x] Run final compatibility, PDF, and rendered-page validation.
