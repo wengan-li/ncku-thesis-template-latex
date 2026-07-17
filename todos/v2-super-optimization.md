@@ -185,6 +185,39 @@ not evidence of a full-corpus speedup and is not presented as one. The retained
 claim is narrower: fewer active dependencies, simpler month dispatch, a small
 isolated preamble/student improvement, and unchanged output.
 
+## What We Learned
+
+1. **“Latest” is not the goal.** The current GitHub Actions were already on their
+   latest stable majors, while `xfp` was itself deprecated. A modernization is
+   useful only when it removes measured cost or clarifies ownership.
+2. **Benchmark separate user paths.** No-change, normal student, full integration
+   corpus, and isolated preamble timings answer different questions. The
+   271-page corpus is a correctness workload and can be too noisy for a small
+   package-performance claim.
+3. **The active graph is the evidence.** Removing or reordering a `\usepackage`
+   line does not prove a dependency disappeared; exact `.fls` records do. The
+   attempted `color`/`xcolor` reorder had no benefit because `mdframed` still
+   loaded `color.sty` unconditionally.
+4. **Explicit dependencies can be safer even when they are not faster.** Public
+   `G{...}` argument signatures require `xparse`; relying on fontspec to load it
+   transitively would make the compatibility contract fragile.
+5. **Preserve arithmetic semantics before replacing the package.** Decimal year
+   input, negative modulo truncation, result macro names, expansion, and TeX
+   group scope all needed focused coverage before the legacy `fp` path could be
+   removed safely.
+6. **Simplify bounded domains, not whole subsystems.** A complete 12-way month
+   branch was safer and clearer than 21 sequential comparisons; that evidence
+   did not justify rewriting the other 187 `ifthenelse` calls.
+7. **A lighter renderer is an output change until proven otherwise.** The default
+   `mdframed` backend removed TikZ but also changed 271 pages to 270 and emitted a
+   new bad-break warning, so immediate rollback was the correct optimization.
+8. **The student ZIP is a first-class product.** Repository tooling can validate
+   maintainers' work, but the extracted package must still build through its
+   documented direct `latexmk` command with no repo-only files available.
+9. **PDF equality needs layered proof.** Page count and text alone are
+   insufficient; normalized bounding boxes and representative fixed-DPI rasters
+   caught the geometry/visual boundary while avoiding volatile PDF metadata.
+
 ## Progress
 
 - [x] Verified clean local/remote/PR starting head and unchanged `origin/main`.
