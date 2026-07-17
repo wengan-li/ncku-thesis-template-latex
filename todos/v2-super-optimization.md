@@ -1,6 +1,6 @@
 # V2 Super Optimization and Simplification
 
-Status: implementation complete; full and hosted validation in progress
+Status: complete; local, release, student-package, and hosted validation passed
 Owner: Leon / Tachikoma
 Date: 2026-07-17
 
@@ -199,4 +199,13 @@ isolated preamble/student improvement, and unchanged output.
 - [x] Verified canonical 271-page layout text, 40,823 normalized bbox tuples, and
       raster pages 1, 2, 82, and 258--261 are identical to
       `c9d30b5e60ecc09ec61548d03f317662a2e15c9e`.
-- [ ] Run complete compatibility/release/output/hosted gates and record results.
+- [x] `just ci` passed from committed head
+      `b02570d7df37032e86a081e0ac775a299cade203`.
+- [x] `just release review` passed from a clean worktree and verified both
+      release ZIPs plus all six generated example PDFs.
+- [x] The extracted student ZIP contains no maintainer tooling; direct
+      `latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex`
+      produced 271 A4 pages and SyncTeX, preserved all 18 pinned v1 files, loaded
+      explicit `xparse`, and loaded no `fp` file.
+- [x] Exact-SHA Push Test `29559890805` and Pull-request Test `29559892766`
+      passed for `b02570d7df37032e86a081e0ac775a299cade203`.

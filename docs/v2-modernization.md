@@ -127,8 +127,17 @@ clean committed worktree:
   hardened the API scanner, corrected packaged migration commands, required
   exact migration dependency records, and removed duplicate release-test
   execution;
+- optimization implementation/docs head
+  `b02570d7df37032e86a081e0ac775a299cade203` passed exact-SHA Push Test
+  `29559890805` and Pull-request Test `29559892766`; the retained slice removes
+  the 12-file legacy `fp` runtime path, uses the already-loaded LaTeX programming
+  layer for numeric evaluation, replaces 21 sequential month comparisons with
+  one 12-way branch, and declares the required xparse-only `G{...}` dependency
+  explicitly;
 
 - `just ci`: pass, including canonical build and all focused fixtures;
+- `just release review`: pass after the optimization from a clean committed
+  worktree, including the exact student archive and all generated examples;
 - v1 API gate: 597/597 LaTeX/xparse declarations and 65/65 literal `\def`-style
   declarations preserved, with 22 audited comment-environment declarations,
   105 primary v2 additions, and 7 literal-def v2 additions;
