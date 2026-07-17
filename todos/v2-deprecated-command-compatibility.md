@@ -1,6 +1,6 @@
 # V2 Deprecated Command Compatibility Consolidation
 
-Status: complete on `feat/v2.x`; pending commit/push and exact-SHA hosted verification
+Status: complete and synchronized on `feat/v2.x`
 Owner: Leon / Tachikoma
 Date: 2026-07-17
 
@@ -106,7 +106,13 @@ ThesisWroteInChi
 - [x] Move the 23 literal declarations into the compatibility module.
 - [x] Synchronize current documentation.
 - [x] Run local/full/canonical validation.
-- [ ] Commit, push, and verify exact-SHA hosted tests.
+- [x] Commit, push, and verify exact-SHA hosted tests.
+
+## Hosted Validation Result
+
+- Implementation commit: `172ca96022e80658a2af8ac26fed169f11053d31`.
+- Push Test: successful, run `29543735611`.
+- Pull-request Test: successful, run `29543737148`.
 
 ## Local Validation Result
 
