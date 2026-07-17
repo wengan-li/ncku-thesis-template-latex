@@ -333,7 +333,7 @@
         "thesis/template/command/cmd-chapter.tex"
       ],
       "signatures": [
-        "xparse:m m m O{1"
+        "xparse:m m m O{1}"
       ]
     },
     "DisplaySubSectionHeader": {
@@ -341,7 +341,7 @@
         "thesis/template/command/cmd-chapter.tex"
       ],
       "signatures": [
-        "xparse:m m m O{1"
+        "xparse:m m m O{1}"
       ]
     },
     "DisplaySubSubSectionHeader": {
@@ -349,7 +349,7 @@
         "thesis/template/command/cmd-chapter.tex"
       ],
       "signatures": [
-        "xparse:m m m O{1"
+        "xparse:m m m O{1}"
       ]
     },
     "DisplayTableContent": {
@@ -493,7 +493,7 @@
         "thesis/template/command/cmd-equation.tex"
       ],
       "signatures": [
-        "xparse:G{\\empty"
+        "xparse:G{\\empty}"
       ]
     },
     "EquationEnd": {
@@ -1501,7 +1501,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertCase": {
@@ -1541,7 +1541,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertConjecture": {
@@ -1549,7 +1549,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertCorollary": {
@@ -1557,7 +1557,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertCriterion": {
@@ -1565,7 +1565,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertDefinition": {
@@ -1573,7 +1573,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertExample": {
@@ -1581,7 +1581,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertFigure": {
@@ -1589,7 +1589,7 @@
         "thesis/template/command/cmd-figure.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertFigures": {
@@ -1597,7 +1597,7 @@
         "thesis/template/command/cmd-figures.tex"
       ],
       "signatures": [
-        "xparse:+O{\\empty"
+        "xparse:+O{\\empty} +m +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty}"
       ]
     },
     "InsertFiguresFourPerRow": {
@@ -1605,7 +1605,7 @@
         "thesis/template/command/cmd-figures.tex"
       ],
       "signatures": [
-        "xparse:+m +G{\\empty"
+        "xparse:+m +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty}"
       ]
     },
     "InsertFiguresOnePerRow": {
@@ -1613,7 +1613,7 @@
         "thesis/template/command/cmd-figures.tex"
       ],
       "signatures": [
-        "xparse:+m +G{\\empty"
+        "xparse:+m +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty}"
       ]
     },
     "InsertFiguresSubFigure": {
@@ -1621,7 +1621,7 @@
         "thesis/template/command/cmd-figures.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertFiguresThreePerRow": {
@@ -1629,7 +1629,7 @@
         "thesis/template/command/cmd-figures.tex"
       ],
       "signatures": [
-        "xparse:+m +G{\\empty"
+        "xparse:+m +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty}"
       ]
     },
     "InsertFiguresTwoPerRow": {
@@ -1637,7 +1637,7 @@
         "thesis/template/command/cmd-figures.tex"
       ],
       "signatures": [
-        "xparse:+m +G{\\empty"
+        "xparse:+m +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty} +G{\\empty}"
       ]
     },
     "InsertHypothesis": {
@@ -1645,7 +1645,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertImage": {
@@ -1661,7 +1661,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertMultiImages": {
@@ -1685,7 +1685,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertProof": {
@@ -1701,7 +1701,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertQuestion": {
@@ -1709,7 +1709,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertSubfigureBox": {
@@ -1765,7 +1765,7 @@
         "thesis/template/command/cmd-table.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertTheorem": {
@@ -1773,7 +1773,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "InsertTheoremContent": {
@@ -1781,7 +1781,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:3"
+        "latex:3:optional-first=\\empty"
       ]
     },
     "LabelThisAs": {
@@ -1797,7 +1797,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "MappingTheoremCounterResetCounter": {
@@ -1805,7 +1805,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "MasterDegree": {
@@ -1949,7 +1949,7 @@
         "thesis/template/command/cmd-bibliography.tex"
       ],
       "signatures": [
-        "xparse:G{\\empty"
+        "xparse:G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty}"
       ]
     },
     "SectionTitleNumFormat": {
@@ -1965,7 +1965,7 @@
         "thesis/template/command/cmd-keyword.tex"
       ],
       "signatures": [
-        "xparse:m G{\\empty"
+        "xparse:m G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty}"
       ]
     },
     "SetAbstractEngKeywords": {
@@ -1973,7 +1973,7 @@
         "thesis/template/command/cmd-keyword.tex"
       ],
       "signatures": [
-        "xparse:m G{\\empty"
+        "xparse:m G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty}"
       ]
     },
     "SetAbstractExtKeywords": {
@@ -1981,7 +1981,7 @@
         "thesis/template/command/cmd-keyword.tex"
       ],
       "signatures": [
-        "xparse:m G{\\empty"
+        "xparse:m G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty}"
       ]
     },
     "SetAdvisorChiNameA": {
@@ -2093,7 +2093,7 @@
         "thesis/template/command/cmd-font.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "SetChiTitle": {
@@ -2222,7 +2222,7 @@
         "thesis/template/command/cmd-font.tex"
       ],
       "signatures": [
-        "latex:1"
+        "latex:1:optional-first=\\empty"
       ]
     },
     "SetCustomEngFontFiles": {
@@ -2230,7 +2230,7 @@
         "thesis/template/command/cmd-font.tex"
       ],
       "signatures": [
-        "latex:1"
+        "latex:1:optional-first=\\empty"
       ]
     },
     "SetCustomFigureName": {
@@ -3190,7 +3190,7 @@
         "thesis/template/command/cmd-font.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "SetEngTitle": {
@@ -3278,7 +3278,7 @@
         "thesis/template/command/cmd-keyword.tex"
       ],
       "signatures": [
-        "xparse:m G{\\empty"
+        "xparse:m G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty} G{\\empty}"
       ]
     },
     "SetLineStretch": {
@@ -3318,7 +3318,7 @@
         "thesis/template/command/cmd-numbering.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "SetOralChiDate": {
@@ -3471,7 +3471,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:1"
+        "latex:1:optional-first=\\empty"
       ]
     },
     "SetTheoremFormat": {
@@ -3479,7 +3479,7 @@
         "thesis/template/command/cmd-theorem.tex"
       ],
       "signatures": [
-        "latex:2"
+        "latex:2:optional-first=\\empty"
       ]
     },
     "SetThesisDate": {
@@ -4783,6 +4783,532 @@
       ]
     }
   },
-  "policy": "Every runtime-visible v1 command and environment declaration remains available with a compatible argument shape throughout v2.x; LaTeX comment-environment artifacts are audited separately.",
-  "schema": 1
+  "literal_def_entries": {
+    "@currentlabel": {
+      "defined_in": [
+        "thesis/template/command/cmd-ref.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "AppendKeywordString": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:2"
+      ]
+    },
+    "AppendPDFKeyword": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:1"
+      ]
+    },
+    "BeginAppendixChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-appendix.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "BeginExtendedAbstractFigureTableControl": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "Break": {
+      "defined_in": [
+        "thesis/template/configure.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "EndExtendedAbstractFigureTableControl": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "GetAbstractChiKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "GetAbstractEngKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "GetAbstractExtKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "GetFontDirPath": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "GetPDFKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "GetPageNumberCounting": {
+      "defined_in": [
+        "thesis/template/command/cmd-page.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "GetStartAppendixChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-appendix.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "GetStartExtendedAbstractFigureTableControl": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "InitFontStyleCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "InitFontStyleNotoSansCJK": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "InitFontStyleTimesKaiu": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "OralIndexHeader": {
+      "defined_in": [
+        "thesis/template/command/cmd-oral.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ResetPageNumberCounting": {
+      "defined_in": [
+        "thesis/template/command/cmd-page.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "UseFigureNameCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "UseFigureNameDefault": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "UseFontStyleCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "UseFontStyleNotoSansCJK": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "UseFontStyleTimesKaiu": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "UseTableNameCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "UseTableNameDefault": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueDisableAppendixChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-appendix.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueDisableExtendedAbstractFigureTableControl": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueDisablePageNumberCounting": {
+      "defined_in": [
+        "thesis/template/command/cmd-page.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueEnableAppendixChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-appendix.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueEnableExtendedAbstractFigureTableControl": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueEnablePageNumberCounting": {
+      "defined_in": [
+        "thesis/template/command/cmd-page.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueFigureNameCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueFigureNameDefault": {
+      "defined_in": [
+        "thesis/template/command/cmd-figure.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueTableNameCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "ValueTableNameDefault": {
+      "defined_in": [
+        "thesis/template/command/cmd-table.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarAbstractChiKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarAbstractEngKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarAbstractExtKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontDirPath": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeCustomChiFileNameBold": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeCustomChiFileNameBoldItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeCustomChiFileNameItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeCustomChiFileNameNormal": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeCustomEngFileNameBold": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeCustomEngFileNameBoldItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeCustomEngFileNameItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeCustomEngFileNameNormal": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeNotoSansCJKChiFileNameBold": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeNotoSansCJKChiFileNameNormal": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeNotoSansCJKEngFileNameBold": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeNotoSansCJKEngFileNameNormal": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeTimesKaiuChiFileNameNormal": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeTimesKaiuEngFileNameBold": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeTimesKaiuEngFileNameBoldItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeTimesKaiuEngFileNameItalic": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarFontTypeTimesKaiuEngFileNameNormal": {
+      "defined_in": [
+        "thesis/template/command/cmd-font.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarPDFKeywords": {
+      "defined_in": [
+        "thesis/template/command/cmd-keyword.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarPageNumberCounting": {
+      "defined_in": [
+        "thesis/template/command/cmd-page.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarStartAppendixChapter": {
+      "defined_in": [
+        "thesis/template/command/cmd-appendix.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "VarStartExtendedAbstractFigureTableControl": {
+      "defined_in": [
+        "thesis/template/command/cmd-abstract-extended.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "thesection": {
+      "defined_in": [
+        "thesis/template/configure.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "thesubsection": {
+      "defined_in": [
+        "thesis/template/configure.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    },
+    "thesubsubsection": {
+      "defined_in": [
+        "thesis/template/configure.tex"
+      ],
+      "signatures": [
+        "texdef:def:0"
+      ]
+    }
+  },
+  "policy": "Every runtime-visible pre-v2 LaTeX/xparse declaration remains available with a compatible argument shape throughout v2.x; literal def-style declarations and comment-environment artifacts are audited separately.",
+  "schema": 2,
+  "source": {
+    "commit": "f80a2649232dd25761276ccf7043cf3f3a79e031",
+    "description": "immutable pre-v2 feat/v2.x parent"
+  }
 }

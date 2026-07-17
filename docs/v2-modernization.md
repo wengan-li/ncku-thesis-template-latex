@@ -84,8 +84,9 @@ cover plus affected pages.
 
 ### Implemented Evidence
 
-- The v1 tree has 597 runtime-visible command/environment declarations captured
-  and enforced by `tests/v1-public-api.json`; 22 declarations previously found
+- The immutable pre-v2 tree has 597 runtime-visible LaTeX/xparse
+  command/environment declarations plus 65 literal `\def`-style declarations
+  captured and enforced by `tests/v1-public-api.json`; 22 declarations found
   inside LaTeX `comment` environments are recorded separately as audit artifacts.
 - `tests/v1-project-migration.json` pins 18 student-owned files byte-for-byte to
   v1.8.2. Runtime evidence is split between the unchanged entry/configuration
@@ -124,8 +125,9 @@ The completed v2 slice was validated from a clean committed worktree:
   commits were promoted to `feat/v2.x`;
 
 - `just ci`: pass, including canonical build and all focused fixtures;
-- v1 API gate: 597/597 runtime declarations preserved, with 22 audited
-  comment-environment declarations and 105 additive v2 declarations;
+- v1 API gate: 597/597 LaTeX/xparse declarations and 65/65 literal `\def`-style
+  declarations preserved, with 22 audited comment-environment declarations,
+  105 primary v2 additions, and 4 literal-def v2 additions;
 - deprecated-command contract: all 23 literal zero-argument tombstones are
   compatibility-owned and preserve their exact diagnostics plus `\stop`; the
   live one-argument `\RefTo` keeps its original path/signature while its

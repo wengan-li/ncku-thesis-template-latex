@@ -1,8 +1,10 @@
 # V1 Public API Compatibility in V2
 
 V2 changes ownership and internals, not the availability of existing helpers.
-Every explicitly declared command and environment captured before v2 work is
-preserved throughout the 2.x line.
+Every LaTeX/xparse command and environment captured before v2 work is preserved
+throughout the 2.x line. Literal `\def`-style declarations have a separate audit
+in the same baseline because dynamically generated definitions require a
+different parser and compatibility judgement.
 
 ## Machine-Checked Contract
 
@@ -12,13 +14,20 @@ The committed baseline is:
 tests/v1-public-api.json
 ```
 
-It contains the command/environment name, argument signature, and historical
-definition path for 597 runtime-visible entries. The path is inventory context;
-compatibility requires the name and argument shape, so implementations may move
-behind an adapter. `tests/v1-comment-environment-artifacts.json` separately records
-22 declarations that the original scanner found only inside runtime-dead LaTeX
-`comment` environments, including 15 comment-only names and 7 overlaps with live
-tombstones.
+Schema 2 records the immutable pre-v2 source commit
+`f80a2649232dd25761276ccf7043cf3f3a79e031`, plus command/environment name,
+complete argument signature, and historical definition path for 597
+runtime-visible LaTeX/xparse entries. It also audits 65 literal `\def`-style
+entries, including teaching helpers such as `\Break`. The path is inventory
+context; compatibility requires the name and argument shape, so implementations
+may move behind an adapter.
+
+The scanner uses balanced TeX groups for xparse specs, records optional-first
+LaTeX declarations and their defaults, and handles TeX `%` comments by preceding
+backslash parity. `tests/v1-comment-environment-artifacts.json` separately
+records 22 declarations that the earlier scanner found only inside runtime-dead
+LaTeX `comment` environments, including 15 comment-only names and 7 overlaps
+with live tombstones.
 
 Run the gate with:
 
@@ -28,16 +37,18 @@ python3 scripts/test/check-v1-api.py
 
 It is also part of `just test` and `just ci`.
 
-The baseline must not be regenerated after v2 implementation starts merely to
-make a deletion pass. A deliberate future removal requires an owner decision
+The baseline must not be regenerated from the current v2 tree merely to make a
+deletion pass. Its writer refuses any source ref that does not resolve to the
+immutable pre-v2 commit. A deliberate future removal requires an owner decision
 for a later major version and a migration record.
 
 ## Runtime Project Migration Contract
 
 The API baseline proves declaration and argument-shape availability; it does not
-claim that all 597 runtime-visible helpers have been individually behavior-tested.
-The 22 audited comment-environment declarations are historical scanner artifacts,
-not runtime APIs. Runtime migration coverage is separate:
+claim that all 597 LaTeX/xparse or 65 literal `\def`-style declarations have been
+individually behavior-tested. The 22 audited comment-environment declarations
+are historical scanner artifacts, not runtime APIs. Runtime migration coverage
+is separate:
 
 ```text
 tests/v1-project-migration.json
