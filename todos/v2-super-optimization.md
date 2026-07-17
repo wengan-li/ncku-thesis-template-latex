@@ -217,6 +217,13 @@ isolated preamble/student improvement, and unchanged output.
 9. **PDF equality needs layered proof.** Page count and text alone are
    insufficient; normalized bounding boxes and representative fixed-DPI rasters
    caught the geometry/visual boundary while avoiding volatile PDF metadata.
+10. **Font identity is a separate gate.** Equal text, bounding boxes, and rasters
+    strongly protect layout and appearance, but they do not independently prove
+    the same fonts were used. Compare `pdffonts` rows while excluding volatile
+    object IDs and require identical font name/subset tag, type, encoding,
+    embedded/subset flags, and Unicode-map flags. Report inherited unembedded
+    rows instead of overstating “unchanged” as “all embedded,” and scope the
+    result to the tested engine, TeX distribution, OS, and installed-font set.
 
 ## Progress
 
@@ -232,6 +239,10 @@ isolated preamble/student improvement, and unchanged output.
 - [x] Verified canonical 271-page layout text, 40,823 normalized bbox tuples, and
       raster pages 1, 2, 82, and 258--261 are identical to
       `c9d30b5e60ecc09ec61548d03f317662a2e15c9e`.
+- [x] Compared baseline and latest `pdffonts` output: all 83 meaningful font rows
+      match exactly by name/subset tag, type, encoding, embedded/subset state,
+      and Unicode-map state. The same two Times New Roman rows remain unembedded
+      in both PDFs; the optimization introduced no font change.
 - [x] `just ci` passed from committed head
       `b02570d7df37032e86a081e0ac775a299cade203`.
 - [x] `just release review` passed from a clean worktree and verified both
