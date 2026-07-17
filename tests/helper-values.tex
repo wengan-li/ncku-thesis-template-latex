@@ -2,6 +2,21 @@
 % Build from the thesis/ directory.
 \input{./template/configure}
 
+\SetThesisTaiwanYear{2024.9}
+\ifdefstring{\ThesisTaiwanYearResult}{113.9}
+  {\typeout{NCKU-TEST-PASS: Taiwan-year helper preserves decimal input}}
+  {\errmessage{Taiwan-year helper changed decimal input semantics}}
+
+\modulo{-5}{2}
+\ifdefstring{\result}{-1}
+  {\typeout{NCKU-TEST-PASS: modulo helper truncates negative division toward zero}}
+  {\errmessage{Modulo helper changed negative-division semantics}}
+
+\edef\NckuInvalidMonth{\GetMonthInEng{13}}
+\ifdefempty{\NckuInvalidMonth}
+  {\typeout{NCKU-TEST-PASS: month helper keeps invalid numeric ranges empty}}
+  {\errmessage{Month helper changed invalid-range behavior}}
+
 \SetThesisTaiwanYear{2024}
 \SetOralEngDate{2023}{12}{31}
 \SetDeptName{測試系}{TEST}{Department of Testing}

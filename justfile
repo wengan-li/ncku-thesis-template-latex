@@ -139,7 +139,7 @@ _test-numbering-contract:
 _test-helper-values:
     mkdir -p "{{ build_dir }}/tests"
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=helper-values ../tests/helper-values.tex
-    test "$(grep -c 'NCKU-TEST-PASS:' "{{ build_dir }}/tests/helper-values.log")" -eq 4
+    test "$(grep -c 'NCKU-TEST-PASS:' "{{ build_dir }}/tests/helper-values.log")" -eq 7
     ! grep -q 'NCKU-TEST-FAIL:' "{{ build_dir }}/tests/helper-values.log"
     ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/helper-values.log"
     pdftotext "{{ build_dir }}/tests/helper-values.pdf" "{{ build_dir }}/tests/helper-values.txt"
