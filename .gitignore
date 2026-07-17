@@ -13,6 +13,8 @@ thesis/*.pdf
 **/*.bbl
 **/*.synctex.gz*
 **/*.toc
+**/__pycache__/
+**/*.pyc
 **/*.DS_Store*
 **/*~
 *.synctex(busy)

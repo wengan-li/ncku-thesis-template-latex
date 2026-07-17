@@ -44,8 +44,8 @@
 % ----------------------------------------------------------------------------
 
 % --- University name 學校名字 ---
-\newcommand\VarUniversityChiName{國立成功大學}           % Default
-\newcommand\VarUniversityEngName{National Cheng Kung University} % Default
+\newcommand\VarUniversityChiName{University}           % Profile sets default
+\newcommand\VarUniversityEngName{University}           % Profile sets default
 
 \newcommand{\SetUniversityChiName}[1]{%
   \renewcommand{\VarUniversityChiName}{#1}%
@@ -149,16 +149,32 @@
 %\CoverDateNumInChi
 
 % --- 論文的日期 ---
-\newcommand{\ThesisYear}{2014}  % Default
-\newcommand{\ThesisMonth}{1}    % Default
+\newcommand{\ThesisYear}{2014}  % Resolved cover year
+\newcommand{\ThesisMonth}{1}    % Resolved cover month
+\newcommand{\VarRequestedCoverYear}{2014}
+\newcommand{\VarRequestedCoverMonth}{1}
+\SetThesisTaiwanYear{\ThesisYear}
+
+% Institution profiles customize these policy hooks instead of redefining the
+% public date setters.
+\newcommand{\ApplyCoverDatePolicy}[2]{%
+  \SetThesisTaiwanYear{#1}%
+  \renewcommand{\ThesisYear}{#1}%
+  \renewcommand{\ThesisMonth}{#2}%
+}
+\newcommand{\ApplyOralDatePolicy}[3]{}
+\newcommand{\ApplyOralChiYearPolicy}[1]{\renewcommand{\OralChiYear}{#1}}
 
 \newcommand{\SetThesisDate}[2]{\SetCoverDate{#1}{#2}} % Backward-compatible name
 \newcommand{\SetCoverDate}[2]
 {
-  \SetThesisTaiwanYear{#1}
-  \renewcommand{\ThesisYear}{#1}
-  \renewcommand{\ThesisMonth}{#2}
+  \renewcommand{\VarRequestedCoverYear}{#1}%
+  \renewcommand{\VarRequestedCoverMonth}{#2}%
+  \ApplyCoverDatePolicy{#1}{#2}%
 } % End of \newcommand{}
+
+\newcommand{\GetRequestedCoverYear}{\VarRequestedCoverYear}
+\newcommand{\GetRequestedCoverMonth}{\VarRequestedCoverMonth}
 
 \newcommand{\GetThesisYear}{\ThesisYear}
 \newcommand{\GetThesisYearInTaiwanYear}{\ThesisTaiwanYearResult}
@@ -173,12 +189,11 @@
 \newcommand{\OralEngYear}{2014}     % Default
 \newcommand{\OralEngMonth}{January} % Default
 \newcommand{\OralEngDay}{1}         % Default
+\SetOralTaiwanYear{\OralEngYear}
 
 \newcommand{\GetOralChiYear}{\OralChiYear}
-\newcommand{\GetOralYearInTaiwanYear}
-{\SetThesisTaiwanYear{\OralEngYear}\ThesisTaiwanYearResult}
-\newcommand{\GetOralYearInTaiwanYearNumInChi}
-{\SetThesisTaiwanYear{\OralEngYear}\zhdigits{\ThesisTaiwanYearResult}}
+\newcommand{\GetOralYearInTaiwanYear}{\OralTaiwanYearResult}
+\newcommand{\GetOralYearInTaiwanYearNumInChi}{\zhdigits{\OralTaiwanYearResult}}
 \newcommand{\GetOralChiMonth}{\OralChiMonth}
 \newcommand{\GetOralChiDay}{\OralChiDay}
 \newcommand{\GetOralEngYear}{\OralEngYear}
@@ -189,13 +204,14 @@
 \newcommand{\SetOralChiDate}[3]
 {
   \SetOralTaiwanYear{#1}
-  \renewcommand{\OralChiYear}{\OralTaiwanYearResult}
+  \ApplyOralChiYearPolicy{#1}
   \renewcommand{\OralChiMonth}{#2}
   \renewcommand{\OralChiDay}{#3}
 } % End of \newcommand{}
 
 \newcommand{\SetOralEngDate}[3]
 {
+  \SetOralTaiwanYear{#1}
   \renewcommand{\OralEngYear}{#1}
   \renewcommand{\OralEngMonth}{\GetMonthInEng{#2}}
   \renewcommand{\OralEngDay}{#3}
@@ -205,6 +221,7 @@
 {
   \SetOralChiDate{#1}{#2}{#3}
   \SetOralEngDate{#1}{#2}{#3}
+  \ApplyOralDatePolicy{#1}{#2}{#3}
 } % End of \newcommand{}
 
 % ----------------------------------------------------------------------------
@@ -227,19 +244,20 @@
 
 % --------------------------- Department ---------------------------
 \newcommand{\VarDepartmentChiName}{A 系 / 所}
-%\newcommand{\VarDepartmentEngName}{DeptA} % Short form of department
-\newcommand{\VarDepartmentEngFullName}{Department / Insitute A} % Full name of department
+\newcommand{\VarDepartmentEngName}{DeptA} % Short form of department
+\newcommand{\VarDepartmentEngFullName}{Department / Institute A} % Full name of department
 \newcommand{\SetDeptChiName}[1]{\renewcommand{\VarDepartmentChiName}{#1}}
-%\newcommand{\SetDeptEngShortName}[1]{\renewcommand{\VarDepartmentEngName}{#1}}
+\newcommand{\SetDeptEngShortName}[1]{\renewcommand{\VarDepartmentEngName}{#1}}
 \newcommand{\SetDeptEngFullName}[1]{\renewcommand{\VarDepartmentEngFullName}{#1}}
 \newcommand{\SetDeptName}[3]
 {
   \SetDeptChiName{#1}
-%  \SetDeptEngShortName{#2}
+  \SetDeptEngShortName{#2}
   \SetDeptEngFullName{#3}
 } % End of \newcommand{}
 
 \newcommand{\GetDeptChiName}{\VarDepartmentChiName}
+\newcommand{\GetDeptEngShortName}{\VarDepartmentEngName}
 \newcommand{\GetDeptEngName}{\VarDepartmentEngFullName}
 
 % ----------------------------------------------------------------------------

@@ -1,0 +1,1 @@
+../skills/feature-documentation/hooks/check-feature-docs.sh

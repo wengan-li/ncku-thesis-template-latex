@@ -1,0 +1,27 @@
+% V2 NCKU committee-size policy fixture.
+% Build from the thesis/ directory.
+\input{./template/configure}
+
+\newcommand{\AssertCommitteeSize}[2]{%
+  \ifthenelse{\equal{\GetCommitteeSize}{#2}}%
+    {\typeout{NCKU-TEST-PASS: committee request #1 resolved to #2}}%
+    {\typeout{NCKU-TEST-FAIL: committee request #1 resolved to \GetCommitteeSize, expected #2}}%
+}
+
+\begin{document}
+\MasterDegree
+\SetCommitteeSize{2}
+\AssertCommitteeSize{master-2}{3}
+\SetCommitteeSize{4}
+\AssertCommitteeSize{master-4}{4}
+\SetCommitteeSize{9}
+\AssertCommitteeSize{master-9}{5}
+
+\PhdDegree
+\SetCommitteeSize{2}
+\AssertCommitteeSize{doctoral-2}{5}
+\SetCommitteeSize{7}
+\AssertCommitteeSize{doctoral-7}{7}
+\SetCommitteeSize{10}
+\AssertCommitteeSize{doctoral-10}{9}
+\end{document}

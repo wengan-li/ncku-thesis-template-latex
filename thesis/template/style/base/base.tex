@@ -1,0 +1,93 @@
+%
+% Institution style profile contract for v2.
+%
+% Profiles set policy and text tokens. Renderers consume these getters without
+% knowing which institution profile is active.
+%
+\newcommand{\VarActiveTemplateStyle}{unregistered}
+\newcommand{\RegisterTemplateStyle}[1]{%
+  \ifdefstring{\TemplateStyleName}{#1}
+    {\renewcommand{\VarActiveTemplateStyle}{#1}}
+    {\errmessage{Template style '#1' does not match requested style '\TemplateStyleName'}}%
+}
+\newcommand{\GetTemplateStyleName}{\VarActiveTemplateStyle}
+
+% Cover and institutional text tokens.
+\newcommand{\VarCoverStudentChiBothText}{}
+\newcommand{\VarCoverStudentChiText}{}
+\newcommand{\VarCoverStudentEngText}{}
+\newcommand{\VarCoverAdvisorChiText}{}
+\newcommand{\VarCoverAdvisorEngText}{}
+\newcommand{\VarCoverCoAdvisorChiText}{}
+\newcommand{\VarCoverCoAdvisorEngText}{}
+\newcommand{\VarCoverAdvisorChiSuffix}{}
+\newcommand{\VarCoverAdvisorEngPrefix}{}
+\newcommand{\VarInstitutionLocationEng}{}
+\newcommand{\VarCoverDateChiPrefix}{}
+\newcommand{\VarOralApprovalChiText}{}
+\newcommand{\VarOralApprovedByEngText}{}
+\newcommand{\VarOralCommitteeChiText}{}
+\newcommand{\VarOralAdvisorChiText}{}
+\newcommand{\VarOralChairChiText}{}
+\newcommand{\VarOralChairEngText}{}
+\newcommand{\VarOralDateChiPrefix}{}
+\newcommand{\VarOralAuthorByEngText}{}
+\newcommand{\VarOralMasterSubmissionEngText}{}
+\newcommand{\VarOralDoctoralSubmissionEngText}{}
+\newcommand{\VarCoverMasterDateEng}{\GetThesisMonthInEng \thinspace \GetThesisYear}
+\newcommand{\VarCoverDoctoralDateEng}{\GetThesisMonthInEng \thinspace \GetThesisYear}
+
+\newcommand{\SetCoverStudentChiBothText}[1]{\renewcommand{\VarCoverStudentChiBothText}{#1}}
+\newcommand{\SetCoverStudentChiText}[1]{\renewcommand{\VarCoverStudentChiText}{#1}}
+\newcommand{\SetCoverStudentEngText}[1]{\renewcommand{\VarCoverStudentEngText}{#1}}
+\newcommand{\SetCoverAdvisorChiText}[1]{\renewcommand{\VarCoverAdvisorChiText}{#1}}
+\newcommand{\SetCoverAdvisorEngText}[1]{\renewcommand{\VarCoverAdvisorEngText}{#1}}
+\newcommand{\SetCoverCoAdvisorChiText}[1]{\renewcommand{\VarCoverCoAdvisorChiText}{#1}}
+\newcommand{\SetCoverCoAdvisorEngText}[1]{\renewcommand{\VarCoverCoAdvisorEngText}{#1}}
+\newcommand{\SetCoverAdvisorChiSuffix}[1]{\renewcommand{\VarCoverAdvisorChiSuffix}{#1}}
+\newcommand{\SetCoverAdvisorEngPrefix}[1]{\renewcommand{\VarCoverAdvisorEngPrefix}{#1}}
+\newcommand{\SetInstitutionLocationEng}[1]{\renewcommand{\VarInstitutionLocationEng}{#1}}
+\newcommand{\SetCoverDateChiPrefix}[1]{\renewcommand{\VarCoverDateChiPrefix}{#1}}
+\newcommand{\SetOralApprovalChiText}[1]{\renewcommand{\VarOralApprovalChiText}{#1}}
+\newcommand{\SetOralApprovedByEngText}[1]{\renewcommand{\VarOralApprovedByEngText}{#1}}
+\newcommand{\SetOralCommitteeChiText}[1]{\renewcommand{\VarOralCommitteeChiText}{#1}}
+\newcommand{\SetOralAdvisorChiText}[1]{\renewcommand{\VarOralAdvisorChiText}{#1}}
+\newcommand{\SetOralChairChiText}[1]{\renewcommand{\VarOralChairChiText}{#1}}
+\newcommand{\SetOralChairEngText}[1]{\renewcommand{\VarOralChairEngText}{#1}}
+\newcommand{\SetOralDateChiPrefix}[1]{\renewcommand{\VarOralDateChiPrefix}{#1}}
+\newcommand{\SetOralAuthorByEngText}[1]{\renewcommand{\VarOralAuthorByEngText}{#1}}
+\newcommand{\SetOralMasterSubmissionEngText}[1]{\renewcommand{\VarOralMasterSubmissionEngText}{#1}}
+\newcommand{\SetOralDoctoralSubmissionEngText}[1]{\renewcommand{\VarOralDoctoralSubmissionEngText}{#1}}
+\newcommand{\SetCoverMasterDateEng}[1]{\renewcommand{\VarCoverMasterDateEng}{#1}}
+\newcommand{\SetCoverDoctoralDateEng}[1]{\renewcommand{\VarCoverDoctoralDateEng}{#1}}
+
+\newcommand{\GetCoverStudentChiBothText}{\VarCoverStudentChiBothText}
+\newcommand{\GetCoverStudentChiText}{\VarCoverStudentChiText}
+\newcommand{\GetCoverStudentEngText}{\VarCoverStudentEngText}
+\newcommand{\GetCoverAdvisorChiText}{\VarCoverAdvisorChiText}
+\newcommand{\GetCoverAdvisorEngText}{\VarCoverAdvisorEngText}
+\newcommand{\GetCoverCoAdvisorChiText}{\VarCoverCoAdvisorChiText}
+\newcommand{\GetCoverCoAdvisorEngText}{\VarCoverCoAdvisorEngText}
+\newcommand{\GetCoverAdvisorChiSuffix}{\VarCoverAdvisorChiSuffix}
+\newcommand{\GetCoverAdvisorEngPrefix}{\VarCoverAdvisorEngPrefix}
+\newcommand{\GetInstitutionLocationEng}{\VarInstitutionLocationEng}
+\newcommand{\GetCoverDateChiPrefix}{\VarCoverDateChiPrefix}
+\newcommand{\GetOralApprovalChiText}{\VarOralApprovalChiText}
+\newcommand{\GetOralApprovedByEngText}{\VarOralApprovedByEngText}
+\newcommand{\GetOralCommitteeChiText}{\VarOralCommitteeChiText}
+\newcommand{\GetOralAdvisorChiText}{\VarOralAdvisorChiText}
+\newcommand{\GetOralChairChiText}{\VarOralChairChiText}
+\newcommand{\GetOralChairEngText}{\VarOralChairEngText}
+\newcommand{\GetOralDateChiPrefix}{\VarOralDateChiPrefix}
+\newcommand{\GetOralAuthorByEngText}{\VarOralAuthorByEngText}
+\newcommand{\GetOralMasterSubmissionEngText}{\VarOralMasterSubmissionEngText}
+\newcommand{\GetOralDoctoralSubmissionEngText}{\VarOralDoctoralSubmissionEngText}
+\newcommand{\GetCoverMasterDateEng}{\VarCoverMasterDateEng}
+\newcommand{\GetCoverDoctoralDateEng}{\VarCoverDoctoralDateEng}
+
+% Generic Chinese cover dates use Gregorian years. Institution profiles may
+% override these display hooks without changing the public date setters.
+\newcommand{\GetCoverMasterYearChi}{\GetThesisYear}
+\newcommand{\GetCoverMasterYearNumInChi}{\zhnumber{\GetThesisYear}}
+\newcommand{\GetCoverDoctoralYearChi}{\GetThesisYear}
+\newcommand{\GetCoverDoctoralYearNumInChi}{\zhnumber{\GetThesisYear}}

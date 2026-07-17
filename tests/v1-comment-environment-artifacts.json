@@ -1,0 +1,206 @@
+{
+  "entries": {
+    "BibStyleTypeAbbrv": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleTypeAlpha": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleTypeApacite": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleTypePlain": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleTypeVar": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetBibStyleTypeVar": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "GetReferenceTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetBibStyleTypeVar": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetReferenceTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:1"
+      ]
+    },
+    "SetupAppendixFTENumberFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "SetupFTENumberFormat": {
+      "defined_in": [
+        "thesis/template/command/cmd-numbering.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarReferenceTitle": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarReferenceTitleChi": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarReferenceTitleCustom": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    },
+    "VarReferenceTitleEng": {
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "signatures": [
+        "latex:0"
+      ]
+    }
+  },
+  "overlapping_runtime_entries": {
+    "BibStyleUseAbbrv": {
+      "comment_signatures": [
+        "latex:0"
+      ],
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "runtime_signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleUseAlpha": {
+      "comment_signatures": [
+        "latex:0"
+      ],
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "runtime_signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleUseApacite": {
+      "comment_signatures": [
+        "latex:0"
+      ],
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "runtime_signatures": [
+        "latex:0"
+      ]
+    },
+    "BibStyleUsePlain": {
+      "comment_signatures": [
+        "latex:0"
+      ],
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "runtime_signatures": [
+        "latex:0"
+      ]
+    },
+    "ChapterReferenceTitleInChi": {
+      "comment_signatures": [
+        "latex:0"
+      ],
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "runtime_signatures": [
+        "latex:0"
+      ]
+    },
+    "ChapterReferenceTitleInEng": {
+      "comment_signatures": [
+        "latex:0"
+      ],
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "runtime_signatures": [
+        "latex:0"
+      ]
+    },
+    "SetChapterReferenceTitle": {
+      "comment_signatures": [
+        "latex:1"
+      ],
+      "defined_in": [
+        "thesis/template/command/cmd-bibliography.tex"
+      ],
+      "runtime_signatures": [
+        "latex:0"
+      ]
+    }
+  },
+  "reason": "The original regex scanner did not strip LaTeX comment environments. The audit records 15 comment-only names plus 7 declarations that overlap runtime tombstones; one overlap also contributed a false latex:1 signature. These were runtime-dead in v1.8.2 and are excluded from the public compatibility baseline, not removed public APIs.",
+  "schema": 1,
+  "source_baseline": "v1.8.2.260715154703 at 2c9557a74983023bba7a8f0cf233e1eb812edec7"
+}

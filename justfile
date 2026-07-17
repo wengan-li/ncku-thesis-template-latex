@@ -48,7 +48,44 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-deprecated-command-contract _test-float-contract _test-theorem-contract _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+
+# Internal compatibility gate for every explicitly declared v1 command/environment.
+[private]
+_test-v1-api:
+    python3 scripts/test/check-v1-api.py
+
+# Internal integration gate for an unchanged v1.8.2 student project on v2.
+[private]
+_test-v1-project-migration:
+    python3 scripts/test/check-v1-project-migration.py
+    grep -Eq '^INPUT .*/thesis/thesis\.tex$' "{{ build_dir }}/thesis.fls"
+    grep -Fxq 'INPUT ./conf/conf.tex' "{{ build_dir }}/thesis.fls"
+    grep -Fxq 'INPUT ./template/compat/v1.tex' "{{ build_dir }}/thesis.fls"
+    grep -Fxq 'INPUT ./template/style/base/base.tex' "{{ build_dir }}/thesis.fls"
+    grep -Fxq 'INPUT ./template/style/ncku/ncku.tex' "{{ build_dir }}/thesis.fls"
+    grep -Eq '^Pages:[[:space:]]+271$' "{{ build_dir }}/thesis.pdfinfo"
+    grep -Eq '^Page size:.*A4' "{{ build_dir }}/thesis.pdfinfo"
+    grep -Fq 'National Cheng Kung University' "{{ build_dir }}/thesis-cover.txt"
+    grep -Fq 'Institute of Computer Science and' "{{ build_dir }}/thesis-cover.txt"
+    grep -Fq 'Advisor： Dr. A' "{{ build_dir }}/thesis-cover.txt"
+    grep -Fq '31 December 2023' "{{ build_dir }}/thesis-cover.txt"
+    ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ build_dir }}/thesis-cover.txt"
+    ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right|Suppressing empty link' "{{ log }}"
+
+# Internal release gate: the student ZIP is the exact tracked thesis tree.
+[private]
+_test-release-student-archive:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/student-archive."*
+    git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/tests/student-archive.zip" HEAD:thesis
+    scripts/release/verify-student-archive.sh "{{ build_dir }}/tests/student-archive.zip"
+    cp "{{ build_dir }}/tests/student-archive.zip" "{{ build_dir }}/tests/student-archive-negative.zip"
+    zip -dq "{{ build_dir }}/tests/student-archive-negative.zip" ncku-thesis-template-latex/MIGRATION-1.x-TO-2.x.md
+    ! scripts/release/verify-student-archive.sh "{{ build_dir }}/tests/student-archive-negative.zip" > "{{ build_dir }}/tests/student-archive-negative.log" 2>&1
+    grep -Fq 'student ZIP contents differ from the exact HEAD:thesis file list' "{{ build_dir }}/tests/student-archive-negative.log"
+    grep -Fq -- '-ncku-thesis-template-latex/MIGRATION-1.x-TO-2.x.md' "{{ build_dir }}/tests/student-archive-negative.log"
+    rm -f "{{ build_dir }}/tests/student-archive-negative.zip"
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]
@@ -75,13 +112,145 @@ _test-set-thesis-date:
 _test-sectioning-numbering:
     mkdir -p "{{ build_dir }}/tests"
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=sectioning-numbering ../tests/sectioning-numbering.tex
-    grep -q 'NCKU-TEST-PASS: sectioning headings and numbered references compile' "{{ build_dir }}/tests/sectioning-numbering.log"
-    ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/sectioning-numbering.log"
+    grep -q 'NCKU-TEST-PASS: Start section helpers preserve exact references' "{{ build_dir }}/tests/sectioning-numbering.log"
+    ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right|Suppressing empty link' "{{ build_dir }}/tests/sectioning-numbering.log"
+    grep -Eq 'newlabel\{ncku:test:chapter\}.*\{1\}\{' "{{ build_dir }}/tests/sectioning-numbering.aux"
+    grep -Eq 'newlabel\{ncku:test:section\}.*\{1\.1\}\{' "{{ build_dir }}/tests/sectioning-numbering.aux"
+    grep -Eq 'newlabel\{ncku:test:subsection\}.*\{1\.1\.1\}\{' "{{ build_dir }}/tests/sectioning-numbering.aux"
+    grep -Eq 'newlabel\{ncku:test:subsubsection\}.*\{1\.1\.1\.1\}\{' "{{ build_dir }}/tests/sectioning-numbering.aux"
     pdftotext "{{ build_dir }}/tests/sectioning-numbering.pdf" "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Chapter Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Section Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Subsection Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
     grep -q 'NCKU Star Subsubsection Sentinel' "{{ build_dir }}/tests/sectioning-numbering.txt"
+
+# Internal general/appendix numbering state and repeatability contract.
+[private]
+_test-numbering-contract:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/numbering-contract."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=numbering-contract ../tests/numbering-contract.tex
+    pdfinfo "{{ build_dir }}/tests/numbering-contract.pdf" > "{{ build_dir }}/tests/numbering-contract.pdfinfo"
+    pdftotext -layout "{{ build_dir }}/tests/numbering-contract.pdf" "{{ build_dir }}/tests/numbering-contract.txt"
+    python3 scripts/test/check-numbering-contract.py "{{ build_dir }}/tests"
+
+# Internal regression test for helper values, state isolation, and equation labels.
+[private]
+_test-helper-values:
+    mkdir -p "{{ build_dir }}/tests"
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=helper-values ../tests/helper-values.tex
+    test "$(grep -c 'NCKU-TEST-PASS:' "{{ build_dir }}/tests/helper-values.log")" -eq 7
+    ! grep -q 'NCKU-TEST-FAIL:' "{{ build_dir }}/tests/helper-values.log"
+    ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/helper-values.log"
+    pdftotext "{{ build_dir }}/tests/helper-values.pdf" "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'Months: January, February, March, April, May, June, July, August, September, October,' "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'November, December.' "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'Oral year: 112.' "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'DPS department: Department of Photonics.' "{{ build_dir }}/tests/helper-values.txt"
+    grep -Fq 'Equation reference: (0.1).' "{{ build_dir }}/tests/helper-values.txt"
+
+# Internal runtime contract for all v1 deprecated public-command tombstones.
+[private]
+_test-deprecated-command-contract:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/deprecated-command-contract."*
+    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=deprecated-command-contract ../tests/deprecated-command-contract.tex
+    test "$(grep -c 'NCKU-DEPRECATED-ERROR-PASS:' "{{ build_dir }}/tests/deprecated-command-contract.log")" -eq 23
+    test "$(grep -c 'NCKU-DEPRECATED-STOP-PASS:' "{{ build_dir }}/tests/deprecated-command-contract.log")" -eq 23
+    grep -Fq 'NCKU-TEST-PASS: deprecated command contract' "{{ build_dir }}/tests/deprecated-command-contract.log"
+    python3 scripts/test/check-deprecated-command-contract.py
+
+# Internal figure/multi-figure/table runtime and metadata contract.
+[private]
+_test-float-contract:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/float-contract."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=float-contract ../tests/float-contract.tex
+    pdfinfo "{{ build_dir }}/tests/float-contract.pdf" > "{{ build_dir }}/tests/float-contract.pdfinfo"
+    pdftotext -layout "{{ build_dir }}/tests/float-contract.pdf" "{{ build_dir }}/tests/float-contract.txt"
+    pdfimages -list "{{ build_dir }}/tests/float-contract.pdf" > "{{ build_dir }}/tests/float-contract.images"
+    python3 scripts/test/check-float-contract.py "{{ build_dir }}/tests"
+
+# Internal runtime contract for all 21 public theorem insertion helpers.
+[private]
+_test-theorem-contract:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/theorem-contract."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=theorem-contract ../tests/theorem-contract.tex
+    pdfinfo "{{ build_dir }}/tests/theorem-contract.pdf" > "{{ build_dir }}/tests/theorem-contract.pdfinfo"
+    pdftotext -layout "{{ build_dir }}/tests/theorem-contract.pdf" "{{ build_dir }}/tests/theorem-contract.txt"
+    python3 scripts/test/check-theorem-contract.py "{{ build_dir }}/tests"
+
+# Internal custom theorem style/counter matrix, including chained-empty counters.
+[private]
+_test-theorem-style-counter:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/theorem-style-counter."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=theorem-style-counter ../tests/theorem-style-counter.tex
+    pdfinfo "{{ build_dir }}/tests/theorem-style-counter.pdf" > "{{ build_dir }}/tests/theorem-style-counter.pdfinfo"
+    pdftotext -layout "{{ build_dir }}/tests/theorem-style-counter.pdf" "{{ build_dir }}/tests/theorem-style-counter.txt"
+    pdftohtml -xml -hidden -nodrm -i "{{ build_dir }}/tests/theorem-style-counter.pdf" "{{ build_dir }}/tests/theorem-style-counter"
+    python3 scripts/test/check-theorem-style-counter.py "{{ build_dir }}/tests"
+
+# Internal negative test for deterministic cyclic theorem-counter diagnostics.
+[private]
+_test-theorem-counter-cycle:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/theorem-counter-cycle."*
+    if (cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=theorem-counter-cycle ../tests/theorem-counter-cycle.tex); then echo "theorem counter cycle unexpectedly compiled"; exit 1; fi
+    grep -Fq "Cyclic theorem counter configuration" "{{ build_dir }}/tests/theorem-counter-cycle.log"
+    ! grep -Fq "TeX capacity exceeded" "{{ build_dir }}/tests/theorem-counter-cycle.log"
+    @echo "Theorem counter cycle PASS: deterministic package error without recursive overflow"
+
+# Internal integration test for the neutral non-NCKU style profile.
+[private]
+_test-custom-style:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/custom-style."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=custom-style ../tests/custom-style.tex
+    grep -Fq 'NCKU-TEST-CUSTOM-PROFILE: custom' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-COVER-DATE: 2024-7' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-REQUESTED-DATE: 2024-7' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-ORAL-CHI-YEAR: 2023' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-COMMITTEE-MIN: 2' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-CUSTOM-COMMITTEE-MAX: 9' "{{ build_dir }}/tests/custom-style.log"
+    grep -Fq 'NCKU-TEST-PASS: custom style profile builds without NCKU visible policy' "{{ build_dir }}/tests/custom-style.log"
+    ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/custom-style.log"
+    ! grep -Fq 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/tests/custom-style.fls"
+    pdftotext "{{ build_dir }}/tests/custom-style.pdf" "{{ build_dir }}/tests/custom-style.txt"
+    pdftotext -f 4 -l 4 "{{ build_dir }}/tests/custom-style.pdf" "{{ build_dir }}/tests/custom-style-master-oral.txt"
+    pdftotext -f 5 -l 5 "{{ build_dir }}/tests/custom-style.pdf" "{{ build_dir }}/tests/custom-style-doctoral-oral.txt"
+    pdftotext -f 6 -l 6 "{{ build_dir }}/tests/custom-style.pdf" "{{ build_dir }}/tests/custom-style-doctoral-cover.txt"
+    grep -Fq 'prepared by' "{{ build_dir }}/tests/custom-style-master-oral.txt"
+    grep -Eq 'Example master.s submission in Department of Testing' "{{ build_dir }}/tests/custom-style-master-oral.txt"
+    grep -Fq 'prepared by' "{{ build_dir }}/tests/custom-style-doctoral-oral.txt"
+    grep -Fq 'Example doctoral submission in Department of Testing' "{{ build_dir }}/tests/custom-style-doctoral-oral.txt"
+    grep -Fq 'July 2024' "{{ build_dir }}/tests/custom-style-doctoral-cover.txt"
+    ! grep -Fq '31 July 2024' "{{ build_dir }}/tests/custom-style-doctoral-cover.txt"
+    ! grep -Fq 'December 2023' "{{ build_dir }}/tests/custom-style-doctoral-cover.txt"
+    ! grep -Eq 'Master of Science|Doctor of Philosophy' "{{ build_dir }}/tests/custom-style.txt"
+    pdfinfo "{{ build_dir }}/tests/custom-style.pdf" > "{{ build_dir }}/tests/custom-style.pdfinfo"
+    grep -Eq '^Pages:[[:space:]]+6$' "{{ build_dir }}/tests/custom-style.pdfinfo"
+    grep -Eq '^Page size:.*A4' "{{ build_dir }}/tests/custom-style.pdfinfo"
+    grep -Fq 'Example University' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq 'Department of Testing' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq 'Portable Thesis Style' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq 'July 2024' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq 'Example City, Example Country' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq '31 December 2023' "{{ build_dir }}/tests/custom-style.txt"
+    grep -Fq '西 元' "{{ build_dir }}/tests/custom-style.txt"
+    ! grep -Fq '中華民國' "{{ build_dir }}/tests/custom-style.txt"
+    ! grep -Fq 'National Cheng Kung University' "{{ build_dir }}/tests/custom-style.txt"
+    ! grep -Fq '國立成功大學' "{{ build_dir }}/tests/custom-style.txt"
+
+# Internal regression test for NCKU degree-specific committee-size policy.
+[private]
+_test-committee-size-policy:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/committee-size-policy."*
+    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=committee-size-policy ../tests/committee-size-policy.tex
+    test "$(grep -c 'NCKU-TEST-PASS: committee request' "{{ build_dir }}/tests/committee-size-policy.log")" -eq 6
+    ! grep -q 'NCKU-TEST-FAIL:' "{{ build_dir }}/tests/committee-size-policy.log"
 
 # Internal regression test for the oral-certificate default state.
 [private]
@@ -130,6 +299,18 @@ _test-student-mode:
     grep -q 'NCKU-TEST-PASS: default diagonal draft watermark text is empty' "{{ build_dir }}/tests/student-mode.log"
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/student-mode.log"
     ! grep -F '/example/' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'INPUT ./conf/conf.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'INPUT ./context/context.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'INPUT ./context/abstract/eng.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'INPUT ./context/acknowledgments/eng.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'INPUT ./context/nomenclature/nomenclature.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'INPUT ./context/introduction/introduction.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'INPUT ./context/related-work/related-work.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'INPUT ./context/conclusion/conclusion.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'INPUT ./context/references/references.tex' "{{ build_dir }}/tests/student-mode.fls"
+    grep -Fxq 'Database file #1: context/references/paper.bib' "{{ build_dir }}/tests/student-mode.blg"
+    grep -Fxq 'Database file #2: context/references/misc.bib' "{{ build_dir }}/tests/student-mode.blg"
+    grep -Fxq 'Database file #3: context/references/book.bib' "{{ build_dir }}/tests/student-mode.blg"
     pdftotext -f 1 -l 1 "{{ build_dir }}/tests/student-mode.pdf" "{{ build_dir }}/tests/student-mode-cover.txt"
     ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ build_dir }}/tests/student-mode-cover.txt"
     ! grep -F 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/tests/student-mode.fls"

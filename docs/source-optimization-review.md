@@ -9,11 +9,12 @@ Checked: 2026-07-15
 - Complete: sectioning/star behavior fixture and fix; core numbering/reference fixture; explicit oral default state; final-log diagnostics baseline; Unicode metadata/bookmark and font/CJK fixtures; continuous preview and student-mode guidance; versioned student/examples release packages; CI cache/runner decision; `iftex`/kernel document-command cleanup with an explicit minimum LaTeX format.
 - Complete in v1.8.2: the cover Draft marker, diagonal text watermark, and institutional-logo watermark defaults now match the final-submission guidance; all three layers remain explicit opt-ins with default-off and opt-in regression coverage. Historical evidence and the distribution boundary are recorded in [`draft-watermark-history.md`](draft-watermark-history.md).
 - Complete safe P2 simplification: shared figure/table caption-label implementation, shared optional-keyword appending, and removal of commented-out caption/column experiments. Public wrappers and argument signatures remain unchanged.
+- Complete theorem hardening and registry consolidation: one 21-row registry owns order, style/numbering policy, default metadata, key families, membership, aggregate initialization, and default application. Literal v1 public insertion/initializer adapters remain. Focused contracts cover all defaults/setters/counter targets, self/unknown/empty behavior, multi-hop and forward chains, optional-type numbering, deterministic cycle rejection, labels/`\ref`/`\nameref`, proof marker, and plain/definition styles. `cmd-theorem.tex` falls from 1,079 to 574 lines (46.8%) with canonical output unchanged.
 - Rejected after measurement: a separate chapter-preview entry point, because a real student-mode chapter edit rebuilt in approximately 1.45 seconds and another document mode would add numbering/reference risk.
 - Complete: Overleaf publication research/verification, v1.8.1 release, and integration into `main`; the public Gallery template was approved on 2026-07-15.
 - Complete in v1.8.2: post-v1.8.1 visible-overflow diagnostics cleanup and final-ready Draft/watermark safe defaults.
 - Complete after v1.8.2: all repository-owned GitHub Actions references use their latest stable major versions checked on 2026-07-15 (`actions/checkout@v7`, `actions/upload-artifact@v7`, `actions/download-artifact@v8`, and the already-current `xu-cheng/texlive-action@v3`). The JavaScript actions declare Node.js 24 and remove the runner's Node.js 20 compatibility warning.
-- Deferred to a major-version experiment: numbering/theorem registry rewrites (the v1.8 fixtures do not cover every custom-format combination), class/package redesign, broad `expl3` conversion, `l3build`, engine migration, and tagged-PDF/PDF-UA work.
+- Deferred to later major-version experiments: numbering-format registry rewrites outside theorem handling, class/package redesign, broad `expl3` conversion, `l3build`, engine migration, and tagged-PDF/PDF-UA work. The theorem registry cleanup is complete; its remaining repeated lines are deliberate literal public adapters.
 
 ## Intent
 
@@ -196,25 +197,39 @@ These changes preserve public commands and belong in separate, reviewable commit
 
 `cmd-numbering.tex` has near-duplicate generic and appendix title builders, repeated key families/dispatch, repeated figure/table/equation formatting, and disabled legacy code in the loaded runtime path.
 
-Keep `\SetNumberingFormat[...]` and all existing key names, but drive the internals from one type-to-counter/format schema.
+A focused one-page contract now freezes all eight title selectors, default/custom general and appendix titles/getters, fallback subsubsection references, seven counter styles, dynamic counter mutation, general/appendix figure-table-equation output, unknown/empty selector no-ops, and repeated setup. It reproduced two existing state defects: earlier getters retained the final pgf scratch prefix/separator/counter-name aliases, and `\SetupAppendixEquationNumberFormatString` appended without resetting (`2.8` became `2.82.8`). Parsed configuration and counter names are now frozen while counter values remain dynamic; every repeated setup is stable.
+
+The source API scanner strips LaTeX `comment` environments and parity-aware `%` comments, parses nested xparse groups without truncating `O{...}`/`G{...}` specs, and records optional-first LaTeX defaults. Its immutable pre-v2 baseline contains 597 runtime-visible LaTeX/xparse names plus a separate 65-name literal `\def` audit, while `tests/v1-comment-environment-artifacts.json` preserves an explicit audit of 22 dead declarations: 15 comment-only names plus 7 overlaps with live tombstones, including one false extra signature. The three numbering comment blocks and obsolete bibliography block were removed only after this boundary was established. Full registry generation remains deferred; the numbering correction and dead-code cleanup are compatibility-bounded and fixture-backed.
 
 ### 2. Theorem registry
 
-`cmd-theorem.tex` duplicates setup, key parsing, initialization, and dispatch across approximately 21 theorem types. Replace the internal repetition with a declarative registry containing name, style, counter, and numbered/un-numbered policy. Preserve public aliases such as `\InsertTheorem` and `\InsertDefinition`.
+`cmd-theorem.tex` now has one declarative 21-row source for type order, `plain`/`definition` style, numbered/optional policy, default environment/display/counter metadata, pgf key-family declaration, membership, aggregate initialization, and default application. Counter routing resolves Section, registered forward references, and multi-hop chains recursively to a frozen terminal value while preserving arbitrary existing LaTeX counters; cycles produce a deterministic package error. Optional types stay starred when empty and become global/scoped numbered forms when configured.
+
+All established public insertion and initializer commands remain literally declared as compatibility adapters, including the 13 v1 counter getters required by the source-level API manifest. Those getters were historically discoverable only through repeated literal `\renewcommand` branches, so registry generation alone was not source-compatible. Runtime gates cover all 21 defaults, setter routes, counter targets, self/unknown/empty behavior, multi-hop chains, optional numbering, labels/references, styles, and cycle rejection. The file is 505 lines smaller while canonical thesis text, normalized bbox word tuples, theorem-page rasters, and the pre-registry contract raster remain identical. No further theorem-internal consolidation is planned.
 
 ### 3. Shared float internals
 
 `cmd-figure.tex`, `cmd-figures.tex`, and `cmd-table.tex` repeat float/minipage/frame/opacity behavior and currently force `[H]` while retaining compatibility keys that do not affect placement.
 
-Extract a private framed-content helper. Preserve all public signatures. Keep historical no-op keys documented as compatibility behavior; making placement keys active is a separate visible-layout change.
+A focused one-page contract now covers single/multi/subfigure paths, all numbered labels and names, top/bottom/star table forms, key-state/no-op placement, four embedded images, and visual order. It reproduced an existing caption-metadata defect: mutable pgf caption tokens were written to `\@currentlabelname`, so later parsing changed names and a closed subfigure scope made `\nameref` fail with an undefined `\TmpMISubValueCaption`. Caption wrappers now freeze the title after `\caption`/`\caption*` and before `\label`; the auxiliary file contains literal names.
+
+The identical full-width minipage plus zero-line `mdframed`/opacity wrapper is now owned by one private helper and reused by `\InsertFigure`, `\InsertFigures`, and the public `\DisplayTableContent` adapter. The public float commands and signatures, forced `[H]` placement, inactive `pos`/`align` compatibility keys, row dispatch, transforms, table scaling/spacing, and caption order remain unchanged. Against the corrected pre-refactor fixture, layout text, normalized bbox word tuples, four-image inventory, and 180-DPI raster are identical; canonical text/bbox and float pages 82/258--261 are also unchanged.
 
 ### 4. Small duplicate helpers
 
-- Consolidate repeated keyword accumulation behind one private helper while preserving append-not-replace semantics.
-- Move deprecated public-command tombstones into one compatibility module; remove only truly unreachable private dead blocks.
-- Replace isolated `fp`/long `ifthen` calculations only when exact-output fixtures exist.
-- Document that the second abbreviation argument to `\SetDeptName` is currently ignored rather than silently changing the public signature.
-- Reconcile the committee-size implementation range with the teaching text.
+- Completed: repeated keyword accumulation now routes through one private helper while preserving append-not-replace semantics.
+- Completed: 23 deprecated zero-argument public-command tombstones now live literally in `template/compat/deprecated.tex`; the focused contract preserves every diagnostic and `\stop`, while the active one-argument `\RefTo` remains in `cmd-ref.tex`.
+- Completed: the three `fp` calculations now use the LaTeX programming layer
+  already loaded by the template. Decimal Taiwan-year and negative-modulo
+  semantics are fixture-protected, all 12 `fp` package inputs leave the active
+  graph, and no replacement package is added. `\GetMonthInEng` now uses one
+  native 12-way branch table instead of 21 sequential `ifthen` comparisons;
+  leading-zero months, invalid ranges, canonical text/bbox, and reviewed rasters
+  remain identical.
+- Completed: `\SetDeptName{chi}{short}{full}` stores the second argument, `\GetDeptEngShortName` exposes it, and `\GetDeptEngName` continues to return the full name.
+- Completed on the v2 profile branch: committee-size validation is profile-owned;
+  NCKU uses Master 3--5 and Doctoral 5--9, while neutral/custom keeps the generic
+  2--9 renderer capacity. A focused boundary fixture rejects future drift.
 
 ## P3 — major-version experiments
 

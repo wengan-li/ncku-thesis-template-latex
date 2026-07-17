@@ -1,0 +1,18 @@
+% Negative contract: cyclic FollowCounter chains must fail deterministically
+% with the package diagnostic, never through recursive macro expansion.
+\input{./template/configure}
+
+\SetTheoremFormat[Definition]{%
+  EnvironmentName = {EnvCycleDefinition},
+  FollowCounter = Theorem,
+}
+\SetTheoremFormat[Theorem]{%
+  EnvironmentName = {EnvCycleTheorem},
+  FollowCounter = Definition,
+}
+
+\InitTheoremDefinitionFormat
+
+\begin{document}
+This body must never render.
+\end{document}

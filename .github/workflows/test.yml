@@ -31,7 +31,8 @@ jobs:
           os: alpine
           scheme: full
           run: |
-            apk add --no-cache git just poppler-utils
+            apk add --no-cache git just poppler-utils unzip zip
+            git config --global --add safe.directory "$GITHUB_WORKSPACE"
             just test
 
       - name: Upload test PDF

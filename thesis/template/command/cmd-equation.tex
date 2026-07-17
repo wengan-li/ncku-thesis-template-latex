@@ -24,7 +24,7 @@
 
 \newcommand{\SetEquationLabel}[1]
 {
-  \SetImageLabel{#1}
+  \ifthenelse{\equal{#1}{\empty}}{}{\label{#1}}
 } % End of \newcommand{}
 
 \DeclareDocumentCommand{\EquationBegin}{G{\empty}}

@@ -82,30 +82,61 @@
   SepBetweenSSCnSSS/.estore in = \TmpValueSepBetweenSSCnSSS,
 } % End of \pgfkeys{}
 
+% Append a parsed key value without retaining the reusable pgf scratch macro.
+\makeatletter
+\newcommand\NCKUPrivateAppendFrozenValue[2]
+{%
+  \begingroup
+  \protected@edef\NCKUPrivateAppendNext{%
+    \endgroup
+    \noexpand\appto\noexpand#1{#2}}%
+  \NCKUPrivateAppendNext
+} % End of \newcommand{}
+
+% Freeze the counter name while leaving the counter value dynamic.
+\newcommand\NCKUPrivateAppendCounterFormatter[3]
+{%
+  \begingroup
+  \protected@edef\NCKUPrivateAppendNext{%
+    \endgroup
+    \noexpand\appto\noexpand#1{\noexpand#2{#3}}}%
+  \NCKUPrivateAppendNext
+} % End of \newcommand{}
+
+\newcommand\NCKUPrivateAppendCounterValueFormatter[3]
+{%
+  \begingroup
+  \protected@edef\NCKUPrivateAppendNext{%
+    \endgroup
+    \noexpand\appto\noexpand#1{\noexpand#2{\noexpand\value{#3}}}}%
+  \NCKUPrivateAppendNext
+} % End of \newcommand{}
+\makeatother
+
 % Append counter value in style to string
 \newcommand\AppendCounterStringToFormatString[3]
 {%
   \ifthenelse{\equal{#2}{ChiNum}}{%
-    \appto#1{\zhnum{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\zhnum}{#3}}{}%
   \ifthenelse{\equal{#2}{Tiangan}}{%
-    \appto#1{\zhtiangan{\value{#3}}}}{}%
+    \NCKUPrivateAppendCounterValueFormatter{#1}{\zhtiangan}{#3}}{}%
   \ifthenelse{\equal{#2}{Arabic}}{%
-    \appto#1{\arabic{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\arabic}{#3}}{}%
   \ifthenelse{\equal{#2}{LowerRoman}}{%
-    \appto#1{\roman{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\roman}{#3}}{}%
   \ifthenelse{\equal{#2}{UpperRoman}}{%
-    \appto#1{\Roman{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\Roman}{#3}}{}%
   \ifthenelse{\equal{#2}{LowerAlph}}{%
-    \appto#1{\alph{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\alph}{#3}}{}%
   \ifthenelse{\equal{#2}{UpperAlph}}{%
-    \appto#1{\Alph{#3}}}{}%
+    \NCKUPrivateAppendCounterFormatter{#1}{\Alph}{#3}}{}%
 } % End of \newcommand{}
 
 \newcommand\SetupTitleNumberFormatString[3]
 {%
   \pgfkeys{/SetupTitleNumberFormatString, default, #2}%
   \renewcommand#3{}%
-  \appto#3{\TmpValueBeginText}%
+  \NCKUPrivateAppendFrozenValue{#3}{\TmpValueBeginText}%
   \ifboolexpr{%
     test {\ifstrequal{#1}{Chapter}} or %
     test {\ifstrequal{#1}{AppendixChapter}} }
@@ -120,7 +151,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
       }{}%
@@ -131,10 +162,10 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
-        \appto#3{\TmpValueSepBetweenSnSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSnSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSNumStyle}{\TmpValueSSCounterName}%
       }{}%
@@ -145,17 +176,17 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
-        \appto#3{\TmpValueSepBetweenSnSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSnSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSNumStyle}{\TmpValueSSCounterName}%
-        \appto#3{\TmpValueSepBetweenSSCnSSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSSCnSSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSSNumStyle}{\TmpValueSSSCounterName}%
       }{}%
-  \appto#3{\TmpValueEndText}%
+  \NCKUPrivateAppendFrozenValue{#3}{\TmpValueEndText}%
 } % End of \newcommand{}
 
 % ---------------------------
@@ -573,7 +604,7 @@
 
 \newcommand\SetupAppendixEquationNumberFormatString
 {%
-  \appto\GetAppendixEquationNumberFormatString{}%
+  \renewcommand\GetAppendixEquationNumberFormatString{}%
   \AppendCounterStringToFormatString{%
     \GetAppendixEquationNumberFormatString}{%
     Arabic}{appendixchapter}%
@@ -656,7 +687,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
       }{}%
@@ -667,10 +698,10 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
-        \appto#3{\TmpValueSepBetweenSnSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSnSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSNumStyle}{\TmpValueSSCounterName}%
       }{}%
@@ -681,13 +712,13 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueSepBetweenCnS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenCnS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSNumStyle}{\TmpValueSCounterName}%
-        \appto#3{\TmpValueSepBetweenSnSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSnSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSNumStyle}{\TmpValueSSCounterName}%
-        \appto#3{\TmpValueSepBetweenSSCnSSS}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueSepBetweenSSCnSSS}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueSSSNumStyle}{\TmpValueSSSCounterName}%
       }{}%
@@ -698,7 +729,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueFigureSep}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueFigureSep}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueFigureNumStyle}{\TmpValueFigureCounterName}%
       }{}%
@@ -709,7 +740,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueTableSep}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueTableSep}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueTableNumStyle}{\TmpValueTableCounterName}%
       }{}%
@@ -720,7 +751,7 @@
       {%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueCNumStyle}{\TmpValueCCounterName}%
-        \appto#3{\TmpValueEquationSep}%
+        \NCKUPrivateAppendFrozenValue{#3}{\TmpValueEquationSep}%
         \AppendCounterStringToFormatString{%
           #3}{\TmpValueEquationNumStyle}{\TmpValueEquationCounterName}%
       }{}%
@@ -742,6 +773,23 @@
 \newcommand\GetAppendixFigureNumberFormatString{}
 \newcommand\GetAppendixTableNumberFormatString{}
 \newcommand\GetAppendixEquationNumberFormatString{}
+
+% Sub-subsection titles are intentionally unnumbered by default, but their
+% public Start* helpers still need stable, non-empty reference values.
+\newcommand\GetGeneralSubSubSectionReferenceString{%
+  \ifx\GetSSSTitleNumberFormatSSSNumStyle\empty
+    \arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}%
+  \else
+    \GetGeneralSubSubSectionNumberingFormatString%
+  \fi
+}
+\newcommand\GetAppendixSubSubSectionReferenceString{%
+  \ifx\GetAppendixSSSTitleNumberFormatSSSNumStyle\empty
+    \Alph{appendixchapter}.\arabic{appendixsection}.\arabic{appendixsubsection}.\arabic{appendixsubsubsection}%
+  \else
+    \GetAppendixSubSubSectionNumberingFormatString%
+  \fi
+}
 
 \newcommand\InitinalGeneralAppendixNumberingFormatString
 {%
@@ -831,86 +879,6 @@
   %
 } % End of \newcommand{}
 
-  \begin{comment}
-  \SetupGeneralAppendixNumberFormatString{Figure}%
-  {%
-    CNumStyle=\GetCTitleNumberFormatCNumStyle,%
-    CCounterName=chapter,%
-    FigureNumStyle=Arabic,%
-    FigureCounterName=figure,%
-    FigureSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetGeneralFigureNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{AppendixFigure}%
-  {%
-    CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
-    CCounterName=appendixchapter,%
-    FigureNumStyle=Arabic,%
-    FigureCounterName=figure,%
-    FigureSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetAppendixFigureNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{Table}%
-  {%
-    CNumStyle=\GetCTitleNumberFormatCNumStyle,%
-    CCounterName=chapter,%
-    TableNumStyle=Arabic,%
-    TableCounterName=table,%
-    TableSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetGeneralTableNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{AppendixTable}%
-  {%
-    CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
-    CCounterName=appendixchapter,%
-    TableNumStyle=Arabic,%
-    TableCounterName=table,%
-    TableSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetAppendixTableNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{Equation}%
-  {%
-    CNumStyle=\GetCTitleNumberFormatCNumStyle,%
-    CCounterName=chapter,%
-    EquationNumStyle=Arabic,%
-    EquationCounterName=equation,%
-    EquationSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetGeneralEquationNumberFormatString}%
-  %
-  \SetupGeneralAppendixNumberFormatString{AppendixEquation}%
-  {%
-    CNumStyle=\GetAppendixCTitleNumberFormatCNumStyle,%
-    CCounterName=appendixchapter,%
-    EquationNumStyle=Arabic,%
-    EquationCounterName=equation,%
-    EquationSep=\GetSSTitleNumberFormatSepAtIndex,%
-  }{\GetAppendixEquationNumberFormatString}%
-  %
-  \end{comment}
-
-% ---------------------------
-\begin{comment}
-% Set numbering format of general figure/table/equation
-\newcommand\SetupFTENumberFormat
-{%
-  \SetupGeneralFigureNumberFormatString%
-  \SetupGeneralTableNumberFormatString%
-  \SetupGeneralEquationNumberFormatString%
-  \renewcommand{\thefigure}{\GetGeneralFigureNumberFormatString}%
-  \renewcommand{\thetable}{\GetGeneralTableNumberFormatString}%
-  \renewcommand{\theequation}{\GetGeneralEquationNumberFormatString}%
-} % End of \newcommand{}
-
-\newcommand\SetupAppendixFTENumberFormat
-{%
-  \SetupAppendixFigureNumberFormatString%
-  \SetupAppendixTableNumberFormatString%
-  \SetupAppendixEquationNumberFormatString%
-  \renewcommand{\thefigure}{\GetAppendixFigureNumberFormatString}
-  \renewcommand{\thetable}{\GetAppendixTableNumberFormatString}
-  \renewcommand{\theequation}{\GetAppendixEquationNumberFormatString}
-} % End of \newcommand{}
-\end{comment}
 % ----------------------------------------------------------------------------
 
 % Setup all custom numbering format
@@ -950,35 +918,6 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{comment}
-\pgfkeys
-{
-  /SetNumberingFormat/.is family, /SetNumberingFormat,
-  default/.style =
-  {
-    BeginText = \empty,
-    EndText = \empty,
-    CNumStyle = Arabic,
-    SNumStyle = Arabic,
-    SSNumStyle = Arabic,
-    SSSNumStyle = Arabic,
-    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
-    SepBetweenSSCnSSS = {.}, % 小節號碼跟小小節號碼中的分隔符號
-  },
-  BeginText/.estore in = \TmpValueBeginText,
-  EndText/.estore in = \TmpValueEndText,
-  CNumStyle/.estore in = \TmpValueCNumStyle,
-  SNumStyle/.estore in = \TmpValueSNumStyle,
-  SSNumStyle/.estore in = \TmpValueSSNumStyle,
-  SSSNumStyle/.estore in = \TmpValueSSSNumStyle,
-  SepAtIndex/.estore in = \TmpValueSepAtIndex,
-  SepBetweenCnS/.estore in = \TmpValueSepBetweenCnS,
-  SepBetweenSnSS/.estore in = \TmpValueSepBetweenSnSS,
-  SepBetweenSSCnSSS/.estore in = \TmpValueSepBetweenSSCnSSS,
-} % End of \pgfkeys{}
-\end{comment}
 % Parse the setting based on title type
 % Chapter, Section, SubSection, SubSubSection
 \newcommand{\SetNumberingFormat}[2][\empty]
@@ -1091,25 +1030,5 @@
   SepAtIndex = {}, SepBetweenCnS = {},
   SepBetweenSnSS = {}, SepBetweenSSCnSSS = {},
 } % End of \SetNumberingFormat{}
-
-% ----------------------------------------------------------------------------
-
-% 過去的API, 以 Error提醒不能再使用
-
-\newcommand{\ChapterTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, ChapterTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
-
-\newcommand{\SectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, SectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
-
-\newcommand{\SubSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, SubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
-
-\newcommand{\SubSubSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, SubSubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
-
-\newcommand{\AppendixChapterTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, AppendixChapterTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
-
-\newcommand{\AppendixSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, AppendixSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
-
-\newcommand{\AppendixSubSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, AppendixSubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
-
-\newcommand{\AppendixSubSubSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, AppendixSubSubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
 
 % ----------------------------------------------------------------------------

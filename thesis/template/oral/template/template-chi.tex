@@ -66,12 +66,12 @@
 \begin{minipage}[c][1.5cm][t]{\textwidth}
   \begin{center}
     \hspace{2.4em}
-    \makebox[4.8em][r]{\Large 研究生：}
+    \makebox[4.8em][r]{\Large \GetCoverStudentChiText：}
     \makebox[7.2em][l]{\Large \GetAuthorChiName} \\
 
     \vspace{0.5cm}
 
-    \makebox[\textwidth][c]{\Large 本論文業經審查及口試合格特此證明}\\
+    \makebox[\textwidth][c]{\Large \GetOralApprovalChiText}\\
   \end{center}
 \end{minipage}
 
@@ -86,7 +86,7 @@
 % 口試委員人數含指導教授
 \begin{minipage}[c][9.0cm][t]{\textwidth}
   \begin{center}
-    \makebox[\textwidth][l]{\Large 論文考試委員：} \\
+    \makebox[\textwidth][l]{\Large \GetOralCommitteeChiText：} \\
 
     \vspace{1.07cm}
 
@@ -102,20 +102,20 @@
 
 \begin{minipage}[c][3.0cm][t]{\textwidth}
   \begin{center}
-    \makebox[4.8em][r]{\Large 指導教授}
+    \makebox[4.8em][r]{\Large \GetOralAdvisorChiText}
     \makebox[1em][c]{\Large：}
     \makebox[7.2em][l]{\namesigdate}\\
 
     \vspace{1.0cm}
 
-    \makebox[4.8em][r]{\Large 系(所)主管}
+    \makebox[4.8em][r]{\Large \GetOralChairChiText}
     \makebox[1em][c]{\Large：}
     \makebox[7.2em][l]{\namesigdate}\\
 
     \vspace{1.5cm}
 
     % Date 日期
-    \makebox[\textwidth][s]{\Large 中華民國 \GetOralChiYear 年 \GetOralChiMonth 月 \GetOralChiDay 日}
+    \makebox[\textwidth][s]{\Large \GetOralDateChiPrefix\space \GetOralChiYear 年 \GetOralChiMonth 月 \GetOralChiDay 日}
   \end{center}
 \end{minipage}
 

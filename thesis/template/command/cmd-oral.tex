@@ -81,7 +81,10 @@
 % 口試委員 Committee member(s)
 \newcommand{\CommitteeSize}{9} % Default
 \newcommand{\GetCommitteeSize}{\CommitteeSize}
-\newcommand{\SetCommitteeSize}[1]
+% Generic renderer capacity is 2--9. The active institution profile may
+% override this hook with degree-specific policy without changing the public
+% \SetCommitteeSize signature.
+\newcommand{\ApplyCommitteeSizePolicy}[1]
 {
   \ifthenelse{#1 < 2}
   {
@@ -93,6 +96,7 @@
     {\renewcommand{\CommitteeSize}{#1}}
   } % End of else{}
 } % End of \newcommand{}
+\newcommand{\SetCommitteeSize}[1]{\ApplyCommitteeSizePolicy{#1}}
 
 % 口試委員簽名區
 \newcommand{\DisplayCommitteeSignatureArea}

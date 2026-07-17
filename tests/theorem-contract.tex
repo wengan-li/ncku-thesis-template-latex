@@ -1,0 +1,149 @@
+% Focused runtime contract for all public theorem insertion helpers.
+% Build from the thesis/ directory after the template has initialized formats.
+\input{./template/configure}
+
+\begin{document}
+\newcommand{\TypeoutTheoremDefault}[1]{%
+  \typeout{NCKU-TEST-DEFAULT-#1: \csname GetTheorem#1FormatEnvironmentName\endcsname/\csname GetTheorem#1FormatShowText\endcsname/\csname GetTheorem#1FormatFollowCounter\endcsname}%
+}
+\TypeoutTheoremDefault{Definition}
+\TypeoutTheoremDefault{Condition}
+\TypeoutTheoremDefault{Problem}
+\TypeoutTheoremDefault{Example}
+\TypeoutTheoremDefault{Theorem}
+\TypeoutTheoremDefault{Lemma}
+\TypeoutTheoremDefault{Corollary}
+\TypeoutTheoremDefault{Proposition}
+\TypeoutTheoremDefault{Conjecture}
+\TypeoutTheoremDefault{Proof}
+\TypeoutTheoremDefault{Note}
+\TypeoutTheoremDefault{Annotation}
+\TypeoutTheoremDefault{Claim}
+\TypeoutTheoremDefault{Case}
+\TypeoutTheoremDefault{Acknowledgment}
+\TypeoutTheoremDefault{Conclusion}
+\TypeoutTheoremDefault{Criterion}
+\TypeoutTheoremDefault{Assertion}
+\TypeoutTheoremDefault{Question}
+\TypeoutTheoremDefault{Hypothesis}
+\TypeoutTheoremDefault{Summary}
+
+\stepcounter{section}
+
+\InsertDefinition[label={ncku:test:definition}]{NCKU Definition Body.}
+\InsertCondition[label={ncku:test:condition}]{NCKU Condition Body.}
+\InsertProblem[label={ncku:test:problem}]{NCKU Problem Body.}
+\InsertExample[label={ncku:test:example}]{NCKU Example Body.}
+\InsertTheorem[title={Named Theorem},label={ncku:test:theorem-first}]{NCKU Theorem Body One.}
+\InsertLemma[label={ncku:test:lemma}]{NCKU Lemma Body.}
+\InsertCorollary[label={ncku:test:corollary}]{NCKU Corollary Body.}
+\InsertProposition[label={ncku:test:proposition}]{NCKU Proposition Body.}
+\InsertConjecture[label={ncku:test:conjecture}]{NCKU Conjecture Body.}
+\InsertCriterion[label={ncku:test:criterion}]{NCKU Criterion Body.}
+\InsertAssertion[label={ncku:test:assertion}]{NCKU Assertion Body.}
+\InsertQuestion[label={ncku:test:question}]{NCKU Question Body.}
+\InsertHypothesis[label={ncku:test:hypothesis}]{NCKU Hypothesis Body.}
+\InsertTheorem[label={ncku:test:theorem-second}]{NCKU Theorem Body Two.}
+
+\InsertProof{NCKU Proof Body.}
+\InsertNote{NCKU Note Body.}
+\InsertAnnotation{NCKU Annotation Body.}
+\InsertClaim{NCKU Claim Body.}
+\InsertCase{NCKU Case Body.}
+\InsertAcknowledgment{NCKU Acknowledgment Body.}
+\InsertConclusion{NCKU Conclusion Body.}
+\InsertSummary{NCKU Summary Body.}
+
+\stepcounter{section}
+\InsertTheorem[label={ncku:test:theorem-reset}]{NCKU Theorem Reset Body.}
+
+References: \ref{ncku:test:definition}, \ref{ncku:test:theorem-first}, \ref{ncku:test:theorem-second}, \ref{ncku:test:theorem-reset}.
+Named reference: \nameref{ncku:test:theorem-first}.
+
+% Exercise every public setter route after rendering so getter mutation cannot
+% affect the established PDF contract above.
+\newcommand{\ExerciseTheoremFormatRoute}[1]{%
+  \SetTheoremFormat[#1]{ShowText = {Registry#1}}%
+  \typeout{NCKU-TEST-ROUTE-#1: \csname GetTheorem#1FormatShowText\endcsname}%
+}
+\ExerciseTheoremFormatRoute{Definition}
+\ExerciseTheoremFormatRoute{Condition}
+\ExerciseTheoremFormatRoute{Problem}
+\ExerciseTheoremFormatRoute{Example}
+\ExerciseTheoremFormatRoute{Theorem}
+\ExerciseTheoremFormatRoute{Lemma}
+\ExerciseTheoremFormatRoute{Corollary}
+\ExerciseTheoremFormatRoute{Proposition}
+\ExerciseTheoremFormatRoute{Conjecture}
+\ExerciseTheoremFormatRoute{Proof}
+\ExerciseTheoremFormatRoute{Note}
+\ExerciseTheoremFormatRoute{Annotation}
+\ExerciseTheoremFormatRoute{Claim}
+\ExerciseTheoremFormatRoute{Case}
+\ExerciseTheoremFormatRoute{Acknowledgment}
+\ExerciseTheoremFormatRoute{Conclusion}
+\ExerciseTheoremFormatRoute{Criterion}
+\ExerciseTheoremFormatRoute{Assertion}
+\ExerciseTheoremFormatRoute{Question}
+\ExerciseTheoremFormatRoute{Hypothesis}
+\ExerciseTheoremFormatRoute{Summary}
+
+\SetTheoremFormat[Unknown]{ShowText = {UnexpectedUnknownRoute}}
+\ifcsname GetTheoremUnknownFormatShowText\endcsname
+  \typeout{NCKU-TEST-UNKNOWN-ROUTE: FAIL}
+\else
+  \typeout{NCKU-TEST-UNKNOWN-ROUTE: no-op}
+\fi
+\SetTheoremFormat[]{ShowText = {UnexpectedEmptyRoute}}
+\ifcsname GetTheoremFormatShowText\endcsname
+  \typeout{NCKU-TEST-EMPTY-ROUTE: FAIL}
+\else
+  \typeout{NCKU-TEST-EMPTY-ROUTE: no-op}
+\fi
+
+% Exercise every registered counter target after the setter routes reset raw
+% defaults. Known targets resolve to an effective counter; unknown/empty targets
+% preserve the source value. The self-route must freeze rather than alias itself.
+\newcommand{\ExerciseTheoremCounterRoute}[2]{%
+  \SetTheoremFormat[#1]{FollowCounter = Section}%
+  \MappingTheoremCounter[#1]{#2}%
+  \typeout{NCKU-TEST-COUNTER-ROUTE-#2: #1/\csname GetTheorem#1FormatFollowCounter\endcsname}%
+}
+\ExerciseTheoremCounterRoute{Definition}{Definition}
+\ExerciseTheoremCounterRoute{Definition}{Condition}
+\ExerciseTheoremCounterRoute{Definition}{Problem}
+\ExerciseTheoremCounterRoute{Definition}{Example}
+\ExerciseTheoremCounterRoute{Definition}{Theorem}
+\ExerciseTheoremCounterRoute{Definition}{Lemma}
+\ExerciseTheoremCounterRoute{Definition}{Corollary}
+\ExerciseTheoremCounterRoute{Definition}{Proposition}
+\ExerciseTheoremCounterRoute{Definition}{Conjecture}
+\ExerciseTheoremCounterRoute{Definition}{Proof}
+\ExerciseTheoremCounterRoute{Definition}{Note}
+\ExerciseTheoremCounterRoute{Definition}{Annotation}
+\ExerciseTheoremCounterRoute{Definition}{Claim}
+\ExerciseTheoremCounterRoute{Definition}{Case}
+\ExerciseTheoremCounterRoute{Definition}{Acknowledgment}
+\ExerciseTheoremCounterRoute{Definition}{Conclusion}
+\ExerciseTheoremCounterRoute{Definition}{Criterion}
+\ExerciseTheoremCounterRoute{Definition}{Assertion}
+\ExerciseTheoremCounterRoute{Definition}{Question}
+\ExerciseTheoremCounterRoute{Definition}{Hypothesis}
+\ExerciseTheoremCounterRoute{Definition}{Summary}
+\ExerciseTheoremCounterRoute{Definition}{Section}
+
+\SetTheoremFormat[Definition]{FollowCounter = Section}
+\MappingTheoremCounter[Definition]{Unknown}
+\typeout{NCKU-TEST-COUNTER-UNKNOWN: \GetTheoremDefinitionFormatFollowCounter}
+\SetTheoremFormat[Definition]{FollowCounter = Section}
+\MappingTheoremCounter[Definition]{}
+\typeout{NCKU-TEST-COUNTER-EMPTY: \GetTheoremDefinitionFormatFollowCounter}
+
+\SetTheoremFormat[Definition]{FollowCounter = \empty}
+\SetTheoremFormat[Theorem]{FollowCounter = Definition}
+\SetTheoremFormat[Problem]{FollowCounter = Theorem}
+\MappingTheoremCounter[Problem]{Theorem}
+\typeout{NCKU-TEST-COUNTER-CHAIN: \GetTheoremProblemFormatFollowCounter}
+
+\typeout{NCKU-TEST-PASS: all 21 public theorem insertion helpers compiled}
+\end{document}

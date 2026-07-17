@@ -1,3 +1,33 @@
+#### v2.0.0.260717130231 [2026-07-17]
+
+本版本完成v2 major modernization：保留XeLaTeX、`thesis.tex`、`conf/conf.tex`、既有NCKU可見輸出及完整1.x public command surface，同時加入可維護的style-profile、migration及focused compatibility contracts。v1.8.2學生專案可透過v1 adapter直接在v2編譯，不需要重新命名既有helpers。
+
+- **Compatibility / Migration**:
+  1. 固定並機械驗證597個LaTeX／xparse declarations、65個literal `\def`-style declarations，以及23個deprecated command tombstones的名稱、signature和diagnostic contract。
+  2. 將18個v1.8.2 student-owned inputs以path、size及SHA-256固定；分開驗證unchanged entry/configuration path與active StudentMode正文／BibTeX dependency path。
+  3. 新增`MIGRATION-1.x-TO-2.x.md`、v1 compatibility adapter及exact-tree student ZIP gate；downloaded student package仍可直接執行`latexmk -xelatex thesis.tex`。
+
+- **Style Profiles / Policy**:
+  1. 將generic rendering state、NCKU policy及custom institution port分離成base、`ncku`及`custom` profiles；一次只載入一個selected profile。
+  2. NCKU profile保留現有封面、口試、民國年、degree wording及watermark policy；neutral/custom profile使用Gregorian dates，不依賴NCKU names、assets或setter overrides。
+  3. Committee renderer維持generic 2--9容量；NCKU profile依數值degree state分別限制Master 3--5及Doctoral 5--9。
+
+- **Helper Correctness / Internals**:
+  1. 完成21-type declarative theorem registry，同時保留所有v1 insertion／setter／initializer adapters；修正optional label visible leakage、stable `\nameref` metadata、forward/multi-hop counter resolution及cycle diagnostics。
+  2. 修正figure、multi-figure、subfigure及table captions在後續pgf parse／scope exit後的`\nameref` metadata，並抽出不改變輸出的共用framed-content wrapper。
+  3. 修正general／appendix numbering setup的temporary-state leakage及重複初始化累積問題；counter值保持dynamic。
+  4. 將deprecated tombstones集中到compatibility layer，保留exact diagnostics及`\stop` behavior，而不重新啟用comment-only legacy declarations。
+
+- **Dependencies / Validation**:
+  1. 移除12-file legacy `fp` runtime path，改用已載入的LaTeX programming layer；將21段month comparisons收斂成一個12-way branch，並明確載入xparse以支援public `G{...}` signatures。
+  2. Canonical NCKU teaching PDF保持271頁A4；profile extraction後完整文字、cover word coordinates、150-DPI raster及font inventory均與baseline一致。
+  3. `just test`／`just ci`涵蓋API scanner mutation probes、migration、student archive、profiles、theorems、floats、numbering、diagnostic budgets及release packages。
+
+- **Release / Distribution**:
+  1. Public custom assets維持兩個versioned packages：editable student ZIP及包含六份generated A4 PDFs與institutional disclaimer的examples ZIP。
+  2. Release workflow以immutable tag build一次、驗證後透過workflow artifact promotion到GitHub Release；manual dispatch只build、不publish。
+  3. 修正TeX Live 2026 container中Python 3.14 bytecode令post-test clean-worktree guard誤判的問題；只ignore標準`__pycache__`／`*.pyc`，不放寬release guard。
+
 #### v1.8.2.260715154703 [2026-07-15]
 
 本版本修正長期存在的Draft／浮水印預設錯誤及教學文件文字超出版面；保持XeLaTeX、既有public APIs和StudentMode正文內容相容。

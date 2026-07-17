@@ -1,0 +1,41 @@
+%
+% Deprecated v1 public-command compatibility tombstones.
+%
+% Keep every command literally declared throughout 2.x. These commands stopped
+% being supported before v2, but existing projects must continue to receive the
+% same migration diagnostic instead of an undefined-control-sequence failure.
+% Generic command modules should contain active mechanisms, not these adapters.
+%
+
+% Figure compatibility
+\newcommand{\InsertCenterImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
+\newcommand{\InsertImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
+\newcommand{\InsertMultiImages}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigures.}\stop}
+
+% Numbering compatibility
+\newcommand{\ChapterTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, ChapterTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\SectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, SectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\SubSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, SubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\SubSubSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, SubSubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\AppendixChapterTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, AppendixChapterTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\AppendixSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, AppendixSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\AppendixSubSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, AppendixSubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\AppendixSubSubSectionTitleNumFormat}{\errmessage{模版: 由v1.4.5開始, AppendixSubSubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+
+% Spacing and chapter compatibility
+\newcommand{\ThesisWroteInChi}{\errmessage{模版: 由v1.4.4開始, ThesisWroteInChi已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\ChapterTitleNumInChi}{\errmessage{模版: 由v1.4.1開始, ChapterTitleNumInChi已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\ChapterTitleInChi}{\errmessage{模版: 由v1.4.4開始, ChapterTitleInChi已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+\newcommand{\ChapterSectionTitleInChi}{\errmessage{模版: 由v1.4.4開始, ChapterSectionTitleInChi已不能再使用. 請參考最新版的conf.tex使用方式.}\stop}
+
+% Abstract compatibility
+\newcommand{\EndChiAbstract}{\errmessage{模版: 由v1.4.4開始, EndChiAbstract已不能再使用. 請改使用EndAbstractChi.}\stop}
+
+% Bibliography compatibility
+\newcommand{\SetChapterReferenceTitle}{\errmessage{模版: 由v1.4.6開始, SetChapterReferenceTitle已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+\newcommand{\ChapterReferenceTitleInChi}{\errmessage{模版: 由v1.4.6開始, ChapterReferenceTitleInChi已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+\newcommand{\ChapterReferenceTitleInEng}{\errmessage{模版: 由v1.4.6開始, ChapterReferenceTitleInEng已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+\newcommand{\BibStyleUseAbbrv}{\errmessage{模版: 由v1.4.6開始, BibStyleUseAbbrv已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+\newcommand{\BibStyleUsePlain}{\errmessage{模版: 由v1.4.6開始, BibStyleUsePlain已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+\newcommand{\BibStyleUseAlpha}{\errmessage{模版: 由v1.4.6開始, BibStyleUseAlpha已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}
+\newcommand{\BibStyleUseApacite}{\errmessage{模版: 由v1.4.6開始, BibStyleUseApacite已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}\stop}

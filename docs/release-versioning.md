@@ -37,7 +37,7 @@ The fourth numeric component makes the tag unique and chronologically sortable. 
 
 The release workflow has two stages:
 
-1. **Build** — a tag push or manual dispatch runs `just test`, runs `just release`, and uploads the verified files as a temporary workflow artifact.
+1. **Build** — a tag push or manual dispatch runs `just release`, whose declared `test` dependency executes the complete required gate once before release packaging, then uploads the verified files as a temporary workflow artifact.
 2. **Promote** — only a matching Git tag event downloads that exact workflow artifact and attaches it to a GitHub Release.
 
 A manual dispatch is build-only. It does not create a GitHub Release.
@@ -70,14 +70,20 @@ The examples package expands to one stable `ncku-thesis-template-latex-examples/
 The release system has three explicit layers:
 
 1. `scripts/release/*.tex` and `thesis/thesis.tex` define the document cases. Each case selects its own language, degree, committee-size, or cover behavior in TeX rather than relying on a maintainer to edit and restore `conf.tex` by hand.
-2. `just release` is the single local/CI orchestration command. It runs the required test gate, builds every case with XeLaTeX through `latexmk`, creates the student ZIP from `HEAD:thesis`, bundles the six verified PDFs plus a public README into the examples ZIP, and verifies both package allowlists. Loose PDFs remain build intermediates and are not promoted.
+2. `just release` is the single local/CI orchestration command. It runs the required test gate, builds every case with XeLaTeX through `latexmk`, creates the student ZIP from `HEAD:thesis`, verifies that its regular-file list exactly matches the complete tracked `HEAD:thesis` tree, bundles the six verified PDFs plus a public README into the examples ZIP, and verifies both package allowlists. The focused test gate also removes the packaged migration guide from a temporary copy and requires the exact-tree checker to fail. Loose PDFs remain build intermediates and are not promoted.
 3. `.github/workflows/release.yml` supplies the reproducible TeX environment and promotes only the workflow artifact produced by the successful build job. The workflow must not duplicate the case logic.
 
-Two GitHub Actions portability details are required:
+GitHub Actions portability details include:
 
-- the TeX container must mark `$GITHUB_WORKSPACE` as a Git safe directory before `git status` or `git archive`;
+- the TeX container must mark `$GITHUB_WORKSPACE` as a Git safe directory before `git status`, `git archive`, or `git ls-tree`;
+- archive checks that use `unzip -Z1` or mutate a negative fixture with `zip -d` must install the full Info-ZIP `unzip` and `zip` packages; BusyBox applets are not interface-equivalent;
 - values written to the runner's `$GITHUB_ENV` are not automatically visible inside `xu-cheng/texlive-action`; interpolate the resolved version into the action's `run` input and assert the exact host-side artifact paths before upload;
 - a promotion job without a checkout must set `GH_REPO=${{ github.repository }}` so `gh release` does not try to discover the repository from `.git`.
+- Python contract checkers import sibling modules under the TeX container's
+  Python runtime and can create `scripts/test/__pycache__/*.pyc`. Keep standard
+  Python bytecode ignored so the post-test clean-worktree release guard rejects
+  real source changes rather than generated interpreter cache; do not weaken or
+  remove that guard.
 
 The custom packages and GitHub's automatic source archives have different purposes:
 
@@ -85,7 +91,7 @@ The custom packages and GitHub's automatic source archives have different purpos
 - `ncku-thesis-template-latex-examples-<version>.zip` is a same-revision preview bundle containing the six generated and verified PDFs under one stable directory;
 - GitHub's automatic Source code archives are for contributors who need the full repository, CI, tests, scripts, and documentation.
 
-A release is not considered verified merely because the workflow is green. Download the public assets again, confirm the exact two-package allowlist, extract both ZIPs, compare every bundled example PDF with the verified build output, confirm that repository tooling and a redundant `thesis/` layer are absent from the student package, and compile the downloaded `thesis.tex` directly with XeLaTeX/`latexmk`.
+A release is not considered verified merely because the workflow is green. Download the public assets again, confirm the exact two-package allowlist, extract both ZIPs, compare every bundled example PDF with the verified build output, require the student ZIP file list to equal `HEAD:thesis` exactly (including the migration guide, v1 adapter, and all profile files), confirm that repository tooling and a redundant `thesis/` layer are absent, verify the pinned v1 student-owned files by SHA-256/size, and compile the downloaded `thesis.tex` directly with XeLaTeX/`latexmk`.
 
 If a newly published release fails this contract and has not been announced as stable, publish and verify a corrected immutable timestamp tag first, then remove the superseded release and tag. Do not move an existing tag to a different commit.
 

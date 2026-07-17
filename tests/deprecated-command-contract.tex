@@ -1,0 +1,65 @@
+% Focused runtime contract for v1 deprecated public-command tombstones.
+\input{./template/configure}
+
+\newcount\NCKUDeprecatedErrorCount
+\newcount\NCKUDeprecatedStopCount
+\NCKUDeprecatedErrorCount=0
+\NCKUDeprecatedStopCount=0
+
+\let\NCKUOriginalErrmessage\errmessage
+\let\NCKUOriginalStop\stop
+\def\NCKUCurrentCommand{unset}
+\def\NCKUExpectedMessage{}
+
+\long\def\errmessage#1{%
+  \advance\NCKUDeprecatedErrorCount by 1%
+  \def\NCKUActualMessage{#1}%
+  \ifx\NCKUActualMessage\NCKUExpectedMessage
+    \typeout{NCKU-DEPRECATED-ERROR-PASS: \NCKUCurrentCommand}%
+  \else
+    \NCKUOriginalErrmessage{Deprecated diagnostic changed for \NCKUCurrentCommand}%
+  \fi
+}
+\def\stop{%
+  \advance\NCKUDeprecatedStopCount by 1%
+  \typeout{NCKU-DEPRECATED-STOP-PASS: \NCKUCurrentCommand}%
+}
+
+\long\def\NCKUCheckDeprecated#1#2#3{%
+  \def\NCKUCurrentCommand{#2}%
+  \def\NCKUExpectedMessage{#3}%
+  #1%
+}
+
+\NCKUCheckDeprecated{\EndChiAbstract}{EndChiAbstract}{模版: 由v1.4.4開始, EndChiAbstract已不能再使用. 請改使用EndAbstractChi.}
+\NCKUCheckDeprecated{\SetChapterReferenceTitle}{SetChapterReferenceTitle}{模版: 由v1.4.6開始, SetChapterReferenceTitle已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}
+\NCKUCheckDeprecated{\ChapterReferenceTitleInChi}{ChapterReferenceTitleInChi}{模版: 由v1.4.6開始, ChapterReferenceTitleInChi已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}
+\NCKUCheckDeprecated{\ChapterReferenceTitleInEng}{ChapterReferenceTitleInEng}{模版: 由v1.4.6開始, ChapterReferenceTitleInEng已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}
+\NCKUCheckDeprecated{\BibStyleUseAbbrv}{BibStyleUseAbbrv}{模版: 由v1.4.6開始, BibStyleUseAbbrv已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}
+\NCKUCheckDeprecated{\BibStyleUsePlain}{BibStyleUsePlain}{模版: 由v1.4.6開始, BibStyleUsePlain已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}
+\NCKUCheckDeprecated{\BibStyleUseAlpha}{BibStyleUseAlpha}{模版: 由v1.4.6開始, BibStyleUseAlpha已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}
+\NCKUCheckDeprecated{\BibStyleUseApacite}{BibStyleUseApacite}{模版: 由v1.4.6開始, BibStyleUseApacite已不能再使用. 請參考最新版的conf.tex中SetupReference的使用方式.}
+\NCKUCheckDeprecated{\ChapterTitleNumInChi}{ChapterTitleNumInChi}{模版: 由v1.4.1開始, ChapterTitleNumInChi已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\ChapterTitleInChi}{ChapterTitleInChi}{模版: 由v1.4.4開始, ChapterTitleInChi已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\ChapterSectionTitleInChi}{ChapterSectionTitleInChi}{模版: 由v1.4.4開始, ChapterSectionTitleInChi已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\InsertCenterImage}{InsertCenterImage}{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}
+\NCKUCheckDeprecated{\InsertImage}{InsertImage}{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}
+\NCKUCheckDeprecated{\InsertMultiImages}{InsertMultiImages}{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigures.}
+\NCKUCheckDeprecated{\ChapterTitleNumFormat}{ChapterTitleNumFormat}{模版: 由v1.4.5開始, ChapterTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\SectionTitleNumFormat}{SectionTitleNumFormat}{模版: 由v1.4.5開始, SectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\SubSectionTitleNumFormat}{SubSectionTitleNumFormat}{模版: 由v1.4.5開始, SubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\SubSubSectionTitleNumFormat}{SubSubSectionTitleNumFormat}{模版: 由v1.4.5開始, SubSubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\AppendixChapterTitleNumFormat}{AppendixChapterTitleNumFormat}{模版: 由v1.4.5開始, AppendixChapterTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\AppendixSectionTitleNumFormat}{AppendixSectionTitleNumFormat}{模版: 由v1.4.5開始, AppendixSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\AppendixSubSectionTitleNumFormat}{AppendixSubSectionTitleNumFormat}{模版: 由v1.4.5開始, AppendixSubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\AppendixSubSubSectionTitleNumFormat}{AppendixSubSubSectionTitleNumFormat}{模版: 由v1.4.5開始, AppendixSubSubSectionTitleNumFormat已不能再使用. 請參考最新版的conf.tex使用方式.}
+\NCKUCheckDeprecated{\ThesisWroteInChi}{ThesisWroteInChi}{模版: 由v1.4.4開始, ThesisWroteInChi已不能再使用. 請參考最新版的conf.tex使用方式.}
+
+\ifnum\NCKUDeprecatedErrorCount=23\else
+  \NCKUOriginalErrmessage{Expected 23 deprecated error calls}
+\fi
+\ifnum\NCKUDeprecatedStopCount=23\else
+  \NCKUOriginalErrmessage{Expected 23 deprecated stop calls}
+\fi
+\typeout{NCKU-TEST-PASS: deprecated command contract}
+\NCKUOriginalStop

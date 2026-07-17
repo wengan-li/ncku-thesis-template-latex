@@ -50,7 +50,9 @@
 
 % Some base packages
 \usepackage{geometry}
-\usepackage{fp}
+% Public helpers retain xparse-only G arguments throughout the v2 compatibility
+% window; declare that dependency instead of relying on fontspec to load it.
+\usepackage{xparse}
 \usepackage{ifthen}
 \usepackage{pgfkeys}
 \usepackage{amsmath}

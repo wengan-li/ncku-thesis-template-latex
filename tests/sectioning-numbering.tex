@@ -8,15 +8,15 @@
 \subsection*{NCKU Star Subsection Sentinel}
 \subsubsection*{NCKU Star Subsubsection Sentinel}
 
-\chapter{NCKU Numbered Chapter Sentinel}\label{ncku:test:chapter}
-\section{NCKU Numbered Section Sentinel}\label{ncku:test:section}
-\subsection{NCKU Numbered Subsection Sentinel}\label{ncku:test:subsection}
-\subsubsection{NCKU Numbered Subsubsection Sentinel}\label{ncku:test:subsubsection}
+\StartChapter{NCKU Numbered Chapter Sentinel}{ncku:test:chapter}
+\StartSection{NCKU Numbered Section Sentinel}{ncku:test:section}
+\StartSubSection{NCKU Numbered Subsection Sentinel}{ncku:test:subsection}
+\StartSubSubSection{NCKU Numbered Subsubsection Sentinel}{ncku:test:subsubsection}
 
-Chapter reference: \ref{ncku:test:chapter}.
-Section reference: \ref{ncku:test:section}.
-Subsection reference: \ref{ncku:test:subsection}.
-Subsubsection reference: \ref{ncku:test:subsubsection}.
+Chapter reference: \RefTo{ncku:test:chapter}.
+Section reference: \RefTo{ncku:test:section}.
+Subsection reference: \RefTo{ncku:test:subsection}.
+Subsubsection reference: \RefTo{ncku:test:subsubsection}.
 
-\typeout{NCKU-TEST-PASS: sectioning headings and numbered references compile}
+\typeout{NCKU-TEST-PASS: Start section helpers preserve exact references}
 \end{document}

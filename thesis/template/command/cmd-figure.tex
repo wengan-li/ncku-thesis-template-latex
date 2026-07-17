@@ -35,7 +35,8 @@
 
 \DeclareDocumentCommand{\SetFigureCaption}{+m}
 {
-  \ifthenelse{\equal{#1}{\empty}}{}{\IfNoValueF{#1}{\caption{#1}}}
+  \ifthenelse{\equal{#1}{\empty}}{}%
+    {\IfNoValueF{#1}{\caption{#1}\NCKUPrivateFreezeCurrentLabelName{#1}}}
 } % End of \DeclareDocumentCommand{}
 
 \DeclareDocumentCommand{\SetImageLabel}{+m}
@@ -74,18 +75,13 @@
   \pgfkeys{/InsertFigure, default, #1}%
   %
   \begin{figure}[H]%
-  \begin{minipage}[c]{\textwidth}%
-  \begin{mdframed}[skipabove=0pt, skipbelow=0pt, leftmargin=0pt, rightmargin=0pt,
-    innerleftmargin=0pt, innerrightmargin=0pt, innertopmargin=0pt,
-    innerbottommargin=0pt, linewidth=0pt, apptotikzsetting={%
-    \tikzset{mdfbackground/.append style={opacity=\TmpValueOpacity}}}]%
+  \NCKUPrivateDisplayFramedFloatContent{\TmpValueOpacity}{%
     \makebox[\textwidth]{%
       \includegraphics[
         scale=\TmpValueScale,
         angle=\TmpValueAngle]{#2}%
     }%
-  \end{mdframed}%
-  \end{minipage}%
+  }%
   % Set Caption and Label
   \SetFigureCaptionAndLabel{\TmpValueCaption}{\TmpValueLabel}
   \end{figure}%
@@ -103,12 +99,6 @@
   \renewcommand{\ValueFigureNameCustom}{#1}}
 
 \UseFigureNameCustom % Default
-
-% -----------------------------------------------------------------
-
-% 過去的API, 以 Error提醒不能再使用
-\newcommand{\InsertCenterImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
-\newcommand{\InsertImage}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigure.}\stop}
 
 % Default style
 \newcommand{\UseFigureCaptionDefaultStyle}

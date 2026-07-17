@@ -44,6 +44,71 @@
 %
 % ------------------------------------------------
 
+\RegisterTemplateStyle{ncku}
+
+% NCKU cover/oral text policy. Renderers consume these profile tokens.
+\SetCoverStudentChiBothText{學生}
+\SetCoverStudentChiText{研究生}
+\SetCoverStudentEngText{Student}
+\SetCoverAdvisorChiText{指導老師}
+\SetCoverAdvisorEngText{Advisor}
+\SetCoverCoAdvisorChiText{共同指導}
+\SetCoverCoAdvisorEngText{Co-Advisor}
+\SetCoverAdvisorChiSuffix{博士}
+\SetCoverAdvisorEngPrefix{Dr.}
+\SetInstitutionLocationEng{Tainan, Taiwan, R.O.C.}
+\SetCoverDateChiPrefix{中華民國}
+\SetOralApprovalChiText{本論文業經審查及口試合格特此證明}
+\SetOralApprovedByEngText{Approved by}
+\SetOralCommitteeChiText{論文考試委員}
+\SetOralAdvisorChiText{指導教授}
+\SetOralChairChiText{系(所)主管}
+\SetOralChairEngText{Chairman}
+\SetOralDateChiPrefix{中華民國}
+\SetOralAuthorByEngText{by}
+\SetOralMasterSubmissionEngText{%
+  A thesis submitted to the graduate division in partial fulfillment\\%
+  of the requirements for the degree of Master of Science in%
+}
+\SetOralDoctoralSubmissionEngText{%
+  Submitted in partial fulfillment of the requirements\\%
+  for the degree of Doctor of Philosophy in%
+}
+\SetCoverMasterDateEng{\GetThesisMonthInEng \thinspace \GetThesisYear}
+\SetCoverDoctoralDateEng{%
+  \GetOralEngDay \thinspace \thinspace
+  \GetThesisMonthInEng \thinspace \thinspace \GetThesisYear%
+}
+
+% NCKU degree-examination committee ranges. Keep the generic renderer capable
+% of 2--9 signatures; this profile owns the degree-specific policy.
+\renewcommand{\ApplyCommitteeSizePolicy}[1]{%
+  \ifthenelse{\equal{\GetFlagDegreeType}{\ValueDegreeMaster}}%
+    {%
+      \ifthenelse{#1 < 3}
+        {\renewcommand{\CommitteeSize}{3}}
+        {\ifthenelse{#1 > 5}
+          {\renewcommand{\CommitteeSize}{5}}
+          {\renewcommand{\CommitteeSize}{#1}}}%
+    }%
+    {%
+      \ifthenelse{#1 < 5}
+        {\renewcommand{\CommitteeSize}{5}}
+        {\ifthenelse{#1 > 9}
+          {\renewcommand{\CommitteeSize}{9}}
+          {\renewcommand{\CommitteeSize}{#1}}}%
+    }%
+}
+
+% Preserve the historical NCKU Chinese-year rendering exactly.
+\renewcommand{\ApplyOralChiYearPolicy}[1]{%
+  \renewcommand{\OralChiYear}{\OralTaiwanYearResult}%
+}
+\renewcommand{\GetCoverMasterYearChi}{\GetThesisYearInTaiwanYear}
+\renewcommand{\GetCoverMasterYearNumInChi}{\zhnumber{\GetThesisYearInTaiwanYear}}
+\renewcommand{\GetCoverDoctoralYearChi}{\GetOralYearInTaiwanYear}
+\renewcommand{\GetCoverDoctoralYearNumInChi}{\GetOralYearInTaiwanYearNumInChi}
+
 % 頁面邊界
 
 % 國立成功大學各系(所)博碩士撰寫論文須知105.12.15 105學年度第2次教務會議修正
@@ -109,24 +174,13 @@
 
 % ------------------------------------------------
 
-% 因每個學校所要求的內容不一樣, 故overwrite一些內容或APIs.
-
-% 封面日期是統一使用學位考試合格(口試合格單)單為主要參考日期 (年、月(學位考試通過日期)).
-\renewcommand{\SetOralDate}[3]
+% NCKU uses the oral qualification date as the authoritative cover date.
+% Customize policy hooks; public setter signatures and storage remain generic.
+\renewcommand{\ApplyOralDatePolicy}[3]
 {%
-  \SetOralChiDate{#1}{#2}{#3}%
-  \SetOralEngDate{#1}{#2}{#3}%
-  %
   \SetThesisTaiwanYear{#1}%
   \renewcommand{\ThesisYear}{#1}%
   \renewcommand{\ThesisMonth}{#2}%
 } % End of \renewcommand{}
 
-% NCKU uses the oral date as the authoritative cover date. Keep this
-% two-argument command as a compatibility no-op without consuming the next token.
-\renewcommand{\SetCoverDate}[2]
-{%
-%  \SetThesisTaiwanYear{\GetOralEngYear}
-%  \renewcommand{\ThesisYear}{\GetOralEngYear}
-%  \renewcommand{\ThesisMonth}{\GetOralEngMonth}
-} % End of \renewcommand{}
+\renewcommand{\ApplyCoverDatePolicy}[2]{}

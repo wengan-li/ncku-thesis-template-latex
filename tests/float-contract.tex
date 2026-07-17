@@ -1,0 +1,105 @@
+% Focused figure/multi-figure/table compatibility contract.
+\input{./template/configure}
+
+\begin{document}
+\stepcounter{chapter}
+\section*{Float Contract}
+
+\InsertFigure
+  [scale=2.0,
+    angle=5,
+    caption={Float Single Caption},
+    label={ncku:float:single},
+    pos={tbp},
+    align={left},
+    opacity=0.7]
+  {./example/how-to/write/figure/pic/CC-BY-NC.png}
+\typeout{NCKU-FLOAT-SINGLE-STATE: \TmpValueScale/\TmpValueAngle/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueAlign/\TmpValueOpacity}
+
+\InsertFigures
+  [perrow=3,
+    caption={Float Multi Caption},
+    label={ncku:float:multi},
+    align={right},
+    opacity=0.6]
+  {
+    [scale=1.5,
+      angle=0,
+      caption={Float Sub A},
+      label={ncku:float:sub-a},
+      align={sub-left}]
+    {./example/how-to/write/figure/pic/CC-BY-NC.png}
+  }
+  {
+    [scale=1.5,
+      angle=180,
+      caption={Float Sub B},
+      label={ncku:float:sub-b},
+      align={sub-right}]
+    {./example/how-to/write/figure/pic/CC-BY-NC-ND.png}
+  }
+  {
+    [scale=1.25,
+      angle=0,
+      caption={Float Sub C},
+      label={ncku:float:sub-c},
+      align={sub-center}]
+    {./example/how-to/write/figure/pic/CC-BY-NC.png}
+  }
+\typeout{NCKU-FLOAT-MULTI-STATE: \TmpMIValueImagePerRow/\TmpMIValueCaption/\TmpMIValueLabel/\TmpMIValueAlign/\TmpValueOpacity}
+
+\InsertTable
+  [scale=0.0,
+    caption={Float Table Top Caption},
+    label={ncku:float:table-top},
+    pos=top,
+    tabcolsep=3pt,
+    arraystretch=1.2,
+    opacity=0.5]
+  {
+    \begin{tabular}{cc}
+      TOP-A & TOP-B \\
+      TOP-C & TOP-D
+    \end{tabular}
+  }
+\typeout{NCKU-FLOAT-TABLE-TOP-STATE: \TmpValueScale/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueTabColSep/\TmpValueArrayStretch/\TmpValueOpacity}
+
+\InsertTable
+  [scale=0.4,
+    caption={Float Table Bottom Caption},
+    label={ncku:float:table-bottom},
+    pos=bottom,
+    tabcolsep=2pt,
+    arraystretch=0.8,
+    opacity=0.3]
+  {
+    \begin{tabular}{ccc}
+      BOTTOM-A & BOTTOM-B & BOTTOM-C \\
+      BOTTOM-D & BOTTOM-E & BOTTOM-F
+    \end{tabular}
+  }
+\typeout{NCKU-FLOAT-TABLE-BOTTOM-STATE: \TmpValueScale/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueTabColSep/\TmpValueArrayStretch/\TmpValueOpacity}
+
+\InsertTable
+  [nomtitle={Float Table Star Title},
+    label={ncku:float:table-star},
+    pos=top,
+    opacity=0.2]
+  {
+    \begin{tabular}{cc}
+      STAR-A & STAR-B
+    \end{tabular}
+  }
+\typeout{NCKU-FLOAT-TABLE-STAR-STATE: \TmpValueScale/\TmpValueNomTitle/\TmpValueLabel/\TmpValuePosition/\TmpValueOpacity}
+
+References: \ref{ncku:float:single}, \ref{ncku:float:multi},
+\ref{ncku:float:sub-a}, \ref{ncku:float:sub-b}, \ref{ncku:float:sub-c},
+\ref{ncku:float:table-top}, \ref{ncku:float:table-bottom}.
+
+Names: \nameref{ncku:float:single}; \nameref{ncku:float:multi};
+\nameref{ncku:float:sub-a}; \nameref{ncku:float:sub-b};
+\nameref{ncku:float:sub-c}; \nameref{ncku:float:table-top};
+\nameref{ncku:float:table-bottom}; \nameref{ncku:float:table-star}.
+
+\typeout{NCKU-TEST-PASS: focused float contract compiled}
+\end{document}

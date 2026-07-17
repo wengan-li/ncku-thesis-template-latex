@@ -22,24 +22,10 @@
 
 % ----------------------------------------------------------------------------
 
-% 學校圖案版的watermark
-% 預設使用NCKU的浮水印
-\newcommand{\VarWatermaskTextStyle}{%
-  \vfill%
-  \centering%
-  \makebox(0,0){\rotatebox{45}{\textcolor[gray]{0.75}%
-    {\fontsize{2.0cm}{2.0cm}\selectfont{\GetUniversityChiName}}}}%
-  \vfill%
-} % End of \newcommand{}
-
-% 學校文字版的watermark
-% 預設使用NCKU的浮水印
-\newcommand{\VarWatermaskFigureStyle}{%
-  \vfill%
-  \centering%
-  \includegraphics[]{./template/style/ncku/watermark-20160509_v2-a4.pdf}%
-  \vfill%
-} % End of \newcommand{}
+% Generic watermark storage is institution-neutral. The active profile owns
+% any text policy or figure asset and fills these variables explicitly.
+\newcommand{\VarWatermaskTextStyle}{}
+\newcommand{\VarWatermaskFigureStyle}{}
 
 % Prodive re-define APIs
 \newcommand{\SetWatermaskTextStyle}[1]{%

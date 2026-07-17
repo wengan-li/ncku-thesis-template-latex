@@ -20,13 +20,17 @@ Read only the focused sources needed for the task:
 
 1. [`AGENTS.md`](../../../AGENTS.md) — canonical project rules and boundaries.
 2. [`justfile`](../../../justfile) — canonical maintainer command surface.
-3. [`docs/source-optimization-review.md`](../../../docs/source-optimization-review.md)
-   — prioritized modernization, performance, and CI decisions.
-4. [`docs/release-versioning.md`](../../../docs/release-versioning.md) — release
+3. [`docs/v2-modernization.md`](../../../docs/v2-modernization.md) — active v2
+   intent, expectations, evidence, and progress.
+4. [`docs/v2-public-api-compatibility.md`](../../../docs/v2-public-api-compatibility.md)
+   — 1.x helper compatibility policy and machine-checked baseline.
+5. [`docs/source-optimization-review.md`](../../../docs/source-optimization-review.md)
+   — prioritized modernization, performance, and CI evidence.
+6. [`docs/release-versioning.md`](../../../docs/release-versioning.md) — release
    version, packaging, promotion, and public-verification contract.
-5. [`docs/sample-repository-migration.md`](../../../docs/sample-repository-migration.md)
+7. [`docs/sample-repository-migration.md`](../../../docs/sample-repository-migration.md)
    — generated-example provenance and migration record.
-6. [`docs/overleaf-distribution.md`](../../../docs/overleaf-distribution.md) —
+8. [`docs/overleaf-distribution.md`](../../../docs/overleaf-distribution.md) —
    unofficial-template policy, import package limits, and publication blockers.
 
 Inspect current source and Git state before trusting historical notes. When a
@@ -58,13 +62,64 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 
 ## Compatibility Boundary
 
-- XeLaTeX remains the supported v1.8 engine; do not silently migrate engines.
-- Preserve `thesis.tex`, `conf/conf.tex`, public commands, and visible layout
-  unless a focused fixture and authoritative evidence justify a change.
+- XeLaTeX remains the supported v2 engine; do not silently migrate engines.
+- Preserve `thesis.tex`, `conf/conf.tex`, every entry in
+  `tests/v1-public-api.json`, and the visible NCKU layout unless a focused
+  fixture and authoritative evidence justify a documented correction.
+- Keep `tests/v1-project-migration.json` passing. It pins the v1.8.2
+  student-owned inputs byte-for-byte; `just test` separately proves the unchanged
+  entry/configuration path and active StudentMode content/BibTeX dependencies.
+- Keep generic command/renderer layers free of NCKU assets, Taiwan-year policy,
+  and institution-specific degree-submission wording. The selected profile owns
+  these values, while Master/Doctoral branching follows numeric degree state
+  rather than localized display strings. Cover date formats are profile tokens:
+  generic/custom output must not borrow an oral day that `\SetCoverDate` does
+  not own; an institution profile may inject that policy explicitly.
+- Keep committee renderer capacity separate from institution rules.
+  `\SetCommitteeSize` delegates to the selected profile's policy hook; NCKU
+  clamps Master to 3--5 and Doctoral to 5--9, while neutral/custom retains 2--9.
+- Keep student data in `conf/` and institution-level style ports under
+  `template/style/`; never introduce `conf/style.tex`.
 - Preserve direct XeLaTeX and Overleaf compatibility; `just` is maintainer
   orchestration, not a student requirement.
 - Keep the full teaching document as integration coverage and add focused
   fixtures before changing output-sensitive macros.
+- Keep `tests/theorem-contract.tex` in the test gate before consolidating theorem
+  internals. Its label option must create an auxiliary label without visible key
+  leakage, and titled labels must freeze nameref metadata before temporary pgf
+  key state is reused. Introduce registry behavior in bounded slices: first let
+  one private ordered type list drive aggregate initialization and setter
+  dispatch while preserving every per-type public wrapper, initializer, key
+  family, style, and counter implementation. Preserve unknown-type no-op
+  behavior explicitly and cover every registered route plus an unknown sentinel.
+  The completed registry owns type order, style/numbering policy, default
+  metadata, key families, membership, aggregate initialization, and default
+  application. Keep every v1 insertion/initializer declaration literal as a
+  compatibility adapter. Resolve forward and multi-hop counter chains to a
+  frozen terminal value, including an existing non-registry LaTeX counter,
+  before choosing `\newtheorem`; optional types with a
+  configured parent become numbered, and cycles must fail with the package
+  diagnostic rather than recursive overflow. Keep both theorem fixtures and the
+  negative cycle fixture in the gate. Generic initializer scratch values must be
+  frozen into each environment declaration so headings cannot leak from the
+  final registry row. Keep the 13 numbered-counter getter declarations literal:
+  the v1 source manifest historically discovered them through repeated
+  `\renewcommand` branches even though registry-owned keys now populate values.
+- Float compatibility: caption text stored in pgf temporaries must be frozen
+  into `\@currentlabelname` after `\caption`/`\caption*` and before `\label`.
+  Test `\nameref` after a later key parse and after subfigure scope exit, and
+  require literal caption text rather than temporary macros in the auxiliary
+  file. Extract only the exact minipage/mdframed/opacity wrapper shared by
+  figure, multi-figure, and table paths; keep `[H]` and no-op compatibility
+  placement/alignment keys unchanged.
+- Numbering compatibility: freeze parsed title prefixes, separators, and counter
+  names into each format getter, but keep the counter formatter/value dynamic.
+  Exercise all general/appendix title and F/T/E paths after later setup calls and
+  counter mutations, and require repeated setup to be idempotent.
+- Source-manifest cleanup: remove `comment`-environment blocks only after the
+  scanner strips them, the runtime baseline is corrected, and every comment-only
+  or overlapping declaration is retained in the separate audit artifact; compare
+  names and signatures.
 - Do not claim tagged PDF or PDF/UA compliance from metadata alone.
 - Current university and department requirements override template guidance.
 
@@ -94,9 +149,17 @@ ncku-thesis-template-latex-<version>.zip
 ncku-thesis-template-latex-examples-<version>.zip
 ```
 
-The student archive extracts to stable `ncku-thesis-template-latex/`. The
-examples archive extracts to stable `ncku-thesis-template-latex-examples/` and
-contains exactly:
+The student archive extracts to stable `ncku-thesis-template-latex/`; its regular
+files must exactly equal the tracked `HEAD:thesis` tree, including the migration
+guide, v1 adapter, and base/NCKU/custom profiles. Keep a focused negative test
+that deletes one required migration file and proves the archive checker fails.
+When this gate runs inside `xu-cheng/texlive-action`, configure
+`$GITHUB_WORKSPACE` as a Git safe directory before `git archive`/`git ls-tree`
+and install full Info-ZIP `unzip`/`zip`; BusyBox `unzip` does not support
+`unzip -Z1`, and the negative mutation requires `zip -d`. A local macOS pass
+is not sufficient evidence for this container-specific path.
+The examples archive extracts to stable `ncku-thesis-template-latex-examples/`
+and contains exactly:
 
 ```text
 README.md
@@ -121,6 +184,7 @@ read-back, byte-comparison, and exact-allowlist gates.
 For source or build changes, run at minimum:
 
 ```bash
+python3 scripts/test/check-v1-project-migration.py
 just test
 just ci
 git diff --check
@@ -139,6 +203,24 @@ pdftotext build/thesis.pdf -
 After pushing, verify the exact GitHub Actions run. After publishing or changing
 Release assets, download them from their public URLs and verify the public state;
 a local or workflow artifact alone is insufficient.
+
+## Development Branch and Hosted Test Gate
+
+The Test workflow push filter covers `main` and `feat/**`. Use the `feat/**`
+namespace for development branches (for example, `feat/v2.x`) so every pushed
+update automatically enters the required hosted test gate. A bare
+version-shaped branch such as `v2.x` does not match that filter.
+
+After every feature-branch push:
+
+1. find the Test run whose `headSha` exactly matches the pushed commit;
+2. wait for that run to complete successfully;
+3. inspect annotations and the expected test artifact when relevant;
+4. call the update hosted-tested only after those checks pass.
+
+If no run appears, inspect the workflow branch trigger before treating the push
+as tested. A successful run for an older SHA is not evidence for the latest
+update.
 
 For GitHub Actions dependency maintenance, enumerate every repository-owned
 `uses:` reference across all workflow files and check each action's official
@@ -159,5 +241,8 @@ are gone. Manual Release dispatch must not promote a GitHub Release.
 - Publishing loose example PDFs in addition to the examples ZIP.
 - Using `legacy` in a public filename when `generated` plus a clear package
   notice communicates the institutional-document boundary more accurately.
+- Letting imported Python test modules leave unignored `__pycache__`/`*.pyc`
+  files. The release recipe intentionally checks for a clean worktree after its
+  test dependency; ignore interpreter bytecode instead of weakening that guard.
 - Using `pdftotext ... | grep -q` under `pipefail`; write text to a file first to
   avoid producer SIGPIPE failures in Alpine CI.

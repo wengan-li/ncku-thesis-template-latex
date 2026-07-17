@@ -57,26 +57,20 @@
   \pgfkeys{/InsertFigures, default, #1}%
   %
   \begin{figure}[H]%
-  \begin{minipage}[c]{\textwidth}%
-  \begin{mdframed}[skipabove=0pt, skipbelow=0pt, leftmargin=0pt, rightmargin=0pt,
-    innerleftmargin=0pt, innerrightmargin=0pt, innertopmargin=0pt,
-    innerbottommargin=0pt, linewidth=0pt, apptotikzsetting={%
-    \tikzset{mdfbackground/.append style={opacity=\TmpValueOpacity}}}]%
-      \if \TmpMIValueImagePerRow 1
-        \InsertFiguresOnePerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
-      \fi
-      \if \TmpMIValueImagePerRow 2
-        \InsertFiguresTwoPerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
-      \fi
-      \if \TmpMIValueImagePerRow 3
-        \InsertFiguresThreePerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
-      \fi
-      \if \TmpMIValueImagePerRow 4
-        \InsertFiguresFourPerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
-      \fi
-      %
-  \end{mdframed}%
-  \end{minipage}%
+  \NCKUPrivateDisplayFramedFloatContent{\TmpValueOpacity}{%
+    \if \TmpMIValueImagePerRow 1
+      \InsertFiguresOnePerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
+    \fi
+    \if \TmpMIValueImagePerRow 2
+      \InsertFiguresTwoPerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
+    \fi
+    \if \TmpMIValueImagePerRow 3
+      \InsertFiguresThreePerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
+    \fi
+    \if \TmpMIValueImagePerRow 4
+      \InsertFiguresFourPerRow{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
+    \fi
+  }%
   % Set Caption and Label
   \SetFigureCaptionAndLabel{\TmpMIValueCaption}{\TmpMIValueLabel}
   \end{figure}%
@@ -361,10 +355,5 @@
     angle=\TmpMISubValueAngle]{#2}
   %
 } % End of \newcommand{}
-
-% ----------------------------------------------------------------------------
-
-% 過去的API, 以 Error提醒不能再使用
-\newcommand{\InsertMultiImages}{\errmessage{模版: 由v1.4.1開始, InsertCenterImage已不能再使用, 請改使用InsertFigures.}\stop}
 
 % -----------------------------------------------------------------

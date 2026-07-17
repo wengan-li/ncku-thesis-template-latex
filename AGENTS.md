@@ -12,18 +12,25 @@ Repository maintenance skill: `.agents/skills/repo-maintenance/SKILL.md`
 - It is not an officially endorsed NCKU software project.
 - Current department and university rules override template guidance.
 - Preserve existing `thesis.tex`, `conf/conf.tex`, public commands, and visible layout unless a verified bug or official rule requires a documented change.
-- XeLaTeX remains the supported engine for this maintenance line.
+- XeLaTeX remains the supported engine for the 2.x line.
 
-## Maintenance outcome
+## V2 modernization outcome
 
-The `feat/v1.8-maintenance` branch prepares a bounded v1.8 release that:
+The `feat/v2.x` branch is the only planned development branch after v1.8. It
+skips a separate v1.9 release and delivers a compatibility-preserving v2
+architecture that:
 
-1. keeps the current author workflow compatible;
-2. provides one clean, repeatable `just`-based build and test interface;
-3. fixes verified build/code/content defects without a v2 redesign;
-4. generates current sample PDFs from the same tagged source used for release;
-5. replaces the manually maintained `ncku-thesis-template-latex-sample` repository with release assets only after its history and legacy artifacts are safely preserved;
-6. uses agent review plus deterministic local/CI checks before release.
+1. keeps the visible NCKU layout and top-level student project structure;
+2. preserves every explicitly declared v1 command/environment throughout 2.x;
+3. fixes proven helper defects with focused regression fixtures;
+4. separates generic mechanisms from NCKU policy and institutional data;
+5. restores the v1.5.0 non-NCKU customization boundary under
+   `template/style/`, not `conf/`;
+6. ships documented and tested 1.x-to-2.x migration steps;
+7. keeps direct XeLaTeX and Overleaf builds authoritative.
+
+Implement this outcome as small validated commits. A v2 version line does not
+authorize a one-shot rewrite or an unverified visual redesign.
 
 ## Canonical commands
 
@@ -99,8 +106,14 @@ Archiving is safer than deletion. If deletion remains the explicit owner decisio
 ## Compatibility and policy boundaries
 
 - Do not silently switch to LuaLaTeX.
-- Do not replace the public configuration API during v1.8 maintenance.
-- Do not migrate bibliography systems in this slice.
+- Keep `tests/v1-public-api.json` passing; old commands may delegate to new
+  internals, but their names and argument shapes remain available throughout
+  2.x.
+- Correct proven bugs rather than preserving them; document behavior changes in
+  `thesis/MIGRATION-1.x-TO-2.x.md`.
+- Keep `conf/` for student thesis data. Institution-level ports and style
+  profiles remain under `template/style/`.
+- Do not migrate bibliography systems as part of the v2 profile extraction.
 - Do not claim tagged PDF or PDF/UA compliance; current output is untagged.
 - The ETDS upload path should not add internal watermark, DOI overlay, encryption, or security when current official guidance says the school system applies required processing.
 - Prefer inserting the school-system defense certificate as an external file; keep generated certificate templates explicitly legacy/example only.

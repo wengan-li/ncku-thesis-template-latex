@@ -66,21 +66,7 @@ while IFS= read -r log; do
   ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "$log"
 done < <(find "$asset_dir" -maxdepth 1 -name '*.log' -type f -print)
 
-student_entries=$(unzip -Z1 "${asset_dir}/${student_zip}")
-test -n "$student_entries"
-grep -qx 'ncku-thesis-template-latex/README.md' <<< "$student_entries"
-grep -qx 'ncku-thesis-template-latex/thesis.tex' <<< "$student_entries"
-grep -qx 'ncku-thesis-template-latex/conf/conf.tex' <<< "$student_entries"
-grep -qx 'ncku-thesis-template-latex/example/abstract/extended.tex' <<< "$student_entries"
-grep -qx 'ncku-thesis-template-latex/template/configure.tex' <<< "$student_entries"
-if grep -Eq '^ncku-thesis-template-latex/(justfile|latexmkrc|tests/|thesis/)' <<< "$student_entries"; then
-  printf 'student ZIP contains repository tooling or a redundant thesis/ layer\n' >&2
-  exit 1
-fi
-if grep -qv '^ncku-thesis-template-latex/' <<< "$student_entries"; then
-  printf 'student ZIP contains a path outside the project folder\n' >&2
-  exit 1
-fi
+scripts/release/verify-student-archive.sh "${asset_dir}/${student_zip}"
 
 expected_example_entries=$(printf '%s\n' \
   "${package_root}/README.md" \
