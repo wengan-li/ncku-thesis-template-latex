@@ -13,7 +13,26 @@ The large document selected by `\ExampleMode` is the complete teaching example. 
 
 ## Migrating from 1.x
 
-V2 keeps the complete declared 1.x helper surface through a compatibility adapter. Existing projects should preserve `conf/conf.tex` and user content, replace template-owned files, then follow [`MIGRATION-1.x-TO-2.x.md`](MIGRATION-1.x-TO-2.x.md). Non-NCKU institutional forks should also follow [`template/style/Customization.md`](template/style/Customization.md); institution policy remains under `template/style/`, not `conf/`.
+V2 keeps the complete declared 1.x helper surface through a compatibility
+adapter. For an existing thesis:
+
+1. Commit or archive the complete working 1.x project and keep its latest PDF.
+2. Preserve `conf/conf.tex`, `context/`, figures, bibliography data, and any
+   local certificate file.
+3. Replace template-owned files such as `template/`, fonts, and build
+   configuration with the v2 package.
+4. Merge local edits to `thesis.tex` deliberately instead of overwriting it.
+5. Build with the direct `latexmk -xelatex` command below and compare the cover,
+   dates, contents, references, bibliography, representative body pages, and
+   final pages with the saved 1.x PDF.
+
+No helper rename is required for this compatibility-first path. The complete
+migration reference, corrected-behavior table, and native-v2 path are maintained
+in the full repository at
+[`docs/MIGRATION-1.x-TO-2.x.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/MIGRATION-1.x-TO-2.x.md).
+Non-NCKU institutional forks should also follow
+[`template/style/Customization.md`](template/style/Customization.md);
+institution policy remains under `template/style/`, not `conf/`.
 
 ## Draft and institutional watermark
 

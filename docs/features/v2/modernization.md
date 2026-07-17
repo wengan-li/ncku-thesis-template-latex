@@ -1,6 +1,6 @@
 # V2 Modernization IDSD Brief
 
-Status: Review complete; approved for stable release preparation as `v2.0.0.260717130231`
+Status: Released as `v2.0.0.260717130231` on 2026-07-17
 Owner: Wen-Gan Li
 
 ## Intent
@@ -47,7 +47,8 @@ The outcome fails if any of these occur:
 - The default `ncku` profile reproduces the established NCKU output.
 - A neutral `custom` profile compiles without NCKU names, labels, or watermark
   assets in its visible output.
-- `thesis/MIGRATION-1.x-TO-2.x.md` covers unchanged-project and native-v2 paths.
+- `docs/MIGRATION-1.x-TO-2.x.md` covers unchanged-project and native-v2 paths;
+  the packaged student README retains concise offline migration steps.
 
 ### Success Scenarios
 
@@ -158,6 +159,18 @@ clean committed worktree:
   direct 271-page A4 XeLaTeX/SyncTeX student build with explicit `xparse` and no
   `fp`, the examples README/version/disclaimer, and all six A4 PDF page-count
   contracts;
+- release-preparation documentation head
+  `d080ae6e85f655428c9a2b12880af1d43dfcce53` passed exact-SHA Push Test
+  `29582957775` and Pull-request Test `29582960049`;
+- PR #76 merged through merge commit
+  `eefd992a470dacaea551fdca5647a3b8f2a3c4fd`, which passed exact main Push Test
+  `29583333613`;
+- annotated tag `v2.0.0.260717130231` triggered Release workflow `29583675788`;
+  both the build and GitHub Release promotion jobs succeeded;
+- public stable-release read-back confirmed a non-draft, non-prerelease Release,
+  exactly the student and examples ZIPs, byte identity with the promoted workflow
+  artifact, the tagged student tree, all 18 pinned v1 files, a direct 271-page
+  A4 build, and all six example-PDF page contracts;
 
 - `just ci`: pass, including canonical build and all focused fixtures;
 - `just release review`: pass after the optimization from a clean committed
@@ -179,8 +192,9 @@ clean committed worktree:
 - migration runtime gates: unchanged entry/configuration plus active StudentMode
   content and all three BibTeX databases pass through v2;
 - student-package gate: the ZIP regular-file list exactly matches the tracked
-  `HEAD:thesis` tree, including migration/compatibility/profile files; deleting
-  the migration guide from a temporary ZIP is detected;
+  `HEAD:thesis` tree, including the student README with offline migration steps
+  plus compatibility/profile files; deleting the README from a temporary ZIP is
+  detected;
 - direct unpacked student ZIP build: all 18 pinned v1 files retain exact
   SHA-256/size and `latexmk -xelatex thesis.tex` produces 271 A4 pages through
   the v1 adapter plus base/NCKU profiles without Draft or template watermark;

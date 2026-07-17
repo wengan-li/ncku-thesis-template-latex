@@ -12,16 +12,18 @@ description: |-
 
 # Feature Documentation Standard
 
-This repo's shipped-state docs are `thesis/README.md` (template usage),
-`thesis/MIGRATION-1.x-TO-2.x.md`, `CHANGELOG.md`, and the decision/policy
-records under `docs/`. Keep them true to the shipped template — update
-whichever a change reaches; no separate `docs/features/` tree here.
+This repo's shipped-state docs are `thesis/README.md` (packaged template usage),
+`docs/MIGRATION-1.x-TO-2.x.md`, `CHANGELOG.md`, completed records under
+`docs/features/`, and active decision/policy records under `docs/`. Keep them
+true to the shipped template and update every surface a change reaches.
 
 | Doc | Role |
 | --- | --- |
 | `thesis/README.md` | Template usage — options, macros, build. |
-| `thesis/MIGRATION-1.x-TO-2.x.md` | v1→v2 migration contract. |
-| `docs/<record>.md` | Decision/policy/history records (versioning, watermark, Overleaf, API compatibility). |
+| `docs/MIGRATION-1.x-TO-2.x.md` | Full v1→v2 migration contract; the student README keeps concise offline steps. |
+| `CHANGELOG.md` | Human-readable release index and user-visible changes. |
+| `docs/features/<feature>/` | Completed requirement, implementation records, and shipped evidence. |
+| `docs/<record>.md` | Active decision/policy/history records (versioning, watermark, Overleaf). |
 
 ## Rules
 
@@ -36,10 +38,12 @@ whichever a change reaches; no separate `docs/features/` tree here.
 - Preserve troubleshooting tables (symptom → cause) through rewrites.
 - State known limitations plainly; bugs found while documenting also get a
   todo (via `create-todo`).
-- Match the existing docs' voice; update `docs/README.md` when a doc is
-  added or renamed.
-- Requirements (`docs/requirements/`) record what/why; feature docs record
-  what shipped.
+- Match the existing docs' voice; update `docs/features/README.md`, the feature
+  index, or another owning index when a doc is added or renamed.
+- Requirements (`docs/requirements/`) record active what/why promises. When the
+  feature ships, move the completed requirement and durable todo knowledge into
+  `docs/features/<feature>/`, remove the completed todo, and preserve the work
+  narrative in Git history.
 
 ## The guardrail hook (wired repo-wide)
 

@@ -154,5 +154,5 @@ Compatibility does not preserve verified defects. Each correction must include:
 1. a focused fixture that fails against the old behavior;
 2. the smallest source correction;
 3. unchanged public name and argument shape;
-4. an entry in `thesis/MIGRATION-1.x-TO-2.x.md`;
+4. an entry in `docs/MIGRATION-1.x-TO-2.x.md`;
 5. integration proof that unrelated NCKU output remains intact.

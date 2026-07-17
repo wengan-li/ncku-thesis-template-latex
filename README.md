@@ -49,7 +49,7 @@
 
 如要查看輸出效果，請在 Releases 下載 `ncku-thesis-template-latex-examples-<version>.zip`；解壓後先閱讀內附的 `README.md`。證明書 PDF 只供 template-generated 示範與 regression 驗證，正式提交應使用學校學位考試系統產出的文件。
 
-舊 sample repository 不再是最新樣板的來源。完整的 artifact provenance 及刪除記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及 build→release promotion 流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。完整的 XeLaTeX source optimization、測試及現代化 review 記錄在 [`docs/source-optimization-review.md`](docs/source-optimization-review.md)。Draft／學校浮水印的歷史、舊預設矛盾、修正後政策及驗證 contract 記錄在 [`docs/draft-watermark-history.md`](docs/draft-watermark-history.md)。V2 modernization contract 與 1.x API compatibility 分別記錄在 [`docs/v2-modernization.md`](docs/v2-modernization.md)及[`docs/v2-public-api-compatibility.md`](docs/v2-public-api-compatibility.md)。
+舊 sample repository 不再是最新樣板的來源。完整的 artifact provenance 及刪除記錄在 [`docs/sample-repository-migration.md`](docs/sample-repository-migration.md)。版本編號及 build→release promotion 流程記錄在 [`docs/release-versioning.md`](docs/release-versioning.md)。完整的 XeLaTeX source optimization、測試及現代化 review 記錄在 [`docs/source-optimization-review.md`](docs/source-optimization-review.md)。Draft／學校浮水印的歷史、舊預設矛盾、修正後政策及驗證 contract 記錄在 [`docs/draft-watermark-history.md`](docs/draft-watermark-history.md)。已完成的V2 modernization、1.x API compatibility及implementation records集中在[`docs/features/v2/`](docs/features/v2/)。
 
 ### Student build 學生使用
 
@@ -79,7 +79,7 @@ just clean    # 清除可重新產生的檔案
 
 由 v1.5.0 開始, 本模版改造成可讓非國立成功大學的同學或人士都能建基於這模版以建立出自己學校所需的模版, 同時保留能使用本模版所提供的功能.
 
-詳細請看 [`thesis/template/style/Customization.md`](thesis/template/style/Customization.md)。V2每次只載入一個institution profile；現有1.x專案升級步驟請看[`thesis/MIGRATION-1.x-TO-2.x.md`](thesis/MIGRATION-1.x-TO-2.x.md)。
+詳細請看 [`thesis/template/style/Customization.md`](thesis/template/style/Customization.md)。V2每次只載入一個institution profile；現有1.x專案升級步驟請看[`docs/MIGRATION-1.x-TO-2.x.md`](docs/MIGRATION-1.x-TO-2.x.md)。
 
 ### 學位論文上傳和列印說明
 

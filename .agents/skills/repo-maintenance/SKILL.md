@@ -20,9 +20,9 @@ Read only the focused sources needed for the task:
 
 1. [`AGENTS.md`](../../../AGENTS.md) — canonical project rules and boundaries.
 2. [`justfile`](../../../justfile) — canonical maintainer command surface.
-3. [`docs/v2-modernization.md`](../../../docs/v2-modernization.md) — active v2
-   intent, expectations, evidence, and progress.
-4. [`docs/v2-public-api-compatibility.md`](../../../docs/v2-public-api-compatibility.md)
+3. [`docs/features/v2/modernization.md`](../../../docs/features/v2/modernization.md)
+   — shipped v2 intent, expectations, evidence, and progress.
+4. [`docs/features/v2/public-api-compatibility.md`](../../../docs/features/v2/public-api-compatibility.md)
    — 1.x helper compatibility policy and machine-checked baseline.
 5. [`docs/source-optimization-review.md`](../../../docs/source-optimization-review.md)
    — prioritized modernization, performance, and CI evidence.
@@ -150,9 +150,11 @@ ncku-thesis-template-latex-examples-<version>.zip
 ```
 
 The student archive extracts to stable `ncku-thesis-template-latex/`; its regular
-files must exactly equal the tracked `HEAD:thesis` tree, including the migration
-guide, v1 adapter, and base/NCKU/custom profiles. Keep a focused negative test
-that deletes one required migration file and proves the archive checker fails.
+files must exactly equal the tracked `HEAD:thesis` tree, including the
+student-facing README with concise offline migration guidance, v1 adapter, and
+base/NCKU/custom profiles. Keep a focused negative test that deletes the required
+student README and proves the archive checker fails. The full migration reference
+lives at `docs/MIGRATION-1.x-TO-2.x.md` in the complete repository.
 When this gate runs inside `xu-cheng/texlive-action`, configure
 `$GITHUB_WORKSPACE` as a Git safe directory before `git archive`/`git ls-tree`
 and install full Info-ZIP `unzip`/`zip`; BusyBox `unzip` does not support
