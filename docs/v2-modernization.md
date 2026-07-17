@@ -1,6 +1,6 @@
 # V2 Modernization IDSD Brief
 
-Status: Implementation complete on `feat/v2.x`; review pending
+Status: Review complete; approved for stable release preparation as `v2.0.0.260717130231`
 Owner: Wen-Gan Li
 
 ## Intent
@@ -116,6 +116,19 @@ Open decisions discovered during implementation must be recorded here or in the
 migration guide before changing an observable contract. The accepted defaults
 are full v1 API compatibility, one selected profile, and no separate v1.9 line.
 
+### Release Decision
+
+- The owner approved a stable v2 release rather than introducing a new RC or
+  prerelease mechanism after the full compatibility, output-identity, package,
+  exact-SHA hosted-test, and build-only release gates passed.
+- The immutable release identity selected on 2026-07-17 is
+  `v2.0.0.260717130231` (UTC timestamp contract).
+- PR merge and tag publication are separate approved actions. The tag must point
+  to the tested GitHub merge commit on `main`; generated ZIP/PDF outputs remain
+  Release assets and must not be committed to source.
+- Updating the public Overleaf Gallery project is outside this release slice and
+  remains a separate optional workflow.
+
 ## Final Validation Evidence
 
 The completed v2 slice plus the full-review repair batch was validated from a
@@ -134,6 +147,17 @@ clean committed worktree:
   layer for numeric evaluation, replaces 21 sequential month comparisons with
   one 12-way branch, and declares the required xparse-only `G{...}` dependency
   explicitly;
+- final review/fix head
+  `54251afa7b1becb77f69d3ee70870c25ff078e7f` passed exact-SHA Push Test
+  `29580335550` and Pull-request Test `29580337717`; approved manual Release
+  build-only run `29581404723` succeeded, kept the tag-only promotion job
+  skipped, and uploaded workflow artifact `release-assets-dev-54251af` (ID
+  `8407286279`) containing exactly the two expected ZIPs;
+- downloaded workflow-artifact read-back passed ZIP integrity and exact
+  allowlists, the exact `HEAD:thesis` student tree, all 18 pinned v1 files, a
+  direct 271-page A4 XeLaTeX/SyncTeX student build with explicit `xparse` and no
+  `fp`, the examples README/version/disclaimer, and all six A4 PDF page-count
+  contracts;
 
 - `just ci`: pass, including canonical build and all focused fixtures;
 - `just release review`: pass after the optimization from a clean committed
