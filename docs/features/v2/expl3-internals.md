@@ -1,6 +1,6 @@
 # Incremental `expl3` Internal Modernization
 
-Status: first bounded slice implemented and validated; pending review
+Status: first two bounded slices implemented and validated; pending review
 
 ## Intent
 
@@ -48,6 +48,20 @@ three-argument LaTeX signature, formatter helpers, dynamic counter behavior, and
 unknown-style no-op are unchanged. The focused test also rejects a return to
 sequential `ifthen` dispatch.
 
+### Selected follow-up: single-figure key parsing
+
+The seven-key `/InsertFigure` family was the smallest independently reversible
+`pgfkeys` candidate. Before changing its implementation, the float fixture froze
+all literal defaults, expanded macro-valued storage, reset-on-repeat behavior,
+and unknown-key hard-error behavior behind one private parser seam.
+
+The family now uses `\keys_define:nn`, `\keys_set:nn`, and seven
+`.tl_set_e:N` properties. This preserves the original `.estore in` expansion
+semantics and existing `\TmpValue...` scratch macros. The public
+`\InsertFigure` name, `[2][\empty]` signature, key names, fixed `[H]` placement,
+caption/label rendering, and deliberately inactive `pos`/`align` compatibility
+keys are unchanged.
+
 ### Retained: explicit `xparse`
 
 The LaTeX kernel provides modern document-command interfaces, but it deliberately
@@ -62,11 +76,13 @@ cover, chapter, float, bibliography, font, theorem, oral, and style behavior.
 They do not form one bounded state machine. Each future conversion needs its own
 fixture and visible-output proof; a mechanical global rewrite is rejected.
 
-### Deferred: `pgfkeys` to `l3keys`
+### Deferred: remaining `pgfkeys` families
 
-The seven key families expose different defaulting, storage, repeated-setup, and
-unknown-key behaviors. Migrating one family is justified only after freezing its
-complete parse and error contract. This slice does not change key parsing.
+Only the single-figure family moved. The remaining 55 literal
+`\pgfkeys`/`\pgfkeysvalueof` references span six files and expose different
+defaulting, storage, repeated-setup, rendering, and unknown-key behavior. No
+table, multi-figure, bibliography, theorem, font, or numbering key family is
+approved for conversion without its own frozen contract and output proof.
 
 ### Retained: `etoolbox`
 
@@ -114,11 +130,32 @@ The local source delta is seven fewer `\ifthenelse` calls in
 `cmd-numbering.tex` (15 to 8), one new bounded `expl3` string case, no public API
 change, and no PDF-output change.
 
+### Follow-up `l3keys` validation result
+
+The single-figure parser replacement passed:
+
+- the existing custom-value float contract plus new default, macro-expansion,
+  reset-on-repeat, and unknown-key hard-error contracts;
+- focused one-page text, normalized bounding-box, font-table, and 200-DPI raster
+  identity against the same fixture running the original `pgfkeys` parser;
+- fresh exact-HEAD `just ci`, including the V1 API, unchanged-project migration,
+  diagnostics, negative-key, student archive, float, theorem, font/CJK,
+  student-mode, watermark, and custom-style gates;
+- canonical 271-page A4 text, normalized bounding-box, and font-table identity;
+- identical 120-DPI raster output for all 271 canonical pages;
+- successful `just release review` package generation and verification;
+- a repo-external build of the generated student ZIP using the documented
+  `latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex` command,
+  producing 271 A4 pages, SyncTeX, and resolved references.
+
+`pgfkeys` remains intentionally active because six other template files still
+use it and PGF/TikZ also remains part of the rendering stack. This slice claims
+one bounded family migration, not package removal.
+
 ## Next research slice
 
 Do not continue by count alone. Rank candidates by removable dependency cost,
-finite semantics, existing fixture coverage, and output risk. A small isolated
-`pgfkeys` family may be the next research target only after its default,
-macro-expansion, unknown-key, and repeated-setup contract is captured; otherwise
-prefer another finite `ifthen` dispatcher. Keep each slice independently
-revertible.
+finite semantics, existing fixture coverage, and output risk. Before another key
+family moves, capture its default, macro-expansion, unknown-key, repeated-setup,
+and rendering contract under the current implementation. Otherwise prefer
+another finite `ifthen` dispatcher. Keep every slice independently revertible.
