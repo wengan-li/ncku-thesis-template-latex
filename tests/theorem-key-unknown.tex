@@ -1,0 +1,8 @@
+% Negative contract: unknown theorem-content keys must not be silently ignored.
+\input{./template/configure}
+
+\NCKUPrivateSetInsertTheoremKeys{unsupported=value}
+
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown theorem-content key was ignored}
+\end{document}

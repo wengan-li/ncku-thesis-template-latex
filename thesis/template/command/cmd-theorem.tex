@@ -62,6 +62,15 @@
   label/.estore in = \TmpValueLabel,
 } % End of \pgfkeys{}
 
+% Keep theorem-content key parsing behind one private seam so its defaults,
+% expansion, repeated-call, and error behavior can be frozen before migration.
+\ExplSyntaxOn
+\cs_new_protected:Npn \ncku_insert_theorem_keys_set:n #1
+  { \pgfkeys { /InsertTheoremOptions, default, #1 } }
+\cs_new_eq:NN \NCKUPrivateSetInsertTheoremKeys
+  \ncku_insert_theorem_keys_set:n
+\ExplSyntaxOff
+
 \newcommand{\SetTheoremContentLabel}[1][\empty]
 {%
   \ifthenelse{\equal{#1}{\empty}}{}{\IfNoValueF{#1}{\label{#1}}}%
@@ -70,7 +79,7 @@
 \newcommand{\InsertTheoremContent}[3][\empty]
 {%
   % Parse the input
-  \pgfkeys{/InsertTheoremOptions, default, #1}%
+  \NCKUPrivateSetInsertTheoremKeys{#1}%
   %
   \ifthenelse{\equal{\TmpValueTitle}{\empty}}%
   {%

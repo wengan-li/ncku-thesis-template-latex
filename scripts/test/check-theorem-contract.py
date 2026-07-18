@@ -28,6 +28,13 @@ def main() -> None:
         "NCKU-TEST-PASS: all 21 public theorem insertion helpers compiled" in log,
         "missing theorem pass marker",
     )
+    compact_log = "".join(log.split())
+    for marker in (
+        "NCKU-THEOREM-KEY-DEFAULTS:/",
+        "NCKU-THEOREM-KEY-EXPANDED:ExpandedTheoremTitle/ncku:theorem-expanded",
+        "NCKU-THEOREM-KEY-RESET:/",
+    ):
+        require(marker in compact_log, f"missing theorem key-state marker: {marker}")
 
     theorem_types = (
         "Definition",
