@@ -113,24 +113,31 @@
 } % End of \newcommand{}
 \makeatother
 
-% Append counter value in style to string
+% Append counter value in style to string. The selected style can arrive through
+% a pgf-stored macro, so use the expanding string-case form. Unknown or empty
+% styles deliberately remain no-ops, matching the public compatibility contract.
+\ExplSyntaxOn
 \newcommand\AppendCounterStringToFormatString[3]
-{%
-  \ifthenelse{\equal{#2}{ChiNum}}{%
-    \NCKUPrivateAppendCounterFormatter{#1}{\zhnum}{#3}}{}%
-  \ifthenelse{\equal{#2}{Tiangan}}{%
-    \NCKUPrivateAppendCounterValueFormatter{#1}{\zhtiangan}{#3}}{}%
-  \ifthenelse{\equal{#2}{Arabic}}{%
-    \NCKUPrivateAppendCounterFormatter{#1}{\arabic}{#3}}{}%
-  \ifthenelse{\equal{#2}{LowerRoman}}{%
-    \NCKUPrivateAppendCounterFormatter{#1}{\roman}{#3}}{}%
-  \ifthenelse{\equal{#2}{UpperRoman}}{%
-    \NCKUPrivateAppendCounterFormatter{#1}{\Roman}{#3}}{}%
-  \ifthenelse{\equal{#2}{LowerAlph}}{%
-    \NCKUPrivateAppendCounterFormatter{#1}{\alph}{#3}}{}%
-  \ifthenelse{\equal{#2}{UpperAlph}}{%
-    \NCKUPrivateAppendCounterFormatter{#1}{\Alph}{#3}}{}%
+{
+  \str_case_e:nn {#2}
+  {
+    {ChiNum}
+      {\NCKUPrivateAppendCounterFormatter{#1}{\zhnum}{#3}}
+    {Tiangan}
+      {\NCKUPrivateAppendCounterValueFormatter{#1}{\zhtiangan}{#3}}
+    {Arabic}
+      {\NCKUPrivateAppendCounterFormatter{#1}{\arabic}{#3}}
+    {LowerRoman}
+      {\NCKUPrivateAppendCounterFormatter{#1}{\roman}{#3}}
+    {UpperRoman}
+      {\NCKUPrivateAppendCounterFormatter{#1}{\Roman}{#3}}
+    {LowerAlph}
+      {\NCKUPrivateAppendCounterFormatter{#1}{\alph}{#3}}
+    {UpperAlph}
+      {\NCKUPrivateAppendCounterFormatter{#1}{\Alph}{#3}}
+  }
 } % End of \newcommand{}
+\ExplSyntaxOff
 
 \newcommand\SetupTitleNumberFormatString[3]
 {%

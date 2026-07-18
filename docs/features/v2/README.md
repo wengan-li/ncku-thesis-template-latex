@@ -24,6 +24,8 @@ student project shape, and complete audited 1.x public API through the 2.x line.
 - [`numbering-hardening.md`](numbering-hardening.md)
 - [`full-review-repairs.md`](full-review-repairs.md)
 - [`super-optimization.md`](super-optimization.md)
+- [`expl3-internals.md`](expl3-internals.md) — bounded post-release internal
+  modernization research and its first output-neutral dispatcher slice.
 
 ## Current machine-checked contracts
 
