@@ -92,10 +92,26 @@ def main() -> None:
         source.count(r"\begin{comment}") == 0,
         "runtime-dead numbering comment blocks reappeared",
     )
+    dispatcher = source.split(r"\newcommand\AppendCounterStringToFormatString", 1)[1].split(
+        r"\newcommand\SetupTitleNumberFormatString", 1
+    )[0]
+    require(r"\str_case_e:nn" in dispatcher, "counter-style dispatch is not an expl3 string case")
+    require(r"\ifthenelse" not in dispatcher, "counter-style dispatch regained sequential ifthen tests")
+    for style in (
+        "ChiNum",
+        "Tiangan",
+        "Arabic",
+        "LowerRoman",
+        "UpperRoman",
+        "LowerAlph",
+        "UpperAlph",
+    ):
+        require(dispatcher.count(f"{{{style}}}") == 1, f"counter-style case changed: {style}")
 
     print(
         "Numbering contract PASS: default/custom general+appendix titles/getters, "
-        "dynamic counters, 7 styles, F/T/E idempotence, unknown/empty no-op, A4 single page"
+        "dynamic counters, 7-style expl3 dispatch, F/T/E idempotence, "
+        "unknown/empty no-op, A4 single page"
     )
 
 
