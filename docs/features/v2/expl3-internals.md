@@ -1,6 +1,6 @@
 # Incremental `expl3` Internal Modernization
 
-Status: first seven bounded slices implemented and validated; pending review
+Status: first eight bounded slices implemented and validated; pending review
 
 ## Intent
 
@@ -148,6 +148,20 @@ Noto font files are not bundled student-archive assets and were not invented as
 fixture dependencies. The public setter signatures and every downstream
 `fontspec`/`xeCJK` call remain unchanged.
 
+### Selected follow-up: Chapter title-format key parsing
+
+The five-key `/CTitleNumberFormat` family is the smallest finite numbering
+family. It moved only after the public Chapter selector was routed through one
+private seam and the existing numbering fixture was extended to freeze expanded
+macro-valued text, partial-call reset, the literal `\empty` omission sentinel,
+unknown-key hard errors, and rendered Chapter title output.
+
+The parser now uses `ncku / chapter-title-format` with five `.tl_set_e:N` keys.
+Its default `BeginText = {Chapter }` retains the trailing space explicitly under
+`expl3` syntax. `\SetNumberingFormat`, the Chapter selector, title-string setup,
+counter rendering, and all other numbering families retain their public APIs and
+behavior. The other nine numbering key families remain on `pgfkeys`.
+
 ### Retained: explicit `xparse`
 
 The LaTeX kernel provides modern document-command interfaces, but it deliberately
@@ -165,11 +179,12 @@ fixture and visible-output proof; a mechanical global rewrite is rejected.
 ### Deferred: remaining `pgfkeys` families
 
 Only the single-figure, single-table, theorem-content, reference-setup,
-custom-font filename, and font-option families moved. The remaining 38 literal
+custom-font filename, font-option, and Chapter title-format families moved. The
+remaining 35 literal
 `\pgfkeys`/`\pgfkeysvalueof` references span three files and expose different
 defaulting, storage, repeated-setup, rendering, and unknown-key behavior. No
-multi-figure, dynamic theorem-format, or numbering key family is approved for
-conversion without its own frozen contract and output proof.
+multi-figure, dynamic theorem-format, or other numbering key family is approved
+for conversion without its own frozen contract and output proof.
 
 ### Retained: `etoolbox`
 
@@ -361,13 +376,40 @@ After the six key-family slices, 38 literal `pgfkeys` references remain across
 three active template files. `cmd-font.tex` now has no direct `pgfkeys`
 references; PGF/TikZ still loads the package transitively.
 
+### Chapter title-format `l3keys` validation result
+
+The Chapter title-format parser replacement passed:
+
+- original-implementation expanded macro-valued text, partial-call reset,
+  literal `\empty` omission, public selector routing, and unknown-key hard-error
+  contracts;
+- default and custom Chapter title/getter rendering inside the existing focused
+  general/appendix numbering matrix;
+- focused one-page text, bounding-box XML, font-table, and 200-DPI raster identity
+  against the same fixture using the original `pgfkeys` parser;
+- fresh exact-HEAD `just ci`, including all adjacent numbering, float, theorem,
+  bibliography, font, archive, diagnostics, and negative-key gates;
+- canonical 271-page A4 text, 40,823 normalized bounding-box words, and
+  font-table identity;
+- identical 120-DPI raster output for all 271 canonical pages;
+- successful `just release review` package generation and verification;
+- a repo-external `latexmk -xelatex -synctex=1` build of the generated student
+  ZIP, producing 271 A4 pages, SyncTeX, and resolved references;
+- zero `l3keys2e` references in active student source.
+
+After the seven key-family slices, 35 literal `pgfkeys` references remain across
+three active template files. `cmd-numbering.tex` retains 27 references for the
+generic formatter, the other general/appendix title levels, and appendix
+numbering; none moved as part of the Chapter-only slice.
+
 ## Next research slice
 
 Do not continue by count alone. Rank candidates by removable dependency cost,
 finite semantics, existing fixture coverage, and output risk. Before another key
 family moves, capture its default, macro-expansion, unknown-key, repeated-setup,
 and rendering contract under the current implementation. The remaining choices
-are coupled multi-figure parsing, dynamic theorem registration, and numbering
-families; none is approved automatically by reference count. Prefer the smallest
+are coupled multi-figure parsing, dynamic theorem registration, and the remaining
+nine numbering families; none is approved automatically by reference count.
+Prefer the smallest
 finite dispatcher or add missing contracts first, and keep every slice
 independently revertible.

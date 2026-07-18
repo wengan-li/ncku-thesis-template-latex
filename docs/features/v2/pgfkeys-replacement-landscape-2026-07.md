@@ -104,10 +104,10 @@ legacy key package is churn, not modernization.
 
 ## NCKU-specific evidence and judgement
 
-1. Six isolated command families now use `l3keys`: single figure, single table,
+1. Seven isolated command families now use `l3keys`: single figure, single table,
    theorem content, reference setup, custom-font filename parsing, and font-option
-   parsing. Each migration first froze the legacy parser contract and then proved
-   canonical output identity.
+   parsing, plus Chapter title-format parsing. Each migration first froze the
+   legacy parser contract and then proved canonical output identity.
 2. `SetupReference` preserves its default/custom/repeated setup, rendered BibTeX
    output, unknown-key failure, and `apacite[notocbib]` preamble side effect.
 3. Active student source contains zero `l3keys2e` references, and generated
@@ -116,19 +116,23 @@ legacy key package is churn, not modernization.
 4. The font-option migration separately proves real bundled Times and KaiU
    loading, exact PDF font identities, and English/CJK public routes; it does not
    add unbundled Noto files as test dependencies.
-5. Keep the top-level/nested multi-figure parser deferred until both shared
+5. The Chapter title-format migration preserves all five expanded values,
+   per-call defaults including the trailing space in `Chapter `, the public
+   selector route, unknown-key failure, and exact numbering output. The other
+   nine numbering families remain unchanged.
+6. Keep the top-level/nested multi-figure parser deferred until both shared
    scratch state and all row-dispatch routes are covered.
-6. Keep dynamic theorem-format/counter families deferred; they are not the same
+7. Keep dynamic theorem-format/counter families deferred; they are not the same
    state machine as theorem-content `title`/`label` parsing.
-7. Do not claim package removal while 38 direct `pgfkeys`/`pgfkeysvalueof`
+8. Do not claim package removal while 35 direct `pgfkeys`/`pgfkeysvalueof`
    references remain across three files or while PGF/TikZ keeps `pgfkeys` active
    transitively.
-8. Continue requiring focused semantic checks, full text/normalized bbox/fonts,
+9. Continue requiring focused semantic checks, full text/normalized bbox/fonts,
    all-page fixed-DPI raster identity, exact-HEAD archive verification, extracted
    student ZIP direct build, and exact-SHA hosted checks.
 
 For this repository, `l3keys` is the best-fit default because it is official,
-current, already loaded, and has passed five independently reversible,
+current, already loaded, and has passed seven independently reversible,
 output-neutral family migrations. `expkv-bundle` is a credible modern
 alternative, but it solves a more specialized expandability and cross-format
 problem that NCKU has not demonstrated. `pgfkeys` should be reduced where it is

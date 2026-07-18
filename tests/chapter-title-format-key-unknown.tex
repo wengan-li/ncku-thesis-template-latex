@@ -1,0 +1,8 @@
+% Negative contract: unknown Chapter title-format keys must fail.
+\input{./template/configure}
+
+\NCKUPrivateSetChapterTitleFormatKeys{unsupported=value}
+
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown Chapter title-format key was ignored}
+\end{document}

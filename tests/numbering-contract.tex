@@ -99,6 +99,18 @@
 \setcounter{appendixsubsection}{2}
 \setcounter{appendixsubsubsection}{1}
 
+% Freeze the Chapter parser independently from the other numbering families.
+\def\NCKUChapterBeginMacro{Macro[}
+\def\NCKUChapterEndMacro{]}
+\NCKUPrivateSetChapterTitleFormatKeys{BeginText=\NCKUChapterBeginMacro,EndText=\NCKUChapterEndMacro,TextAlign=Center,CNumStyle=UpperRoman,SepAtIndex={:}}
+\def\NCKUChapterBeginMacro{Changed[}
+\def\NCKUChapterEndMacro{Changed]}
+\NCKUCapture{NCKUChapterParserExpanded}{\GetCTitleNumberFormatBeginText|\GetCTitleNumberFormatEndText|\GetCTitleNumberFormatTextAlign|\GetCTitleNumberFormatCNumStyle|\GetCTitleNumberFormatSepAtIndex}
+\NCKUPrivateSetChapterTitleFormatKeys{EndText={!}}
+\NCKUCapture{NCKUChapterParserPartial}{\GetCTitleNumberFormatBeginText|\GetCTitleNumberFormatEndText|\GetCTitleNumberFormatTextAlign|\GetCTitleNumberFormatCNumStyle|\GetCTitleNumberFormatSepAtIndex}
+\NCKUPrivateSetChapterTitleFormatKeys{\empty}
+\NCKUCapture{NCKUChapterParserOmitted}{\GetCTitleNumberFormatBeginText|\GetCTitleNumberFormatEndText|\GetCTitleNumberFormatTextAlign|\GetCTitleNumberFormatCNumStyle|\GetCTitleNumberFormatSepAtIndex}
+
 \SetNumberingFormat[Chapter]{%
   BeginText={GC[}, EndText={]}, CNumStyle=Arabic}
 \SetNumberingFormat[Section]{%
@@ -147,6 +159,9 @@
 \SetNumberingFormat[]{BeginText={BROKEN}}
 \NCKUCapture{NCKUNoopSelector}{\GetCTitleNumberFormatBeginText}
 
+\typeout{NCKU-CHAPTER-PARSER-EXPANDED: \NCKUChapterParserExpanded}
+\typeout{NCKU-CHAPTER-PARSER-PARTIAL: \NCKUChapterParserPartial}
+\typeout{NCKU-CHAPTER-PARSER-OMITTED: \NCKUChapterParserOmitted}
 \typeout{NCKU-NUMBERING-DEFAULT-GENERAL: \NCKUDefaultGeneral}
 \typeout{NCKU-NUMBERING-DEFAULT-APPENDIX: \NCKUDefaultAppendix}
 \typeout{NCKU-NUMBERING-DEFAULT-GENERAL-GETTERS: \NCKUDefaultGeneralNumbering}
