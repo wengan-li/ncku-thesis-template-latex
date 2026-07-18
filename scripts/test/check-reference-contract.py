@@ -30,8 +30,20 @@ def main() -> None:
         "public SetupReference bypasses the private parser seam",
     )
     require(
-        r"/SetupReference/.is family" in source,
-        "legacy pgfkeys family disappeared before the migration checkpoint",
+        r"\keys_define:nn { ncku / setup-reference }" in source,
+        "reference parser is not defined through l3keys",
+    )
+    require(
+        source.count(r".tl_set_e:N") == 2,
+        "reference parser does not use exactly two expanded tl properties",
+    )
+    require(
+        r"\keys_set:nn { ncku / setup-reference } { #1 }" in source,
+        "reference private seam does not apply the l3keys family",
+    )
+    require(
+        r"/SetupReference/.is family" not in source,
+        "legacy SetupReference pgfkeys family remains active",
     )
     active_sources = [
         path

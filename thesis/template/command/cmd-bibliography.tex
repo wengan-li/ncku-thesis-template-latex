@@ -121,23 +121,19 @@
 
 % ----------------------------------------------------------------------------
 
-\pgfkeys
-{
-  /SetupReference/.is family, /SetupReference,
-  default/.style =
-  {
-    Title = {\TextDefaultTitleReferenceEng},
-    BibStyle = {plain},
-  },
-  Title/.estore in = \GetReferenceTitle,
-  BibStyle/.estore in = \GetReferenceBibStyle,
-} % End of \pgfkeys{}
-
-% Keep reference key parsing behind one private seam so its defaults,
-% expansion, repeated-call, and error behavior can be frozen before migration.
 \ExplSyntaxOn
+\keys_define:nn { ncku / setup-reference }
+  {
+    Title    .tl_set_e:N = \GetReferenceTitle,
+    BibStyle .tl_set_e:N = \GetReferenceBibStyle,
+  }
+
 \cs_new_protected:Npn \ncku_reference_keys_set:n #1
-  { \pgfkeys { /SetupReference, default, #1 } }
+  {
+    \tl_set:Ne \GetReferenceTitle { \TextDefaultTitleReferenceEng }
+    \tl_set:Nn \GetReferenceBibStyle { plain }
+    \keys_set:nn { ncku / setup-reference } { #1 }
+  }
 \cs_new_eq:NN
   \NCKUPrivateSetReferenceKeys
   \ncku_reference_keys_set:n
