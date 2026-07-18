@@ -12,7 +12,7 @@
 
 V2 已完成更新並在 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) 發布；它保留 1.x 的公開設定方式和 XeLaTeX 使用路徑，同時整理了樣式、相容層、測試及學生下載套件。
 
-現有 [Overleaf Gallery 模版](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn) 已公開使用，V2 更新亦已透過原本的 Overleaf project 提交作 Gallery update review。在 Overleaf 完成更新審核前，最新 V2 source 和學生套件仍以 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) 為準；詳細發佈狀態記錄在 [`docs/overleaf-distribution.md`](docs/overleaf-distribution.md)。
+現有 [Overleaf Gallery 模版](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn) 已公開使用。V2 更新已由維護者確認上載到原本的 Overleaf project，並重新提交作 Gallery update review，現正等待 Overleaf 回覆及審批。在 Overleaf 批准更新並完成公開 read-back 前，最新 V2 source 和學生套件仍以 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) 為準；詳細發佈狀態記錄在 [`docs/overleaf-distribution.md`](docs/overleaf-distribution.md)。
 
 V2 亦優先整理了 **Style Customization 自定成其他學校的模版**：共用樣式、成大規則和自訂學校 profile 已分開，修改其他學校所需格式時不必直接改動整個成大樣式層。
 
