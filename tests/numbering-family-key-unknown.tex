@@ -1,0 +1,9 @@
+% Negative contract: unknown keys in every remaining numbering family must fail.
+\input{./template/configure}
+
+\providecommand{\NCKUTestFamily}{STitleNumberFormat}
+\NCKUPrivateSetRemainingNumberingKeys{\NCKUTestFamily}{unsupported=value}
+
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown remaining-numbering key was ignored}
+\end{document}

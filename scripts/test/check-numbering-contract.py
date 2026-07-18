@@ -85,6 +85,30 @@ def main() -> None:
 
     source = Path("thesis/template/command/cmd-numbering.tex").read_text()
     require(
+        r"\newcommand\NCKUPrivateSetRemainingNumberingKeys[2]" in source,
+        "remaining-numbering private parser seam is missing",
+    )
+    remaining_families = (
+        "SetupTitleNumberFormatString",
+        "STitleNumberFormat",
+        "SSTitleNumberFormat",
+        "SSSTitleNumberFormat",
+        "AppendixCTitleNumberFormat",
+        "AppendixSTitleNumberFormat",
+        "AppendixSSTitleNumberFormat",
+        "AppendixSSSTitleNumberFormat",
+        "SetupGeneralAppendixNumberFormatString",
+    )
+    for family in remaining_families:
+        require(
+            source.count(rf"\NCKUPrivateSetRemainingNumberingKeys{{{family}}}{{#2}}") == 1,
+            f"{family} does not route through the private seam exactly once",
+        )
+        require(
+            rf"/{family}/.is family" in source,
+            f"legacy {family} pgfkeys family is missing before migration",
+        )
+    require(
         r"\cs_new_protected:Npn \NCKUPrivateSetChapterTitleFormatKeys #1" in source,
         "Chapter title-format private seam is missing",
     )

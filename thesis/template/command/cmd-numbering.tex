@@ -82,6 +82,14 @@
   SepBetweenSSCnSSS/.estore in = \TmpValueSepBetweenSSCnSSS,
 } % End of \pgfkeys{}
 
+% Keep the remaining numbering key families behind one private routing seam.
+% The family name stays explicit so each parser can be migrated and asserted
+% independently without changing public numbering commands.
+\newcommand\NCKUPrivateSetRemainingNumberingKeys[2]
+{%
+  \pgfkeys{/#1, default, #2}%
+} % End of \newcommand{}
+
 % Append a parsed key value without retaining the reusable pgf scratch macro.
 \makeatletter
 \newcommand\NCKUPrivateAppendFrozenValue[2]
@@ -141,7 +149,7 @@
 
 \newcommand\SetupTitleNumberFormatString[3]
 {%
-  \pgfkeys{/SetupTitleNumberFormatString, default, #2}%
+  \NCKUPrivateSetRemainingNumberingKeys{SetupTitleNumberFormatString}{#2}%
   \renewcommand#3{}%
   \NCKUPrivateAppendFrozenValue{#3}{\TmpValueBeginText}%
   \ifboolexpr{%
@@ -687,7 +695,7 @@
 
 \newcommand\SetupGeneralAppendixNumberFormatString[3]
 {%
-  \pgfkeys{/SetupGeneralAppendixNumberFormatString, default, #2}%
+  \NCKUPrivateSetRemainingNumberingKeys{SetupGeneralAppendixNumberFormatString}{#2}%
   \renewcommand#3{}%
   \ifboolexpr{%
     test {\ifstrequal{#1}{Chapter}} or %
@@ -945,37 +953,37 @@
   %
   \ifthenelse{\equal{#1}{Section}}
   {%
-    \pgfkeys{/STitleNumberFormat, default, #2}%
+    \NCKUPrivateSetRemainingNumberingKeys{STitleNumberFormat}{#2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{SubSection}}
   {%
-    \pgfkeys{/SSTitleNumberFormat, default, #2}%
+    \NCKUPrivateSetRemainingNumberingKeys{SSTitleNumberFormat}{#2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{SubSubSection}}
   {%
-    \pgfkeys{/SSSTitleNumberFormat, default, #2}%
+    \NCKUPrivateSetRemainingNumberingKeys{SSSTitleNumberFormat}{#2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{AppendixChapter}}
   {%
-    \pgfkeys{/AppendixCTitleNumberFormat, default, #2}%
+    \NCKUPrivateSetRemainingNumberingKeys{AppendixCTitleNumberFormat}{#2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{AppendixSection}}
   {%
-    \pgfkeys{/AppendixSTitleNumberFormat, default, #2}%
+    \NCKUPrivateSetRemainingNumberingKeys{AppendixSTitleNumberFormat}{#2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{AppendixSubSection}}
   {%
-    \pgfkeys{/AppendixSSTitleNumberFormat, default, #2}%
+    \NCKUPrivateSetRemainingNumberingKeys{AppendixSSTitleNumberFormat}{#2}%
   }{}%
   %
   \ifthenelse{\equal{#1}{AppendixSubSubSection}}
   {%
-    \pgfkeys{/AppendixSSSTitleNumberFormat, default, #2}%
+    \NCKUPrivateSetRemainingNumberingKeys{AppendixSSSTitleNumberFormat}{#2}%
   }{}%
 } % End of \newcommand{}
 
