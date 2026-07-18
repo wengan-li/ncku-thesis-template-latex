@@ -198,30 +198,32 @@
 
 % ---------------------------
 
-\pgfkeys
-{
-  /CTitleNumberFormat/.is family, /CTitleNumberFormat,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / chapter-title-format }
   {
-    BeginText = {Chapter },
-    EndText = \empty,
-    TextAlign = {Left}, % Useless for Chapter
-    CNumStyle = Arabic,
-    SepAtIndex = {.},
-  },
-  BeginText/.estore in = \GetCTitleNumberFormatBeginText,
-  EndText/.estore in = \GetCTitleNumberFormatEndText,
-  TextAlign/.estore in = \GetCTitleNumberFormatTextAlign,
-  CNumStyle/.estore in = \GetCTitleNumberFormatCNumStyle,
-  SepAtIndex/.estore in = \GetCTitleNumberFormatSepAtIndex,
-} % End of \pgfkeys{}
+    BeginText  .tl_set_e:N = \GetCTitleNumberFormatBeginText,
+    EndText    .tl_set_e:N = \GetCTitleNumberFormatEndText,
+    TextAlign  .tl_set_e:N = \GetCTitleNumberFormatTextAlign,
+    CNumStyle  .tl_set_e:N = \GetCTitleNumberFormatCNumStyle,
+    SepAtIndex .tl_set_e:N = \GetCTitleNumberFormatSepAtIndex,
+  }
 
-% Keep Chapter title-format parsing behind one private seam so this family can
-% be migrated independently from the other numbering families.
-\newcommand\NCKUPrivateSetChapterTitleFormatKeys[1]
-{%
-  \pgfkeys{/CTitleNumberFormat, default, #1}%
-} % End of \newcommand{}
+\cs_new_protected:Npn \ncku_chapter_title_format_set_keys:n #1
+  {
+    \tl_set:Nn \GetCTitleNumberFormatBeginText { Chapter~ }
+    \tl_clear:N \GetCTitleNumberFormatEndText
+    \tl_set:Nn \GetCTitleNumberFormatTextAlign { Left }
+    \tl_set:Nn \GetCTitleNumberFormatCNumStyle { Arabic }
+    \tl_set:Nn \GetCTitleNumberFormatSepAtIndex { . }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / chapter-title-format } {#1} }
+  }
+
+% Keep Chapter title-format parsing behind one private seam; all other
+% numbering key families remain on their existing implementation.
+\cs_new_protected:Npn \NCKUPrivateSetChapterTitleFormatKeys #1
+  { \ncku_chapter_title_format_set_keys:n {#1} }
+\ExplSyntaxOff
 
 \newcommand\GetChapterTitleNumberFormatString{}
 \newcommand\SetupChapterTitleNumberFormatString

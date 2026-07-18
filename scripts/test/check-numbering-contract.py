@@ -85,7 +85,7 @@ def main() -> None:
 
     source = Path("thesis/template/command/cmd-numbering.tex").read_text()
     require(
-        r"\newcommand\NCKUPrivateSetChapterTitleFormatKeys[1]" in source,
+        r"\cs_new_protected:Npn \NCKUPrivateSetChapterTitleFormatKeys #1" in source,
         "Chapter title-format private seam is missing",
     )
     require(
@@ -93,8 +93,24 @@ def main() -> None:
         "Chapter selector does not route through the private seam exactly once",
     )
     require(
-        r"/CTitleNumberFormat/.is family" in source,
-        "legacy Chapter title-format pgfkeys family is missing before migration",
+        r"\keys_define:nn { ncku / chapter-title-format }" in source,
+        "Chapter title-format l3keys family is missing",
+    )
+    chapter_block_match = re.search(
+        r"\\keys_define:nn \{ ncku / chapter-title-format \}(.*?)\\cs_new_protected:Npn \\ncku_chapter_title_format_set_keys:n",
+        source,
+        re.DOTALL,
+    )
+    require(chapter_block_match is not None, "cannot isolate Chapter title-format l3keys block")
+    if chapter_block_match is None:
+        raise SystemExit("Numbering contract FAIL: cannot isolate Chapter title-format l3keys block")
+    require(
+        chapter_block_match.group(1).count(".tl_set_e:N") == 5,
+        "Chapter parser must preserve expanded storage for exactly five keys",
+    )
+    require(
+        r"/CTitleNumberFormat/.is family" not in source,
+        "legacy Chapter title-format pgfkeys family remains after migration",
     )
     require(
         r"\appto\GetAppendixEquationNumberFormatString{}" not in source,
