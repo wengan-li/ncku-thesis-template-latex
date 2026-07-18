@@ -34,6 +34,9 @@ def main() -> None:
         "NCKU-FLOAT-TABLE-TOP-STATE:0.0/FloatTableTopCaption/ncku:float:table-top/top/3pt/1.2/0.5",
         "NCKU-FLOAT-TABLE-BOTTOM-STATE:0.4/FloatTableBottomCaption/ncku:float:table-bottom/bottom/2pt/0.8/0.3",
         "NCKU-FLOAT-TABLE-STAR-STATE:0.0/FloatTableStarTitle/ncku:float:table-star/top/0.2",
+        "NCKU-FIGURE-KEY-DEFAULTS:1.0/0///H//0.4",
+        "NCKU-FIGURE-KEY-EXPANDED:1.75/15/ExpandedCaption/ncku:expanded/ignored-pos/ignored-align/0.9",
+        "NCKU-FIGURE-KEY-RESET:1.0/0///H//0.4",
     )
     for marker in state_markers:
         require(marker in compact_log, f"missing key-state marker: {marker}")

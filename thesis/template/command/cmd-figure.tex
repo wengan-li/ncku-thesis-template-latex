@@ -68,11 +68,20 @@
   opacity/.estore in = \TmpValueOpacity,
 } % End of \pgfkeys{}
 
+% Keep key parsing behind one private seam so its defaults, expansion, and
+% unknown-key behavior can be regression-tested independently of rendering.
+\ExplSyntaxOn
+\cs_new_protected:Npn \ncku_insert_figure_keys_set:n #1
+  { \pgfkeys { /InsertFigure, default, #1 } }
+\cs_new_eq:NN \NCKUPrivateSetInsertFigureKeys
+  \ncku_insert_figure_keys_set:n
+\ExplSyntaxOff
+
 % Insert a single column image
 \newcommand{\InsertFigure}[2][\empty]
 {%
   % Parse the input
-  \pgfkeys{/InsertFigure, default, #1}%
+  \NCKUPrivateSetInsertFigureKeys{#1}%
   %
   \begin{figure}[H]%
   \NCKUPrivateDisplayFramedFloatContent{\TmpValueOpacity}{%
