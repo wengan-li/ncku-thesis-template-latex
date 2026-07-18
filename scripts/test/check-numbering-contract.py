@@ -26,6 +26,9 @@ def main() -> None:
     normalized_text = " ".join(text.split())
 
     markers = (
+        "NCKU-CHAPTER-PARSER-EXPANDED:Macro[|]|Center|UpperRoman|:",
+        "NCKU-CHAPTER-PARSER-PARTIAL:Chapter|!|Left|Arabic|.",
+        "NCKU-CHAPTER-PARSER-OMITTED:Chapter||Left|Arabic|.",
         "NCKU-NUMBERING-DEFAULT-GENERAL:Chapter2/2.3/2.3.4//2.3.4.5",
         "NCKU-NUMBERING-DEFAULT-APPENDIX:AppendixB/B.3/B.3.4//B.3.4.5",
         "NCKU-NUMBERING-DEFAULT-GENERAL-GETTERS:2/2.3/2.3.4/",
@@ -40,7 +43,8 @@ def main() -> None:
         "NCKU-NUMBERING-CUSTOM-APPENDIX:AC[B]/AS[B-3]/ASS[B-3-2]/ASSS[B-3-2-1]",
         "NCKU-NUMBERING-NOOP-SELECTOR:GC[",
     )
-    require(log.count("NCKU-NUMBERING-") == len(markers), "unexpected marker count")
+    require(log.count("NCKU-NUMBERING-") == len(markers) - 3, "unexpected numbering marker count")
+    require(log.count("NCKU-CHAPTER-PARSER-") == 3, "unexpected Chapter parser marker count")
     for marker in markers:
         require(marker in compact_log, f"missing or incorrect marker: {marker}")
     require(
@@ -80,6 +84,18 @@ def main() -> None:
         require(fragment in normalized_text, f"missing visible fragment: {fragment}")
 
     source = Path("thesis/template/command/cmd-numbering.tex").read_text()
+    require(
+        r"\newcommand\NCKUPrivateSetChapterTitleFormatKeys[1]" in source,
+        "Chapter title-format private seam is missing",
+    )
+    require(
+        source.count(r"\NCKUPrivateSetChapterTitleFormatKeys{#2}") == 1,
+        "Chapter selector does not route through the private seam exactly once",
+    )
+    require(
+        r"/CTitleNumberFormat/.is family" in source,
+        "legacy Chapter title-format pgfkeys family is missing before migration",
+    )
     require(
         r"\appto\GetAppendixEquationNumberFormatString{}" not in source,
         "appendix equation initializer still appends instead of resetting",
