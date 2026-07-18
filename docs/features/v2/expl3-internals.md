@@ -1,6 +1,6 @@
 # Incremental `expl3` Internal Modernization
 
-Status: first four bounded slices implemented and validated; pending review
+Status: first five bounded slices implemented and validated; pending review
 
 ## Intent
 
@@ -92,6 +92,26 @@ unchanged. The dynamic theorem-format registry and counter-routing families
 remain on `pgfkeys`; this slice does not combine those independent state
 machines.
 
+### Selected follow-up: reference setup key parsing
+
+The two-key `/SetupReference` family was selected after repository and runtime
+audits confirmed that no active source or generated `.fls` loads deprecated
+`l3keys2e`. Before replacement, a private seam froze the default English
+`References` title, `plain` style, expanded macro-valued storage,
+reset-on-repeat, and unknown-key hard-error behavior under `pgfkeys`.
+
+The parser now uses a separate `ncku / setup-reference` `l3keys` family with
+`Title` and `BibStyle` `.tl_set_e:N` properties. The public
+`\SetupReference` signature, `\GetReferenceTitle` and
+`\GetReferenceBibStyle` storage, `\ReferencesFiles` renderer, BibTeX resource
+handling, and `BibStyle=apacite` preamble side effect remain unchanged. A
+dedicated fixture proves that `apacite` still loads with `notocbib`.
+
+This command-level parser uses `l3keys` directly. It does not use or require
+`l3keys2e`; current LaTeX package/class option processing would instead use the
+kernel `\DeclareKeys`, `\ProcessKeyOptions`, and `\SetKeys` surface when that
+becomes relevant.
+
 ### Retained: explicit `xparse`
 
 The LaTeX kernel provides modern document-command interfaces, but it deliberately
@@ -108,12 +128,12 @@ fixture and visible-output proof; a mechanical global rewrite is rejected.
 
 ### Deferred: remaining `pgfkeys` families
 
-Only the single-figure, single-table, and theorem-content families moved. The
-remaining 49 literal `\pgfkeys`/`\pgfkeysvalueof` references span five files
-and expose different defaulting, storage, repeated-setup, rendering, and
-unknown-key behavior. No multi-figure, bibliography, dynamic theorem-format,
-font, or numbering key family is approved for conversion without its own frozen
-contract and output proof.
+Only the single-figure, single-table, theorem-content, and reference-setup
+families moved. The remaining 46 literal `\pgfkeys`/`\pgfkeysvalueof`
+references span four files and expose different defaulting, storage,
+repeated-setup, rendering, and unknown-key behavior. No multi-figure, dynamic
+theorem-format, font, or numbering key family is approved for conversion
+without its own frozen contract and output proof.
 
 ### Retained: `etoolbox`
 
@@ -228,6 +248,32 @@ The theorem-content parser replacement passed:
 After the three key-family slices, 49 literal `pgfkeys` references remain across
 five active template files. The two dynamic theorem-registry references remain
 intentionally active. No package-removal claim is made.
+
+### Reference-setup `l3keys` validation result
+
+The reference parser replacement passed:
+
+- original-implementation defaults, macro-expansion, reset-on-repeat, and
+  unknown-key hard-error baseline contracts;
+- public custom title/style state and a rendered BibTeX bibliography;
+- a separate `apacite[notocbib]` package-load and state contract;
+- focused one-page text, normalized bounding-box, font-table, and 200-DPI
+  raster identity for both the BibTeX and `apacite` fixtures;
+- fresh exact-HEAD `just ci`, including V1 API, unchanged-project migration,
+  diagnostics, all negative-key gates, student archive, float, theorem matrix,
+  font/CJK, student-mode, watermark, and custom-style gates;
+- canonical 271-page A4 text, 40,823 normalized bounding-box words, and
+  font-table identity;
+- identical 120-DPI raster output for all 271 canonical pages;
+- successful `just release review` package generation and verification;
+- a repo-external `latexmk -xelatex` build of the generated student ZIP,
+  producing 271 A4 pages, SyncTeX, and resolved references;
+- zero `l3keys2e` references in active student source and zero `l3keys2e`
+  runtime loads across generated `.fls` files.
+
+After the four key-family slices, 46 literal `pgfkeys` references remain across
+four active template files. PGF/TikZ still loads `pgfkeys` at runtime, so no
+package-removal claim is made.
 
 ## Next research slice
 

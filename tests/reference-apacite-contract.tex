@@ -1,0 +1,19 @@
+% Focused preamble-side-effect contract for the apacite reference style.
+\input{./template/configure}
+
+\SetupReference{Title={APA Contract References},BibStyle={apacite}}
+
+\makeatletter
+\@ifpackageloaded{apacite}
+  {\typeout{NCKU-REFERENCE-APACITE-LOADED: yes}}
+  {\errmessage{NCKU-TEST-FAIL: apacite package was not loaded}}
+\@ifpackagewith{apacite}{notocbib}
+  {\typeout{NCKU-REFERENCE-APACITE-OPTION: notocbib}}
+  {\errmessage{NCKU-TEST-FAIL: apacite notocbib option was not applied}}
+\makeatother
+
+\begin{document}
+\typeout{NCKU-REFERENCE-APACITE-STATE: \GetReferenceTitle/\GetReferenceBibStyle}
+NCKU apacite setup contract.
+\typeout{NCKU-TEST-PASS: SetupReference apacite preamble side effect}
+\end{document}

@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-deprecated-command-contract _test-float-contract _test-figure-key-unknown _test-table-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-deprecated-command-contract _test-float-contract _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -190,6 +190,38 @@ _test-table-key-unknown:
     grep -Fq 'unsupported' "{{ build_dir }}/tests/table-key-unknown.log"
     ! grep -Fq 'NCKU-TEST-FAIL' "{{ build_dir }}/tests/table-key-unknown.log"
     @echo "Table key unknown-option PASS: deterministic hard error"
+
+# Internal SetupReference parser and rendered BibTeX contract.
+[private]
+_test-reference-contract:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/reference-contract."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ build_dir }}/tests" -jobname=reference-contract ../tests/reference-contract.tex
+    pdfinfo "{{ build_dir }}/tests/reference-contract.pdf" > "{{ build_dir }}/tests/reference-contract.pdfinfo"
+    pdftotext -layout "{{ build_dir }}/tests/reference-contract.pdf" "{{ build_dir }}/tests/reference-contract.txt"
+    python3 scripts/test/check-reference-contract.py "{{ build_dir }}/tests"
+
+# SetupReference apacite route must retain its preamble package side effect.
+[private]
+_test-reference-apacite-contract:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/reference-apacite-contract."*
+    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=reference-apacite-contract ../tests/reference-apacite-contract.tex
+    grep -Fq 'NCKU-REFERENCE-APACITE-LOADED: yes' "{{ build_dir }}/tests/reference-apacite-contract.log"
+    grep -Fq 'NCKU-REFERENCE-APACITE-OPTION: notocbib' "{{ build_dir }}/tests/reference-apacite-contract.log"
+    grep -Fq 'NCKU-REFERENCE-APACITE-STATE: APA Contract References/apacite' "{{ build_dir }}/tests/reference-apacite-contract.log"
+    grep -Fq 'NCKU-TEST-PASS: SetupReference apacite preamble side effect' "{{ build_dir }}/tests/reference-apacite-contract.log"
+    @echo "Reference apacite contract PASS: package and notocbib side effect"
+
+# Unknown SetupReference keys must remain deterministic hard errors.
+[private]
+_test-reference-key-unknown:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/reference-key-unknown."*
+    if (cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=reference-key-unknown ../tests/reference-key-unknown.tex); then echo "unknown reference key unexpectedly compiled"; exit 1; fi
+    grep -Fq 'unsupported' "{{ build_dir }}/tests/reference-key-unknown.log"
+    ! grep -Fq 'NCKU-TEST-FAIL' "{{ build_dir }}/tests/reference-key-unknown.log"
+    @echo "Reference key unknown-option PASS: deterministic hard error"
 
 # Internal runtime contract for all 21 public theorem insertion helpers.
 [private]
