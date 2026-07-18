@@ -78,12 +78,19 @@
   BoldItalicFont/.estore in = \TmpValueBoldItalicFont,
 } % End of \pgfkeys{}
 
+% Keep custom-font filename parsing behind one private seam so its legacy
+% defaults, expansion, shared-scratch aliases, and errors can be frozen first.
+\newcommand{\NCKUPrivateSetCustomFontFileKeys}[1]
+{%
+  \pgfkeys{/ParseCustomFontFiles, default, #1}%
+} % End of \newcommand{}
+
 \newcommand{\SetCustomEngFontFiles}[1][\empty]
 {%
   \SetFontUseType{\VarFontTypeCustom}
   %
   % Parse the input
-  \pgfkeys{/ParseCustomFontFiles, default, #1}%
+  \NCKUPrivateSetCustomFontFileKeys{#1}%
   %
   \ifthenelse{\equal{\TmpValueNormalFont}{\empty}}{}{%
     \renewcommand{\VarFontTypeCustomEngFileNameNormal}{%
@@ -104,7 +111,7 @@
   \SetFontUseType{\VarFontTypeCustom}
   %
   % Parse the input
-  \pgfkeys{/ParseCustomFontFiles, default, #1}%
+  \NCKUPrivateSetCustomFontFileKeys{#1}%
   %
   \ifthenelse{\equal{\TmpValueNormalFont}{\empty}}{}{%
     \renewcommand{\VarFontTypeCustomChiFileNameNormal}{%
