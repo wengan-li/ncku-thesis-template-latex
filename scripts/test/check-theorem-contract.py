@@ -23,11 +23,40 @@ def main() -> None:
     aux = stem.with_suffix(".aux").read_text(errors="replace")
     text = stem.with_suffix(".txt").read_text(errors="replace")
     pdfinfo = stem.with_suffix(".pdfinfo").read_text(errors="replace")
+    source = Path("thesis/template/command/cmd-theorem.tex").read_text(errors="replace")
+
+    require(
+        r"\keys_define:nn { ncku / insert-theorem }" in source,
+        "theorem-content parser is not defined through l3keys",
+    )
+    require(
+        source.count(r".tl_set_e:N") == 2,
+        "theorem-content parser does not use exactly two expanded tl properties",
+    )
+    require(
+        r"/InsertTheoremOptions/.is family" not in source,
+        "legacy theorem-content pgfkeys family remains active",
+    )
+    require(
+        r"\NCKUPrivateSetInsertTheoremKeys{#1}" in source,
+        "theorem-content insertion bypasses the private parser",
+    )
+    require(
+        r"/Theorem#1Format/.is family" in source,
+        "dynamic theorem-format pgfkeys registry was changed by this slice",
+    )
 
     require(
         "NCKU-TEST-PASS: all 21 public theorem insertion helpers compiled" in log,
         "missing theorem pass marker",
     )
+    compact_log = "".join(log.split())
+    for marker in (
+        "NCKU-THEOREM-KEY-DEFAULTS:/",
+        "NCKU-THEOREM-KEY-EXPANDED:ExpandedTheoremTitle/ncku:theorem-expanded",
+        "NCKU-THEOREM-KEY-RESET:/",
+    ):
+        require(marker in compact_log, f"missing theorem key-state marker: {marker}")
 
     theorem_types = (
         "Definition",

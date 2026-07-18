@@ -28,6 +28,20 @@
 \TypeoutTheoremDefault{Hypothesis}
 \TypeoutTheoremDefault{Summary}
 
+% Freeze the two-key theorem-content parser independently of rendering.
+\begingroup
+\NCKUPrivateSetInsertTheoremKeys{\empty}
+\typeout{NCKU-THEOREM-KEY-DEFAULTS: \TmpValueTitle/\TmpValueLabel}
+\def\NCKUTheoremTitle{Expanded Theorem Title}
+\def\NCKUTheoremLabel{ncku:theorem-expanded}
+\NCKUPrivateSetInsertTheoremKeys{%
+  title=\NCKUTheoremTitle,
+  label=\NCKUTheoremLabel}
+\typeout{NCKU-THEOREM-KEY-EXPANDED: \TmpValueTitle/\TmpValueLabel}
+\NCKUPrivateSetInsertTheoremKeys{\empty}
+\typeout{NCKU-THEOREM-KEY-RESET: \TmpValueTitle/\TmpValueLabel}
+\endgroup
+
 \stepcounter{section}
 
 \InsertDefinition[label={ncku:test:definition}]{NCKU Definition Body.}

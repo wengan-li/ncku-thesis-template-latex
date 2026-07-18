@@ -1,6 +1,6 @@
 # Incremental `expl3` Internal Modernization
 
-Status: first three bounded slices implemented and validated; pending review
+Status: first four bounded slices implemented and validated; pending review
 
 ## Intent
 
@@ -75,6 +75,23 @@ The parser now uses a separate `ncku / insert-table` `l3keys` family with eight
 signature, all key names/defaults, `\TmpValue...` scratch macros, caption and
 `nomtitle` ordering, table dimensions, and rendering branches are unchanged.
 
+### Selected follow-up: theorem-content key parsing
+
+The two-key `/InsertTheoremOptions` family was selected instead of the more
+coupled multi-figure parser. The existing theorem fixture already exercises all
+21 public insertion helpers, named and unnamed forms, numbered and unnumbered
+environments, labels, references, `nameref`, section resets, styles, and counter
+routing. A private seam first froze literal defaults, expanded macro-valued
+storage, reset-on-repeat, and unknown-key hard-error behavior under `pgfkeys`.
+
+The content parser now uses a separate `ncku / insert-theorem` `l3keys` family
+with two `.tl_set_e:N` properties. Public insertion commands, optional argument
+signatures, `title` and `label` names/defaults, `\TmpValueTitle` and
+`\TmpValueLabel`, title metadata freezing, proof markers, and rendering are
+unchanged. The dynamic theorem-format registry and counter-routing families
+remain on `pgfkeys`; this slice does not combine those independent state
+machines.
+
 ### Retained: explicit `xparse`
 
 The LaTeX kernel provides modern document-command interfaces, but it deliberately
@@ -91,11 +108,12 @@ fixture and visible-output proof; a mechanical global rewrite is rejected.
 
 ### Deferred: remaining `pgfkeys` families
 
-Only the single-figure and single-table families moved. The remaining 52 literal
-`\pgfkeys`/`\pgfkeysvalueof` references span five files and expose different
-defaulting, storage, repeated-setup, rendering, and unknown-key behavior. No
-multi-figure, bibliography, theorem, font, or numbering key family is
-approved for conversion without its own frozen contract and output proof.
+Only the single-figure, single-table, and theorem-content families moved. The
+remaining 49 literal `\pgfkeys`/`\pgfkeysvalueof` references span five files
+and expose different defaulting, storage, repeated-setup, rendering, and
+unknown-key behavior. No multi-figure, bibliography, dynamic theorem-format,
+font, or numbering key family is approved for conversion without its own frozen
+contract and output proof.
 
 ### Retained: `etoolbox`
 
@@ -186,6 +204,30 @@ The table parser replacement passed:
 
 After the two key-family slices, 52 literal `pgfkeys` references remain across
 five active template files. No package-removal claim is made.
+
+### Theorem-content `l3keys` validation result
+
+The theorem-content parser replacement passed:
+
+- original-implementation defaults, macro-expansion, reset-on-repeat, and
+  unknown-key hard-error baseline contracts;
+- all 21 public insertion helpers, named/unnamed and numbered/unnumbered forms,
+  15 labels, references, `nameref`, section reset, proof marker, setter routes,
+  custom styles, counter chains, and deterministic cycle diagnostics;
+- focused one-page text, normalized bounding-box, font-table, and 200-DPI raster
+  identity against the same fixture using the original `pgfkeys` parser;
+- fresh exact-HEAD `just ci`, including V1 API, unchanged-project migration,
+  diagnostics, all negative-key gates, student archive, float, theorem matrix,
+  font/CJK, student-mode, watermark, and custom-style gates;
+- canonical 271-page A4 text, normalized bounding-box, and font-table identity;
+- identical 120-DPI raster output for all 271 canonical pages;
+- successful `just release review` package generation and verification;
+- a repo-external documented `latexmk -xelatex` build of the generated student
+  ZIP, producing 271 A4 pages, SyncTeX, and resolved references.
+
+After the three key-family slices, 49 literal `pgfkeys` references remain across
+five active template files. The two dynamic theorem-registry references remain
+intentionally active. No package-removal claim is made.
 
 ## Next research slice
 
