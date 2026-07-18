@@ -92,6 +92,31 @@
   }
 \typeout{NCKU-FLOAT-TABLE-STAR-STATE: \TmpValueScale/\TmpValueNomTitle/\TmpValueLabel/\TmpValuePosition/\TmpValueOpacity}
 
+% Freeze the single-figure parser independently of rendering: literal defaults,
+% expanded macro values, and reset-on-repeat behavior must survive a parser swap.
+\begingroup
+\NCKUPrivateSetInsertFigureKeys{\empty}
+\typeout{NCKU-FIGURE-KEY-DEFAULTS: \TmpValueScale/\TmpValueAngle/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueAlign/\TmpValueOpacity}
+\def\NCKUFigureScale{1.75}
+\def\NCKUFigureAngle{15}
+\def\NCKUFigureCaption{Expanded Caption}
+\def\NCKUFigureLabel{ncku:expanded}
+\def\NCKUFigurePosition{ignored-pos}
+\def\NCKUFigureAlign{ignored-align}
+\def\NCKUFigureOpacity{0.9}
+\NCKUPrivateSetInsertFigureKeys{%
+  scale=\NCKUFigureScale,
+  angle=\NCKUFigureAngle,
+  caption=\NCKUFigureCaption,
+  label=\NCKUFigureLabel,
+  pos=\NCKUFigurePosition,
+  align=\NCKUFigureAlign,
+  opacity=\NCKUFigureOpacity}
+\typeout{NCKU-FIGURE-KEY-EXPANDED: \TmpValueScale/\TmpValueAngle/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueAlign/\TmpValueOpacity}
+\NCKUPrivateSetInsertFigureKeys{\empty}
+\typeout{NCKU-FIGURE-KEY-RESET: \TmpValueScale/\TmpValueAngle/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueAlign/\TmpValueOpacity}
+\endgroup
+
 References: \ref{ncku:float:single}, \ref{ncku:float:multi},
 \ref{ncku:float:sub-a}, \ref{ncku:float:sub-b}, \ref{ncku:float:sub-c},
 \ref{ncku:float:table-top}, \ref{ncku:float:table-bottom}.

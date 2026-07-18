@@ -1,0 +1,8 @@
+% Negative contract: unknown single-figure keys must not be silently ignored.
+\input{./template/configure}
+
+\NCKUPrivateSetInsertFigureKeys{unsupported=value}
+
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown single-figure key was ignored}
+\end{document}

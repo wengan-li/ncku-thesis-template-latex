@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-deprecated-command-contract _test-float-contract _test-theorem-contract _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-deprecated-command-contract _test-float-contract _test-figure-key-unknown _test-theorem-contract _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -170,6 +170,16 @@ _test-float-contract:
     pdftotext -layout "{{ build_dir }}/tests/float-contract.pdf" "{{ build_dir }}/tests/float-contract.txt"
     pdfimages -list "{{ build_dir }}/tests/float-contract.pdf" > "{{ build_dir }}/tests/float-contract.images"
     python3 scripts/test/check-float-contract.py "{{ build_dir }}/tests"
+
+# Unknown single-figure keys must remain deterministic hard errors.
+[private]
+_test-figure-key-unknown:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/figure-key-unknown."*
+    if (cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=figure-key-unknown ../tests/figure-key-unknown.tex); then echo "unknown figure key unexpectedly compiled"; exit 1; fi
+    grep -Fq 'unsupported' "{{ build_dir }}/tests/figure-key-unknown.log"
+    ! grep -Fq 'NCKU-TEST-FAIL' "{{ build_dir }}/tests/figure-key-unknown.log"
+    @echo "Figure key unknown-option PASS: deterministic hard error"
 
 # Internal runtime contract for all 21 public theorem insertion helpers.
 [private]
