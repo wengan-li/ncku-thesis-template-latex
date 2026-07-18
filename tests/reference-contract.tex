@@ -1,0 +1,31 @@
+% Focused contract for SetupReference parsing and rendered bibliography output.
+% Build from thesis/ so template and bibliography resources resolve identically.
+\input{./template/configure}
+
+\typeout{NCKU-REFERENCE-INITIAL: \GetReferenceTitle/\GetReferenceBibStyle}
+
+% Freeze the parser independently of package loading and rendering.
+\begingroup
+\NCKUPrivateSetReferenceKeys{}
+\typeout{NCKU-REFERENCE-KEY-DEFAULTS: \GetReferenceTitle/\GetReferenceBibStyle}
+\def\NCKUReferenceTitleMacro{Expanded Reference Title}
+\def\NCKUReferenceStyleMacro{abbrv}
+\NCKUPrivateSetReferenceKeys{%
+  Title=\NCKUReferenceTitleMacro,
+  BibStyle=\NCKUReferenceStyleMacro}
+\def\NCKUReferenceTitleMacro{Changed Title}
+\def\NCKUReferenceStyleMacro{alpha}
+\typeout{NCKU-REFERENCE-KEY-EXPANDED: \GetReferenceTitle/\GetReferenceBibStyle}
+\NCKUPrivateSetReferenceKeys{}
+\typeout{NCKU-REFERENCE-KEY-RESET: \GetReferenceTitle/\GetReferenceBibStyle}
+\endgroup
+
+% Exercise the public command on the rendering route without adding a package.
+\SetupReference{Title={NCKU Contract References},BibStyle={plain}}
+\typeout{NCKU-REFERENCE-PUBLIC: \GetReferenceTitle/\GetReferenceBibStyle}
+
+\begin{document}
+\nocite{website:google}
+\ReferencesFiles{context/references/misc}
+\typeout{NCKU-TEST-PASS: SetupReference parser and rendered bibliography contract}
+\end{document}

@@ -1,0 +1,8 @@
+% Negative contract: unknown reference setup keys must not be silently ignored.
+\input{./template/configure}
+
+\NCKUPrivateSetReferenceKeys{unsupported=value}
+
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown reference key was ignored}
+\end{document}

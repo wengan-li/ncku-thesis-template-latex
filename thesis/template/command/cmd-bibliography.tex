@@ -133,9 +133,19 @@
   BibStyle/.estore in = \GetReferenceBibStyle,
 } % End of \pgfkeys{}
 
+% Keep reference key parsing behind one private seam so its defaults,
+% expansion, repeated-call, and error behavior can be frozen before migration.
+\ExplSyntaxOn
+\cs_new_protected:Npn \ncku_reference_keys_set:n #1
+  { \pgfkeys { /SetupReference, default, #1 } }
+\cs_new_eq:NN
+  \NCKUPrivateSetReferenceKeys
+  \ncku_reference_keys_set:n
+\ExplSyntaxOff
+
 \newcommand\SetupReference[1]
 {%
-  \pgfkeys{/SetupReference, default, #1}%
+  \NCKUPrivateSetReferenceKeys{#1}%
   %
   % Include package<apacite> if needed
   \ifthenelse{\equal{\GetReferenceBibStyle}{apacite}}%
