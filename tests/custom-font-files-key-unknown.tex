@@ -1,0 +1,8 @@
+% Negative contract: unknown custom-font filename keys must fail.
+\input{./template/configure}
+
+\NCKUPrivateSetCustomFontFileKeys{unsupported=value}
+
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown custom font key was ignored}
+\end{document}

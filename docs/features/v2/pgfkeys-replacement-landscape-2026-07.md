@@ -104,9 +104,10 @@ legacy key package is churn, not modernization.
 
 ## NCKU-specific evidence and judgement
 
-1. Four isolated command families now use `l3keys`: single figure, single table,
-   theorem content, and reference setup. Each migration first froze the legacy
-   parser contract and then proved canonical output identity.
+1. Five isolated command families now use `l3keys`: single figure, single table,
+   theorem content, reference setup, and custom-font filename parsing. Each
+   migration first froze the legacy parser contract and then proved canonical
+   output identity.
 2. `SetupReference` preserves its default/custom/repeated setup, rendered BibTeX
    output, unknown-key failure, and `apacite[notocbib]` preamble side effect.
 3. Active student source contains zero `l3keys2e` references, and generated
@@ -116,7 +117,7 @@ legacy key package is churn, not modernization.
    scratch state and all row-dispatch routes are covered.
 5. Keep dynamic theorem-format/counter families deferred; they are not the same
    state machine as theorem-content `title`/`label` parsing.
-6. Do not claim package removal while 46 direct `pgfkeys`/`pgfkeysvalueof`
+6. Do not claim package removal while 42 direct `pgfkeys`/`pgfkeysvalueof`
    references remain across four files or while PGF/TikZ keeps `pgfkeys` active
    transitively.
 7. Continue requiring focused semantic checks, full text/normalized bbox/fonts,
@@ -124,7 +125,7 @@ legacy key package is churn, not modernization.
    student ZIP direct build, and exact-SHA hosted checks.
 
 For this repository, `l3keys` is the best-fit default because it is official,
-current, already loaded, and has passed four independently reversible,
+current, already loaded, and has passed five independently reversible,
 output-neutral family migrations. `expkv-bundle` is a credible modern
 alternative, but it solves a more specialized expandability and cross-format
 problem that NCKU has not demonstrated. `pgfkeys` should be reduced where it is

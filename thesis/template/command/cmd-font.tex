@@ -62,28 +62,37 @@
 \def \VarFontTypeCustomChiFileNameBold {} % Default
 \def \VarFontTypeCustomChiFileNameBoldItalic {} % Default
 
-\pgfkeys
-{
-  /ParseCustomFontFiles/.is family, /ParseCustomFontFiles,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / custom-font-files }
   {
-    NormalFont = \empty,
-    ItalicFont = \empty,
-    BoldFont = \empty,
-    BoldItalicFont = \empty,
-  },
-  NormalFont/.estore in = \TmpValueNormalFont,
-  ItalicFont/.estore in = \TmpValueItalicFont,
-  BoldFont/.estore in = \TmpValueBoldFont,
-  BoldItalicFont/.estore in = \TmpValueBoldItalicFont,
-} % End of \pgfkeys{}
+    NormalFont     .tl_set_e:N = \TmpValueNormalFont,
+    ItalicFont     .tl_set_e:N = \TmpValueItalicFont,
+    BoldFont       .tl_set_e:N = \TmpValueBoldFont,
+    BoldItalicFont .tl_set_e:N = \TmpValueBoldItalicFont,
+  }
+
+\cs_new_protected:Npn \ncku_custom_font_files_set_keys:n #1
+  {
+    \tl_clear:N \TmpValueNormalFont
+    \tl_clear:N \TmpValueItalicFont
+    \tl_clear:N \TmpValueBoldFont
+    \tl_clear:N \TmpValueBoldItalicFont
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / custom-font-files } {#1} }
+  }
+
+% Keep custom-font filename parsing behind one private seam. Public filename
+% macros deliberately retain the legacy shared-scratch alias behavior.
+\cs_new_protected:Npn \NCKUPrivateSetCustomFontFileKeys #1
+  { \ncku_custom_font_files_set_keys:n {#1} }
+\ExplSyntaxOff
 
 \newcommand{\SetCustomEngFontFiles}[1][\empty]
 {%
   \SetFontUseType{\VarFontTypeCustom}
   %
   % Parse the input
-  \pgfkeys{/ParseCustomFontFiles, default, #1}%
+  \NCKUPrivateSetCustomFontFileKeys{#1}%
   %
   \ifthenelse{\equal{\TmpValueNormalFont}{\empty}}{}{%
     \renewcommand{\VarFontTypeCustomEngFileNameNormal}{%
@@ -104,7 +113,7 @@
   \SetFontUseType{\VarFontTypeCustom}
   %
   % Parse the input
-  \pgfkeys{/ParseCustomFontFiles, default, #1}%
+  \NCKUPrivateSetCustomFontFileKeys{#1}%
   %
   \ifthenelse{\equal{\TmpValueNormalFont}{\empty}}{}{%
     \renewcommand{\VarFontTypeCustomChiFileNameNormal}{%

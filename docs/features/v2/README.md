@@ -25,7 +25,7 @@ student project shape, and complete audited 1.x public API through the 2.x line.
 - [`full-review-repairs.md`](full-review-repairs.md)
 - [`super-optimization.md`](super-optimization.md)
 - [`expl3-internals.md`](expl3-internals.md) — bounded post-release internal
-  modernization with five output-neutral implementation slices.
+  modernization with six output-neutral implementation slices.
 - [`pgfkeys-replacement-landscape-2026-07.md`](pgfkeys-replacement-landscape-2026-07.md)
   — dated official-source comparison of `l3keys`, kernel key options,
   `expkv-bundle`, retained PGF/TikZ `pgfkeys`, and deprecated `l3keys2e`.

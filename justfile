@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-deprecated-command-contract _test-float-contract _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-helper-values _test-deprecated-command-contract _test-float-contract _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -330,6 +330,26 @@ _test-metadata-bookmark:
     ! grep -Eiq 'Token not allowed in a PDF string|already defined|destination with the same identifier' "{{ build_dir }}/tests/metadata-bookmark.log"
     pdfinfo "{{ build_dir }}/tests/metadata-bookmark.pdf" > "{{ build_dir }}/tests/metadata-bookmark.pdfinfo"
     grep -Fq 'Title:           NCKU Metadata Line (成大中繼資料標題)' "{{ build_dir }}/tests/metadata-bookmark.pdfinfo"
+
+# Internal contract for custom-font filename key parsing and shared aliases.
+[private]
+_test-custom-font-files-contract:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/custom-font-files-contract."*
+    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=custom-font-files-contract ../tests/custom-font-files-contract.tex
+    pdfinfo "{{ build_dir }}/tests/custom-font-files-contract.pdf" > "{{ build_dir }}/tests/custom-font-files-contract.pdfinfo"
+    pdftotext -layout "{{ build_dir }}/tests/custom-font-files-contract.pdf" "{{ build_dir }}/tests/custom-font-files-contract.txt"
+    python3 scripts/test/check-custom-font-files-contract.py "{{ build_dir }}/tests"
+
+# Unknown custom-font filename keys remain deterministic hard errors.
+[private]
+_test-custom-font-files-key-unknown:
+    mkdir -p "{{ build_dir }}/tests"
+    rm -f "{{ build_dir }}/tests/custom-font-files-key-unknown."*
+    if (cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=custom-font-files-key-unknown ../tests/custom-font-files-key-unknown.tex); then echo "unknown custom-font key unexpectedly compiled"; exit 1; fi
+    grep -Fq 'unsupported' "{{ build_dir }}/tests/custom-font-files-key-unknown.log"
+    ! grep -Fq 'NCKU-TEST-FAIL' "{{ build_dir }}/tests/custom-font-files-key-unknown.log"
+    @echo "Custom font filename key unknown-option PASS: deterministic hard error"
 
 # Internal regression test for bundled Latin/CJK font policy.
 [private]

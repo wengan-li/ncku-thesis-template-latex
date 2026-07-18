@@ -1,0 +1,44 @@
+% Focused contract for the legacy custom-font filename parser.
+\input{./template/configure}
+
+\typeout{NCKU-CFONT-INITIAL-ENG: \VarFontTypeCustomEngFileNameNormal|\VarFontTypeCustomEngFileNameItalic|\VarFontTypeCustomEngFileNameBold|\VarFontTypeCustomEngFileNameBoldItalic}
+\typeout{NCKU-CFONT-INITIAL-CHI: \VarFontTypeCustomChiFileNameNormal|\VarFontTypeCustomChiFileNameItalic|\VarFontTypeCustomChiFileNameBold|\VarFontTypeCustomChiFileNameBoldItalic}
+
+% The private parser resets all four shared scratch values on every call.
+\NCKUPrivateSetCustomFontFileKeys{NormalFont=scratch-normal.ttf}
+\typeout{NCKU-CFONT-SCRATCH-ONE: \TmpValueNormalFont|\TmpValueItalicFont|\TmpValueBoldFont|\TmpValueBoldItalicFont}
+\NCKUPrivateSetCustomFontFileKeys{}
+\typeout{NCKU-CFONT-SCRATCH-RESET: \TmpValueNormalFont|\TmpValueItalicFont|\TmpValueBoldFont|\TmpValueBoldItalicFont}
+
+% Omitted public input selects the custom type without changing untouched static defaults.
+\SetFontUseType{\VarFontTypeTimesKaiu}
+\SetCustomEngFontFiles
+\typeout{NCKU-CFONT-OMITTED-TYPE: \GetFontUseType}
+\typeout{NCKU-CFONT-OMITTED-ENG: \VarFontTypeCustomEngFileNameNormal|\VarFontTypeCustomEngFileNameItalic|\VarFontTypeCustomEngFileNameBold|\VarFontTypeCustomEngFileNameBoldItalic}
+
+% pgfkeys .estore-in expands macro-valued filenames before shared scratch storage.
+\def\NCKUCustomNormal{eng-normal-a.ttf}
+\def\NCKUCustomItalic{eng-italic-a.ttf}
+\def\NCKUCustomBold{eng-bold-a.ttf}
+\def\NCKUCustomBoldItalic{eng-bi-a.ttf}
+\SetCustomEngFontFiles[NormalFont=\NCKUCustomNormal,ItalicFont=\NCKUCustomItalic,BoldFont=\NCKUCustomBold,BoldItalicFont=\NCKUCustomBoldItalic]
+\def\NCKUCustomNormal{changed-normal.ttf}
+\def\NCKUCustomItalic{changed-italic.ttf}
+\def\NCKUCustomBold{changed-bold.ttf}
+\def\NCKUCustomBoldItalic{changed-bi.ttf}
+\typeout{NCKU-CFONT-ENG-EXPANDED: \VarFontTypeCustomEngFileNameNormal|\VarFontTypeCustomEngFileNameItalic|\VarFontTypeCustomEngFileNameBold|\VarFontTypeCustomEngFileNameBoldItalic}
+
+% Preserve the legacy alias contract: public filename macros retain references
+% to the shared scratch values rather than snapshots of each setter call.
+\SetCustomEngFontFiles[BoldFont=eng-bold-b.ttf]
+\typeout{NCKU-CFONT-ENG-PARTIAL-ALIAS: \VarFontTypeCustomEngFileNameNormal|\VarFontTypeCustomEngFileNameItalic|\VarFontTypeCustomEngFileNameBold|\VarFontTypeCustomEngFileNameBoldItalic}
+\SetCustomChiFontFiles[NormalFont=chi-normal.ttf,ItalicFont=chi-italic.ttf,BoldFont=chi-bold.ttf,BoldItalicFont=chi-bi.ttf]
+\typeout{NCKU-CFONT-ENG-AFTER-CHI: \VarFontTypeCustomEngFileNameNormal|\VarFontTypeCustomEngFileNameItalic|\VarFontTypeCustomEngFileNameBold|\VarFontTypeCustomEngFileNameBoldItalic}
+\typeout{NCKU-CFONT-CHI-FULL: \VarFontTypeCustomChiFileNameNormal|\VarFontTypeCustomChiFileNameItalic|\VarFontTypeCustomChiFileNameBold|\VarFontTypeCustomChiFileNameBoldItalic}
+\SetCustomChiFontFiles
+\typeout{NCKU-CFONT-ALIASES-AFTER-OMITTED: \VarFontTypeCustomEngFileNameNormal|\VarFontTypeCustomEngFileNameItalic|\VarFontTypeCustomEngFileNameBold|\VarFontTypeCustomEngFileNameBoldItalic/\VarFontTypeCustomChiFileNameNormal|\VarFontTypeCustomChiFileNameItalic|\VarFontTypeCustomChiFileNameBold|\VarFontTypeCustomChiFileNameBoldItalic}
+
+\begin{document}
+Custom font filename parser contract.
+\typeout{NCKU-TEST-PASS: custom font filename parser contract}
+\end{document}

@@ -1,6 +1,6 @@
 # Incremental `expl3` Internal Modernization
 
-Status: first five bounded slices implemented and validated; pending review
+Status: first six bounded slices implemented and validated; pending review
 
 ## Intent
 
@@ -112,6 +112,27 @@ This command-level parser uses `l3keys` directly. It does not use or require
 kernel `\DeclareKeys`, `\ProcessKeyOptions`, and `\SetKeys` surface when that
 becomes relevant.
 
+### Selected follow-up: custom-font filename key parsing
+
+The four-key `/ParseCustomFontFiles` family was selected separately from the
+font-loading `/ParseFontOption` family. Before replacement, a private seam and
+focused fixture froze empty defaults, expanded macro-valued filenames, both
+English and Chinese public setter routes, custom-type selection, repeated calls,
+and unknown-key hard errors.
+
+The legacy public filename macros deliberately retain references to the four
+shared scratch values rather than snapshots. Consequently, a later partial,
+Chinese, or omitted setter call can change values previously exposed through an
+English setter. This surprising alias behavior is preserved by this parser-only
+slice; correcting it requires a separate behavior-change intent and migration
+contract.
+
+The parser now uses `ncku / custom-font-files` with four `.tl_set_e:N` keys and
+explicit per-call scratch clearing. `\SetCustomEngFontFiles`,
+`\SetCustomChiFontFiles`, `\SetFontUseType`, every custom filename macro, and
+the font initialization/rendering path remain unchanged. `/ParseFontOption`
+continues to use `pgfkeys` and is outside this slice.
+
 ### Retained: explicit `xparse`
 
 The LaTeX kernel provides modern document-command interfaces, but it deliberately
@@ -128,12 +149,13 @@ fixture and visible-output proof; a mechanical global rewrite is rejected.
 
 ### Deferred: remaining `pgfkeys` families
 
-Only the single-figure, single-table, theorem-content, and reference-setup
-families moved. The remaining 46 literal `\pgfkeys`/`\pgfkeysvalueof`
+Only the single-figure, single-table, theorem-content, reference-setup, and
+custom-font filename families moved. The remaining 42 literal
+`\pgfkeys`/`\pgfkeysvalueof`
 references span four files and expose different defaulting, storage,
 repeated-setup, rendering, and unknown-key behavior. No multi-figure, dynamic
-theorem-format, font, or numbering key family is approved for conversion
-without its own frozen contract and output proof.
+theorem-format, remaining font-loading, or numbering key family is approved for
+conversion without its own frozen contract and output proof.
 
 ### Retained: `etoolbox`
 
@@ -275,10 +297,38 @@ After the four key-family slices, 46 literal `pgfkeys` references remain across
 four active template files. PGF/TikZ still loads `pgfkeys` at runtime, so no
 package-removal claim is made.
 
+### Custom-font filename `l3keys` validation result
+
+The custom-font filename parser replacement passed:
+
+- original-implementation empty defaults, macro expansion, custom-type
+  selection, both public setter routes, repeated calls, shared-scratch alias
+  behavior, and unknown-key hard-error contracts;
+- focused one-page text, bounding-box XML, font-table, and 200-DPI raster
+  identity against the same fixture using the original `pgfkeys` parser;
+- fresh exact-HEAD `just ci`, including V1 API, unchanged-project migration,
+  diagnostics, all negative-key gates, student archive, float, theorem matrix,
+  font/CJK, student-mode, watermark, and custom-style gates;
+- canonical 271-page A4 text, 40,823 normalized bounding-box words, and
+  font-table identity;
+- identical 120-DPI raster output for all 271 canonical pages;
+- successful `just release review` package generation and verification;
+- a repo-external `latexmk -xelatex -synctex=1` build of the generated student
+  ZIP, producing 271 A4 pages, SyncTeX, and resolved references;
+- zero `l3keys2e` references in active student source and zero `l3keys2e`
+  runtime loads across generated `.fls` files.
+
+After the five key-family slices, 42 literal `pgfkeys` references remain across
+four active template files. The separate `/ParseFontOption` font-loading family
+and all other deferred families remain unchanged.
+
 ## Next research slice
 
 Do not continue by count alone. Rank candidates by removable dependency cost,
 finite semantics, existing fixture coverage, and output risk. Before another key
 family moves, capture its default, macro-expansion, unknown-key, repeated-setup,
 and rendering contract under the current implementation. Otherwise prefer
-another finite `ifthen` dispatcher. Keep every slice independently revertible.
+another finite `ifthen` dispatcher. `/ParseFontOption` is the adjacent candidate,
+but it must remain separate because it directly configures `fontspec` and
+`xeCJK`; require explicit English/CJK optional-face and font-table coverage
+before considering implementation. Keep every slice independently revertible.
