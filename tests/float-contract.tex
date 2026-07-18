@@ -92,6 +92,33 @@
   }
 \typeout{NCKU-FLOAT-TABLE-STAR-STATE: \TmpValueScale/\TmpValueNomTitle/\TmpValueLabel/\TmpValuePosition/\TmpValueOpacity}
 
+% Freeze the single-table parser independently of rendering: literal defaults,
+% expanded macro values, and reset-on-repeat behavior must survive a parser swap.
+\begingroup
+\NCKUPrivateSetInsertTableKeys{\empty}
+\typeout{NCKU-TABLE-KEY-DEFAULTS: \TmpValueScale/\TmpValueNomTitle/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueTabColSep/\TmpValueArrayStretch/\TmpValueOpacity}
+\def\NCKUTableScale{0.55}
+\def\NCKUTableNomTitle{Expanded Nom Title}
+\def\NCKUTableCaption{Expanded Caption}
+\def\NCKUTableLabel{ncku:table-expanded}
+\def\NCKUTablePosition{bottom}
+\def\NCKUTableTabColSep{4pt}
+\def\NCKUTableArrayStretch{1.4}
+\def\NCKUTableOpacity{0.85}
+\NCKUPrivateSetInsertTableKeys{%
+  scale=\NCKUTableScale,
+  nomtitle=\NCKUTableNomTitle,
+  caption=\NCKUTableCaption,
+  label=\NCKUTableLabel,
+  pos=\NCKUTablePosition,
+  tabcolsep=\NCKUTableTabColSep,
+  arraystretch=\NCKUTableArrayStretch,
+  opacity=\NCKUTableOpacity}
+\typeout{NCKU-TABLE-KEY-EXPANDED: \TmpValueScale/\TmpValueNomTitle/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueTabColSep/\TmpValueArrayStretch/\TmpValueOpacity}
+\NCKUPrivateSetInsertTableKeys{\empty}
+\typeout{NCKU-TABLE-KEY-RESET: \TmpValueScale/\TmpValueNomTitle/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueTabColSep/\TmpValueArrayStretch/\TmpValueOpacity}
+\endgroup
+
 % Freeze the single-figure parser independently of rendering: literal defaults,
 % expanded macro values, and reset-on-repeat behavior must survive a parser swap.
 \begingroup

@@ -34,6 +34,9 @@ def main() -> None:
         "NCKU-FLOAT-TABLE-TOP-STATE:0.0/FloatTableTopCaption/ncku:float:table-top/top/3pt/1.2/0.5",
         "NCKU-FLOAT-TABLE-BOTTOM-STATE:0.4/FloatTableBottomCaption/ncku:float:table-bottom/bottom/2pt/0.8/0.3",
         "NCKU-FLOAT-TABLE-STAR-STATE:0.0/FloatTableStarTitle/ncku:float:table-star/top/0.2",
+        "NCKU-TABLE-KEY-DEFAULTS:0.0////top/6pt/1/0.4",
+        "NCKU-TABLE-KEY-EXPANDED:0.55/ExpandedNomTitle/ExpandedCaption/ncku:table-expanded/bottom/4pt/1.4/0.85",
+        "NCKU-TABLE-KEY-RESET:0.0////top/6pt/1/0.4",
         "NCKU-FIGURE-KEY-DEFAULTS:1.0/0///H//0.4",
         "NCKU-FIGURE-KEY-EXPANDED:1.75/15/ExpandedCaption/ncku:expanded/ignored-pos/ignored-align/0.9",
         "NCKU-FIGURE-KEY-RESET:1.0/0///H//0.4",
@@ -159,6 +162,22 @@ def main() -> None:
     require(
         r"\NCKUPrivateSetInsertFigureKeys{#1}" in figure_source,
         "single-figure command bypasses the private key parser",
+    )
+    require(
+        r"\keys_define:nn { ncku / insert-table }" in table_source,
+        "single-table keys no longer use the bounded l3keys family",
+    )
+    require(
+        table_source.count(".tl_set_e:N") == 8,
+        "single-table l3keys family no longer has eight expanded-storage keys",
+    )
+    require(
+        "/InsertTable/.is family" not in table_source,
+        "legacy pgfkeys single-table family was reintroduced",
+    )
+    require(
+        r"\NCKUPrivateSetInsertTableKeys{#1}" in table_source,
+        "single-table command bypasses the private key parser",
     )
     require(figure_source.count(r"\TmpValuePosition") == 1, "figure pos key became behaviorally active")
     require(figure_source.count(r"\TmpValueAlign") == 1, "figure align key became behaviorally active")
