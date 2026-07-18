@@ -60,35 +60,37 @@
   }%
 } % End of \newcommand{}
 
-\pgfkeys
-{
-  /InsertTable/.is family, /InsertTable,
-  default/.style =
-  {
-    scale = 0.0,
-    nomtitle = \empty, % For nomenclature
-    caption = \empty,
-    label = \empty,
-    pos = top, % Position of caption or nomtitle
-    tabcolsep = 6pt,
-    arraystretch = 1,
-    opacity = 0.4,
-  },
-  scale/.estore in = \TmpValueScale,
-  nomtitle/.estore in = \TmpValueNomTitle,
-  caption/.estore in = \TmpValueCaption,
-  label/.estore in = \TmpValueLabel,
-  pos/.estore in = \TmpValuePosition,
-  tabcolsep/.estore in = \TmpValueTabColSep,
-  arraystretch/.estore in = \TmpValueArrayStretch,
-  opacity/.estore in = \TmpValueOpacity,
-} % End of \pgfkeys{}
-
-% Keep single-table key parsing behind one private seam so the current
-% pgfkeys contract can be frozen before changing the implementation.
 \ExplSyntaxOn
+\keys_define:nn { ncku / insert-table }
+  {
+    scale        .tl_set_e:N = \TmpValueScale,
+    nomtitle     .tl_set_e:N = \TmpValueNomTitle,
+    caption      .tl_set_e:N = \TmpValueCaption,
+    label        .tl_set_e:N = \TmpValueLabel,
+    pos          .tl_set_e:N = \TmpValuePosition,
+    tabcolsep    .tl_set_e:N = \TmpValueTabColSep,
+    arraystretch .tl_set_e:N = \TmpValueArrayStretch,
+    opacity      .tl_set_e:N = \TmpValueOpacity,
+  }
+
+% Reset every value on each call, then apply the caller's overrides. The public
+% optional argument uses the literal token \empty when omitted.
 \cs_new_protected:Npn \ncku_insert_table_keys_set:n #1
-  { \pgfkeys { /InsertTable, default, #1 } }
+  {
+    \keys_set:nn { ncku / insert-table }
+      {
+        scale = 0.0,
+        nomtitle = \empty,
+        caption = \empty,
+        label = \empty,
+        pos = top,
+        tabcolsep = 6pt,
+        arraystretch = 1,
+        opacity = 0.4,
+      }
+    \tl_if_eq:nnF {#1} {\empty}
+      { \keys_set:nn { ncku / insert-table } {#1} }
+  }
 \cs_new_eq:NN \NCKUPrivateSetInsertTableKeys
   \ncku_insert_table_keys_set:n
 \ExplSyntaxOff

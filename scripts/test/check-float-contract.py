@@ -163,6 +163,22 @@ def main() -> None:
         r"\NCKUPrivateSetInsertFigureKeys{#1}" in figure_source,
         "single-figure command bypasses the private key parser",
     )
+    require(
+        r"\keys_define:nn { ncku / insert-table }" in table_source,
+        "single-table keys no longer use the bounded l3keys family",
+    )
+    require(
+        table_source.count(".tl_set_e:N") == 8,
+        "single-table l3keys family no longer has eight expanded-storage keys",
+    )
+    require(
+        "/InsertTable/.is family" not in table_source,
+        "legacy pgfkeys single-table family was reintroduced",
+    )
+    require(
+        r"\NCKUPrivateSetInsertTableKeys{#1}" in table_source,
+        "single-table command bypasses the private key parser",
+    )
     require(figure_source.count(r"\TmpValuePosition") == 1, "figure pos key became behaviorally active")
     require(figure_source.count(r"\TmpValueAlign") == 1, "figure align key became behaviorally active")
     require(figures_source.count(r"\TmpMIValueAlign") == 1, "multi-figure align key became behaviorally active")
