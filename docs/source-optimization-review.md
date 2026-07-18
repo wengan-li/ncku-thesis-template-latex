@@ -14,11 +14,11 @@ authorization to change the class/package structure, engine, public API, or PDF
 accessibility claims; each would require a separate owner-approved Intent and
 validation boundary.
 
-The original public Overleaf Gallery template remains published. A verified V2
-Gallery package is prepared, but it has not been uploaded to the original
-project or submitted for Gallery update review. GitHub Releases remains the
-canonical V2 package until the original project is updated, resubmitted,
-approved, and independently read back.
+The original public Overleaf Gallery template remains published. The verified
+V2 Gallery package was owner-confirmed uploaded to the original project and
+resubmitted for Gallery update review on 2026-07-18; Overleaf's response is
+pending. GitHub Releases remains the canonical V2 package until the update is
+approved and the public Gallery copy is independently read back.
 
 ## Implementation status
 

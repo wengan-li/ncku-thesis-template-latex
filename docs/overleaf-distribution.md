@@ -1,6 +1,6 @@
 # Overleaf distribution decision
 
-Status: Gallery template published; V2 Gallery package prepared, but the original project has not yet been updated or resubmitted
+Status: Gallery template published; V2 package owner-confirmed uploaded to the original project and resubmitted, pending Overleaf response and public read-back
 
 Checked: 2026-07-18
 
@@ -116,9 +116,11 @@ without clipping, overlap, Draft/logo marks, or broken Chinese/Latin fonts. The
 visible red PDF hyperlink borders on the table of contents match the existing
 public Gallery behavior and are not a new V2 regression.
 
-This is the **prepared** state only. The ZIP has not been uploaded into the
-original Overleaf project, the project has not been recompiled with this source,
-and no V2 Gallery update has been submitted.
+Owner-confirmed on 2026-07-18: the prepared V2 package was uploaded into the
+original Overleaf project and resubmitted for Gallery update review. The
+authenticated project settings and compile result were not independently read
+back in this session, so this is an owner-confirmed **submitted** state rather
+than independently observed approval. Overleaf's response is pending.
 
 ## Required Overleaf settings
 
@@ -161,7 +163,7 @@ The Gallery project was submitted on 2026-07-12 and approved/published by Overle
 
 <https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn>
 
-Owner-corrected on 2026-07-18: the V2 update has **not** been uploaded to the original Overleaf project and has **not** been submitted for Gallery update review. A verified Gallery package is prepared, but GitHub Releases remains the canonical source for the latest V2 student package until the original project is updated, recompiled, resubmitted, approved, and independently read back. Do not describe the public Gallery copy as V2 before those steps are complete.
+Owner-confirmed on 2026-07-18: the verified V2 package was uploaded to the original Overleaf project and resubmitted for Gallery update review; Overleaf's response is pending. The public Gallery page and PDF were independently checked immediately afterward and still expose the pre-V2 copy (11-page PDF creation date `2026-07-12`, SHA-256 `24dcf2e9a6df0360151cbdf1757fbb7d2f583e0d4374479a538dbb5e4d10b702`). GitHub Releases therefore remains the canonical source for the latest V2 student package until Overleaf approves the update and the public Gallery copy is independently read back. Submitted does not mean approved or published.
 
 Operational rules:
 
