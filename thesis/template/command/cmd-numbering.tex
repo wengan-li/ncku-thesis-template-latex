@@ -46,49 +46,74 @@
 
 % ----------------------------------------------------------------------------
 
-\pgfkeys
-{
-  /SetupTitleNumberFormatString/.is family, /SetupTitleNumberFormatString,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / numbering / setup-title-format-string }
   {
-    BeginText = \empty,
-    EndText = \empty,
-    CNumStyle = \empty,
-    CCounterName = \empty,
-    SNumStyle = \empty,
-    SCounterName = \empty,
-    SSNumStyle = \empty,
-    SSCounterName = \empty,
-    SSSNumStyle = \empty,
-    SSSCounterName = \empty,
-    SepAtIndex = \empty,
-    SepBetweenCnS = \empty,
-    SepBetweenSnSS = \empty,
-    SepBetweenSSCnSSS = \empty,
-  },
-  BeginText/.estore in = \TmpValueBeginText,
-  EndText/.estore in = \TmpValueEndText,
-  CNumStyle/.estore in = \TmpValueCNumStyle,
-  CCounterName/.estore in = \TmpValueCCounterName,
-  SNumStyle/.estore in = \TmpValueSNumStyle,
-  SCounterName/.estore in = \TmpValueSCounterName,
-  SSNumStyle/.estore in = \TmpValueSSNumStyle,
-  SSCounterName/.estore in = \TmpValueSSCounterName,
-  SSSNumStyle/.estore in = \TmpValueSSSNumStyle,
-  SSSCounterName/.estore in = \TmpValueSSSCounterName,
-  SepAtIndex/.estore in = \TmpValueSepAtIndex,
-  SepBetweenCnS/.estore in = \TmpValueSepBetweenCnS,
-  SepBetweenSnSS/.estore in = \TmpValueSepBetweenSnSS,
-  SepBetweenSSCnSSS/.estore in = \TmpValueSepBetweenSSCnSSS,
-} % End of \pgfkeys{}
+    BeginText .tl_set_e:N = \TmpValueBeginText,
+    EndText .tl_set_e:N = \TmpValueEndText,
+    CNumStyle .tl_set_e:N = \TmpValueCNumStyle,
+    CCounterName .tl_set_e:N = \TmpValueCCounterName,
+    SNumStyle .tl_set_e:N = \TmpValueSNumStyle,
+    SCounterName .tl_set_e:N = \TmpValueSCounterName,
+    SSNumStyle .tl_set_e:N = \TmpValueSSNumStyle,
+    SSCounterName .tl_set_e:N = \TmpValueSSCounterName,
+    SSSNumStyle .tl_set_e:N = \TmpValueSSSNumStyle,
+    SSSCounterName .tl_set_e:N = \TmpValueSSSCounterName,
+    SepAtIndex .tl_set_e:N = \TmpValueSepAtIndex,
+    SepBetweenCnS .tl_set_e:N = \TmpValueSepBetweenCnS,
+    SepBetweenSnSS .tl_set_e:N = \TmpValueSepBetweenSnSS,
+    SepBetweenSSCnSSS .tl_set_e:N = \TmpValueSepBetweenSSCnSSS,
+  }
 
-% Keep the remaining numbering key families behind one private routing seam.
-% The family name stays explicit so each parser can be migrated and asserted
-% independently without changing public numbering commands.
-\newcommand\NCKUPrivateSetRemainingNumberingKeys[2]
-{%
-  \pgfkeys{/#1, default, #2}%
-} % End of \newcommand{}
+\cs_new_protected:Npn \ncku_numbering_setup_title_format_string_set_keys:n #1
+  {
+    \tl_clear:N \TmpValueBeginText
+    \tl_clear:N \TmpValueEndText
+    \tl_clear:N \TmpValueCNumStyle
+    \tl_clear:N \TmpValueCCounterName
+    \tl_clear:N \TmpValueSNumStyle
+    \tl_clear:N \TmpValueSCounterName
+    \tl_clear:N \TmpValueSSNumStyle
+    \tl_clear:N \TmpValueSSCounterName
+    \tl_clear:N \TmpValueSSSNumStyle
+    \tl_clear:N \TmpValueSSSCounterName
+    \tl_clear:N \TmpValueSepAtIndex
+    \tl_clear:N \TmpValueSepBetweenCnS
+    \tl_clear:N \TmpValueSepBetweenSnSS
+    \tl_clear:N \TmpValueSepBetweenSSCnSSS
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / numbering / setup-title-format-string } {#1} }
+  }
+\ExplSyntaxOff
+
+% Route the remaining numbering families to independent l3keys parsers.
+\ExplSyntaxOn
+\cs_new_protected:Npn \NCKUPrivateSetRemainingNumberingKeys #1#2
+  {
+    \str_case_e:nnF {#1}
+      {
+        {SetupTitleNumberFormatString}
+          { \ncku_numbering_setup_title_format_string_set_keys:n {#2} }
+        {STitleNumberFormat}
+          { \ncku_numbering_section_title_format_set_keys:n {#2} }
+        {SSTitleNumberFormat}
+          { \ncku_numbering_subsection_title_format_set_keys:n {#2} }
+        {SSSTitleNumberFormat}
+          { \ncku_numbering_subsubsection_title_format_set_keys:n {#2} }
+        {AppendixCTitleNumberFormat}
+          { \ncku_numbering_appendix_chapter_title_format_set_keys:n {#2} }
+        {AppendixSTitleNumberFormat}
+          { \ncku_numbering_appendix_section_title_format_set_keys:n {#2} }
+        {AppendixSSTitleNumberFormat}
+          { \ncku_numbering_appendix_subsection_title_format_set_keys:n {#2} }
+        {AppendixSSSTitleNumberFormat}
+          { \ncku_numbering_appendix_subsubsection_title_format_set_keys:n {#2} }
+        {SetupGeneralAppendixNumberFormatString}
+          { \ncku_numbering_general_appendix_number_format_string_set_keys:n {#2} }
+      }
+      { }
+  }
+\ExplSyntaxOff
 
 % Append a parsed key value without retaining the reusable pgf scratch macro.
 \makeatletter
@@ -247,27 +272,31 @@
 
 % ---------------------------
 
-\pgfkeys
-{
-  /STitleNumberFormat/.is family, /STitleNumberFormat,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / numbering / section-title-format }
   {
-    BeginText = \empty,
-    EndText = \empty,
-    TextAlign = {Left},
-    CNumStyle = Arabic,
-    SNumStyle = Arabic,
-    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
-  },
-  BeginText/.estore in = \GetSTitleNumberFormatBeginText,
-  EndText/.estore in = \GetSTitleNumberFormatEndText,
-  TextAlign/.estore in = \GetSTitleNumberFormatTextAlign,
-  CNumStyle/.estore in = \GetSTitleNumberFormatCNumStyle,
-  SNumStyle/.estore in = \GetSTitleNumberFormatSNumStyle,
-  SepAtIndex/.estore in = \GetSTitleNumberFormatSepAtIndex,
-  SepBetweenCnS/.estore in = \GetSTitleNumberFormatSepBetweenCnS,
-} % End of \pgfkeys{}
+    BeginText .tl_set_e:N = \GetSTitleNumberFormatBeginText,
+    EndText .tl_set_e:N = \GetSTitleNumberFormatEndText,
+    TextAlign .tl_set_e:N = \GetSTitleNumberFormatTextAlign,
+    CNumStyle .tl_set_e:N = \GetSTitleNumberFormatCNumStyle,
+    SNumStyle .tl_set_e:N = \GetSTitleNumberFormatSNumStyle,
+    SepAtIndex .tl_set_e:N = \GetSTitleNumberFormatSepAtIndex,
+    SepBetweenCnS .tl_set_e:N = \GetSTitleNumberFormatSepBetweenCnS,
+  }
+
+\cs_new_protected:Npn \ncku_numbering_section_title_format_set_keys:n #1
+  {
+    \tl_clear:N \GetSTitleNumberFormatBeginText
+    \tl_clear:N \GetSTitleNumberFormatEndText
+    \tl_set:Nn \GetSTitleNumberFormatTextAlign { Left }
+    \tl_set:Nn \GetSTitleNumberFormatCNumStyle { Arabic }
+    \tl_set:Nn \GetSTitleNumberFormatSNumStyle { Arabic }
+    \tl_set:Nn \GetSTitleNumberFormatSepAtIndex { . }
+    \tl_set:Nn \GetSTitleNumberFormatSepBetweenCnS { . }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / numbering / section-title-format } {#1} }
+  }
+\ExplSyntaxOff
 
 \newcommand\GetSectionTitleNumberFormatString{}
 \newcommand\SetupSectionTitleNumberFormatString
@@ -287,31 +316,35 @@
 
 % ---------------------------
 
-\pgfkeys
-{
-  /SSTitleNumberFormat/.is family, /SSTitleNumberFormat,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / numbering / subsection-title-format }
   {
-    BeginText = \empty,
-    EndText = \empty,
-    TextAlign = {Left},
-    CNumStyle = Arabic,
-    SNumStyle = Arabic,
-    SSNumStyle = Arabic,
-    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
-  },
-  BeginText/.estore in = \GetSSTitleNumberFormatBeginText,
-  EndText/.estore in = \GetSSTitleNumberFormatEndText,
-  TextAlign/.estore in = \GetSSTitleNumberFormatTextAlign,
-  CNumStyle/.estore in = \GetSSTitleNumberFormatCNumStyle,
-  SNumStyle/.estore in = \GetSSTitleNumberFormatSNumStyle,
-  SSNumStyle/.estore in = \GetSSTitleNumberFormatSSNumStyle,
-  SepAtIndex/.estore in = \GetSSTitleNumberFormatSepAtIndex,
-  SepBetweenCnS/.estore in = \GetSSTitleNumberFormatSepBetweenCnS,
-  SepBetweenSnSS/.estore in = \GetSSTitleNumberFormatSepBetweenSnSS,
-} % End of \pgfkeys{}
+    BeginText .tl_set_e:N = \GetSSTitleNumberFormatBeginText,
+    EndText .tl_set_e:N = \GetSSTitleNumberFormatEndText,
+    TextAlign .tl_set_e:N = \GetSSTitleNumberFormatTextAlign,
+    CNumStyle .tl_set_e:N = \GetSSTitleNumberFormatCNumStyle,
+    SNumStyle .tl_set_e:N = \GetSSTitleNumberFormatSNumStyle,
+    SSNumStyle .tl_set_e:N = \GetSSTitleNumberFormatSSNumStyle,
+    SepAtIndex .tl_set_e:N = \GetSSTitleNumberFormatSepAtIndex,
+    SepBetweenCnS .tl_set_e:N = \GetSSTitleNumberFormatSepBetweenCnS,
+    SepBetweenSnSS .tl_set_e:N = \GetSSTitleNumberFormatSepBetweenSnSS,
+  }
+
+\cs_new_protected:Npn \ncku_numbering_subsection_title_format_set_keys:n #1
+  {
+    \tl_clear:N \GetSSTitleNumberFormatBeginText
+    \tl_clear:N \GetSSTitleNumberFormatEndText
+    \tl_set:Nn \GetSSTitleNumberFormatTextAlign { Left }
+    \tl_set:Nn \GetSSTitleNumberFormatCNumStyle { Arabic }
+    \tl_set:Nn \GetSSTitleNumberFormatSNumStyle { Arabic }
+    \tl_set:Nn \GetSSTitleNumberFormatSSNumStyle { Arabic }
+    \tl_set:Nn \GetSSTitleNumberFormatSepAtIndex { . }
+    \tl_set:Nn \GetSSTitleNumberFormatSepBetweenCnS { . }
+    \tl_set:Nn \GetSSTitleNumberFormatSepBetweenSnSS { . }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / numbering / subsection-title-format } {#1} }
+  }
+\ExplSyntaxOff
 
 \newcommand\GetSubSectionTitleNumberFormatString{}
 \newcommand\SetupSubSectionTitleNumberFormatString
@@ -334,35 +367,39 @@
 
 % ---------------------------
 
-\pgfkeys
-{
-  /SSSTitleNumberFormat/.is family, /SSSTitleNumberFormat,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / numbering / subsubsection-title-format }
   {
-    BeginText = \empty,
-    EndText = \empty,
-    TextAlign = {Left},
-    CNumStyle = Arabic,
-    SNumStyle = Arabic,
-    SSNumStyle = Arabic,
-    SSSNumStyle = Arabic,
-    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
-    SepBetweenSSCnSSS = {.}, % 小節號碼跟小小節號碼中的分隔符號
-  },
-  BeginText/.estore in = \GetSSSTitleNumberFormatBeginText,
-  EndText/.estore in = \GetSSSTitleNumberFormatEndText,
-  TextAlign/.estore in = \GetSSSTitleNumberFormatTextAlign,
-  CNumStyle/.estore in = \GetSSSTitleNumberFormatCNumStyle,
-  SNumStyle/.estore in = \GetSSSTitleNumberFormatSNumStyle,
-  SSNumStyle/.estore in = \GetSSSTitleNumberFormatSSNumStyle,
-  SSSNumStyle/.estore in = \GetSSSTitleNumberFormatSSSNumStyle,
-  SepAtIndex/.estore in = \GetSSSTitleNumberFormatSepAtIndex,
-  SepBetweenCnS/.estore in = \GetSSSTitleNumberFormatSepBetweenCnS,
-  SepBetweenSnSS/.estore in = \GetSSSTitleNumberFormatSepBetweenSnSS,
-  SepBetweenSSCnSSS/.estore in = \GetSSSTitleNumberFormatSepBetweenSSCnSSS,
-} % End of \pgfkeys{}
+    BeginText .tl_set_e:N = \GetSSSTitleNumberFormatBeginText,
+    EndText .tl_set_e:N = \GetSSSTitleNumberFormatEndText,
+    TextAlign .tl_set_e:N = \GetSSSTitleNumberFormatTextAlign,
+    CNumStyle .tl_set_e:N = \GetSSSTitleNumberFormatCNumStyle,
+    SNumStyle .tl_set_e:N = \GetSSSTitleNumberFormatSNumStyle,
+    SSNumStyle .tl_set_e:N = \GetSSSTitleNumberFormatSSNumStyle,
+    SSSNumStyle .tl_set_e:N = \GetSSSTitleNumberFormatSSSNumStyle,
+    SepAtIndex .tl_set_e:N = \GetSSSTitleNumberFormatSepAtIndex,
+    SepBetweenCnS .tl_set_e:N = \GetSSSTitleNumberFormatSepBetweenCnS,
+    SepBetweenSnSS .tl_set_e:N = \GetSSSTitleNumberFormatSepBetweenSnSS,
+    SepBetweenSSCnSSS .tl_set_e:N = \GetSSSTitleNumberFormatSepBetweenSSCnSSS,
+  }
+
+\cs_new_protected:Npn \ncku_numbering_subsubsection_title_format_set_keys:n #1
+  {
+    \tl_clear:N \GetSSSTitleNumberFormatBeginText
+    \tl_clear:N \GetSSSTitleNumberFormatEndText
+    \tl_set:Nn \GetSSSTitleNumberFormatTextAlign { Left }
+    \tl_set:Nn \GetSSSTitleNumberFormatCNumStyle { Arabic }
+    \tl_set:Nn \GetSSSTitleNumberFormatSNumStyle { Arabic }
+    \tl_set:Nn \GetSSSTitleNumberFormatSSNumStyle { Arabic }
+    \tl_set:Nn \GetSSSTitleNumberFormatSSSNumStyle { Arabic }
+    \tl_set:Nn \GetSSSTitleNumberFormatSepAtIndex { . }
+    \tl_set:Nn \GetSSSTitleNumberFormatSepBetweenCnS { . }
+    \tl_set:Nn \GetSSSTitleNumberFormatSepBetweenSnSS { . }
+    \tl_set:Nn \GetSSSTitleNumberFormatSepBetweenSSCnSSS { . }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / numbering / subsubsection-title-format } {#1} }
+  }
+\ExplSyntaxOff
 
 \newcommand\GetSubSubSectionTitleNumberFormatString{}
 \newcommand\SetupSubSubSectionTitleNumberFormatString
@@ -388,23 +425,27 @@
 
 % ---------------------------
 
-\pgfkeys
-{
-  /AppendixCTitleNumberFormat/.is family, /AppendixCTitleNumberFormat,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / numbering / appendix-chapter-title-format }
   {
-    BeginText = {Appendix },
-    EndText = \empty,
-    TextAlign = {Left}, % Useless for Chapter
-    CNumStyle = UpperAlph,
-    SepAtIndex = {.},
-  },
-  BeginText/.estore in = \GetAppendixCTitleNumberFormatBeginText,
-  EndText/.estore in = \GetAppendixCTitleNumberFormatEndText,
-  TextAlign/.estore in = \GetAppendixCTitleNumberFormatTextAlign,
-  CNumStyle/.estore in = \GetAppendixCTitleNumberFormatCNumStyle,
-  SepAtIndex/.estore in = \GetAppendixCTitleNumberFormatSepAtIndex,
-} % End of \pgfkeys{}
+    BeginText .tl_set_e:N = \GetAppendixCTitleNumberFormatBeginText,
+    EndText .tl_set_e:N = \GetAppendixCTitleNumberFormatEndText,
+    TextAlign .tl_set_e:N = \GetAppendixCTitleNumberFormatTextAlign,
+    CNumStyle .tl_set_e:N = \GetAppendixCTitleNumberFormatCNumStyle,
+    SepAtIndex .tl_set_e:N = \GetAppendixCTitleNumberFormatSepAtIndex,
+  }
+
+\cs_new_protected:Npn \ncku_numbering_appendix_chapter_title_format_set_keys:n #1
+  {
+    \tl_set:Nn \GetAppendixCTitleNumberFormatBeginText { Appendix~ }
+    \tl_clear:N \GetAppendixCTitleNumberFormatEndText
+    \tl_set:Nn \GetAppendixCTitleNumberFormatTextAlign { Left }
+    \tl_set:Nn \GetAppendixCTitleNumberFormatCNumStyle { UpperAlph }
+    \tl_set:Nn \GetAppendixCTitleNumberFormatSepAtIndex { . }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / numbering / appendix-chapter-title-format } {#1} }
+  }
+\ExplSyntaxOff
 
 \newcommand\GetAppendixChapterTitleNumberFormatString{}
 \newcommand\SetupAppendixChapterTitleNumberFormatString
@@ -420,27 +461,31 @@
 
 % ---------------------------
 
-\pgfkeys
-{
-  /AppendixSTitleNumberFormat/.is family, /AppendixSTitleNumberFormat,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / numbering / appendix-section-title-format }
   {
-    BeginText = \empty,
-    EndText = \empty,
-    TextAlign = {Left},
-    CNumStyle = UpperAlph,
-    SNumStyle = Arabic,
-    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
-  },
-  BeginText/.estore in = \GetAppendixSTitleNumberFormatBeginText,
-  EndText/.estore in = \GetAppendixSTitleNumberFormatEndText,
-  TextAlign/.estore in = \GetAppendixSTitleNumberFormatTextAlign,
-  CNumStyle/.estore in = \GetAppendixSTitleNumberFormatCNumStyle,
-  SNumStyle/.estore in = \GetAppendixSTitleNumberFormatSNumStyle,
-  SepAtIndex/.estore in = \GetAppendixSTitleNumberFormatSepAtIndex,
-  SepBetweenCnS/.estore in = \GetAppendixSTitleNumberFormatSepBetweenCnS,
-} % End of \pgfkeys{}
+    BeginText .tl_set_e:N = \GetAppendixSTitleNumberFormatBeginText,
+    EndText .tl_set_e:N = \GetAppendixSTitleNumberFormatEndText,
+    TextAlign .tl_set_e:N = \GetAppendixSTitleNumberFormatTextAlign,
+    CNumStyle .tl_set_e:N = \GetAppendixSTitleNumberFormatCNumStyle,
+    SNumStyle .tl_set_e:N = \GetAppendixSTitleNumberFormatSNumStyle,
+    SepAtIndex .tl_set_e:N = \GetAppendixSTitleNumberFormatSepAtIndex,
+    SepBetweenCnS .tl_set_e:N = \GetAppendixSTitleNumberFormatSepBetweenCnS,
+  }
+
+\cs_new_protected:Npn \ncku_numbering_appendix_section_title_format_set_keys:n #1
+  {
+    \tl_clear:N \GetAppendixSTitleNumberFormatBeginText
+    \tl_clear:N \GetAppendixSTitleNumberFormatEndText
+    \tl_set:Nn \GetAppendixSTitleNumberFormatTextAlign { Left }
+    \tl_set:Nn \GetAppendixSTitleNumberFormatCNumStyle { UpperAlph }
+    \tl_set:Nn \GetAppendixSTitleNumberFormatSNumStyle { Arabic }
+    \tl_set:Nn \GetAppendixSTitleNumberFormatSepAtIndex { . }
+    \tl_set:Nn \GetAppendixSTitleNumberFormatSepBetweenCnS { . }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / numbering / appendix-section-title-format } {#1} }
+  }
+\ExplSyntaxOff
 
 \newcommand\GetAppendixSectionTitleNumberFormatString{}
 \newcommand\SetupAppendixSectionTitleNumberFormatString
@@ -460,31 +505,35 @@
 
 % ---------------------------
 
-\pgfkeys
-{
-  /AppendixSSTitleNumberFormat/.is family, /AppendixSSTitleNumberFormat,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / numbering / appendix-subsection-title-format }
   {
-    BeginText = \empty,
-    EndText = \empty,
-    TextAlign = {Left},
-    CNumStyle = UpperAlph,
-    SNumStyle = Arabic,
-    SSNumStyle = Arabic,
-    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
-  },
-  BeginText/.estore in = \GetAppendixSSTitleNumberFormatBeginText,
-  EndText/.estore in = \GetAppendixSSTitleNumberFormatEndText,
-  TextAlign/.estore in = \GetAppendixSSTitleNumberFormatTextAlign,
-  CNumStyle/.estore in = \GetAppendixSSTitleNumberFormatCNumStyle,
-  SNumStyle/.estore in = \GetAppendixSSTitleNumberFormatSNumStyle,
-  SSNumStyle/.estore in = \GetAppendixSSTitleNumberFormatSSNumStyle,
-  SepAtIndex/.estore in = \GetAppendixSSTitleNumberFormatSepAtIndex,
-  SepBetweenCnS/.estore in = \GetAppendixSSTitleNumberFormatSepBetweenCnS,
-  SepBetweenSnSS/.estore in = \GetAppendixSSTitleNumberFormatSepBetweenSnSS,
-} % End of \pgfkeys{}
+    BeginText .tl_set_e:N = \GetAppendixSSTitleNumberFormatBeginText,
+    EndText .tl_set_e:N = \GetAppendixSSTitleNumberFormatEndText,
+    TextAlign .tl_set_e:N = \GetAppendixSSTitleNumberFormatTextAlign,
+    CNumStyle .tl_set_e:N = \GetAppendixSSTitleNumberFormatCNumStyle,
+    SNumStyle .tl_set_e:N = \GetAppendixSSTitleNumberFormatSNumStyle,
+    SSNumStyle .tl_set_e:N = \GetAppendixSSTitleNumberFormatSSNumStyle,
+    SepAtIndex .tl_set_e:N = \GetAppendixSSTitleNumberFormatSepAtIndex,
+    SepBetweenCnS .tl_set_e:N = \GetAppendixSSTitleNumberFormatSepBetweenCnS,
+    SepBetweenSnSS .tl_set_e:N = \GetAppendixSSTitleNumberFormatSepBetweenSnSS,
+  }
+
+\cs_new_protected:Npn \ncku_numbering_appendix_subsection_title_format_set_keys:n #1
+  {
+    \tl_clear:N \GetAppendixSSTitleNumberFormatBeginText
+    \tl_clear:N \GetAppendixSSTitleNumberFormatEndText
+    \tl_set:Nn \GetAppendixSSTitleNumberFormatTextAlign { Left }
+    \tl_set:Nn \GetAppendixSSTitleNumberFormatCNumStyle { UpperAlph }
+    \tl_set:Nn \GetAppendixSSTitleNumberFormatSNumStyle { Arabic }
+    \tl_set:Nn \GetAppendixSSTitleNumberFormatSSNumStyle { Arabic }
+    \tl_set:Nn \GetAppendixSSTitleNumberFormatSepAtIndex { . }
+    \tl_set:Nn \GetAppendixSSTitleNumberFormatSepBetweenCnS { . }
+    \tl_set:Nn \GetAppendixSSTitleNumberFormatSepBetweenSnSS { . }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / numbering / appendix-subsection-title-format } {#1} }
+  }
+\ExplSyntaxOff
 
 \newcommand\GetAppendixSubSectionTitleNumberFormatString{}
 \newcommand\SetupAppendixSubSectionTitleNumberFormatString
@@ -507,35 +556,39 @@
 
 % ---------------------------
 
-\pgfkeys
-{
-  /AppendixSSSTitleNumberFormat/.is family, /AppendixSSSTitleNumberFormat,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / numbering / appendix-subsubsection-title-format }
   {
-    BeginText = \empty,
-    EndText = \empty,
-    TextAlign = {Left},
-    CNumStyle = UpperAlph,
-    SNumStyle = Arabic,
-    SSNumStyle = Arabic,
-    SSSNumStyle = Arabic,
-    SepAtIndex = {.}, % 目錄中章節號碼跟章節題目中的分隔符號
-    SepBetweenCnS = {.}, % 章號碼跟節號碼中的分隔符號
-    SepBetweenSnSS = {.}, % 節號碼跟小節號碼中的分隔符號
-    SepBetweenSSCnSSS = {.}, % 小節號碼跟小小節號碼中的分隔符號
-  },
-  BeginText/.estore in = \GetAppendixSSSTitleNumberFormatBeginText,
-  EndText/.estore in = \GetAppendixSSSTitleNumberFormatEndText,
-  TextAlign/.estore in = \GetAppendixSSSTitleNumberFormatTextAlign,
-  CNumStyle/.estore in = \GetAppendixSSSTitleNumberFormatCNumStyle,
-  SNumStyle/.estore in = \GetAppendixSSSTitleNumberFormatSNumStyle,
-  SSNumStyle/.estore in = \GetAppendixSSSTitleNumberFormatSSNumStyle,
-  SSSNumStyle/.estore in = \GetAppendixSSSTitleNumberFormatSSSNumStyle,
-  SepAtIndex/.estore in = \GetAppendixSSSTitleNumberFormatSepAtIndex,
-  SepBetweenCnS/.estore in = \GetAppendixSSSTitleNumberFormatSepBetweenCnS,
-  SepBetweenSnSS/.estore in = \GetAppendixSSSTitleNumberFormatSepBetweenSnSS,
-  SepBetweenSSCnSSS/.estore in = \GetAppendixSSSTitleNumberFormatSepBetweenSSCnSSS,
-} % End of \pgfkeys{}
+    BeginText .tl_set_e:N = \GetAppendixSSSTitleNumberFormatBeginText,
+    EndText .tl_set_e:N = \GetAppendixSSSTitleNumberFormatEndText,
+    TextAlign .tl_set_e:N = \GetAppendixSSSTitleNumberFormatTextAlign,
+    CNumStyle .tl_set_e:N = \GetAppendixSSSTitleNumberFormatCNumStyle,
+    SNumStyle .tl_set_e:N = \GetAppendixSSSTitleNumberFormatSNumStyle,
+    SSNumStyle .tl_set_e:N = \GetAppendixSSSTitleNumberFormatSSNumStyle,
+    SSSNumStyle .tl_set_e:N = \GetAppendixSSSTitleNumberFormatSSSNumStyle,
+    SepAtIndex .tl_set_e:N = \GetAppendixSSSTitleNumberFormatSepAtIndex,
+    SepBetweenCnS .tl_set_e:N = \GetAppendixSSSTitleNumberFormatSepBetweenCnS,
+    SepBetweenSnSS .tl_set_e:N = \GetAppendixSSSTitleNumberFormatSepBetweenSnSS,
+    SepBetweenSSCnSSS .tl_set_e:N = \GetAppendixSSSTitleNumberFormatSepBetweenSSCnSSS,
+  }
+
+\cs_new_protected:Npn \ncku_numbering_appendix_subsubsection_title_format_set_keys:n #1
+  {
+    \tl_clear:N \GetAppendixSSSTitleNumberFormatBeginText
+    \tl_clear:N \GetAppendixSSSTitleNumberFormatEndText
+    \tl_set:Nn \GetAppendixSSSTitleNumberFormatTextAlign { Left }
+    \tl_set:Nn \GetAppendixSSSTitleNumberFormatCNumStyle { UpperAlph }
+    \tl_set:Nn \GetAppendixSSSTitleNumberFormatSNumStyle { Arabic }
+    \tl_set:Nn \GetAppendixSSSTitleNumberFormatSSNumStyle { Arabic }
+    \tl_set:Nn \GetAppendixSSSTitleNumberFormatSSSNumStyle { Arabic }
+    \tl_set:Nn \GetAppendixSSSTitleNumberFormatSepAtIndex { . }
+    \tl_set:Nn \GetAppendixSSSTitleNumberFormatSepBetweenCnS { . }
+    \tl_set:Nn \GetAppendixSSSTitleNumberFormatSepBetweenSnSS { . }
+    \tl_set:Nn \GetAppendixSSSTitleNumberFormatSepBetweenSSCnSSS { . }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / numbering / appendix-subsubsection-title-format } {#1} }
+  }
+\ExplSyntaxOff
 
 \newcommand\GetAppendixSubSubSectionTitleNumberFormatString{}
 \newcommand\SetupAppendixSubSubSectionTitleNumberFormatString
@@ -639,59 +692,57 @@
 
 % ---------------------------
 
-\pgfkeys
-{
-  /SetupGeneralAppendixNumberFormatString/.is family, /SetupGeneralAppendixNumberFormatString,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / numbering / general-appendix-number-format-string }
   {
-    CNumStyle = \empty,
-    CCounterName = \empty,
-    SNumStyle = \empty,
-    SCounterName = \empty,
-    SSNumStyle = \empty,
-    SSCounterName = \empty,
-    SSSNumStyle = \empty,
-    SSSCounterName = \empty,
-    SepBetweenCnS = \empty,
-    SepBetweenSnSS = \empty,
-    SepBetweenSSCnSSS = \empty,
-    %
-    FigureNumStyle = \empty,
-    FigureCounterName = \empty,
-    FigureSep = {.},
-    %
-    TableNumStyle = \empty,
-    TableCounterName = \empty,
-    TableSep = {.},
-    %
-    EquationNumStyle = \empty,
-    EquationCounterName = \empty,
-    EquationSep = {.},
-  },
-  CNumStyle/.estore in = \TmpValueCNumStyle,
-  CCounterName/.estore in = \TmpValueCCounterName,
-  SNumStyle/.estore in = \TmpValueSNumStyle,
-  SCounterName/.estore in = \TmpValueSCounterName,
-  SSNumStyle/.estore in = \TmpValueSSNumStyle,
-  SSCounterName/.estore in = \TmpValueSSCounterName,
-  SSSNumStyle/.estore in = \TmpValueSSSNumStyle,
-  SSSCounterName/.estore in = \TmpValueSSSCounterName,
-  SepBetweenCnS/.estore in = \TmpValueSepBetweenCnS,
-  SepBetweenSnSS/.estore in = \TmpValueSepBetweenSnSS,
-  SepBetweenSSCnSSS/.estore in = \TmpValueSepBetweenSSCnSSS,
-  %
-  FigureNumStyle/.estore in = \TmpValueFigureNumStyle,
-  FigureCounterName/.estore in = \TmpValueFigureCounterName,
-  FigureSep/.estore in = \TmpValueFigureSep,
-  %
-  TableNumStyle/.estore in = \TmpValueTableNumStyle,
-  TableCounterName/.estore in = \TmpValueTableCounterName,
-  TableSep/.estore in = \TmpValueTableSep,
-  %
-  EquationNumStyle/.estore in = \TmpValueEquationNumStyle,
-  EquationCounterName/.estore in = \TmpValueEquationCounterName,
-  EquationSep/.estore in = \TmpValueEquationSep,
-} % End of \pgfkeys{}
+    CNumStyle .tl_set_e:N = \TmpValueCNumStyle,
+    CCounterName .tl_set_e:N = \TmpValueCCounterName,
+    SNumStyle .tl_set_e:N = \TmpValueSNumStyle,
+    SCounterName .tl_set_e:N = \TmpValueSCounterName,
+    SSNumStyle .tl_set_e:N = \TmpValueSSNumStyle,
+    SSCounterName .tl_set_e:N = \TmpValueSSCounterName,
+    SSSNumStyle .tl_set_e:N = \TmpValueSSSNumStyle,
+    SSSCounterName .tl_set_e:N = \TmpValueSSSCounterName,
+    SepBetweenCnS .tl_set_e:N = \TmpValueSepBetweenCnS,
+    SepBetweenSnSS .tl_set_e:N = \TmpValueSepBetweenSnSS,
+    SepBetweenSSCnSSS .tl_set_e:N = \TmpValueSepBetweenSSCnSSS,
+    FigureNumStyle .tl_set_e:N = \TmpValueFigureNumStyle,
+    FigureCounterName .tl_set_e:N = \TmpValueFigureCounterName,
+    FigureSep .tl_set_e:N = \TmpValueFigureSep,
+    TableNumStyle .tl_set_e:N = \TmpValueTableNumStyle,
+    TableCounterName .tl_set_e:N = \TmpValueTableCounterName,
+    TableSep .tl_set_e:N = \TmpValueTableSep,
+    EquationNumStyle .tl_set_e:N = \TmpValueEquationNumStyle,
+    EquationCounterName .tl_set_e:N = \TmpValueEquationCounterName,
+    EquationSep .tl_set_e:N = \TmpValueEquationSep,
+  }
+
+\cs_new_protected:Npn \ncku_numbering_general_appendix_number_format_string_set_keys:n #1
+  {
+    \tl_clear:N \TmpValueCNumStyle
+    \tl_clear:N \TmpValueCCounterName
+    \tl_clear:N \TmpValueSNumStyle
+    \tl_clear:N \TmpValueSCounterName
+    \tl_clear:N \TmpValueSSNumStyle
+    \tl_clear:N \TmpValueSSCounterName
+    \tl_clear:N \TmpValueSSSNumStyle
+    \tl_clear:N \TmpValueSSSCounterName
+    \tl_clear:N \TmpValueSepBetweenCnS
+    \tl_clear:N \TmpValueSepBetweenSnSS
+    \tl_clear:N \TmpValueSepBetweenSSCnSSS
+    \tl_clear:N \TmpValueFigureNumStyle
+    \tl_clear:N \TmpValueFigureCounterName
+    \tl_set:Nn \TmpValueFigureSep { . }
+    \tl_clear:N \TmpValueTableNumStyle
+    \tl_clear:N \TmpValueTableCounterName
+    \tl_set:Nn \TmpValueTableSep { . }
+    \tl_clear:N \TmpValueEquationNumStyle
+    \tl_clear:N \TmpValueEquationCounterName
+    \tl_set:Nn \TmpValueEquationSep { . }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / numbering / general-appendix-number-format-string } {#1} }
+  }
+\ExplSyntaxOff
 
 \newcommand\SetupGeneralAppendixNumberFormatString[3]
 {%
