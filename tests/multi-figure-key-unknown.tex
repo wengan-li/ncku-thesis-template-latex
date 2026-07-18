@@ -1,0 +1,11 @@
+% Negative contract: unknown multi-figure keys must fail for both parser levels.
+\input{./template/configure}
+
+\providecommand{\NCKUTestMultiParser}{top}
+\ifthenelse{\equal{\NCKUTestMultiParser}{top}}
+  {\NCKUPrivateSetInsertFiguresKeys{unsupported=value}}
+  {\NCKUPrivateSetInsertFiguresSubFigureKeys{unsupported=value}}
+
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown multi-figure key was ignored}
+\end{document}

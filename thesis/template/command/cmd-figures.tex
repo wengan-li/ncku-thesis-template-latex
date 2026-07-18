@@ -46,6 +46,11 @@
   opacity/.estore in = \TmpValueOpacity,
 } % End of \pgfkeys{}
 
+\newcommand\NCKUPrivateSetInsertFiguresKeys[1]
+{%
+  \pgfkeys{/InsertFigures, default, #1}%
+} % End of \newcommand{}
+
 % Insert multi-figure
 % Arg: 1st: Table configure
 %      2~9th: Figure (Max 8 Figures)
@@ -54,7 +59,7 @@
   +G{\empty} +G{\empty} +G{\empty} +G{\empty}}
 {
   % Parse the input
-  \pgfkeys{/InsertFigures, default, #1}%
+  \NCKUPrivateSetInsertFiguresKeys{#1}%
   %
   \begin{figure}[H]%
   \NCKUPrivateDisplayFramedFloatContent{\TmpValueOpacity}{%
@@ -344,11 +349,16 @@
   align/.estore in = \TmpMISubValueAlign,      % Useless, for backporting
 } % End of \pgfkeys{}
 
+\newcommand\NCKUPrivateSetInsertFiguresSubFigureKeys[1]
+{%
+  \pgfkeys{/InsertFiguresSubFigure, default, #1}%
+} % End of \newcommand{}
+
 % Low-level insert image
 \newcommand{\InsertFiguresSubFigure}[2][\empty]
 {
   % Parse the input
-  \pgfkeys{/InsertFiguresSubFigure, default, #1}
+  \NCKUPrivateSetInsertFiguresSubFigureKeys{#1}
   %
   \includegraphics[
     scale=\TmpMISubValueScale,
