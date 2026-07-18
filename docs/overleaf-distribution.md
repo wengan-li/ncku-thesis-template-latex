@@ -1,8 +1,8 @@
 # Overleaf distribution decision
 
-Status: Gallery template published; V2 update submitted through the original project and pending update review
+Status: Gallery template published; V2 Gallery package prepared, but the original project has not yet been updated or resubmitted
 
-Checked: 2026-07-17
+Checked: 2026-07-18
 
 ## Decision
 
@@ -90,6 +90,36 @@ The cover, abstract, and acknowledgements pages were rendered to images and visu
 
 The Overleaf import artifacts remain under ignored `build/overleaf/`; they are not GitHub Release assets or permanent public URLs.
 
+### Prepared V2 Gallery result on 2026-07-18
+
+The V2 Gallery package was regenerated from clean merged source commit
+`a7950358b017e2dc813d137c1a8a193a3d1f5704` with:
+
+```bash
+just overleaf-gallery main-a795035
+```
+
+The verified artifact is:
+
+- `ncku-thesis-template-latex-overleaf-gallery-main-a795035.zip`;
+- 70 regular files;
+- 305,449 editable bytes;
+- 4,691,706 ZIP bytes;
+- SHA-256 `cd13e6576f8efa534c4e38a47f9b33db3aa41bdd1d6ecfafb90dd51c57fbbeab`;
+- an 11-page A4 StudentMode PDF from a clean extracted direct XeLaTeX build;
+- no teaching corpus, second main document, generated PDF, Draft marker,
+  institutional logo watermark, unresolved references/citations, or
+  maintainer-only repository tooling.
+
+Cover and representative front-matter pages were rendered and visually checked
+without clipping, overlap, Draft/logo marks, or broken Chinese/Latin fonts. The
+visible red PDF hyperlink borders on the table of contents match the existing
+public Gallery behavior and are not a new V2 regression.
+
+This is the **prepared** state only. The ZIP has not been uploaded into the
+original Overleaf project, the project has not been recompiled with this source,
+and no V2 Gallery update has been submitted.
+
 ## Required Overleaf settings
 
 After ZIP upload/import:
@@ -131,7 +161,7 @@ The Gallery project was submitted on 2026-07-12 and approved/published by Overle
 
 <https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn>
 
-Owner-confirmed on 2026-07-17: the V2 update has been submitted through that original Overleaf project and is pending Gallery update review. Until Overleaf approves the update and the public template is independently read back, GitHub Releases remains the canonical source for the latest V2 student package. Do not describe the public Gallery copy as V2 merely because the update has been submitted.
+Owner-corrected on 2026-07-18: the V2 update has **not** been uploaded to the original Overleaf project and has **not** been submitted for Gallery update review. A verified Gallery package is prepared, but GitHub Releases remains the canonical source for the latest V2 student package until the original project is updated, recompiled, resubmitted, approved, and independently read back. Do not describe the public Gallery copy as V2 before those steps are complete.
 
 Operational rules:
 
