@@ -104,23 +104,26 @@ legacy key package is churn, not modernization.
 
 ## NCKU-specific evidence and judgement
 
-1. Five isolated command families now use `l3keys`: single figure, single table,
-   theorem content, reference setup, and custom-font filename parsing. Each
-   migration first froze the legacy parser contract and then proved canonical
-   output identity.
+1. Six isolated command families now use `l3keys`: single figure, single table,
+   theorem content, reference setup, custom-font filename parsing, and font-option
+   parsing. Each migration first froze the legacy parser contract and then proved
+   canonical output identity.
 2. `SetupReference` preserves its default/custom/repeated setup, rendered BibTeX
    output, unknown-key failure, and `apacite[notocbib]` preamble side effect.
 3. Active student source contains zero `l3keys2e` references, and generated
    runtime `.fls` files contain zero `l3keys2e` loads. The command-level parsers
    use `l3keys` directly and do not need the deprecated option bridge.
-4. Keep the top-level/nested multi-figure parser deferred until both shared
+4. The font-option migration separately proves real bundled Times and KaiU
+   loading, exact PDF font identities, and English/CJK public routes; it does not
+   add unbundled Noto files as test dependencies.
+5. Keep the top-level/nested multi-figure parser deferred until both shared
    scratch state and all row-dispatch routes are covered.
-5. Keep dynamic theorem-format/counter families deferred; they are not the same
+6. Keep dynamic theorem-format/counter families deferred; they are not the same
    state machine as theorem-content `title`/`label` parsing.
-6. Do not claim package removal while 42 direct `pgfkeys`/`pgfkeysvalueof`
-   references remain across four files or while PGF/TikZ keeps `pgfkeys` active
+7. Do not claim package removal while 38 direct `pgfkeys`/`pgfkeysvalueof`
+   references remain across three files or while PGF/TikZ keeps `pgfkeys` active
    transitively.
-7. Continue requiring focused semantic checks, full text/normalized bbox/fonts,
+8. Continue requiring focused semantic checks, full text/normalized bbox/fonts,
    all-page fixed-DPI raster identity, exact-HEAD archive verification, extracted
    student ZIP direct build, and exact-SHA hosted checks.
 
