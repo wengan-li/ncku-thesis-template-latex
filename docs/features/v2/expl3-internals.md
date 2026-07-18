@@ -1,6 +1,6 @@
 # Incremental `expl3` Internal Modernization
 
-Status: first two bounded slices implemented and validated; pending review
+Status: first three bounded slices implemented and validated; pending review
 
 ## Intent
 
@@ -62,6 +62,19 @@ semantics and existing `\TmpValue...` scratch macros. The public
 caption/label rendering, and deliberately inactive `pos`/`align` compatibility
 keys are unchanged.
 
+### Selected follow-up: single-table key parsing
+
+The eight-key `/InsertTable` family was selected only after the same parser-first
+method froze literal defaults, expanded macro-valued storage, reset-on-repeat,
+and unknown-key hard-error behavior under `pgfkeys`. Existing float coverage
+already protected top and bottom captions, unnumbered nomenclature titles,
+scaled and unscaled content, labels, references, and fixed `[H]` placement.
+
+The parser now uses a separate `ncku / insert-table` `l3keys` family with eight
+`.tl_set_e:N` properties. The public `\InsertTable` name, `[2][\empty]`
+signature, all key names/defaults, `\TmpValue...` scratch macros, caption and
+`nomtitle` ordering, table dimensions, and rendering branches are unchanged.
+
 ### Retained: explicit `xparse`
 
 The LaTeX kernel provides modern document-command interfaces, but it deliberately
@@ -78,10 +91,10 @@ fixture and visible-output proof; a mechanical global rewrite is rejected.
 
 ### Deferred: remaining `pgfkeys` families
 
-Only the single-figure family moved. The remaining 55 literal
-`\pgfkeys`/`\pgfkeysvalueof` references span six files and expose different
+Only the single-figure and single-table families moved. The remaining 52 literal
+`\pgfkeys`/`\pgfkeysvalueof` references span five files and expose different
 defaulting, storage, repeated-setup, rendering, and unknown-key behavior. No
-table, multi-figure, bibliography, theorem, font, or numbering key family is
+multi-figure, bibliography, theorem, font, or numbering key family is
 approved for conversion without its own frozen contract and output proof.
 
 ### Retained: `etoolbox`
@@ -148,9 +161,31 @@ The single-figure parser replacement passed:
   `latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex` command,
   producing 271 A4 pages, SyncTeX, and resolved references.
 
-`pgfkeys` remains intentionally active because six other template files still
-use it and PGF/TikZ also remains part of the rendering stack. This slice claims
-one bounded family migration, not package removal.
+`pgfkeys` remains intentionally active because other template files still use it
+and PGF/TikZ also remains part of the rendering stack. This slice claims one
+bounded family migration, not package removal.
+
+### Single-table `l3keys` validation result
+
+The table parser replacement passed:
+
+- original-implementation defaults, macro-expansion, reset-on-repeat, and
+  unknown-key hard-error baseline contracts;
+- top, bottom, numbered-caption, unnumbered-`nomtitle`, scaled/unscaled,
+  label/reference, spacing, and opacity float contracts;
+- focused one-page text, normalized bounding-box, font-table, and 200-DPI raster
+  identity against the same fixture using the original `pgfkeys` parser;
+- fresh exact-HEAD `just ci`, including V1 API, unchanged-project migration,
+  diagnostics, negative-key, student archive, float, theorem, font/CJK,
+  student-mode, watermark, and custom-style gates;
+- canonical 271-page A4 text, normalized bounding-box, and font-table identity;
+- identical 120-DPI raster output for all 271 canonical pages;
+- successful `just release review` package generation and verification;
+- a repo-external documented `latexmk -xelatex` build of the generated student
+  ZIP, producing 271 A4 pages, SyncTeX, and resolved references.
+
+After the two key-family slices, 52 literal `pgfkeys` references remain across
+five active template files. No package-removal claim is made.
 
 ## Next research slice
 
