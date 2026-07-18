@@ -50,23 +50,20 @@
 
 % Shared functions
 
-\pgfkeys
-{
-  /InsertTheoremOptions/.is family, /InsertTheoremOptions,
-  default/.style =
-  {
-    title = \empty,
-    label = \empty,
-  },
-  title/.estore in = \TmpValueTitle,
-  label/.estore in = \TmpValueLabel,
-} % End of \pgfkeys{}
-
-% Keep theorem-content key parsing behind one private seam so its defaults,
-% expansion, repeated-call, and error behavior can be frozen before migration.
 \ExplSyntaxOn
+\keys_define:nn { ncku / insert-theorem }
+  {
+    title .tl_set_e:N = \TmpValueTitle,
+    label .tl_set_e:N = \TmpValueLabel,
+  }
+
 \cs_new_protected:Npn \ncku_insert_theorem_keys_set:n #1
-  { \pgfkeys { /InsertTheoremOptions, default, #1 } }
+  {
+    \tl_set:Nn \TmpValueTitle { \empty }
+    \tl_set:Nn \TmpValueLabel { \empty }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / insert-theorem } {#1} }
+  }
 \cs_new_eq:NN \NCKUPrivateSetInsertTheoremKeys
   \ncku_insert_theorem_keys_set:n
 \ExplSyntaxOff
