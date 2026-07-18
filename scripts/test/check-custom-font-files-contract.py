@@ -52,7 +52,7 @@ require(re.search(r"^Pages:\s+1$", pdfinfo, re.MULTILINE) is not None, "focused 
 require(re.search(r"^Page size:.*A4", pdfinfo, re.MULTILINE) is not None, "focused PDF is not A4")
 
 require(
-    r"\newcommand{\NCKUPrivateSetCustomFontFileKeys}[1]" in source,
+    r"\cs_new_protected:Npn \NCKUPrivateSetCustomFontFileKeys #1" in source,
     "custom-font private parser seam is missing",
 )
 require(
@@ -60,9 +60,25 @@ require(
     "public custom-font setters do not both route through the private seam",
 )
 require(
-    r"/ParseCustomFontFiles/.is family" in source,
-    "legacy custom-font pgfkeys family is missing before migration",
+    r"\keys_define:nn { ncku / custom-font-files }" in source,
+    "custom-font l3keys family is missing",
+)
+require(
+    r"\keys_set:nn { ncku / custom-font-files } {#1}" in source,
+    "custom-font private seam does not route through l3keys",
+)
+require(
+    source.count(".tl_set_e:N") == 4,
+    "custom-font parser must preserve expanded storage for exactly four keys",
+)
+require(
+    r"/ParseCustomFontFiles/.is family" not in source,
+    "legacy custom-font pgfkeys family remains after migration",
+)
+require(
+    r"/ParseFontOption/.is family" in source,
+    "unrelated font-loading pgfkeys family changed in this slice",
 )
 require("l3keys2e" not in source, "custom-font source must not use l3keys2e")
 
-print("Custom font filename contract PASS: defaults, expansion, aliases, routes, and source boundary")
+print("Custom font filename contract PASS: l3keys defaults, expansion, aliases, routes, and source boundary")
