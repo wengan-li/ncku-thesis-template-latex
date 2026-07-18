@@ -84,10 +84,19 @@
   opacity/.estore in = \TmpValueOpacity,
 } % End of \pgfkeys{}
 
+% Keep single-table key parsing behind one private seam so the current
+% pgfkeys contract can be frozen before changing the implementation.
+\ExplSyntaxOn
+\cs_new_protected:Npn \ncku_insert_table_keys_set:n #1
+  { \pgfkeys { /InsertTable, default, #1 } }
+\cs_new_eq:NN \NCKUPrivateSetInsertTableKeys
+  \ncku_insert_table_keys_set:n
+\ExplSyntaxOff
+
 \newcommand{\InsertTable}[2][\empty]
 {%
   % Parse the input
-  \pgfkeys{/InsertTable, default, #1}%
+  \NCKUPrivateSetInsertTableKeys{#1}%
   %
   \begin{table}[H]%
   %

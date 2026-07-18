@@ -1,0 +1,8 @@
+% Negative contract: unknown single-table keys must not be silently ignored.
+\input{./template/configure}
+
+\NCKUPrivateSetInsertTableKeys{unsupported=value}
+
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown single-table key was ignored}
+\end{document}
