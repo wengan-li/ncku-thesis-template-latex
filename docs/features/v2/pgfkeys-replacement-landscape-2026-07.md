@@ -104,10 +104,11 @@ legacy key package is churn, not modernization.
 
 ## NCKU-specific evidence and judgement
 
-1. Seven isolated command families now use `l3keys`: single figure, single table,
-   theorem content, reference setup, custom-font filename parsing, and font-option
-   parsing, plus Chapter title-format parsing. Each migration first froze the
-   legacy parser contract and then proved canonical output identity.
+1. Sixteen independently defined command families now use `l3keys`: single
+   figure, single table, theorem content, reference setup, custom-font filename
+   parsing, font-option parsing, Chapter title-format parsing, and all nine
+   remaining numbering families. Each migration first froze the legacy parser
+   contract and then proved canonical output identity.
 2. `SetupReference` preserves its default/custom/repeated setup, rendered BibTeX
    output, unknown-key failure, and `apacite[notocbib]` preamble side effect.
 3. Active student source contains zero `l3keys2e` references, and generated
@@ -116,16 +117,16 @@ legacy key package is churn, not modernization.
 4. The font-option migration separately proves real bundled Times and KaiU
    loading, exact PDF font identities, and English/CJK public routes; it does not
    add unbundled Noto files as test dependencies.
-5. The Chapter title-format migration preserves all five expanded values,
-   per-call defaults including the trailing space in `Chapter `, the public
-   selector route, unknown-key failure, and exact numbering output. The other
-   nine numbering families remain unchanged.
+5. The numbering migrations preserve all expanded values, per-call defaults
+   including significant trailing spaces, public selector routes, 10/10 family
+   unknown-key failures, and exact default/custom/dynamic numbering output.
+   `cmd-numbering.tex` now contains zero direct `pgfkeys` references.
 6. Keep the top-level/nested multi-figure parser deferred until both shared
    scratch state and all row-dispatch routes are covered.
 7. Keep dynamic theorem-format/counter families deferred; they are not the same
    state machine as theorem-content `title`/`label` parsing.
-8. Do not claim package removal while 35 direct `pgfkeys`/`pgfkeysvalueof`
-   references remain across three files or while PGF/TikZ keeps `pgfkeys` active
+8. Do not claim package removal while eight direct `pgfkeys`/`pgfkeysvalueof`
+   references remain across two files or while PGF/TikZ keeps `pgfkeys` active
    transitively.
 9. Continue requiring focused semantic checks, full text/normalized bbox/fonts,
    all-page fixed-DPI raster identity, exact-HEAD archive verification, extracted

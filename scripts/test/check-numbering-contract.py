@@ -85,6 +85,51 @@ def main() -> None:
 
     source = Path("thesis/template/command/cmd-numbering.tex").read_text()
     require(
+        r"\cs_new_protected:Npn \NCKUPrivateSetRemainingNumberingKeys #1#2" in source,
+        "remaining-numbering private parser seam is missing",
+    )
+    remaining_families = (
+        ("SetupTitleNumberFormatString", "setup-title-format-string", 14),
+        ("STitleNumberFormat", "section-title-format", 7),
+        ("SSTitleNumberFormat", "subsection-title-format", 9),
+        ("SSSTitleNumberFormat", "subsubsection-title-format", 11),
+        ("AppendixCTitleNumberFormat", "appendix-chapter-title-format", 5),
+        ("AppendixSTitleNumberFormat", "appendix-section-title-format", 7),
+        ("AppendixSSTitleNumberFormat", "appendix-subsection-title-format", 9),
+        ("AppendixSSSTitleNumberFormat", "appendix-subsubsection-title-format", 11),
+        (
+            "SetupGeneralAppendixNumberFormatString",
+            "general-appendix-number-format-string",
+            20,
+        ),
+    )
+    for family, l3_family, key_count in remaining_families:
+        require(
+            source.count(rf"\NCKUPrivateSetRemainingNumberingKeys{{{family}}}{{#2}}") == 1,
+            f"{family} does not route through the private seam exactly once",
+        )
+        require(
+            rf"\keys_define:nn {{ ncku / numbering / {l3_family} }}" in source,
+            f"l3keys family is missing for {family}",
+        )
+        block_match = re.search(
+            rf"\\keys_define:nn \{{ ncku / numbering / {l3_family} \}}"
+            rf"(.*?)\\cs_new_protected:Npn \\ncku_numbering_{l3_family.replace('-', '_')}_set_keys:n",
+            source,
+            re.DOTALL,
+        )
+        require(block_match is not None, f"cannot isolate l3keys block for {family}")
+        if block_match is None:
+            raise SystemExit(f"Numbering contract FAIL: cannot isolate {family}")
+        require(
+            block_match.group(1).count(".tl_set_e:N") == key_count,
+            f"{family} expanded-storage key count changed",
+        )
+        require(
+            rf"/{family}/.is family" not in source,
+            f"legacy {family} pgfkeys family remains",
+        )
+    require(
         r"\cs_new_protected:Npn \NCKUPrivateSetChapterTitleFormatKeys #1" in source,
         "Chapter title-format private seam is missing",
     )

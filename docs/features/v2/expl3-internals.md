@@ -1,6 +1,6 @@
 # Incremental `expl3` Internal Modernization
 
-Status: first eight bounded slices implemented and validated; pending review
+Status: first nine bounded slices implemented and validated; pending review
 
 ## Intent
 
@@ -159,8 +159,20 @@ unknown-key hard errors, and rendered Chapter title output.
 The parser now uses `ncku / chapter-title-format` with five `.tl_set_e:N` keys.
 Its default `BeginText = {Chapter }` retains the trailing space explicitly under
 `expl3` syntax. `\SetNumberingFormat`, the Chapter selector, title-string setup,
-counter rendering, and all other numbering families retain their public APIs and
-behavior. The other nine numbering key families remain on `pgfkeys`.
+and counter rendering retain their public APIs and behavior.
+
+### Selected follow-up: remaining numbering key families
+
+The nine remaining numbering families now route through one private dispatcher
+to nine independently defined `ncku / numbering / ...` `l3keys` families. Their
+5--20 keys continue to use expanded storage, and every call resets the complete
+default set before applying user values. A focused matrix freezes expanded,
+partial-reset, and literal-`\empty` behavior for all nine families, while a
+separate negative matrix proves 9/9 unknown-key hard errors.
+
+No direct `pgfkeys` references remain in `cmd-numbering.tex`. Existing default,
+custom, repeated, dynamic-counter, title, reference, figure/table/equation, and
+unknown-selector rendering contracts remain unchanged.
 
 ### Retained: explicit `xparse`
 
@@ -408,8 +420,8 @@ Do not continue by count alone. Rank candidates by removable dependency cost,
 finite semantics, existing fixture coverage, and output risk. Before another key
 family moves, capture its default, macro-expansion, unknown-key, repeated-setup,
 and rendering contract under the current implementation. The remaining choices
-are coupled multi-figure parsing, dynamic theorem registration, and the remaining
-nine numbering families; none is approved automatically by reference count.
+are coupled multi-figure parsing and dynamic theorem registration; neither is
+approved automatically by reference count.
 Prefer the smallest
 finite dispatcher or add missing contracts first, and keep every slice
 independently revertible.
