@@ -1,0 +1,8 @@
+% Negative contract: unknown font-option keys must fail.
+\input{./template/configure}
+
+\NCKUPrivateSetFontOptionKeys{unsupported=value}
+
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown font option key was ignored}
+\end{document}

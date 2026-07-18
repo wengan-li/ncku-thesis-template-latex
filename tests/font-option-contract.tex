@@ -1,0 +1,45 @@
+% Focused contract for the legacy font-option parser and font-loading routes.
+\input{./template/configure}
+
+% Freeze expanded parser storage independently from fontspec/xeCJK side effects.
+\def\NCKUFontNormalMacro{times.ttf}
+\def\NCKUFontItalicMacro{timesi.ttf}
+\def\NCKUFontBoldMacro{timesbd.ttf}
+\def\NCKUFontBoldItalicMacro{timesbi.ttf}
+\NCKUPrivateSetFontOptionKeys{NormalFont=\NCKUFontNormalMacro,ItalicFont=\NCKUFontItalicMacro,BoldFont=\NCKUFontBoldMacro,BoldItalicFont=\NCKUFontBoldItalicMacro}
+\def\NCKUFontNormalMacro{changed-normal.ttf}
+\def\NCKUFontItalicMacro{changed-italic.ttf}
+\def\NCKUFontBoldMacro{changed-bold.ttf}
+\def\NCKUFontBoldItalicMacro{changed-bold-italic.ttf}
+\typeout{NCKU-FONT-OPTION-FULL: \TmpValueNormalFont|\TmpValueItalicFont|\TmpValueBoldFont|\TmpValueBoldItalicFont}
+
+\NCKUPrivateSetFontOptionKeys{BoldFont=timesbd.ttf}
+\typeout{NCKU-FONT-OPTION-PARTIAL: \TmpValueNormalFont|\TmpValueItalicFont|\TmpValueBoldFont|\TmpValueBoldItalicFont}
+
+\NCKUPrivateSetFontOptionKeys{\empty}
+\typeout{NCKU-FONT-OPTION-OMITTED: \TmpValueNormalFont|\TmpValueItalicFont|\TmpValueBoldFont|\TmpValueBoldItalicFont}
+
+% Exercise both public loading routes with all four keys and bundled files.
+\SetEngMainFont[%
+  NormalFont=times.ttf,
+  ItalicFont=timesi.ttf,
+  BoldFont=timesbd.ttf,
+  BoldItalicFont=timesbi.ttf,
+]{NCKUFontOptionEng}
+\SetChiMainFont[%
+  NormalFont=kaiu.ttf,
+]{NCKUFontOptionChi}
+
+\begin{document}
+\chapter*{Font option contract}
+
+Normal English and 中文普通字型。
+
+\textit{Italic English and 中文斜體字型。}
+
+\textbf{Bold English and 中文粗體字型。}
+
+\textbf{\textit{Bold italic English and 中文粗斜體字型。}}
+
+\typeout{NCKU-TEST-PASS: font option parser and English/CJK loading routes}
+\end{document}

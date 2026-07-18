@@ -67,8 +67,15 @@ require(
     r"\keys_set:nn { ncku / custom-font-files } {#1}" in source,
     "custom-font private seam does not route through l3keys",
 )
+custom_block_match = re.search(
+    r"\\keys_define:nn \{ ncku / custom-font-files \}(.*?)\\cs_new_protected:Npn \\ncku_custom_font_files_set_keys:n",
+    source,
+    re.DOTALL,
+)
+if custom_block_match is None:
+    raise SystemExit("cannot isolate custom-font filename l3keys block")
 require(
-    source.count(".tl_set_e:N") == 4,
+    custom_block_match.group(1).count(".tl_set_e:N") == 4,
     "custom-font parser must preserve expanded storage for exactly four keys",
 )
 require(
@@ -76,8 +83,8 @@ require(
     "legacy custom-font pgfkeys family remains after migration",
 )
 require(
-    r"/ParseFontOption/.is family" in source,
-    "unrelated font-loading pgfkeys family changed in this slice",
+    r"\keys_define:nn { ncku / font-options }" in source,
+    "adjacent font-option l3keys family is missing",
 )
 require("l3keys2e" not in source, "custom-font source must not use l3keys2e")
 
