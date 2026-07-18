@@ -58,7 +58,7 @@ require(
 )
 
 require(
-    r"\newcommand{\NCKUPrivateSetFontOptionKeys}[1]" in source,
+    r"\cs_new_protected:Npn \NCKUPrivateSetFontOptionKeys #1" in source,
     "font-option private parser seam is missing",
 )
 require(
@@ -66,8 +66,27 @@ require(
     "English and CJK setters do not both route through the private seam",
 )
 require(
-    r"/ParseFontOption/.is family" in source,
-    "legacy font-option pgfkeys family is missing before migration",
+    r"\keys_define:nn { ncku / font-options }" in source,
+    "font-option l3keys family is missing",
+)
+require(
+    r"\keys_set:nn { ncku / font-options } {#1}" in source,
+    "font-option private seam does not route through l3keys",
+)
+font_block_match = re.search(
+    r"\\keys_define:nn \{ ncku / font-options \}(.*?)\\cs_new_protected:Npn \\ncku_font_options_set_keys:n",
+    source,
+    re.DOTALL,
+)
+if font_block_match is None:
+    raise SystemExit("cannot isolate font-option l3keys block")
+require(
+    font_block_match.group(1).count(".tl_set_e:N") == 4,
+    "font-option parser must preserve expanded storage for exactly four keys",
+)
+require(
+    r"/ParseFontOption/.is family" not in source,
+    "legacy font-option pgfkeys family remains after migration",
 )
 require(
     r"\keys_define:nn { ncku / custom-font-files }" in source,
@@ -75,4 +94,4 @@ require(
 )
 require("l3keys2e" not in source, "font source must not use l3keys2e")
 
-print("Font option contract PASS: expanded state, reset, English/CJK rendering, fonts, and source boundary")
+print("Font option contract PASS: l3keys expanded state, reset, English/CJK rendering, fonts, and source boundary")

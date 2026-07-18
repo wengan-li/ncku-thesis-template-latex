@@ -145,28 +145,30 @@
 
 % -------------------------------------------
 
-\pgfkeys
-{
-  /ParseFontOption/.is family, /ParseFontOption,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / font-options }
   {
-    NormalFont = \empty,
-    ItalicFont = \empty,
-    BoldFont = \empty,
-    BoldItalicFont = \empty,
-  },
-  NormalFont/.estore in = \TmpValueNormalFont,
-  ItalicFont/.estore in = \TmpValueItalicFont,
-  BoldFont/.estore in = \TmpValueBoldFont,
-  BoldItalicFont/.estore in = \TmpValueBoldItalicFont,
-} % End of \pgfkeys{}
+    NormalFont     .tl_set_e:N = \TmpValueNormalFont,
+    ItalicFont     .tl_set_e:N = \TmpValueItalicFont,
+    BoldFont       .tl_set_e:N = \TmpValueBoldFont,
+    BoldItalicFont .tl_set_e:N = \TmpValueBoldItalicFont,
+  }
 
-% Keep font-option parsing behind one private seam so parser state and both
-% font-loading routes can be frozen before replacing the implementation.
-\newcommand{\NCKUPrivateSetFontOptionKeys}[1]
-{%
-  \pgfkeys{/ParseFontOption, default, #1}%
-} % End of \newcommand{}
+\cs_new_protected:Npn \ncku_font_options_set_keys:n #1
+  {
+    \tl_clear:N \TmpValueNormalFont
+    \tl_clear:N \TmpValueItalicFont
+    \tl_clear:N \TmpValueBoldFont
+    \tl_clear:N \TmpValueBoldItalicFont
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / font-options } {#1} }
+  }
+
+% Keep font-option parsing behind one private seam. Fontspec and xeCJK loading
+% remain in the unchanged public English and CJK setters below.
+\cs_new_protected:Npn \NCKUPrivateSetFontOptionKeys #1
+  { \ncku_font_options_set_keys:n {#1} }
+\ExplSyntaxOff
 
 \newcommand{\SetEngMainFont}[2][\empty]
 {%
