@@ -161,10 +161,17 @@
   BoldItalicFont/.estore in = \TmpValueBoldItalicFont,
 } % End of \pgfkeys{}
 
+% Keep font-option parsing behind one private seam so parser state and both
+% font-loading routes can be frozen before replacing the implementation.
+\newcommand{\NCKUPrivateSetFontOptionKeys}[1]
+{%
+  \pgfkeys{/ParseFontOption, default, #1}%
+} % End of \newcommand{}
+
 \newcommand{\SetEngMainFont}[2][\empty]
 {%
   % Parse the input
-  \pgfkeys{/ParseFontOption, default, #1}%
+  \NCKUPrivateSetFontOptionKeys{#1}%
   %
   \defaultfontfeatures[#2]{%
     Path = \GetFontDirPath,
@@ -187,7 +194,7 @@
 \newcommand{\SetChiMainFont}[2][\empty]
 {%
   % Parse the input
-  \pgfkeys{/ParseFontOption, default, #1}%
+  \NCKUPrivateSetFontOptionKeys{#1}%
   %
   \setCJKmainfont[%
     Path = \GetFontDirPath,
