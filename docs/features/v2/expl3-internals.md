@@ -85,8 +85,8 @@ The slice must preserve:
 5. dynamic counter values and frozen counter names;
 6. default/custom general and appendix title/getter output;
 7. figure/table/equation numbering idempotence;
-8. 271-page A4 canonical output, text, bounding boxes, fonts, and representative
-   rasters;
+8. 271-page A4 canonical output, text, bounding boxes, fonts, and all-page
+   fixed-DPI raster output;
 9. V1 API and unchanged-project migration contracts;
 10. the existing package graph boundary: `ifthen` remains active and no new
     package is added.
@@ -105,7 +105,8 @@ The retained implementation passed:
   theorem, and custom-style gates;
 - canonical 271-page A4 text identity;
 - canonical normalized bounding-box and font-table identity;
-- identical 150-DPI rasters for pages 1, 2, 82, and 258--261;
+- identical 120-DPI raster output for all 271 canonical pages, plus identical
+  150-DPI representative rasters for pages 1, 2, 82, and 258--261;
 - active-graph assertions: `expl3`, `ifthen`, `pgfkeys`, and `xparse` active;
   `fp` and `apptools` absent.
 
