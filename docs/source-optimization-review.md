@@ -1,8 +1,23 @@
 # XeLaTeX source optimization and modernization review
 
-Status: implementation in progress
+Status: completed and shipped in [`v2.0.0.260717130231`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.0.260717130231); P3 experiments are deferred and inactive
 
-Checked: 2026-07-15
+Checked: 2026-07-18
+
+## Closure
+
+The compatibility-bounded P0--P2 work from this review is complete and its
+maintained implementation record now lives under [`features/v2/`](features/v2/).
+This document remains the evidence and prioritization record for the measured
+modernization work. The P3 ideas below are not active requirements, todos, or
+authorization to change the class/package structure, engine, public API, or PDF
+accessibility claims; each would require a separate owner-approved Intent and
+validation boundary.
+
+The original public Overleaf Gallery template remains published. The V2 update
+was submitted through the original project and is still pending Gallery review;
+GitHub Releases remains the canonical V2 package until the public Gallery copy
+is approved and independently read back.
 
 ## Implementation status
 
@@ -231,9 +246,10 @@ The identical full-width minipage plus zero-line `mdframed`/opacity wrapper is n
   NCKU uses Master 3--5 and Doctoral 5--9, while neutral/custom keeps the generic
   2--9 renderer capacity. A focused boundary fixture rejects future drift.
 
-## P3 — major-version experiments
+## P3 — inactive major-version experiments
 
-Do not mix these into v1.x maintenance.
+These are research directions, not active requirements or todos. Do not mix
+them into v2 maintenance; each requires a separate owner-approved experiment.
 
 ### 1. Formal class/package structure
 
@@ -264,15 +280,19 @@ A future isolated experiment may evaluate LuaLaTeX plus `\DocumentMetadata` befo
 - Do not precompile the preamble before measuring whether its complexity and cache invalidation are worth the maintenance cost.
 - Do not rewrite all legacy commands to `expl3` in one change.
 
-## Recommended implementation order
+## Completed execution order and deferred boundary
 
-1. Add sectioning, numbering/reference, oral-state, metadata, and font/CJK fixtures.
-2. Add `just watch` and editor documentation.
-3. Benchmark an optional non-final chapter preview.
-4. Apply isolated low-risk engine/metadata/font cleanup.
-5. Consolidate small helpers and dead private code.
-6. Refactor numbering, theorem, and float internals one subsystem at a time with PDF/text baselines.
-7. Evaluate class/package, `l3build`, `latex-dev`, and tagged-PDF work only on a major-version experiment line.
+1. Completed: sectioning, numbering/reference, oral-state, metadata, and
+   font/CJK fixtures.
+2. Completed: `just watch` and editor documentation.
+3. Measured and rejected: an optional non-final chapter preview did not justify
+   its additional numbering/reference risk.
+4. Completed: isolated low-risk engine/metadata/font cleanup.
+5. Completed: small-helper consolidation and dead private-code removal.
+6. Completed: bounded numbering, theorem, and float hardening with PDF/text
+   baselines.
+7. Deferred and inactive: class/package, `l3build`, `latex-dev`, and tagged-PDF
+   experiments.
 
 ## Acceptance gates for every implementation slice
 
