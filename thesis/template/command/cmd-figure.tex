@@ -46,33 +46,36 @@
 
 % -----------------------------------------------------------------
 
-\pgfkeys
-{
-  /InsertFigure/.is family, /InsertFigure,
-  default/.style =
-  {
-    scale = 1.0,
-    angle = 0,
-    caption = \empty,
-    label = \empty,
-    pos = {H},      % Useless, for backporting
-    align = \empty, % Useless, for backporting
-    opacity = 0.4,
-  },
-  scale/.estore in = \TmpValueScale,
-  angle/.estore in = \TmpValueAngle,
-  caption/.estore in = \TmpValueCaption,
-  label/.estore in = \TmpValueLabel,
-  pos/.estore in = \TmpValuePosition,   % Useless, for backporting
-  align/.estore in = \TmpValueAlign,    % Useless, for backporting
-  opacity/.estore in = \TmpValueOpacity,
-} % End of \pgfkeys{}
-
-% Keep key parsing behind one private seam so its defaults, expansion, and
-% unknown-key behavior can be regression-tested independently of rendering.
 \ExplSyntaxOn
+\keys_define:nn { ncku / insert-figure }
+  {
+    scale   .tl_set_e:N = \TmpValueScale,
+    angle   .tl_set_e:N = \TmpValueAngle,
+    caption .tl_set_e:N = \TmpValueCaption,
+    label   .tl_set_e:N = \TmpValueLabel,
+    pos     .tl_set_e:N = \TmpValuePosition,
+    align   .tl_set_e:N = \TmpValueAlign,
+    opacity .tl_set_e:N = \TmpValueOpacity,
+  }
+
+% Reset every value on each call, then apply the caller's overrides. The public
+% optional argument uses the literal token \empty when omitted, so skip that
+% sentinel instead of handing it to l3keys as a key name.
 \cs_new_protected:Npn \ncku_insert_figure_keys_set:n #1
-  { \pgfkeys { /InsertFigure, default, #1 } }
+  {
+    \keys_set:nn { ncku / insert-figure }
+      {
+        scale = 1.0,
+        angle = 0,
+        caption = \empty,
+        label = \empty,
+        pos = H,
+        align = \empty,
+        opacity = 0.4,
+      }
+    \tl_if_eq:nnF {#1} {\empty}
+      { \keys_set:nn { ncku / insert-figure } {#1} }
+  }
 \cs_new_eq:NN \NCKUPrivateSetInsertFigureKeys
   \ncku_insert_figure_keys_set:n
 \ExplSyntaxOff

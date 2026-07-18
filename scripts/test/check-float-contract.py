@@ -144,6 +144,22 @@ def main() -> None:
     require(r"\begin{figure}[H]" in figure_source, "single figure no longer forces H")
     require(r"\begin{figure}[H]" in figures_source, "multi figure no longer forces H")
     require(r"\begin{table}[H]" in table_source, "table no longer forces H")
+    require(
+        r"\keys_define:nn { ncku / insert-figure }" in figure_source,
+        "single-figure keys no longer use the bounded l3keys family",
+    )
+    require(
+        figure_source.count(".tl_set_e:N") == 7,
+        "single-figure l3keys family no longer has seven expanded-storage keys",
+    )
+    require(
+        "/InsertFigure/.is family" not in figure_source,
+        "legacy pgfkeys single-figure family was reintroduced",
+    )
+    require(
+        r"\NCKUPrivateSetInsertFigureKeys{#1}" in figure_source,
+        "single-figure command bypasses the private key parser",
+    )
     require(figure_source.count(r"\TmpValuePosition") == 1, "figure pos key became behaviorally active")
     require(figure_source.count(r"\TmpValueAlign") == 1, "figure align key became behaviorally active")
     require(figures_source.count(r"\TmpMIValueAlign") == 1, "multi-figure align key became behaviorally active")
