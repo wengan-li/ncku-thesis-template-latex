@@ -6,12 +6,11 @@
 
 狀態：GitHub production release已驗證；Overleaf Gallery V2更新仍記錄為owner-confirmed submitted，等待public approval及read-back。
 
-- 最新production release：[`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
 - [公開Overleaf範本](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn)
 
 ## 摘要
 
-- 最新production release是`v2.0.2.260719120024`，每個release只promote一個student ZIP及一個six-PDF examples ZIP。
+- 每次production release只promote一個student ZIP及一個six-PDF examples ZIP。
 - Student ZIP等於tagged `thesis/` tree、直接解壓可用，且不包含repository tooling或多餘`thesis/`wrapper。
 - GitHub Release build／promotion及public read-back由immutable source revision及checksums連結；v2.0.2 public assets已與workflow artifact byte-identical，舊tag不會重建或移動。
 - 既有Overleaf Gallery頁面仍公開；V2狀態只可寫成owner-confirmed submitted及pending approval/read-back，不能推論已批准。

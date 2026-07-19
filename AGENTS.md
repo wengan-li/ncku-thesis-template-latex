@@ -218,6 +218,9 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
   hashes, run IDs, or benchmark transcripts merely to claim line-by-line
   translation. The English record still uses the `.en.md` filename even when it
   remains the more detailed technical source.
+- `CHANGELOG.md` and `CHANGELOG.en.md` both contain the complete release history.
+  Traditional Chinese owns the default path; preserve historical mixed-language
+  entries rather than rewriting old release evidence solely for translation.
 - Documentation language, institution profile, cover language, degree, and
   content mode are independent axes. Do not map English readers to `custom` or
   Traditional-Chinese readers to `ncku`.

@@ -7,8 +7,6 @@
 Status: GitHub production release verified; Overleaf Gallery V2 update last
 recorded as owner-confirmed submitted and pending public approval/read-back.
 
-- Latest production release:
-  [`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
 - Public Overleaf template:
   <https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn>
 
@@ -117,8 +115,8 @@ A green workflow is not sufficient release proof. After publication:
 7. verify A4 dimensions, page count, SyncTeX, convergence, default Draft/watermark
    state, example allowlist, README, and six PDF page contracts.
 
-The current release hashes and read-back evidence are recorded in
-[`validation-and-performance.en.md`](validation-and-performance.en.md#current-production-release-read-back).
+The v2.0.2 release hashes and read-back evidence are recorded in
+[`validation-and-performance.en.md`](validation-and-performance.en.md#v202-production-release-read-back).
 
 ## Overleaf profiles
 
@@ -223,5 +221,5 @@ system.
 - `scripts/overleaf/` — Overleaf package generation and verification.
 - `thesis/README.md` — student-facing package instructions.
 - [`v1-to-v2-migration.en.md`](../v1-to-v2-migration.en.md) — full migration contract.
-- [`validation-and-performance.en.md`](validation-and-performance.en.md) — current
-  release hashes, direct-build proof, and engineering gates.
+- [`validation-and-performance.en.md`](validation-and-performance.en.md) — release
+  hashes, direct-build proof, and engineering gates.

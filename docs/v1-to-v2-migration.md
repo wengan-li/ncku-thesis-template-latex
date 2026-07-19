@@ -4,8 +4,6 @@
 
 # 成大論文範本1.x至2.x升級指南
 
-正式目標：[`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
-
 V2透過完整2.x line的相容層，保留machine-audited 1.x LaTeX/xparse及literal `\def` declarations。既有專案可先升級template implementation、驗證NCKU輸出，再逐步採用native V2 profile架構。
 
 ## 開始前

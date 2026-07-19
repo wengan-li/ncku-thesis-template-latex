@@ -4,8 +4,7 @@
 
 # Validation and performance
 
-Status: production evidence consolidated through
-[`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
+Status: production evidence consolidated
 
 This record distinguishes current deterministic gates from dated benchmark and
 release evidence. Current tests and source win if a historical number drifts.
@@ -67,7 +66,7 @@ sufficient on their own; use normalized `pdftotext -bbox-layout` word tuples,
 `pdffonts`, fixed-DPI rasters, and visual inspection of affected pages. Raw bbox
 HTML is not byte-stable because PDF metadata such as creation time changes.
 
-## Current production release read-back
+## v2.0.2 production release read-back
 
 The immutable tag `v2.0.2.260719120024` points to source commit
 `077323b1af173cfb564859dd360b959dd58ffaa5`. Exact merged-main Test run
