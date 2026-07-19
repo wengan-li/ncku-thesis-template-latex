@@ -208,10 +208,14 @@ a local or workflow artifact alone is insufficient.
 
 ## Development Branch and Hosted Test Gate
 
-The Test workflow push filter covers `main` and `feat/**`. Use the `feat/**`
-namespace for development branches (for example, `feat/v2.x`) so every pushed
-update automatically enters the required hosted test gate. A bare
-version-shaped branch such as `v2.x` does not match that filter.
+The Test workflow push filter covers `main` and `feat/**`. Create short-lived
+development branches as `feat/<short-name>` from current `main` so every pushed
+update automatically enters the required hosted test gate. Merge through a pull
+request, then delete local and remote feature refs after proving that the branch
+has no commits unique to `main`. Keep `main` as the only persistent development
+branch. A bare version-shaped branch such as `v2.x` does not match the workflow
+filter and a long-lived version integration branch is not part of the current
+post-release policy.
 
 After every feature-branch push:
 

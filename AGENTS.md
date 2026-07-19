@@ -16,8 +16,7 @@ Repository maintenance skill: `.agents/skills/repo-maintenance/SKILL.md`
 
 ## V2 modernization outcome
 
-The `feat/v2.x` branch is the only planned development branch after v1.8. It
-skips a separate v1.9 release and delivers a compatibility-preserving v2
+V2 skipped a separate v1.9 release and delivered a compatibility-preserving
 architecture that:
 
 1. keeps the visible NCKU layout and top-level student project structure;
@@ -31,6 +30,12 @@ architecture that:
 
 Implement this outcome as small validated commits. A v2 version line does not
 authorize a one-shot rewrite or an unverified visual redesign.
+
+Post-release maintenance uses short-lived `feat/<short-name>` branches created
+from current `main`. Merge each validated branch through a pull request, then
+delete its local and remote refs after proving it has no commits unique to
+`main`. `main` is the only persistent development branch; do not retain a
+long-lived version integration branch.
 
 ## Canonical commands
 
