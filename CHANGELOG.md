@@ -8,6 +8,13 @@
 
 ## 2.x
 
+### [v2.0.3.260719151234](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.3.260719151234) — 2026-07-19
+
+- 恢復本專案保存的歷史雙語標題，並補回學位論文上傳、列印及學位考試論文證明書指引；歷史查核不再被誤讀為現行學校認可。
+- Public documentation改用穩定的GitHub Releases及完整changelog入口，不再於各文件重複容易過期的「current／latest release」識別。
+- `CHANGELOG.md`改用不綁定版本線的標題及語言switcher，並與英文companion一同保存完整V1 release history。
+- XeLaTeX source、public API、學生project shape及PDF layout behavior沒有變更。
+
 ### [v2.0.2.260719120024](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024) — 2026-07-19
 
 - 將學生及public documentation整理成8組完整繁中／英文guides與3組繁中摘要／英文technical records；繁中使用default `.md`，英文使用`.en.md`，不再保留`.zh-TW.md` paths。

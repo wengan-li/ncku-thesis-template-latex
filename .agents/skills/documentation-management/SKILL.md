@@ -141,6 +141,11 @@ compatibility-manifest maintenance, and commit rollback workflow.
 - `CHANGELOG.md` and `CHANGELOG.en.md` both contain the complete release
   history. Traditional Chinese owns the default path; historical mixed-language
   entries are retained rather than rewritten solely for translation.
+- Keep mutable release identity centralized. Public guides and feature summaries
+  link to GitHub Releases and the complete changelog instead of repeating a
+  "current" or "latest" tag that must change after every publication. Exact tags
+  remain appropriate in changelog entries, version-specific migration facts,
+  immutable checksum/read-back evidence, and release artifact names.
 - Apply the same filename rule to every paired documentation surface: Traditional
   Chinese owns `<name>.md`, English owns `<name>.en.md`, and `*.zh-TW.md` paths are
   forbidden. Locale identifiers such as `zh-Hant-TW` remain valid in metadata.
