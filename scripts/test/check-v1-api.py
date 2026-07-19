@@ -22,8 +22,8 @@ SourceText = tuple[str, str]
 
 ROOT = Path(__file__).resolve().parents[2]
 TEMPLATE_ROOT = ROOT / "thesis" / "template"
-BASELINE = ROOT / "tests" / "v1-public-api.json"
-COMMENT_ARTIFACTS = ROOT / "tests" / "v1-comment-environment-artifacts.json"
+BASELINE = ROOT / "tests" / "100-v1-public-api.json"
+COMMENT_ARTIFACTS = ROOT / "tests" / "101-v1-comment-environment-artifacts.json"
 PRE_V2_SOURCE_COMMIT = "f80a2649232dd25761276ccf7043cf3f3a79e031"
 
 LATEX_COMMENT_ENVIRONMENT = re.compile(

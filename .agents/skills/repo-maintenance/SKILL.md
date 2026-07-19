@@ -64,9 +64,9 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 
 - XeLaTeX remains the supported v2 engine; do not silently migrate engines.
 - Preserve `thesis.tex`, `conf/conf.tex`, every entry in
-  `tests/v1-public-api.json`, and the visible NCKU layout unless a focused
+  `tests/100-v1-public-api.json`, and the visible NCKU layout unless a focused
   fixture and authoritative evidence justify a documented correction.
-- Keep `tests/v1-project-migration.json` passing. It pins the v1.8.2
+- Keep `tests/102-v1-project-migration.json` passing. It pins the v1.8.2
   student-owned inputs byte-for-byte; `just test` separately proves the unchanged
   entry/configuration path and active StudentMode content/BibTeX dependencies.
 - Keep generic command/renderer layers free of NCKU assets, Taiwan-year policy,
@@ -84,7 +84,7 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   orchestration, not a student requirement.
 - Keep the full teaching document as integration coverage and add focused
   fixtures before changing output-sensitive macros.
-- Keep `tests/theorem-contract.tex` in the test gate before consolidating theorem
+- Keep `tests/500-theorem-contract.tex` in the test gate before consolidating theorem
   internals. Its label option must create an auxiliary label without visible key
   leakage, and titled labels must freeze nameref metadata before temporary pgf
   key state is reused. Introduce registry behavior in bounded slices: first let
@@ -181,6 +181,21 @@ public Release assets.
 Do not move an immutable tag or rebuild old tagged PDFs during an asset-only
 migration. Follow `docs/features/release-and-distribution.md` for download,
 digest, public read-back, byte-comparison, and exact-allowlist gates.
+
+## Test Source Layout
+
+- [`tests/000-test-suite.md`](../../../tests/000-test-suite.md) owns the flat,
+  numerically grouped test inventory.
+- Every tracked file under `tests/` has a unique three-digit sparse prefix and no
+  subdirectory. Use the documented `100–899` concern ranges for executable
+  fixtures/manifests and reserve `900–999` for historical standalone reference
+  inputs that are not automatic `just test` entrypoints.
+- Keep semantic `just` recipe names and build job names unnumbered. The numeric
+  prefix organizes source inventory only.
+- Rename test sources with exact path-reference repair across `justfile`, scripts,
+  instructions, skills, and feature records. Run
+  `python3 scripts/test/check-test-layout.py`, focused affected tests, and the full
+  gate before committing.
 
 ## Verification
 

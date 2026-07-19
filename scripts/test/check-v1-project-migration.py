@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import cast
 
 ROOT = Path(__file__).resolve().parents[2]
-MANIFEST = ROOT / "tests" / "v1-project-migration.json"
+MANIFEST = ROOT / "tests" / "102-v1-project-migration.json"
 
 ManifestEntry = dict[str, object]
 

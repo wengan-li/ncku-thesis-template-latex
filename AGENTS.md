@@ -112,7 +112,7 @@ Archiving is safer than deletion. If deletion remains the explicit owner decisio
 ## Compatibility and policy boundaries
 
 - Do not silently switch to LuaLaTeX.
-- Keep `tests/v1-public-api.json` passing; old commands may delegate to new
+- Keep `tests/100-v1-public-api.json` passing; old commands may delegate to new
   internals, but their names and argument shapes remain available throughout
   2.x.
 - Correct proven bugs rather than preserving them; document behavior changes in
@@ -125,6 +125,18 @@ Archiving is safer than deletion. If deletion remains the explicit owner decisio
 - The ETDS upload path should not add internal watermark, DOI overlay, encryption, or security when current official guidance says the school system applies required processing.
 - Prefer inserting the school-system defense certificate as an external file; keep generated certificate templates explicitly legacy/example only.
 - Record official policy URL and checked date for any compliance change.
+
+## Test source layout
+
+- [`tests/000-test-suite.md`](tests/000-test-suite.md) is the test-inventory index.
+- Keep every tracked test artifact directly under `tests/` with a unique
+  three-digit sparse prefix. Use the documented `100–899` concern ranges for
+  executable fixtures and manifests.
+- The `900–999` range contains historical standalone investigation inputs. Those
+  files are reference evidence, not automatic `just test` entrypoints.
+- Keep semantic `just` recipe and output job names unnumbered. When a source file
+  moves, update every script, document, and recipe path in the same change, then
+  run `python3 scripts/test/check-test-layout.py` and `just test`.
 
 ## Verification
 
@@ -180,11 +192,16 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 - Current source and tests win on drift. Deferred experiments are not active
   requirements without a new owner-approved Intent.
 - Student/public journeys are complete in formal Taiwan Traditional Chinese and
-  natural technical English. Keep adjacent language blocks per topic and share
-  paths, commands, macros, logs, tables, and code blocks once.
-- Maintainer feature records use a Traditional-Chinese executive summary plus the
-  complete English technical record. Do not duplicate hashes, run IDs, or
-  benchmark transcripts merely to claim line-by-line translation.
+  natural technical English. Use one predominant language per file with a
+  top-of-page text switcher to the equivalent language file; do not use repeated
+  per-section language labels or flags.
+- Paired user guides carry hidden stable topic IDs. Keep paired executable code
+  blocks identical and validate links in both files so split-language pages do
+  not silently drift.
+- Maintainer feature records use a canonical English technical record plus a
+  separate Traditional-Chinese executive-summary companion. Do not duplicate
+  hashes, run IDs, or benchmark transcripts merely to claim line-by-line
+  translation.
 - Documentation language, institution profile, cover language, degree, and
   content mode are independent axes. Do not map English readers to `custom` or
   Traditional-Chinese readers to `ncku`.

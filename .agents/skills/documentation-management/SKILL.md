@@ -93,14 +93,21 @@ one is a short link/routing sentence.
 ## Bilingual documentation model
 
 - Student/public journeys are complete in formal Taiwan Traditional Chinese
-  (`zh-Hant-TW`) and natural technical English. Put both language blocks next to
-  each other inside every topic so readers do not maintain two divergent files.
-- Share code blocks, commands, paths, macros, logs, tables, hashes, and run IDs
-  once. Translate the explanation around them rather than duplicating executable
-  material.
-- Maintainer feature records use a Traditional-Chinese executive summary followed
-  by the complete English technical record. This is intentionally not a
-  line-by-line translation of evidence transcripts.
+  (`zh-Hant-TW`) and natural technical English. Use one predominant language per
+  file and a top-of-page text switcher to the equivalent page. Default `*.md`
+  user journeys are Traditional Chinese; English companions use `*.en.md`.
+- Do not repeat visible `繁體中文` / `English` labels inside every section and do
+  not use flags as language controls. Each language link uses its native name.
+- Paired guides carry one hidden `doc-pair`, `lang`, and stable `topics` marker.
+  The deterministic checker requires pair metadata, reciprocal switchers,
+  equivalent topic IDs, valid local links, and identical fenced code blocks.
+- Maintainer feature records use a canonical English technical record plus a
+  separate `*.zh-TW.md` executive-summary companion. This is intentionally not a
+  line-by-line translation of hashes, run IDs, benchmarks, or evidence
+  transcripts.
+- `CHANGELOG.md` remains the canonical complete release history. Current localized
+  V2 notes live in `CHANGELOG.zh-TW.md`; historical mixed-language entries are
+  retained rather than rewritten.
 - Documentation language, institution profile, cover language, degree, and
   content mode are independent. An English reader can use `ncku`; a
   Traditional-Chinese reader can maintain another profile.
@@ -112,6 +119,22 @@ one is a short link/routing sentence.
 - Mechanical checks prove structure, links, casing, and selected terminology
   only. Human review must still verify that warnings, actions, defaults, and
   exceptions mean the same thing in both languages.
+
+This model follows authoritative public patterns:
+
+- [W3C internationalization techniques](https://www.w3.org/International/techniques/authoring-html)
+  recommend linking users to each localized page even when language negotiation
+  exists.
+- [USWDS two-language guidance](https://designsystem.digital.gov/patterns/select-a-language/two-languages/)
+  uses a prominent text language selector that opens an equivalent page and
+  explicitly advises against flags.
+- [GitHub Docs translation guidance](https://docs.github.com/en/contributing/writing-for-github-docs/writing-content-to-be-translated)
+  treats translations as locale-specific documentation and recommends clear,
+  translation-friendly source prose.
+- [WCAG 2.2 language-of-page guidance](https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html)
+  requires a programmatically determinable predominant page language; separate
+  Markdown files approximate that model better than paragraph-by-paragraph
+  alternation.
 
 ## Validation
 

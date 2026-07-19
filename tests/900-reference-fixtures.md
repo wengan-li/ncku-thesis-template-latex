@@ -6,4 +6,6 @@ orientation and IEEE bibliography behavior. They moved from the repository-root
 
 They are reference fixtures, not automatic `just test` entrypoints. Executable
 regression fixtures remain directly under `tests/`, while these source examples
-stay grouped here to avoid implying required CI coverage.
+use reserved `900`-series names to avoid implying required CI coverage.
+
+See [`000-test-suite.md`](000-test-suite.md) for the complete numbered layout.

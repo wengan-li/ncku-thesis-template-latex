@@ -1,51 +1,82 @@
 #!/usr/bin/env python3
-"""Validate bilingual documentation structure and first-party Markdown links.
+"""Validate language-separated documentation pairs and first-party Markdown links.
 
-This checker proves only deterministic structure. It cannot prove translation
-quality or semantic parity; those remain human review requirements.
+This checker proves deterministic structure only. Translation quality and semantic
+parity remain manual review requirements.
 """
 
 from __future__ import annotations
 
+import os
 import re
 import sys
 import urllib.parse
 from pathlib import Path
+from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 
-COMPLETE_BILINGUAL: dict[str, int] = {
-    "README.md": 7,
-    "thesis/README.md": 7,
-    "thesis/conf/README.md": 8,
-    "docs/README.md": 4,
-    "docs/v1-to-v2-migration.md": 8,
-    "docs/features/README.md": 2,
-    "thesis/template/style/Customization.md": 7,
-}
-
-SUMMARY_PLUS_ENGLISH = (
-    "docs/features/v2-modernization.md",
-    "docs/features/validation-and-performance.md",
-    "docs/features/release-and-distribution.md",
+GUIDE_PAIRS: tuple[tuple[str, str, str, int], ...] = (
+    ("README.md", "README.en.md", "root-readme", 7),
+    ("thesis/README.md", "thesis/README.en.md", "student-readme", 7),
+    ("thesis/conf/README.md", "thesis/conf/README.en.md", "student-config", 8),
+    ("docs/README.md", "docs/README.en.md", "maintainer-index", 4),
+    (
+        "docs/v1-to-v2-migration.md",
+        "docs/v1-to-v2-migration.en.md",
+        "v1-v2-migration",
+        8,
+    ),
+    ("docs/features/README.md", "docs/features/README.en.md", "feature-index", 2),
+    (
+        "thesis/template/style/Customization.md",
+        "thesis/template/style/Customization.en.md",
+        "style-customization",
+        7,
+    ),
 )
 
-USER_FACING = tuple(COMPLETE_BILINGUAL)
+SUMMARY_PAIRS: tuple[tuple[str, str], ...] = (
+    (
+        "docs/features/v2-modernization.md",
+        "docs/features/v2-modernization.zh-TW.md",
+    ),
+    (
+        "docs/features/validation-and-performance.md",
+        "docs/features/validation-and-performance.zh-TW.md",
+    ),
+    (
+        "docs/features/release-and-distribution.md",
+        "docs/features/release-and-distribution.zh-TW.md",
+    ),
+)
+
+CHINESE_USER_DOCS = tuple(pair[0] for pair in GUIDE_PAIRS) + tuple(
+    pair[1] for pair in SUMMARY_PAIRS
+) + ("CHANGELOG.zh-TW.md",)
+ENGLISH_USER_DOCS = tuple(pair[1] for pair in GUIDE_PAIRS) + tuple(
+    pair[0] for pair in SUMMARY_PAIRS
+)
 CANTONESE_ONLY = ("呢個", "只係", "唔", "嘅", "喺", "咁樣")
 WRONG_PRODUCT_CASING = re.compile(r"\b(?:LaTex|Latex|XeLatex|Xelatex)\b")
 INLINE_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*#*$", re.MULTILINE)
 FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
+PAIR_META = re.compile(
+    r"<!-- doc-pair: ([^;]+); lang: ([^;]+); topics: ([a-z0-9,-]+) -->"
+)
+CJK = re.compile(r"[\u3400-\u9fff]")
+VISIBLE_LANGUAGE_LABEL = re.compile(r"\*\*(?:繁體中文|English)\*\*")
 
 
-def fail(message: str) -> None:
+def fail(message: str) -> NoReturn:
     raise AssertionError(message)
 
 
 def read(relative: str) -> str:
     path = ROOT / relative
     if not path.is_file():
-        fail(f"missing bilingual documentation file: {relative}")
+        fail(f"missing documentation file: {relative}")
     return path.read_text(encoding="utf-8")
 
 
@@ -66,17 +97,37 @@ def strip_fenced_blocks(text: str) -> str:
                 continue
         output.append("" if fence else line)
     if fence is not None:
-        fail("unclosed Markdown fence while checking bilingual docs")
+        fail("unclosed Markdown fence while checking documentation")
     return "\n".join(output)
 
 
-def h2_sections(text: str) -> list[tuple[str, str]]:
-    matches = list(re.finditer(r"^##\s+(.+?)\s*#*$", text, re.MULTILINE))
-    sections: list[tuple[str, str]] = []
-    for index, match in enumerate(matches):
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
-        sections.append((match.group(1), text[match.end() : end]))
-    return sections
+def fenced_blocks(text: str) -> tuple[str, ...]:
+    blocks: list[str] = []
+    current: list[str] | None = None
+    fence: tuple[str, int] | None = None
+    for line in text.splitlines():
+        match = FENCE.match(line)
+        if fence is None:
+            if match:
+                token = match.group(1)
+                fence = (token[0], len(token))
+                current = [line]
+            continue
+        assert current is not None
+        current.append(line)
+        if match:
+            token = match.group(1)
+            if token[0] == fence[0] and len(token) >= fence[1] and not match.group(2).strip():
+                blocks.append("\n".join(current))
+                current = None
+                fence = None
+    if fence is not None:
+        fail("unclosed Markdown fence while comparing paired guides")
+    return tuple(blocks)
+
+
+def h2_count(text: str) -> int:
+    return len(re.findall(r"^##\s+", text, re.MULTILINE))
 
 
 def github_slug(heading: str) -> str:
@@ -91,83 +142,144 @@ def anchors(path: Path) -> set[str]:
     return {github_slug(match.group(2)) for match in HEADING.finditer(text)}
 
 
-def check_complete_bilingual(relative: str, minimum_sections: int) -> None:
-    text = read(relative)
-    if "<!-- bilingual:complete -->" not in text:
-        fail(f"{relative}: missing bilingual:complete marker")
-    sections = h2_sections(text)
-    bilingual = 0
-    for title, body in sections:
-        if " / " not in title:
-            fail(f"{relative}: H2 is not bilingual: {title}")
-        if "**繁體中文**" not in body:
-            fail(f"{relative}: missing Traditional-Chinese block in H2: {title}")
-        if "**English**" not in body:
-            fail(f"{relative}: missing English block in H2: {title}")
-        bilingual += 1
-    if bilingual < minimum_sections:
-        fail(
-            f"{relative}: expected at least {minimum_sections} bilingual H2 sections, "
-            f"found {bilingual}"
-        )
+def check_guide_pair(zh_relative: str, en_relative: str, pair_id: str, minimum: int) -> None:
+    zh = read(zh_relative)
+    en = read(en_relative)
+    zh_meta = PAIR_META.search(zh)
+    en_meta = PAIR_META.search(en)
+    if not zh_meta or not en_meta:
+        fail(f"{pair_id}: missing doc-pair metadata")
+    if zh_meta.group(1) != pair_id or en_meta.group(1) != pair_id:
+        fail(f"{pair_id}: metadata pair identifier drift")
+    if zh_meta.group(2) != "zh-Hant-TW" or en_meta.group(2) != "en":
+        fail(f"{pair_id}: language metadata drift")
+    if zh_meta.group(3) != en_meta.group(3):
+        fail(f"{pair_id}: stable topic IDs differ")
+    topics = zh_meta.group(3).split(",")
+    if len(topics) < minimum:
+        fail(f"{pair_id}: expected at least {minimum} stable topics, found {len(topics)}")
+    if h2_count(zh) != len(topics) or h2_count(en) != len(topics):
+        fail(f"{pair_id}: H2 count does not match stable topic count")
+
+    zh_name = Path(zh_relative).name
+    en_name = Path(en_relative).name
+    switcher = f"[繁體中文]({zh_name}) | [English]({en_name})"
+    if switcher not in zh or switcher not in en:
+        fail(f"{pair_id}: missing reciprocal top language switcher")
+    if fenced_blocks(zh) != fenced_blocks(en):
+        fail(f"{pair_id}: paired fenced code blocks differ")
 
 
-def check_summary_record(relative: str) -> None:
-    text = read(relative)
-    if "<!-- bilingual:summary-plus-english -->" not in text:
-        fail(f"{relative}: missing summary-plus-English marker")
-    chinese = text.find("## 繁體中文摘要")
-    english = text.find("## English technical record")
-    if chinese < 0 or english < 0 or chinese > english:
-        fail(f"{relative}: invalid Chinese-summary/English-body order")
-    summary = text[chinese:english]
-    if len(re.findall(r"^- ", summary, re.MULTILINE)) < 5:
-        fail(f"{relative}: Chinese executive summary needs at least five bullets")
+def check_summary_pair(en_relative: str, zh_relative: str) -> None:
+    en = read(en_relative)
+    zh = read(zh_relative)
+    en_name = Path(en_relative).name
+    zh_name = Path(zh_relative).name
+    if f"<!-- language: en; summary: {zh_name} -->" not in en:
+        fail(f"{en_relative}: missing English summary metadata")
+    if f"<!-- language: zh-Hant-TW; summary-of: {en_name} -->" not in zh:
+        fail(f"{zh_relative}: missing Chinese summary metadata")
+    switcher = f"[繁體中文摘要]({zh_name}) | [English technical record]({en_name})"
+    if switcher not in en or switcher not in zh:
+        fail(f"{en_relative}: missing reciprocal summary switcher")
+    if len(re.findall(r"^- ", zh, re.MULTILINE)) < 5:
+        fail(f"{zh_relative}: executive summary needs at least five bullets")
+    if "## 繁體中文摘要" in en or "## English technical record" in en:
+        fail(f"{en_relative}: old inline-language section survived")
+
+
+def check_no_repeated_language_labels() -> None:
+    failures: list[str] = []
+    for path in ROOT.rglob("*.md"):
+        if any(part in {".git", "build"} for part in path.parts) or path.is_symlink():
+            continue
+        if VISIBLE_LANGUAGE_LABEL.search(path.read_text(encoding="utf-8")):
+            failures.append(str(path.relative_to(ROOT)))
+    if failures:
+        fail("visible per-section language labels remain: " + ", ".join(failures))
 
 
 def check_language_hygiene() -> None:
-    for relative in USER_FACING:
-        text = strip_fenced_blocks(read(relative))
-        bad_case = sorted(set(WRONG_PRODUCT_CASING.findall(text)))
+    for relative in CHINESE_USER_DOCS + ENGLISH_USER_DOCS:
+        plain = strip_fenced_blocks(read(relative))
+        bad_case = sorted(set(WRONG_PRODUCT_CASING.findall(plain)))
         if bad_case:
             fail(f"{relative}: incorrect product casing: {', '.join(bad_case)}")
-        present = [token for token in CANTONESE_ONLY if token in text]
+
+    for relative in CHINESE_USER_DOCS:
+        plain = strip_fenced_blocks(read(relative))
+        present = [token for token in CANTONESE_ONLY if token in plain]
         if present:
             fail(f"{relative}: Cantonese-only prose tokens: {', '.join(present)}")
 
+    for relative in ENGLISH_USER_DOCS:
+        plain = strip_fenced_blocks(read(relative))
+        plain = re.sub(r"<!--.*?-->", "", plain, flags=re.DOTALL)
+        plain = re.sub(r"\[([^\]]*)\]\([^)]+\)", r"\1", plain)
+        plain = re.sub(r"`[^`]*`", "", plain)
+        plain = re.sub(r"^(?:\[)?繁體中文[^\n]*$", "", plain, flags=re.MULTILINE)
+        if CJK.search(plain):
+            lines = [line for line in plain.splitlines() if CJK.search(line)]
+            fail(f"{relative}: CJK prose outside code/switcher: {lines[0]}")
+
 
 def check_changelog() -> None:
-    text = read("CHANGELOG.md")
-    if "<!-- bilingual:changelog-v2 -->" not in text:
-        fail("CHANGELOG.md: missing bilingual V2 marker")
-    region = text.split("## 1.8.x", 1)[0]
-    releases = re.split(r"(?=^### \[v2\.)", region, flags=re.MULTILINE)[1:]
-    if len(releases) < 2:
-        fail("CHANGELOG.md: expected both current V2 release entries")
-    for release in releases:
-        title = release.splitlines()[0]
-        if "**繁體中文**" not in release or "**English**" not in release:
-            fail(f"CHANGELOG.md: incomplete bilingual V2 entry: {title}")
+    en = read("CHANGELOG.md")
+    zh = read("CHANGELOG.zh-TW.md")
+    switcher = "[繁體中文 V2](CHANGELOG.zh-TW.md) | [English and complete history](CHANGELOG.md)"
+    if switcher not in en or switcher not in zh:
+        fail("changelog: missing reciprocal language switcher")
+    if "<!-- language: en; localized-current: CHANGELOG.zh-TW.md -->" not in en:
+        fail("CHANGELOG.md: missing language metadata")
+    if "<!-- language: zh-Hant-TW; canonical-history: CHANGELOG.md -->" not in zh:
+        fail("CHANGELOG.zh-TW.md: missing language metadata")
+    en_current = en.split("## 1.8.x", 1)[0]
+    en_releases = re.findall(r"^### \[(v2\.[^]]+)\]", en_current, re.MULTILINE)
+    zh_releases = re.findall(r"^### \[(v2\.[^]]+)\]", zh, re.MULTILINE)
+    if len(en_releases) < 2 or en_releases != zh_releases:
+        fail("changelog: current V2 release entries differ between languages")
+    if VISIBLE_LANGUAGE_LABEL.search(en_current) or VISIBLE_LANGUAGE_LABEL.search(zh):
+        fail("changelog: old inline-language labels survived")
 
 
 def check_package_routes() -> None:
-    student = read("thesis/README.md")
-    config = read("thesis/conf/README.md")
-    if "conf/README.md" not in student:
-        fail("thesis/README.md: missing packaged configuration-guide link")
-    if "docs/v1-to-v2-migration.md" not in student:
-        fail("thesis/README.md: missing canonical full migration link")
-    if "../README.md" not in config:
-        fail("thesis/conf/README.md: missing packaged student-guide backlink")
-    if "../template/style/Customization.md" not in config:
-        fail("thesis/conf/README.md: missing customization-guide link")
+    required = {
+        "thesis/README.md": ("conf/README.md", "docs/v1-to-v2-migration.md"),
+        "thesis/README.en.md": ("conf/README.en.md", "docs/v1-to-v2-migration.en.md"),
+        "thesis/conf/README.md": ("../README.md", "../template/style/Customization.md"),
+        "thesis/conf/README.en.md": (
+            "../README.en.md",
+            "../template/style/Customization.en.md",
+        ),
+    }
+    for relative, needles in required.items():
+        text = read(relative)
+        for needle in needles:
+            if needle not in text:
+                fail(f"{relative}: missing package route {needle}")
+
+
+def check_instruction_alias() -> None:
+    alias = ROOT / "CLAUDE.md"
+    if not alias.is_symlink():
+        fail("CLAUDE.md must be a symlink")
+    if os.readlink(alias) != "AGENTS.md":
+        fail("CLAUDE.md must point directly to relative AGENTS.md")
+    if alias.resolve() != (ROOT / "AGENTS.md").resolve():
+        fail("CLAUDE.md does not resolve to AGENTS.md")
+
+
+def check_requirements_directory() -> None:
+    entries = sorted(path.name for path in (ROOT / "docs/requirements").iterdir())
+    if entries != [".gitkeep"]:
+        fail(f"docs/requirements must contain only .gitkeep, found: {entries}")
 
 
 def check_links() -> int:
     issues: list[str] = []
     checked = 0
     for path in ROOT.rglob("*.md"):
-        if any(part in {".git", "build"} for part in path.parts):
+        if any(part in {".git", "build"} for part in path.parts) or path.is_symlink():
             continue
         text = strip_fenced_blocks(path.read_text(encoding="utf-8"))
         for raw in INLINE_LINK.findall(text):
@@ -197,24 +309,27 @@ def check_links() -> int:
 
 def main() -> int:
     try:
-        for relative, minimum in COMPLETE_BILINGUAL.items():
-            check_complete_bilingual(relative, minimum)
-        for relative in SUMMARY_PLUS_ENGLISH:
-            check_summary_record(relative)
+        for pair in GUIDE_PAIRS:
+            check_guide_pair(*pair)
+        for pair in SUMMARY_PAIRS:
+            check_summary_pair(*pair)
+        check_no_repeated_language_labels()
         check_language_hygiene()
         check_changelog()
         check_package_routes()
+        check_instruction_alias()
+        check_requirements_directory()
         links = check_links()
     except AssertionError as error:
-        print(f"Bilingual documentation FAIL: {error}", file=sys.stderr)
+        print(f"Language-separated documentation FAIL: {error}", file=sys.stderr)
         return 1
 
     print(
-        "Bilingual documentation PASS: "
-        f"{len(COMPLETE_BILINGUAL)} complete guides, "
-        f"{len(SUMMARY_PLUS_ENGLISH)} summary records, {links} Markdown links"
+        "Language-separated documentation PASS: "
+        f"{len(GUIDE_PAIRS)} complete guide pairs, "
+        f"{len(SUMMARY_PAIRS)} summary pairs, {links} Markdown links"
     )
-    print("Semantic translation parity remains a human review gate.")
+    print("Semantic translation parity remains a manual review gate.")
     return 0
 
 

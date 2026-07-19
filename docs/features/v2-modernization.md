@@ -1,4 +1,6 @@
-<!-- bilingual:summary-plus-english -->
+<!-- language: en; summary: v2-modernization.zh-TW.md -->
+
+[繁體中文摘要](v2-modernization.zh-TW.md) | [English technical record](v2-modernization.md)
 
 # V2 modernization
 
@@ -8,18 +10,6 @@ Status: production
   [`v2.0.0.260717130231`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.0.260717130231)
 - Current production release:
   [`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
-
-## 繁體中文摘要
-
-- V2保持XeLaTeX、學生project shape、direct `latexmk` path及完整經audit的1.x public API。
-- 597個runtime-visible LaTeX/xparse declarations、65個literal-def declarations及18個V1 student inputs由machine gates保護。
-- 共用renderer、NCKU policy及其他學校ports分別由`base`、`ncku`及`custom` profiles負責；文件／封面語言不會選擇profile。
-- 已驗證的theorem、caption、numbering、date、committee及catalogue defects在不改public signatures下修正，詳情由雙語migration table擁有。
-- Repository-owned generic command parsing使用19個native `l3keys` families，direct `pgfkeys` parser references及explicit package load為零。
-- PGF/TikZ並非完全移除；`mdframed`的TikZ framing仍可transitively載入runtime dependency。
-- V2完成狀態不會自動啟用P3 architecture experiments；新工作需要新的owner-approved Intent。
-
-## English technical record
 
 V2 modernizes the XeLaTeX template while preserving the established NCKU output,
 student project shape, direct compiler workflow, and complete audited 1.x public
@@ -42,13 +32,13 @@ V2 delivers one maintained production line with these boundaries:
   profile proves another institution can start without loading NCKU geometry,
   visible policy, dates, or watermark assets.
 - Correctness bugs are fixed behind unchanged public signatures and recorded in
-  the [migration guide](../v1-to-v2-migration.md).
+  the [migration guide](../v1-to-v2-migration.en.md).
 
 ## Compatibility contract
 
 ### Declaration surface
 
-[`tests/v1-public-api.json`](../../tests/v1-public-api.json) is generated only
+[`tests/100-v1-public-api.json`](../../tests/100-v1-public-api.json) is generated only
 from immutable pre-V2 commit
 `f80a2649232dd25761276ccf7043cf3f3a79e031`. It protects:
 
@@ -57,7 +47,7 @@ from immutable pre-V2 commit
 - complete audited argument shapes, including balanced nested xparse defaults and
   optional-first LaTeX declarations.
 
-[`tests/v1-comment-environment-artifacts.json`](../../tests/v1-comment-environment-artifacts.json)
+[`tests/101-v1-comment-environment-artifacts.json`](../../tests/101-v1-comment-environment-artifacts.json)
 separately records 22 declarations found in runtime-dead LaTeX `comment`
 environments. They are historical scanner artifacts, not public APIs. The source
 checker refuses to regenerate the compatibility baseline from current V2 merely
@@ -65,7 +55,7 @@ to make a deletion pass.
 
 ### Unchanged project surface
 
-[`tests/v1-project-migration.json`](../../tests/v1-project-migration.json) pins 18
+[`tests/102-v1-project-migration.json`](../../tests/102-v1-project-migration.json) pins 18
 student-owned files (296,726 bytes) to immutable release
 `v1.8.2.260715154703`. Source integrity and runtime behavior are deliberately
 separate:
@@ -193,7 +183,7 @@ types that the kernel interface deliberately does not provide.
 
 Compatibility preserves APIs, not verified defects. The normative before/after
 and required-user-action table is in
-[`v1-to-v2-migration.md`](../v1-to-v2-migration.md#已修正行為-corrected-behaviors). It covers:
+[`v1-to-v2-migration.en.md`](../v1-to-v2-migration.en.md#corrected-behaviors). It covers:
 
 - stable subsubsection references;
 - oral/Taiwan-year state separation;
