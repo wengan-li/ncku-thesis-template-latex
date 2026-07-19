@@ -63,6 +63,10 @@ CHINESE_USER_DOCS = tuple(pair[0] for pair in GUIDE_PAIRS + SUMMARY_PAIRS) + (
 ENGLISH_USER_DOCS = tuple(pair[1] for pair in GUIDE_PAIRS + SUMMARY_PAIRS)
 CANTONESE_ONLY = ("呢個", "只係", "唔", "嘅", "喺", "咁樣")
 WRONG_PRODUCT_CASING = re.compile(r"\b(?:LaTex|Latex|XeLatex|Xelatex)\b")
+HISTORICAL_BILINGUAL_TITLE = (
+    "# National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex"
+    "<br>台灣國立成功大學碩博士用畢業論文 LaTex 模版"
+)
 INLINE_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*#*$", re.MULTILINE)
 FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
@@ -223,6 +227,10 @@ def check_no_repeated_language_labels() -> None:
 def check_language_hygiene() -> None:
     for relative in CHINESE_USER_DOCS + ENGLISH_USER_DOCS:
         plain = strip_fenced_blocks(read(relative))
+        if relative == "README.md":
+            if plain.count(HISTORICAL_BILINGUAL_TITLE) != 1:
+                fail("README.md: historical bilingual title is missing or duplicated")
+            plain = plain.replace(HISTORICAL_BILINGUAL_TITLE, "")
         bad_case = sorted(set(WRONG_PRODUCT_CASING.findall(plain)))
         if bad_case:
             fail(f"{relative}: incorrect product casing: {', '.join(bad_case)}")
