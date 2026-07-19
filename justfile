@@ -48,7 +48,12 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-bilingual-docs _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+
+# Structural bilingual-documentation and first-party Markdown-link gate.
+[private]
+_test-bilingual-docs:
+    python3 scripts/test/check-bilingual-docs.py
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -86,6 +91,12 @@ _test-release-student-archive:
     grep -Fq 'student ZIP contents differ from the exact HEAD:thesis file list' "{{ build_dir }}/tests/student-archive-negative.log"
     grep -Fq -- '-ncku-thesis-template-latex/README.md' "{{ build_dir }}/tests/student-archive-negative.log"
     rm -f "{{ build_dir }}/tests/student-archive-negative.zip"
+    cp "{{ build_dir }}/tests/student-archive.zip" "{{ build_dir }}/tests/student-archive-config-negative.zip"
+    zip -dq "{{ build_dir }}/tests/student-archive-config-negative.zip" ncku-thesis-template-latex/conf/README.md
+    ! scripts/release/verify-student-archive.sh "{{ build_dir }}/tests/student-archive-config-negative.zip" > "{{ build_dir }}/tests/student-archive-config-negative.log" 2>&1
+    grep -Fq 'student ZIP contents differ from the exact HEAD:thesis file list' "{{ build_dir }}/tests/student-archive-config-negative.log"
+    grep -Fq -- '-ncku-thesis-template-latex/conf/README.md' "{{ build_dir }}/tests/student-archive-config-negative.log"
+    rm -f "{{ build_dir }}/tests/student-archive-config-negative.zip"
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]

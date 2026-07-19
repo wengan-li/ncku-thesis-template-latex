@@ -23,6 +23,7 @@ fi
 grep -qx "${package_root}/README.md" <<< "$student_entries"
 grep -qx "${package_root}/thesis.tex" <<< "$student_entries"
 grep -qx "${package_root}/conf/conf.tex" <<< "$student_entries"
+grep -qx "${package_root}/conf/README.md" <<< "$student_entries"
 grep -qx "${package_root}/example/abstract/extended.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/configure.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/compat/v1.tex" <<< "$student_entries"
@@ -32,8 +33,19 @@ grep -qx "${package_root}/template/style/ncku/ncku.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/style/custom/custom.tex" <<< "$student_entries"
 
 student_readme=$(unzip -p "$student_zip" "${package_root}/README.md")
-grep -Fq '## Migrating from 1.x' <<< "$student_readme"
+grep -Fq '<!-- bilingual:complete -->' <<< "$student_readme"
+grep -Fq '## 由1.x升級 / Migrate from 1.x' <<< "$student_readme"
+grep -Fq '**繁體中文**' <<< "$student_readme"
+grep -Fq '**English**' <<< "$student_readme"
+grep -Fq 'conf/README.md' <<< "$student_readme"
 grep -Fq 'docs/v1-to-v2-migration.md' <<< "$student_readme"
+
+config_readme=$(unzip -p "$student_zip" "${package_root}/conf/README.md")
+grep -Fq '<!-- bilingual:complete -->' <<< "$config_readme"
+grep -Fq '**繁體中文**' <<< "$config_readme"
+grep -Fq '**English**' <<< "$config_readme"
+grep -Fq '../README.md' <<< "$config_readme"
+grep -Fq '../template/style/Customization.md' <<< "$config_readme"
 
 if grep -Eq "^${package_root}/(justfile|latexmkrc|tests/|scripts/|thesis/)" <<< "$student_entries"; then
   printf 'student ZIP contains repository tooling or a redundant thesis/ layer\n' >&2

@@ -1,90 +1,75 @@
-# Style Customization 自定成其他學校的模版
+<!-- bilingual:complete -->
 
-由 v1.5.0 開始，本模版的方向就是把通用 thesis helpers 與學校規範分開，讓非國立成功大學的使用者可以保留模版功能，同時維護自己學校的格式。V2 正式將這個設計落實成 **institution style profile**。
+# 其他學校樣式自訂 / Institution style customization
 
-## V2 邊界
+V2將通用thesis helpers與學校規範分開，讓非成大維護者可保留template capabilities，同時維護自己的institution format。文件語言、封面語言與institution profile是獨立決定。
+
+V2 separates reusable thesis helpers from institution policy so non-NCKU maintainers can retain template capabilities while maintaining their own institution format. Documentation language, cover language, and institution profile are independent decisions.
+
+## 架構邊界 / Architecture boundary
+
+**繁體中文**
+
+學生論文資料仍放在`conf/conf.tex`。學校層級的geometry、日期規則、校名、封面／證明書文字、department catalogues及watermark policy放在`template/style/<profile>/`；不要建立`conf/style.tex`。`template/style/style.tex`每次只載入一個profile，V2不會先載入NCKU再用custom file覆寫。
+
+**English**
+
+Student thesis data remains in `conf/conf.tex`. Institution geometry, date rules, names, cover/certificate wording, department catalogues, and watermark policy belong under `template/style/<profile>/`; do not create `conf/style.tex`. `template/style/style.tex` loads exactly one profile. V2 does not load NCKU first and then override it with a custom file.
 
 ```text
-template/command/        通用 public helpers、state 與 renderer mechanism
-template/compat/v1.tex   2.x 的 1.x helper compatibility adapter
-template/cover/          共用封面 renderer
-template/oral/           共用口試證明 renderer
-template/style/base/     profile contract 與文字 tokens
-template/style/ncku/     NCKU data、geometry、date policy、watermark asset
-template/style/custom/   可直接 build 的 non-NCKU skeleton
+template/command/        reusable public helpers, state, and renderer mechanisms
+template/compat/v1.tex   1.x compatibility adapter throughout 2.x
+template/cover/          shared cover renderer
+template/oral/           shared certificate renderer
+template/style/base/     profile contract and wording tokens
+template/style/ncku/     NCKU data, geometry, date policy, and watermark asset
+template/style/custom/   directly buildable neutral/non-NCKU skeleton
 ```
 
-學生論文資料仍放在 `conf/conf.tex`。學校層級的 geometry、日期規則、校名、封面／口試文字與 watermark policy 應放在 `template/style/<profile>/`，**不要建立 `conf/style.tex`**。
+## 建立新Profile / Create a new profile
 
-`template/style/style.tex` 每次只會載入一個 profile。V2 不再先載入 NCKU，再用 custom file 覆蓋 NCKU policy。
+**繁體中文**
 
-## 建立新學校 Profile
+以下以`UnivAbc`為例。由neutral `custom` skeleton複製，將profile file改名，登記同一名稱，再由`\TemplateStyleName`選擇。Profile名稱及path大小寫必須完全一致。
 
-以下以 `UnivAbc` 為例。
+**English**
 
-1. 複製 neutral skeleton：
+The following example uses `UnivAbc`. Copy the neutral `custom` skeleton, rename the profile file, register the same name, and select it through `\TemplateStyleName`. Profile name and path casing must match exactly.
 
-   ```bash
-   cp -R template/style/custom template/style/UnivAbc
-   mv template/style/UnivAbc/custom.tex template/style/UnivAbc/UnivAbc.tex
-   ```
+```bash
+cp -R template/style/custom template/style/UnivAbc
+mv template/style/UnivAbc/custom.tex template/style/UnivAbc/UnivAbc.tex
+```
 
-2. 在 `UnivAbc.tex` 將：
+In `UnivAbc.tex` / 在`UnivAbc.tex`：
 
-   ```tex
-   \RegisterTemplateStyle{custom}
-   ```
+```tex
+\RegisterTemplateStyle{UnivAbc}
+```
 
-   改成：
+In an institutional fork's `template/style/style.tex` / 在institutional fork內：
 
-   ```tex
-   \RegisterTemplateStyle{UnivAbc}
-   ```
+```tex
+\providecommand{\TemplateStyleName}{UnivAbc}
+```
 
-3. 在 institutional fork 的 `template/style/style.tex` 將預設值改成：
+For a focused test, define the profile before `\input{./template/configure}` / 測試時可在載入configure前指定：
 
-   ```tex
-   \providecommand{\TemplateStyleName}{UnivAbc}
-   ```
+```tex
+\def\TemplateStyleName{UnivAbc}
+```
 
-   測試時亦可在 `\input{./template/configure}` **之前**暫時指定：
+Modify institution geometry, names, wording tokens, date policy, and watermark style in `UnivAbc.tex`. Keep student metadata in `conf/conf.tex`.
 
-   ```tex
-   \def\TemplateStyleName{UnivAbc}
-   ```
+## 必要Profile Contract / Required profile contract
 
-4. 修改 `UnivAbc.tex` 的 geometry、校名、文字 tokens、date policy 與 watermark style。
+**繁體中文**
 
-5. 在 `conf/conf.tex` 使用通用 metadata helpers，例如：
+每個profile必須恰好呼叫一次`\RegisterTemplateStyle{<name>}`、設定body geometry、定義cover-page geometry enable/disable hooks、設定校名及cover/oral tokens、明確選擇watermark behavior，並只在有不同學校規定時override policy hooks。不要override public metadata setters。
 
-   ```tex
-   \SetUniversityName{範例大學}{Example University}
-   \SetCollName{範例學院}{Example College}
-   \SetDeptName{測試學系}{TEST}{Department of Testing}
-   \SetTitle{中文題目}{English Title}
-   \SetMyName{學生姓名}{Student Name}
-   \SetAdvisorNameA{老師姓名}{Advisor Name}
-   ```
+**English**
 
-   `\SetDeptName{chi}{short}{full}` 的第二參數會保存為英文縮寫，可由 `\GetDeptEngShortName` 取得；`\GetDeptEngName` 繼續回傳第三參數的英文全名。
-
-   非 NCKU profile 不應使用 `\SetDeptCSIE`、`\SetCollEng` 等 NCKU catalog presets；這些 commands 在 2.x 仍存在只為兼容舊專案。
-
-6. 使用 XeLaTeX／latexmk build，並檢查封面、口試日期、front matter、references 與最後頁。
-
-## Profile 必要 Contract
-
-每個 profile 必須：
-
-- 呼叫一次 `\RegisterTemplateStyle{<name>}`；
-- 設定 body geometry；
-- 定義 `\EnableCoverPageStyle` 與 `\DisableCoverPageStyle`；
-- 設定校名；
-- 設定 cover/oral text tokens；
-- 明確選擇 watermark behavior；
-- 如學校日期規則不同，只覆寫 policy hooks，不覆寫 public setters。
-
-### Geometry
+Every profile must call `\RegisterTemplateStyle{<name>}` exactly once, set body geometry, define cover-page geometry enable/disable hooks, set institution names and cover/oral tokens, choose watermark behavior explicitly, and override policy hooks only when institution rules differ. Do not override public metadata setters.
 
 ```tex
 \geometry{a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,nohead}
@@ -95,21 +80,39 @@ template/style/custom/   可直接 build 的 non-NCKU skeleton
 \newcommand{\DisableCoverPageStyle}{\restoregeometry}
 ```
 
-### 校名與 Watermark
+Build a minimal profile before adding institution-specific refinements. A missing profile or registration-name mismatch must fail rather than silently falling back to NCKU.
+
+## 學校名稱與浮水印 / Institution names and watermark
+
+**繁體中文**
+
+使用通用setters提供中英文學校、學院及系所名稱。沒有可合法再發佈的institution asset時，保持watermark style為空。`\SetWatermaskFigureStyle`／`\SetWatermaskTextStyle`只定義style；`\UseWatermarkFigureStyle`／`\UseWatermarkTextStyle`才啟用。正式提交前依該校及圖書館現行規定處理，不要因API存在便加入浮水印。
+
+**English**
+
+Use generic setters for Chinese and English institution, college, and department names. Keep watermark styles empty when no redistributable institution asset is available. `\SetWatermaskFigureStyle` / `\SetWatermaskTextStyle` define styles; `\UseWatermarkFigureStyle` / `\UseWatermarkTextStyle` enable them. Follow the institution's current submission rules and do not add a watermark merely because an API exists.
 
 ```tex
 \SetUniversityName{範例大學}{Example University}
+\SetCollName{範例學院}{Example College}
+\SetDeptName{測試學系}{TEST}{Department of Testing}
 
-% 無 institutional asset 的安全預設
+% Safe neutral defaults / 安全neutral defaults
 \SetWatermaskFigureStyle{}
 \SetWatermaskTextStyle{}
 ```
 
-`\SetWatermaskFigureStyle`／`\SetWatermaskTextStyle`只定義樣式；`\UseWatermarkFigureStyle`／`\UseWatermarkTextStyle`才會啟用。正式提交前應依當時學校／圖書館規定決定，不應因 API 存在就自動加入 watermark。
+The second `\SetDeptName` argument is the English abbreviation returned by `\GetDeptEngShortName`; the third is the full name returned by `\GetDeptEngName`.
 
-### Cover 文字 Tokens
+## 封面文字與日期Tokens / Cover wording and date tokens
 
-共用 renderer 透過以下 setters 取得 institution wording：
+**繁體中文**
+
+共用renderer從profile token setters取得student/advisor labels、prefix/suffix及Master／Doctoral English date format。`\SetCoverDate{year}{month}`沒有day，因此neutral Doctoral cover不可從independent oral metadata借day。若institution規定需要oral day，profile必須在自己的Doctoral date token中明確加入`\GetOralEngDay`。
+
+**English**
+
+The shared renderer obtains student/advisor labels, prefixes/suffixes, and Master/Doctoral English date formats from profile token setters. `\SetCoverDate{year}{month}` owns no day, so a neutral Doctoral cover must not borrow one from independent oral metadata. If institution policy requires the oral day, the profile must explicitly include `\GetOralEngDay` in its Doctoral date token.
 
 ```tex
 \SetCoverStudentChiBothText{學生}
@@ -126,9 +129,17 @@ template/style/custom/   可直接 build 的 non-NCKU skeleton
 \SetCoverDoctoralDateEng{\GetThesisMonthInEng \thinspace \GetThesisYear}
 ```
 
-`\SetCoverDate{year}{month}`沒有day參數，因此neutral profile的Doctoral English cover不應由oral metadata借day。若institution規則需要oral day，應由該profile明確將`\GetOralEngDay`加入`\SetCoverDoctoralDateEng`，而唔係由generic renderer硬編碼。
+Use explicit `\space` where a control-word getter meets following text and the old contract included a visible space.
 
-對應 oral certificate 的 profile setters 包括：
+## 證明書文字與Semantic Degree / Certificate wording and semantic degree
+
+**繁體中文**
+
+Profile提供location、approval、committee、advisor、chair及Master／Doctoral submission wording。English certificate renderer使用numeric `\GetFlagDegreeType`選擇Master／Doctoral branch，不比較可自訂的display degree text。因此profile可更改degree名稱而不會進入錯誤branch。即使目前只使用英文certificate，仍應完整設定兩種語言的contract，避免之後切換出現空白label。
+
+**English**
+
+The profile provides location, approval, committee, advisor, chair, and Master/Doctoral submission wording. The English certificate renderer selects its branch from numeric `\GetFlagDegreeType`, not customizable display degree text. A profile may therefore rename degrees without selecting the wrong branch. Even if only an English certificate is currently used, define the complete bilingual contract to avoid blank labels after a later language switch.
 
 ```tex
 \SetInstitutionLocationEng{Example City, Example Country}
@@ -144,28 +155,37 @@ template/style/custom/   可直接 build 的 non-NCKU skeleton
 \SetOralDoctoralSubmissionEngText{Example doctoral submission in}
 ```
 
-English oral renderer使用`\GetFlagDegreeType`選擇Master／Doctoral statement；唔會比較`\GetEngDegree`顯示文字。因此profile可自訂degree name，而唔會誤入另一個degree branch。
+Template-generated certificates are demonstrations/regression outputs, not official institution documents.
 
-如只使用英文 oral certificate，仍建議完整設定 contract，避免其他使用者切換語言時出現空白 label。
+## 口試委員政策 / Committee-size policy
 
-### 口試委員人數 Policy
+**繁體中文**
 
-Generic renderer支援2至9個簽名欄位，neutral/custom profile保留這個範圍。`\SetCommitteeSize{n}`的public signature不變；如果institution按學位限制不同範圍，profile應覆寫`\ApplyCommitteeSizePolicy{n}`，並使用`\GetFlagDegreeType`判斷Master／Doctoral semantic state。不要比較顯示用degree文字。
+Generic renderer支援2至9個簽名欄位，neutral/custom profile預設保留此範圍。`\SetCommitteeSize{n}`的public signature不變；若institution按學位限制不同範圍，profile只override `\ApplyCommitteeSizePolicy{n}`，並以`\GetFlagDegreeType`判斷semantic Master／Doctoral state，不比較display text。
 
-NCKU profile會把Master request收斂到3至5、Doctoral request收斂到5至9。使用者應先呼叫`\MasterDegree`或`\PhdDegree`，再呼叫`\SetCommitteeSize`。自訂profile如無degree-specific規則，不需要覆寫hook。
+NCKU profile把Master requests收斂至3–5、Doctoral requests收斂至5–9。使用者先呼叫degree setter，再設定committee size。其他profile沒有degree-specific規定時不需override hook。
 
-### 日期 Policy
+**English**
 
-Public commands 保持不變：
+The generic renderer supports 2–9 signature fields and neutral/custom keeps that range by default. The public `\SetCommitteeSize{n}` signature remains unchanged. If an institution has degree-specific limits, override only `\ApplyCommitteeSizePolicy{n}` and branch on semantic `\GetFlagDegreeType`, never display text.
 
-```tex
-\SetOralDate{year}{month}{day}
-\SetCoverDate{year}{month}
-```
+NCKU clamps Master requests to 3–5 and Doctoral requests to 5–9. Users select the degree before committee size. Another profile needs no hook override when it has no degree-specific rule.
 
-Generic/default policy 將 `\SetCoverDate`視為封面日期，並將 oral date 保持為獨立 metadata。Generic Chinese cover/oral renderers使用Gregorian year；`\SetCoverDateChiPrefix`與`\SetOralDateChiPrefix`控制顯示prefix。NCKU profile則透過hooks/getters將口試合格日期視為authoritative cover date，並明確選擇民國年。
+Keep renderer capacity and institution policy separate.
 
-如果另一間學校亦使用oral date作封面日期，只覆寫hooks：
+## 日期政策與Raw/Resolved State / Date policy and raw/resolved state
+
+**繁體中文**
+
+Public commands保持`\SetOralDate{year}{month}{day}`及`\SetCoverDate{year}{month}`。Generic policy把兩者保存為獨立metadata，Chinese renderers預設使用Gregorian year。NCKU profile透過hooks將oral date視為authoritative cover date並選擇民國年。其他學校如有相同規定，只override policy hooks及display getters；不要`\renewcommand` public setters。
+
+`\GetRequestedCoverYear`／`\GetRequestedCoverMonth`回傳raw user input；`\GetThesisYear`／`\GetThesisMonth`回傳profile解決後的display values。
+
+**English**
+
+Public commands remain `\SetOralDate{year}{month}{day}` and `\SetCoverDate{year}{month}`. Generic policy keeps them as independent metadata and uses Gregorian years in Chinese renderers. NCKU hooks make the oral date authoritative for the cover and select Taiwan-year display. Another institution with the same rule overrides policy hooks and display getters, not public setters.
+
+`\GetRequestedCoverYear` / `\GetRequestedCoverMonth` expose raw user input; `\GetThesisYear` / `\GetThesisMonth` expose profile-resolved display values.
 
 ```tex
 \renewcommand{\ApplyOralDatePolicy}[3]{%
@@ -176,53 +196,63 @@ Generic/default policy 將 `\SetCoverDate`視為封面日期，並將 oral date 
 \renewcommand{\ApplyCoverDatePolicy}[2]{}
 ```
 
-如果profile需要民國年，亦必須明確覆寫Chinese-year policy/display getters；唔好將台灣年轉換留喺generic setters：
+If Taiwan-year display is required, explicitly override its policy/display getters in the profile. Do not leave Taiwan-calendar conversion inside generic setters.
 
-```tex
-\renewcommand{\ApplyOralChiYearPolicy}[1]{%
-  \renewcommand{\OralChiYear}{\OralTaiwanYearResult}%
-}
-\renewcommand{\GetCoverMasterYearChi}{\GetThesisYearInTaiwanYear}
-\renewcommand{\GetCoverMasterYearNumInChi}{\zhnumber{\GetThesisYearInTaiwanYear}}
-\renewcommand{\GetCoverDoctoralYearChi}{\GetOralYearInTaiwanYear}
-\renewcommand{\GetCoverDoctoralYearNumInChi}{\GetOralYearInTaiwanYearNumInChi}
-```
+## 2.x相容層 / 2.x compatibility adapter
 
-不要 `\renewcommand{\SetOralDate}` 或 `\renewcommand{\SetCoverDate}`；public setter 需要繼續保存 raw metadata 與維持 1.x signature。
+**繁體中文**
 
-`\GetRequestedCoverYear`、`\GetRequestedCoverMonth`可取得使用者傳給 `\SetCoverDate` 的原始值；`\GetThesisYear`、`\GetThesisMonth`則是 profile policy 解決後的顯示值。
+`template/compat/v1.tex`在整個2.x line載入，既有NCKU college／department presets仍然defined。Data ownership已移至`template/style/ncku/`，舊command paths只是wrappers。`template/compat/deprecated.tex`保存23個已於1.x停用的public commands，維持原名、diagnostic及`\stop`。有效的一參數`\RefTo{label}`仍在active command file，不會被historical comment-only tombstone取代。
 
-## 2.x Compatibility Adapter
+Custom profile的source graph因此仍define NCKU legacy presets，但不載入NCKU geometry、date policy、watermark asset，也不應在visible output顯示NCKU內容。這是有意保留的2.x source-level compatibility cost；不要透過刪除舊API來「清理」。
 
-`template/compat/v1.tex`在整個 2.x line 都會載入，確保既有 NCKU college／department preset commands 仍可用。其 data files 已移到 `template/style/ncku/`，舊的 `template/command/cmd-college.tex`與`cmd-department.tex`路徑保留為 wrappers。`template/compat/deprecated.tex`集中保存23個已在1.x停用的public commands；它們維持原名、原 diagnostic及`\stop` behavior，避免舊專案只得到undefined-control-sequence。有效的一參數`\RefTo{label}`仍留在`cmd-ref.tex`，不會被comment-only的零參數舊tombstone取代。
+**English**
 
-因此 custom profile 的 source graph 仍會定義 NCKU legacy presets；但它不會載入 NCKU geometry、date policy 或 watermark asset，也不會在 visible output 顯示 NCKU 內容。這是刻意的 2.x compatibility cost，不應以刪除舊 API 的方式「清理」。
+`template/compat/v1.tex` loads throughout 2.x so existing NCKU college/department presets remain defined. Data ownership moved under `template/style/ncku/`; old command paths are wrappers. `template/compat/deprecated.tex` preserves 23 commands already unsupported during 1.x with the same names, diagnostics, and `\stop`. The valid one-argument `\RefTo{label}` remains active and is not replaced by a historical comment-only tombstone.
 
-## 驗證
+A custom profile source graph therefore still defines NCKU legacy presets, but it does not load NCKU geometry, date policy, or watermark assets and must not show NCKU content. This intentional 2.x source-level compatibility cost must not be “cleaned” by deleting old APIs.
 
-以下maintainer commands只存在於完整Git repository，並由repository root
-執行；student ZIP刻意不包含`justfile`、`scripts/`或`tests/`：
+Compatibility preserves correct contracts, not verified defects.
 
-```bash
-just _test-custom-style
-just test
-just ci
-python3 scripts/test/check-v1-api.py
-```
+## 驗證 / Verification
 
-Student ZIP解壓後，或任何包含`thesis.tex`的project root，不依賴`just`的
-直接build是：
+**繁體中文**
+
+學生套件內沒有`justfile`、`scripts/`或`tests/`；從包含`thesis.tex`的project root使用direct XeLaTeX/latexmk。完整repository maintainers則執行focused custom-style、API、V1 migration及full gates。Custom fixture應以不同oral/cover dates同時建置Chinese/English Master及Doctoral branches，確認沒有NCKU visible policy或watermark asset。
+
+**English**
+
+The student package contains no `justfile`, `scripts/`, or `tests`; run direct XeLaTeX/latexmk from the project root containing `thesis.tex`. Full-repository maintainers run focused custom-style, API, V1 migration, and full gates. The custom fixture uses distinct oral/cover dates across Chinese/English Master and Doctoral branches and rejects NCKU visible policy or watermark assets.
+
+Student/package command / 學生套件指令：
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 pdfinfo thesis.pdf
 ```
 
-完整Git repository內的`tests/custom-style.tex`是maintainer-only可執行reference：它選擇`custom` profile、產生中／英文Master cover、Chinese oral、Master／Doctoral English oral，以及Doctoral English cover共六頁A4；驗證Chinese dates使用Gregorian year、不同cover/oral dates、Doctoral cover不借oral day、custom degree wording與numeric degree branch，並確認output沒有NCKU校名或watermark asset。呢個fixture刻意不放入student ZIP。
+Maintainer commands / 維護者指令：
 
-## 不應修改的地方
+```bash
+just _test-custom-style
+python3 scripts/test/check-v1-api.py
+python3 scripts/test/check-v1-project-migration.py
+just test
+just ci
+```
 
-優先使用 profile contract 與 `conf/conf.tex` public helpers。只有當共用 renderer 缺少真正跨學校需要的 hook，而且有 focused fixture 證明時，才修改 `template/command/`、`template/cover/`或`template/oral/`。
+Verify profile registration, A4 pages, names, dates, committee ranges, both degree branches, absence of unintended assets in `.fls`, converged references, and the final rendered cover/certificate pages.
 
-1.x 專案升級請同時閱讀完整repository中的
-[`docs/v1-to-v2-migration.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.md)。
+## 故障處理 / Troubleshooting
+
+**繁體中文**
+
+如出現`Template style file ... was not found`，檢查directory、filename及`\TemplateStyleName`大小寫。如出現`did not register itself`，確認profile file呼叫一次相同名稱的`\RegisterTemplateStyle`。如custom output出現NCKU文字或asset，檢查是否直接input NCKU profile、從NCKU複製後漏刪policy，或在generic renderer硬編碼institution values。
+
+任何output regression均先回到最後可建置commit，一次重套一個profile change；不要停用tests、降低expected counts或改compatibility manifests。
+
+**English**
+
+For `Template style file ... was not found`, check directory, filename, and `\TemplateStyleName` casing. For `did not register itself`, ensure the profile file calls exactly one matching `\RegisterTemplateStyle`. If custom output shows NCKU wording or assets, check for a direct NCKU-profile input, copied NCKU policy left in the new profile, or institution values hard-coded into a generic renderer.
+
+For any output regression, return to the last buildable commit and reapply one profile change at a time. Do not disable tests, lower expected counts, or edit compatibility manifests.

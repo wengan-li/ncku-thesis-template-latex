@@ -1,150 +1,203 @@
-## National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex
+<!-- bilingual:complete -->
 
-### 台灣國立成功大學碩博士用畢業論文 LaTex 模版
+# 國立成功大學論文範本 / NCKU Thesis and Dissertation Template for LaTeX
 
-[**Open as Template in Overleaf**](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn)
+[**Open as Template in Overleaf / 在Overleaf開啟範本**](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn)
 
-這是國立成功大學碩博士用畢業論文的 LaTex 模版. 這模版是以[博碩士學位論文格式規範 (110.01.06 109學年度第2次教務會議修正通過)](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw) 的要求來設計, 請留意學校的最新所訂的要求能否使用這模版.
+## 專案簡介 / Project overview
 
-本專案由社群維護，並不是國立成功大學官方認可或背書的軟體。學校、圖書館、學位考試系統及各系所的最新規定永遠優先於本模版。官方指引最後查核日期：`2026-07-12`（[博碩士論文系統](https://thesis.lib.ncku.edu.tw/)、[建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)、[教務處課務組](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)）。
+**繁體中文**
 
-### V2 update V2 更新
+這是由社群維護、以XeLaTeX建置的國立成功大學碩博士論文範本，可撰寫中文、英文或中英混合內容，並自動產生封面、目錄、圖表清單及其他前置頁面。它提供學生設定、可重用的LaTeX helpers、1.x相容層，以及將樣式移植到其他學校的profile架構。
 
-V2 已完成更新並在 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) 發布；它保留 1.x 的公開設定方式和 XeLaTeX 使用路徑，同時整理了樣式、相容層、測試及學生下載套件。
+本專案並非國立成功大學官方軟體，也不代表學校、圖書館、學位考試系統或任何系所的現行認可。使用前必須核對當年度規定；官方規定永遠優先於本範本。
 
-現有 [Overleaf Gallery 模版](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn) 已公開使用。V2 更新已由維護者確認上載到原本的 Overleaf project，並重新提交作 Gallery update review，現正等待 Overleaf 回覆及審批。在 Overleaf 批准更新並完成公開 read-back 前，最新 V2 source 和學生套件仍以 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) 為準；詳細發佈狀態記錄在 [`docs/features/release-and-distribution.md`](docs/features/release-and-distribution.md#recorded-gallery-state)。
+**English**
 
-V2 亦優先整理了 **Style Customization 自定成其他學校的模版**：共用樣式、成大規則和自訂學校 profile 已分開，修改其他學校所需格式時不必直接改動整個成大樣式層。
+This community-maintained XeLaTeX template supports Chinese, English, and mixed-language NCKU master's theses and doctoral dissertations. It generates the cover, contents, figure/table lists, and other front matter, and provides student configuration, reusable LaTeX helpers, a 1.x compatibility adapter, and institution profiles for maintained ports.
 
-### Main feature 主要功能
+This is not official NCKU software and does not represent current endorsement by the university, library, degree-examination system, or any department. Verify the current rules before use; official requirements always take precedence.
 
-1. 能同時讓你編寫中英文內容 (建基於 XeLaTex)
-2. 主要資料能自動產生
-   (只留下要填寫的部份, 其他都由模版自動產生: 如封面, 目錄, 口試合格證明文件等)
-3. 內含非常基本的 LaTex 使用教學手冊
-4. 提供簡易的語法去使用一些複雜的 LaTex 功能
+Official guidance last checked on `2026-07-12` / 官方指引最後查核日期：`2026-07-12`：
 
-### Style Customization 自定成其他學校的模版
+- [NCKU thesis system / 成大博碩士論文系統](https://thesis.lib.ncku.edu.tw/)
+- [Submission guidance / 建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)
+- [Curriculum Division thesis-format guidance / 教務處課務組論文格式規範](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)
 
-由 v1.5.0 開始，本模版可讓非國立成功大學的同學或維護者建基於現有功能，建立自己學校所需的模版。V2 進一步將 institution style 分成三層，並且每次只載入一個 institution profile：
+## 發行與Overleaf狀態 / Release and Overleaf status
 
-- `base/base.tex`：不綁定特定學校的共用樣式與安全預設；
-- `ncku/ncku.tex`：成大名稱、日期、版面及學校特定規則；
-- `custom/custom.tex`：其他學校的起始 profile，可集中修改校名、文字、日期和格式規則。
+**繁體中文**
 
-因此，要自定成其他學校的模版時，可由 `custom/custom.tex` 開始，而不必直接修改共用 renderer 或成大 profile。完整檔案位置、切換方式、例子和驗證步驟請看 [`thesis/template/style/Customization.md`](thesis/template/style/Customization.md)；現有 1.x 專案升級步驟請看 [`docs/v1-to-v2-migration.md`](docs/v1-to-v2-migration.md)。
+最新正式原始碼及學生套件由[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest)提供。目前最新production release是`v2.0.1.260719010734`。V2保留完整machine-audited 1.x public API及XeLaTeX學生使用路徑，同時整理profile、相容層、測試及下載套件。
 
-### Available to use 已被學校負責單位接受
+既有Overleaf Gallery頁面仍可公開使用。維護者已確認將V2上載到原本的Overleaf project並重新提交Gallery update review；在Overleaf批准並完成public read-back前，不能將「已提交」寫成「已批准」，最新V2仍以GitHub Releases為準。
 
-這模版的
+**English**
 
-- 格式/設計: 在 2015 年經過 `成大圖書館 系統管理組-數位論文小組` 所檢查和接受.
-- 學位考試論文證明書: 在 2015 年經過 `教務處-課務組` 所檢查和接受 (但在 2018 年時被提出不被授權, 請參考`模版和學位考試系統的學位考試論文證明書的FAQ`).
+The latest production source and student package are available from [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest). The current production release is `v2.0.1.260719010734`. V2 preserves the complete machine-audited 1.x public API and direct XeLaTeX student workflow while organizing profiles, compatibility, tests, and downloads.
 
-以上是歷史查核記錄，不代表目前所有系所或流程都會接受每一項設定。使用前必須核對當年度規定；如發現模版與官方要求不一致，請回報並以官方要求為準。
+The existing Overleaf Gallery page remains public. The maintainer has confirmed that V2 was uploaded to the original Overleaf project and resubmitted for Gallery update review. Until Overleaf approves it and the public page is independently read back, “submitted” must not be treated as “approved”; GitHub Releases remains canonical for the latest V2 package.
 
-### 可使用的系所
+Detailed state / 詳細狀態：[`docs/features/release-and-distribution.md`](docs/features/release-and-distribution.md#recorded-gallery-state)
 
-因為各系所有各自的格式, 故請先留意自己的系所有沒有格式要求. 如果沒有, 並是跟隨使用圖書館那邊所提供的要求, 則這模版是可以使用的. 否則要看系所上的格式要求, 是否跟這模版有相同的寫法.
+## 選擇正確設定 / Choose the correct setup
 
-而如果這表名單中沒有顯示你的系所, 但你已經知道是否能使用, 請告知以供更新.
+**繁體中文**
 
-已知可用的系所:
+文件語言、學校profile、封面語言、學位及內容模式是不同決定。國際學生如就讀成大仍使用`ncku` profile；台灣維護者為其他學校建立範本時則使用`custom`或另一個institution profile。不要將「英文」等同「非成大」。
 
-- 資訊工程學系 Department of Computer Science and Information Engineering
+**English**
 
-應該不可使用的系所:
+Documentation language, institution profile, cover language, degree, and content mode are separate decisions. An international student at NCKU still uses the `ncku` profile; a Taiwan maintainer porting the template to another institution uses `custom` or another maintained profile. Do not equate “English” with “non-NCKU.”
 
-- [生物科技研究所 Institute of Biotechnology](http://www.biotech.ncku.edu.tw/files/archive/331_4b79187a.doc)
-- [體育健康與休閒研究所 Institute of Physical Education, Health and Leisure Studies](http://www.ncku.edu.tw/~deprb/docs/Thesis%20Regulation%20.doc)
+| Decision / 決定 | Choices / 選項 |
+| --- | --- |
+| Institution / 學校 | default `ncku`; maintained custom profile for another institution |
+| Cover language / 封面語言 | `\DisplayCoverInChi` or `\DisplayCoverInEng` |
+| Degree / 學位 | `\MasterDegree` or `\PhdDegree` |
+| Content / 內容 | own `context/context.tex` or `\ExampleMode` teaching example |
 
-### Sample 樣板/範例
+Historical checks in 2015 and reports from individual departments are provenance only, not current approval. CSIE is the only department with documented historical use in this repository; every student must still verify current department rules.
 
-由 v1.8.0 開始，樣板 PDF 會由相同版本的 source tag 自動產生，並放在 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 內。每個 release 提供兩個版本化下載：
+## 快速開始 / Quick start
 
-- `ncku-thesis-template-latex-<version>.zip`（只包含可直接使用的 `thesis/` 樣板內容；完整 repository source 可使用 GitHub 自動提供的 Source code ZIP）
-- `ncku-thesis-template-latex-examples-<version>.zip`（包含相同 source revision 產生並驗證的封面、中英文論文、完整教學文件及證明書示範 PDF）
+**繁體中文**
 
-如要查看輸出效果，請在 Releases 下載 `ncku-thesis-template-latex-examples-<version>.zip`；解壓後先閱讀內附的 `README.md`。證明書 PDF 只供 template-generated 示範與 regression 驗證，正式提交應使用學校學位考試系統產出的文件。
+1. 從[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases)下載`ncku-thesis-template-latex-<version>.zip`。
+2. 解壓後先閱讀套件根目錄的[`README.md`](thesis/README.md)及[`conf/README.md`](thesis/conf/README.md)。
+3. 在`conf/conf.tex`停用`\ExampleMode`並填寫論文資料。
+4. 在`context/context.tex`選擇章節，並於`context/`撰寫內容。
+5. 在包含`thesis.tex`的目錄執行下方指令。
 
-舊 sample repository 不再是最新樣板的來源。Production architecture、compatibility、validation、release／Overleaf、sample-repository retirement及Draft／watermark政策已整理在[`docs/README.md`](docs/README.md)所索引的maintainer records；逐branch／逐commit implementation narrative保留在Git history，不再重複做active docs。
+**English**
 
-### Student build 學生使用
-
-從 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 下載版本化的 `ncku-thesis-template-latex-<version>.zip` 後，請先閱讀壓縮檔內的 [`README.md`](thesis/README.md)。學生專案以 `thesis.tex` 為主檔，使用：
+1. Download `ncku-thesis-template-latex-<version>.zip` from [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases).
+2. Extract it and read [`README.md`](thesis/README.md) and [`conf/README.md`](thesis/conf/README.md) at the package root.
+3. Disable `\ExampleMode` in `conf/conf.tex` and enter thesis information.
+4. Select chapters in `context/context.tex` and write content under `context/`.
+5. Run the following command from the directory containing `thesis.tex`.
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 ```
 
-實際撰寫自己的論文時，請在 `conf/conf.tex` 關閉 `\ExampleMode`。271 頁的完整教學文件主要供範例與整合驗證使用；一般論文會改用較小的 `context/context.tex`。
+Use `thesis.tex` as the root/master document. `latexmk` handles XeLaTeX, BibTeX, and required reruns automatically.
 
-### Repository development 專案開發
+## 下載內容與範例 / Downloads and examples
 
-完整repository使用 [`just`](https://just.systems/) 作為maintainer統一指令入口，不使用Makefile：
+**繁體中文**
 
-```bash
-just          # 顯示可用指令
-just thesis   # 產生完整 PDF 和 SyncTeX
-just watch    # 儲存 TeX 後自動增量重建；不另開PDF viewer
-just test     # 完整 build 並檢查輸出
-just clean    # 清除可重新產生的檔案
+每個正式release提供兩個版本化下載。學生套件只包含可直接編輯的`thesis/`project tree，不包含`justfile`、CI、tests或release scripts。Examples套件包含由同一個immutable source revision產生並驗證的六個PDF，供預覽及regression evidence使用。GitHub自動產生的Source code ZIP則包含完整儲存庫。
+
+**English**
+
+Each production release provides two versioned downloads. The student package contains only the directly editable `thesis/` project tree, excluding `justfile`, CI, tests, and release scripts. The examples package contains six PDFs built and verified from the same immutable source revision for preview and regression evidence. GitHub's automatic Source code ZIP contains the complete repository.
+
+```text
+ncku-thesis-template-latex-<version>.zip
+ncku-thesis-template-latex-examples-<version>.zip
 ```
 
-`just`底層使用XeLaTeX、BibTeX和`latexmk`自動處理依賴及多輪編譯。`just watch`只係完整repository嘅development convenience；它不會被放入學生ZIP。學生使用方式及Texmaker／TeXstudio設定記錄在 [`thesis/README.md`](thesis/README.md)。
+Examples package / 範例套件：
 
-### 學位論文上傳和列印說明
+```text
+README.md
+cover.pdf
+thesis-chi.pdf
+thesis-eng.pdf
+thesis-full.pdf
+defense-certificate-master.pdf
+defense-certificate-phd.pdf
+```
 
-由於學位論文提交的流程可能會改變, 在這提供暫知最新所知道的流程和論文列印的注意. 這部份內容為[成功大學博碩士論文系統的建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/).
+The generated certificate PDFs are unofficial demonstrations. Use current official documents for submission.
 
-1. 到[成功大學博碩士論文系統](https://thesis.lib.ncku.edu.tw/)登記
-2. 在系統中上傳由這模版所產出的PDF檔案 (`PDF檔請勿插入浮水印及加上保全`. 詳細請留意系統網頁中的 `電子檔案上傳作業說明 Guide to ETDS File Conversion and Service Workflow`).
-3. 上傳後, 請等待數天的審核.
-4. 審核後，接到核准通知信，請再回到[成功大學博碩士論文系統](https://thesis.lib.ncku.edu.tw/)登入, 下載`授權書`和`電子全文`拿去影印店列印. **(這邊的論文已經由圖書館系統加上了浮水印)**
+## 由1.x升級 / Migrate from 1.x
 
-**留意:** 非常清楚明白同學們的忙碌, 會可能需要在審核期間, 拿去列印. 但由於`不能保證`圖書館的浮水印會不會有所變動, 故本模版在v1.6.0版本後, 已移除了內頁的浮水印. 希望同學們統一使用由圖書館所產出的版本拿去影印店列印.
+**繁體中文**
 
-### 模版和學位考試系統的學位考試論文證明書的 FAQ
+既有論文應先commit或封存完整1.x專案並保存最新PDF。保留`conf/conf.tex`、`context/`、圖片、書目資料及本地證明書；以V2替換template-owned檔案，並有意識地merge `thesis.tex`的本地修改。V2在完整2.x line保留經audit的1.x helper surface，compatibility-first path不要求重新命名helpers。
 
-在 2015 年左右時, 在這模版還在`資訊工程學系`內部同學們之間使用時, 相關的中英文版的學位考試論文證明書 (口試合格證明文件) 拿了去`教務處-課務組` 所檢查.
-而當時`課務組`相關負責人的意見為, 只要能看清楚學校名稱和相關的內容, 就算不是由學校系統所產出的, 都能被接受. 同時都講得很清楚, 因為不是由學校系統, 所以不能算是學校正式認可的.
-但在 2018 年 7 月的時候, 這時的`課務組`對本模版所產出的中文版的學位考試論文證明書, 說這是不被授權的. 但未有被正式提出不可使用由模版產出的學位考試論文證明書.
+**English**
 
-相關討論請參考[Issue 30 - 學位考試合格證明書與成大學校學位考試系統中列印的證明書並不相符](https://github.com/wengan-li/ncku-thesis-template-latex/issues/30).
-暫時得出以下結論:
+Commit or archive the complete 1.x project and save its latest PDF before migrating. Preserve `conf/conf.tex`, `context/`, figures, bibliography data, and local certificate files; replace template-owned files with V2 and deliberately merge local changes to `thesis.tex`. V2 preserves the audited 1.x helper surface throughout 2.x, so the compatibility-first path requires no helper renaming.
 
-1. 中文版本的學位考試論文證明書應優先使用由`學位考試系統`產出的正式版本，並以學校當時的最新規定為準。本模版所產生的證明書只作為 legacy/example，不代表學校正式文件。
-2. 英文版論文證明書由各系所自行處理, 而本模版到現時都暫未知道有任何系所對此有任何的要求或有樣板可看. (如有任何同學或老師知道, 請跟本人聯絡, 以讓我可更新通知同學們)
-3. 暫時未知道有任何同學，因使用本模版的學位考試論文證明書而被`圖書館典藏組`或`電子學位論文小組`拒收畢業論文.
-4. 如有同學欲使用本模版的學位考試論文證明書, 推薦在口試期間, 同時印出`學位考試系統`的版本來簽, 以作後備.
+Complete guide / 完整指南：[`docs/v1-to-v2-migration.md`](docs/v1-to-v2-migration.md)
 
-### Other 其他
+## 其他學校樣式 / Other institution profiles
 
-如果對本模版沒有興趣，也可以參考其他同學提供、但不定期更新的社群模版：
+**繁體中文**
 
-- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — Typst 模版
-- [`lycsjm/nckuthesis`](https://github.com/lycsjm/nckuthesis)
-- [`windwalker661/Thesis-NCKU`](https://github.com/windwalker661/Thesis-NCKU)
-- [`nckuasrlab/ASRLab_Thesis_Template`](https://github.com/nckuasrlab/ASRLab_Thesis_Template)
+V2將共用renderer、NCKU policy及其他學校port分成`base`、`ncku`及`custom`。學生論文資料仍放在`conf/conf.tex`；學校geometry、名稱、日期政策、文字及assets放在`template/style/<profile>/`。非成大維護者由`template/style/custom/`開始，不要直接修改共用renderer或先載入NCKU再覆寫。
 
-以上外部專案並非由本專案維護；使用前請自行核對其版本、授權及學校最新規定。
+**English**
 
-### ChangeLog 版本修改
+V2 separates shared rendering, NCKU policy, and other-institution ports into `base`, `ncku`, and `custom`. Student thesis data remains in `conf/conf.tex`; institution geometry, names, date policy, wording, and assets belong under `template/style/<profile>/`. Non-NCKU maintainers start from `template/style/custom/` rather than editing the shared renderer or loading NCKU before overriding it.
 
-最新版本[請到 Releases 中查看](https://github.com/wengan-li/ncku-thesis-template-latex/releases)
+Guide / 指南：[`thesis/template/style/Customization.md`](thesis/template/style/Customization.md)
 
-詳細的修改內容請看 [`CHANGELOG.md`](CHANGELOG.md).
+## 提交、浮水印與證明書 / Submission, watermark, and certificate
 
-### License 授權條款
+**繁體中文**
 
-本著作採用創用 CC 姓名標示-非商業性-相同方式分享 4.0 授權條款
+正式輸出預設沒有封面初稿標記、斜向`DRAFT`文字或學校logo浮水印。三者是獨立的opt-in功能；不要因API存在就加入提交PDF。現行流程要求以學校系統產出的文件為準，系統亦可能在核准後的電子全文加入自己的浮水印。
 
-This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+學位考試合格證明書應優先使用學位考試系統產出的正式版本。本範本產生的證明書只供legacy/example及regression用途。2015／2018的歷史查核記錄不構成現時授權或官方認可。
+
+**English**
+
+Final output defaults to no cover Draft marker, diagonal `DRAFT` text, or institution-logo watermark. These are three independent opt-ins; do not add them to a submission PDF merely because APIs exist. Follow the current university-system workflow, which may apply its own watermark to the approved electronic copy.
+
+Use the official degree-examination-system defense certificate when required. Template-generated certificates are legacy/example and regression outputs. Historical checks from 2015/2018 do not constitute current authorization or endorsement.
+
+Policy record / 政策記錄：[`docs/features/release-and-distribution.md`](docs/features/release-and-distribution.md#draft-and-watermark-policy)
+
+## 文件與維護 / Documentation and maintenance
+
+**繁體中文**
+
+學生應由套件內README及configuration guide開始。維護者可由[`docs/README.md`](docs/README.md)進入architecture、validation、release及Overleaf records。完整儲存庫使用[`just`](https://just.systems/)統一maintainer commands；學生套件不依賴`just`。
+
+**English**
+
+Students start from the packaged README and configuration guide. Maintainers use [`docs/README.md`](docs/README.md) to find architecture, validation, release, and Overleaf records. The full repository uses [`just`](https://just.systems/) for maintainer commands; the student package does not depend on `just`.
+
+```bash
+just          # list commands
+just thesis   # build canonical PDF and SyncTeX
+just watch    # continuous incremental rebuild, no extra viewer
+just test     # full regression gate
+just ci       # canonical CI gate
+just clean    # remove rebuildable artifacts
+```
+
+Version history / 版本記錄：[`CHANGELOG.md`](CHANGELOG.md)
+
+## 其他社群方案 / Other community alternatives
+
+**繁體中文**
+
+下列社群專案由各自作者維護，與本專案沒有隸屬或背書關係。使用前請核對其版本、授權及學校最新規定。
+
+**English**
+
+The following community projects are maintained by their respective authors and are neither affiliated with nor endorsed by this project. Verify their versions, licences, and current university rules before use.
+
+- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — Typst
+- [`lycsjm/nckuthesis`](https://github.com/lycsjm/nckuthesis) — LaTeX
+- [`windwalker661/Thesis-NCKU`](https://github.com/windwalker661/Thesis-NCKU) — LaTeX
+- [`nckuasrlab/ASRLab_Thesis_Template`](https://github.com/nckuasrlab/ASRLab_Thesis_Template) — LaTeX
+
+## 授權 / Licence
+
+**繁體中文**
+
+本專案採用Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International授權；完整條款見[`LICENSE`](LICENSE)。成大浮水印、logo、官方證明書及其他institution assets可能由各自權利人擁有，repository-wide licence不會自動授權其他用途。使用或再發佈前請確認來源及權利。
+
+**English**
+
+This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International licence; see [`LICENSE`](LICENSE). NCKU watermarks, logos, official certificates, and other institution assets may remain owned by their respective rights holders, and the repository-wide licence does not automatically authorize unrelated use or redistribution. Verify provenance and rights before reuse.
 
 <p align="center">
-  <img src='https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png' alt="CC-BY-NC-SA-4.0"/>
+  <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons BY-NC-SA 4.0" />
 </p>
-
-詳細請看 [`LICENSE`](LICENSE) 中的條款說明.
-
-而本模版所使用到的國立成功大學浮水印則由國立成功大學擁有**所有**相關的權利. 故如使用這浮水印到論文以外的應用, 請跟'成大圖書館 系統管理組-數位論文小組'聯絡.

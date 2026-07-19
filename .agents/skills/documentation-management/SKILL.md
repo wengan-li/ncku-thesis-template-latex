@@ -90,11 +90,35 @@ one is a short link/routing sentence.
 - GitHub Release state and Overleaf state are independent. Never turn submitted
   into approved without live public read-back.
 
+## Bilingual documentation model
+
+- Student/public journeys are complete in formal Taiwan Traditional Chinese
+  (`zh-Hant-TW`) and natural technical English. Put both language blocks next to
+  each other inside every topic so readers do not maintain two divergent files.
+- Share code blocks, commands, paths, macros, logs, tables, hashes, and run IDs
+  once. Translate the explanation around them rather than duplicating executable
+  material.
+- Maintainer feature records use a Traditional-Chinese executive summary followed
+  by the complete English technical record. This is intentionally not a
+  line-by-line translation of evidence transcripts.
+- Documentation language, institution profile, cover language, degree, and
+  content mode are independent. An English reader can use `ncku`; a
+  Traditional-Chinese reader can maintain another profile.
+- Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing. Use
+  `論文範本` in new Chinese prose. Avoid Cantonese-only wording in shipped docs.
+- Keep `thesis/conf/conf.tex` byte-identical throughout 2.x. Its bilingual
+  companion is `thesis/conf/README.md`; never refresh the V1 migration baseline
+  merely to translate comments.
+- Mechanical checks prove structure, links, casing, and selected terminology
+  only. Human review must still verify that warnings, actions, defaults, and
+  exceptions mean the same thing in both languages.
+
 ## Validation
 
 For documentation-only changes:
 
 ```bash
+python3 scripts/test/check-bilingual-docs.py
 git diff --check
 git status --short
 ```

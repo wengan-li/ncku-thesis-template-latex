@@ -1,3 +1,5 @@
+<!-- bilingual:summary-plus-english -->
+
 # V2 modernization
 
 Status: production
@@ -6,6 +8,18 @@ Status: production
   [`v2.0.0.260717130231`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.0.260717130231)
 - Current production release:
   [`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
+
+## 繁體中文摘要
+
+- V2保持XeLaTeX、學生project shape、direct `latexmk` path及完整經audit的1.x public API。
+- 597個runtime-visible LaTeX/xparse declarations、65個literal-def declarations及18個V1 student inputs由machine gates保護。
+- 共用renderer、NCKU policy及其他學校ports分別由`base`、`ncku`及`custom` profiles負責；文件／封面語言不會選擇profile。
+- 已驗證的theorem、caption、numbering、date、committee及catalogue defects在不改public signatures下修正，詳情由雙語migration table擁有。
+- Repository-owned generic command parsing使用19個native `l3keys` families，direct `pgfkeys` parser references及explicit package load為零。
+- PGF/TikZ並非完全移除；`mdframed`的TikZ framing仍可transitively載入runtime dependency。
+- V2完成狀態不會自動啟用P3 architecture experiments；新工作需要新的owner-approved Intent。
+
+## English technical record
 
 V2 modernizes the XeLaTeX template while preserving the established NCKU output,
 student project shape, direct compiler workflow, and complete audited 1.x public
@@ -179,7 +193,7 @@ types that the kernel interface deliberately does not provide.
 
 Compatibility preserves APIs, not verified defects. The normative before/after
 and required-user-action table is in
-[`v1-to-v2-migration.md`](../v1-to-v2-migration.md#corrected-behaviors). It covers:
+[`v1-to-v2-migration.md`](../v1-to-v2-migration.md#已修正行為-corrected-behaviors). It covers:
 
 - stable subsubsection references;
 - oral/Taiwan-year state separation;

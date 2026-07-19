@@ -168,7 +168,8 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 
 - `docs/README.md` is the maintainer index and lifecycle contract.
 - `docs/v1-to-v2-migration.md` is the current 1.x-to-2.x migration guide;
-  `thesis/README.md` keeps concise offline steps inside the student ZIP.
+  `thesis/README.md` keeps concise offline steps and `thesis/conf/README.md`
+  keeps field-by-field configuration guidance inside the student ZIP.
 - `docs/features/` contains consolidated shipped architecture, validation, and
   operating decisions. Do not keep one active document per branch, commit, todo,
   parser, or bugfix; Git history preserves that chronology.
@@ -178,5 +179,18 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
   knowledge into the owning feature record and remove the requirement/todo.
 - Current source and tests win on drift. Deferred experiments are not active
   requirements without a new owner-approved Intent.
+- Student/public journeys are complete in formal Taiwan Traditional Chinese and
+  natural technical English. Keep adjacent language blocks per topic and share
+  paths, commands, macros, logs, tables, and code blocks once.
+- Maintainer feature records use a Traditional-Chinese executive summary plus the
+  complete English technical record. Do not duplicate hashes, run IDs, or
+  benchmark transcripts merely to claim line-by-line translation.
+- Documentation language, institution profile, cover language, degree, and
+  content mode are independent axes. Do not map English readers to `custom` or
+  Traditional-Chinese readers to `ncku`.
+- Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing and
+  `論文範本` in new Chinese prose. Run
+  `python3 scripts/test/check-bilingual-docs.py`; its structural result does not
+  replace human semantic-parity review.
 - Load `documentation-management` for documentation creation, consolidation,
   requirements, todos, path repair, or lifecycle changes.

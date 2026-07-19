@@ -1,60 +1,84 @@
-# Migrating NCKU Thesis Template Projects from 1.x to 2.x
+<!-- bilingual:complete -->
 
-Production target:
-[`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
+# 成大論文範本1.x至2.x升級指南 / NCKU Thesis Template 1.x-to-2.x Migration Guide
 
-V2 preserves the machine-audited 1.x LaTeX/xparse and literal `\def` declaration surfaces through the complete 2.x line. Existing projects can therefore migrate the template implementation first, verify unchanged NCKU output, and adopt native v2 profile structure gradually.
+Production target / 正式目標：[`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
 
-## Before You Start
+V2透過完整2.x line的相容層，保留machine-audited 1.x LaTeX/xparse及literal `\def` declarations。既有專案可先升級template implementation、驗證NCKU輸出，再逐步採用native V2 profile架構。
+
+V2 preserves the machine-audited 1.x LaTeX/xparse and literal `\def` declaration surfaces through the complete 2.x line. Existing projects can migrate template implementation first, verify NCKU output, and adopt native V2 profiles gradually.
+
+## 開始前 / Before you start
+
+**繁體中文**
+
+1. Commit或封存完整、可正常建置的1.x專案。
+2. 再建置一次1.x PDF並保留作文字及視覺reference。
+3. 記錄XeLaTeX版本、頁數、紙張、封面／口試日期及所有刻意啟用的Draft／浮水印設定。
+4. 分清學生資料、template implementation及主文件；不要覆寫尚未commit的論文目錄後再依賴Git猜測原值。
+
+**English**
 
 1. Commit or archive the complete working 1.x project.
-2. Build the 1.x PDF once and keep it as a visual/text reference.
-3. Record the XeLaTeX version, page count, paper size, cover/oral dates, and any deliberately enabled Draft/watermark options.
-4. Separate user-owned files from template implementation:
+2. Build the 1.x PDF once more and retain it as a text/visual reference.
+3. Record the XeLaTeX version, page count, paper size, cover/oral dates, and every deliberately enabled Draft/watermark option.
+4. Separate student data, template implementation, and the root document. Do not overwrite an uncommitted thesis directory and expect Git to reconstruct it later.
 
-   ```text
-   User-owned:        conf/conf.tex, context/, figures/, bibliography data
-   Template-owned:    template/, fonts/, build configuration, packaged examples
-   Entry point:       thesis.tex (merge local edits deliberately)
-   ```
+```text
+Student-owned / 學生資料:
+  conf/conf.tex
+  context/
+  figures/
+  bibliography data
+  local certificate files
 
-Do not migrate by overwriting an uncommitted thesis directory and hoping Git can reconstruct metadata later.
+Template-owned / 範本實作:
+  template/
+  fonts/
+  build configuration
+  packaged examples
 
-## Path A: Existing NCKU Project, Compatibility First
+Root document / 主文件:
+  thesis.tex (merge local edits deliberately / 有意識地merge本地修改)
+```
 
-Use this path for a thesis already in progress.
+## 相容優先路徑 / Compatibility-first path
 
-1. Keep `conf/conf.tex`, thesis content, figures, bibliography entries, and any local certificate PDF.
-2. Replace template-owned implementation files with the v2 package.
-3. Merge any local changes to `thesis.tex` instead of replacing them blindly.
-4. Keep existing helper calls; the v1 adapter loads automatically.
-5. From the project directory that contains `thesis.tex`, build directly with XeLaTeX/latexmk:
+**繁體中文**
 
-   ```bash
-   latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
-   ```
+此路徑適用於正在撰寫中的NCKU論文。保留`conf/conf.tex`、內容、圖片、書目資料及本地證明書；以V2學生套件替換template-owned檔案，並手動merge `thesis.tex`的本地修改。保留現有helper calls；V1 adapter會自動載入。每完成一小步便建置，最後逐項比較保存的1.x PDF。
 
-6. Resolve only the documented correctness changes below.
-7. Compare the new PDF with the saved 1.x reference: cover, front matter, dates, contents, references, bibliography, representative body pages, and final pages.
-8. Confirm no unexpected `(Draft)`／`(初稿)` text or institutional watermark was enabled.
+**English**
 
-No helper rename is required for this path.
+Use this path for an NCKU thesis already in progress. Preserve `conf/conf.tex`, content, figures, bibliography data, and local certificate files; replace template-owned files with the V2 student package and manually merge local changes to `thesis.tex`. Keep existing helper calls; the V1 adapter loads automatically. Build after each small step and compare the result with the saved 1.x PDF.
 
-## Path B: Native V2 Project
+```bash
+latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
+```
 
-Use this path for a new thesis or a maintained institutional fork.
+No helper rename is required / 不需要重新命名helper。
 
-1. Start from the packaged v2 student project.
-2. Copy thesis content, figures, bibliography entries, and certificate files.
-3. Re-enter or merge thesis metadata in `conf/conf.tex`.
-4. Keep the repository default `ncku` profile for NCKU work.
-5. For another institution, create/select one profile under `template/style/` by following [`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md).
-6. Keep compatibility calls if they remain useful; replacing them is optional during 2.x.
-7. Build after every migration step.
+## Native V2路徑 / Native V2 path
 
-## Stable Project Boundaries
+**繁體中文**
 
-These student-facing paths remain stable in 2.x:
+此路徑適用於新論文或長期維護的institutional fork。由V2學生套件開始，複製論文內容、圖片、書目及證明書，再於`conf/conf.tex`重新輸入或有意識地merge metadata。成大專案保留預設`ncku` profile；其他學校依照[`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md)建立並選擇一個profile。2.x期間可繼續使用相容helpers，不需要一次改寫全部source。
+
+**English**
+
+Use this path for a new thesis or a maintained institutional fork. Start from the V2 student package, copy content, figures, bibliography data, and certificate files, then re-enter or deliberately merge metadata in `conf/conf.tex`. Keep the default `ncku` profile for NCKU work; another institution creates and selects exactly one profile by following [`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md). Compatibility helpers may remain throughout 2.x; a source-wide rewrite is not required.
+
+Build after every migration step / 每一個升級步驟後都要建置。
+
+## 穩定專案邊界 / Stable project boundaries
+
+**繁體中文**
+
+2.x保持下列學生路徑穩定。`conf/`只存放學生論文資料。學校geometry、文字、catalogue、日期規則及assets放在`template/style/`；V2不新增`conf/style.tex`。文件語言、學校profile、封面語言、學位及內容模式是獨立決定。
+
+**English**
+
+The following student-facing paths remain stable in 2.x. `conf/` stores student thesis data only. Institution geometry, wording, catalogues, date rules, and assets remain under `template/style/`; V2 does not introduce `conf/style.tex`. Documentation language, institution profile, cover language, degree, and content mode are independent decisions.
 
 ```text
 thesis.tex
@@ -64,128 +88,151 @@ example/
 template/
 ```
 
-`conf/` remains student thesis data. Institution geometry, wording, catalogues, date rules, and assets remain under `template/style/`; v2 does **not** introduce `conf/style.tex`.
+| Axis / 維度 | Choices / 選項 |
+| --- | --- |
+| Institution / 學校 | `ncku`, `custom`, or another maintained profile |
+| Cover language / 封面語言 | `\DisplayCoverInChi`, `\DisplayCoverInEng` |
+| Degree / 學位 | `\MasterDegree`, `\PhdDegree` |
+| Content / 內容 | own context or `\ExampleMode` teaching example |
 
-## Public Helper Compatibility
+## Public helper相容性 / Public helper compatibility
 
-The full Git repository's `tests/v1-public-api.json` records 597 runtime-visible
-1.x LaTeX/xparse commands/environments plus 65 literal `\def`-style
-declarations. Their names and complete audited argument shapes remain available
-throughout 2.x. A separate `tests/v1-comment-environment-artifacts.json` audit
-records 22 declarations found inside runtime-dead LaTeX `comment` environments;
-these are not removed public APIs.
+**繁體中文**
 
-These test manifests and the checker are maintainer tooling in the full Git
-checkout; they are intentionally absent from the student ZIP. Maintainers run,
-from the repository root:
+完整Git repository的`tests/v1-public-api.json`記錄597個runtime-visible 1.x LaTeX/xparse commands/environments及65個literal `\def`-style declarations；其名稱及完整argument shape在2.x均保留。另有22個declarations只存在於runtime-dead LaTeX `comment` environments，並由獨立audit記錄；它們不是被移除的public API。Native V2 internals可將舊helper委派到profile hooks，但相容層只保留正確contract，不重現已驗證的defect。
+
+**English**
+
+The full Git repository's `tests/v1-public-api.json` records 597 runtime-visible 1.x LaTeX/xparse commands/environments plus 65 literal `\def`-style declarations. Their names and complete argument shapes remain available throughout 2.x. A separate audit records 22 declarations found only inside runtime-dead LaTeX `comment` environments; they are not removed public APIs. Native V2 internals may delegate old helpers to profile hooks, but compatibility preserves correct contracts rather than verified defects.
+
+Maintainer-only check / 僅完整儲存庫可用：
 
 ```bash
 python3 scripts/test/check-v1-api.py
 ```
 
-Native v2 internals may delegate old helpers to profile hooks. Compatibility preserves the API, not a verified defect.
+The checker and manifest are intentionally absent from the student ZIP.
 
-### Unchanged V1.8.2 Project Gate
+## Byte-identical V1專案gate / Byte-identical V1 project gate
 
-In the full Git repository, the declaration baseline above is paired with a
-runtime migration contract:
+**繁體中文**
+
+`tests/v1-project-migration.json`將18個student-owned files、合共296,726 bytes，pin至immutable release `v1.8.2.260715154703`。範圍包括`thesis.tex`、`conf/conf.tex`、學生內容、書目資料及口試證明assets。Runtime evidence分為兩條：unchanged entry/configuration經V2 adapter、base及NCKU profile建置271頁A4 canonical result；StudentMode fixture則從`.fls`及`.blg`確認active content及三個bibliography databases。
+
+未被該V1 configuration載入的alternate abstracts及external certificate PDFs只作source pin，不會被誤稱為runtime-loaded。
+
+**English**
+
+`tests/v1-project-migration.json` pins 18 student-owned files totalling 296,726 bytes to immutable release `v1.8.2.260715154703`. It covers `thesis.tex`, `conf/conf.tex`, student content, bibliography data, and oral-certificate assets. Runtime evidence is split: the unchanged entry/configuration builds a 271-page A4 canonical result through the V2 adapter, base contract, and NCKU profile; the StudentMode fixture uses `.fls` and `.blg` records to prove active content and all three bibliography databases.
+
+Alternate abstracts and external certificate PDFs disabled by that V1 configuration remain source-pinned but are not falsely claimed as runtime-loaded.
 
 ```text
 tests/v1-project-migration.json
 scripts/test/check-v1-project-migration.py
 ```
 
-The manifest pins 18 student-owned files (296,726 bytes) to release
-`v1.8.2.260715154703`. It covers the root `thesis.tex`, `conf/conf.tex`, student
-content, bibliography data, and oral-certificate assets as a byte-for-byte
-source-integrity contract.
+## V1 adapter佈局 / V1 adapter layout
 
-Runtime evidence is deliberately split:
+**繁體中文**
 
-- the unchanged v1 entry point and configuration build through the v2 adapter,
-  base contract, and NCKU profile, producing the 271-page A4 canonical result;
-- the StudentMode fixture disables teaching examples and asserts the active
-  student content files through the XeLaTeX `.fls` recorder plus all three
-  bibliography databases through the BibTeX `.blg` record.
+V1 adapter即使在custom profile亦會載入，使舊NCKU college／department presets保持defined。`template/compat/deprecated.tex`保存23個已於1.x停用的commands；它們仍使用原名、原diagnostic及`\stop`，避免變成undefined-control-sequence。有效的一參數`\RefTo{label}`仍然可用，歷史comment-only零參數tombstone則不屬public API。Custom profile不會載入NCKU geometry、日期policy或浮水印asset；只保留source-level compatibility cost。
 
-Files disabled by the v1 configuration (for example alternate abstracts and
-external oral-certificate PDFs) remain source-pinned but are not falsely
-claimed as runtime-loaded. Together these gates prove a representative v1
-project and its active student-content path run on v2. They complement, but do
-not replace, focused semantic tests for corrected helpers.
+**English**
 
-### V1 Adapter Layout
+The V1 adapter loads even for a custom profile so old NCKU college/department presets remain defined. `template/compat/deprecated.tex` preserves 23 commands already unsupported during 1.x with the same names, diagnostics, and `\stop` behavior instead of undefined-control-sequence failures. The active one-argument `\RefTo{label}` remains available; its historical comment-only zero-argument tombstone is not public API. A custom profile does not load NCKU geometry, date policy, or watermark assets; only the intentional source-level compatibility cost remains.
 
 ```text
 template/compat/v1.tex
   template/command/cmd-college.tex      compatibility wrapper
   template/command/cmd-department.tex   compatibility wrapper
-  template/compat/deprecated.tex        23 deprecated command tombstones
+  template/compat/deprecated.tex        23 deprecated-command tombstones
   template/style/ncku/college.tex       NCKU-owned data
   template/style/ncku/department.tex    NCKU-owned data
 ```
 
-The adapter is loaded even for a custom profile so old NCKU preset commands remain defined. It also owns 23 public commands that had already become unsupported during 1.x: their names remain defined and still emit the same migration diagnostic followed by `\stop`, rather than degrading to an undefined-control-sequence error. The active one-argument `\RefTo{label}` helper remains available; only its historical commented-out zero-argument tombstone stays excluded. A custom profile does **not** load NCKU geometry, date policy, or watermark asset. This source-level compatibility cost is intentional for 2.x.
+## 已修正行為 / Corrected behaviors
 
-## Corrected Behaviors
+**繁體中文**
 
-This table is normative and must be updated for every observable helper correction.
+下表是normative migration contract；每一個observable helper correction都必須同步更新中英文說明。相容性保留public API，不會保留已驗證的錯誤。
 
-| 1.x behavior | 2.x behavior | Required user action |
+**English**
+
+This table is the normative migration contract and must be updated in both languages for every observable helper correction. Compatibility preserves public APIs, not verified defects.
+
+| 1.x behavior / 1.x行為 | 2.x behavior / 2.x行為 | User action / 使用者動作 |
 | --- | --- | --- |
-| `\StartSubSubSection{title}{label}` wrote an empty reference when the default heading intentionally hid its number. | The heading remains visually unnumbered, while the label records a stable hierarchical value such as `1.1.1.1`; empty-link warnings are rejected. | None; existing references become usable. |
-| `\GetOralYearInTaiwanYear` recalculated through thesis state and could change `\GetThesisYearInTaiwanYear`. | The getter reads oral-year state without modifying thesis-year state; `\SetOralEngDate` keeps oral Taiwan-year state synchronized. | None. |
-| The second argument of `\SetDeptName{chi}{short}{full}` was discarded. | The short name is stored and available through `\GetDeptEngShortName`; `\GetDeptEngName` still returns the full name. | None; code may optionally use the new getter. |
-| `\SetDeptDPS` produced `Departmment of Photonics`. | The catalogue value is corrected to `Department of Photonics`. | Rebuild to receive the corrected text. |
-| The English oral certificate combined oral day with cover month/year. This was hidden by NCKU's rule because both dates normally matched. | English oral output uses oral day, oral month, and oral year consistently. | Non-NCKU projects with distinct dates receive the correct oral date automatically. |
-| The Doctoral English cover borrowed its day from oral metadata even though `\SetCoverDate` owns only cover year/month. | Master/Doctoral English cover date tokens are profile-owned. Generic/custom profiles render only cover-owned month/year; NCKU explicitly retains its established oral-day policy. | None for NCKU; non-NCKU profiles may customize the two date tokens if their rules require another format. |
-| `\SetCommitteeSize` accepted the renderer's full 2--9 capacity for every degree even though the NCKU teaching text stated Master 3--5 and Doctoral 5--9, and another teaching line incorrectly said 4--9. | Committee-size validation is profile-owned. The NCKU profile clamps Master requests to 3--5 and Doctoral requests to 5--9; the neutral/custom policy retains the generic 2--9 renderer capacity. | Select `\MasterDegree` or `\PhdDegree` before calling `\SetCommitteeSize`, then rebuild. |
-| The theorem `label={...}` option was passed to an optional helper with mandatory braces, so the label key appeared in visible text and no label was written. A titled theorem also wrote the mutable `\TmpValueTitle` token to nameref metadata, which became blank after later insertions. | The option is passed through the existing optional signature, label keys stay out of visible output, `\ref` resolves the theorem number, and the title is frozen before `\label` so `\nameref` resolves correctly. | None; rebuild to receive working theorem references. |
-| Figure, subfigure, and table captions could write mutable pgf temporary tokens to nameref metadata. A later parse changed the title, while leaving a subfigure scope made `\TmpMISubValueCaption` undefined on the next LaTeX pass. | Numbered, starred, combined, and separate caption wrappers freeze the rendered caption into `\@currentlabelname` before writing labels. Existing `\ref` numbers are unchanged and `\nameref` now returns the literal caption text. | No source migration; rebuild enough times for the auxiliary file to refresh. |
-| Numbering getters retained reusable pgf prefix, separator, and counter-name aliases, so a later general/appendix setup could rewrite earlier getters. Repeating appendix equation setup appended again, changing `2.8` to `2.82.8`. | Parsed configuration and counter names are frozen into each format string while counter values remain dynamic. Repeated setup is idempotent across general/appendix title and figure/table/equation paths. | No source migration; custom numbering users should rebuild to refresh generated labels and lists. |
-| A theorem configured through a forward or multi-hop `FollowCounter` chain depended on initializer order, could retain mutable getter aliases, or fail with `No counter '...' defined`; optional/starred types could not reliably become numbered, and cycles overflowed recursively. The `Theorem` initializer also hard-coded `section`. | Registered chains resolve recursively to a frozen `section`/empty terminal before environment creation. Numbered and optional types consistently select global/scoped/starred syntax; self-lookups do not create aliases, and cycles stop with a deterministic package error. | None; custom theorem-format users should rebuild. |
+| `\StartSubSubSection{title}{label}`在預設隱藏number時寫出空reference。<br><br>It wrote an empty reference when the default heading hid its number. | 標題仍不顯示number，但label保存如`1.1.1.1`的穩定階層值，並拒絕empty-link warnings。<br><br>The heading remains visually unnumbered while the label records a stable hierarchy such as `1.1.1.1`; empty-link warnings are rejected. | 無需改source；既有reference會恢復可用。<br><br>No source change; existing references become usable. |
+| `\GetOralYearInTaiwanYear`會經thesis state重算並可能改動thesis year。<br><br>The oral-year getter could mutate thesis-year state. | Getter只讀oral state；`\SetOralEngDate`同步oral Taiwan-year state。<br><br>The getter reads oral state without mutating thesis state; `\SetOralEngDate` keeps oral Taiwan-year state synchronized. | 無。 / None. |
+| `\SetDeptName{chi}{short}{full}`第二參數被丟棄。<br><br>The English abbreviation was discarded. | Short name保存在`\GetDeptEngShortName`；`\GetDeptEngName`仍回傳full name。<br><br>The abbreviation is available through `\GetDeptEngShortName`; the full-name getter is unchanged. | 可選擇使用新getter。<br><br>Optionally adopt the new getter. |
+| `\SetDeptDPS`輸出`Departmment of Photonics`。<br><br>The catalogue contained a spelling error. | 修正為`Department of Photonics`。<br><br>The catalogue value is corrected. | 重新build。 / Rebuild. |
+| English oral certificate混用oral day及cover month/year。<br><br>The English certificate mixed oral day with cover month/year. | 全部使用oral day/month/year。<br><br>English oral output consistently uses oral metadata. | Distinct-date non-NCKU projects automatically receive the correct oral date. / 非NCKU專案自動取得正確日期。 |
+| Doctoral English cover從oral metadata借day，雖然`\SetCoverDate`只有year/month。<br><br>The Doctoral English cover borrowed an oral day not owned by `\SetCoverDate`. | Master/Doctoral date tokens由profile擁有；generic/custom只render cover-owned month/year，NCKU明確保留既有oral-day policy。<br><br>Date tokens are profile-owned; generic/custom uses cover-owned month/year while NCKU explicitly retains its oral-day policy. | NCKU無需動作；其他profile可自訂date tokens。<br><br>No NCKU action; other profiles may customize date tokens. |
+| `\SetCommitteeSize`對所有degree接受generic 2–9，與NCKU教學文字不一致。<br><br>Every degree accepted the generic 2–9 range. | Policy由profile擁有；NCKU Master為3–5、Doctoral為5–9，neutral/custom保留2–9。<br><br>Profile policy clamps NCKU Master to 3–5 and Doctoral to 5–9; neutral/custom remains 2–9. | 先呼叫`\MasterDegree`／`\PhdDegree`再設定size。<br><br>Select degree before committee size. |
+| Theorem `label` option以錯誤braces傳遞，label key出現在正文且無label；mutable title亦令`\nameref`變空。<br><br>The theorem label option leaked into visible text and mutable title metadata became blank. | 保留optional signature，正確寫label，並在`\label`前freeze title；`\ref`及`\nameref`均可用。<br><br>The optional signature is preserved, labels are written correctly, and title metadata is frozen. | 無需改source，重新build。<br><br>No source change; rebuild. |
+| Figure/subfigure/table caption把mutable temporary寫入nameref metadata。<br><br>Captions wrote mutable temporary tokens to metadata. | 所有caption wrappers在寫label前freeze rendered caption；`\ref`number不變，`\nameref`回傳literal caption。<br><br>Rendered captions are frozen before labels; reference numbers remain unchanged. | 重建足夠次數更新auxiliary files。<br><br>Rebuild until auxiliary files converge. |
+| Numbering getters保留shared scratch aliases，後續setup可改寫先前getter；repeated appendix equation setup亦會append。<br><br>Reusable scratch aliases let later setup rewrite earlier numbering and repeated setup appended state. | Prefix、separator及counter names被freeze，counter values保持dynamic；general/appendix setup可重複且idempotent。<br><br>Configuration is frozen while counter values remain dynamic; repeated setup is idempotent. | Custom numbering users should rebuild generated labels/lists. / 自訂編號使用者應重新build。 |
+| Forward/multi-hop theorem `FollowCounter`受initializer order影響，cycles可recursive overflow。<br><br>Counter chains depended on initializer order and cycles could overflow recursively. | Chains遞迴resolve至frozen terminal；numbered／optional／starred syntax一致，cycles以deterministic package error停止。<br><br>Chains resolve to frozen terminals and cycles stop with a deterministic package error. | 無需改source，重新build。<br><br>No source change; rebuild. |
 
-## Date Migration
+## 日期升級 / Date migration
 
-Public setters are unchanged:
+**繁體中文**
+
+Public setters不變。V2將raw input與profile-resolved display policy分開：`\GetRequestedCoverYear`／`\GetRequestedCoverMonth`回傳`\SetCoverDate`原始值，`\GetThesisYear`／`\GetThesisMonth`回傳profile解決後的封面值，oral getters保持獨立。NCKU profile仍以oral date作封面authoritative date，因此NCKU輸出不變。Non-NCKU profile預設使用explicit cover year/month，不借用oral day。
+
+**English**
+
+Public setters are unchanged. V2 separates raw input from profile-resolved display policy: `\GetRequestedCoverYear` / `\GetRequestedCoverMonth` expose raw `\SetCoverDate` input, `\GetThesisYear` / `\GetThesisMonth` expose profile-resolved cover values, and oral getters remain independent. NCKU still makes the oral date authoritative for the cover, preserving NCKU output. A non-NCKU profile uses explicit cover year/month and does not borrow an oral day.
 
 ```tex
 \SetOralDate{2023}{12}{31}
 \SetCoverDate{2024}{7}
 ```
 
-V2 separates raw input from profile-resolved display policy:
+Institutional forks override `\ApplyOralDatePolicy`, `\ApplyCoverDatePolicy`, and profile-owned Master/Doctoral date tokens—not the public setters.
 
-- `\GetRequestedCoverYear`／`\GetRequestedCoverMonth`: raw `\SetCoverDate` values;
-- `\GetThesisYear`／`\GetThesisMonth`: resolved cover display values;
-- oral getters: independent oral metadata.
+## 非NCKU Style Port升級 / Migrate a non-NCKU style port
 
-The NCKU profile still makes oral date authoritative for the cover, so existing NCKU output remains unchanged. A non-NCKU profile uses explicit cover date by default and does not borrow an oral day for its Doctoral English cover. Institutional forks should override `\ApplyOralDatePolicy`／`\ApplyCoverDatePolicy` and the profile-owned Master/Doctoral English cover-date tokens, not the public setters.
+**繁體中文**
 
-## Migrating a 1.x Non-NCKU Style Port
+1. 以`template/style/custom/`作新profile base；不要先copy/load NCKU再撤銷policy。
+2. 將舊custom file內的institution geometry、校名、watermark及date behavior移到`<profile>/<profile>.tex`。
+3. 恰好呼叫一次`\RegisterTemplateStyle{<profile>}`。
+4. 透過`template/style/style.tex`的`\TemplateStyleName`選擇profile。
+5. 將舊`\SetOralDate`／`\SetCoverDate` overrides改成policy hooks。
+6. 只有institution有degree-specific committee ranges時才override `\ApplyCommitteeSizePolicy`；保持`\SetCommitteeSize`不變。
+7. 將cover/oral wording及English cover-date formats移到profile token setters。
+8. 使用`\SetCollName`／`\SetDeptName`，或在profile內維護institution catalogue。
+9. 以故意不同的oral／cover dates建置cover及certificate，證明policy separation。
+10. 確認`.fls`沒有載入非預期institution asset。
 
-The v1.5.0 placement intent remains: institutional ports belong under `template/style/`. V2 changes how they are activated.
+**English**
 
-1. Copy `template/style/custom/` as the new profile base; do not copy/load NCKU first merely to undo it later.
-2. Move institution geometry,校名、watermark and date behavior from the old custom file into `<profile>/<profile>.tex`.
+1. Start from `template/style/custom/`; do not copy/load NCKU merely to undo it.
+2. Move institution geometry, names, watermark, and date behavior from the old custom file into `<profile>/<profile>.tex`.
 3. Call exactly one `\RegisterTemplateStyle{<profile>}`.
-4. Select the profile through `\TemplateStyleName` in `template/style/style.tex`.
-5. Replace old overrides of `\SetOralDate`／`\SetCoverDate` with policy-hook overrides.
-6. Override `\ApplyCommitteeSizePolicy` only when the institution has degree-specific committee ranges; keep `\SetCommitteeSize` unchanged.
-7. Move institution-specific cover/oral wording and English cover-date formats to the provided profile-token setters.
-8. Use `\SetCollName`／`\SetDeptName` for project metadata or maintain an institution-owned catalogue inside the new profile.
-9. Build the custom cover and oral certificate with different oral/cover dates to prove policy separation.
-10. Confirm the `.fls` recorder output does not load an unintended institutional asset.
+4. Select the profile with `\TemplateStyleName` in `template/style/style.tex`.
+5. Replace old `\SetOralDate` / `\SetCoverDate` overrides with policy hooks.
+6. Override `\ApplyCommitteeSizePolicy` only for degree-specific institution ranges; keep `\SetCommitteeSize` unchanged.
+7. Move cover/oral wording and English cover-date formats to profile token setters.
+8. Use `\SetCollName` / `\SetDeptName`, or maintain an institution catalogue inside the profile.
+9. Build cover/certificate cases with deliberately different oral and cover dates to prove policy separation.
+10. Confirm through `.fls` that no unintended institution asset is loaded.
 
-The executable example is `tests/custom-style.tex` in the full Git repository;
-it is test tooling and is intentionally absent from the student ZIP.
+Detailed guide / 詳細指南：[`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md)
 
-## Verification Checklist
+The executable `tests/custom-style.tex` fixture exists only in the full repository and is intentionally absent from the student ZIP.
 
-### Portable checks
+## Portable驗證 / Portable verification
 
-Run these commands from an extracted student ZIP or any migrated project
-directory that contains `thesis.tex`:
+**繁體中文**
+
+在解壓student ZIP或任何包含`thesis.tex`的migrated project root執行下列commands。檢查A4及預期頁數、學校／學院／系所／題目／作者／指導教授文字、cover/oral dates、目錄及references、書目收斂、Draft／watermark狀態，以及cover、front matter、正文及最後頁rendering。
+
+**English**
+
+Run these commands from an extracted student ZIP or any migrated project root containing `thesis.tex`. Verify A4 and expected pages; university, college, department, title, author, and advisor text; cover/oral dates; contents and references; bibliography convergence; Draft/watermark state; and representative cover, front-matter, body, and final pages.
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
@@ -193,20 +240,17 @@ pdfinfo thesis.pdf
 pdftotext thesis.pdf thesis.txt
 ```
 
-Verify:
+Use the saved 1.x PDF as the comparison reference / 以保存的1.x PDF作比較reference。
 
-- A4 page dimensions and expected page count;
-- university/college/department/title/author/advisor text;
-- cover and oral dates;
-- table of contents and all references;
-- bibliography convergence;
-- no unexpected Draft text or institutional watermark;
-- representative cover, front-matter, body, and final rendered pages.
+## Maintainer驗證 / Maintainer verification
 
-### Repository-maintainer checks
+**繁體中文**
 
-The following commands require a complete Git checkout and run from the
-repository root. They are not available in the student ZIP:
+下列commands需要完整Git checkout並從repository root執行，student ZIP不提供。Acceptance evidence包括597/597 runtime-visible declarations、65/65 literal-def declarations、22個dead-comment audit entries、18個byte-identical student inputs、exact-tree student archive、direct build、neutral/custom six-page fixture，以及canonical 271-page NCKU output identity。
+
+**English**
+
+The following commands require the complete Git checkout and run from the repository root; they are unavailable in the student ZIP. Acceptance evidence includes 597/597 runtime-visible declarations, 65/65 literal-def declarations, 22 dead-comment audit entries, 18 byte-identical student inputs, exact-tree student archive, direct build, the six-page neutral/custom fixture, and canonical 271-page NCKU output identity.
 
 ```bash
 just _test-custom-style
@@ -217,23 +261,25 @@ just ci
 git diff --check
 ```
 
-The v2 architecture acceptance evidence includes:
+Current canonical contract / 現行canonical contract：
 
-- 597/597 runtime-visible v1 LaTeX/xparse commands/environments and 65/65
-  literal `\def`-style declarations preserved, with 22 runtime-dead
-  comment-environment declarations retained in a separate audit;
-- 18 student-owned files match v1.8.2 byte-for-byte; the unchanged entry/config
-  and active StudentMode content/bibliography paths pass separate v2 runtime
-  gates;
-- the student ZIP matches the complete tracked `thesis/` tree exactly, retains
-  concise offline migration steps in its root `README.md` plus the compatibility
-  adapter/profile files, and its direct `latexmk -xelatex thesis.tex` path
-  produces the canonical 271-page A4 PDF;
-- neutral custom profile builds six A4 pages covering Chinese/English Master
-  cover, Chinese oral, both Master/Doctoral English oral branches, and the
-  Doctoral English cover without NCKU visible policy or watermark asset;
-- custom Chinese dates remain Gregorian, explicit cover and oral dates stay
-  distinct, the Doctoral English cover does not borrow the oral day, and custom
-  degree display names do not change the numeric branch;
-- canonical NCKU output remains 271 A4 pages;
-- canonical extracted text and cover word bounding boxes/raster remain identical across the profile extraction.
+```text
+pages:                 271
+paper:                 A4
+normalized bbox words: 40823
+text:                  identical
+fonts:                 identical
+raster:                271/271 identical at 120 DPI
+```
+
+## 回復與故障處理 / Recovery and troubleshooting
+
+**繁體中文**
+
+如升級後輸出不符預期，停止繼續修改，不要刪除舊專案或baseline PDF。確認改動屬student data、template-owned files或本地`thesis.tex`merge；回到上一個可建置commit，然後一次重新套用一個變更。切換BibTeX style或遇到stale intermediates時，以`latexmk -C thesis.tex`清除後再build。不要修改compatibility manifests、降低expected counts或停用tests來隱藏差異。
+
+**English**
+
+If migrated output differs unexpectedly, stop adding changes and retain the old project and baseline PDF. Classify the change as student data, template-owned files, or a local `thesis.tex` merge; return to the last buildable commit and reapply one change at a time. When changing BibTeX style or encountering stale intermediates, run `latexmk -C thesis.tex` before rebuilding. Do not edit compatibility manifests, lower expected counts, or disable tests to hide a difference.
+
+A verified behavior correction belongs in the normative table above; an undocumented output change is a blocker.
