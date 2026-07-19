@@ -1,4 +1,4 @@
-<!-- doc-pair: root-readme; lang: zh-Hant-TW; topics: project-overview,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,submission-watermark-and-certificate,documentation-and-project-work,other-community-alternatives,licence -->
+<!-- doc-pair: root-readme; lang: zh-Hant-TW; topics: project-overview,historical-acceptance,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,thesis-upload-and-printing,defense-certificate-faq,documentation-and-project-work,other-community-alternatives,licence -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -15,6 +15,12 @@
 - [成大博碩士論文系統](https://thesis.lib.ncku.edu.tw/)
 - [論文建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)
 - [教務處課務組論文格式規範](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)
+
+## Available to use 已被學校負責單位接受
+
+依本專案保存的歷史紀錄，本模版的格式／設計曾於2015年由成大圖書館系統管理組數位論文小組檢查；本模版當時產生的中英文學位考試論文證明書亦曾由教務處課務組檢查。2018年，課務組另指出本模版產生的中文版證明書未經授權。
+
+以上只屬歷史查核紀錄，不代表目前的學校、圖書館、學位考試系統或任何系所接受本模版的每項設定。資訊工程學系是本專案唯一有保存歷史使用紀錄的系所，但此紀錄亦不等於現行認可。使用前必須核對當年度學校及系所規定。
 
 ## 選擇正確設定
 
@@ -68,11 +74,28 @@ defense-certificate-phd.pdf
 
 NCKU學生可查看完整[`9個學院／110個系所preset目錄`](thesis/template/style/ncku/README.md)；其他學校的同學則使用generic institution APIs，並參考[`Customization.md`](thesis/template/style/Customization.md)內明確標示為illustrative的NTU wiring例子。
 
-## 提交、浮水印與證明書
+## 學位論文上傳和列印說明
 
-正式輸出預設沒有封面初稿標記、斜向`DRAFT`文字或學校logo浮水印。三者是獨立的opt-in功能；不要因API存在就加入提交PDF。現行流程要求以學校系統產出的文件為準，系統亦可能在核准後的電子全文加入自己的浮水印。
+以下摘要依據成大博碩士論文系統的[論文建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)（本專案最後查核：`2026-07-19`）。流程可能更新，提交時必須以官方系統及系所通知為準。
 
-學位考試合格證明書應優先使用學位考試系統產出的正式版本。本範本產生的證明書只供legacy/example及regression用途。2015／2018的歷史查核記錄不構成現時授權或官方認可。
+1. 使用符合系所規定、經指導教授同意送印的定稿版本製作PDF。
+2. 將封面、口試合格證明書、中英文摘要、目次、表圖次、正文、參考文獻及附錄合併為單一PDF，並檢查頁碼、圖表及版面。
+3. 上傳的PDF不要加入浮水印或保全；系統會在審核通過後處理電子全文。
+4. 登入[成大博碩士論文系統](https://thesis.lib.ncku.edu.tw/)，完成資料欄位及上傳步驟，並送出審核。
+5. 收到核准通知後重新登入系統，在step 5列印授權書及下載核准後的電子全文。紙本份數、簽名及離校程序須再向系所與圖書館確認。
+
+## 模版和學位考試系統的學位考試論文證明書的FAQ
+
+本專案保存的紀錄顯示，相關中英文證明書曾於2015年由教務處課務組檢查；當時的回覆不構成學校正式認可。2018年，課務組指出本模版產生的中文版證明書未經授權。歷史討論見[Issue #30：學位考試合格證明書與成大學校學位考試系統中列印的證明書並不相符](https://github.com/wengan-li/ncku-thesis-template-latex/issues/30)。
+
+現行使用原則：
+
+1. 中文版學位考試論文證明書應優先使用學位考試系統產出的正式版本，並以當年度學校及系所規定為準。
+2. 本模版產生的證明書只供legacy／example及版面預覽，不代表正式文件或現行授權。
+3. 英文版證明書的要求可能由系所另行規定；使用前須向系所確認版本、文字及簽名需求。
+4. 口試、簽名或提交前如有任何疑問，應先取得當期官方系統版本，不要只依賴本模版產生的證明書。
+
+延伸政策紀錄：[發行、證明書與浮水印政策](docs/features/release-and-distribution.md)。
 
 ## 文件與專案工作
 
