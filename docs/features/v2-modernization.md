@@ -20,5 +20,6 @@
 - Repository-owned generic command parsing使用19個native `l3keys` families，direct `pgfkeys` parser references及explicit package load為零。
 - PGF/TikZ並非完全移除；`mdframed`的TikZ framing仍可transitively載入runtime dependency。
 - V2完成狀態不會自動啟用P3 architecture experiments；新工作需要新的owner-approved Intent。
+- Post-v2.0.1 bilingual documentation、institution-profile runtime isolation及customization load-order maintenance版本識別為[`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)。
 
 完整英文technical record：[v2-modernization.en.md](v2-modernization.en.md)

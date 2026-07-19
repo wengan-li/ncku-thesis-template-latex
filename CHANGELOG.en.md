@@ -9,6 +9,22 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
+### [v2.0.2.260719120024](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024) — 2026-07-19
+
+- Organizes student and public documentation into eight complete
+  Traditional-Chinese/English guide pairs and three Chinese-summary/English-
+  technical-record pairs; Chinese owns default `.md` paths, English uses
+  `.en.md`, and no `.zh-TW.md` paths remain.
+- Preserves generic institution metadata APIs while making the selected `ncku`
+  profile the sole runtime owner of 9 college and 110 department presets;
+  `custom` no longer loads the NCKU catalogue.
+- Documents and machine-checks command, selected-profile, student-configuration,
+  and metadata-initialization load order so students from other institutions can
+  port the neutral custom skeleton without inheriting NCKU data.
+- Keeps 597 LaTeX/xparse and 65 literal def-style V1 declarations, byte-pinned V1
+  migration inputs, the 271-page A4 canonical output, and the direct student-ZIP
+  build contract.
+
 ### [v2.0.1.260719010734](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734) — 2026-07-19
 
 - Replaces all repository-owned generic `pgfkeys` command parsers with 19 native

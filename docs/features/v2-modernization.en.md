@@ -220,6 +220,10 @@ and retains integration proof for unrelated NCKU output.
 The V2 modernization and repository-owned command-parser migration are complete.
 There are no active requirements under `docs/requirements/`.
 
+Post-v2.0.1 bilingual documentation, institution-profile runtime isolation, and
+customization load-order maintenance are versioned as
+[`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024).
+
 The following are explicitly inactive and require a new owner-approved Intent:
 
 - a formal `nckuthesis.cls` or broad class/package redesign;

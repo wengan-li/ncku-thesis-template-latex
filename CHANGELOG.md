@@ -8,6 +8,13 @@
 
 ## 2.x
 
+### [v2.0.2.260719120024](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024) — 2026-07-19
+
+- 將學生及public documentation整理成8組完整繁中／英文guides與3組繁中摘要／英文technical records；繁中使用default `.md`，英文使用`.en.md`，不再保留`.zh-TW.md` paths。
+- 保留generic institution metadata APIs，同時由`ncku` profile獨立擁有9個學院及110個系所presets；`custom` profile不再載入NCKU catalogue。
+- 記錄並machine-check commands／selected profile／student configuration／metadata initialization載入順序，讓其他學校的同學由neutral custom skeleton建立自己的profile。
+- 保持597個LaTeX／xparse及65個literal def-style V1 declarations、byte-pinned V1 migration inputs、271頁A4 canonical output與直接學生ZIP build contract。
+
 ### [v2.0.1.260719010734](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734) — 2026-07-19
 
 - 將repository-owned generic `pgfkeys` command parsers全部替換為19個native `l3keys` families，同時保留完整經audit的1.x public API。
