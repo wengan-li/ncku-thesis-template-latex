@@ -1,105 +1,85 @@
-# NCKU thesis template — student project
+<!-- doc-pair: student-readme; lang: zh-Hant-TW; topics: start-writing,choose-independent-settings,configure-thesis-information,migrate-from-1-x,build-the-final-document,continuous-preview-and-editors,draft-watermark-and-certificate,before-submission,other-community-alternatives -->
 
-This directory is the complete student project. The versioned GitHub Release ZIP contains these files directly under one `ncku-thesis-template-latex/` directory; repository development tools, tests, and release scripts are intentionally excluded.
+[繁體中文](README.md) | [English](README.en.md)
 
-## Start writing
+# 成大論文範本學生專案
 
-1. Open `conf/conf.tex` and comment out `\ExampleMode` when writing your own thesis.
-2. Fill in thesis metadata and options in `conf/conf.tex`.
-3. Write and select your chapters in `context/context.tex` and the files under `context/`.
-4. Use `thesis.tex` as the main document.
+此目錄是可直接使用的學生專案。版本化的GitHub Release學生套件會將這些檔案放在單一`ncku-thesis-template-latex/`目錄內；完整儲存庫的測試、發行腳本及維護工具不會包含在學生套件中。
 
-The large document selected by `\ExampleMode` is the complete teaching example. It is useful as a reference but is slower to rebuild than a normal thesis using `context/context.tex`.
+## 開始撰寫
 
-## Migrating from 1.x
+1. 開啟`conf/conf.tex`。撰寫自己的論文時，請將`\ExampleMode`註解；啟用時會編譯完整教學範例。
+2. 按照[`conf/README.md`](conf/README.md)填寫題目、姓名、學位、日期、系所、指導教授及其他論文資料。
+3. 在`context/context.tex`選擇章節，並於`context/`內撰寫內容。
+4. 始終以`thesis.tex`作為主文件。
 
-V2 keeps the complete declared 1.x helper surface through a compatibility
-adapter. For an existing thesis:
+## 選擇設定
 
-1. Commit or archive the complete working 1.x project and keep its latest PDF.
-2. Preserve `conf/conf.tex`, `context/`, figures, bibliography data, and any
-   local certificate file.
-3. Replace template-owned files such as `template/`, fonts, and build
-   configuration with the v2 package.
-4. Merge local edits to `thesis.tex` deliberately instead of overwriting it.
-5. Build with the direct `latexmk -xelatex` command below and compare the cover,
-   dates, contents, references, bibliography, representative body pages, and
-   final pages with the saved 1.x PDF.
+文件語言、學校樣式設定檔、封面語言、學位及內容模式互相獨立。國際學生可以使用成大`ncku` profile；其他學校的同學亦可建立自己學校的profile。不要因讀者語言而選擇學校profile。
 
-No helper rename is required for this compatibility-first path. The complete
-migration reference, corrected-behavior table, and native-v2 path are maintained
-in the full repository at
-[`docs/MIGRATION-1.x-TO-2.x.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/MIGRATION-1.x-TO-2.x.md).
-Non-NCKU institutional forks should also follow
-[`template/style/Customization.md`](template/style/Customization.md);
-institution policy remains under `template/style/`, not `conf/`.
+| 決定 | 選項 |
+| --- | --- |
+| 學校 | 成大同學使用預設`ncku`；其他學校的同學可使用custom profile |
+| 封面語言 | `\DisplayCoverInChi`或`\DisplayCoverInEng` |
+| 學位 | `\MasterDegree`或`\PhdDegree` |
+| 內容 | 自己的`context/context.tex`或`\ExampleMode`教學範例 |
 
-## Draft and institutional watermark
+## 設定論文資料
 
-The student project defaults to final-ready output: no `(Draft)` / `(初稿)` cover marker, no diagonal `DRAFT` text layer, and no institutional logo watermark. During writing or review, uncomment `\DisplayDraft` in `conf/conf.tex` only when you deliberately want the cover marked as a draft; keep it disabled for final output. A diagonal text watermark is a separate `draftwatermark` package feature and must also be enabled explicitly.
+`conf/conf.tex`是從v1.8.2保留的相容設定檔。為確保既有1.x專案可安全升級，該檔案在2.x保持byte-identical，因此原有註解主要為中文。請使用套件內的繁中[`conf/README.md`](conf/README.md)逐項查閱設定；不要為了翻譯而更改macro名稱或新增`conf/style.tex`。
 
-The template retains `\UseWatermarkFigureStyle` and `\UseWatermarkTextStyle` as explicit compatibility/customization APIs, but it does not enable either one by default. Do not add a template watermark to the submission PDF merely because the API exists. Follow the current university, library, and department instructions; the school system may apply its own watermark to the approved electronic copy.
+## 由1.x升級
 
-## Build the final document
+V2透過相容層保留完整、經machine audit的1.x helper surface。升級進行中的論文前，先commit或封存完整1.x專案並保存最新PDF。保留`conf/conf.tex`、`context/`、圖片、書目資料及本地證明書檔案；以V2替換template-owned檔案，並有意識地merge對`thesis.tex`的本地修改。完成後，使用下方direct build command，逐項比較封面、日期、目錄、引用、參考文獻、正文及最後頁。
 
-Install a distribution with XeLaTeX, BibTeX, `latexmk`, and LaTeX2e format 2020-10-01 or newer. TeX Live 2021 or newer is recommended; release CI uses TeX Live 2026. Then run this command from the project directory:
+完整指南：[`docs/v1-to-v2-migration.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.md)
+
+## 建置正式文件
+
+安裝包含XeLaTeX、BibTeX及`latexmk`的TeX發行版。最低要求為LaTeX2e format 2020-10-01；建議使用TeX Live 2021或更新版本，發行CI目前使用TeX Live 2026。在包含`thesis.tex`的專案根目錄執行以下唯一正式建置指令。
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 ```
 
-`latexmk` automatically runs XeLaTeX and BibTeX as many times as required for the table of contents, bibliography, references, and PDF outline to converge. Do not guess or hard-code a manual sequence of compiler runs.
-
-To remove generated build files:
-
 ```bash
 latexmk -C thesis.tex
 ```
 
-## Continuous preview while writing
+## 持續預覽與編輯器
 
-Keep the following command running in a terminal:
+撰寫期間可保持下方指令運行。每次儲存追蹤中的TeX、書目、圖片或included file時，`latexmk`只執行所需的compiler passes。`-view=none`避免開啟第二個PDF viewer；請讓Texmaker、TeXstudio或其他viewer重新載入現有`thesis.pdf`。按`Ctrl-C`停止。
 
 ```bash
 latexmk -xelatex -pvc -view=none -synctex=1 -interaction=nonstopmode thesis.tex
 ```
-
-Whenever a tracked TeX, bibliography, figure, or included file changes, `latexmk` rebuilds only the required compiler passes. `-view=none` prevents it from opening a second viewer; keep the PDF open in Texmaker, TeXstudio, or another viewer that automatically reloads changed PDFs.
-
-Stop continuous preview with `Ctrl-C`.
-
-## Texmaker and TeXstudio
-
-Set the document compiler or user command to:
 
 ```text
 latexmk -xelatex -synctex=1 -interaction=nonstopmode %.tex
 ```
 
-Use `thesis.tex` as the root/master document. For an external continuous-preview command, run:
+Set `thesis.tex` as the root/master document / 將`thesis.tex`設為主文件。
 
-```text
-latexmk -xelatex -pvc -view=none -synctex=1 -interaction=nonstopmode thesis.tex
-```
+## 初稿、浮水印與證明書
 
-The exact menu name differs by editor version. The important behavior is that the editor invokes `latexmk` with XeLaTeX and opens/reloads `thesis.pdf`; it should not require you to run XeLaTeX and BibTeX manually in a guessed order.
+正式輸出預設不顯示封面`(初稿)`／`(Draft)`、斜向`DRAFT`文字或學校logo浮水印。只有在撰寫或審閱期間確實需要時，才於`conf/conf.tex`啟用`\DisplayDraft`。斜向文字浮水印及學校logo浮水印是另外兩個明確opt-in功能；不要因API存在就加入正式提交PDF。學校系統可能會對核准後的電子全文加入自己的浮水印。
 
-## Other 其他
+正式提交時，應按學校規定使用學位考試系統產出的證明書。本範本產生的證明書只供legacy/example及regression用途，並非官方文件。
 
-如果對本模版沒有興趣，也可以參考其他同學提供、但不定期更新的社群模版：
+## 提交前檢查
 
-- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — 使用 Typst 的成大論文模版
-- [`lycsjm/nckuthesis`](https://github.com/lycsjm/nckuthesis) — 使用 LaTeX 的成大論文模版
-- [`windwalker661/Thesis-NCKU`](https://github.com/windwalker661/Thesis-NCKU) — 使用 LaTeX 的成大論文模版
-- [`nckuasrlab/ASRLab_Thesis_Template`](https://github.com/nckuasrlab/ASRLab_Thesis_Template) — 使用 LaTeX 的成大論文模版
+1. 停止任何continuous-preview process，重新執行正式建置指令。
+2. 確認log沒有未解決的references、citations或rerun warnings。
+3. 確認PDF沒有非預期的初稿標記、文字浮水印或logo浮水印。
+4. 完整檢查頁碼、目錄、圖表清單、參考文獻、字型及最後頁。
+5. 核對當年度成大、圖書館及所屬系所的最新要求；現行官方規定永遠優先。
+6. 使用學校系統要求的正式證明書與提交流程。
 
-以上外部專案並非由本專案維護；使用前請自行核對其版本、授權及學校最新規定。
+## 其他社群方案
 
-## Before submission
+如本範本不符合需要，可評估下列不定期更新的社群專案。它們並非由本專案維護；使用前請自行核對版本、授權及學校規定。
 
-1. Stop any continuous-preview process.
-2. Run the normal final build command again.
-3. Check the log for unresolved references or citations.
-4. Confirm that the final PDF has no `(Draft)` / `(初稿)` marker, diagonal `DRAFT` text, or template-added institutional logo watermark unless a current official requirement explicitly asks for one.
-5. Review the complete PDF, page numbering, contents, lists, bibliography, fonts, and official school requirements.
-6. Use the official school-generated defense-certificate document when required; template-generated demonstrations are not official documents.
+- [`Haouo/NCKU-Thesis-Typst`](https://github.com/Haouo/NCKU-Thesis-Typst) — Typst
+- [`lycsjm/nckuthesis`](https://github.com/lycsjm/nckuthesis) — LaTeX
+- [`windwalker661/Thesis-NCKU`](https://github.com/windwalker661/Thesis-NCKU) — LaTeX
+- [`nckuasrlab/ASRLab_Thesis_Template`](https://github.com/nckuasrlab/ASRLab_Thesis_Template) — LaTeX

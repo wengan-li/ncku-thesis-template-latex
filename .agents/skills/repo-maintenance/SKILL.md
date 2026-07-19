@@ -13,6 +13,8 @@ and compatibility reviews in this repository.
 For every task, load the sibling [`idsd-workflow`](../idsd-workflow/SKILL.md)
 first. Keep general LaTeX knowledge outside this repository; this skill contains
 only project-specific rules and pointers.
+Load [`documentation-management`](../documentation-management/SKILL.md) for
+requirements, todos, documentation lifecycle, consolidation, or path repair.
 
 ## Source of Truth
 
@@ -20,18 +22,16 @@ Read only the focused sources needed for the task:
 
 1. [`AGENTS.md`](../../../AGENTS.md) — canonical project rules and boundaries.
 2. [`justfile`](../../../justfile) — canonical maintainer command surface.
-3. [`docs/features/v2/modernization.md`](../../../docs/features/v2/modernization.md)
-   — shipped v2 intent, expectations, evidence, and progress.
-4. [`docs/features/v2/public-api-compatibility.md`](../../../docs/features/v2/public-api-compatibility.md)
-   — 1.x helper compatibility policy and machine-checked baseline.
-5. [`docs/source-optimization-review.md`](../../../docs/source-optimization-review.md)
-   — prioritized modernization, performance, and CI evidence.
-6. [`docs/release-versioning.md`](../../../docs/release-versioning.md) — release
-   version, packaging, promotion, and public-verification contract.
-7. [`docs/sample-repository-migration.md`](../../../docs/sample-repository-migration.md)
-   — generated-example provenance and migration record.
-8. [`docs/overleaf-distribution.md`](../../../docs/overleaf-distribution.md) —
-   unofficial-template policy, import package limits, and publication blockers.
+3. [`docs/README.md`](../../../docs/README.md) — public documentation index and
+   release/evidence routing.
+4. [`docs/features/v2-modernization.en.md`](../../../docs/features/v2-modernization.en.md)
+   — shipped architecture and compatibility boundary.
+5. [`docs/features/validation-and-performance.en.md`](../../../docs/features/validation-and-performance.en.md)
+   — current gates, artifact proof, benchmarks, and rejected/deferred decisions.
+6. [`docs/features/release-and-distribution.en.md`](../../../docs/features/release-and-distribution.en.md)
+   — release, package, Overleaf, sample-retirement, and watermark contracts.
+7. [`docs/v1-to-v2-migration.md`](../../../docs/v1-to-v2-migration.md) — current
+   user migration and institution-port contract.
 
 Inspect current source and Git state before trusting historical notes. When a
 rule changes, update its canonical repository source in the same slice.
@@ -64,9 +64,9 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 
 - XeLaTeX remains the supported v2 engine; do not silently migrate engines.
 - Preserve `thesis.tex`, `conf/conf.tex`, every entry in
-  `tests/v1-public-api.json`, and the visible NCKU layout unless a focused
+  `tests/100-v1-public-api.json`, and the visible NCKU layout unless a focused
   fixture and authoritative evidence justify a documented correction.
-- Keep `tests/v1-project-migration.json` passing. It pins the v1.8.2
+- Keep `tests/102-v1-project-migration.json` passing. It pins the v1.8.2
   student-owned inputs byte-for-byte; `just test` separately proves the unchanged
   entry/configuration path and active StudentMode content/BibTeX dependencies.
 - Keep generic command/renderer layers free of NCKU assets, Taiwan-year policy,
@@ -80,11 +80,43 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   clamps Master to 3--5 and Doctoral to 5--9, while neutral/custom retains 2--9.
 - Keep student data in `conf/` and institution-level style ports under
   `template/style/`; never introduce `conf/style.tex`.
+- Institution-name APIs are generic: `\SetUniversityName{chi}{eng}`,
+  `\SetCollName{chi}{eng}`, and
+  `\SetDeptName{chi}{English abbreviation}{English full name}`. The NCKU-owned
+  catalogue currently contains 9 college presets and 110 department presets
+  spanning departments, graduate institutes, degree programs, and centers under
+  `template/style/ncku/`; every preset also selects one NCKU college. A shared
+  abbreviation does not make names or mappings portable—for example, the current
+  NCKU `CSIE` preset is an institute while the documented NTU wiring is a
+  department. The selected `ncku` profile alone loads those NCKU commands;
+  unchanged 1.x NCKU projects retain them through the default profile, while
+  `custom` exposes only the generic institution API. A reusable new catalogue
+  uses institution-prefixed commands rather than reusing NCKU `\SetDept...`
+  names. The profile
+  defines catalogue entries; each student's `conf/conf.tex` selects one entry and
+  replaces the original NCKU department call, so the profile does not hard-code
+  a particular department.
+- Keep `\TemplateConfigurationFile` defaulted to `./conf/conf`. Repository-only
+  custom-profile fixtures may override it with a generic test configuration so
+  they do not mutate the byte-pinned V1 `conf/conf.tex`. Require every negative
+  `.fls` assertion to first prove that the recorder file exists and is non-empty.
+- Preserve `template/configure.tex` load order as a behavior contract: generic
+  commands plus compatibility, base plus exactly one selected profile, student
+  configuration, then `\FillInPDFData` and remaining initialization. This keeps
+  generic setters available to profiles, profile-owned catalogue commands
+  available to student configuration, NCKU data absent before profile selection,
+  and PDF metadata based on resolved student values. Profiles define catalogue
+  entries; student configuration selects one.
+- `template/style/custom/custom.tex` is a neutral, buildable skeleton—not an
+  NTU or universal ready-to-submit profile. A named-school walkthrough may prove
+  generic API wiring, but it remains illustrative until current official
+  geometry, cover/spine, wording, date/calendar, certificate, department,
+  submission-processing, and asset-rights rules are implemented and tested.
 - Preserve direct XeLaTeX and Overleaf compatibility; `just` is maintainer
   orchestration, not a student requirement.
 - Keep the full teaching document as integration coverage and add focused
   fixtures before changing output-sensitive macros.
-- Keep `tests/theorem-contract.tex` in the test gate before consolidating theorem
+- Keep `tests/500-theorem-contract.tex` in the test gate before consolidating theorem
   internals. Its label option must create an auxiliary label without visible key
   leakage, and titled labels must freeze nameref metadata before temporary pgf
   key state is reused. Introduce registry behavior in bounded slices: first let
@@ -127,8 +159,9 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 
 Keep audiences separate:
 
-- maintainer commands, CI, release scripts, benchmarks, and architectural
-  decisions belong in root/internal documentation;
+- repository commands, CI, release scripts, benchmarks, and architectural
+  decisions belong in internal documentation;
+- `docs/README.md` routes readers to current guides and shipped feature records;
 - direct compiler, editor, configuration, and writing guidance belongs in the
   packaged `thesis/` project and teaching content;
 - root `README.md` routes both audiences without exposing unnecessary internals;
@@ -154,7 +187,7 @@ files must exactly equal the tracked `HEAD:thesis` tree, including the
 student-facing README with concise offline migration guidance, v1 adapter, and
 base/NCKU/custom profiles. Keep a focused negative test that deletes the required
 student README and proves the archive checker fails. The full migration reference
-lives at `docs/MIGRATION-1.x-TO-2.x.md` in the complete repository.
+lives at `docs/v1-to-v2-migration.md` in the complete repository.
 When this gate runs inside `xu-cheng/texlive-action`, configure
 `$GITHUB_WORKSPACE` as a Git safe directory before `git archive`/`git ls-tree`
 and install full Info-ZIP `unzip`/`zip`; BusyBox `unzip` does not support
@@ -178,8 +211,23 @@ redundant `example-` prefix. Loose generated PDFs are build intermediates, not
 public Release assets.
 
 Do not move an immutable tag or rebuild old tagged PDFs during an asset-only
-migration. Follow `docs/release-versioning.md` for download, digest, public
-read-back, byte-comparison, and exact-allowlist gates.
+migration. Follow `docs/features/release-and-distribution.en.md` for download,
+digest, public read-back, byte-comparison, and exact-allowlist gates.
+
+## Test Source Layout
+
+- [`tests/000-test-suite.md`](../../../tests/000-test-suite.md) owns the flat,
+  numerically grouped test inventory.
+- Every tracked file under `tests/` has a unique three-digit sparse prefix and no
+  subdirectory. Use the documented `100–899` concern ranges for executable
+  fixtures/manifests and reserve `900–999` for historical standalone reference
+  inputs that are not automatic `just test` entrypoints.
+- Keep semantic `just` recipe names and build job names unnumbered. The numeric
+  prefix organizes source inventory only.
+- Rename test sources with exact path-reference repair across `justfile`, scripts,
+  instructions, skills, and feature records. Run
+  `python3 scripts/test/check-test-layout.py`, focused affected tests, and the full
+  gate before committing.
 
 ## Verification
 

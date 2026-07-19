@@ -149,7 +149,11 @@
 % --------------------------
 
 % 論文有關資料
-\input{./conf/conf}
+% Normal student builds keep the historical path. Repository profile fixtures may
+% select an isolated generic configuration without modifying the byte-pinned V1
+% migration input.
+\providecommand{\TemplateConfigurationFile}{./conf/conf}
+\input{\TemplateConfigurationFile}
 
 % --------------------------
 

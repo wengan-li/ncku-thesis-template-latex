@@ -19,7 +19,7 @@ def main() -> None:
             old.unlink()
         tex_input = (
             rf"\def\NCKUTestMultiParser{{{level}}}"
-            r"\input{../tests/multi-figure-key-unknown.tex}"
+            r"\input{../tests/402-multi-figure-key-unknown.tex}"
         )
         result = subprocess.run(
             ("xelatex", "-interaction=nonstopmode", "-halt-on-error",

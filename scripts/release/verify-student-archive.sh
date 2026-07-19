@@ -21,19 +21,45 @@ if [[ "$student_files" != "$expected_student_files" ]]; then
 fi
 
 grep -qx "${package_root}/README.md" <<< "$student_entries"
+grep -qx "${package_root}/README.en.md" <<< "$student_entries"
 grep -qx "${package_root}/thesis.tex" <<< "$student_entries"
 grep -qx "${package_root}/conf/conf.tex" <<< "$student_entries"
+grep -qx "${package_root}/conf/README.md" <<< "$student_entries"
+grep -qx "${package_root}/conf/README.en.md" <<< "$student_entries"
 grep -qx "${package_root}/example/abstract/extended.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/configure.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/compat/v1.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/style/Customization.md" <<< "$student_entries"
+grep -qx "${package_root}/template/style/Customization.en.md" <<< "$student_entries"
 grep -qx "${package_root}/template/style/base/base.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/style/ncku/ncku.tex" <<< "$student_entries"
 grep -qx "${package_root}/template/style/custom/custom.tex" <<< "$student_entries"
 
 student_readme=$(unzip -p "$student_zip" "${package_root}/README.md")
-grep -Fq '## Migrating from 1.x' <<< "$student_readme"
-grep -Fq 'docs/MIGRATION-1.x-TO-2.x.md' <<< "$student_readme"
+grep -Fq '<!-- doc-pair: student-readme; lang: zh-Hant-TW;' <<< "$student_readme"
+grep -Fq '[繁體中文](README.md) | [English](README.en.md)' <<< "$student_readme"
+grep -Fq '## 由1.x升級' <<< "$student_readme"
+grep -Fq 'conf/README.md' <<< "$student_readme"
+grep -Fq 'docs/v1-to-v2-migration.md' <<< "$student_readme"
+
+student_readme_en=$(unzip -p "$student_zip" "${package_root}/README.en.md")
+grep -Fq '<!-- doc-pair: student-readme; lang: en;' <<< "$student_readme_en"
+grep -Fq '[繁體中文](README.md) | [English](README.en.md)' <<< "$student_readme_en"
+grep -Fq '## Migrate from 1.x' <<< "$student_readme_en"
+grep -Fq 'conf/README.en.md' <<< "$student_readme_en"
+grep -Fq 'docs/v1-to-v2-migration.en.md' <<< "$student_readme_en"
+
+config_readme=$(unzip -p "$student_zip" "${package_root}/conf/README.md")
+grep -Fq '<!-- doc-pair: student-config; lang: zh-Hant-TW;' <<< "$config_readme"
+grep -Fq '[繁體中文](README.md) | [English](README.en.md)' <<< "$config_readme"
+grep -Fq '../README.md' <<< "$config_readme"
+grep -Fq '../template/style/Customization.md' <<< "$config_readme"
+
+config_readme_en=$(unzip -p "$student_zip" "${package_root}/conf/README.en.md")
+grep -Fq '<!-- doc-pair: student-config; lang: en;' <<< "$config_readme_en"
+grep -Fq '[繁體中文](README.md) | [English](README.en.md)' <<< "$config_readme_en"
+grep -Fq '../README.en.md' <<< "$config_readme_en"
+grep -Fq '../template/style/Customization.en.md' <<< "$config_readme_en"
 
 if grep -Eq "^${package_root}/(justfile|latexmkrc|tests/|scripts/|thesis/)" <<< "$student_entries"; then
   printf 'student ZIP contains repository tooling or a redundant thesis/ layer\n' >&2

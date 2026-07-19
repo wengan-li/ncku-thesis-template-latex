@@ -34,7 +34,7 @@ def main() -> None:
             old.unlink()
         tex_input = (
             rf"\def\NCKUTestFamily{{{family}}}"
-            r"\input{../tests/numbering-family-key-unknown.tex}"
+            r"\input{../tests/202-numbering-family-key-unknown.tex}"
         )
         result = subprocess.run(
             (

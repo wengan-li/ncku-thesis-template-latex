@@ -2,6 +2,7 @@ You must follow Intent-Driven Software Development (IDSD) for every task: clarif
 
 IDSD skill: `.agents/skills/idsd-workflow/SKILL.md`
 Repository maintenance skill: `.agents/skills/repo-maintenance/SKILL.md`
+Documentation management skill: `.agents/skills/documentation-management/SKILL.md`
 
 # AGENTS.md
 
@@ -23,7 +24,7 @@ architecture that:
 2. preserves every explicitly declared v1 command/environment throughout 2.x;
 3. fixes proven helper defects with focused regression fixtures;
 4. separates generic mechanisms from NCKU policy and institutional data;
-5. restores the v1.5.0 non-NCKU customization boundary under
+5. restores the v1.5.0 other-institution customization boundary under
    `template/style/`, not `conf/`;
 6. ships documented and tested 1.x-to-2.x migration steps;
 7. keeps direct XeLaTeX and Overleaf builds authoritative.
@@ -111,19 +112,39 @@ Archiving is safer than deletion. If deletion remains the explicit owner decisio
 ## Compatibility and policy boundaries
 
 - Do not silently switch to LuaLaTeX.
-- Keep `tests/v1-public-api.json` passing; old commands may delegate to new
+- Keep `tests/100-v1-public-api.json` passing; old commands may delegate to new
   internals, but their names and argument shapes remain available throughout
   2.x.
 - Correct proven bugs rather than preserving them; document behavior changes in
-  `docs/MIGRATION-1.x-TO-2.x.md` and keep concise offline migration guidance in
+  `docs/v1-to-v2-migration.md` and keep concise offline migration guidance in
   the packaged `thesis/README.md`.
 - Keep `conf/` for student thesis data. Institution-level ports and style
   profiles remain under `template/style/`.
+- NCKU college and department presets are runtime-owned by the selected `ncku`
+  profile. Unchanged 1.x NCKU projects keep those commands through the default
+  profile; `custom` and other institution profiles load only the generic
+  institution metadata contract and must not inherit NCKU catalogue data.
+- Preserve the configuration load order: generic commands and compatibility,
+  then base plus exactly one selected profile, then student configuration, then
+  PDF metadata and remaining initialization. Profiles define reusable
+  catalogues; student configuration selects an entry.
 - Do not migrate bibliography systems as part of the v2 profile extraction.
 - Do not claim tagged PDF or PDF/UA compliance; current output is untagged.
 - The ETDS upload path should not add internal watermark, DOI overlay, encryption, or security when current official guidance says the school system applies required processing.
 - Prefer inserting the school-system defense certificate as an external file; keep generated certificate templates explicitly legacy/example only.
 - Record official policy URL and checked date for any compliance change.
+
+## Test source layout
+
+- [`tests/000-test-suite.md`](tests/000-test-suite.md) is the test-inventory index.
+- Keep every tracked test artifact directly under `tests/` with a unique
+  three-digit sparse prefix. Use the documented `100–899` concern ranges for
+  executable fixtures and manifests.
+- The `900–999` range contains historical standalone investigation inputs. Those
+  files are reference evidence, not automatic `just test` entrypoints.
+- Keep semantic `just` recipe and output job names unnumbered. When a source file
+  moves, update every script, document, and recipe path in the same change, then
+  run `python3 scripts/test/check-test-layout.py` and `just test`.
 
 ## Verification
 
@@ -157,20 +178,52 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 
 - `AGENTS.md` is canonical.
 - `CLAUDE.md` points here and stays short.
-- Repo-local skills are `.agents/skills/idsd-workflow/` and `.agents/skills/repo-maintenance/`.
+- Repo-local skills are `.agents/skills/idsd-workflow/`,
+  `.agents/skills/repo-maintenance/`, and
+  `.agents/skills/documentation-management/`.
 - `.claude/skills` is a symlink to `../.agents/skills`.
 - `.claude/settings.json` contains only repo-safe Claude Code settings; never store credentials.
 
 ## Documentation Standard
 
-- `docs/requirements/` = active promises: what is wanted and WHY, written before
-  code catches up.
-- `docs/features/` = completed requirements plus durable records of what shipped
-  and HOW it works; current code and tests win on drift.
-- shipped-state docs (`thesis/README.md`, `docs/MIGRATION-1.x-TO-2.x.md`,
-  `CHANGELOG.md`, and active `docs/` policy records) route the current user and
-  maintainer workflows.
-- `todos/` = active how/progress only; a completed todo's durable knowledge
-  graduates into `docs/features/`, then the todo file is removed (Git history
-  keeps the work narrative).
-- Skills: `create-todo` (requirements-first), `feature-documentation`.
+- `docs/README.md` is the public project-documentation index and audience router.
+- `docs/v1-to-v2-migration.md` is the current 1.x-to-2.x migration guide;
+  `thesis/README.md` keeps concise offline steps and `thesis/conf/README.md`
+  keeps field-by-field configuration guidance inside the student ZIP.
+- `docs/features/` contains consolidated shipped architecture, validation, and
+  operating decisions. Do not keep one active document per branch, commit, todo,
+  parser, or bugfix; Git history preserves that chronology.
+- `docs/requirements/` contains active owner-approved what/why promises only.
+  When none are active, it contains exactly `.gitkeep`.
+- `todos/` contains active how/progress only. On completion, promote durable
+  knowledge into the owning feature record and remove the requirement/todo.
+- Current source and tests win on drift. Deferred experiments are not active
+  requirements without a new owner-approved Intent.
+- Student/public journeys are complete in formal Taiwan Traditional Chinese and
+  natural technical English. Use one predominant language per file with a
+  top-of-page text switcher to the equivalent language file; do not use repeated
+  per-section language labels or flags.
+- Traditional Chinese owns each default `<name>.md` path and English uses the
+  adjacent `<name>.en.md` companion, including technical records and changelogs.
+  Keep `zh-Hant-TW` in metadata only; tracked `*.zh-TW.md` paths are forbidden.
+- Public project actions use third-person `本模版` / `本專案` and `the template` /
+  `the project` wording. General processes use role-neutral wording. Chinese references
+  to cross-institution readers use `其他學校的同學`; English uses `students from
+  other institutions`.
+- Paired user guides carry hidden stable topic IDs. Keep paired executable code
+  blocks identical and validate links in both files so split-language pages do
+  not silently drift.
+- Maintainer feature records use a canonical English technical record plus a
+  separate Traditional-Chinese executive-summary companion. Do not duplicate
+  hashes, run IDs, or benchmark transcripts merely to claim line-by-line
+  translation. The English record still uses the `.en.md` filename even when it
+  remains the more detailed technical source.
+- Documentation language, institution profile, cover language, degree, and
+  content mode are independent axes. Do not map English readers to `custom` or
+  Traditional-Chinese readers to `ncku`.
+- Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing and
+  `論文範本` in new Chinese prose. Run
+  `python3 scripts/test/check-bilingual-docs.py`; its structural result does not
+  replace human semantic-parity review.
+- Load `documentation-management` for documentation creation, consolidation,
+  requirements, todos, path repair, or lifecycle changes.

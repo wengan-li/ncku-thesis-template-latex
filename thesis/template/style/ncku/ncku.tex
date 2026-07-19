@@ -46,6 +46,11 @@
 
 \RegisterTemplateStyle{ncku}
 
+% NCKU-owned college and department catalogue. Keep this profile-scoped so a
+% custom institution loads only the portable metadata contract from base/command.
+\input{./template/style/ncku/college}
+\input{./template/style/ncku/department}
+
 % NCKU cover/oral text policy. Renderers consume these profile tokens.
 \SetCoverStudentChiBothText{學生}
 \SetCoverStudentChiText{研究生}

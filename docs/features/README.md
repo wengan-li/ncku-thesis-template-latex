@@ -1,17 +1,17 @@
-# Completed Features
+<!-- doc-pair: feature-index; lang: zh-Hant-TW; topics: v2-production-records,record-policy-and-active-work -->
 
-This directory contains durable records for shipped features. Each feature record
-captures what shipped, why it exists, implementation boundaries, and validation
-evidence after its active requirement and todos are complete.
+[繁體中文](README.md) | [English](README.en.md)
 
-Active requirements remain in [`../requirements/`](../requirements/). Active work
-uses the repository-root `todos/` directory. Completed todo knowledge is promoted
-here; Git history preserves the original work sequence.
+# 已發行功能記錄
 
-## Feature index
+## V2正式記錄
 
-- [`v2/`](v2/) — v2 template modernization, compatibility, implementation, and
-  release evidence.
+本目錄保存production behavior、durable architecture decisions及machine-checked evidence。Feature records不是implementation queue；branch names、temporary boundaries、checkbox progress及重複command transcripts留在Git history。繁中頁面提供executive summary，並由頁首switcher連到canonical英文technical record。
 
-Current source, tests, student documentation, and release policy remain the
-runtime source of truth when a historical feature record drifts.
+- [`v2-modernization.md`](v2-modernization.md) — 產品目標、相容性、架構及完成邊界。
+- [`validation-and-performance.md`](validation-and-performance.md) — 測試、artifact proof、benchmark及工程決定。
+- [`release-and-distribution.md`](release-and-distribution.md) — 版本、套件、發行、Overleaf及提交政策。
+
+## 記錄政策與進行中工作
+
+Durable compatibility numbers、architecture decisions、measured rejected experiments及publication boundaries會保留，因為它們限制未來維護。雙語文件工作已完成；stable language policy保留在現行文件、AGENTS、repo-local skill及deterministic checker，implementation chronology則留在Git history。目前沒有active requirement。

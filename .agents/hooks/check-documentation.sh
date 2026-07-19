@@ -1,0 +1,1 @@
+../skills/documentation-management/hooks/check-documentation.sh
