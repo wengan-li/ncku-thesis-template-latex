@@ -92,6 +92,37 @@ one is a short link/routing sentence.
 - GitHub Release state and Overleaf state are independent. Never turn submitted
   into approved without live public read-back.
 
+### Protected root README contract
+
+The Traditional-Chinese/default root README preserves this historical name as
+one H1 rendered on exactly two visual lines, English first:
+
+```text
+National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex
+台灣國立成功大學碩博士用畢業論文 LaTex 模版
+```
+
+The historical `LaTex` spelling is allowed only inside that exact title. Do not
+reorder, translate, split it into three lines, or normalize its spelling without
+explicit owner direction; all current prose still uses `LaTeX`.
+
+Root `README.md` and `README.en.md` must retain equivalent student sections for:
+
+- historical acceptance (`Available to use 已被學校負責單位接受`), clearly
+  distinguished from current approval;
+- current thesis upload and printing guidance, sourced from the live NCKU ETDS
+  page with a checked date;
+- the template-versus-degree-examination-system defense-certificate FAQ, which
+  directs students to the current official system file and keeps generated
+  certificates legacy/example only.
+
+The public root README keeps Overleaf and GitHub Release entry points, but not
+branch/PR workflow, release promotion narration, machine-audit inventories, or
+Overleaf review-state instructions. Packaged customization guidance keeps direct
+`latexmk`, A4/output checks, and actionable profile runtime errors; it excludes
+repository-only `just`/test commands, `.fls` assertions, expected counts,
+compatibility-manifest maintenance, and commit rollback workflow.
+
 ## Bilingual documentation model
 
 - Student/public journeys are complete in formal Taiwan Traditional Chinese
@@ -120,14 +151,19 @@ one is a short link/routing sentence.
   `the project` wording; general workflow remains role-neutral. Refer to Chinese
   cross-institution readers as `其他學校的同學` and English readers as `students
   from other institutions`.
-- Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing. Use
-  `論文範本` in new Chinese prose. Avoid Cantonese-only wording in shipped docs.
+- Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing outside
+  the exact protected historical root title above. Use `論文範本` in new Chinese
+  prose. Avoid Cantonese-only wording in shipped docs.
 - Keep `thesis/conf/conf.tex` byte-identical throughout 2.x. Its bilingual
   companion is `thesis/conf/README.md`; never refresh the V1 migration baseline
   merely to translate comments.
 - Mechanical checks prove structure, links, casing, and selected terminology
   only. Human review must still verify that warnings, actions, defaults, and
   exceptions mean the same thing in both languages.
+- Stable topic/H2 parity is necessary but cannot protect content deleted from
+  both companions. Add positive checker anchors for the protected title, the
+  three student sections, their current official routes, and public/internal
+  audience boundaries.
 
 This model follows authoritative public patterns:
 
