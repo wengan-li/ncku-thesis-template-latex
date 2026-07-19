@@ -26,5 +26,7 @@ and duplicated validation narratives are intentionally left to Git history.
 Durable compatibility numbers, architecture decisions, rejected experiments, and
 publication boundaries remain here because they constrain future maintenance.
 
-There are currently no active requirements. `docs/requirements/` therefore
-contains only `.gitkeep`.
+The shipped records remain complete. New work is tracked separately by
+[Requirement 02: bilingual documentation](../requirements/02-bilingual-documentation.md)
+and [Todo 01](../../todos/01-bilingual-documentation.md); it does not change the
+production claims above until its acceptance gates pass.

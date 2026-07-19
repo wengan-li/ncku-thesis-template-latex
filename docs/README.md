@@ -14,6 +14,7 @@ Template. The current production release is
 | Maintainers reviewing tests, output proof, or performance decisions | [`features/validation-and-performance.md`](features/validation-and-performance.md) |
 | Maintainers building releases or handling Overleaf | [`features/release-and-distribution.md`](features/release-and-distribution.md) |
 | Version history and user-visible changes | [`CHANGELOG.md`](../CHANGELOG.md) |
+| Active bilingual-documentation work | [Requirement 02](requirements/02-bilingual-documentation.md) and [Todo 01](../todos/01-bilingual-documentation.md) |
 
 The root [`README.md`](../README.md) is the public project overview. It routes
 users to the student package and latest release; it is not the maintainer
@@ -32,15 +33,16 @@ docs/
     release-and-distribution.md
   requirements/
     .gitkeep
+    02-bilingual-documentation.md
 ```
 
 - `v1-to-v2-migration.md` is the current user-facing migration contract.
 - `features/` contains consolidated records of shipped behavior and durable
   engineering decisions. It does not preserve one file per branch, commit, todo,
   or implementation slice; Git history keeps that chronology.
-- `requirements/` contains only active owner-approved what/why promises. It is
-  intentionally empty after the V2 production release, with `.gitkeep` retaining
-  the directory.
+- `requirements/` contains only active owner-approved what/why promises. The
+  current bilingual-documentation requirement is linked to its implementation
+  todo; `.gitkeep` retains the directory after active requirements graduate.
 - Active implementation progress, when needed, belongs in root-level `todos/` and
   is removed after completion.
 
@@ -76,7 +78,9 @@ active requirements without a new owner-approved Intent.
 
 - Production source line: V2, XeLaTeX, direct `latexmk` student build.
 - Latest immutable release: `v2.0.1.260719010734`.
-- Active requirements: none.
+- Active requirement: [bilingual documentation for Traditional-Chinese and
+  English readers](requirements/02-bilingual-documentation.md), with progress
+  tracked in [Todo 01](../todos/01-bilingual-documentation.md).
 - Persistent development branch: `main` only; work uses short-lived
   `feat/<short-name>` branches.
 - GitHub Releases is the canonical latest package while any Overleaf Gallery
