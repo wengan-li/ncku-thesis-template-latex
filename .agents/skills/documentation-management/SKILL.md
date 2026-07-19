@@ -25,8 +25,8 @@ CI, releases, or public distribution are involved.
 | `docs/requirements/<NN>-<slug>.md` | Active owner-approved what/why promise only. |
 | `todos/<NN>-<slug>.md` | Active implementation progress only. |
 | [`thesis/README.md`](../../../thesis/README.md) | Instructions that ship inside the student ZIP. |
-| [`CHANGELOG.md`](../../../CHANGELOG.md) | Traditional-Chinese current release index and user-visible changes. |
-| [`CHANGELOG.en.md`](../../../CHANGELOG.en.md) | Canonical complete English release history. |
+| [`CHANGELOG.md`](../../../CHANGELOG.md) | Traditional-Chinese default changelog with complete release history. |
+| [`CHANGELOG.en.md`](../../../CHANGELOG.en.md) | English companion with complete release history. |
 | [`README.md`](../../../README.md) | Public project overview and audience routing. |
 
 Current source, tests, scripts, and immutable release assets win on drift.
@@ -107,9 +107,9 @@ one is a short link/routing sentence.
   a Traditional-Chinese default `*.md` executive-summary companion. This is
   intentionally not a line-by-line translation of hashes, run IDs, benchmarks,
   or evidence transcripts.
-- `CHANGELOG.en.md` remains the canonical complete release history. Current
-  Traditional-Chinese V2 notes live in `CHANGELOG.md`; historical mixed-language
-  entries are retained rather than rewritten.
+- `CHANGELOG.md` and `CHANGELOG.en.md` both contain the complete release
+  history. Traditional Chinese owns the default path; historical mixed-language
+  entries are retained rather than rewritten solely for translation.
 - Apply the same filename rule to every paired documentation surface: Traditional
   Chinese owns `<name>.md`, English owns `<name>.en.md`, and `*.zh-TW.md` paths are
   forbidden. Locale identifiers such as `zh-Hant-TW` remain valid in metadata.

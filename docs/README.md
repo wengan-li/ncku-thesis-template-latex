@@ -1,10 +1,8 @@
-<!-- doc-pair: project-index; lang: zh-Hant-TW; topics: start-here,student-guides,project-records,current-release-state -->
+<!-- doc-pair: project-index; lang: zh-Hant-TW; topics: start-here,student-guides,project-records,releases-and-downloads -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
 # 專案文件
-
-目前正式release：[`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
 
 ## 文件入口
 
@@ -34,8 +32,8 @@
 
 Feature records保存已發行architecture、驗證結果及公開狀態。
 
-## 目前發行狀態
+## 發行與下載
 
-本模版目前使用V2 source line、XeLaTeX及direct `latexmk`學生build。最新immutable release是`v2.0.2.260719120024`，最新正式學生套件以[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest)為準。
+本模版使用XeLaTeX及direct `latexmk`學生build。正式學生套件與generated examples請由[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases)下載；各次發行的使用者可見變更記錄於[`CHANGELOG.md`](../CHANGELOG.md)。
 
-既有Overleaf Gallery頁面仍可公開使用。本模版的V2 update已提交review；在Overleaf批准並完成public read-back前，該頁面不代表最新V2 package。詳細狀態記錄於[`features/release-and-distribution.md`](features/release-and-distribution.md)。
+既有Overleaf Gallery頁面仍可公開使用。GitHub Releases與Overleaf publication是獨立狀態；詳細記錄見[`features/release-and-distribution.md`](features/release-and-distribution.md)。

@@ -63,6 +63,11 @@ CHINESE_USER_DOCS = tuple(pair[0] for pair in GUIDE_PAIRS + SUMMARY_PAIRS) + (
 ENGLISH_USER_DOCS = tuple(pair[1] for pair in GUIDE_PAIRS + SUMMARY_PAIRS)
 CANTONESE_ONLY = ("呢個", "只係", "唔", "嘅", "喺", "咁樣")
 WRONG_PRODUCT_CASING = re.compile(r"\b(?:LaTex|Latex|XeLatex|Xelatex)\b")
+MUTABLE_RELEASE_LABEL = re.compile(
+    r"目前正式release|最新immutable release|正式目標|最新production release|"
+    r"Current production release|latest immutable release|Production target|"
+    r"Latest production release"
+)
 INLINE_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*#*$", re.MULTILINE)
 FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
@@ -223,12 +228,16 @@ def check_no_repeated_language_labels() -> None:
 def check_language_hygiene() -> None:
     for relative in CHINESE_USER_DOCS + ENGLISH_USER_DOCS:
         plain = strip_fenced_blocks(read(relative))
+        if relative == "CHANGELOG.md":
+            plain = plain.split("## 1.8.x", 1)[0]
         bad_case = sorted(set(WRONG_PRODUCT_CASING.findall(plain)))
         if bad_case:
             fail(f"{relative}: incorrect product casing: {', '.join(bad_case)}")
 
     for relative in CHINESE_USER_DOCS:
         plain = strip_fenced_blocks(read(relative))
+        if relative == "CHANGELOG.md":
+            plain = plain.split("## 1.8.x", 1)[0]
         present = [token for token in CANTONESE_ONLY if token in plain]
         if present:
             fail(f"{relative}: Cantonese-only prose tokens: {', '.join(present)}")
@@ -242,6 +251,16 @@ def check_language_hygiene() -> None:
         if CJK.search(plain):
             lines = [line for line in plain.splitlines() if CJK.search(line)]
             fail(f"{relative}: CJK prose outside code/switcher: {lines[0]}")
+
+
+def check_no_mutable_release_labels() -> None:
+    failures: list[str] = []
+    for path in (ROOT / "docs").rglob("*.md"):
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            if MUTABLE_RELEASE_LABEL.search(line):
+                failures.append(f"{path.relative_to(ROOT)}:{number}")
+    if failures:
+        fail("mutable current/latest release labels remain: " + ", ".join(failures))
 
 
 def public_markdown_paths() -> tuple[Path, ...]:
@@ -533,22 +552,30 @@ def check_institution_profile_docs() -> None:
 def check_changelog() -> None:
     zh = read("CHANGELOG.md")
     en = read("CHANGELOG.en.md")
-    switcher = "[繁體中文 V2](CHANGELOG.md) | [English and complete history](CHANGELOG.en.md)"
+    switcher = "[繁體中文](CHANGELOG.md) | [English](CHANGELOG.en.md)"
     if switcher not in en or switcher not in zh:
         fail("changelog: missing reciprocal language switcher")
-    if "<!-- language: en; localized-current: CHANGELOG.md -->" not in en:
+    if "<!-- language: en; companion: CHANGELOG.md -->" not in en:
         fail("CHANGELOG.en.md: missing language metadata")
-    if "<!-- language: zh-Hant-TW; canonical-history: CHANGELOG.en.md -->" not in zh:
+    if "<!-- language: zh-Hant-TW; companion: CHANGELOG.en.md -->" not in zh:
         fail("CHANGELOG.md: missing language metadata")
-    en_current = en.split("## 1.8.x", 1)[0]
+    if "# 變更記錄" not in zh or "V2變更記錄" in zh:
+        fail("CHANGELOG.md: generic changelog heading is missing")
+    marker = "## 1.8.x"
+    if marker not in en or marker not in zh:
+        fail("changelog: complete V1 history is missing")
+    en_current, en_history = en.split(marker, 1)
+    zh_current, zh_history = zh.split(marker, 1)
+    if en_history != zh_history:
+        fail("CHANGELOG.md: V1 history differs from the complete English companion")
     bad_case = sorted(set(WRONG_PRODUCT_CASING.findall(strip_fenced_blocks(en_current))))
     if bad_case:
         fail(f"CHANGELOG.en.md: incorrect current-release product casing: {', '.join(bad_case)}")
     en_releases = re.findall(r"^### \[(v2\.[^]]+)\]", en_current, re.MULTILINE)
-    zh_releases = re.findall(r"^### \[(v2\.[^]]+)\]", zh, re.MULTILINE)
+    zh_releases = re.findall(r"^### \[(v2\.[^]]+)\]", zh_current, re.MULTILINE)
     if len(en_releases) < 2 or en_releases != zh_releases:
         fail("changelog: current V2 release entries differ between languages")
-    if VISIBLE_LANGUAGE_LABEL.search(en_current) or VISIBLE_LANGUAGE_LABEL.search(zh):
+    if VISIBLE_LANGUAGE_LABEL.search(en_current) or VISIBLE_LANGUAGE_LABEL.search(zh_current):
         fail("changelog: old inline-language labels survived")
 
 
@@ -631,6 +658,7 @@ def main() -> int:
         check_no_legacy_locale_suffixes()
         check_no_repeated_language_labels()
         check_language_hygiene()
+        check_no_mutable_release_labels()
         check_public_voice()
         check_project_index_scope()
         check_language_local_routes()

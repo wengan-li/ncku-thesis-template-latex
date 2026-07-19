@@ -1,6 +1,8 @@
-<!-- language: en; localized-current: CHANGELOG.md -->
+<!-- language: en; companion: CHANGELOG.md -->
 
-[繁體中文 V2](CHANGELOG.md) | [English and complete history](CHANGELOG.en.md)
+[繁體中文](CHANGELOG.md) | [English](CHANGELOG.en.md)
+
+# Changelog
 
 This file records stable NCKU thesis-template releases and user-visible fixes.
 Download the latest student project and generated examples from

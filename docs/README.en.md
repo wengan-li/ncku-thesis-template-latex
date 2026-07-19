@@ -1,10 +1,8 @@
-<!-- doc-pair: project-index; lang: en; topics: start-here,student-guides,project-records,current-release-state -->
+<!-- doc-pair: project-index; lang: en; topics: start-here,student-guides,project-records,releases-and-downloads -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
 # Project documentation
-
-Current production release: [`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
 
 ## Start here
 
@@ -34,8 +32,8 @@ Each complete guide uses one predominant language and links to its equivalent Tr
 
 Feature records preserve shipped architecture, validation results, and public state.
 
-## Current release state
+## Releases and downloads
 
-The template currently uses the V2 source line, XeLaTeX, and a direct `latexmk` student build. The latest immutable release is `v2.0.2.260719120024`; [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) is canonical for the latest production student package.
+The template uses XeLaTeX and a direct `latexmk` student build. Download production student packages and generated examples from [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases); [`CHANGELOG.en.md`](../CHANGELOG.en.md) records the user-visible changes for each release.
 
-The existing Overleaf Gallery page remains public. The template's V2 update has been submitted for review; until Overleaf approves it and the public page is read back, that page does not represent the latest V2 package. See [`features/release-and-distribution.en.md`](features/release-and-distribution.en.md) for the detailed state.
+The existing Overleaf Gallery page remains public. GitHub Releases and Overleaf publication are independent states; see [`features/release-and-distribution.en.md`](features/release-and-distribution.en.md) for the detailed record.
