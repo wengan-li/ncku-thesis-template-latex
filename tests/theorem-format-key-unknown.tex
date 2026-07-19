@@ -1,0 +1,6 @@
+% Negative contract: unknown dynamic theorem-format keys must fail.
+\input{./template/configure}
+\SetTheoremFormat[Definition]{unsupported=value}
+\begin{document}
+\typeout{NCKU-TEST-FAIL: unknown theorem-format key was ignored}
+\end{document}

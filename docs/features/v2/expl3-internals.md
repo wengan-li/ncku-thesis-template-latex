@@ -1,6 +1,7 @@
 # Incremental `expl3` Internal Modernization
 
-Status: first ten bounded slices implemented and validated; pending review
+Status: eleven bounded slices implemented and validated; command-parser
+migration complete
 
 ## Intent
 
@@ -88,9 +89,8 @@ The content parser now uses a separate `ncku / insert-theorem` `l3keys` family
 with two `.tl_set_e:N` properties. Public insertion commands, optional argument
 signatures, `title` and `label` names/defaults, `\TmpValueTitle` and
 `\TmpValueLabel`, title metadata freezing, proof markers, and rendering are
-unchanged. The dynamic theorem-format registry and counter-routing families
-remain on `pgfkeys`; this slice does not combine those independent state
-machines.
+unchanged. The dynamic theorem-format registry remained an independent state
+machine and was migrated only after its own contract was added.
 
 ### Selected follow-up: reference setup key parsing
 
@@ -182,6 +182,15 @@ focused contract freezes expanded, partial-reset, and literal-`\empty` behavior,
 2/2 unknown-key hard errors, all one-to-four-per-row helper branches, image assets,
 captions, labels, references, opacity, and the existing no-op alignment keys.
 
+### Selected follow-up: dynamic theorem-format registry
+
+The 21 theorem-format rows now share one three-key `l3keys` parser while the
+declarative registry retains each row's style, numbering policy, and defaults.
+The focused matrix freezes expanded values, per-call reset, literal-`\empty`
+omission, numbered and optional defaults, unknown-key hard failure, all 21 custom
+environments, forward and multi-hop counters, arbitrary LaTeX counters, cycle
+detection, plain/definition styles, and exact rendered output.
+
 ### Retained: explicit `xparse`
 
 The LaTeX kernel provides modern document-command interfaces, but it deliberately
@@ -196,15 +205,12 @@ cover, chapter, float, bibliography, font, theorem, oral, and style behavior.
 They do not form one bounded state machine. Each future conversion needs its own
 fixture and visible-output proof; a mechanical global rewrite is rejected.
 
-### Deferred: remaining `pgfkeys` families
+### Completed: repository-owned command parsers
 
-Only the single-figure, single-table, theorem-content, reference-setup,
-custom-font filename, font-option, and Chapter title-format families moved. The
-remaining 35 literal
-`\pgfkeys`/`\pgfkeysvalueof` references span three files and expose different
-defaulting, storage, repeated-setup, rendering, and unknown-key behavior. No
-multi-figure, dynamic theorem-format, or other numbering key family is approved
-for conversion without its own frozen contract and output proof.
+Active student source now has zero direct `\pgfkeys`/`\pgfkeysvalueof` and zero
+`l3keys2e` references. Nineteen command parser families use `l3keys` directly.
+The explicit `\usepackage{pgfkeys}` load was removed; PGF/TikZ remains a natural
+transitive runtime dependency through `mdframed[framemethod=tikz]`.
 
 ### Retained: `etoolbox`
 
@@ -270,8 +276,8 @@ The single-figure parser replacement passed:
   `latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex` command,
   producing 271 A4 pages, SyncTeX, and resolved references.
 
-`pgfkeys` remains intentionally active because other template files still use it
-and PGF/TikZ also remains part of the rendering stack. This slice claims one
+At that checkpoint, `pgfkeys` remained active because other template files still
+used it and PGF/TikZ remained part of the rendering stack. That slice claimed one
 bounded family migration, not package removal.
 
 ### Single-table `l3keys` validation result
@@ -293,8 +299,8 @@ The table parser replacement passed:
 - a repo-external documented `latexmk -xelatex` build of the generated student
   ZIP, producing 271 A4 pages, SyncTeX, and resolved references.
 
-After the two key-family slices, 52 literal `pgfkeys` references remain across
-five active template files. No package-removal claim is made.
+At that checkpoint after two key-family slices, 52 literal `pgfkeys` references
+remained across five active template files. No package-removal claim was made.
 
 ### Theorem-content `l3keys` validation result
 
@@ -316,9 +322,9 @@ The theorem-content parser replacement passed:
 - a repo-external documented `latexmk -xelatex` build of the generated student
   ZIP, producing 271 A4 pages, SyncTeX, and resolved references.
 
-After the three key-family slices, 49 literal `pgfkeys` references remain across
-five active template files. The two dynamic theorem-registry references remain
-intentionally active. No package-removal claim is made.
+After all eleven slices, active student source has zero direct `pgfkeys` parser
+references. No runtime package-removal claim is made because the visual framing
+stack still loads PGF/TikZ transitively.
 
 ### Reference-setup `l3keys` validation result
 
@@ -342,9 +348,9 @@ The reference parser replacement passed:
 - zero `l3keys2e` references in active student source and zero `l3keys2e`
   runtime loads across generated `.fls` files.
 
-After the four key-family slices, 46 literal `pgfkeys` references remain across
-four active template files. PGF/TikZ still loads `pgfkeys` at runtime, so no
-package-removal claim is made.
+At that checkpoint after four key-family slices, 46 literal `pgfkeys` references
+remained across four active template files. PGF/TikZ still loaded `pgfkeys` at
+runtime, so no package-removal claim was made.
 
 ### Custom-font filename `l3keys` validation result
 
@@ -367,9 +373,9 @@ The custom-font filename parser replacement passed:
 - zero `l3keys2e` references in active student source and zero `l3keys2e`
   runtime loads across generated `.fls` files.
 
-After the five key-family slices, 42 literal `pgfkeys` references remain across
-four active template files. The separate `/ParseFontOption` font-loading family
-and all other deferred families remain unchanged.
+At that checkpoint after five key-family slices, 42 literal `pgfkeys` references
+remained across four active template files. The separate `/ParseFontOption`
+font-loading family and all other families remained unchanged.
 
 ### Font-option `l3keys` validation result
 
@@ -392,9 +398,9 @@ The font-option parser replacement passed:
 - zero `l3keys2e` references in active student source and zero `l3keys2e`
   runtime loads across generated `.fls` files.
 
-After the six key-family slices, 38 literal `pgfkeys` references remain across
-three active template files. `cmd-font.tex` now has no direct `pgfkeys`
-references; PGF/TikZ still loads the package transitively.
+At that checkpoint after six key-family slices, 38 literal `pgfkeys` references
+remained across three active template files. `cmd-font.tex` had no direct
+`pgfkeys` references; PGF/TikZ still loaded the package transitively.
 
 ### Chapter title-format `l3keys` validation result
 
@@ -417,19 +423,10 @@ The Chapter title-format parser replacement passed:
   ZIP, producing 271 A4 pages, SyncTeX, and resolved references;
 - zero `l3keys2e` references in active student source.
 
-After the seven key-family slices, 35 literal `pgfkeys` references remain across
-three active template files. `cmd-numbering.tex` retains 27 references for the
-generic formatter, the other general/appendix title levels, and appendix
-numbering; none moved as part of the Chapter-only slice.
+## Completion boundary
 
-## Next research slice
-
-Do not continue by count alone. Rank candidates by removable dependency cost,
-finite semantics, existing fixture coverage, and output risk. Before another key
-family moves, capture its default, macro-expansion, unknown-key, repeated-setup,
-and rendering contract under the current implementation. The remaining choice is
-dynamic theorem registration; it is not approved automatically by reference
-count.
-Prefer the smallest
-finite dispatcher or add missing contracts first, and keep every slice
-independently revertible.
+The repository-owned generic command-parser migration is complete: all 19
+families are on `l3keys`, active student source has zero direct legacy parser
+references, and the explicit package load is gone. Future work may modernize
+other independently tested internals, but it is outside this migration and must
+not be justified by parser-reference counts.

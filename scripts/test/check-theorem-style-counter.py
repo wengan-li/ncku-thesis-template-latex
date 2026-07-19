@@ -57,6 +57,14 @@ def main() -> None:
     theorem_types = numbered_plain + numbered_definition + unnumbered_definition + optional_numbered_definition
 
     compact_log = "".join(log.split())
+    parser_markers = (
+        "NCKU-THEOREM-REGISTRY-EXPANDED:EnvExpandedDefinition/ExpandedDefinition/MatrixCustomCounter",
+        "NCKU-THEOREM-REGISTRY-PARTIAL:EnvDefinition/PartialDefinition/Section",
+        "NCKU-THEOREM-REGISTRY-OMITTED:EnvDefinition/Definition/Section",
+        "NCKU-THEOREM-REGISTRY-OPTIONAL:EnvNote/Note/",
+    )
+    for marker in parser_markers:
+        require(marker in compact_log, f"missing registry parser marker: {marker}")
     require(log.count("NCKU-TEST-MATRIX-") == len(theorem_types), "unexpected matrix marker count")
     for theorem_type in theorem_types:
         if theorem_type in {"Condition", "Summary"}:
@@ -135,6 +143,32 @@ def main() -> None:
         marker = f"MATRIX{theorem_type.upper()}BODYONE"
         require(marker in styled, f"missing XML style token: {marker}")
         require(not styled[marker], f"definition theorem body became italic: {theorem_type}")
+
+    source = Path("thesis/template/command/cmd-theorem.tex").read_text()
+    require(
+        r"\cs_new_protected:Npn \NCKUPrivateSetTheoremFormatKeys #1#2" in source,
+        "dynamic theorem private parser seam is missing",
+    )
+    require(
+        source.count(r"\NCKUPrivateSetTheoremFormatKeys{#1}{#2}") == 1,
+        "public theorem format route bypasses its private seam",
+    )
+    require(
+        r"\keys_define:nn { ncku / theorem-format }" in source,
+        "dynamic theorem l3keys family is missing",
+    )
+    registry_block = source.split(
+        r"\keys_define:nn { ncku / theorem-format }", 1
+    )[1].split(r"\cs_new_protected:Npn \ncku_theorem_format_keys_set:nn", 1)[0]
+    require(registry_block.count(".code:n") == 3, "dynamic theorem key count changed")
+    require(source.count(r"\pgfkeys") == 0, "direct theorem pgfkeys references remain")
+    require(r"/Theorem#1Format/.is family" not in source, "legacy dynamic family remains")
+    require(
+        source.count("NCKUPrivateTheoremDefaultEnvironment@") == 2
+        and source.count("NCKUPrivateTheoremDefaultShowText@") == 2
+        and source.count("NCKUPrivateTheoremDefaultFollowCounter@") == 2,
+        "registry default storage boundary changed",
+    )
 
     print(
         "Theorem style/counter matrix PASS: 21 custom environments, "
