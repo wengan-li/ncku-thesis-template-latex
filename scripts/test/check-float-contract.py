@@ -197,13 +197,17 @@ def main() -> None:
     )
     require(figure_source.count(r"\TmpValuePosition") == 1, "figure pos key became behaviorally active")
     require(figure_source.count(r"\TmpValueAlign") == 1, "figure align key became behaviorally active")
-    require(figures_source.count(r"\TmpMIValueAlign") == 1, "multi-figure align key became behaviorally active")
+    top_runtime = figures_source.split(r"\ExplSyntaxOff", 1)[1]
     require(
-        r"\newcommand\NCKUPrivateSetInsertFiguresKeys[1]" in figures_source,
+        r"\TmpMIValueAlign" not in top_runtime,
+        "multi-figure align key became behaviorally active outside its parser",
+    )
+    require(
+        r"\cs_new_protected:Npn \NCKUPrivateSetInsertFiguresKeys #1" in figures_source,
         "top-level multi-figure private parser seam is missing",
     )
     require(
-        r"\newcommand\NCKUPrivateSetInsertFiguresSubFigureKeys[1]" in figures_source,
+        r"\cs_new_protected:Npn \NCKUPrivateSetInsertFiguresSubFigureKeys #1" in figures_source,
         "nested subfigure private parser seam is missing",
     )
     require(
@@ -215,12 +219,27 @@ def main() -> None:
         "nested subfigure command bypasses its private seam",
     )
     require(
-        r"/InsertFigures/.is family" in figures_source,
-        "legacy top-level multi-figure family is missing before migration",
+        r"\keys_define:nn { ncku / insert-figures }" in figures_source,
+        "top-level multi-figure l3keys family is missing",
     )
     require(
-        r"/InsertFiguresSubFigure/.is family" in figures_source,
-        "legacy nested subfigure family is missing before migration",
+        r"\keys_define:nn { ncku / insert-figures-subfigure }" in figures_source,
+        "nested subfigure l3keys family is missing",
+    )
+    top_block = figures_source.split(
+        r"\keys_define:nn { ncku / insert-figures }", 1
+    )[1].split(r"\cs_new_protected:Npn \ncku_insert_figures_set_keys:n", 1)[0]
+    sub_block = figures_source.split(
+        r"\keys_define:nn { ncku / insert-figures-subfigure }", 1
+    )[1].split(
+        r"\cs_new_protected:Npn \ncku_insert_figures_subfigure_set_keys:n", 1
+    )[0]
+    require(top_block.count(".tl_set_e:N") == 5, "top-level multi-figure key count changed")
+    require(sub_block.count(".tl_set_e:N") == 5, "nested subfigure key count changed")
+    require(r"/InsertFigures/.is family" not in figures_source, "legacy top-level family remains")
+    require(
+        r"/InsertFiguresSubFigure/.is family" not in figures_source,
+        "legacy nested subfigure family remains",
     )
 
     print(
