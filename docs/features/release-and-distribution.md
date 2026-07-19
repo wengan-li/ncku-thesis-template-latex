@@ -120,7 +120,7 @@ The current release hashes and read-back evidence are recorded in
 
 ## Overleaf profiles
 
-Overleaf packages are maintainer/import artifacts under ignored build storage;
+Overleaf packages are repository/import artifacts under ignored build storage;
 they are not additional GitHub Release assets.
 
 ```bash
@@ -154,8 +154,8 @@ plan-specific timeout behavior.
 
 - The community-maintained template was submitted on 2026-07-12 and the initial
   public listing was approved/published on 2026-07-15.
-- On 2026-07-18 the maintainer confirmed that the verified V2 Gallery package had
-  been uploaded to the original Overleaf project and resubmitted for review.
+- On 2026-07-18 I confirmed that I had uploaded the verified V2 Gallery package
+  to the original Overleaf project and resubmitted it for review.
 - The authenticated project settings and compile result were not independently
   read back at that checkpoint. The public page still exposed the earlier copy.
 - Therefore the durable state is **owner-confirmed submitted**, not independently

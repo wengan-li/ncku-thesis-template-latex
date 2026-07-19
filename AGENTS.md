@@ -24,7 +24,7 @@ architecture that:
 2. preserves every explicitly declared v1 command/environment throughout 2.x;
 3. fixes proven helper defects with focused regression fixtures;
 4. separates generic mechanisms from NCKU policy and institutional data;
-5. restores the v1.5.0 non-NCKU customization boundary under
+5. restores the v1.5.0 other-institution customization boundary under
    `template/style/`, not `conf/`;
 6. ships documented and tested 1.x-to-2.x migration steps;
 7. keeps direct XeLaTeX and Overleaf builds authoritative.
@@ -178,7 +178,7 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 
 ## Documentation Standard
 
-- `docs/README.md` is the maintainer index and lifecycle contract.
+- `docs/README.md` is the project-documentation index and lifecycle contract.
 - `docs/v1-to-v2-migration.md` is the current 1.x-to-2.x migration guide;
   `thesis/README.md` keeps concise offline steps and `thesis/conf/README.md`
   keeps field-by-field configuration guidance inside the student ZIP.
@@ -195,6 +195,10 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
   natural technical English. Use one predominant language per file with a
   top-of-page text switcher to the equivalent language file; do not use repeated
   per-section language labels or flags.
+- Public project actions use the owner's first-person `我` / `I` voice. General
+  processes use role-neutral project or repository wording. Chinese references
+  to cross-institution readers use `其他學校的同學`; English uses `students from
+  other institutions`.
 - Paired user guides carry hidden stable topic IDs. Keep paired executable code
   blocks identical and validate links in both files so split-language pages do
   not silently drift.

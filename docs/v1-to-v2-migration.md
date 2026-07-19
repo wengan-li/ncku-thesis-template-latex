@@ -1,4 +1,4 @@
-<!-- doc-pair: v1-v2-migration; lang: zh-Hant-TW; topics: before-you-start,compatibility-first-path,native-v2-path,stable-project-boundaries,public-helper-compatibility,byte-identical-v1-project-gate,v1-adapter-layout,corrected-behaviors,date-migration,migrate-a-non-ncku-style-port,portable-verification,maintainer-verification,recovery-and-troubleshooting -->
+<!-- doc-pair: v1-v2-migration; lang: zh-Hant-TW; topics: before-you-start,compatibility-first-path,native-v2-path,stable-project-boundaries,public-helper-compatibility,byte-identical-v1-project-gate,v1-adapter-layout,corrected-behaviors,date-migration,migrate-another-institution-style-port,portable-verification,repository-verification,recovery-and-troubleshooting -->
 
 [繁體中文](v1-to-v2-migration.md) | [English](v1-to-v2-migration.en.md)
 
@@ -45,7 +45,7 @@ No helper rename is required / 不需要重新命名helper。
 
 ## Native V2路徑
 
-此路徑適用於新論文或長期維護的institutional fork。由V2學生套件開始，複製論文內容、圖片、書目及證明書，再於`conf/conf.tex`重新輸入或有意識地merge metadata。成大專案保留預設`ncku` profile；其他學校依照[`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md)建立並選擇一個profile。2.x期間可繼續使用相容helpers，不需要一次改寫全部source。
+此路徑適用於新論文或長期維護的institutional fork。由V2學生套件開始，複製論文內容、圖片、書目及證明書，再於`conf/conf.tex`重新輸入或有意識地merge metadata。成大專案保留預設`ncku` profile；其他學校的同學依照[`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md)建立並選擇一個profile。2.x期間可繼續使用相容helpers，不需要一次改寫全部source。
 
 每一個升級步驟後都要建置。
 
@@ -110,7 +110,7 @@ template/compat/v1.tex
 | `\GetOralYearInTaiwanYear`會經thesis state重算並可能改動thesis year。 | Getter只讀oral state；`\SetOralEngDate`同步oral Taiwan-year state。 | 無需動作。 |
 | `\SetDeptName{chi}{short}{full}`第二參數被丟棄。 | Short name保存在`\GetDeptEngShortName`；`\GetDeptEngName`仍回傳full name。 | 可選擇使用新getter。 |
 | `\SetDeptDPS`輸出`Departmment of Photonics`。 | 修正為`Department of Photonics`。 | 重新建置。 |
-| English oral certificate混用oral day及cover month/year。 | 全部使用oral day/month/year。 | 使用不同日期的非NCKU專案會自動得到正確的口試日期。 |
+| English oral certificate混用oral day及cover month/year。 | 全部使用oral day/month/year。 | 其他學校的同學使用不同日期時會自動得到正確的口試日期。 |
 | Doctoral English cover從oral metadata借day，雖然`\SetCoverDate`只有year/month。 | Master/Doctoral date tokens由profile擁有；generic/custom只render cover-owned month/year，NCKU明確保留既有oral-day policy。 | NCKU無需動作；其他profile可自訂date tokens。 |
 | `\SetCommitteeSize`對所有degree接受generic 2–9，與NCKU教學文字不一致。 | Policy由profile擁有；NCKU Master為3–5、Doctoral為5–9，neutral/custom保留2–9。 | 先呼叫`\MasterDegree`／`\PhdDegree`再設定size。 |
 | Theorem `label` option以錯誤braces傳遞，label key出現在正文且無label；mutable title亦令`\nameref`變空。 | 保留optional signature，正確寫label，並在`\label`前freeze title；`\ref`及`\nameref`均可用。 | 無需改source，重新build。 |
@@ -120,14 +120,14 @@ template/compat/v1.tex
 
 ## 日期升級
 
-Public setters不變。V2將raw input與profile-resolved display policy分開：`\GetRequestedCoverYear`／`\GetRequestedCoverMonth`回傳`\SetCoverDate`原始值，`\GetThesisYear`／`\GetThesisMonth`回傳profile解決後的封面值，oral getters保持獨立。NCKU profile仍以oral date作封面authoritative date，因此NCKU輸出不變。Non-NCKU profile預設使用explicit cover year/month，不借用oral day。
+Public setters不變。V2將raw input與profile-resolved display policy分開：`\GetRequestedCoverYear`／`\GetRequestedCoverMonth`回傳`\SetCoverDate`原始值，`\GetThesisYear`／`\GetThesisMonth`回傳profile解決後的封面值，oral getters保持獨立。NCKU profile仍以oral date作封面authoritative date，因此NCKU輸出不變。其他學校的profile預設使用explicit cover year/month，不借用oral day。
 
 ```tex
 \SetOralDate{2023}{12}{31}
 \SetCoverDate{2024}{7}
 ```
 
-## 非NCKU Style Port升級
+## 其他學校Style Port升級
 
 1. 以`template/style/custom/`作新profile base；不要先copy/load NCKU再撤銷policy。
 2. 將舊custom file內的institution geometry、校名、watermark及date behavior移到`<profile>/<profile>.tex`。
@@ -152,7 +152,7 @@ pdftotext thesis.pdf thesis.txt
 
 Use the saved 1.x PDF as the comparison reference / 以保存的1.x PDF作比較reference。
 
-## Maintainer驗證
+## 完整儲存庫驗證
 
 下列commands需要完整Git checkout並從repository root執行，student ZIP不提供。Acceptance evidence包括597/597 runtime-visible declarations、65/65 literal-def declarations、22個dead-comment audit entries、18個byte-identical student inputs、exact-tree student archive、direct build、neutral/custom six-page fixture，以及canonical 271-page NCKU output identity。
 

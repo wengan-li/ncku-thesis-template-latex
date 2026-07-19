@@ -249,11 +249,11 @@ See the [1.x → 2.x migration guide](docs/v1-to-v2-migration.md) and the
 
 ### [v1.5.0](https://github.com/wengan-li/ncku-thesis-template-latex/tree/v1.5.0) — 2016-09-11
 
-**這版的更新是為了讓非成大的同學或人士都能建基於這模版以改成自己所需的模版. 故任何同學如已經在使用這模版, 同時要準備用來交出最終版給學校的話, 是不用更新到這一版的.**
+**這版的更新是為了讓其他學校的同學都能建基於這模版以改成自己所需的模版. 故任何同學如已經在使用這模版, 同時要準備用來交出最終版給學校的話, 是不用更新到這一版的.**
 
 **更新**
 
-- 重構模版的設定檔的檔案路徑和一些模版的 APIs 名字, 這變動是為了讓非成大的同學或人士都能建基於這模版以建立出自己所需的模版, 同時保留能使用本模版提供的功能. 詳細[請看 Customization.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/thesis/template/style/Customization.md)這檔案中的內容.
+- 重構模版的設定檔的檔案路徑和一些模版的 APIs 名字, 這變動是為了讓其他學校的同學都能建基於這模版以建立出自己所需的模版, 同時保留能使用本模版提供的功能. 詳細[請看 Customization.md](https://github.com/wengan-li/ncku-thesis-template-latex/blob/master/thesis/template/style/Customization.md)這檔案中的內容.
 - 在 README.md 中補上學校對論文要求的 URL.
 
 ## 1.4.x

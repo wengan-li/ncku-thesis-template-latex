@@ -22,7 +22,7 @@ V2 delivers one maintained production line with these boundaries:
 - `thesis.tex`, `conf/conf.tex`, `context/`, `example/`, and `template/` remain
   stable student-facing project paths.
 - XeLaTeX remains the supported production engine. Students can build directly
-  with `latexmk`; repository `just` commands are maintainer orchestration, not a
+  with `latexmk`; repository `just` commands are project orchestration, not a
   package requirement.
 - Existing 1.x projects keep their command and environment names and migrate
   through `template/compat/v1.tex` without a helper-renaming campaign.

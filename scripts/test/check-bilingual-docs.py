@@ -20,7 +20,7 @@ GUIDE_PAIRS: tuple[tuple[str, str, str, int], ...] = (
     ("README.md", "README.en.md", "root-readme", 7),
     ("thesis/README.md", "thesis/README.en.md", "student-readme", 7),
     ("thesis/conf/README.md", "thesis/conf/README.en.md", "student-config", 8),
-    ("docs/README.md", "docs/README.en.md", "maintainer-index", 4),
+    ("docs/README.md", "docs/README.en.md", "project-index", 4),
     (
         "docs/v1-to-v2-migration.md",
         "docs/v1-to-v2-migration.en.md",
@@ -67,6 +67,11 @@ PAIR_META = re.compile(
 )
 CJK = re.compile(r"[\u3400-\u9fff]")
 VISIBLE_LANGUAGE_LABEL = re.compile(r"\*\*(?:繁體中文|English)\*\*")
+FORBIDDEN_PUBLIC_VOICE = re.compile(
+    r"維護者|非本校|非成大|非NCKU|非 NCKU|非本維護者|外校|"
+    r"\bmaintainers?\b|non-NCKU",
+    re.IGNORECASE,
+)
 
 
 def fail(message: str) -> NoReturn:
@@ -223,6 +228,42 @@ def check_language_hygiene() -> None:
             fail(f"{relative}: CJK prose outside code/switcher: {lines[0]}")
 
 
+def public_markdown_paths() -> tuple[Path, ...]:
+    paths = [
+        ROOT / "README.md",
+        ROOT / "README.en.md",
+        ROOT / "CHANGELOG.md",
+        ROOT / "CHANGELOG.zh-TW.md",
+    ]
+    paths.extend((ROOT / "docs").rglob("*.md"))
+    paths.extend((ROOT / "thesis").rglob("*.md"))
+    return tuple(sorted(set(path for path in paths if path.is_file())))
+
+
+def check_public_voice() -> None:
+    failures: list[str] = []
+    for path in public_markdown_paths():
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            if FORBIDDEN_PUBLIC_VOICE.search(line):
+                failures.append(f"{path.relative_to(ROOT)}:{number}")
+    if failures:
+        fail("public owner-voice or cross-school wording drift: " + ", ".join(failures))
+
+    required_first_person = {
+        "README.md": ("這是我以XeLaTeX維護", "我已將V2上載"),
+        "README.en.md": ("I maintain this XeLaTeX template", "I uploaded V2"),
+        "docs/README.md": ("我在本目錄記錄",),
+        "docs/README.en.md": ("I use this directory to record",),
+        "thesis/conf/README.md": ("我不會為了配合翻譯",),
+        "thesis/conf/README.en.md": ("I do not change the repository baseline",),
+    }
+    for relative, markers in required_first_person.items():
+        text = read(relative)
+        missing = [marker for marker in markers if marker not in text]
+        if missing:
+            fail(f"{relative}: missing first-person project voice: {', '.join(missing)}")
+
+
 def check_changelog() -> None:
     en = read("CHANGELOG.md")
     zh = read("CHANGELOG.zh-TW.md")
@@ -315,6 +356,7 @@ def main() -> int:
             check_summary_pair(*pair)
         check_no_repeated_language_labels()
         check_language_hygiene()
+        check_public_voice()
         check_changelog()
         check_package_routes()
         check_instruction_alias()

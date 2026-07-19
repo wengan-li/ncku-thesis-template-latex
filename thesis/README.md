@@ -15,11 +15,11 @@
 
 ## 選擇設定
 
-文件語言、學校樣式設定檔、封面語言、學位及內容模式互相獨立。國際學生可以使用成大`ncku` profile；台灣使用者亦可以維護其他學校的profile。不要因讀者語言而選擇學校profile。
+文件語言、學校樣式設定檔、封面語言、學位及內容模式互相獨立。國際學生可以使用成大`ncku` profile；其他學校的同學亦可建立自己學校的profile。不要因讀者語言而選擇學校profile。
 
 | 決定 | 選項 |
 | --- | --- |
-| 學校 | 預設`ncku`；其他學校使用維護中的custom profile |
+| 學校 | 成大同學使用預設`ncku`；其他學校的同學可使用custom profile |
 | 封面語言 | `\DisplayCoverInChi`或`\DisplayCoverInEng` |
 | 學位 | `\MasterDegree`或`\PhdDegree` |
 | 內容 | 自己的`context/context.tex`或`\ExampleMode`教學範例 |

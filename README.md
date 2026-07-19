@@ -1,4 +1,4 @@
-<!-- doc-pair: root-readme; lang: zh-Hant-TW; topics: project-overview,release-and-overleaf-status,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,submission-watermark-and-certificate,documentation-and-maintenance,other-community-alternatives,licence -->
+<!-- doc-pair: root-readme; lang: zh-Hant-TW; topics: project-overview,release-and-overleaf-status,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,submission-watermark-and-certificate,documentation-and-project-work,other-community-alternatives,licence -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -8,7 +8,7 @@
 
 ## 專案簡介
 
-這是由社群維護、以XeLaTeX建置的國立成功大學碩博士論文範本，可撰寫中文、英文或中英混合內容，並自動產生封面、目錄、圖表清單及其他前置頁面。它提供學生設定、可重用的LaTeX helpers、1.x相容層，以及將樣式移植到其他學校的profile架構。
+這是我以XeLaTeX維護的國立成功大學碩博士論文範本，可撰寫中文、英文或中英混合內容，並自動產生封面、目錄、圖表清單及其他前置頁面。它提供學生設定、可重用的LaTeX helpers、1.x相容層，以及讓其他學校的同學建立自己樣式的profile架構。
 
 本專案並非國立成功大學官方軟體，也不代表學校、圖書館、學位考試系統或任何系所的現行認可。使用前必須核對當年度規定；官方規定永遠優先於本範本。
 
@@ -20,15 +20,15 @@
 
 最新正式原始碼及學生套件由[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest)提供。目前最新production release是`v2.0.1.260719010734`。V2保留完整machine-audited 1.x public API及XeLaTeX學生使用路徑，同時整理profile、相容層、測試及下載套件。
 
-既有Overleaf Gallery頁面仍可公開使用。維護者已確認將V2上載到原本的Overleaf project並重新提交Gallery update review；在Overleaf批准並完成public read-back前，不能將「已提交」寫成「已批准」，最新V2仍以GitHub Releases為準。
+既有Overleaf Gallery頁面仍可公開使用。我已將V2上載到原本的Overleaf project並重新提交Gallery update review；在Overleaf批准並完成public read-back前，不能將「已提交」寫成「已批准」，最新V2仍以GitHub Releases為準。
 
 ## 選擇正確設定
 
-文件語言、學校profile、封面語言、學位及內容模式是不同決定。國際學生如就讀成大仍使用`ncku` profile；台灣維護者為其他學校建立範本時則使用`custom`或另一個institution profile。不要將「英文」等同「非成大」。
+文件語言、學校profile、封面語言、學位及內容模式是不同決定。國際學生如就讀成大仍使用`ncku` profile；其他學校的同學如要建立自己的範本，可使用`custom`或另一個institution profile。不要從讀者語言推斷學校profile。
 
 | 決定 | 選項 |
 | --- | --- |
-| 學校 | 預設`ncku`；其他學校使用維護中的custom profile |
+| 學校 | 成大同學使用預設`ncku`；其他學校的同學可使用custom profile |
 | 封面語言 | `\DisplayCoverInChi`或`\DisplayCoverInEng` |
 | 學位 | `\MasterDegree`或`\PhdDegree` |
 | 內容 | 自己的`context/context.tex`或`\ExampleMode`教學範例 |
@@ -70,7 +70,7 @@ defense-certificate-phd.pdf
 
 ## 其他學校樣式
 
-V2將共用renderer、NCKU policy及其他學校port分成`base`、`ncku`及`custom`。學生論文資料仍放在`conf/conf.tex`；學校geometry、名稱、日期政策、文字及assets放在`template/style/<profile>/`。非成大維護者由`template/style/custom/`開始，不要直接修改共用renderer或先載入NCKU再覆寫。
+V2將共用renderer、NCKU policy及其他學校port分成`base`、`ncku`及`custom`。學生論文資料仍放在`conf/conf.tex`；學校geometry、名稱、日期政策、文字及assets放在`template/style/<profile>/`。其他學校的同學可由`template/style/custom/`開始，不要直接修改共用renderer或先載入NCKU再覆寫。
 
 ## 提交、浮水印與證明書
 
@@ -78,9 +78,9 @@ V2將共用renderer、NCKU policy及其他學校port分成`base`、`ncku`及`cus
 
 學位考試合格證明書應優先使用學位考試系統產出的正式版本。本範本產生的證明書只供legacy/example及regression用途。2015／2018的歷史查核記錄不構成現時授權或官方認可。
 
-## 文件與維護
+## 文件與專案工作
 
-學生應由套件內README及configuration guide開始。維護者可由[`docs/README.md`](docs/README.md)進入architecture、validation、release及Overleaf records。完整儲存庫使用[`just`](https://just.systems/)統一maintainer commands；學生套件不依賴`just`。
+如果你只需要撰寫論文，請由套件內README及configuration guide開始。我在[`docs/README.md`](docs/README.md)記錄architecture、validation、release及Overleaf evidence。完整儲存庫使用[`just`](https://just.systems/)統一專案commands；學生套件不依賴`just`。
 
 ```bash
 just          # list commands

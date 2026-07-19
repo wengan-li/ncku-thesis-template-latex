@@ -4,7 +4,7 @@
 
 # Institution style customization
 
-V2 separates reusable thesis helpers from institution policy so non-NCKU maintainers can retain template capabilities while maintaining their own institution format. Documentation language, cover language, and institution profile are independent decisions.
+V2 separates reusable thesis helpers from institution policy so students from other institutions can retain template capabilities while creating their own institution format. Documentation language, cover language, and institution profile are independent decisions.
 
 ## Architecture boundary
 
@@ -17,7 +17,7 @@ template/cover/          shared cover renderer
 template/oral/           shared certificate renderer
 template/style/base/     profile contract and wording tokens
 template/style/ncku/     NCKU data, geometry, date policy, and watermark asset
-template/style/custom/   directly buildable neutral/non-NCKU skeleton
+template/style/custom/   directly buildable other-institution skeleton
 ```
 
 ## Create a new profile
@@ -131,7 +131,7 @@ Keep renderer capacity and institution policy separate.
 
 ## Date policy and raw/resolved state
 
-Public commands remain `\SetOralDate{year}{month}{day}` and `\SetCoverDate{year}{month}`. Generic policy keeps them as independent metadata and uses Gregorian years in Chinese renderers. NCKU hooks make the oral date authoritative for the cover and select Taiwan-year display. Another institution with the same rule overrides policy hooks and display getters, not public setters.
+Public commands remain `\SetOralDate{year}{month}{day}` and `\SetCoverDate{year}{month}`. Generic policy keeps them as independent metadata and uses Gregorian years in Chinese renderers. NCKU hooks make the oral date authoritative for the cover and select Taiwan-year display. Students from another institution with the same rule override policy hooks and display getters, not public setters.
 
 `\GetRequestedCoverYear` / `\GetRequestedCoverMonth` expose raw user input; `\GetThesisYear` / `\GetThesisMonth` expose profile-resolved display values.
 
@@ -156,7 +156,7 @@ Compatibility preserves correct contracts, not verified defects.
 
 ## Verification
 
-The student package contains no `justfile`, `scripts/`, or `tests`; run direct XeLaTeX/latexmk from the project root containing `thesis.tex`. Full-repository maintainers run focused custom-style, API, V1 migration, and full gates. The custom fixture uses distinct oral/cover dates across Chinese/English Master and Doctoral branches and rejects NCKU visible policy or watermark assets.
+The student package contains no `justfile`, `scripts/`, or `tests`; run direct XeLaTeX/latexmk from the project root containing `thesis.tex`. For full-repository work, I run the focused custom-style, API, V1 migration, and full gates. The custom fixture uses distinct oral/cover dates across Chinese/English Master and Doctoral branches and rejects NCKU visible policy or watermark assets.
 
 Student/package command:
 
@@ -165,7 +165,7 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 pdfinfo thesis.pdf
 ```
 
-Maintainer commands:
+Project commands:
 
 ```bash
 just _test-custom-style

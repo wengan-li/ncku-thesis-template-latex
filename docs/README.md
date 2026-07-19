@@ -1,14 +1,14 @@
-<!-- doc-pair: maintainer-index; lang: zh-Hant-TW; topics: start-here,directory-model,bilingual-policy,documentation-lifecycle,source-of-truth-order,current-state -->
+<!-- doc-pair: project-index; lang: zh-Hant-TW; topics: start-here,directory-model,bilingual-policy,documentation-lifecycle,source-of-truth-order,current-state -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
-# 維護文件
+# 專案文件
 
 目前正式release：[`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
 
 ## 文件入口
 
-本目錄是已發行成大論文範本的維護文件。學生應優先閱讀套件內的`thesis/README.md`及`thesis/conf/README.md`；本目錄負責migration、architecture、validation、release及Overleaf records。Root `README.md`是public router，不是maintainer runbook。
+我在本目錄記錄已發行成大論文範本的migration、architecture、validation、release及Overleaf evidence。如果你只需要撰寫論文，請優先閱讀套件內的`thesis/README.md`及`thesis/conf/README.md`；root `README.md`是public router，不是專案runbook。
 
 | 讀者或工作 | Canonical文件 |
 | --- | --- |
@@ -22,7 +22,7 @@
 
 ## 文件結構
 
-User journeys每種語言使用獨立文件，頁首以文字language switcher連到equivalent page。Maintainer feature records以英文technical record作canonical source，另設繁中executive-summary companion，避免將每個hash、run ID及benchmark重複兩次。Active requirements只保存owner-approved what/why promise，active todos只保存implementation progress；完成後會整合durable knowledge並移除兩者。
+User journeys每種語言使用獨立文件，頁首以文字language switcher連到equivalent page。Project feature records以英文technical record作canonical source，另設繁中executive-summary companion，避免將每個hash、run ID及benchmark重複兩次。Active requirements只保存owner-approved what/why promise，active todos只保存implementation progress；完成後會整合durable knowledge並移除兩者。
 
 ```text
 docs/
@@ -71,7 +71,7 @@ python3 scripts/test/check-bilingual-docs.py
 ```text
 source and deterministic tests
 -> immutable public release evidence
--> current user/maintainer documentation
+-> current user/project documentation
 -> historical commits, PRs, and removed notes
 ```
 

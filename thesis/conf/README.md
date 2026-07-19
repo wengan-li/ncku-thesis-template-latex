@@ -8,7 +8,7 @@
 
 ## 使用原則與相容邊界
 
-`conf/conf.tex`從`v1.8.2.260715154703`開始在2.x被byte-pinned，用來證明既有學生設定可原封不動地升級。因此它原有的中文註解及檔案bytes不會為翻譯而改寫。請在自己的論文副本內填寫值；範本維護者不可改動repository baseline或更新migration hash來配合翻譯。
+`conf/conf.tex`從`v1.8.2.260715154703`開始在2.x被byte-pinned，用來證明既有學生設定可原封不動地升級。因此它原有的中文註解及檔案bytes不會為翻譯而改寫。請在自己的論文副本內填寫值；我不會為了配合翻譯而改動repository baseline或更新migration hash。
 
 同一類設定如呼叫多次，通常以最後一次呼叫為準。每一組只保留你真正選擇的一項，並在小步修改後立即build。
 
@@ -47,7 +47,7 @@
 
 ## 學位與日期
 
-使用`\MasterDegree`或`\PhdDegree`選擇一項。`\SetOralDate{year}{month}{day}`設定口試日期；`\SetCoverDate{year}{month}`只保存封面年月。NCKU profile會按成大政策由口試日期產生封面日期及民國年顯示，因此成大學生一般不需另外依賴`\SetCoverDate`。其他學校的日期政策應由該institution profile定義。
+使用`\MasterDegree`或`\PhdDegree`選擇一項。`\SetOralDate{year}{month}{day}`設定口試日期；`\SetCoverDate{year}{month}`只保存封面年月。NCKU profile會按成大政策由口試日期產生封面日期及民國年顯示，因此成大學生一般不需另外依賴`\SetCoverDate`。其他學校的同學如有不同日期政策，應在自己的institution profile內定義。
 
 ```tex
 \MasterDegree
@@ -57,7 +57,7 @@
 
 ## 系所與指導教授
 
-NCKU專案可使用`\SetDeptCSIE`等成大系所preset；請在`template/style/ncku/department.tex`確認可用command。其他學校不要使用NCKU preset，應在自己的profile提供學校資料，或使用通用`\SetDeptName{中文名稱}{英文縮寫}{English full name}`。
+NCKU專案可使用`\SetDeptCSIE`等成大系所preset；請在`template/style/ncku/department.tex`確認可用command。其他學校的同學不應使用NCKU preset，應在自己的profile提供學校資料，或使用通用`\SetDeptName{中文名稱}{英文縮寫}{English full name}`。
 
 封面最多預留三位指導教授。`\SetAdvisorNameA`為第一位，之後視需要使用`B`及`C`。雙語姓名可一次提供；中文suffix及英文prefix由profile控制。
 
@@ -115,9 +115,9 @@ NCKU專案可使用`\SetDeptCSIE`等成大系所preset；請在`template/style/n
 \SetTheoremFormat[Theorem]{ShowText = {Theorem}}
 ```
 
-## 其他學校Profile
+## 其他學校的同學如何使用Profile
 
-`conf/conf.tex`只保存論文資料，不應承擔學校geometry、校名、日期政策、institution wording或assets。非NCKU維護者應由`template/style/custom/`開始，並跟隨[`../template/style/Customization.md`](../template/style/Customization.md)。文件語言或封面語言不會自動選擇profile。
+`conf/conf.tex`只保存論文資料，不應承擔學校geometry、校名、日期政策、institution wording或assets。其他學校的同學應由`template/style/custom/`開始，並跟隨[`../template/style/Customization.md`](../template/style/Customization.md)。文件語言或封面語言不會自動選擇profile。
 
 ## 建置與故障排除
 

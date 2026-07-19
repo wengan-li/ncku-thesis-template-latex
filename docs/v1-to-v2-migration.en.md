@@ -1,4 +1,4 @@
-<!-- doc-pair: v1-v2-migration; lang: en; topics: before-you-start,compatibility-first-path,native-v2-path,stable-project-boundaries,public-helper-compatibility,byte-identical-v1-project-gate,v1-adapter-layout,corrected-behaviors,date-migration,migrate-a-non-ncku-style-port,portable-verification,maintainer-verification,recovery-and-troubleshooting -->
+<!-- doc-pair: v1-v2-migration; lang: en; topics: before-you-start,compatibility-first-path,native-v2-path,stable-project-boundaries,public-helper-compatibility,byte-identical-v1-project-gate,v1-adapter-layout,corrected-behaviors,date-migration,migrate-another-institution-style-port,portable-verification,repository-verification,recovery-and-troubleshooting -->
 
 [繁體中文](v1-to-v2-migration.md) | [English](v1-to-v2-migration.en.md)
 
@@ -72,7 +72,7 @@ template/
 
 The full Git repository's `tests/100-v1-public-api.json` records 597 runtime-visible 1.x LaTeX/xparse commands/environments plus 65 literal `\def`-style declarations. Their names and complete argument shapes remain available throughout 2.x. A separate audit records 22 declarations found only inside runtime-dead LaTeX `comment` environments; they are not removed public APIs. Native V2 internals may delegate old helpers to profile hooks, but compatibility preserves correct contracts rather than verified defects.
 
-Maintainer-only check:
+Full-repository check:
 
 ```bash
 python3 scripts/test/check-v1-api.py
@@ -114,7 +114,7 @@ This table is the normative migration contract and must be updated in both langu
 |The oral-year getter could mutate thesis-year state. |The getter reads oral state without mutating thesis state; `\SetOralEngDate` keeps oral Taiwan-year state synchronized. | None. |
 |The English abbreviation was discarded. |The abbreviation is available through `\GetDeptEngShortName`; the full-name getter is unchanged. |Optionally adopt the new getter. |
 |The catalogue contained a spelling error. |The catalogue value is corrected. | Rebuild. |
-|The English certificate mixed oral day with cover month/year. |English oral output consistently uses oral metadata. | Distinct-date non-NCKU projects automatically receive the correct oral date. |
+|The English certificate mixed oral day with cover month/year. |English oral output consistently uses oral metadata. | Students from other institutions automatically receive the correct oral date when using distinct dates. |
 |The Doctoral English cover borrowed an oral day not owned by `\SetCoverDate`. |Date tokens are profile-owned; generic/custom uses cover-owned month/year while NCKU explicitly retains its oral-day policy. |No NCKU action; other profiles may customize date tokens. |
 |Every degree accepted the generic 2–9 range. |Profile policy clamps NCKU Master to 3–5 and Doctoral to 5–9; neutral/custom remains 2–9. |Select degree before committee size. |
 |The theorem label option leaked into visible text and mutable title metadata became blank. |The optional signature is preserved, labels are written correctly, and title metadata is frozen. |No source change; rebuild. |
@@ -124,7 +124,7 @@ This table is the normative migration contract and must be updated in both langu
 
 ## Date migration
 
-Public setters are unchanged. V2 separates raw input from profile-resolved display policy: `\GetRequestedCoverYear` / `\GetRequestedCoverMonth` expose raw `\SetCoverDate` input, `\GetThesisYear` / `\GetThesisMonth` expose profile-resolved cover values, and oral getters remain independent. NCKU still makes the oral date authoritative for the cover, preserving NCKU output. A non-NCKU profile uses explicit cover year/month and does not borrow an oral day.
+Public setters are unchanged. V2 separates raw input from profile-resolved display policy: `\GetRequestedCoverYear` / `\GetRequestedCoverMonth` expose raw `\SetCoverDate` input, `\GetThesisYear` / `\GetThesisMonth` expose profile-resolved cover values, and oral getters remain independent. NCKU still makes the oral date authoritative for the cover, preserving NCKU output. A profile for another institution uses explicit cover year/month and does not borrow an oral day.
 
 ```tex
 \SetOralDate{2023}{12}{31}
@@ -133,7 +133,7 @@ Public setters are unchanged. V2 separates raw input from profile-resolved displ
 
 Institutional forks override `\ApplyOralDatePolicy`, `\ApplyCoverDatePolicy`, and profile-owned Master/Doctoral date tokens—not the public setters.
 
-## Migrate a non-NCKU style port
+## Migrate a style port for another institution
 
 1. Start from `template/style/custom/`; do not copy/load NCKU merely to undo it.
 2. Move institution geometry, names, watermark, and date behavior from the old custom file into `<profile>/<profile>.tex`.
@@ -162,7 +162,7 @@ pdftotext thesis.pdf thesis.txt
 
 Use the saved 1.x PDF as the comparison reference.
 
-## Maintainer verification
+## Full-repository verification
 
 The following commands require the complete Git checkout and run from the repository root; they are unavailable in the student ZIP. Acceptance evidence includes 597/597 runtime-visible declarations, 65/65 literal-def declarations, 22 dead-comment audit entries, 18 byte-identical student inputs, exact-tree student archive, direct build, the six-page neutral/custom fixture, and canonical 271-page NCKU output identity.
 

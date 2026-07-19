@@ -10,7 +10,7 @@ Status: production evidence consolidated through
 This record distinguishes current deterministic gates from dated benchmark and
 release evidence. Current tests and source win if a historical number drifts.
 
-## Canonical maintainer gates
+## Canonical repository gates
 
 Run from the repository root:
 

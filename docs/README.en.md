@@ -1,14 +1,14 @@
-<!-- doc-pair: maintainer-index; lang: en; topics: start-here,directory-model,bilingual-policy,documentation-lifecycle,source-of-truth-order,current-state -->
+<!-- doc-pair: project-index; lang: en; topics: start-here,directory-model,bilingual-policy,documentation-lifecycle,source-of-truth-order,current-state -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
-# Maintainer documentation
+# Project documentation
 
 Current production release: [`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
 
 ## Start here
 
-This directory contains maintainer documentation for the released NCKU thesis template. Students start from the packaged `thesis/README.en.md` and `thesis/conf/README.en.md`; this directory owns migration, architecture, validation, release, and Overleaf records. Root `README.en.md` is the English public router, not the maintainer runbook.
+I use this directory to record migration, architecture, validation, release, and Overleaf evidence for the released NCKU thesis template. If you only need to write a thesis, start from the packaged `thesis/README.en.md` and `thesis/conf/README.en.md`; root `README.en.md` is the English public router, not the project runbook.
 
 | Audience or task | Canonical document |
 | --- | --- |
@@ -22,7 +22,7 @@ This directory contains maintainer documentation for the released NCKU thesis te
 
 ## Directory model
 
-User journeys use one file per language with a text language switcher to the equivalent page. Each maintainer feature has a canonical English technical record and a separate Traditional-Chinese executive-summary companion, so hashes, run IDs, and benchmarks are not duplicated. Active requirements store only owner-approved what/why promises and active todos store implementation progress; both are removed after durable knowledge is consolidated.
+User journeys use one file per language with a text language switcher to the equivalent page. Each project feature has a canonical English technical record and a separate Traditional-Chinese executive-summary companion, so hashes, run IDs, and benchmarks are not duplicated. Active requirements store only owner-approved what/why promises and active todos store implementation progress; both are removed after durable knowledge is consolidated.
 
 ```text
 docs/
@@ -75,7 +75,7 @@ On drift, resolve facts in this order: current tracked source/tests/scripts/`jus
 ```text
 source and deterministic tests
 -> immutable public release evidence
--> current user/maintainer documentation
+-> current user/project documentation
 -> historical commits, PRs, and removed notes
 ```
 

@@ -8,7 +8,7 @@
 
 ## Usage and compatibility boundary
 
-`conf/conf.tex` has been byte-pinned from `v1.8.2.260715154703` throughout 2.x to prove that existing student configuration can migrate unchanged. Its original Chinese comments and repository bytes are therefore not rewritten for translation. Enter values in your own thesis copy; maintainers must not change the repository baseline or migration hash merely to translate comments.
+`conf/conf.tex` has been byte-pinned from `v1.8.2.260715154703` throughout 2.x to prove that existing student configuration can migrate unchanged. Its original Chinese comments and repository bytes are therefore not rewritten for translation. Enter values in your own thesis copy; I do not change the repository baseline or migration hash merely to translate comments.
 
 When the same setting is called more than once, the last call normally wins. Keep one deliberate choice in each group and build after small changes.
 
@@ -127,7 +127,7 @@ Do not rename public commands during 2.x; the compatibility adapter preserves ex
 
 ## Other institution profiles
 
-`conf/conf.tex` stores thesis data; it must not own institution geometry, names, date policy, wording, or assets. Non-NCKU maintainers should start from `template/style/custom/` and follow [`../template/style/Customization.en.md`](../template/style/Customization.en.md). Documentation or cover language never selects an institution profile automatically.
+`conf/conf.tex` stores thesis data; it must not own institution geometry, names, date policy, wording, or assets. Students from other institutions should start from `template/style/custom/` and follow [`../template/style/Customization.en.md`](../template/style/Customization.en.md). Documentation or cover language never selects an institution profile automatically.
 
 Exactly one profile is loaded by `template/style/style.tex`; the default remains `ncku`.
 

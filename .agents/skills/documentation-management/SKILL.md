@@ -19,7 +19,7 @@ CI, releases, or public distribution are involved.
 
 | Surface | Role |
 | --- | --- |
-| [`docs/README.md`](../../../docs/README.md) | Maintainer documentation index and lifecycle. |
+| [`docs/README.md`](../../../docs/README.md) | Project documentation index and lifecycle. |
 | [`docs/v1-to-v2-migration.md`](../../../docs/v1-to-v2-migration.md) | Current 1.x to 2.x user migration contract. |
 | [`docs/features/`](../../../docs/features/) | Consolidated shipped architecture, evidence, and operating decisions. |
 | `docs/requirements/<NN>-<slug>.md` | Active owner-approved what/why promise only. |
@@ -65,7 +65,7 @@ Classify every source document before deleting it:
 
 - **current user contract** — preserve in student README, migration guide, or
   changelog;
-- **current maintainer contract** — preserve in a topical feature/operation
+- **current project contract** — preserve in a topical feature/operation
   record and repo-maintenance skill;
 - **durable shipped evidence** — summarize in the owning feature record;
 - **measured rejected/deferred decision** — retain the conclusion and reopening
@@ -84,7 +84,7 @@ one is a short link/routing sentence.
 - Students receive the exact `thesis/` subtree as their package. Direct compiler,
   editor, configuration, and migration-start instructions must be available
   there without repository-only tooling.
-- Maintainer commands, tests, benchmarks, workflow details, and internal evidence
+- Repository-only commands, tests, benchmarks, workflow details, and internal evidence
   stay outside the student ZIP.
 - Root README routes audiences; `docs/README.md` owns the internal index.
 - GitHub Release state and Overleaf state are independent. Never turn submitted
@@ -101,7 +101,7 @@ one is a short link/routing sentence.
 - Paired guides carry one hidden `doc-pair`, `lang`, and stable `topics` marker.
   The deterministic checker requires pair metadata, reciprocal switchers,
   equivalent topic IDs, valid local links, and identical fenced code blocks.
-- Maintainer feature records use a canonical English technical record plus a
+- Project feature records use a canonical English technical record plus a
   separate `*.zh-TW.md` executive-summary companion. This is intentionally not a
   line-by-line translation of hashes, run IDs, benchmarks, or evidence
   transcripts.
@@ -111,6 +111,10 @@ one is a short link/routing sentence.
 - Documentation language, institution profile, cover language, degree, and
   content mode are independent. An English reader can use `ncku`; a
   Traditional-Chinese reader can maintain another profile.
+- Public project actions use the owner's first-person `我` / `I` voice; general
+  workflow uses role-neutral project or repository wording. Refer to Chinese
+  cross-institution readers as `其他學校的同學` and English readers as `students
+  from other institutions`.
 - Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing. Use
   `論文範本` in new Chinese prose. Avoid Cantonese-only wording in shipped docs.
 - Keep `thesis/conf/conf.tex` byte-identical throughout 2.x. Its bilingual

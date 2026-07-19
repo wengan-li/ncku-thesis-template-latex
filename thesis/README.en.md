@@ -4,7 +4,7 @@
 
 # NCKU thesis-template student project
 
-This directory is the complete student project. The versioned GitHub Release student package places these files directly under one `ncku-thesis-template-latex/` directory; repository tests, release scripts, and maintainer tooling are intentionally excluded.
+This directory is the complete student project. The versioned GitHub Release student package places these files directly under one `ncku-thesis-template-latex/` directory; repository tests, release scripts, and repository-only tooling are intentionally excluded.
 
 ## Start writing
 
@@ -17,16 +17,16 @@ The teaching example is useful as a reference but rebuilds more slowly than a no
 
 ## Choose independent settings
 
-Documentation language, institution profile, cover language, degree, and content mode are independent. An international student may use the NCKU `ncku` profile, while a Taiwan reader may maintain another institution profile. Do not select an institution profile from the reader's language.
+Documentation language, institution profile, cover language, degree, and content mode are independent. An international student may use the NCKU `ncku` profile, while students from other institutions can create a profile for their own school. Do not select an institution profile from the reader's language.
 
 | Decision | Choices |
 | --- | --- |
-| Institution | default `ncku`; maintained custom profile for another institution |
+| Institution | default `ncku` for NCKU students; custom profile for students from another institution |
 | Cover language | `\DisplayCoverInChi` or `\DisplayCoverInEng` |
 | Degree | `\MasterDegree` or `\PhdDegree` |
 | Content | own `context/context.tex` or `\ExampleMode` teaching example |
 
-The default project selects the NCKU profile in `template/style/style.tex`. Follow [`template/style/Customization.en.md`](template/style/Customization.en.md) only when maintaining a non-NCKU institutional fork.
+The default project selects the NCKU profile in `template/style/style.tex`. Students from other institutions can follow [`template/style/Customization.en.md`](template/style/Customization.en.md) to create their own institution profile.
 
 ## Configure thesis information
 
