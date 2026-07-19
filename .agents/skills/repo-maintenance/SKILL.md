@@ -22,8 +22,8 @@ Read only the focused sources needed for the task:
 
 1. [`AGENTS.md`](../../../AGENTS.md) — canonical project rules and boundaries.
 2. [`justfile`](../../../justfile) — canonical maintainer command surface.
-3. [`docs/README.md`](../../../docs/README.md) — maintainer documentation index
-   and lifecycle.
+3. [`docs/README.md`](../../../docs/README.md) — public documentation index and
+   release/evidence routing.
 4. [`docs/features/v2-modernization.md`](../../../docs/features/v2-modernization.md)
    — shipped architecture and compatibility boundary.
 5. [`docs/features/validation-and-performance.md`](../../../docs/features/validation-and-performance.md)
@@ -31,7 +31,7 @@ Read only the focused sources needed for the task:
 6. [`docs/features/release-and-distribution.md`](../../../docs/features/release-and-distribution.md)
    — release, package, Overleaf, sample-retirement, and watermark contracts.
 7. [`docs/v1-to-v2-migration.md`](../../../docs/v1-to-v2-migration.md) — current
-   user and maintainer migration contract.
+   user migration and institution-port contract.
 
 Inspect current source and Git state before trusting historical notes. When a
 rule changes, update its canonical repository source in the same slice.
@@ -80,6 +80,20 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   clamps Master to 3--5 and Doctoral to 5--9, while neutral/custom retains 2--9.
 - Keep student data in `conf/` and institution-level style ports under
   `template/style/`; never introduce `conf/style.tex`.
+- Institution-name APIs are generic: `\SetUniversityName{chi}{eng}`,
+  `\SetCollName{chi}{eng}`, and
+  `\SetDeptName{chi}{English abbreviation}{English full name}`. The NCKU-owned
+  catalogue currently contains 9 college presets and 110 department presets
+  under `template/style/ncku/`; every department preset also selects one NCKU
+  college. `template/compat/v1.tex` deliberately keeps those NCKU commands
+  defined even when `custom` is selected, but another institution must not use
+  them as portable data. A reusable new catalogue uses institution-prefixed
+  commands rather than redefining retained `\SetDept...` names.
+- `template/style/custom/custom.tex` is a neutral, buildable skeleton—not an
+  NTU or universal ready-to-submit profile. A named-school walkthrough may prove
+  generic API wiring, but it remains illustrative until current official
+  geometry, cover/spine, wording, date/calendar, certificate, department,
+  submission-processing, and asset-rights rules are implemented and tested.
 - Preserve direct XeLaTeX and Overleaf compatibility; `just` is maintainer
   orchestration, not a student requirement.
 - Keep the full teaching document as integration coverage and add focused
@@ -127,9 +141,9 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 
 Keep audiences separate:
 
-- maintainer commands, CI, release scripts, benchmarks, and architectural
-  decisions belong in root/internal documentation;
-- `docs/README.md` routes maintainers to the owning consolidated feature record;
+- repository commands, CI, release scripts, benchmarks, and architectural
+  decisions belong in internal documentation;
+- `docs/README.md` routes readers to current guides and shipped feature records;
 - direct compiler, editor, configuration, and writing guidance belongs in the
   packaged `thesis/` project and teaching content;
 - root `README.md` routes both audiences without exposing unnecessary internals;
