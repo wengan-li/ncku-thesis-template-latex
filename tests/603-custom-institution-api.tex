@@ -1,0 +1,35 @@
+% Illustrative cross-institution API wiring fixture.
+% This validates generic metadata semantics only; it is not an NTU format profile.
+% Build from the thesis/ directory.
+\def\TemplateStyleName{custom}
+\input{./template/configure}
+
+\SetUniversityName{國立臺灣大學}{National Taiwan University}
+\newcommand{\SetNTUDeptCSIE}{%
+  \SetDeptName{資訊工程學系}{CSIE}{Department of Computer Science and Information Engineering}%
+  \SetCollName{電機資訊學院}{College of Electrical Engineering and Computer Science}%
+}
+\SetNTUDeptCSIE
+
+\newcommand{\AssertInstitutionValue}[3]{%
+  \ifthenelse{\equal{#2}{#3}}%
+    {\typeout{NCKU-TEST-PASS: institution API #1}}%
+    {\typeout{NCKU-TEST-FAIL: institution API #1 resolved to [#2], expected [#3]}}%
+}
+
+\begin{document}
+\ifcsname SetDeptCSIE\endcsname
+  \typeout{NCKU-TEST-PASS: NCKU department preset remains defined for 2.x compatibility}
+\else
+  \typeout{NCKU-TEST-FAIL: NCKU department preset disappeared from 2.x compatibility}
+\fi
+\AssertInstitutionValue{profile}{\GetTemplateStyleName}{custom}
+\AssertInstitutionValue{university-zh}{\GetUniversityChiName}{國立臺灣大學}
+\AssertInstitutionValue{university-en}{\GetUniversityEngName}{National Taiwan University}
+\AssertInstitutionValue{college-zh}{\GetCollChiName}{電機資訊學院}
+\AssertInstitutionValue{college-en}{\GetCollEngName}{College of Electrical Engineering and Computer Science}
+\AssertInstitutionValue{department-zh}{\GetDeptChiName}{資訊工程學系}
+\AssertInstitutionValue{department-short}{\GetDeptEngShortName}{CSIE}
+\AssertInstitutionValue{department-en}{\GetDeptEngName}{Department of Computer Science and Information Engineering}
+Illustrative institution API wiring only.
+\end{document}

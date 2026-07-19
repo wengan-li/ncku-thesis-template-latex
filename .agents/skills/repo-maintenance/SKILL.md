@@ -84,11 +84,17 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   `\SetCollName{chi}{eng}`, and
   `\SetDeptName{chi}{English abbreviation}{English full name}`. The NCKU-owned
   catalogue currently contains 9 college presets and 110 department presets
-  under `template/style/ncku/`; every department preset also selects one NCKU
-  college. `template/compat/v1.tex` deliberately keeps those NCKU commands
+  spanning departments, graduate institutes, degree programs, and centers under
+  `template/style/ncku/`; every preset also selects one NCKU college. A shared
+  abbreviation does not make names or mappings portable—for example, the current
+  NCKU `CSIE` preset is an institute while the documented NTU wiring is a
+  department. `template/compat/v1.tex` deliberately keeps those NCKU commands
   defined even when `custom` is selected, but another institution must not use
   them as portable data. A reusable new catalogue uses institution-prefixed
-  commands rather than redefining retained `\SetDept...` names.
+  commands rather than redefining retained `\SetDept...` names. The profile
+  defines catalogue entries; each student's `conf/conf.tex` selects one entry and
+  replaces the original NCKU department call, so the profile does not hard-code
+  a particular department.
 - `template/style/custom/custom.tex` is a neutral, buildable skeleton—not an
   NTU or universal ready-to-submit profile. A named-school walkthrough may prove
   generic API wiring, but it remains illustrative until current official

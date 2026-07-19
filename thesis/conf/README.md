@@ -57,7 +57,7 @@
 
 ## 系所與指導教授
 
-NCKU專案可使用`\SetDeptCSIE`等成大系所preset；請在`template/style/ncku/department.tex`確認可用command。其他學校的同學不應使用NCKU preset，應在自己的profile提供學校資料，或使用通用`\SetDeptName{中文名稱}{英文縮寫}{English full name}`。
+本模版提供9個NCKU學院presets及110個NCKU系所presets；`\SetDeptCSIE`等shortcut會同時設定系所及其NCKU學院。完整command、中文值、英文縮寫、英文全名及學院mapping見[`../template/style/ncku/README.md`](../template/style/ncku/README.md)。其他學校的同學不應使用NCKU preset，應在自己的profile使用通用`\SetUniversityName`、`\SetCollName`及`\SetDeptName{中文名稱}{英文縮寫}{English full name}`，或建立帶學校prefix的catalogue。
 
 封面最多預留三位指導教授。`\SetAdvisorNameA`為第一位，之後視需要使用`B`及`C`。雙語姓名可一次提供；中文suffix及英文prefix由profile控制。
 
@@ -117,7 +117,7 @@ NCKU專案可使用`\SetDeptCSIE`等成大系所preset；請在`template/style/n
 
 ## 其他學校的同學如何使用Profile
 
-`conf/conf.tex`只保存論文資料，不應承擔學校geometry、校名、日期政策、institution wording或assets。其他學校的同學應由`template/style/custom/`開始，並跟隨[`../template/style/Customization.md`](../template/style/Customization.md)。文件語言或封面語言不會自動選擇profile。
+`conf/conf.tex`只保存論文資料，不應承擔學校geometry、校名、日期政策、institution wording或assets。`template/style/custom/`只是neutral skeleton，不代表任何學校的正式格式。本專案目前沒有NTU profile；其他學校的同學可跟隨[`../template/style/Customization.md`](../template/style/Customization.md)內的illustrative NTU wiring建立獨立profile。Profile定義可重用catalogue後，請在`conf/conf.tex`以新學校的prefixed command取代原有NCKU `\SetDept...` selection。文件語言或封面語言不會自動選擇profile。
 
 ## 建置與故障排除
 

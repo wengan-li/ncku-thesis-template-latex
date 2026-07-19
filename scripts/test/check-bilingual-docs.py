@@ -34,6 +34,12 @@ GUIDE_PAIRS: tuple[tuple[str, str, str, int], ...] = (
         "style-customization",
         7,
     ),
+    (
+        "thesis/template/style/ncku/README.md",
+        "thesis/template/style/ncku/README.en.md",
+        "ncku-department-catalogue",
+        5,
+    ),
 )
 
 SUMMARY_PAIRS: tuple[tuple[str, str], ...] = (
@@ -298,6 +304,128 @@ def check_project_index_scope() -> None:
             )
 
 
+def check_institution_profile_docs() -> None:
+    department_source = read("thesis/template/style/ncku/department.tex")
+    college_source = read("thesis/template/style/ncku/college.tex")
+
+    def compact(value: str) -> str:
+        return re.sub(r"\s+", " ", value.strip())
+
+    colleges: list[tuple[str, str, str]] = []
+    for command, body in re.findall(
+        r"\\newcommand\{\\(SetCollege\w+)\}\s*\{(.*?)\}\s*% End of \\newcommand\{\}",
+        college_source,
+        re.DOTALL,
+    ):
+        values = re.search(r"\\SetCollName\{([^{}]*)\}\{([^{}]*)\}", body)
+        if values is None:
+            fail(f"unparsed NCKU college preset: {command}")
+        colleges.append((command, compact(values.group(1)), compact(values.group(2))))
+
+    departments: list[tuple[str, str, str, str, str]] = []
+    for command, body in re.findall(
+        r"\\newcommand\{\\(SetDept\w+)\}\s*\{(.*?)\}\s*% End of \\newcommand\{\}",
+        department_source,
+        re.DOTALL,
+    ):
+        values = re.search(
+            r"\\SetDeptName\{([^{}]*)\}\{([^{}]*)\}\{([^{}]*)\}", body
+        )
+        college = re.search(r"\\(SetCollege\w+)", body)
+        if values is None or college is None:
+            fail(f"unparsed NCKU department preset: {command}")
+        departments.append(
+            (
+                command,
+                compact(values.group(1)),
+                compact(values.group(2)),
+                compact(values.group(3)),
+                college.group(1),
+            )
+        )
+
+    if len(colleges) != 9 or len(departments) != 110:
+        fail(
+            "NCKU catalogue count changed; review source, public catalogue, "
+            f"and repository skill together: colleges={len(colleges)}, "
+            f"departments={len(departments)}"
+        )
+
+    zh = read("thesis/template/style/ncku/README.md")
+    en = read("thesis/template/style/ncku/README.en.md")
+    college_names = {command: (zh_name, en_name) for command, zh_name, en_name in colleges}
+    grouped: dict[str, list[tuple[str, str, str, str]]] = {
+        command: [] for command, _, _ in colleges
+    }
+    for command, zh_name, short_name, en_name, college in departments:
+        if college not in grouped:
+            fail(f"{command}: unknown NCKU college preset {college}")
+        grouped[college].append((command, zh_name, short_name, en_name))
+
+    for text, language in ((zh, "zh"), (en, "en")):
+        for command, zh_name, en_name in colleges:
+            row = f"| `\\{command}` | `{zh_name}` | `{en_name}` |"
+            if row not in text:
+                fail(f"NCKU {language} catalogue missing college row: {command}")
+        for college, rows in grouped.items():
+            zh_college, en_college = college_names[college]
+            heading = (
+                f"### {zh_college}（`\\{college}`）— {len(rows)}個"
+                if language == "zh"
+                else f"### {en_college} (`\\{college}`) — {len(rows)} presets"
+            )
+            if heading not in text:
+                fail(f"NCKU {language} catalogue missing group heading: {college}")
+            section = text.split(heading, 1)[1].split("\n### ", 1)[0]
+            for command, zh_name, short_name, en_name in rows:
+                row = (
+                    f"| `\\{command}` | `{zh_name}` | `{short_name}` | "
+                    f"`{en_name}` |"
+                )
+                if row not in section:
+                    fail(
+                        f"NCKU {language} catalogue row/value/college drift: {command}"
+                    )
+
+    generic_markers = (
+        "\\SetUniversityName",
+        "\\SetCollName",
+        "\\SetDeptName",
+        "\\GetDeptEngShortName",
+    )
+    for relative in (
+        "thesis/template/style/ncku/README.md",
+        "thesis/template/style/ncku/README.en.md",
+    ):
+        text = read(relative)
+        missing = [marker for marker in generic_markers if marker not in text]
+        if missing:
+            fail(f"{relative}: generic institution API missing: {', '.join(missing)}")
+
+    if (ROOT / "thesis/template/style/ntu").exists():
+        fail("NTU profile now exists; replace the illustrative-only documentation claim")
+    ntu_markers = (
+        "\\SetNTUDeptCSIE",
+        "https://www.lib.ntu.edu.tw/doc/cl/THESISSAMPLE.pdf",
+        "https://www.lib.ntu.edu.tw/doc/CL/thesissample_en.pdf",
+        "https://www.csie.ntu.edu.tw/en/AboutUs",
+        "2026-07-19",
+        "% conf/conf.tex: replace the existing NCKU department selection.",
+    )
+    for relative in (
+        "thesis/template/style/Customization.md",
+        "thesis/template/style/Customization.en.md",
+    ):
+        text = read(relative)
+        missing = [marker for marker in ntu_markers if marker not in text]
+        if missing:
+            fail(f"{relative}: illustrative NTU boundary missing: {', '.join(missing)}")
+
+    skill = read(".agents/skills/repo-maintenance/SKILL.md")
+    if "9 college presets and 110 department presets" not in skill:
+        fail("repo-maintenance skill: NCKU catalogue inventory drift")
+
+
 def check_changelog() -> None:
     en = read("CHANGELOG.md")
     zh = read("CHANGELOG.zh-TW.md")
@@ -321,10 +449,15 @@ def check_package_routes() -> None:
     required = {
         "thesis/README.md": ("conf/README.md", "docs/v1-to-v2-migration.md"),
         "thesis/README.en.md": ("conf/README.en.md", "docs/v1-to-v2-migration.en.md"),
-        "thesis/conf/README.md": ("../README.md", "../template/style/Customization.md"),
+        "thesis/conf/README.md": (
+            "../README.md",
+            "../template/style/Customization.md",
+            "../template/style/ncku/README.md",
+        ),
         "thesis/conf/README.en.md": (
             "../README.en.md",
             "../template/style/Customization.en.md",
+            "../template/style/ncku/README.en.md",
         ),
     }
     for relative, needles in required.items():
@@ -392,6 +525,7 @@ def main() -> int:
         check_language_hygiene()
         check_public_voice()
         check_project_index_scope()
+        check_institution_profile_docs()
         check_changelog()
         check_package_routes()
         check_instruction_alias()

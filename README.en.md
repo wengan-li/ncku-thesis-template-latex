@@ -84,7 +84,9 @@ Complete guide: [`docs/v1-to-v2-migration.en.md`](docs/v1-to-v2-migration.en.md)
 
 ## Other institution profiles
 
-The template separates shared rendering, NCKU policy, and other-institution ports into `base`, `ncku`, and `custom`. Student thesis data remains in `conf/conf.tex`; institution geometry, names, date policy, wording, and assets belong under `template/style/<profile>/`. Students from other institutions start from `template/style/custom/` rather than editing the shared renderer or loading NCKU before overriding it.
+The template separates shared rendering, NCKU policy, and other-institution ports into `base`, `ncku`, and `custom`. Student thesis data remains in `conf/conf.tex`; institution geometry, names, date policy, wording, and assets belong under `template/style/<profile>/`. `custom` is a neutral skeleton, not a ready-to-submit profile for any named institution; this repository currently has no NTU profile. Students from other institutions start from `template/style/custom/` rather than editing the shared renderer or loading NCKU before overriding it.
+
+NCKU students can use the complete [`9-college / 110-department preset catalogue`](thesis/template/style/ncku/README.en.md). Students from other institutions use the generic institution APIs and can follow the explicitly illustrative NTU wiring in [`Customization.en.md`](thesis/template/style/Customization.en.md).
 
 Guide: [`thesis/template/style/Customization.en.md`](thesis/template/style/Customization.en.md)
 

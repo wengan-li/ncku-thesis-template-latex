@@ -16,6 +16,7 @@ This directory records migration, architecture, validation, release, and Overlea
 | --- | --- |
 | Build and edit a thesis | [`thesis/README.en.md`](../thesis/README.en.md) |
 | Enter student configuration | [`thesis/conf/README.en.md`](../thesis/conf/README.en.md) |
+| Review NCKU college and department presets | [`thesis/template/style/ncku/README.en.md`](../thesis/template/style/ncku/README.en.md) |
 | Migrate from 1.x to 2.x | [`v1-to-v2-migration.en.md`](v1-to-v2-migration.en.md) |
 | Create an institution profile for students from other institutions | [`thesis/template/style/Customization.en.md`](../thesis/template/style/Customization.en.md) |
 | Review version changes | [`CHANGELOG.md`](../CHANGELOG.md) |

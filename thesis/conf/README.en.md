@@ -65,7 +65,7 @@ Use Gregorian numeric input. Do not manually pre-convert the year to the Taiwan 
 
 ## Department and advisors
 
-NCKU projects may use department presets such as `\SetDeptCSIE`; inspect `template/style/ncku/department.tex` for available commands. Other institutions must not use NCKU presets. Provide institution data in the selected profile or use the generic `\SetDeptName{Chinese name}{English abbreviation}{English full name}`.
+The template provides 9 NCKU college presets and 110 NCKU department presets. A shortcut such as `\SetDeptCSIE` sets both the department and its NCKU college. See [`../template/style/ncku/README.en.md`](../template/style/ncku/README.en.md) for every command, Chinese value, English abbreviation, English full name, and college mapping. Students from other institutions must not use NCKU presets; their profile uses generic `\SetUniversityName`, `\SetCollName`, and `\SetDeptName{Chinese name}{English abbreviation}{English full name}`, or an institution-prefixed catalogue.
 
 The cover reserves space for up to three advisors. `\SetAdvisorNameA` is the first advisor; add `B` and `C` only when needed. Both language forms may be supplied together, while Chinese suffixes and English prefixes are profile policy.
 
@@ -127,7 +127,7 @@ Do not rename public commands during 2.x; the compatibility adapter preserves ex
 
 ## Other institution profiles
 
-`conf/conf.tex` stores thesis data; it must not own institution geometry, names, date policy, wording, or assets. Students from other institutions should start from `template/style/custom/` and follow [`../template/style/Customization.en.md`](../template/style/Customization.en.md). Documentation or cover language never selects an institution profile automatically.
+`conf/conf.tex` stores thesis data; it must not own institution geometry, names, date policy, wording, or assets. `template/style/custom/` is a neutral skeleton, not a formal profile for any named institution. This repository currently has no NTU profile; students from other institutions can follow the illustrative NTU wiring in [`../template/style/Customization.en.md`](../template/style/Customization.en.md) to create an independent profile. After the profile defines a reusable catalogue, replace the original NCKU `\SetDept...` selection in `conf/conf.tex` with the new institution-prefixed command. Documentation or cover language never selects an institution profile automatically.
 
 Exactly one profile is loaded by `template/style/style.tex`; the default remains `ncku`.
 

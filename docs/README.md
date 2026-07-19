@@ -16,6 +16,7 @@
 | --- | --- |
 | 建置及編輯論文 | [`thesis/README.md`](../thesis/README.md) |
 | 填寫學生設定 | [`thesis/conf/README.md`](../thesis/conf/README.md) |
+| 查看NCKU學院及系所preset | [`thesis/template/style/ncku/README.md`](../thesis/template/style/ncku/README.md) |
 | 從1.x升級至2.x | [`v1-to-v2-migration.md`](v1-to-v2-migration.md) |
 | 其他學校的同學建立institution profile | [`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md) |
 | 查看版本變更 | [`CHANGELOG.zh-TW.md`](../CHANGELOG.zh-TW.md) |

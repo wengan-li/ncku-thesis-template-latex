@@ -100,6 +100,23 @@ template/style/custom/     neutral starting profile for another institution
 template/compat/           1.x and deprecated-command adapters
 ```
 
+The portable institution identity API is
+`\SetUniversityName{chi}{eng}`, `\SetCollName{chi}{eng}`, and
+`\SetDeptName{chi}{English abbreviation}{English full name}` with corresponding
+getters. The NCKU profile currently owns 9 college presets and 110 department
+presets spanning departments, graduate institutes, degree programs, and centers;
+each department shortcut also selects one NCKU college. The full
+source-checked catalogue is
+[`thesis/template/style/ncku/README.en.md`](../../thesis/template/style/ncku/README.en.md).
+
+The V1 adapter deliberately leaves the NCKU catalogue defined under every
+selected profile. That is declaration compatibility, not portable institution
+data. A new institution catalogue uses prefixed commands rather than redefining
+retained NCKU `\SetDept...` names. `custom` remains a neutral skeleton, and the
+repository does not currently ship an NTU profile; the named NTU walkthrough in
+[`Customization.en.md`](../../thesis/template/style/Customization.en.md) is
+explicitly API wiring rather than a compliance implementation.
+
 Public setters retain their signatures. Profiles customize hooks and resolved
 display tokens instead of replacing raw metadata storage:
 
@@ -115,7 +132,7 @@ Taiwan-year rendering and its established cover-date policy. Generic committee
 renderer capacity is 2--9; the NCKU profile enforces Master 3--5 and Doctoral
 5--9 from numeric degree state.
 
-Institution ports remain under `template/style/`; V2 does not introduce
+Institution ports remain under `template/style/`; the template does not introduce
 `conf/style.tex`. See
 [`thesis/template/style/Customization.md`](../../thesis/template/style/Customization.md).
 

@@ -1,14 +1,14 @@
-<!-- doc-pair: style-customization; lang: en; topics: architecture-boundary,create-a-new-profile,required-profile-contract,institution-names-and-watermark,cover-wording-and-date-tokens,certificate-wording-and-semantic-degree,committee-size-policy,date-policy-and-raw-resolved-state,2-x-compatibility-adapter,verification,troubleshooting -->
+<!-- doc-pair: style-customization; lang: en; topics: architecture-boundary,create-a-new-profile,required-profile-contract,institution-names-and-watermark,generic-and-ncku-department-apis,illustrative-ntu-wiring,cover-wording-and-date-tokens,certificate-wording-and-semantic-degree,committee-size-policy,date-policy-and-raw-resolved-state,2-x-compatibility-adapter,verification,troubleshooting -->
 
 [繁體中文](Customization.md) | [English](Customization.en.md)
 
 # Institution style customization
 
-V2 separates reusable thesis helpers from institution policy so students from other institutions can retain template capabilities while creating their own institution format. Documentation language, cover language, and institution profile are independent decisions.
+The template separates reusable thesis helpers from institution policy so students from other institutions can retain template capabilities while creating their own institution format. Documentation language, cover language, and institution profile are independent decisions.
 
 ## Architecture boundary
 
-Student thesis data remains in `conf/conf.tex`. Institution geometry, date rules, names, cover/certificate wording, department catalogues, and watermark policy belong under `template/style/<profile>/`; do not create `conf/style.tex`. `template/style/style.tex` loads exactly one profile. V2 does not load NCKU first and then override it with a custom file.
+Student thesis data remains in `conf/conf.tex`. Institution geometry, date rules, names, cover/certificate wording, department catalogues, and watermark policy belong under `template/style/<profile>/`; do not create `conf/style.tex`. `template/style/style.tex` loads exactly one profile. The template does not load NCKU first and then override it with a custom file.
 
 ```text
 template/command/        reusable public helpers, state, and renderer mechanisms
@@ -79,6 +79,35 @@ Use generic setters for Chinese and English institution, college, and department
 ```
 
 The second `\SetDeptName` argument is the English abbreviation returned by `\GetDeptEngShortName`; the third is the full name returned by `\GetDeptEngName`.
+
+## Generic and NCKU department APIs
+
+The portable contract is `\SetUniversityName{Chinese}{English}`, `\SetCollName{Chinese}{English}`, and `\SetDeptName{Chinese}{English abbreviation}{English full name}`. Their getters are `\GetUniversityChiName` / `\GetUniversityEngName`, `\GetCollChiName` / `\GetCollEngName`, and `\GetDeptChiName` / `\GetDeptEngShortName` / `\GetDeptEngName`.
+
+The template also preserves 9 NCKU college presets and 110 NCKU department presets; the department slot covers departments, graduate institutes, degree programs, and centers. A shortcut such as `\SetDeptCSIE` writes department values and calls one NCKU college preset. See the source-checked [`ncku/README.en.md`](ncku/README.en.md) catalogue. The 2.x compatibility adapter leaves these commands defined in a custom build, but students from other institutions must not use them as portable data. A reusable new catalogue uses an institution prefix such as `\SetNTUDept...` instead of redefining retained NCKU `\SetDept...` names.
+
+The same abbreviation does not imply the same data. The current NCKU `\SetDeptCSIE` source stores `資訊工程研究所` and `Institute of Computer Science and Information Engineering`; the NTU example below uses `資訊工程學系` and `Department of Computer Science and Information Engineering`. A shared `CSIE` abbreviation therefore does not make the preset portable.
+
+## Illustrative NTU wiring (not a complete NTU profile)
+
+The following demonstrates generic API wiring and command names only; it is **not a submission-ready NTU format**. This repository currently has no NTU profile. The official NTU [Chinese thesis/dissertation format guide](https://www.lib.ntu.edu.tw/doc/cl/THESISSAMPLE.pdf), [English format guide](https://www.lib.ntu.edu.tw/doc/CL/thesissample_en.pdf), and [NTU CSIE page](https://www.csie.ntu.edu.tw/en/AboutUs), checked on 2026-07-19, show that a real port must still implement cover/spine, title page, approval certificate, body margins, fonts/spacing, dates, and additional college/department rules. Replacing only university, college, and department names does not prove compliance.
+
+An NTU fork can copy `custom` to `template/style/ntu/ntu.tex`, change the registration and `TemplateStyleName` to `ntu`, and then replace every skeleton policy with sourced NTU rules. Department shortcuts use an NTU prefix so they cannot collide with the retained NCKU namespace:
+
+```tex
+% template/style/ntu/ntu.tex
+% Illustrative API wiring only. This is not a complete NTU profile.
+\SetUniversityName{國立臺灣大學}{National Taiwan University}
+\newcommand{\SetNTUDeptCSIE}{%
+  \SetDeptName{資訊工程學系}{CSIE}{Department of Computer Science and Information Engineering}%
+  \SetCollName{電機資訊學院}{College of Electrical Engineering and Computer Science}%
+}
+
+% conf/conf.tex: replace the existing NCKU department selection.
+\SetNTUDeptCSIE
+```
+
+The profile defines the reusable catalogue; each student selects a department in `conf/conf.tex`. Do not hard-code one department in the profile or retain the original NCKU `\SetDept...` selection. After wiring names, verify body/cover geometry, spine, Master/Doctoral wording, oral certificate, Gregorian/Taiwan-year display, watermark/DOI processing, and asset redistribution rights. Each institution difference belongs in the `ntu` profile, not the shared renderer.
 
 ## Cover wording and date tokens
 
