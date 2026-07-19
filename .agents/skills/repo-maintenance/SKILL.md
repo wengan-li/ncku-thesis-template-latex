@@ -24,11 +24,11 @@ Read only the focused sources needed for the task:
 2. [`justfile`](../../../justfile) — canonical maintainer command surface.
 3. [`docs/README.md`](../../../docs/README.md) — public documentation index and
    release/evidence routing.
-4. [`docs/features/v2-modernization.md`](../../../docs/features/v2-modernization.md)
+4. [`docs/features/v2-modernization.en.md`](../../../docs/features/v2-modernization.en.md)
    — shipped architecture and compatibility boundary.
-5. [`docs/features/validation-and-performance.md`](../../../docs/features/validation-and-performance.md)
+5. [`docs/features/validation-and-performance.en.md`](../../../docs/features/validation-and-performance.en.md)
    — current gates, artifact proof, benchmarks, and rejected/deferred decisions.
-6. [`docs/features/release-and-distribution.md`](../../../docs/features/release-and-distribution.md)
+6. [`docs/features/release-and-distribution.en.md`](../../../docs/features/release-and-distribution.en.md)
    — release, package, Overleaf, sample-retirement, and watermark contracts.
 7. [`docs/v1-to-v2-migration.md`](../../../docs/v1-to-v2-migration.md) — current
    user migration and institution-port contract.
@@ -211,7 +211,7 @@ redundant `example-` prefix. Loose generated PDFs are build intermediates, not
 public Release assets.
 
 Do not move an immutable tag or rebuild old tagged PDFs during an asset-only
-migration. Follow `docs/features/release-and-distribution.md` for download,
+migration. Follow `docs/features/release-and-distribution.en.md` for download,
 digest, public read-back, byte-comparison, and exact-allowlist gates.
 
 ## Test Source Layout

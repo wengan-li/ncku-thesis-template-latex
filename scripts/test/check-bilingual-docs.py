@@ -45,24 +45,22 @@ GUIDE_PAIRS: tuple[tuple[str, str, str, int], ...] = (
 SUMMARY_PAIRS: tuple[tuple[str, str], ...] = (
     (
         "docs/features/v2-modernization.md",
-        "docs/features/v2-modernization.zh-TW.md",
+        "docs/features/v2-modernization.en.md",
     ),
     (
         "docs/features/validation-and-performance.md",
-        "docs/features/validation-and-performance.zh-TW.md",
+        "docs/features/validation-and-performance.en.md",
     ),
     (
         "docs/features/release-and-distribution.md",
-        "docs/features/release-and-distribution.zh-TW.md",
+        "docs/features/release-and-distribution.en.md",
     ),
 )
 
-CHINESE_USER_DOCS = tuple(pair[0] for pair in GUIDE_PAIRS) + tuple(
-    pair[1] for pair in SUMMARY_PAIRS
-) + ("CHANGELOG.zh-TW.md",)
-ENGLISH_USER_DOCS = tuple(pair[1] for pair in GUIDE_PAIRS) + tuple(
-    pair[0] for pair in SUMMARY_PAIRS
+CHINESE_USER_DOCS = tuple(pair[0] for pair in GUIDE_PAIRS + SUMMARY_PAIRS) + (
+    "CHANGELOG.md",
 )
+ENGLISH_USER_DOCS = tuple(pair[1] for pair in GUIDE_PAIRS + SUMMARY_PAIRS)
 CANTONESE_ONLY = ("呢個", "只係", "唔", "嘅", "喺", "咁樣")
 WRONG_PRODUCT_CASING = re.compile(r"\b(?:LaTex|Latex|XeLatex|Xelatex)\b")
 INLINE_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
@@ -182,11 +180,11 @@ def check_guide_pair(zh_relative: str, en_relative: str, pair_id: str, minimum: 
         fail(f"{pair_id}: paired fenced code blocks differ")
 
 
-def check_summary_pair(en_relative: str, zh_relative: str) -> None:
-    en = read(en_relative)
+def check_summary_pair(zh_relative: str, en_relative: str) -> None:
     zh = read(zh_relative)
-    en_name = Path(en_relative).name
+    en = read(en_relative)
     zh_name = Path(zh_relative).name
+    en_name = Path(en_relative).name
     if f"<!-- language: en; summary: {zh_name} -->" not in en:
         fail(f"{en_relative}: missing English summary metadata")
     if f"<!-- language: zh-Hant-TW; summary-of: {en_name} -->" not in zh:
@@ -198,6 +196,17 @@ def check_summary_pair(en_relative: str, zh_relative: str) -> None:
         fail(f"{zh_relative}: executive summary needs at least five bullets")
     if "## 繁體中文摘要" in en or "## English technical record" in en:
         fail(f"{en_relative}: old inline-language section survived")
+
+
+def check_no_legacy_locale_suffixes() -> None:
+    failures = sorted(
+        str(path.relative_to(ROOT))
+        for path in ROOT.rglob("*.zh-TW.md")
+        if not any(part in {".git", "build"} for part in path.parts)
+        and not path.is_symlink()
+    )
+    if failures:
+        fail("legacy .zh-TW.md paths remain: " + ", ".join(failures))
 
 
 def check_no_repeated_language_labels() -> None:
@@ -240,7 +249,7 @@ def public_markdown_paths() -> tuple[Path, ...]:
         ROOT / "README.md",
         ROOT / "README.en.md",
         ROOT / "CHANGELOG.md",
-        ROOT / "CHANGELOG.zh-TW.md",
+        ROOT / "CHANGELOG.en.md",
     ]
     paths.extend((ROOT / "docs").rglob("*.md"))
     paths.extend((ROOT / "thesis").rglob("*.md"))
@@ -302,6 +311,42 @@ def check_project_index_scope() -> None:
                 f"{relative}: internal repository-governance content leaked "
                 f"into public index: {', '.join(leaked)}"
             )
+
+
+def check_language_local_routes() -> None:
+    required = {
+        "README.en.md": (
+            "docs/features/release-and-distribution.en.md",
+            "CHANGELOG.en.md",
+        ),
+        "docs/README.md": (
+            "../CHANGELOG.md",
+            "features/v2-modernization.md",
+            "features/validation-and-performance.md",
+            "features/release-and-distribution.md",
+        ),
+        "docs/README.en.md": (
+            "../CHANGELOG.en.md",
+            "features/v2-modernization.en.md",
+            "features/validation-and-performance.en.md",
+            "features/release-and-distribution.en.md",
+        ),
+        "docs/features/README.md": (
+            "v2-modernization.md",
+            "validation-and-performance.md",
+            "release-and-distribution.md",
+        ),
+        "docs/features/README.en.md": (
+            "v2-modernization.en.md",
+            "validation-and-performance.en.md",
+            "release-and-distribution.en.md",
+        ),
+    }
+    for relative, routes in required.items():
+        text = read(relative)
+        missing = [route for route in routes if route not in text]
+        if missing:
+            fail(f"{relative}: missing language-local routes: {', '.join(missing)}")
 
 
 def check_institution_profile_docs() -> None:
@@ -478,16 +523,19 @@ def check_institution_profile_docs() -> None:
 
 
 def check_changelog() -> None:
-    en = read("CHANGELOG.md")
-    zh = read("CHANGELOG.zh-TW.md")
-    switcher = "[繁體中文 V2](CHANGELOG.zh-TW.md) | [English and complete history](CHANGELOG.md)"
+    zh = read("CHANGELOG.md")
+    en = read("CHANGELOG.en.md")
+    switcher = "[繁體中文 V2](CHANGELOG.md) | [English and complete history](CHANGELOG.en.md)"
     if switcher not in en or switcher not in zh:
         fail("changelog: missing reciprocal language switcher")
-    if "<!-- language: en; localized-current: CHANGELOG.zh-TW.md -->" not in en:
+    if "<!-- language: en; localized-current: CHANGELOG.md -->" not in en:
+        fail("CHANGELOG.en.md: missing language metadata")
+    if "<!-- language: zh-Hant-TW; canonical-history: CHANGELOG.en.md -->" not in zh:
         fail("CHANGELOG.md: missing language metadata")
-    if "<!-- language: zh-Hant-TW; canonical-history: CHANGELOG.md -->" not in zh:
-        fail("CHANGELOG.zh-TW.md: missing language metadata")
     en_current = en.split("## 1.8.x", 1)[0]
+    bad_case = sorted(set(WRONG_PRODUCT_CASING.findall(strip_fenced_blocks(en_current))))
+    if bad_case:
+        fail(f"CHANGELOG.en.md: incorrect current-release product casing: {', '.join(bad_case)}")
     en_releases = re.findall(r"^### \[(v2\.[^]]+)\]", en_current, re.MULTILINE)
     zh_releases = re.findall(r"^### \[(v2\.[^]]+)\]", zh, re.MULTILINE)
     if len(en_releases) < 2 or en_releases != zh_releases:
@@ -572,10 +620,12 @@ def main() -> int:
             check_guide_pair(*pair)
         for pair in SUMMARY_PAIRS:
             check_summary_pair(*pair)
+        check_no_legacy_locale_suffixes()
         check_no_repeated_language_labels()
         check_language_hygiene()
         check_public_voice()
         check_project_index_scope()
+        check_language_local_routes()
         check_institution_profile_docs()
         check_changelog()
         check_package_routes()

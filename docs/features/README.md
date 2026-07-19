@@ -8,9 +8,9 @@
 
 本目錄保存production behavior、durable architecture decisions及machine-checked evidence。Feature records不是implementation queue；branch names、temporary boundaries、checkbox progress及重複command transcripts留在Git history。繁中頁面提供executive summary，並由頁首switcher連到canonical英文technical record。
 
-- [`v2-modernization.zh-TW.md`](v2-modernization.zh-TW.md) — 產品目標、相容性、架構及完成邊界。
-- [`validation-and-performance.zh-TW.md`](validation-and-performance.zh-TW.md) — 測試、artifact proof、benchmark及工程決定。
-- [`release-and-distribution.zh-TW.md`](release-and-distribution.zh-TW.md) — 版本、套件、發行、Overleaf及提交政策。
+- [`v2-modernization.md`](v2-modernization.md) — 產品目標、相容性、架構及完成邊界。
+- [`validation-and-performance.md`](validation-and-performance.md) — 測試、artifact proof、benchmark及工程決定。
+- [`release-and-distribution.md`](release-and-distribution.md) — 版本、套件、發行、Overleaf及提交政策。
 
 ## 記錄政策與進行中工作
 

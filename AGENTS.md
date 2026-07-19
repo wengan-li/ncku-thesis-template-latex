@@ -203,6 +203,9 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
   natural technical English. Use one predominant language per file with a
   top-of-page text switcher to the equivalent language file; do not use repeated
   per-section language labels or flags.
+- Traditional Chinese owns each default `<name>.md` path and English uses the
+  adjacent `<name>.en.md` companion, including technical records and changelogs.
+  Keep `zh-Hant-TW` in metadata only; tracked `*.zh-TW.md` paths are forbidden.
 - Public project actions use third-person `本模版` / `本專案` and `the template` /
   `the project` wording. General processes use role-neutral wording. Chinese references
   to cross-institution readers use `其他學校的同學`; English uses `students from
@@ -213,7 +216,8 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 - Maintainer feature records use a canonical English technical record plus a
   separate Traditional-Chinese executive-summary companion. Do not duplicate
   hashes, run IDs, or benchmark transcripts merely to claim line-by-line
-  translation.
+  translation. The English record still uses the `.en.md` filename even when it
+  remains the more detailed technical source.
 - Documentation language, institution profile, cover language, degree, and
   content mode are independent axes. Do not map English readers to `custom` or
   Traditional-Chinese readers to `ncku`.

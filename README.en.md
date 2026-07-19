@@ -24,7 +24,7 @@ The latest production source and student package are available from [GitHub Rele
 
 The existing Overleaf Gallery page remains public. V2 has been uploaded to the original Overleaf project and resubmitted for Gallery update review. Until Overleaf approves it and the public page is independently read back, “submitted” must not be treated as “approved”; GitHub Releases remains canonical for the latest V2 package.
 
-Detailed state：[`docs/features/release-and-distribution.md`](docs/features/release-and-distribution.md#recorded-gallery-state)
+Detailed state: [`docs/features/release-and-distribution.en.md`](docs/features/release-and-distribution.en.md#recorded-gallery-state)
 
 ## Choose the correct setup
 
@@ -96,7 +96,7 @@ Final output defaults to no cover Draft marker, diagonal `DRAFT` text, or instit
 
 Use the official degree-examination-system defense certificate when required. Template-generated certificates are legacy/example and regression outputs. Historical checks from 2015/2018 do not constitute current authorization or endorsement.
 
-Policy record：[`docs/features/release-and-distribution.md`](docs/features/release-and-distribution.md#draft-and-watermark-policy)
+Policy record: [`docs/features/release-and-distribution.en.md`](docs/features/release-and-distribution.en.md#draft-and-watermark-policy)
 
 ## Documentation and project work
 
@@ -111,7 +111,7 @@ just ci       # canonical CI gate
 just clean    # remove rebuildable artifacts
 ```
 
-Version history: [`CHANGELOG.md`](CHANGELOG.md)
+Version history: [`CHANGELOG.en.md`](CHANGELOG.en.md)
 
 ## Other community alternatives
 

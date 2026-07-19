@@ -8,9 +8,9 @@
 
 This directory preserves production behavior, durable architecture decisions, and machine-checked evidence. Feature records are not an implementation queue; branch names, temporary boundaries, checkbox progress, and duplicate command transcripts remain in Git history. Each English technical record has a separate Traditional-Chinese executive-summary companion.
 
-- [`v2-modernization.md`](v2-modernization.md) — product intent, compatibility, architecture, hardened subsystems, and completion boundary.
-- [`validation-and-performance.md`](validation-and-performance.md) — tests, artifact proof, benchmarks, and accepted/rejected/deferred decisions.
-- [`release-and-distribution.md`](release-and-distribution.md) — versioning, packages, GitHub Release, Overleaf, retired sample repository, and Draft/watermark policy.
+- [`v2-modernization.en.md`](v2-modernization.en.md) — product intent, compatibility, architecture, hardened subsystems, and completion boundary.
+- [`validation-and-performance.en.md`](validation-and-performance.en.md) — tests, artifact proof, benchmarks, and accepted/rejected/deferred decisions.
+- [`release-and-distribution.en.md`](release-and-distribution.en.md) — versioning, packages, GitHub Release, Overleaf, retired sample repository, and Draft/watermark policy.
 
 User migration: [`../v1-to-v2-migration.en.md`](../v1-to-v2-migration.en.md)<br>
 Student instructions: [`thesis/README.en.md`](../../thesis/README.en.md)

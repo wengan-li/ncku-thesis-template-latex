@@ -25,7 +25,8 @@ CI, releases, or public distribution are involved.
 | `docs/requirements/<NN>-<slug>.md` | Active owner-approved what/why promise only. |
 | `todos/<NN>-<slug>.md` | Active implementation progress only. |
 | [`thesis/README.md`](../../../thesis/README.md) | Instructions that ship inside the student ZIP. |
-| [`CHANGELOG.md`](../../../CHANGELOG.md) | Release index and user-visible changes. |
+| [`CHANGELOG.md`](../../../CHANGELOG.md) | Traditional-Chinese current release index and user-visible changes. |
+| [`CHANGELOG.en.md`](../../../CHANGELOG.en.md) | Canonical complete English release history. |
 | [`README.md`](../../../README.md) | Public project overview and audience routing. |
 
 Current source, tests, scripts, and immutable release assets win on drift.
@@ -102,13 +103,16 @@ one is a short link/routing sentence.
 - Paired guides carry one hidden `doc-pair`, `lang`, and stable `topics` marker.
   The deterministic checker requires pair metadata, reciprocal switchers,
   equivalent topic IDs, valid local links, and identical fenced code blocks.
-- Project feature records use a canonical English technical record plus a
-  separate `*.zh-TW.md` executive-summary companion. This is intentionally not a
-  line-by-line translation of hashes, run IDs, benchmarks, or evidence
-  transcripts.
-- `CHANGELOG.md` remains the canonical complete release history. Current localized
-  V2 notes live in `CHANGELOG.zh-TW.md`; historical mixed-language entries are
-  retained rather than rewritten.
+- Project feature records use a canonical English `*.en.md` technical record plus
+  a Traditional-Chinese default `*.md` executive-summary companion. This is
+  intentionally not a line-by-line translation of hashes, run IDs, benchmarks,
+  or evidence transcripts.
+- `CHANGELOG.en.md` remains the canonical complete release history. Current
+  Traditional-Chinese V2 notes live in `CHANGELOG.md`; historical mixed-language
+  entries are retained rather than rewritten.
+- Apply the same filename rule to every paired documentation surface: Traditional
+  Chinese owns `<name>.md`, English owns `<name>.en.md`, and `*.zh-TW.md` paths are
+  forbidden. Locale identifiers such as `zh-Hant-TW` remain valid in metadata.
 - Documentation language, institution profile, cover language, degree, and
   content mode are independent. An English reader can use `ncku`; a
   Traditional-Chinese reader can maintain another profile.
