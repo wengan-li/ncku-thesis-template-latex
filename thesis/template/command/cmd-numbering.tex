@@ -115,7 +115,7 @@
   }
 \ExplSyntaxOff
 
-% Append a parsed key value without retaining the reusable pgf scratch macro.
+% Append a parsed key value without retaining the reusable parser scratch macro.
 \makeatletter
 \newcommand\NCKUPrivateAppendFrozenValue[2]
 {%
@@ -147,7 +147,7 @@
 \makeatother
 
 % Append counter value in style to string. The selected style can arrive through
-% a pgf-stored macro, so use the expanding string-case form. Unknown or empty
+% a parsed value macro, so use the expanding string-case form. Unknown or empty
 % styles deliberately remain no-ops, matching the public compatibility contract.
 \ExplSyntaxOn
 \newcommand\AppendCounterStringToFormatString[3]
