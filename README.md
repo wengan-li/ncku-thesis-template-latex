@@ -2,7 +2,7 @@
 
 [繁體中文](README.md) | [English](README.en.md)
 
-# 國立成功大學碩博士用畢業論文 LaTeX 模版<br>National Cheng Kung University (NCKU)<br>Thesis/Dissertation Template in LaTeX
+# National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex<br>台灣國立成功大學碩博士用畢業論文 LaTex 模版
 
 [在Overleaf開啟範本](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn)
 
