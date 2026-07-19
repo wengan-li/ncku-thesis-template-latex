@@ -307,6 +307,35 @@ def check_project_index_scope() -> None:
 def check_institution_profile_docs() -> None:
     department_source = read("thesis/template/style/ncku/department.tex")
     college_source = read("thesis/template/style/ncku/college.tex")
+    ncku_profile = read("thesis/template/style/ncku/ncku.tex")
+    compat = read("thesis/template/compat/v1.tex")
+    configure = read("thesis/template/configure.tex")
+    custom_fixture = read("tests/603-custom-institution-api.tex")
+
+    catalogue_inputs = (
+        "\\input{./template/style/ncku/college}",
+        "\\input{./template/style/ncku/department}",
+    )
+    missing_inputs = [item for item in catalogue_inputs if item not in ncku_profile]
+    if missing_inputs:
+        fail("NCKU profile no longer owns its catalogue inputs: " + ", ".join(missing_inputs))
+    forbidden_compat_inputs = (
+        "template/command/cmd-college",
+        "template/command/cmd-department",
+        "template/style/ncku/college",
+        "template/style/ncku/department",
+    )
+    leaked_inputs = [item for item in forbidden_compat_inputs if item in compat]
+    if leaked_inputs:
+        fail("V1 adapter leaked NCKU catalogue inputs: " + ", ".join(leaked_inputs))
+    if "\\providecommand{\\TemplateConfigurationFile}{./conf/conf}" not in configure:
+        fail("configure: missing default-preserving profile-fixture config seam")
+    for marker in (
+        "custom profile excludes NCKU department presets",
+        "custom profile excludes NCKU college presets",
+    ):
+        if marker not in custom_fixture:
+            fail(f"custom institution fixture missing profile-isolation marker: {marker}")
 
     def compact(value: str) -> str:
         return re.sub(r"\s+", " ", value.strip())

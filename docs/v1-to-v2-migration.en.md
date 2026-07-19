@@ -93,15 +93,16 @@ scripts/test/check-v1-project-migration.py
 
 ## V1 adapter layout
 
-The V1 adapter loads even for a custom profile so old NCKU college/department presets remain defined. `template/compat/deprecated.tex` preserves 23 commands already unsupported during 1.x with the same names, diagnostics, and `\stop` behavior instead of undefined-control-sequence failures. The active one-argument `\RefTo{label}` remains available; its historical comment-only zero-argument tombstone is not public API. A custom profile does not load NCKU geometry, date policy, or watermark assets; only the intentional source-level compatibility cost remains.
+The 2.x compatibility promise follows the original NCKU context: an unchanged 1.x project keeps selecting the default `ncku` profile and therefore retains the historical NCKU college/department presets. `template/compat/v1.tex` no longer loads the NCKU catalogue for every profile; it loads only generic/deprecated adapters. `custom` and another institution profile receive only the generic institution API and replace the original NCKU department selection in their own `conf/conf.tex` with a generic or institution-prefixed command.
 
 ```text
 template/compat/v1.tex
-  template/command/cmd-college.tex      compatibility wrapper
-  template/command/cmd-department.tex   compatibility wrapper
   template/compat/deprecated.tex        23 deprecated-command tombstones
+template/style/ncku/ncku.tex            selected NCKU profile
   template/style/ncku/college.tex       NCKU-owned data
   template/style/ncku/department.tex    NCKU-owned data
+template/command/cmd-college.tex        dormant direct-path wrapper
+template/command/cmd-department.tex     dormant direct-path wrapper
 ```
 
 ## Corrected behaviors

@@ -195,4 +195,4 @@ Each command below writes the department values and calls the listed college pre
 
 ## Students from other institutions
 
-The 2.x compatibility layer keeps these NCKU commands defined even when a custom profile is active, but that does not make them portable institution data. Another profile uses the generic setters directly. A reusable catalogue uses institution-prefixed commands (for example, `\SetNTUDept...`) rather than redefining retained NCKU `\SetDept...` names. See [`../Customization.en.md`](../Customization.en.md) for the complete workflow and illustrative NTU wiring.
+Only the `ncku` profile loads these NCKU commands; `custom` and another institution profile use the generic setters directly. A reusable catalogue uses institution-prefixed commands (for example, `\SetNTUDept...`) rather than reusing NCKU `\SetDept...` names. See [`../Customization.en.md`](../Customization.en.md) for the complete workflow and illustrative NTU wiring.

@@ -72,7 +72,7 @@ mv template/style/UnivAbc/custom.tex template/style/UnivAbc/UnivAbc.tex
 
 跨校可重用contract是`\SetUniversityName{中文}{English}`、`\SetCollName{中文}{English}`及`\SetDeptName{中文}{英文縮寫}{English full name}`。對應getters為`\GetUniversityChiName`／`\GetUniversityEngName`、`\GetCollChiName`／`\GetCollEngName`、`\GetDeptChiName`／`\GetDeptEngShortName`／`\GetDeptEngName`。
 
-本模版另外保存9個NCKU college presets及110個NCKU department presets；department slot實際涵蓋系、研究所、學位學程及中心。`\SetDeptCSIE`等shortcut不只寫入department，亦會呼叫一個NCKU college preset；完整source-checked目錄見[`ncku/README.md`](ncku/README.md)。即使2.x compatibility adapter令custom build仍會定義這些commands，其他學校的同學亦不應使用。可重用的新catalogue應使用學校prefix，例如`\SetNTUDept...`，不要重新定義保留中的NCKU `\SetDept...` names。
+本模版另外保存9個NCKU college presets及110個NCKU department presets；department slot實際涵蓋系、研究所、學位學程及中心。`\SetDeptCSIE`等shortcut不只寫入department，亦會呼叫一個NCKU college preset；完整source-checked目錄見[`ncku/README.md`](ncku/README.md)。這些commands只由`ncku` profile載入；`custom`不會定義它們。可重用的新catalogue應使用學校prefix，例如`\SetNTUDept...`，不要沿用NCKU `\SetDept...` names。
 
 同一縮寫亦不代表資料相同：目前NCKU `\SetDeptCSIE` source寫入`資訊工程研究所`及`Institute of Computer Science and Information Engineering`，而以下NTU example使用`資訊工程學系`及`Department of Computer Science and Information Engineering`。因此不能因兩校都使用`CSIE`便共用preset。
 
@@ -157,13 +157,13 @@ Public commands保持`\SetOralDate{year}{month}{day}`及`\SetCoverDate{year}{mon
 
 ## 2.x相容層
 
-`template/compat/v1.tex`在整個2.x line載入，既有NCKU college／department presets仍然defined。Data ownership已移至`template/style/ncku/`，舊command paths只是wrappers。`template/compat/deprecated.tex`保存23個已於1.x停用的public commands，維持原名、diagnostic及`\stop`。有效的一參數`\RefTo{label}`仍在active command file，不會被historical comment-only tombstone取代。
+`template/compat/v1.tex`在整個2.x line載入generic／deprecated adapters。NCKU college／department presets只由`ncku` profile載入；未修改的1.x NCKU專案仍選擇此預設profile，因此原有commands保持可用。舊`template/command/cmd-college.tex`及`cmd-department.tex` paths只作dormant direct-path compatibility，不會自動進入custom runtime graph。`template/compat/deprecated.tex`保存23個已於1.x停用的public commands，維持原名、diagnostic及`\stop`。有效的一參數`\RefTo{label}`仍在active command file，不會被historical comment-only tombstone取代。
 
-Custom profile的source graph因此仍define NCKU legacy presets，但不載入NCKU geometry、date policy、watermark asset，也不應在visible output顯示NCKU內容。這是有意保留的2.x source-level compatibility cost；不要透過刪除舊API來「清理」。
+Custom profile只載入generic institution metadata contract，不會define或runtime-load NCKU legacy presets、geometry、date policy或watermark asset。Repository fixtures使用獨立generic config，並以`.fls`正面證明recorder file存在後再拒絕NCKU catalogue paths。
 
 ## 驗證
 
-學生套件內沒有`justfile`、`scripts/`或`tests/`；從包含`thesis.tex`的project root使用direct XeLaTeX/latexmk。完整repository則執行focused custom-style、API、V1 migration及full gates。Custom fixture應以不同oral/cover dates同時建置Chinese/English Master及Doctoral branches，確認沒有NCKU visible policy或watermark asset。
+學生套件內沒有`justfile`、`scripts/`或`tests/`；從包含`thesis.tex`的project root使用direct XeLaTeX/latexmk。完整repository則執行focused custom-style、API、V1 migration及full gates。Custom fixture應以不同oral/cover dates同時建置Chinese/English Master及Doctoral branches，確認沒有NCKU visible policy、watermark asset、college catalogue或department catalogue。
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex

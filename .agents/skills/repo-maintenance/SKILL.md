@@ -88,13 +88,18 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   `template/style/ncku/`; every preset also selects one NCKU college. A shared
   abbreviation does not make names or mappings portable—for example, the current
   NCKU `CSIE` preset is an institute while the documented NTU wiring is a
-  department. `template/compat/v1.tex` deliberately keeps those NCKU commands
-  defined even when `custom` is selected, but another institution must not use
-  them as portable data. A reusable new catalogue uses institution-prefixed
-  commands rather than redefining retained `\SetDept...` names. The profile
+  department. The selected `ncku` profile alone loads those NCKU commands;
+  unchanged 1.x NCKU projects retain them through the default profile, while
+  `custom` exposes only the generic institution API. A reusable new catalogue
+  uses institution-prefixed commands rather than reusing NCKU `\SetDept...`
+  names. The profile
   defines catalogue entries; each student's `conf/conf.tex` selects one entry and
   replaces the original NCKU department call, so the profile does not hard-code
   a particular department.
+- Keep `\TemplateConfigurationFile` defaulted to `./conf/conf`. Repository-only
+  custom-profile fixtures may override it with a generic test configuration so
+  they do not mutate the byte-pinned V1 `conf/conf.tex`. Require every negative
+  `.fls` assertion to first prove that the recorder file exists and is non-empty.
 - `template/style/custom/custom.tex` is a neutral, buildable skeleton—not an
   NTU or universal ready-to-submit profile. A named-school walkthrough may prove
   generic API wiring, but it remains illustrative until current official

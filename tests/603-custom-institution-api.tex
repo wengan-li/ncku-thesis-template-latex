@@ -2,6 +2,7 @@
 % This validates generic metadata semantics only; it is not an NTU format profile.
 % Build from the thesis/ directory.
 \def\TemplateStyleName{custom}
+\def\TemplateConfigurationFile{../tests/604-custom-institution-conf.tex}
 \input{./template/configure}
 
 \SetUniversityName{國立臺灣大學}{National Taiwan University}
@@ -19,9 +20,14 @@
 
 \begin{document}
 \ifcsname SetDeptCSIE\endcsname
-  \typeout{NCKU-TEST-PASS: NCKU department preset remains defined for 2.x compatibility}
+  \typeout{NCKU-TEST-FAIL: custom profile leaked NCKU department preset}
 \else
-  \typeout{NCKU-TEST-FAIL: NCKU department preset disappeared from 2.x compatibility}
+  \typeout{NCKU-TEST-PASS: custom profile excludes NCKU department presets}
+\fi
+\ifcsname SetCollegeElectricalEngineeringAndComputerScience\endcsname
+  \typeout{NCKU-TEST-FAIL: custom profile leaked NCKU college preset}
+\else
+  \typeout{NCKU-TEST-PASS: custom profile excludes NCKU college presets}
 \fi
 \AssertInstitutionValue{profile}{\GetTemplateStyleName}{custom}
 \AssertInstitutionValue{university-zh}{\GetUniversityChiName}{國立臺灣大學}

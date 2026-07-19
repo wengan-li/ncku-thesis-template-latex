@@ -109,10 +109,11 @@ each department shortcut also selects one NCKU college. The full
 source-checked catalogue is
 [`thesis/template/style/ncku/README.en.md`](../../thesis/template/style/ncku/README.en.md).
 
-The V1 adapter deliberately leaves the NCKU catalogue defined under every
-selected profile. That is declaration compatibility, not portable institution
-data. A new institution catalogue uses prefixed commands rather than redefining
-retained NCKU `\SetDept...` names. `custom` remains a neutral skeleton, and the
+The selected `ncku` profile alone loads the NCKU catalogue. An unchanged 1.x NCKU
+project retains its commands through that default profile, while `custom` loads
+only the generic institution API and no NCKU catalogue files. A new institution
+catalogue uses prefixed commands rather than reusing NCKU `\SetDept...` names.
+`custom` remains a neutral skeleton, and the
 repository does not currently ship an NTU profile; the named NTU walkthrough in
 [`Customization.en.md`](../../thesis/template/style/Customization.en.md) is
 explicitly API wiring rather than a compliance implementation.

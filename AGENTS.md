@@ -120,6 +120,10 @@ Archiving is safer than deletion. If deletion remains the explicit owner decisio
   the packaged `thesis/README.md`.
 - Keep `conf/` for student thesis data. Institution-level ports and style
   profiles remain under `template/style/`.
+- NCKU college and department presets are runtime-owned by the selected `ncku`
+  profile. Unchanged 1.x NCKU projects keep those commands through the default
+  profile; `custom` and other institution profiles load only the generic
+  institution metadata contract and must not inherit NCKU catalogue data.
 - Do not migrate bibliography systems as part of the v2 profile extraction.
 - Do not claim tagged PDF or PDF/UA compliance; current output is untagged.
 - The ETDS upload path should not add internal watermark, DOI overlay, encryption, or security when current official guidance says the school system applies required processing.

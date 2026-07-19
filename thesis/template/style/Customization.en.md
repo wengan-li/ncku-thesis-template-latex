@@ -84,7 +84,7 @@ The second `\SetDeptName` argument is the English abbreviation returned by `\Get
 
 The portable contract is `\SetUniversityName{Chinese}{English}`, `\SetCollName{Chinese}{English}`, and `\SetDeptName{Chinese}{English abbreviation}{English full name}`. Their getters are `\GetUniversityChiName` / `\GetUniversityEngName`, `\GetCollChiName` / `\GetCollEngName`, and `\GetDeptChiName` / `\GetDeptEngShortName` / `\GetDeptEngName`.
 
-The template also preserves 9 NCKU college presets and 110 NCKU department presets; the department slot covers departments, graduate institutes, degree programs, and centers. A shortcut such as `\SetDeptCSIE` writes department values and calls one NCKU college preset. See the source-checked [`ncku/README.en.md`](ncku/README.en.md) catalogue. The 2.x compatibility adapter leaves these commands defined in a custom build, but students from other institutions must not use them as portable data. A reusable new catalogue uses an institution prefix such as `\SetNTUDept...` instead of redefining retained NCKU `\SetDept...` names.
+The template also preserves 9 NCKU college presets and 110 NCKU department presets; the department slot covers departments, graduate institutes, degree programs, and centers. A shortcut such as `\SetDeptCSIE` writes department values and calls one NCKU college preset. See the source-checked [`ncku/README.en.md`](ncku/README.en.md) catalogue. Only the `ncku` profile loads these commands; `custom` does not define them. A reusable new catalogue uses an institution prefix such as `\SetNTUDept...` instead of reusing NCKU `\SetDept...` names.
 
 The same abbreviation does not imply the same data. The current NCKU `\SetDeptCSIE` source stores `資訊工程研究所` and `Institute of Computer Science and Information Engineering`; the NTU example below uses `資訊工程學系` and `Department of Computer Science and Information Engineering`. A shared `CSIE` abbreviation therefore does not make the preset portable.
 
@@ -177,9 +177,9 @@ If Taiwan-year display is required, explicitly override its policy/display gette
 
 ## 2.x compatibility adapter
 
-`template/compat/v1.tex` loads throughout 2.x so existing NCKU college/department presets remain defined. Data ownership moved under `template/style/ncku/`; old command paths are wrappers. `template/compat/deprecated.tex` preserves 23 commands already unsupported during 1.x with the same names, diagnostics, and `\stop`. The valid one-argument `\RefTo{label}` remains active and is not replaced by a historical comment-only tombstone.
+`template/compat/v1.tex` loads generic/deprecated adapters throughout 2.x. Only the `ncku` profile loads NCKU college/department presets; an unchanged 1.x NCKU project still selects that default profile and retains its commands. The old `template/command/cmd-college.tex` and `cmd-department.tex` paths remain dormant direct-path compatibility wrappers and do not enter a custom runtime graph automatically. `template/compat/deprecated.tex` preserves 23 commands already unsupported during 1.x with the same names, diagnostics, and `\stop`. The valid one-argument `\RefTo{label}` remains active and is not replaced by a historical comment-only tombstone.
 
-A custom profile source graph therefore still defines NCKU legacy presets, but it does not load NCKU geometry, date policy, or watermark assets and must not show NCKU content. This intentional 2.x source-level compatibility cost must not be “cleaned” by deleting old APIs.
+A custom profile loads only the generic institution metadata contract. It does not define or runtime-load NCKU legacy presets, geometry, date policy, or watermark assets. Repository fixtures use an isolated generic configuration and require a real `.fls` recorder file before rejecting NCKU catalogue paths.
 
 Compatibility preserves correct contracts, not verified defects.
 

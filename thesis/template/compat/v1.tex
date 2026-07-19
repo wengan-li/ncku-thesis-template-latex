@@ -1,11 +1,9 @@
 %
 % V1 public API compatibility adapter.
 %
-% The complete 2.x line keeps the historical NCKU college/department preset
-% commands available even when a non-NCKU style profile is selected. The data
-% files live with their institutional owner under template/style/ncku; these
-% wrappers preserve the old paths and command surface.
+% The complete 2.x line keeps generic/deprecated compatibility declarations here.
+% NCKU college/department presets are loaded only by the NCKU profile: unchanged
+% 1.x NCKU projects still select that default profile, while another institution
+% does not inherit NCKU catalogue data.
 %
-\input{./template/command/cmd-college}
-\input{./template/command/cmd-department}
 \input{./template/compat/deprecated}

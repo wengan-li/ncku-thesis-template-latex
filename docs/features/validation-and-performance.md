@@ -118,7 +118,8 @@ The custom profile proof covers Chinese/English Master covers, Chinese oral,
 Master/Doctoral English oral branches, and the Doctoral English cover. It keeps
 Gregorian custom dates distinct, does not borrow oral day into a generic cover,
 uses custom degree wording without changing numeric degree semantics, and loads
-no NCKU watermark asset.
+no NCKU watermark asset or college/department catalogue. The gate requires each
+`.fls` recorder file to exist before asserting that those paths are absent.
 
 ## Dated performance evidence
 

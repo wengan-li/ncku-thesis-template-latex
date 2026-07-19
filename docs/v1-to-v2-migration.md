@@ -89,15 +89,16 @@ scripts/test/check-v1-project-migration.py
 
 ## V1 adapter佈局
 
-V1 adapter即使在custom profile亦會載入，使舊NCKU college／department presets保持defined。`template/compat/deprecated.tex`保存23個已於1.x停用的commands；它們仍使用原名、原diagnostic及`\stop`，避免變成undefined-control-sequence。有效的一參數`\RefTo{label}`仍然可用，歷史comment-only零參數tombstone則不屬public API。Custom profile不會載入NCKU geometry、日期policy或浮水印asset；只保留source-level compatibility cost。
+2.x相容性按照原本的NCKU使用情境保存：未修改的1.x專案繼續選擇預設`ncku` profile，因此原有NCKU college／department presets仍可使用。`template/compat/v1.tex`不再替每個profile載入NCKU catalogue；它只載入generic／deprecated adapter。`custom`及其他學校profile只取得generic institution API，並須在自己的`conf/conf.tex`以generic或學校prefix command取代原有NCKU department selection。
 
 ```text
 template/compat/v1.tex
-  template/command/cmd-college.tex      compatibility wrapper
-  template/command/cmd-department.tex   compatibility wrapper
   template/compat/deprecated.tex        23 deprecated-command tombstones
+template/style/ncku/ncku.tex            selected NCKU profile
   template/style/ncku/college.tex       NCKU-owned data
   template/style/ncku/department.tex    NCKU-owned data
+template/command/cmd-college.tex        dormant direct-path wrapper
+template/command/cmd-department.tex     dormant direct-path wrapper
 ```
 
 ## 已修正行為

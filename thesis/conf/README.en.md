@@ -65,7 +65,7 @@ Use Gregorian numeric input. Do not manually pre-convert the year to the Taiwan 
 
 ## Department and advisors
 
-The template provides 9 NCKU college presets and 110 NCKU department presets. A shortcut such as `\SetDeptCSIE` sets both the department and its NCKU college. See [`../template/style/ncku/README.en.md`](../template/style/ncku/README.en.md) for every command, Chinese value, English abbreviation, English full name, and college mapping. Students from other institutions must not use NCKU presets; their profile uses generic `\SetUniversityName`, `\SetCollName`, and `\SetDeptName{Chinese name}{English abbreviation}{English full name}`, or an institution-prefixed catalogue.
+The `ncku` profile provides 9 NCKU college presets and 110 NCKU department presets. A shortcut such as `\SetDeptCSIE` sets both the department and its NCKU college. See [`../template/style/ncku/README.en.md`](../template/style/ncku/README.en.md) for every command, Chinese value, English abbreviation, English full name, and college mapping. Another institution profile does not load NCKU presets; it uses generic `\SetUniversityName`, `\SetCollName`, and `\SetDeptName{Chinese name}{English abbreviation}{English full name}`, or an institution-prefixed catalogue.
 
 The cover reserves space for up to three advisors. `\SetAdvisorNameA` is the first advisor; add `B` and `C` only when needed. Both language forms may be supplied together, while Chinese suffixes and English prefixes are profile policy.
 

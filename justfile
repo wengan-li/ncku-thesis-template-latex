@@ -69,11 +69,14 @@ _test-v1-api:
 [private]
 _test-v1-project-migration:
     python3 scripts/test/check-v1-project-migration.py
+    test -s "{{ build_dir }}/thesis.fls"
     grep -Eq '^INPUT .*/thesis/thesis\.tex$' "{{ build_dir }}/thesis.fls"
     grep -Fxq 'INPUT ./conf/conf.tex' "{{ build_dir }}/thesis.fls"
     grep -Fxq 'INPUT ./template/compat/v1.tex' "{{ build_dir }}/thesis.fls"
     grep -Fxq 'INPUT ./template/style/base/base.tex' "{{ build_dir }}/thesis.fls"
     grep -Fxq 'INPUT ./template/style/ncku/ncku.tex' "{{ build_dir }}/thesis.fls"
+    grep -Fxq 'INPUT ./template/style/ncku/college.tex' "{{ build_dir }}/thesis.fls"
+    grep -Fxq 'INPUT ./template/style/ncku/department.tex' "{{ build_dir }}/thesis.fls"
     grep -Eq '^Pages:[[:space:]]+271$' "{{ build_dir }}/thesis.pdfinfo"
     grep -Eq '^Page size:.*A4' "{{ build_dir }}/thesis.pdfinfo"
     grep -Fq 'National Cheng Kung University' "{{ build_dir }}/thesis-cover.txt"
@@ -343,7 +346,12 @@ _test-custom-style:
     grep -Fq 'NCKU-TEST-CUSTOM-COMMITTEE-MAX: 9' "{{ build_dir }}/tests/custom-style.log"
     grep -Fq 'NCKU-TEST-PASS: custom style profile builds without NCKU visible policy' "{{ build_dir }}/tests/custom-style.log"
     ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ build_dir }}/tests/custom-style.log"
+    test -s "{{ build_dir }}/tests/custom-style.fls"
     ! grep -Fq 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ build_dir }}/tests/custom-style.fls"
+    ! grep -Fxq 'INPUT ./template/command/cmd-college.tex' "{{ build_dir }}/tests/custom-style.fls"
+    ! grep -Fxq 'INPUT ./template/command/cmd-department.tex' "{{ build_dir }}/tests/custom-style.fls"
+    ! grep -Fxq 'INPUT ./template/style/ncku/college.tex' "{{ build_dir }}/tests/custom-style.fls"
+    ! grep -Fxq 'INPUT ./template/style/ncku/department.tex' "{{ build_dir }}/tests/custom-style.fls"
     pdftotext "{{ build_dir }}/tests/custom-style.pdf" "{{ build_dir }}/tests/custom-style.txt"
     pdftotext -f 4 -l 4 "{{ build_dir }}/tests/custom-style.pdf" "{{ build_dir }}/tests/custom-style-master-oral.txt"
     pdftotext -f 5 -l 5 "{{ build_dir }}/tests/custom-style.pdf" "{{ build_dir }}/tests/custom-style-doctoral-oral.txt"
@@ -375,9 +383,15 @@ _test-custom-style:
 _test-custom-institution-api:
     mkdir -p "{{ build_dir }}/tests"
     rm -f "{{ build_dir }}/tests/custom-institution-api."*
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=custom-institution-api ../tests/603-custom-institution-api.tex
+    cd "{{ source_dir }}" && xelatex -recorder -interaction=nonstopmode -halt-on-error -output-directory=../"{{ build_dir }}/tests" -jobname=custom-institution-api ../tests/603-custom-institution-api.tex
     test "$(grep -c 'NCKU-TEST-PASS: institution API' "{{ build_dir }}/tests/custom-institution-api.log")" -eq 8
-    grep -Fq 'NCKU-TEST-PASS: NCKU department preset remains defined for 2.x compatibility' "{{ build_dir }}/tests/custom-institution-api.log"
+    grep -Fq 'NCKU-TEST-PASS: custom profile excludes NCKU department presets' "{{ build_dir }}/tests/custom-institution-api.log"
+    grep -Fq 'NCKU-TEST-PASS: custom profile excludes NCKU college presets' "{{ build_dir }}/tests/custom-institution-api.log"
+    test -s "{{ build_dir }}/tests/custom-institution-api.fls"
+    ! grep -Fxq 'INPUT ./template/command/cmd-college.tex' "{{ build_dir }}/tests/custom-institution-api.fls"
+    ! grep -Fxq 'INPUT ./template/command/cmd-department.tex' "{{ build_dir }}/tests/custom-institution-api.fls"
+    ! grep -Fxq 'INPUT ./template/style/ncku/college.tex' "{{ build_dir }}/tests/custom-institution-api.fls"
+    ! grep -Fxq 'INPUT ./template/style/ncku/department.tex' "{{ build_dir }}/tests/custom-institution-api.fls"
     ! grep -Fq 'NCKU-TEST-FAIL:' "{{ build_dir }}/tests/custom-institution-api.log"
 
 # Internal regression test for NCKU degree-specific committee-size policy.
