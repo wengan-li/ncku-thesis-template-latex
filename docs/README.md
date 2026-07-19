@@ -23,7 +23,6 @@ This directory contains maintainer documentation for the released NCKU thesis te
 | Tests/output/performance / 測試輸出效能 | [`features/validation-and-performance.md`](features/validation-and-performance.md) |
 | Release/Overleaf / 發行與Overleaf | [`features/release-and-distribution.md`](features/release-and-distribution.md) |
 | Version history / 版本記錄 | [`CHANGELOG.md`](../CHANGELOG.md) |
-| Active implementation / 進行中工作 | [Requirement 02](requirements/02-bilingual-documentation.md) and [Todo 01](../todos/01-bilingual-documentation.md) |
 
 ## 文件結構 / Directory model
 
@@ -46,10 +45,6 @@ docs/
     release-and-distribution.md
   requirements/
     .gitkeep
-    02-bilingual-documentation.md  # active only while implementation remains
-
-todos/
-  01-bilingual-documentation.md    # active implementation progress
 ```
 
 Git history keeps per-branch checklists, superseded plans, and detailed chronology.
@@ -94,7 +89,7 @@ python3 scripts/test/check-bilingual-docs.py
 5. Remove the completed requirement and todo; do not keep an active document per branch, commit, parser, or bugfix.
 6. When no requirement is active, retain only `.gitkeep` under `docs/requirements/`.
 
-Current bilingual-documentation work remains active until exact staged-tree, package, direct-build, semantic, and canonical-output gates pass.
+Current active requirements / 現行進行中需求：none / 無。`docs/requirements/` contains only `.gitkeep`.
 
 ## Source of truth / Source-of-truth order
 
@@ -123,4 +118,4 @@ source and deterministic tests
 
 The production source line is V2 with XeLaTeX and a direct `latexmk` student build. The latest immutable release is `v2.0.1.260719010734`. `main` is the only persistent development branch and work uses short-lived `feat/<short-name>` branches. GitHub Releases remains canonical for the latest package until the Overleaf update is approved and publicly read back.
 
-Active work / 進行中工作：[`requirements/02-bilingual-documentation.md`](requirements/02-bilingual-documentation.md) and [`todos/01-bilingual-documentation.md`](../todos/01-bilingual-documentation.md).
+Active requirements / 進行中需求：none / 無。Completed implementation chronology remains in Git history.

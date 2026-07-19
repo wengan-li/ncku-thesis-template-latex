@@ -23,10 +23,8 @@ Student instructions / 學生指引：[`thesis/README.md`](../../thesis/README.m
 
 **繁體中文**
 
-Durable compatibility numbers、architecture decisions、measured rejected experiments及publication boundaries會保留，因為它們限制未來維護。新的雙語文件工作由[Requirement 02](../requirements/02-bilingual-documentation.md)及[Todo 01](../../todos/01-bilingual-documentation.md)追蹤；在acceptance gates通過前，它不會改變本目錄的production claims。
+Durable compatibility numbers、architecture decisions、measured rejected experiments及publication boundaries會保留，因為它們限制未來維護。雙語文件工作已完成；stable language policy保留在現行文件、AGENTS、repo-local skill及deterministic checker，implementation chronology則留在Git history。目前沒有active requirement。
 
 **English**
 
-Durable compatibility numbers, architecture decisions, measured rejected experiments, and publication boundaries remain because they constrain future maintenance. New bilingual-documentation work is tracked by [Requirement 02](../requirements/02-bilingual-documentation.md) and [Todo 01](../../todos/01-bilingual-documentation.md); it does not change this directory's production claims until its acceptance gates pass.
-
-When the work completes, its stable language policy stays in current documentation and the active requirement/todo are removed.
+Durable compatibility numbers, architecture decisions, measured rejected experiments, and publication boundaries remain because they constrain future maintenance. Bilingual-documentation work is complete: stable language policy remains in current documentation, AGENTS, the repo-local skill, and the deterministic checker, while implementation chronology remains in Git history. No requirement is currently active.
