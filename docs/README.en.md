@@ -4,7 +4,7 @@
 
 # Project documentation
 
-Current production release: [`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
+Current production release: [`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
 
 ## Start here
 
@@ -36,6 +36,6 @@ Feature records preserve shipped architecture, validation results, and public st
 
 ## Current release state
 
-The template currently uses the V2 source line, XeLaTeX, and a direct `latexmk` student build. The latest immutable release is `v2.0.1.260719010734`; [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) is canonical for the latest production student package.
+The template currently uses the V2 source line, XeLaTeX, and a direct `latexmk` student build. The latest immutable release is `v2.0.2.260719120024`; [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest) is canonical for the latest production student package.
 
 The existing Overleaf Gallery page remains public. The template's V2 update has been submitted for review; until Overleaf approves it and the public page is read back, that page does not represent the latest V2 package. See [`features/release-and-distribution.en.md`](features/release-and-distribution.en.md) for the detailed state.

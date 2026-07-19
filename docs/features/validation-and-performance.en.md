@@ -5,7 +5,7 @@
 # Validation and performance
 
 Status: production evidence consolidated through
-[`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
+[`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
 
 This record distinguishes current deterministic gates from dated benchmark and
 release evidence. Current tests and source win if a historical number drifts.
@@ -69,34 +69,37 @@ HTML is not byte-stable because PDF metadata such as creation time changes.
 
 ## Current production release read-back
 
-The immutable tag `v2.0.1.260719010734` points to source commit
-`76b5262af9a4494fcdbff3139f5dfa6eb1317325`. Release workflow
-[`29668523151`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/29668523151)
+The immutable tag `v2.0.2.260719120024` points to source commit
+`077323b1af173cfb564859dd360b959dd58ffaa5`. Exact merged-main Test run
+[`29687020022`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/29687020022)
+passed before Release workflow
+[`29687321505`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/29687321505)
 built and promoted exactly two public assets.
 
 Public re-download checks recorded:
 
 ```text
-ncku-thesis-template-latex-v2.0.1.260719010734.zip
-SHA-256 c4bd107485f6f920a469c1b8a892f0844f27a43f6004c6a6fedef360cf15cbf7
+ncku-thesis-template-latex-v2.0.2.260719120024.zip
+SHA-256 5ddc1e32680c596090a25d1c028abdabd5dd653f754fe03819b64fbc90447079
 
-ncku-thesis-template-latex-examples-v2.0.1.260719010734.zip
-SHA-256 6921930adb3281623d01a877d287488bacf869a2387f160916a219fa60cf5613
+ncku-thesis-template-latex-examples-v2.0.2.260719120024.zip
+SHA-256 fe094390317bdeb23c5d55371e3c263cec06285cd01af4601e60158cd464b108
 ```
 
 The public bytes matched the successful workflow artifact. The downloaded
-student ZIP matched the tagged `thesis/` tree exactly and built directly to a
-271-page A4 PDF with SyncTeX and resolved references/citations. The examples ZIP
+student ZIP matched the tagged `thesis/` tree exactly and built with the packaged
+canonical `latexmk` command to a 271-page A4 PDF with SyncTeX and resolved
+references/citations. The examples ZIP
 contained exactly its README plus six expected A4 PDFs:
 
 | PDF | Pages |
 | --- | ---: |
-| `cover.pdf` | 1 |
-| `thesis-chi.pdf` | 17 |
-| `thesis-eng.pdf` | 17 |
+| `cover.pdf` | 2 |
+| `thesis-chi.pdf` | 11 |
+| `thesis-eng.pdf` | 11 |
 | `thesis-full.pdf` | 271 |
-| `defense-certificate-master.pdf` | 1 |
-| `defense-certificate-phd.pdf` | 1 |
+| `defense-certificate-master.pdf` | 6 |
+| `defense-certificate-phd.pdf` | 10 |
 
 Generated defense certificates are template demonstrations and regression
 outputs, not official school-system documents.

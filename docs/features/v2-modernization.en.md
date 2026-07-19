@@ -9,7 +9,7 @@ Status: production
 - Base architecture release:
   [`v2.0.0.260717130231`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.0.260717130231)
 - Current production release:
-  [`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
+  [`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
 
 V2 modernizes the XeLaTeX template while preserving the established NCKU output,
 student project shape, direct compiler workflow, and complete audited 1.x public

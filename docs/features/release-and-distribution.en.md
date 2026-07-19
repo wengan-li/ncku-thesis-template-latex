@@ -8,7 +8,7 @@ Status: GitHub production release verified; Overleaf Gallery V2 update last
 recorded as owner-confirmed submitted and pending public approval/read-back.
 
 - Latest production release:
-  [`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
+  [`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
 - Public Overleaf template:
   <https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn>
 
@@ -29,7 +29,7 @@ repository convention rather than strict three-component Semantic Versioning.
 Candidate strings can be generated with, for example:
 
 ```bash
-date -u +v2.0.1.%y%m%d%H%M%S
+date -u +v2.0.2.%y%m%d%H%M%S
 ```
 
 Tags are annotated and immutable. Never move a published tag to a different
@@ -77,7 +77,9 @@ The student ZIP:
   and base/NCKU/custom profiles;
 - excludes `justfile`, `AGENTS.md`, CI, tests, scripts, internal docs, and a
   redundant `thesis/` directory layer;
-- builds directly with `latexmk -xelatex thesis.tex` outside repository tooling.
+- builds directly with the packaged canonical command
+  `latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex` outside
+  repository tooling.
 
 The exact-tree checker and its negative mutation test must fail if a required
 packaged surface such as `README.md` is removed.
