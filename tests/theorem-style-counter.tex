@@ -5,6 +5,22 @@
 
 \newcounter{MatrixCustomCounter}
 
+% Freeze dynamic registry parser expansion, per-call defaults, and omission.
+\def\NCKUTheoremEnv{EnvExpandedDefinition}
+\def\NCKUTheoremText{Expanded Definition}
+\def\NCKUTheoremCounter{MatrixCustomCounter}
+\NCKUPrivateSetTheoremFormatKeys{Definition}{EnvironmentName=\NCKUTheoremEnv,ShowText=\NCKUTheoremText,FollowCounter=\NCKUTheoremCounter}
+\def\NCKUTheoremEnv{CHANGED}
+\def\NCKUTheoremText{CHANGED}
+\def\NCKUTheoremCounter{CHANGED}
+\typeout{NCKU-THEOREM-REGISTRY-EXPANDED: \GetTheoremDefinitionFormatEnvironmentName/\GetTheoremDefinitionFormatShowText/\GetTheoremDefinitionFormatFollowCounter}
+\NCKUPrivateSetTheoremFormatKeys{Definition}{ShowText=Partial Definition}
+\typeout{NCKU-THEOREM-REGISTRY-PARTIAL: \GetTheoremDefinitionFormatEnvironmentName/\GetTheoremDefinitionFormatShowText/\GetTheoremDefinitionFormatFollowCounter}
+\NCKUPrivateSetTheoremFormatKeys{Definition}{\empty}
+\typeout{NCKU-THEOREM-REGISTRY-OMITTED: \GetTheoremDefinitionFormatEnvironmentName/\GetTheoremDefinitionFormatShowText/\GetTheoremDefinitionFormatFollowCounter}
+\NCKUPrivateSetTheoremFormatKeys{Note}{\empty}
+\typeout{NCKU-THEOREM-REGISTRY-OPTIONAL: \GetTheoremNoteFormatEnvironmentName/\GetTheoremNoteFormatShowText/\GetTheoremNoteFormatFollowCounter}
+
 \newcommand{\ConfigureMatrixTheorem}[2]{%
   \SetTheoremFormat[#1]{%
     EnvironmentName = {EnvMatrix#1},

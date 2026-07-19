@@ -565,10 +565,15 @@
   \NCKUPrivateForEachTheoremFormat{\NCKUPrivateInitTheoremFormat}%
 } % End of \newcommand{}
 
+\newcommand\NCKUPrivateSetTheoremFormatKeys[2]
+{%
+  \pgfkeys{/Theorem#1Format, default, #2}%
+} % End of \newcommand{}
+
 \newcommand{\SetTheoremFormat}[2][\empty]
 {%
   \ifcsname NCKUPrivateTheoremFormatRegistered@#1\endcsname
-    \pgfkeys{/Theorem#1Format, default, #2}%
+    \NCKUPrivateSetTheoremFormatKeys{#1}{#2}%
   \fi
 } % End of \newcommand{}
 
