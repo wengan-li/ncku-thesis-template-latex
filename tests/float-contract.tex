@@ -144,6 +144,49 @@
 \typeout{NCKU-FIGURE-KEY-RESET: \TmpValueScale/\TmpValueAngle/\TmpValueCaption/\TmpValueLabel/\TmpValuePosition/\TmpValueAlign/\TmpValueOpacity}
 \endgroup
 
+% Freeze the top-level and nested multi-figure parsers independently.
+\begingroup
+\NCKUPrivateSetInsertFiguresKeys{\empty}
+\typeout{NCKU-MULTI-KEY-DEFAULTS: \TmpMIValueImagePerRow/\TmpMIValueCaption/\TmpMIValueLabel/\TmpMIValueAlign/\TmpValueOpacity}
+\def\NCKUMultiPerRow{4}
+\def\NCKUMultiCaption{Expanded Multi Caption}
+\def\NCKUMultiLabel{ncku:multi-expanded}
+\def\NCKUMultiAlign{ignored-multi-align}
+\def\NCKUMultiOpacity{0.95}
+\NCKUPrivateSetInsertFiguresKeys{perrow=\NCKUMultiPerRow,caption=\NCKUMultiCaption,label=\NCKUMultiLabel,align=\NCKUMultiAlign,opacity=\NCKUMultiOpacity}
+\typeout{NCKU-MULTI-KEY-EXPANDED: \TmpMIValueImagePerRow/\TmpMIValueCaption/\TmpMIValueLabel/\TmpMIValueAlign/\TmpValueOpacity}
+\NCKUPrivateSetInsertFiguresKeys{caption=Partial Multi}
+\typeout{NCKU-MULTI-KEY-PARTIAL: \TmpMIValueImagePerRow/\TmpMIValueCaption/\TmpMIValueLabel/\TmpMIValueAlign/\TmpValueOpacity}
+\NCKUPrivateSetInsertFiguresKeys{\empty}
+\typeout{NCKU-MULTI-KEY-OMITTED: \TmpMIValueImagePerRow/\TmpMIValueCaption/\TmpMIValueLabel/\TmpMIValueAlign/\TmpValueOpacity}
+
+\NCKUPrivateSetInsertFiguresSubFigureKeys{\empty}
+\typeout{NCKU-SUBFIGURE-KEY-DEFAULTS: \TmpMISubValueScale/\TmpMISubValueAngle/\TmpMISubValueCaption/\TmpMISubValueLabel/\TmpMISubValueAlign}
+\def\NCKUSubScale{1.8}
+\def\NCKUSubAngle{25}
+\def\NCKUSubCaption{Expanded Sub Caption}
+\def\NCKUSubLabel{ncku:sub-expanded}
+\def\NCKUSubAlign{ignored-sub-align}
+\NCKUPrivateSetInsertFiguresSubFigureKeys{scale=\NCKUSubScale,angle=\NCKUSubAngle,caption=\NCKUSubCaption,label=\NCKUSubLabel,align=\NCKUSubAlign}
+\typeout{NCKU-SUBFIGURE-KEY-EXPANDED: \TmpMISubValueScale/\TmpMISubValueAngle/\TmpMISubValueCaption/\TmpMISubValueLabel/\TmpMISubValueAlign}
+\NCKUPrivateSetInsertFiguresSubFigureKeys{caption=Partial Sub}
+\typeout{NCKU-SUBFIGURE-KEY-PARTIAL: \TmpMISubValueScale/\TmpMISubValueAngle/\TmpMISubValueCaption/\TmpMISubValueLabel/\TmpMISubValueAlign}
+\NCKUPrivateSetInsertFiguresSubFigureKeys{\empty}
+\typeout{NCKU-SUBFIGURE-KEY-OMITTED: \TmpMISubValueScale/\TmpMISubValueAngle/\TmpMISubValueCaption/\TmpMISubValueLabel/\TmpMISubValueAlign}
+\endgroup
+
+% Freeze all one-to-four-per-row helper branches without visible output.
+\begingroup
+\renewcommand\InsertSubfigureOneFigure[1]{\typeout{NCKU-MULTI-ROW-ONE: #1}}
+\renewcommand\InsertSubfigureTwoFigure[2]{\typeout{NCKU-MULTI-ROW-TWO: #1+#2}}
+\renewcommand\InsertSubfigureThreeFigure[3]{\typeout{NCKU-MULTI-ROW-THREE: #1+#2+#3}}
+\renewcommand\InsertSubfigureFourFigure[4]{\typeout{NCKU-MULTI-ROW-FOUR: #1+#2+#3+#4}}
+\InsertFiguresOnePerRow{A}{B}
+\InsertFiguresTwoPerRow{C}{D}{E}
+\InsertFiguresThreePerRow{F}{G}{H}{I}{J}
+\InsertFiguresFourPerRow{K}{L}{M}{N}{O}{P}
+\endgroup
+
 References: \ref{ncku:float:single}, \ref{ncku:float:multi},
 \ref{ncku:float:sub-a}, \ref{ncku:float:sub-b}, \ref{ncku:float:sub-c},
 \ref{ncku:float:table-top}, \ref{ncku:float:table-bottom}.

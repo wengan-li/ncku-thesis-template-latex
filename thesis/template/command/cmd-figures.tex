@@ -28,23 +28,30 @@
 %
 % ----------------------------------------------------------------------------
 
-\pgfkeys
-{
-  /InsertFigures/.is family, /InsertFigures,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / insert-figures }
   {
-    perrow = 1,
-    caption = \empty,
-    label = \empty,
-    align = \empty,      % Useless, for backporting
-    opacity = 0.4,
-  },
-  perrow/.estore in = \TmpMIValueImagePerRow,
-  caption/.estore in = \TmpMIValueCaption,
-  label/.estore in = \TmpMIValueLabel,
-  align/.estore in = \TmpMIValueAlign,      % Useless, for backporting
-  opacity/.estore in = \TmpValueOpacity,
-} % End of \pgfkeys{}
+    perrow  .tl_set_e:N = \TmpMIValueImagePerRow,
+    caption .tl_set_e:N = \TmpMIValueCaption,
+    label   .tl_set_e:N = \TmpMIValueLabel,
+    align   .tl_set_e:N = \TmpMIValueAlign,
+    opacity .tl_set_e:N = \TmpValueOpacity,
+  }
+
+\cs_new_protected:Npn \ncku_insert_figures_set_keys:n #1
+  {
+    \tl_set:Nn \TmpMIValueImagePerRow { 1 }
+    \tl_clear:N \TmpMIValueCaption
+    \tl_clear:N \TmpMIValueLabel
+    \tl_clear:N \TmpMIValueAlign
+    \tl_set:Nn \TmpValueOpacity { 0.4 }
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / insert-figures } {#1} }
+  }
+
+\cs_new_protected:Npn \NCKUPrivateSetInsertFiguresKeys #1
+  { \ncku_insert_figures_set_keys:n {#1} }
+\ExplSyntaxOff
 
 % Insert multi-figure
 % Arg: 1st: Table configure
@@ -54,7 +61,7 @@
   +G{\empty} +G{\empty} +G{\empty} +G{\empty}}
 {
   % Parse the input
-  \pgfkeys{/InsertFigures, default, #1}%
+  \NCKUPrivateSetInsertFiguresKeys{#1}%
   %
   \begin{figure}[H]%
   \NCKUPrivateDisplayFramedFloatContent{\TmpValueOpacity}{%
@@ -326,29 +333,36 @@
 
 % ----------------------------------------------------------------------------
 
-\pgfkeys
-{
-  /InsertFiguresSubFigure/.is family, /InsertFiguresSubFigure,
-  default/.style =
+\ExplSyntaxOn
+\keys_define:nn { ncku / insert-figures-subfigure }
   {
-    scale = 1.0,
-    angle = 0,
-    caption = \empty,
-    label = \empty,
-    align = \empty,      % Useless, for backporting
-  },
-  scale/.estore in = \TmpMISubValueScale,
-  angle/.estore in = \TmpMISubValueAngle,
-  caption/.estore in = \TmpMISubValueCaption,
-  label/.estore in = \TmpMISubValueLabel,
-  align/.estore in = \TmpMISubValueAlign,      % Useless, for backporting
-} % End of \pgfkeys{}
+    scale   .tl_set_e:N = \TmpMISubValueScale,
+    angle   .tl_set_e:N = \TmpMISubValueAngle,
+    caption .tl_set_e:N = \TmpMISubValueCaption,
+    label   .tl_set_e:N = \TmpMISubValueLabel,
+    align   .tl_set_e:N = \TmpMISubValueAlign,
+  }
+
+\cs_new_protected:Npn \ncku_insert_figures_subfigure_set_keys:n #1
+  {
+    \tl_set:Nn \TmpMISubValueScale { 1.0 }
+    \tl_set:Nn \TmpMISubValueAngle { 0 }
+    \tl_clear:N \TmpMISubValueCaption
+    \tl_clear:N \TmpMISubValueLabel
+    \tl_clear:N \TmpMISubValueAlign
+    \tl_if_eq:nnF {#1} { \empty }
+      { \keys_set:nn { ncku / insert-figures-subfigure } {#1} }
+  }
+
+\cs_new_protected:Npn \NCKUPrivateSetInsertFiguresSubFigureKeys #1
+  { \ncku_insert_figures_subfigure_set_keys:n {#1} }
+\ExplSyntaxOff
 
 % Low-level insert image
 \newcommand{\InsertFiguresSubFigure}[2][\empty]
 {
   % Parse the input
-  \pgfkeys{/InsertFiguresSubFigure, default, #1}
+  \NCKUPrivateSetInsertFiguresSubFigureKeys{#1}
   %
   \includegraphics[
     scale=\TmpMISubValueScale,

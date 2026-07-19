@@ -1,6 +1,6 @@
 # Incremental `expl3` Internal Modernization
 
-Status: first nine bounded slices implemented and validated; pending review
+Status: first ten bounded slices implemented and validated; pending review
 
 ## Intent
 
@@ -173,6 +173,14 @@ separate negative matrix proves 9/9 unknown-key hard errors.
 No direct `pgfkeys` references remain in `cmd-numbering.tex`. Existing default,
 custom, repeated, dynamic-counter, title, reference, figure/table/equation, and
 unknown-selector rendering contracts remain unchanged.
+
+### Selected follow-up: multi-figure key parsing
+
+The top-level five-key `InsertFigures` parser and nested five-key subfigure parser
+now use independent `l3keys` families behind their existing public commands. The
+focused contract freezes expanded, partial-reset, and literal-`\empty` behavior,
+2/2 unknown-key hard errors, all one-to-four-per-row helper branches, image assets,
+captions, labels, references, opacity, and the existing no-op alignment keys.
 
 ### Retained: explicit `xparse`
 
@@ -419,9 +427,9 @@ numbering; none moved as part of the Chapter-only slice.
 Do not continue by count alone. Rank candidates by removable dependency cost,
 finite semantics, existing fixture coverage, and output risk. Before another key
 family moves, capture its default, macro-expansion, unknown-key, repeated-setup,
-and rendering contract under the current implementation. The remaining choices
-are coupled multi-figure parsing and dynamic theorem registration; neither is
-approved automatically by reference count.
+and rendering contract under the current implementation. The remaining choice is
+dynamic theorem registration; it is not approved automatically by reference
+count.
 Prefer the smallest
 finite dispatcher or add missing contracts first, and keep every slice
 independently revertible.

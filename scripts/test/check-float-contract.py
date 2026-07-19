@@ -40,6 +40,22 @@ def main() -> None:
         "NCKU-FIGURE-KEY-DEFAULTS:1.0/0///H//0.4",
         "NCKU-FIGURE-KEY-EXPANDED:1.75/15/ExpandedCaption/ncku:expanded/ignored-pos/ignored-align/0.9",
         "NCKU-FIGURE-KEY-RESET:1.0/0///H//0.4",
+        "NCKU-MULTI-KEY-DEFAULTS:1////0.4",
+        "NCKU-MULTI-KEY-EXPANDED:4/ExpandedMultiCaption/ncku:multi-expanded/ignored-multi-align/0.95",
+        "NCKU-MULTI-KEY-PARTIAL:1/PartialMulti///0.4",
+        "NCKU-MULTI-KEY-OMITTED:1////0.4",
+        "NCKU-SUBFIGURE-KEY-DEFAULTS:1.0/0///",
+        "NCKU-SUBFIGURE-KEY-EXPANDED:1.8/25/ExpandedSubCaption/ncku:sub-expanded/ignored-sub-align",
+        "NCKU-SUBFIGURE-KEY-PARTIAL:1.0/0/PartialSub//",
+        "NCKU-SUBFIGURE-KEY-OMITTED:1.0/0///",
+        "NCKU-MULTI-ROW-ONE:A",
+        "NCKU-MULTI-ROW-ONE:B",
+        "NCKU-MULTI-ROW-TWO:C+D",
+        "NCKU-MULTI-ROW-ONE:E",
+        "NCKU-MULTI-ROW-THREE:F+G+H",
+        "NCKU-MULTI-ROW-TWO:I+J",
+        "NCKU-MULTI-ROW-FOUR:K+L+M+N",
+        "NCKU-MULTI-ROW-TWO:O+P",
     )
     for marker in state_markers:
         require(marker in compact_log, f"missing key-state marker: {marker}")
@@ -181,7 +197,50 @@ def main() -> None:
     )
     require(figure_source.count(r"\TmpValuePosition") == 1, "figure pos key became behaviorally active")
     require(figure_source.count(r"\TmpValueAlign") == 1, "figure align key became behaviorally active")
-    require(figures_source.count(r"\TmpMIValueAlign") == 1, "multi-figure align key became behaviorally active")
+    top_runtime = figures_source.split(r"\ExplSyntaxOff", 1)[1]
+    require(
+        r"\TmpMIValueAlign" not in top_runtime,
+        "multi-figure align key became behaviorally active outside its parser",
+    )
+    require(
+        r"\cs_new_protected:Npn \NCKUPrivateSetInsertFiguresKeys #1" in figures_source,
+        "top-level multi-figure private parser seam is missing",
+    )
+    require(
+        r"\cs_new_protected:Npn \NCKUPrivateSetInsertFiguresSubFigureKeys #1" in figures_source,
+        "nested subfigure private parser seam is missing",
+    )
+    require(
+        figures_source.count(r"\NCKUPrivateSetInsertFiguresKeys{#1}") == 1,
+        "top-level multi-figure command bypasses its private seam",
+    )
+    require(
+        figures_source.count(r"\NCKUPrivateSetInsertFiguresSubFigureKeys{#1}") == 1,
+        "nested subfigure command bypasses its private seam",
+    )
+    require(
+        r"\keys_define:nn { ncku / insert-figures }" in figures_source,
+        "top-level multi-figure l3keys family is missing",
+    )
+    require(
+        r"\keys_define:nn { ncku / insert-figures-subfigure }" in figures_source,
+        "nested subfigure l3keys family is missing",
+    )
+    top_block = figures_source.split(
+        r"\keys_define:nn { ncku / insert-figures }", 1
+    )[1].split(r"\cs_new_protected:Npn \ncku_insert_figures_set_keys:n", 1)[0]
+    sub_block = figures_source.split(
+        r"\keys_define:nn { ncku / insert-figures-subfigure }", 1
+    )[1].split(
+        r"\cs_new_protected:Npn \ncku_insert_figures_subfigure_set_keys:n", 1
+    )[0]
+    require(top_block.count(".tl_set_e:N") == 5, "top-level multi-figure key count changed")
+    require(sub_block.count(".tl_set_e:N") == 5, "nested subfigure key count changed")
+    require(r"/InsertFigures/.is family" not in figures_source, "legacy top-level family remains")
+    require(
+        r"/InsertFiguresSubFigure/.is family" not in figures_source,
+        "legacy nested subfigure family remains",
+    )
 
     print(
         "Float contract PASS: single/multi/subfigure/table routes, labels/ref/nameref, "

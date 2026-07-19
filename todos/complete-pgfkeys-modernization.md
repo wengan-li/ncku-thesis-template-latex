@@ -63,19 +63,19 @@ Complete the compatibility-preserving migration of repository-owned command pars
 ### Current evidence
 
 Baseline merged-main: `650a6d9c89a56250e57d6ff652b83a1324d5c541`.
-After the numbering subsystem migration:
+After the numbering and multi-figure subsystem migrations:
 
-- Eight direct `pgfkeys`/`pgfkeysvalueof` references remain across two files.
+- Two direct `pgfkeys`/`pgfkeysvalueof` references remain in one file.
 - `cmd-numbering.tex` has zero direct references after migrating nine families.
-- `cmd-figures.tex` owns six references across top-level and nested multi-figure families.
+- `cmd-figures.tex` has zero direct references after migrating both parser levels.
 - `cmd-theorem.tex` owns two dynamic-registry references.
-- Sixteen command key families use `l3keys`; active student source has zero `l3keys2e` references.
+- Eighteen command key families use `l3keys`; active student source has zero `l3keys2e` references.
 - Exact merged-main `just ci` and hosted push run 29664936529 pass.
 
 ## Progress
 
 - [x] Merge validated Chapter title-format PR #87.
 - [x] Migrate the remaining nine numbering families.
-- [ ] Migrate top-level and nested multi-figure families.
+- [x] Migrate top-level and nested multi-figure families.
 - [ ] Migrate or explicitly retain dynamic theorem parsing from evidence.
 - [ ] Run final zero-reference/retention audit and graduate this brief into `docs/features/v2/`.
