@@ -184,27 +184,19 @@ Public commands保持`\SetOralDate{year}{month}{day}`及`\SetCoverDate{year}{mon
 
 `template/compat/v1.tex`在整個2.x line載入generic／deprecated adapters。NCKU college／department presets只由`ncku` profile載入；未修改的1.x NCKU專案仍選擇此預設profile，因此原有commands保持可用。舊`template/command/cmd-college.tex`及`cmd-department.tex` paths只作dormant direct-path compatibility，不會自動進入custom runtime graph。`template/compat/deprecated.tex`保存23個已於1.x停用的public commands，維持原名、diagnostic及`\stop`。有效的一參數`\RefTo{label}`仍在active command file，不會被historical comment-only tombstone取代。
 
-Custom profile只載入generic institution metadata contract，不會define或runtime-load NCKU legacy presets、geometry、date policy或watermark asset。Repository fixtures使用獨立generic config，並以`.fls`正面證明recorder file存在後再拒絕NCKU catalogue paths。
+Custom profile只載入generic institution metadata contract，不會define或載入NCKU presets、geometry、date policy或watermark asset。
 
 ## 驗證
 
-學生套件內沒有`justfile`、`scripts/`或`tests/`；從包含`thesis.tex`的project root使用direct XeLaTeX/latexmk。完整repository則執行focused custom-style、API、V1 migration及full gates。Custom fixture應以不同oral/cover dates同時建置Chinese/English Master及Doctoral branches，確認沒有NCKU visible policy、watermark asset、college catalogue或department catalogue。
+從包含`thesis.tex`的project root使用direct XeLaTeX/latexmk：
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 pdfinfo thesis.pdf
 ```
 
-```bash
-just _test-custom-style
-python3 scripts/test/check-v1-api.py
-python3 scripts/test/check-v1-project-migration.py
-just test
-just ci
-```
+確認PDF為A4，並逐項檢查profile registration、學校及系所名稱、日期、口試委員人數、Master／Doctoral與中英文輸出。Custom profile不應出現NCKU文字或浮水印；最後檢查references已收斂，以及封面與證明書頁面沒有空白、截斷或重疊。
 
 ## 故障處理
 
 如出現`Template style file ... was not found`，檢查directory、filename及`\TemplateStyleName`大小寫。如出現`did not register itself`，確認profile file呼叫一次相同名稱的`\RegisterTemplateStyle`。如custom output出現NCKU文字或asset，檢查是否直接input NCKU profile、從NCKU複製後漏刪policy，或在generic renderer硬編碼institution values。
-
-任何output regression均先回到最後可建置commit，一次重套一個profile change；不要停用tests、降低expected counts或改compatibility manifests。

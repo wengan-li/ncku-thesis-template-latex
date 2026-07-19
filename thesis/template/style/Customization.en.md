@@ -204,35 +204,21 @@ If Taiwan-year display is required, explicitly override its policy/display gette
 
 `template/compat/v1.tex` loads generic/deprecated adapters throughout 2.x. Only the `ncku` profile loads NCKU college/department presets; an unchanged 1.x NCKU project still selects that default profile and retains its commands. The old `template/command/cmd-college.tex` and `cmd-department.tex` paths remain dormant direct-path compatibility wrappers and do not enter a custom runtime graph automatically. `template/compat/deprecated.tex` preserves 23 commands already unsupported during 1.x with the same names, diagnostics, and `\stop`. The valid one-argument `\RefTo{label}` remains active and is not replaced by a historical comment-only tombstone.
 
-A custom profile loads only the generic institution metadata contract. It does not define or runtime-load NCKU legacy presets, geometry, date policy, or watermark assets. Repository fixtures use an isolated generic configuration and require a real `.fls` recorder file before rejecting NCKU catalogue paths.
+A custom profile loads only the generic institution metadata contract. It does not define or load NCKU presets, geometry, date policy, or watermark assets.
 
 Compatibility preserves correct contracts, not verified defects.
 
 ## Verification
 
-The student package contains no `justfile`, `scripts/`, or `tests`; run direct XeLaTeX/latexmk from the project root containing `thesis.tex`. Full-repository verification uses the focused custom-style, API, V1 migration, and full gates. The custom fixture uses distinct oral/cover dates across Chinese/English Master and Doctoral branches and rejects NCKU visible policy or watermark assets.
-
-Student/package command:
+Run direct XeLaTeX/latexmk from the project root containing `thesis.tex`:
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 pdfinfo thesis.pdf
 ```
 
-Project commands:
-
-```bash
-just _test-custom-style
-python3 scripts/test/check-v1-api.py
-python3 scripts/test/check-v1-project-migration.py
-just test
-just ci
-```
-
-Verify profile registration, A4 pages, names, dates, committee ranges, both degree branches, absence of unintended assets in `.fls`, converged references, and the final rendered cover/certificate pages.
+Confirm that the PDF is A4, then check profile registration, institution and department names, dates, committee ranges, Master/Doctoral branches, and Chinese/English output. A custom profile must not show NCKU wording or watermarks. Finally, confirm converged references and inspect the cover and certificate pages for missing, clipped, or overlapping content.
 
 ## Troubleshooting
 
 For `Template style file ... was not found`, check directory, filename, and `\TemplateStyleName` casing. For `did not register itself`, ensure the profile file calls exactly one matching `\RegisterTemplateStyle`. If custom output shows NCKU wording or assets, check for a direct NCKU-profile input, copied NCKU policy left in the new profile, or institution values hard-coded into a generic renderer.
-
-For any output regression, return to the last buildable commit and reapply one profile change at a time. Do not disable tests, lower expected counts, or edit compatibility manifests.
