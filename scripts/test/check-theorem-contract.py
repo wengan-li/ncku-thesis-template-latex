@@ -42,8 +42,9 @@ def main() -> None:
         "theorem-content insertion bypasses the private parser",
     )
     require(
-        r"/Theorem#1Format/.is family" in source,
-        "dynamic theorem-format pgfkeys registry was changed by this slice",
+        r"\keys_define:nn { ncku / theorem-format }" in source
+        and r"/Theorem#1Format/.is family" not in source,
+        "dynamic theorem-format l3keys registry boundary is missing",
     )
 
     require(
