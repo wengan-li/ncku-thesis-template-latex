@@ -1,4 +1,4 @@
-<!-- doc-pair: root-readme; lang: zh-Hant-TW; topics: project-overview,release-and-overleaf-status,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,submission-watermark-and-certificate,documentation-and-project-work,other-community-alternatives,licence -->
+<!-- doc-pair: root-readme; lang: zh-Hant-TW; topics: project-overview,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,submission-watermark-and-certificate,documentation-and-project-work,other-community-alternatives,licence -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -15,12 +15,6 @@
 - [成大博碩士論文系統](https://thesis.lib.ncku.edu.tw/)
 - [論文建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)
 - [教務處課務組論文格式規範](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)
-
-## 發行與Overleaf狀態
-
-最新正式原始碼及學生套件由[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest)提供。目前最新production release是`v2.0.2.260719120024`。V2保留完整machine-audited 1.x public API及XeLaTeX學生使用路徑，同時整理profile、相容層、測試及下載套件。
-
-既有Overleaf Gallery頁面仍可公開使用。本模版的V2已上載到原本的Overleaf project並重新提交Gallery update review；在Overleaf批准並完成public read-back前，不能將「已提交」寫成「已批准」，最新V2仍以GitHub Releases為準。
 
 ## 選擇正確設定
 

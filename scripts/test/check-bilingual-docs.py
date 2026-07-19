@@ -268,12 +268,10 @@ def check_public_voice() -> None:
     required_third_person = {
         "README.md": (
             "本模版以XeLaTeX建置",
-            "本模版的V2已上載",
             "本模版將共用renderer",
         ),
         "README.en.md": (
             "This XeLaTeX template supports",
-            "V2 has been uploaded",
             "The template separates shared rendering",
         ),
         "docs/README.md": ("本目錄記錄",),
@@ -288,6 +286,16 @@ def check_public_voice() -> None:
         missing = [marker for marker in markers if marker not in text]
         if missing:
             fail(f"{relative}: missing third-person project voice: {', '.join(missing)}")
+
+    internal_root_status = {
+        "README.md": ("發行與Overleaf狀態", "本模版的V2已上載"),
+        "README.en.md": ("Release and Overleaf status", "V2 has been uploaded"),
+    }
+    for relative, markers in internal_root_status.items():
+        text = read(relative)
+        leaked = [marker for marker in markers if marker in text]
+        if leaked:
+            fail(f"{relative}: internal release status leaked into public README: {', '.join(leaked)}")
 
 
 def check_project_index_scope() -> None:

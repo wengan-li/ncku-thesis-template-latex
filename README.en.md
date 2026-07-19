@@ -1,4 +1,4 @@
-<!-- doc-pair: root-readme; lang: en; topics: project-overview,release-and-overleaf-status,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,submission-watermark-and-certificate,documentation-and-project-work,other-community-alternatives,licence -->
+<!-- doc-pair: root-readme; lang: en; topics: project-overview,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,submission-watermark-and-certificate,documentation-and-project-work,other-community-alternatives,licence -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -17,14 +17,6 @@ Official guidance last checked on `2026-07-12`:
 - [NCKU thesis system](https://thesis.lib.ncku.edu.tw/)
 - [Submission guidance](https://thesis.lib.ncku.edu.tw/help/aboutedit/)
 - [Curriculum Division thesis-format guidance](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)
-
-## Release and Overleaf status
-
-The latest production source and student package are available from [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest). The current production release is `v2.0.2.260719120024`. V2 preserves the complete machine-audited 1.x public API and direct XeLaTeX student workflow while organizing profiles, compatibility, tests, and downloads.
-
-The existing Overleaf Gallery page remains public. V2 has been uploaded to the original Overleaf project and resubmitted for Gallery update review. Until Overleaf approves it and the public page is independently read back, “submitted” must not be treated as “approved”; GitHub Releases remains canonical for the latest V2 package.
-
-Detailed state: [`docs/features/release-and-distribution.en.md`](docs/features/release-and-distribution.en.md#recorded-gallery-state)
 
 ## Choose the correct setup
 
