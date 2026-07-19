@@ -4,7 +4,7 @@
 
 # 專案文件
 
-目前正式release：[`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
+目前正式release：[`v2.0.2.260719120024`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024)
 
 ## 文件入口
 
@@ -36,6 +36,6 @@ Feature records保存已發行architecture、驗證結果及公開狀態。
 
 ## 目前發行狀態
 
-本模版目前使用V2 source line、XeLaTeX及direct `latexmk`學生build。最新immutable release是`v2.0.1.260719010734`，最新正式學生套件以[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest)為準。
+本模版目前使用V2 source line、XeLaTeX及direct `latexmk`學生build。最新immutable release是`v2.0.2.260719120024`，最新正式學生套件以[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest)為準。
 
 既有Overleaf Gallery頁面仍可公開使用。本模版的V2 update已提交review；在Overleaf批准並完成public read-back前，該頁面不代表最新V2 package。詳細狀態記錄於[`features/release-and-distribution.md`](features/release-and-distribution.md)。
