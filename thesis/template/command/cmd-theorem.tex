@@ -145,24 +145,40 @@
 \providecommand{\GetTheoremQuestionFormatFollowCounter}{\empty}
 \providecommand{\GetTheoremHypothesisFormatFollowCounter}{\empty}
 
+\ExplSyntaxOn
+\tl_new:N \l__ncku_theorem_format_type_tl
+\keys_define:nn { ncku / theorem-format }
+  {
+    EnvironmentName .code:n =
+      { \tl_set:ce { GetTheorem\l__ncku_theorem_format_type_tl FormatEnvironmentName } {#1} },
+    ShowText .code:n =
+      { \tl_set:ce { GetTheorem\l__ncku_theorem_format_type_tl FormatShowText } {#1} },
+    FollowCounter .code:n =
+      { \tl_set:ce { GetTheorem\l__ncku_theorem_format_type_tl FormatFollowCounter } {#1} },
+  }
+
+\cs_new_protected:Npn \ncku_theorem_format_keys_set:nn #1#2
+  {
+    \tl_set:Nn \l__ncku_theorem_format_type_tl {#1}
+    \tl_set:ce { GetTheorem#1FormatEnvironmentName }
+      { \use:c { NCKUPrivateTheoremDefaultEnvironment@#1 } }
+    \tl_set:ce { GetTheorem#1FormatShowText }
+      { \use:c { NCKUPrivateTheoremDefaultShowText@#1 } }
+    \tl_set:ce { GetTheorem#1FormatFollowCounter }
+      { \use:c { NCKUPrivateTheoremDefaultFollowCounter@#1 } }
+    \tl_if_eq:nnF {#2} { \empty }
+      { \keys_set:nn { ncku / theorem-format } {#2} }
+  }
+\ExplSyntaxOff
+
 \newcommand{\NCKUPrivateDeclareTheoremFormat}[9]
 {%
   \expandafter\def\csname NCKUPrivateTheoremStyle@#1\endcsname{#2}%
   \expandafter\def\csname NCKUPrivateTheoremPolicy@#1\endcsname{#3}%
   \expandafter\def\csname NCKUPrivateTheoremFormatRegistered@#1\endcsname{}%
-  \pgfkeys
-  {
-    /Theorem#1Format/.is family, /Theorem#1Format,
-    default/.style =
-    {
-      EnvironmentName = {#4},
-      ShowText = {#5},
-      FollowCounter = #6,
-    },
-    EnvironmentName/.estore in = #7,
-    ShowText/.estore in = #8,
-    FollowCounter/.estore in = #9,
-  }%
+  \expandafter\def\csname NCKUPrivateTheoremDefaultEnvironment@#1\endcsname{#4}%
+  \expandafter\def\csname NCKUPrivateTheoremDefaultShowText@#1\endcsname{#5}%
+  \expandafter\def\csname NCKUPrivateTheoremDefaultFollowCounter@#1\endcsname{#6}%
 } % End of \newcommand{}
 
 \NCKUPrivateForEachTheoremFormat{\NCKUPrivateDeclareTheoremFormat}
@@ -565,10 +581,10 @@
   \NCKUPrivateForEachTheoremFormat{\NCKUPrivateInitTheoremFormat}%
 } % End of \newcommand{}
 
-\newcommand\NCKUPrivateSetTheoremFormatKeys[2]
-{%
-  \pgfkeys{/Theorem#1Format, default, #2}%
-} % End of \newcommand{}
+\ExplSyntaxOn
+\cs_new_protected:Npn \NCKUPrivateSetTheoremFormatKeys #1#2
+  { \ncku_theorem_format_keys_set:nn {#1} {#2} }
+\ExplSyntaxOff
 
 \newcommand{\SetTheoremFormat}[2][\empty]
 {%
