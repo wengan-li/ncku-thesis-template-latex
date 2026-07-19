@@ -72,6 +72,33 @@ HISTORICAL_BILINGUAL_TITLE = (
     "# National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex"
     "<br>台灣國立成功大學碩博士用畢業論文 LaTex 模版"
 )
+REQUIRED_ROOT_README_MARKERS = {
+    "README.md": (
+        "## Available to use 已被學校負責單位接受",
+        "## 學位論文上傳和列印說明",
+        "## 模版和學位考試系統的學位考試論文證明書的FAQ",
+        "https://thesis.lib.ncku.edu.tw/help/aboutedit/",
+        "https://thesis.lib.ncku.edu.tw/",
+        "https://github.com/wengan-li/ncku-thesis-template-latex/issues/30",
+    ),
+    "README.en.md": (
+        "## Available to use / historical acceptance",
+        "## Thesis upload and printing",
+        "## FAQ: template and degree-examination-system defense certificates",
+        "https://thesis.lib.ncku.edu.tw/help/aboutedit/",
+        "https://thesis.lib.ncku.edu.tw/",
+        "https://github.com/wengan-li/ncku-thesis-template-latex/issues/30",
+    ),
+}
+FORBIDDEN_PACKAGED_CUSTOMIZATION_MARKERS = (
+    "just _test-custom-style",
+    "python3 scripts/test/check-v1-api.py",
+    "python3 scripts/test/check-v1-project-migration.py",
+    "Project commands:",
+    "Repository fixtures",
+    "expected counts",
+    "compatibility manifests",
+)
 INLINE_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*#*$", re.MULTILINE)
 FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
@@ -259,6 +286,30 @@ def check_language_hygiene() -> None:
         if CJK.search(plain):
             lines = [line for line in plain.splitlines() if CJK.search(line)]
             fail(f"{relative}: CJK prose outside code/switcher: {lines[0]}")
+
+
+def check_protected_public_contract() -> None:
+    for relative, markers in REQUIRED_ROOT_README_MARKERS.items():
+        text = read(relative)
+        missing = [marker for marker in markers if marker not in text]
+        if missing:
+            fail(f"{relative}: missing protected public content: {', '.join(missing)}")
+
+    for relative in (
+        "thesis/template/style/Customization.md",
+        "thesis/template/style/Customization.en.md",
+    ):
+        text = read(relative)
+        leaked = [
+            marker
+            for marker in FORBIDDEN_PACKAGED_CUSTOMIZATION_MARKERS
+            if marker in text
+        ]
+        if leaked:
+            fail(
+                f"{relative}: internal repository guidance leaked into student package: "
+                + ", ".join(leaked)
+            )
 
 
 def check_no_mutable_release_labels() -> None:
@@ -666,6 +717,7 @@ def main() -> int:
         check_no_legacy_locale_suffixes()
         check_no_repeated_language_labels()
         check_language_hygiene()
+        check_protected_public_contract()
         check_no_mutable_release_labels()
         check_public_voice()
         check_project_index_scope()
