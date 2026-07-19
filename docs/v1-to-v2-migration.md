@@ -1,5 +1,8 @@
 # Migrating NCKU Thesis Template Projects from 1.x to 2.x
 
+Production target:
+[`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
+
 V2 preserves the machine-audited 1.x LaTeX/xparse and literal `\def` declaration surfaces through the complete 2.x line. Existing projects can therefore migrate the template implementation first, verify unchanged NCKU output, and adopt native v2 profile structure gradually.
 
 ## Before You Start

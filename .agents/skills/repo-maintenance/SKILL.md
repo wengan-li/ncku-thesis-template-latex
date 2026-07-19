@@ -13,6 +13,8 @@ and compatibility reviews in this repository.
 For every task, load the sibling [`idsd-workflow`](../idsd-workflow/SKILL.md)
 first. Keep general LaTeX knowledge outside this repository; this skill contains
 only project-specific rules and pointers.
+Load [`documentation-management`](../documentation-management/SKILL.md) for
+requirements, todos, documentation lifecycle, consolidation, or path repair.
 
 ## Source of Truth
 
@@ -20,18 +22,16 @@ Read only the focused sources needed for the task:
 
 1. [`AGENTS.md`](../../../AGENTS.md) — canonical project rules and boundaries.
 2. [`justfile`](../../../justfile) — canonical maintainer command surface.
-3. [`docs/features/v2/modernization.md`](../../../docs/features/v2/modernization.md)
-   — shipped v2 intent, expectations, evidence, and progress.
-4. [`docs/features/v2/public-api-compatibility.md`](../../../docs/features/v2/public-api-compatibility.md)
-   — 1.x helper compatibility policy and machine-checked baseline.
-5. [`docs/source-optimization-review.md`](../../../docs/source-optimization-review.md)
-   — prioritized modernization, performance, and CI evidence.
-6. [`docs/release-versioning.md`](../../../docs/release-versioning.md) — release
-   version, packaging, promotion, and public-verification contract.
-7. [`docs/sample-repository-migration.md`](../../../docs/sample-repository-migration.md)
-   — generated-example provenance and migration record.
-8. [`docs/overleaf-distribution.md`](../../../docs/overleaf-distribution.md) —
-   unofficial-template policy, import package limits, and publication blockers.
+3. [`docs/README.md`](../../../docs/README.md) — maintainer documentation index
+   and lifecycle.
+4. [`docs/features/v2-modernization.md`](../../../docs/features/v2-modernization.md)
+   — shipped architecture and compatibility boundary.
+5. [`docs/features/validation-and-performance.md`](../../../docs/features/validation-and-performance.md)
+   — current gates, artifact proof, benchmarks, and rejected/deferred decisions.
+6. [`docs/features/release-and-distribution.md`](../../../docs/features/release-and-distribution.md)
+   — release, package, Overleaf, sample-retirement, and watermark contracts.
+7. [`docs/v1-to-v2-migration.md`](../../../docs/v1-to-v2-migration.md) — current
+   user and maintainer migration contract.
 
 Inspect current source and Git state before trusting historical notes. When a
 rule changes, update its canonical repository source in the same slice.
@@ -129,6 +129,7 @@ Keep audiences separate:
 
 - maintainer commands, CI, release scripts, benchmarks, and architectural
   decisions belong in root/internal documentation;
+- `docs/README.md` routes maintainers to the owning consolidated feature record;
 - direct compiler, editor, configuration, and writing guidance belongs in the
   packaged `thesis/` project and teaching content;
 - root `README.md` routes both audiences without exposing unnecessary internals;
@@ -154,7 +155,7 @@ files must exactly equal the tracked `HEAD:thesis` tree, including the
 student-facing README with concise offline migration guidance, v1 adapter, and
 base/NCKU/custom profiles. Keep a focused negative test that deletes the required
 student README and proves the archive checker fails. The full migration reference
-lives at `docs/MIGRATION-1.x-TO-2.x.md` in the complete repository.
+lives at `docs/v1-to-v2-migration.md` in the complete repository.
 When this gate runs inside `xu-cheng/texlive-action`, configure
 `$GITHUB_WORKSPACE` as a Git safe directory before `git archive`/`git ls-tree`
 and install full Info-ZIP `unzip`/`zip`; BusyBox `unzip` does not support
@@ -178,8 +179,8 @@ redundant `example-` prefix. Loose generated PDFs are build intermediates, not
 public Release assets.
 
 Do not move an immutable tag or rebuild old tagged PDFs during an asset-only
-migration. Follow `docs/release-versioning.md` for download, digest, public
-read-back, byte-comparison, and exact-allowlist gates.
+migration. Follow `docs/features/release-and-distribution.md` for download,
+digest, public read-back, byte-comparison, and exact-allowlist gates.
 
 ## Verification
 

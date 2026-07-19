@@ -2,6 +2,7 @@ You must follow Intent-Driven Software Development (IDSD) for every task: clarif
 
 IDSD skill: `.agents/skills/idsd-workflow/SKILL.md`
 Repository maintenance skill: `.agents/skills/repo-maintenance/SKILL.md`
+Documentation management skill: `.agents/skills/documentation-management/SKILL.md`
 
 # AGENTS.md
 
@@ -115,7 +116,7 @@ Archiving is safer than deletion. If deletion remains the explicit owner decisio
   internals, but their names and argument shapes remain available throughout
   2.x.
 - Correct proven bugs rather than preserving them; document behavior changes in
-  `docs/MIGRATION-1.x-TO-2.x.md` and keep concise offline migration guidance in
+  `docs/v1-to-v2-migration.md` and keep concise offline migration guidance in
   the packaged `thesis/README.md`.
 - Keep `conf/` for student thesis data. Institution-level ports and style
   profiles remain under `template/style/`.
@@ -157,20 +158,25 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 
 - `AGENTS.md` is canonical.
 - `CLAUDE.md` points here and stays short.
-- Repo-local skills are `.agents/skills/idsd-workflow/` and `.agents/skills/repo-maintenance/`.
+- Repo-local skills are `.agents/skills/idsd-workflow/`,
+  `.agents/skills/repo-maintenance/`, and
+  `.agents/skills/documentation-management/`.
 - `.claude/skills` is a symlink to `../.agents/skills`.
 - `.claude/settings.json` contains only repo-safe Claude Code settings; never store credentials.
 
 ## Documentation Standard
 
-- `docs/requirements/` = active promises: what is wanted and WHY, written before
-  code catches up.
-- `docs/features/` = completed requirements plus durable records of what shipped
-  and HOW it works; current code and tests win on drift.
-- shipped-state docs (`thesis/README.md`, `docs/MIGRATION-1.x-TO-2.x.md`,
-  `CHANGELOG.md`, and active `docs/` policy records) route the current user and
-  maintainer workflows.
-- `todos/` = active how/progress only; a completed todo's durable knowledge
-  graduates into `docs/features/`, then the todo file is removed (Git history
-  keeps the work narrative).
-- Skills: `create-todo` (requirements-first), `feature-documentation`.
+- `docs/README.md` is the maintainer index and lifecycle contract.
+- `docs/v1-to-v2-migration.md` is the current 1.x-to-2.x migration guide;
+  `thesis/README.md` keeps concise offline steps inside the student ZIP.
+- `docs/features/` contains consolidated shipped architecture, validation, and
+  operating decisions. Do not keep one active document per branch, commit, todo,
+  parser, or bugfix; Git history preserves that chronology.
+- `docs/requirements/` contains active owner-approved what/why promises only.
+  When none are active, it contains exactly `.gitkeep`.
+- `todos/` contains active how/progress only. On completion, promote durable
+  knowledge into the owning feature record and remove the requirement/todo.
+- Current source and tests win on drift. Deferred experiments are not active
+  requirements without a new owner-approved Intent.
+- Load `documentation-management` for documentation creation, consolidation,
+  requirements, todos, path repair, or lifecycle changes.

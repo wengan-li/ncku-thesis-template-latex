@@ -7,7 +7,7 @@
     "allow": [
       "Bash(just --list)",
       "Bash(just thesis)",
-      "Bash(just demo)",
+      "Bash(just example)",
       "Bash(just test)",
       "Bash(just check)",
       "Bash(just ci)",
@@ -23,7 +23,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".agents/hooks/check-feature-docs.sh"
+            "command": ".agents/hooks/check-documentation.sh"
           }
         ]
       }

@@ -33,7 +33,7 @@ grep -qx "${package_root}/template/style/custom/custom.tex" <<< "$student_entrie
 
 student_readme=$(unzip -p "$student_zip" "${package_root}/README.md")
 grep -Fq '## Migrating from 1.x' <<< "$student_readme"
-grep -Fq 'docs/MIGRATION-1.x-TO-2.x.md' <<< "$student_readme"
+grep -Fq 'docs/v1-to-v2-migration.md' <<< "$student_readme"
 
 if grep -Eq "^${package_root}/(justfile|latexmkrc|tests/|scripts/|thesis/)" <<< "$student_entries"; then
   printf 'student ZIP contains repository tooling or a redundant thesis/ layer\n' >&2

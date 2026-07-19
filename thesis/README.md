@@ -29,7 +29,7 @@ adapter. For an existing thesis:
 No helper rename is required for this compatibility-first path. The complete
 migration reference, corrected-behavior table, and native-v2 path are maintained
 in the full repository at
-[`docs/MIGRATION-1.x-TO-2.x.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/MIGRATION-1.x-TO-2.x.md).
+[`docs/v1-to-v2-migration.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.md).
 Non-NCKU institutional forks should also follow
 [`template/style/Customization.md`](template/style/Customization.md);
 institution policy remains under `template/style/`, not `conf/`.

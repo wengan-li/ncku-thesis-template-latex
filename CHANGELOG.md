@@ -20,8 +20,8 @@ Current university and department requirements always override template guidance
 
 V2 modernizes the template architecture while preserving XeLaTeX, the established
 NCKU output, the student project shape, and the complete audited 1.x public API.
-See the [1.x → 2.x migration guide](docs/MIGRATION-1.x-TO-2.x.md) and the
-[v2 feature record](docs/features/v2/README.md) for detailed contracts and evidence.
+See the [1.x → 2.x migration guide](docs/v1-to-v2-migration.md) and the
+[V2 modernization record](docs/features/v2-modernization.md) for detailed contracts and evidence.
 
 - Preserves existing 1.x projects through the compatibility adapter without helper renames.
 - Separates generic rendering, NCKU policy, and custom institution ports into base, `ncku`, and `custom` style profiles.
@@ -39,7 +39,8 @@ See the [1.x → 2.x migration guide](docs/MIGRATION-1.x-TO-2.x.md) and the
 - Fixes three teaching-guide examples that visibly overflowed the page boundary.
 - Adds focused default-off and explicit-opt-in regression coverage.
 - Tightens the full-document overfull-box diagnostic budget from 21 to 18.
-- Records the historical behavior and current policy in [`docs/draft-watermark-history.md`](docs/draft-watermark-history.md).
+- Records the historical behavior and current policy in
+  [`docs/features/release-and-distribution.md`](docs/features/release-and-distribution.md#draft-and-watermark-policy).
 
 ### [v1.8.1.260715130936](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v1.8.1.260715130936) — 2026-07-15
 
