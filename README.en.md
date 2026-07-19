@@ -28,7 +28,7 @@ Detailed state：[`docs/features/release-and-distribution.md`](docs/features/rel
 
 ## Choose the correct setup
 
-Documentation language, institution profile, cover language, degree, and content mode are separate decisions. An international student at NCKU still uses the `ncku` profile; students from other institutions can use `custom` or another institution profile. Do not infer an institution profile from the reader's language.
+Documentation language, institution profile, cover language, degree, and content mode are separate settings. NCKU students use the `ncku` profile whether they write in Chinese or English; students from other institutions can use `custom` or another institution profile.
 
 | Decision | Choices |
 | --- | --- |
@@ -84,7 +84,7 @@ Complete guide: [`docs/v1-to-v2-migration.en.md`](docs/v1-to-v2-migration.en.md)
 
 ## Other institution profiles
 
-V2 separates shared rendering, NCKU policy, and other-institution ports into `base`, `ncku`, and `custom`. Student thesis data remains in `conf/conf.tex`; institution geometry, names, date policy, wording, and assets belong under `template/style/<profile>/`. Students from other institutions start from `template/style/custom/` rather than editing the shared renderer or loading NCKU before overriding it.
+The template separates shared rendering, NCKU policy, and other-institution ports into `base`, `ncku`, and `custom`. Student thesis data remains in `conf/conf.tex`; institution geometry, names, date policy, wording, and assets belong under `template/style/<profile>/`. Students from other institutions start from `template/style/custom/` rather than editing the shared renderer or loading NCKU before overriding it.
 
 Guide: [`thesis/template/style/Customization.en.md`](thesis/template/style/Customization.en.md)
 

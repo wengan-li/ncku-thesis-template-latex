@@ -69,7 +69,9 @@ CJK = re.compile(r"[\u3400-\u9fff]")
 VISIBLE_LANGUAGE_LABEL = re.compile(r"\*\*(?:繁體中文|English)\*\*")
 FORBIDDEN_PUBLIC_VOICE = re.compile(
     r"我|維護者|非本校|非成大|非NCKU|非 NCKU|非本維護者|外校|"
-    r"\bI\b|\b[Mm]aintainers?\b|[Nn]on-NCKU"
+    r"不要從讀者語言推斷學校profile|"
+    r"\bI\b|\b[Mm]aintainers?\b|[Nn]on-NCKU|"
+    r"Do not infer an institution profile from the reader's language"
 )
 
 
@@ -249,8 +251,16 @@ def check_public_voice() -> None:
         fail("public owner-voice or cross-school wording drift: " + ", ".join(failures))
 
     required_third_person = {
-        "README.md": ("本模版以XeLaTeX建置", "本模版的V2已上載"),
-        "README.en.md": ("This XeLaTeX template supports", "V2 has been uploaded"),
+        "README.md": (
+            "本模版以XeLaTeX建置",
+            "本模版的V2已上載",
+            "本模版將共用renderer",
+        ),
+        "README.en.md": (
+            "This XeLaTeX template supports",
+            "V2 has been uploaded",
+            "The template separates shared rendering",
+        ),
         "docs/README.md": ("本目錄記錄",),
         "docs/README.en.md": ("This directory records",),
         "thesis/conf/README.md": ("repository baseline及migration hash不會",),
@@ -263,6 +273,29 @@ def check_public_voice() -> None:
         missing = [marker for marker in markers if marker not in text]
         if missing:
             fail(f"{relative}: missing third-person project voice: {', '.join(missing)}")
+
+
+def check_project_index_scope() -> None:
+    internal_terms = (
+        "docs/requirements",
+        "todos/",
+        ".gitkeep",
+        "owner-approved",
+        "文件生命週期",
+        "Documentation lifecycle",
+        "Source of truth",
+        "source-of-truth",
+        "feat/<short-name>",
+        "branch checklist",
+    )
+    for relative in ("docs/README.md", "docs/README.en.md"):
+        text = read(relative)
+        leaked = [term for term in internal_terms if term in text]
+        if leaked:
+            fail(
+                f"{relative}: internal repository-governance content leaked "
+                f"into public index: {', '.join(leaked)}"
+            )
 
 
 def check_changelog() -> None:
@@ -358,6 +391,7 @@ def main() -> int:
         check_no_repeated_language_labels()
         check_language_hygiene()
         check_public_voice()
+        check_project_index_scope()
         check_changelog()
         check_package_routes()
         check_instruction_alias()

@@ -24,7 +24,7 @@
 
 ## 選擇正確設定
 
-文件語言、學校profile、封面語言、學位及內容模式是不同決定。國際學生如就讀成大仍使用`ncku` profile；其他學校的同學如要建立自己的範本，可使用`custom`或另一個institution profile。不要從讀者語言推斷學校profile。
+文件語言、學校profile、封面語言、學位及內容模式是不同設定。成大同學無論使用中文或英文文件，都使用`ncku` profile；其他學校的同學如要建立自己的範本，可使用`custom`或另一個institution profile。
 
 | 決定 | 選項 |
 | --- | --- |
@@ -70,7 +70,7 @@ defense-certificate-phd.pdf
 
 ## 其他學校樣式
 
-V2將共用renderer、NCKU policy及其他學校port分成`base`、`ncku`及`custom`。學生論文資料仍放在`conf/conf.tex`；學校geometry、名稱、日期政策、文字及assets放在`template/style/<profile>/`。其他學校的同學可由`template/style/custom/`開始，不要直接修改共用renderer或先載入NCKU再覆寫。
+本模版將共用renderer、NCKU policy及其他學校port分成`base`、`ncku`及`custom`。學生論文資料仍放在`conf/conf.tex`；學校geometry、名稱、日期政策、文字及assets放在`template/style/<profile>/`。其他學校的同學可由`template/style/custom/`開始，不要直接修改共用renderer或先載入NCKU再覆寫。
 
 ## 提交、浮水印與證明書
 

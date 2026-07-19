@@ -19,7 +19,7 @@ CI, releases, or public distribution are involved.
 
 | Surface | Role |
 | --- | --- |
-| [`docs/README.md`](../../../docs/README.md) | Project documentation index and lifecycle. |
+| [`docs/README.md`](../../../docs/README.md) | Public documentation index and release/evidence routing. |
 | [`docs/v1-to-v2-migration.md`](../../../docs/v1-to-v2-migration.md) | Current 1.x to 2.x user migration contract. |
 | [`docs/features/`](../../../docs/features/) | Consolidated shipped architecture, evidence, and operating decisions. |
 | `docs/requirements/<NN>-<slug>.md` | Active owner-approved what/why promise only. |
@@ -86,7 +86,8 @@ one is a short link/routing sentence.
   there without repository-only tooling.
 - Repository-only commands, tests, benchmarks, workflow details, and internal evidence
   stay outside the student ZIP.
-- Root README routes audiences; `docs/README.md` owns the internal index.
+- Root README provides the public overview; `docs/README.md` routes students and
+  readers to current guides and shipped project records.
 - GitHub Release state and Overleaf state are independent. Never turn submitted
   into approved without live public read-back.
 
