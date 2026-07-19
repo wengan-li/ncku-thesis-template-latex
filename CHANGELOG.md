@@ -5,6 +5,17 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
+### [v2.0.1.260719010734](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734) — 2026-07-19
+
+- Replaces all repository-owned generic `pgfkeys` command parsers with 19 native
+  `l3keys` families while preserving the complete audited 1.x public API.
+- Preserves parser defaults, macro expansion, repeated-call resets, omission
+  behavior, unknown-key failures, theorem registries, numbering, and float routes.
+- Keeps the canonical NCKU teaching document at 271 A4 pages with identical text,
+  normalized word geometry, font table, and 271/271 fixed-DPI page rasters.
+- Removes the redundant explicit `pgfkeys` load; PGF/TikZ remains available
+  transitively for existing visual framing rather than command parsing.
+
 ### [v2.0.0.260717130231](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.0.260717130231) — 2026-07-17
 
 V2 modernizes the template architecture while preserving XeLaTeX, the established

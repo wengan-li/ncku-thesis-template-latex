@@ -1,7 +1,8 @@
 # Incremental `expl3` Internal Modernization
 
-Status: eleven bounded slices implemented and validated; command-parser
-migration complete
+Status: command-parser migration complete; eleven bounded slices implemented,
+validated, and released as
+[`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
 
 ## Intent
 

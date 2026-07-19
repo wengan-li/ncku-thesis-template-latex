@@ -1,6 +1,10 @@
 # V2 Template Modernization
 
-Status: shipped as [`v2.0.0.260717130231`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.0.260717130231) on 2026-07-17
+Status: base shipped as
+[`v2.0.0.260717130231`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.0.260717130231)
+on 2026-07-17; output-neutral parser modernization shipped as
+[`v2.0.1.260719010734`](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734)
+on 2026-07-19
 
 V2 modernizes the XeLaTeX template while preserving the established NCKU output,
 student project shape, and complete audited 1.x public API through the 2.x line.
