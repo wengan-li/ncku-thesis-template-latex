@@ -11,6 +11,13 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
+### [v2.0.3.260719151234](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.3.260719151234) — 2026-07-19
+
+- Restores the project's preserved historical bilingual title and expands thesis-upload, printing, and defense-certificate guidance without presenting historical checks as current university approval.
+- Routes public documentation through stable GitHub Releases and complete changelog links instead of repeating mutable current/latest release identifiers across files.
+- Gives `CHANGELOG.md` a version-neutral title and language switcher while keeping the complete V1 release history in both changelog companions.
+- Does not change XeLaTeX source, public APIs, the student project shape, or PDF layout behavior.
+
 ### [v2.0.2.260719120024](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024) — 2026-07-19
 
 - Organizes student and public documentation into eight complete
