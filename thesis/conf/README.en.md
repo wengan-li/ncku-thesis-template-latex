@@ -8,7 +8,7 @@
 
 ## Usage and compatibility boundary
 
-`conf/conf.tex` has been byte-pinned from `v1.8.2.260715154703` throughout 2.x to prove that existing student configuration can migrate unchanged. Its original Chinese comments and repository bytes are therefore not rewritten for translation. Enter values in your own thesis copy; I do not change the repository baseline or migration hash merely to translate comments.
+`conf/conf.tex` has been byte-pinned from `v1.8.2.260715154703` throughout 2.x to prove that existing student configuration can migrate unchanged. Its original Chinese comments and repository bytes are therefore not rewritten for translation. Enter values in your own thesis copy; the repository baseline and migration hash remain unchanged for translation.
 
 When the same setting is called more than once, the last call normally wins. Keep one deliberate choice in each group and build after small changes.
 

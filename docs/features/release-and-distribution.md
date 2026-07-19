@@ -154,8 +154,8 @@ plan-specific timeout behavior.
 
 - The community-maintained template was submitted on 2026-07-12 and the initial
   public listing was approved/published on 2026-07-15.
-- On 2026-07-18 I confirmed that I had uploaded the verified V2 Gallery package
-  to the original Overleaf project and resubmitted it for review.
+- On 2026-07-18 the verified V2 Gallery package was reported as uploaded to the
+  original Overleaf project and resubmitted for review.
 - The authenticated project settings and compile result were not independently
   read back at that checkpoint. The public page still exposed the earlier copy.
 - Therefore the durable state is **owner-confirmed submitted**, not independently

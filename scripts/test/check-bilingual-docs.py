@@ -68,9 +68,8 @@ PAIR_META = re.compile(
 CJK = re.compile(r"[\u3400-\u9fff]")
 VISIBLE_LANGUAGE_LABEL = re.compile(r"\*\*(?:繁體中文|English)\*\*")
 FORBIDDEN_PUBLIC_VOICE = re.compile(
-    r"維護者|非本校|非成大|非NCKU|非 NCKU|非本維護者|外校|"
-    r"\bmaintainers?\b|non-NCKU",
-    re.IGNORECASE,
+    r"我|維護者|非本校|非成大|非NCKU|非 NCKU|非本維護者|外校|"
+    r"\bI\b|\b[Mm]aintainers?\b|[Nn]on-NCKU"
 )
 
 
@@ -249,19 +248,21 @@ def check_public_voice() -> None:
     if failures:
         fail("public owner-voice or cross-school wording drift: " + ", ".join(failures))
 
-    required_first_person = {
-        "README.md": ("這是我以XeLaTeX維護", "我已將V2上載"),
-        "README.en.md": ("I maintain this XeLaTeX template", "I uploaded V2"),
-        "docs/README.md": ("我在本目錄記錄",),
-        "docs/README.en.md": ("I use this directory to record",),
-        "thesis/conf/README.md": ("我不會為了配合翻譯",),
-        "thesis/conf/README.en.md": ("I do not change the repository baseline",),
+    required_third_person = {
+        "README.md": ("本模版以XeLaTeX建置", "本模版的V2已上載"),
+        "README.en.md": ("This XeLaTeX template supports", "V2 has been uploaded"),
+        "docs/README.md": ("本目錄記錄",),
+        "docs/README.en.md": ("This directory records",),
+        "thesis/conf/README.md": ("repository baseline及migration hash不會",),
+        "thesis/conf/README.en.md": (
+            "the repository baseline and migration hash remain unchanged",
+        ),
     }
-    for relative, markers in required_first_person.items():
+    for relative, markers in required_third_person.items():
         text = read(relative)
         missing = [marker for marker in markers if marker not in text]
         if missing:
-            fail(f"{relative}: missing first-person project voice: {', '.join(missing)}")
+            fail(f"{relative}: missing third-person project voice: {', '.join(missing)}")
 
 
 def check_changelog() -> None:

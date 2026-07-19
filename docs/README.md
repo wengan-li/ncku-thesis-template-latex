@@ -8,7 +8,7 @@
 
 ## 文件入口
 
-我在本目錄記錄已發行成大論文範本的migration、architecture、validation、release及Overleaf evidence。如果你只需要撰寫論文，請優先閱讀套件內的`thesis/README.md`及`thesis/conf/README.md`；root `README.md`是public router，不是專案runbook。
+本目錄記錄已發行成大論文範本的migration、architecture、validation、release及Overleaf evidence。如果你只需要撰寫論文，請優先閱讀套件內的`thesis/README.md`及`thesis/conf/README.md`；root `README.md`是public router，不是專案runbook。
 
 | 讀者或工作 | Canonical文件 |
 | --- | --- |
@@ -45,7 +45,7 @@ docs/
 
 ## 雙語政策
 
-公開及student-facing內容使用正式台灣繁體中文（`zh-Hant-TW`）與自然technical English。每份文件只有一個主要語言；頁首使用`繁體中文 | English`文字switcher連到具有相同topic set的equivalent page，不使用flag。Pair metadata及stable topic IDs在render時隱藏，checker亦要求shared code blocks保持一致，降低translation drift。文件語言、institution profile、cover language、degree及content mode互相獨立。新中文prose使用「論文範本」；產品名稱統一使用`LaTeX`、`XeLaTeX`、`BibTeX`、`latexmk`及`SyncTeX`正確casing。
+公開及student-facing內容使用正式台灣繁體中文（`zh-Hant-TW`）與自然technical English。專案行動以「本模版」或「本專案」第三身敘述。每份文件只有一個主要語言；頁首使用`繁體中文 | English`文字switcher連到具有相同topic set的equivalent page，不使用flag。Pair metadata及stable topic IDs在render時隱藏，checker亦要求shared code blocks保持一致，降低translation drift。文件語言、institution profile、cover language、degree及content mode互相獨立。新中文prose使用「論文範本」；產品名稱統一使用`LaTeX`、`XeLaTeX`、`BibTeX`、`latexmk`及`SyncTeX`正確casing。
 
 此模式跟隨W3C的localized-page links、USWDS頁首language selector、GitHub locale-specific documentation及WCAG predominant-language原則。Mechanical checker只證明pair topics、switchers、links、shared code、casing及selected terminology結構；翻譯語義一致性仍要manual parity review確認。
 

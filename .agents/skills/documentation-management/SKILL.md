@@ -111,8 +111,8 @@ one is a short link/routing sentence.
 - Documentation language, institution profile, cover language, degree, and
   content mode are independent. An English reader can use `ncku`; a
   Traditional-Chinese reader can maintain another profile.
-- Public project actions use the owner's first-person `我` / `I` voice; general
-  workflow uses role-neutral project or repository wording. Refer to Chinese
+- Public project actions use third-person `本模版` / `本專案` and `the template` /
+  `the project` wording; general workflow remains role-neutral. Refer to Chinese
   cross-institution readers as `其他學校的同學` and English readers as `students
   from other institutions`.
 - Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing. Use

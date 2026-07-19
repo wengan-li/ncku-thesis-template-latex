@@ -195,8 +195,8 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
   natural technical English. Use one predominant language per file with a
   top-of-page text switcher to the equivalent language file; do not use repeated
   per-section language labels or flags.
-- Public project actions use the owner's first-person `我` / `I` voice. General
-  processes use role-neutral project or repository wording. Chinese references
+- Public project actions use third-person `本模版` / `本專案` and `the template` /
+  `the project` wording. General processes use role-neutral wording. Chinese references
   to cross-institution readers use `其他學校的同學`; English uses `students from
   other institutions`.
 - Paired user guides carry hidden stable topic IDs. Keep paired executable code

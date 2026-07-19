@@ -8,7 +8,7 @@
 
 ## Project overview
 
-I maintain this XeLaTeX template for Chinese, English, and mixed-language NCKU master's theses and doctoral dissertations. It generates the cover, contents, figure/table lists, and other front matter, and provides student configuration, reusable LaTeX helpers, a 1.x compatibility adapter, and profiles that students from other institutions can adapt.
+This XeLaTeX template supports Chinese, English, and mixed-language NCKU master's theses and doctoral dissertations. It generates the cover, contents, figure/table lists, and other front matter, and provides student configuration, reusable LaTeX helpers, a 1.x compatibility adapter, and profiles that students from other institutions can adapt.
 
 This is not official NCKU software and does not represent current endorsement by the university, library, degree-examination system, or any department. Verify the current rules before use; official requirements always take precedence.
 
@@ -22,7 +22,7 @@ Official guidance last checked on `2026-07-12`:
 
 The latest production source and student package are available from [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest). The current production release is `v2.0.1.260719010734`. V2 preserves the complete machine-audited 1.x public API and direct XeLaTeX student workflow while organizing profiles, compatibility, tests, and downloads.
 
-The existing Overleaf Gallery page remains public. I uploaded V2 to the original Overleaf project and resubmitted it for Gallery update review. Until Overleaf approves it and the public page is independently read back, “submitted” must not be treated as “approved”; GitHub Releases remains canonical for the latest V2 package.
+The existing Overleaf Gallery page remains public. V2 has been uploaded to the original Overleaf project and resubmitted for Gallery update review. Until Overleaf approves it and the public page is independently read back, “submitted” must not be treated as “approved”; GitHub Releases remains canonical for the latest V2 package.
 
 Detailed state：[`docs/features/release-and-distribution.md`](docs/features/release-and-distribution.md#recorded-gallery-state)
 
@@ -98,7 +98,7 @@ Policy record：[`docs/features/release-and-distribution.md`](docs/features/rele
 
 ## Documentation and project work
 
-If you only need to write a thesis, start from the packaged README and configuration guide. I record architecture, validation, release, and Overleaf evidence in [`docs/README.en.md`](docs/README.en.md). The full repository uses [`just`](https://just.systems/) for project commands; the student package does not depend on `just`.
+If you only need to write a thesis, start from the packaged README and configuration guide. Project architecture, validation, release, and Overleaf evidence are recorded in [`docs/README.en.md`](docs/README.en.md). The full repository uses [`just`](https://just.systems/) for project commands; the student package does not depend on `just`.
 
 ```bash
 just          # list commands

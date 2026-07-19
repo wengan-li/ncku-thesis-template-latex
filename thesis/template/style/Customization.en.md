@@ -156,7 +156,7 @@ Compatibility preserves correct contracts, not verified defects.
 
 ## Verification
 
-The student package contains no `justfile`, `scripts/`, or `tests`; run direct XeLaTeX/latexmk from the project root containing `thesis.tex`. For full-repository work, I run the focused custom-style, API, V1 migration, and full gates. The custom fixture uses distinct oral/cover dates across Chinese/English Master and Doctoral branches and rejects NCKU visible policy or watermark assets.
+The student package contains no `justfile`, `scripts/`, or `tests`; run direct XeLaTeX/latexmk from the project root containing `thesis.tex`. Full-repository verification uses the focused custom-style, API, V1 migration, and full gates. The custom fixture uses distinct oral/cover dates across Chinese/English Master and Doctoral branches and rejects NCKU visible policy or watermark assets.
 
 Student/package command:
 

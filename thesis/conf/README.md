@@ -8,7 +8,7 @@
 
 ## 使用原則與相容邊界
 
-`conf/conf.tex`從`v1.8.2.260715154703`開始在2.x被byte-pinned，用來證明既有學生設定可原封不動地升級。因此它原有的中文註解及檔案bytes不會為翻譯而改寫。請在自己的論文副本內填寫值；我不會為了配合翻譯而改動repository baseline或更新migration hash。
+`conf/conf.tex`從`v1.8.2.260715154703`開始在2.x被byte-pinned，用來證明既有學生設定可原封不動地升級。因此它原有的中文註解及檔案bytes不會為翻譯而改寫。請在自己的論文副本內填寫值；repository baseline及migration hash不會為了配合翻譯而改動。
 
 同一類設定如呼叫多次，通常以最後一次呼叫為準。每一組只保留你真正選擇的一項，並在小步修改後立即build。
 

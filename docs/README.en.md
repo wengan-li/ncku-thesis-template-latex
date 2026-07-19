@@ -8,7 +8,7 @@ Current production release: [`v2.0.1.260719010734`](https://github.com/wengan-li
 
 ## Start here
 
-I use this directory to record migration, architecture, validation, release, and Overleaf evidence for the released NCKU thesis template. If you only need to write a thesis, start from the packaged `thesis/README.en.md` and `thesis/conf/README.en.md`; root `README.en.md` is the English public router, not the project runbook.
+This directory records migration, architecture, validation, release, and Overleaf evidence for the released NCKU thesis template. If you only need to write a thesis, start from the packaged `thesis/README.en.md` and `thesis/conf/README.en.md`; root `README.en.md` is the English public router, not the project runbook.
 
 | Audience or task | Canonical document |
 | --- | --- |
@@ -47,7 +47,7 @@ Git history keeps per-branch checklists, superseded plans, and detailed chronolo
 
 ## Bilingual policy
 
-Public and student-facing content uses formal Taiwan Traditional Chinese (`zh-Hant-TW`) and natural technical English. Each document has one predominant language and a top-of-page `繁體中文 | English` text switcher to an equivalent page with the same stable topic IDs; flags are not used. Pair metadata is hidden when rendered, and the checker requires shared code blocks to stay identical. Documentation language, institution profile, cover language, degree, and content mode remain independent. New Chinese prose uses `論文範本`; product names retain exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing.
+Public and student-facing content uses formal Taiwan Traditional Chinese (`zh-Hant-TW`) and natural technical English. Project actions use third-person “the template” or “the project” wording. Each document has one predominant language and a top-of-page `繁體中文 | English` text switcher to an equivalent page with the same stable topic IDs; flags are not used. Pair metadata is hidden when rendered, and the checker requires shared code blocks to stay identical. Documentation language, institution profile, cover language, degree, and content mode remain independent. New Chinese prose uses `論文範本`; product names retain exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing.
 
 This follows W3C localized-page linking, the USWDS top language-selector pattern, GitHub's locale-specific documentation model, and WCAG's predominant-page-language principle. The mechanical checker proves only pair topics, switchers, links, shared code, casing, and selected terminology. Semantic translation parity remains a manual review gate.
 

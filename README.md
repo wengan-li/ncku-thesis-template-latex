@@ -8,7 +8,7 @@
 
 ## 專案簡介
 
-這是我以XeLaTeX維護的國立成功大學碩博士論文範本，可撰寫中文、英文或中英混合內容，並自動產生封面、目錄、圖表清單及其他前置頁面。它提供學生設定、可重用的LaTeX helpers、1.x相容層，以及讓其他學校的同學建立自己樣式的profile架構。
+本模版以XeLaTeX建置，供國立成功大學碩博士論文使用，可撰寫中文、英文或中英混合內容，並自動產生封面、目錄、圖表清單及其他前置頁面。本模版提供學生設定、可重用的LaTeX helpers、1.x相容層，以及讓其他學校的同學建立自己樣式的profile架構。
 
 本專案並非國立成功大學官方軟體，也不代表學校、圖書館、學位考試系統或任何系所的現行認可。使用前必須核對當年度規定；官方規定永遠優先於本範本。
 
@@ -20,7 +20,7 @@
 
 最新正式原始碼及學生套件由[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases/latest)提供。目前最新production release是`v2.0.1.260719010734`。V2保留完整machine-audited 1.x public API及XeLaTeX學生使用路徑，同時整理profile、相容層、測試及下載套件。
 
-既有Overleaf Gallery頁面仍可公開使用。我已將V2上載到原本的Overleaf project並重新提交Gallery update review；在Overleaf批准並完成public read-back前，不能將「已提交」寫成「已批准」，最新V2仍以GitHub Releases為準。
+既有Overleaf Gallery頁面仍可公開使用。本模版的V2已上載到原本的Overleaf project並重新提交Gallery update review；在Overleaf批准並完成public read-back前，不能將「已提交」寫成「已批准」，最新V2仍以GitHub Releases為準。
 
 ## 選擇正確設定
 
@@ -80,7 +80,7 @@ V2將共用renderer、NCKU policy及其他學校port分成`base`、`ncku`及`cus
 
 ## 文件與專案工作
 
-如果你只需要撰寫論文，請由套件內README及configuration guide開始。我在[`docs/README.md`](docs/README.md)記錄architecture、validation、release及Overleaf evidence。完整儲存庫使用[`just`](https://just.systems/)統一專案commands；學生套件不依賴`just`。
+如果你只需要撰寫論文，請由套件內README及configuration guide開始。本專案的architecture、validation、release及Overleaf evidence記錄於[`docs/README.md`](docs/README.md)。完整儲存庫使用[`just`](https://just.systems/)統一專案commands；學生套件不依賴`just`。
 
 ```bash
 just          # list commands
