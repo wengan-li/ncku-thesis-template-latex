@@ -68,6 +68,10 @@ MUTABLE_RELEASE_LABEL = re.compile(
     r"Current production release|latest immutable release|Production target|"
     r"Latest production release"
 )
+HISTORICAL_BILINGUAL_TITLE = (
+    "# National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex"
+    "<br>台灣國立成功大學碩博士用畢業論文 LaTex 模版"
+)
 INLINE_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*#*$", re.MULTILINE)
 FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
@@ -230,6 +234,10 @@ def check_language_hygiene() -> None:
         plain = strip_fenced_blocks(read(relative))
         if relative == "CHANGELOG.md":
             plain = plain.split("## 1.8.x", 1)[0]
+        if relative == "README.md":
+            if plain.count(HISTORICAL_BILINGUAL_TITLE) != 1:
+                fail("README.md: historical bilingual title is missing or duplicated")
+            plain = plain.replace(HISTORICAL_BILINGUAL_TITLE, "")
         bad_case = sorted(set(WRONG_PRODUCT_CASING.findall(plain)))
         if bad_case:
             fail(f"{relative}: incorrect product casing: {', '.join(bad_case)}")
