@@ -221,6 +221,11 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 - `CHANGELOG.md` and `CHANGELOG.en.md` both contain the complete release history.
   Traditional Chinese owns the default path; preserve historical mixed-language
   entries rather than rewriting old release evidence solely for translation.
+- Keep mutable release identity centralized. Public guides and feature summaries
+  link to GitHub Releases and the complete changelog instead of repeating a
+  "current" or "latest" tag that must change after every publication. Exact tags
+  remain appropriate in changelog entries, version-specific migration facts,
+  immutable checksum/read-back evidence, and release artifact names.
 - Documentation language, institution profile, cover language, degree, and
   content mode are independent axes. Do not map English readers to `custom` or
   Traditional-Chinese readers to `ncku`.
