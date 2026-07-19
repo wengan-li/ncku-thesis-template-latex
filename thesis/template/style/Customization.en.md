@@ -1,4 +1,4 @@
-<!-- doc-pair: style-customization; lang: en; topics: architecture-boundary,create-a-new-profile,required-profile-contract,institution-names-and-watermark,generic-and-ncku-department-apis,illustrative-ntu-wiring,cover-wording-and-date-tokens,certificate-wording-and-semantic-degree,committee-size-policy,date-policy-and-raw-resolved-state,2-x-compatibility-adapter,verification,troubleshooting -->
+<!-- doc-pair: style-customization; lang: en; topics: architecture-boundary,load-order-and-customization-consequences,create-a-new-profile,required-profile-contract,institution-names-and-watermark,generic-and-ncku-department-apis,illustrative-ntu-wiring,cover-wording-and-date-tokens,certificate-wording-and-semantic-degree,committee-size-policy,date-policy-and-raw-resolved-state,2-x-compatibility-adapter,verification,troubleshooting -->
 
 [繁體中文](Customization.md) | [English](Customization.en.md)
 
@@ -19,6 +19,31 @@ template/style/base/     profile contract and wording tokens
 template/style/ncku/     NCKU data, geometry, date policy, and watermark asset
 template/style/custom/   directly buildable other-institution skeleton
 ```
+
+## Load order and customization consequences
+
+`template/configure.tex` uses the following fixed order. This is a behavioral contract, not only a file-organization choice:
+
+```text
+template/configure.tex
+1. template/command/command.tex
+   - generic public setters, state, and renderer mechanisms
+   - template/compat/v1.tex -> generic/deprecated adapters only
+2. template/style/style.tex
+   - template/style/base/base.tex
+   - exactly one selected institution profile
+     - ncku/ncku.tex -> NCKU college/department catalogue and policy
+     - custom/custom.tex -> neutral policy with no NCKU catalogue
+3. \TemplateConfigurationFile (default: ./conf/conf)
+   - student metadata selects one profile-owned catalogue entry
+4. \FillInPDFData and remaining metadata/render initialization
+```
+
+Generic commands load first so a profile can call the portable setters and register its policy. The selected profile loads before student configuration so `conf/conf.tex` can call that profile's catalogue commands; an unchanged NCKU configuration can therefore still call `\SetDeptCSIE`. The NCKU catalogue must not load from `compat/v1.tex` before profile selection, because that would leak NCKU institution data into `custom`.
+
+The profile **defines** a reusable catalogue; student configuration **selects** one entry. Do not hard-code one student's department in the profile. A profile for another institution replaces the original NCKU `\SetDept...` call in its own `conf/conf.tex` with generic `\SetDeptName` or an institution-prefixed command. If the NCKU call remains, the custom build fails early with an undefined command rather than silently producing data for the wrong institution.
+
+`\TemplateConfigurationFile` still defaults to `./conf/conf`. Only full-repository custom fixtures override that path with an isolated generic test configuration, preserving the byte-pinned V1 `conf/conf.tex`. Do not reorder configuration before the profile, and do not move the NCKU catalogue back into the generic command or compatibility layer. `\FillInPDFData` and later initialization remain after student configuration so they consume the resolved metadata.
 
 ## Create a new profile
 

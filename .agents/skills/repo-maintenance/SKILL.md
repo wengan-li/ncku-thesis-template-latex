@@ -100,6 +100,13 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   custom-profile fixtures may override it with a generic test configuration so
   they do not mutate the byte-pinned V1 `conf/conf.tex`. Require every negative
   `.fls` assertion to first prove that the recorder file exists and is non-empty.
+- Preserve `template/configure.tex` load order as a behavior contract: generic
+  commands plus compatibility, base plus exactly one selected profile, student
+  configuration, then `\FillInPDFData` and remaining initialization. This keeps
+  generic setters available to profiles, profile-owned catalogue commands
+  available to student configuration, NCKU data absent before profile selection,
+  and PDF metadata based on resolved student values. Profiles define catalogue
+  entries; student configuration selects one.
 - `template/style/custom/custom.tex` is a neutral, buildable skeleton—not an
   NTU or universal ready-to-submit profile. A named-school walkthrough may prove
   generic API wiring, but it remains illustrative until current official

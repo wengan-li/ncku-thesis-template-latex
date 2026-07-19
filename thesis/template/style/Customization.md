@@ -1,4 +1,4 @@
-<!-- doc-pair: style-customization; lang: zh-Hant-TW; topics: architecture-boundary,create-a-new-profile,required-profile-contract,institution-names-and-watermark,generic-and-ncku-department-apis,illustrative-ntu-wiring,cover-wording-and-date-tokens,certificate-wording-and-semantic-degree,committee-size-policy,date-policy-and-raw-resolved-state,2-x-compatibility-adapter,verification,troubleshooting -->
+<!-- doc-pair: style-customization; lang: zh-Hant-TW; topics: architecture-boundary,load-order-and-customization-consequences,create-a-new-profile,required-profile-contract,institution-names-and-watermark,generic-and-ncku-department-apis,illustrative-ntu-wiring,cover-wording-and-date-tokens,certificate-wording-and-semantic-degree,committee-size-policy,date-policy-and-raw-resolved-state,2-x-compatibility-adapter,verification,troubleshooting -->
 
 [繁體中文](Customization.md) | [English](Customization.en.md)
 
@@ -19,6 +19,31 @@ template/style/base/     profile contract and wording tokens
 template/style/ncku/     NCKU data, geometry, date policy, and watermark asset
 template/style/custom/   directly buildable other-institution skeleton
 ```
+
+## 載入順序與自訂影響
+
+`template/configure.tex`使用以下固定順序。這是behavioral contract，不只是檔案整理方式：
+
+```text
+template/configure.tex
+1. template/command/command.tex
+   - generic public setters, state, and renderer mechanisms
+   - template/compat/v1.tex -> generic/deprecated adapters only
+2. template/style/style.tex
+   - template/style/base/base.tex
+   - exactly one selected institution profile
+     - ncku/ncku.tex -> NCKU college/department catalogue and policy
+     - custom/custom.tex -> neutral policy with no NCKU catalogue
+3. \TemplateConfigurationFile (default: ./conf/conf)
+   - student metadata selects one profile-owned catalogue entry
+4. \FillInPDFData and remaining metadata/render initialization
+```
+
+Generic commands必須先載入，profile先可以呼叫通用setters及登記policy。Selected profile必須在student configuration之前載入，`conf/conf.tex`先可以使用該profile提供的catalogue command；因此未修改的NCKU設定仍可呼叫`\SetDeptCSIE`。相反，NCKU catalogue不可在profile selection之前由`compat/v1.tex`載入，否則`custom`會意外取得NCKU institution data。
+
+Profile負責**定義**可重用catalogue，學生設定負責**選擇**其中一項；不要在profile內硬編碼某位學生的department。建立其他學校profile時，必須在自己的`conf/conf.tex`把原有NCKU `\SetDept...` call換成generic `\SetDeptName`或該校prefix command。若遺留NCKU call，custom build會及早以undefined command失敗，而不是靜默產生錯誤學校資料。
+
+`\TemplateConfigurationFile`預設仍是`./conf/conf`。完整repository的custom fixtures才override此path，使用獨立generic test config並保持byte-pinned V1 `conf/conf.tex`不變。不要將順序改成configuration先於profile；亦不要把NCKU catalogue搬回generic command或compatibility layer。`\FillInPDFData`及其後初始化必須在student configuration之後，才會取得已解析的metadata。
 
 ## 建立新Profile
 

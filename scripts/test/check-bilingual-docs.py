@@ -330,6 +330,18 @@ def check_institution_profile_docs() -> None:
         fail("V1 adapter leaked NCKU catalogue inputs: " + ", ".join(leaked_inputs))
     if "\\providecommand{\\TemplateConfigurationFile}{./conf/conf}" not in configure:
         fail("configure: missing default-preserving profile-fixture config seam")
+    load_order_markers = (
+        "\\input{./template/command/command}",
+        "\\input{./template/style/style}",
+        "\\input{\\TemplateConfigurationFile}",
+        "\\FillInPDFData",
+    )
+    load_positions = [configure.find(marker) for marker in load_order_markers]
+    if -1 in load_positions or load_positions != sorted(load_positions):
+        fail(
+            "configure: load order must remain command -> selected profile -> "
+            "student configuration -> PDF metadata initialization"
+        )
     for marker in (
         "custom profile excludes NCKU department presets",
         "custom profile excludes NCKU college presets",
@@ -449,6 +461,16 @@ def check_institution_profile_docs() -> None:
         missing = [marker for marker in ntu_markers if marker not in text]
         if missing:
             fail(f"{relative}: illustrative NTU boundary missing: {', '.join(missing)}")
+        load_order_doc_markers = (
+            "template/configure.tex",
+            "template/command/command.tex",
+            "template/style/style.tex",
+            "\\TemplateConfigurationFile (default: ./conf/conf)",
+            "\\FillInPDFData and remaining metadata/render initialization",
+        )
+        missing_order = [marker for marker in load_order_doc_markers if marker not in text]
+        if missing_order:
+            fail(f"{relative}: customization load-order contract missing: {', '.join(missing_order)}")
 
     skill = read(".agents/skills/repo-maintenance/SKILL.md")
     if "9 college presets and 110 department presets" not in skill:
