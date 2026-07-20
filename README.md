@@ -1,4 +1,4 @@
-<!-- doc-pair: root-readme; lang: zh-Hant-TW; topics: project-overview,historical-acceptance,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,thesis-upload-and-printing,defense-certificate-faq,documentation-and-project-work,other-community-alternatives,licence -->
+<!-- doc-pair: root-readme; lang: zh-Hant-TW; topics: project-overview,start-by-need,quick-start,choose-the-correct-setup,downloads-and-examples,migrate-from-1-x,other-institution-profiles,historical-acceptance,thesis-upload-and-printing,defense-certificate-faq,documentation-and-project-work,other-community-alternatives,licence -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -16,22 +16,16 @@
 - [論文建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)
 - [教務處課務組論文格式規範](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)
 
-## Available to use 已被學校負責單位接受
+## 按需要開始
 
-依本專案保存的歷史紀錄，本模版的格式／設計曾於2015年由成大圖書館系統管理組數位論文小組檢查；本模版當時產生的中英文學位考試論文證明書亦曾由教務處課務組檢查。2018年，課務組另指出本模版產生的中文版證明書未經授權。
-
-以上只屬歷史查核紀錄，不代表目前的學校、圖書館、學位考試系統或任何系所接受本模版的每項設定。資訊工程學系是本專案唯一有保存歷史使用紀錄的系所，但此紀錄亦不等於現行認可。使用前必須核對當年度學校及系所規定。
-
-## 選擇正確設定
-
-文件語言、學校profile、封面語言、學位及內容模式是不同設定。成大同學無論使用中文或英文文件，都使用`ncku` profile；其他學校的同學如要建立自己的範本，可使用`custom`或另一個institution profile。
-
-| 決定 | 選項 |
+| 你想做的事 | 先看這裡 |
 | --- | --- |
-| 學校 | 成大同學使用預設`ncku`；其他學校的同學可使用custom profile |
-| 封面語言 | `\DisplayCoverInChi`或`\DisplayCoverInEng` |
-| 學位 | `\MasterDegree`或`\PhdDegree` |
-| 內容 | 自己的`context/context.tex`或`\ExampleMode`教學範例 |
+| 立即開始撰寫論文 | [快速開始](#快速開始)及學生套件[`README.md`](thesis/README.md) |
+| 填寫姓名、題目、學位及系所 | [`conf/README.md`](thesis/conf/README.md) |
+| 由1.x專案升級 | [`1.x至2.x升級指南`](docs/v1-to-v2-migration.md) |
+| 為其他學校建立樣式 | [`Customization.md`](thesis/template/style/Customization.md) |
+| 上傳論文、列印及選擇正式證明書 | [學位論文上傳和列印說明](#學位論文上傳和列印說明) |
+| 查看架構、驗證、發行及Overleaf記錄 | [`docs/README.md`](docs/README.md) |
 
 ## 快速開始
 
@@ -44,6 +38,17 @@
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 ```
+
+## 選擇正確設定
+
+文件語言、學校profile、封面語言、學位及內容模式是不同設定。成大同學無論使用中文或英文文件，都使用`ncku` profile；其他學校的同學如要建立自己的範本，可使用`custom`或另一個institution profile。
+
+| 決定 | 選項 |
+| --- | --- |
+| 學校 | 成大同學使用預設`ncku`；其他學校的同學可使用custom profile |
+| 封面語言 | `\DisplayCoverInChi`或`\DisplayCoverInEng` |
+| 學位 | `\MasterDegree`或`\PhdDegree` |
+| 內容 | 自己的`context/context.tex`或`\ExampleMode`教學範例 |
 
 ## 下載內容與範例
 
@@ -73,6 +78,12 @@ defense-certificate-phd.pdf
 本模版將共用renderer、NCKU policy及其他學校port分成`base`、`ncku`及`custom`。學生論文資料仍放在`conf/conf.tex`；學校geometry、名稱、日期政策、文字及assets放在`template/style/<profile>/`。`custom`是neutral skeleton，不是任何學校的ready-to-submit profile；本專案目前亦沒有NTU profile。其他學校的同學可由`template/style/custom/`開始，不要直接修改共用renderer或先載入NCKU再覆寫。
 
 NCKU學生可查看完整[`9個學院／110個系所preset目錄`](thesis/template/style/ncku/README.md)；其他學校的同學則使用generic institution APIs，並參考[`Customization.md`](thesis/template/style/Customization.md)內明確標示為illustrative的NTU wiring例子。
+
+## Available to use 已被學校負責單位接受
+
+依本專案保存的歷史紀錄，本模版的格式／設計曾於2015年由成大圖書館系統管理組數位論文小組檢查；本模版當時產生的中英文學位考試論文證明書亦曾由教務處課務組檢查。2018年，課務組另指出本模版產生的中文版證明書未經授權。
+
+以上只屬歷史查核紀錄，不代表目前的學校、圖書館、學位考試系統或任何系所接受本模版的每項設定。資訊工程學系是本專案唯一有保存歷史使用紀錄的系所，但此紀錄亦不等於現行認可。使用前必須核對當年度學校及系所規定。
 
 ## 學位論文上傳和列印說明
 

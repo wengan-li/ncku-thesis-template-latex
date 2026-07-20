@@ -388,8 +388,20 @@ def check_project_index_scope() -> None:
         "source-of-truth",
         "feat/<short-name>",
         "branch checklist",
+        "active requirement",
+        "active work",
+        "進行中工作",
+        "implementation chronology",
+        "branch names",
+        "checkbox progress",
     )
-    for relative in ("docs/README.md", "docs/README.en.md"):
+    public_indexes = (
+        "docs/README.md",
+        "docs/README.en.md",
+        "docs/features/README.md",
+        "docs/features/README.en.md",
+    )
+    for relative in public_indexes:
         text = read(relative)
         leaked = [term for term in internal_terms if term in text]
         if leaked:
@@ -397,6 +409,16 @@ def check_project_index_scope() -> None:
                 f"{relative}: internal repository-governance content leaked "
                 f"into public index: {', '.join(leaked)}"
             )
+
+    need_based_markers = {
+        "README.md": "## 按需要開始",
+        "README.en.md": "## Start by need",
+        "docs/features/README.md": "## 按需要選擇記錄",
+        "docs/features/README.en.md": "## Choose by need",
+    }
+    for relative, marker in need_based_markers.items():
+        if marker not in read(relative):
+            fail(f"{relative}: missing need-based reader route: {marker}")
 
 
 def check_language_local_routes() -> None:

@@ -187,6 +187,8 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 ## Documentation Standard
 
 - `docs/README.md` is the public project-documentation index and audience router.
+  Public indexes use task-oriented, student-first routes before deeper technical
+  records; active-work state and branch mechanics stay in internal governance.
 - `docs/v1-to-v2-migration.md` is the current 1.x-to-2.x migration guide;
   `thesis/README.md` keeps concise offline steps and `thesis/conf/README.md`
   keeps field-by-field configuration guidance inside the student ZIP.

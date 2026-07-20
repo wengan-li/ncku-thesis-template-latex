@@ -89,6 +89,10 @@ one is a short link/routing sentence.
   stay outside the student ZIP.
 - Root README provides the public overview; `docs/README.md` routes students and
   readers to current guides and shipped project records.
+- Public landing pages and indexes are ordered by reader need: overview, a
+  task-oriented start table, direct student routes, then deeper project records.
+  Keep active-work state, branch mechanics, and implementation chronology out of
+  those public indexes.
 - GitHub Release state and Overleaf state are independent. Never turn submitted
   into approved without live public read-back.
 
