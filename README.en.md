@@ -1,4 +1,4 @@
-<!-- doc-pair: root-readme; lang: en; topics: project-overview,historical-acceptance,choose-the-correct-setup,quick-start,downloads-and-examples,migrate-from-1-x,other-institution-profiles,thesis-upload-and-printing,defense-certificate-faq,documentation-and-project-work,other-community-alternatives,licence -->
+<!-- doc-pair: root-readme; lang: en; topics: project-overview,start-by-need,quick-start,choose-the-correct-setup,downloads-and-examples,migrate-from-1-x,other-institution-profiles,historical-acceptance,thesis-upload-and-printing,defense-certificate-faq,documentation-and-project-work,other-community-alternatives,licence -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -18,24 +18,16 @@ Official guidance last checked on `2026-07-12`:
 - [Submission guidance](https://thesis.lib.ncku.edu.tw/help/aboutedit/)
 - [Curriculum Division thesis-format guidance](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)
 
-## Available to use / historical acceptance
+## Start by need
 
-According to records preserved by the project, the template's format/design was checked by the NCKU Library's digital-thesis team in 2015. The Curriculum Division also checked the Chinese and English defense certificates generated at that time. In 2018, the Division separately stated that the template-generated Chinese certificate was unauthorized.
-
-These are historical checks, not evidence that the university, library, degree-examination system, or any department currently accepts every template setting. CSIE is the only department for which the project preserves documented historical use, and that record is not current approval. Verify the rules for the current year and department before use.
-
-## Choose the correct setup
-
-Documentation language, institution profile, cover language, degree, and content mode are separate settings. NCKU students use the `ncku` profile whether they write in Chinese or English; students from other institutions can use `custom` or another institution profile.
-
-| Decision | Choices |
+| What you want to do | Start here |
 | --- | --- |
-| Institution | default `ncku` for NCKU students; custom profile for students from another institution |
-| Cover language | `\DisplayCoverInChi` or `\DisplayCoverInEng` |
-| Degree | `\MasterDegree` or `\PhdDegree` |
-| Content | own `context/context.tex` or `\ExampleMode` teaching example |
-
-Historical checks in 2015 and reports from individual departments are provenance only, not current approval. CSIE is the only department with documented historical use in this repository; every student must still verify current department rules.
+| Start writing a thesis now | [Quick start](#quick-start) and the student-package [`README.en.md`](thesis/README.en.md) |
+| Enter names, titles, degree, and department | [`conf/README.en.md`](thesis/conf/README.en.md) |
+| Upgrade a 1.x project | [1.x-to-2.x migration guide](docs/v1-to-v2-migration.en.md) |
+| Create a style for another institution | [`Customization.en.md`](thesis/template/style/Customization.en.md) |
+| Upload, print, and choose the official certificate | [Thesis upload and printing](#thesis-upload-and-printing) |
+| Review architecture, validation, releases, and Overleaf records | [`docs/README.en.md`](docs/README.en.md) |
 
 ## Quick start
 
@@ -50,6 +42,17 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 ```
 
 Use `thesis.tex` as the root/master document. `latexmk` handles XeLaTeX, BibTeX, and required reruns automatically.
+
+## Choose the correct setup
+
+Documentation language, institution profile, cover language, degree, and content mode are separate settings. NCKU students use the `ncku` profile whether they write in Chinese or English; students from other institutions can use `custom` or another institution profile.
+
+| Decision | Choices |
+| --- | --- |
+| Institution | default `ncku` for NCKU students; custom profile for students from another institution |
+| Cover language | `\DisplayCoverInChi` or `\DisplayCoverInEng` |
+| Degree | `\MasterDegree` or `\PhdDegree` |
+| Content | own `context/context.tex` or `\ExampleMode` teaching example |
 
 ## Downloads and examples
 
@@ -87,6 +90,12 @@ The template separates shared rendering, NCKU policy, and other-institution port
 NCKU students can use the complete [`9-college / 110-department preset catalogue`](thesis/template/style/ncku/README.en.md). Students from other institutions use the generic institution APIs and can follow the explicitly illustrative NTU wiring in [`Customization.en.md`](thesis/template/style/Customization.en.md).
 
 Guide: [`thesis/template/style/Customization.en.md`](thesis/template/style/Customization.en.md)
+
+## Available to use / historical acceptance
+
+According to records preserved by the project, the template's format/design was checked by the NCKU Library's digital-thesis team in 2015. The Curriculum Division also checked the Chinese and English defense certificates generated at that time. In 2018, the Division separately stated that the template-generated Chinese certificate was unauthorized.
+
+These are historical checks, not evidence that the university, library, degree-examination system, or any department currently accepts every template setting. CSIE is the only department for which the project preserves documented historical use, and that record is not current approval. Verify the rules for the current year and department before use.
 
 ## Thesis upload and printing
 
