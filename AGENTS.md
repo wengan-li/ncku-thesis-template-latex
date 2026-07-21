@@ -1,3 +1,14 @@
+<!-- CODEGRAPH_START -->
+## CodeGraph
+
+In repositories indexed by CodeGraph (a `.codegraph/` directory exists at the repo root), reach for it BEFORE grep/find or reading files when you need to understand or locate code:
+
+- **MCP tool** (when available): `codegraph_explore` answers most code questions in one call — the relevant symbols' verbatim source plus the call paths between them, including dynamic-dispatch hops grep can't follow. Name a file or symbol in the query to read its current line-numbered source. If it's listed but deferred, load it by name via tool search.
+- **Shell** (always works): `codegraph explore "<symbol names or question>"` prints the same output.
+
+If there is no `.codegraph/` directory, skip CodeGraph entirely — indexing is the user's decision.
+<!-- CODEGRAPH_END -->
+
 You must follow Intent-Driven Software Development (IDSD) for every task: clarify intent, expectations, and context first, and use the repo-local IDSD and repository-maintenance skills before implementation.
 
 IDSD skill: `.agents/skills/idsd-workflow/SKILL.md`
@@ -237,3 +248,14 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
   replace human semantic-parity review.
 - Load `documentation-management` for documentation creation, consolidation,
   requirements, todos, path repair, or lifecycle changes.
+
+## Git checkout and branch scope
+
+- Work in the existing checkout and its currently checked-out branch by default.
+- Do not create a branch, create a worktree, switch branches, or hand work off to another checkout unless the user explicitly requests that Git operation in the current conversation.
+- A dirty or shared checkout, concurrent-agent activity, release isolation, or safer validation is not permission to create a branch or worktree. Preserve unrelated changes and stay within the current checkout.
+- If the requested work cannot be completed safely in the current checkout, stop before changing Git topology and ask the user for explicit approval.
+
+## Agent delegation
+
+- Only use subagents if the user explicitly requests them.
