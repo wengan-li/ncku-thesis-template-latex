@@ -202,5 +202,17 @@ if elapsed > 10:
     print("WARNING: local cold build exceeds Overleaf free-plan 10-second timeout; an authenticated Overleaf build is required", file=sys.stderr)
 PY
 
-sha256=$(shasum -a 256 "$output_dir_abs/$archive_name" | awk '{print $1}')
+sha256=$(python3 - "$output_dir_abs/$archive_name" <<'PY'
+from pathlib import Path
+import hashlib
+import sys
+
+archive = Path(sys.argv[1])
+digest = hashlib.sha256()
+with archive.open("rb") as stream:
+    for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+        digest.update(chunk)
+print(digest.hexdigest())
+PY
+)
 printf 'Overleaf package: %s\nSHA-256: %s\n' "$output_dir_abs/$archive_name" "$sha256"
