@@ -48,7 +48,7 @@ check: thesis
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
 # Run the required build and focused regression test gate.
-test: check _test-bilingual-docs _test-test-layout _test-v1-api _test-v1-project-migration _test-release-student-archive _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-bilingual-docs _test-test-layout _test-v1-api _test-v1-project-migration _test-release-student-archive _test-overleaf-gallery-package _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Structural language-pair and first-party Markdown-link gate.
 [private]
@@ -117,6 +117,12 @@ _test-release-student-archive:
     grep -Fq 'student ZIP contents differ from the exact HEAD:thesis file list' "{{ build_dir }}/tests/student-archive-config-english-negative.log"
     grep -Fq -- '-ncku-thesis-template-latex/conf/README.en.md' "{{ build_dir }}/tests/student-archive-config-english-negative.log"
     rm -f "{{ build_dir }}/tests/student-archive-config-english-negative.zip"
+
+# Internal regression test for the generated public Gallery package and overlay.
+[private]
+_test-overleaf-gallery-package:
+    rm -rf "{{ build_dir }}/tests/overleaf-gallery"
+    scripts/overleaf/package-and-verify.sh "test" "{{ build_dir }}/tests/overleaf-gallery" gallery
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]

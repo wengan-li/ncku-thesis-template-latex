@@ -292,6 +292,11 @@ are gone. Manual Release dispatch must not promote a GitHub Release.
 - Treating Overleaf's accepted community-maintained Gallery listing as NCKU
   endorsement. Keep the unofficial label, and update only through the original
   Overleaf project followed by resubmission and reapproval.
+- Searching generated Gallery packaging for the historical literal
+  `\input{./conf/conf}` after the template introduced
+  `\TemplateConfigurationFile`. Inject the Gallery overlay after
+  `\input{\TemplateConfigurationFile}` and keep a cold generated-package build
+  in the required test gate so configuration-seam drift fails before publication.
 - Publishing loose example PDFs in addition to the examples ZIP.
 - Using `legacy` in a public filename when `generated` plus a clear package
   notice communicates the institutional-document boundary more accurately.

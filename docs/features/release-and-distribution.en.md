@@ -4,8 +4,8 @@
 
 # Release and distribution
 
-Status: GitHub production release verified; Overleaf Gallery V2 update last
-recorded as owner-confirmed submitted and pending public approval/read-back.
+Status: GitHub production release verified; Overleaf Gallery V2 update approved
+and independently read back from the public page, source, and PDF on 2026-07-21.
 
 - Public Overleaf template:
   <https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn>
@@ -136,6 +136,11 @@ just overleaf-gallery <version>
   `\documentclass`; nested configuration must not be auto-detected as the main
   document.
 - Both are extracted and cold-built with XeLaTeX before use.
+- The Gallery overlay is injected immediately after
+  `\input{\TemplateConfigurationFile}` so it remains compatible with the
+  default-preserving configuration seam. The required `just test` gate cold-builds
+  the generated Gallery package to prevent this source/package contract from
+  drifting again.
 
 Required Overleaf settings:
 
@@ -156,14 +161,25 @@ plan-specific timeout behavior.
   public listing was approved/published on 2026-07-15.
 - On 2026-07-18 the verified V2 Gallery package was reported as uploaded to the
   original Overleaf project and resubmitted for review.
-- The authenticated project settings and compile result were not independently
-  read back at that checkpoint. The public page still exposed the earlier copy.
-- Therefore the durable state is **owner-confirmed submitted**, not independently
-  approved V2. GitHub Releases remains canonical until the V2 Gallery copy is
-  publicly approved and independently read back.
+- On 2026-07-21 the owner supplied Overleaf's approval notice and the public
+  listing was independently read back. The public `View Source` entry point has
+  one direct root `\documentclass` and loads `./template/configure`, matching the
+  generated V2 Overleaf entry-point contract.
+- The public `Open as Template` route specifies XeLaTeX, root `thesis.tex`, and
+  TeX Live 2025.1. The isolated verification browser reached Overleaf login before
+  project creation, so this checkpoint verifies the public route parameters but
+  does not claim an authenticated fresh-project compile.
+- The public PDF read back on 2026-07-21 is 95,410 bytes, SHA-256
+  `4797e63c70f8a76c0dea6bd0142b039b0280151d1fb12e48c53c01b09f1e1c6c`,
+  11 A4 pages, and records a creation time of 2026-07-18 09:42:38 HKT. Rendered
+  inspection of the cover, abstract, and acknowledgements found complete readable
+  content with no clipping, overlap, Draft marker, or institutional watermark.
+- The durable state is therefore **approved and publicly read back**. GitHub
+  Releases remains the canonical versioned download path, while the Gallery is
+  the approved public Overleaf editing route.
 
 Before reporting a newer Overleaf state, inspect the live page, public PDF, and
-`Open as Template` result. Preserve the original project as the update identity;
+`Open as Template` route. Preserve the original project as the update identity;
 do not submit a replacement project to work around moderation.
 
 ### Overleaf limits and licensing

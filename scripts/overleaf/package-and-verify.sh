@@ -82,11 +82,14 @@ if configure_text.count(configure_needle) != 1:
 configure.write_text(configure_text.replace(configure_needle, ""), encoding="utf-8")
 if profile == "gallery":
     configure_text = configure.read_text(encoding="utf-8")
-    conf_needle = "\\input{./conf/conf}\n"
-    if configure_text.count(conf_needle) != 1:
-        raise SystemExit("expected one canonical config input")
+    configuration_needle = "\\input{\\TemplateConfigurationFile}\n"
+    if configure_text.count(configuration_needle) != 1:
+        raise SystemExit("expected one template configuration input")
     configure.write_text(
-        configure_text.replace(conf_needle, conf_needle + "\\input{./conf/gallery}\n"),
+        configure_text.replace(
+            configuration_needle,
+            configuration_needle + "\\input{./conf/gallery}\n",
+        ),
         encoding="utf-8",
     )
 
