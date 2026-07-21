@@ -82,11 +82,14 @@ if configure_text.count(configure_needle) != 1:
 configure.write_text(configure_text.replace(configure_needle, ""), encoding="utf-8")
 if profile == "gallery":
     configure_text = configure.read_text(encoding="utf-8")
-    conf_needle = "\\input{./conf/conf}\n"
-    if configure_text.count(conf_needle) != 1:
-        raise SystemExit("expected one canonical config input")
+    configuration_needle = "\\input{\\TemplateConfigurationFile}\n"
+    if configure_text.count(configuration_needle) != 1:
+        raise SystemExit("expected one template configuration input")
     configure.write_text(
-        configure_text.replace(conf_needle, conf_needle + "\\input{./conf/gallery}\n"),
+        configure_text.replace(
+            configuration_needle,
+            configuration_needle + "\\input{./conf/gallery}\n",
+        ),
         encoding="utf-8",
     )
 
@@ -199,5 +202,17 @@ if elapsed > 10:
     print("WARNING: local cold build exceeds Overleaf free-plan 10-second timeout; an authenticated Overleaf build is required", file=sys.stderr)
 PY
 
-sha256=$(shasum -a 256 "$output_dir_abs/$archive_name" | awk '{print $1}')
+sha256=$(python3 - "$output_dir_abs/$archive_name" <<'PY'
+from pathlib import Path
+import hashlib
+import sys
+
+archive = Path(sys.argv[1])
+digest = hashlib.sha256()
+with archive.open("rb") as stream:
+    for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+        digest.update(chunk)
+print(digest.hexdigest())
+PY
+)
 printf 'Overleaf package: %s\nSHA-256: %s\n' "$output_dir_abs/$archive_name" "$sha256"
