@@ -7,10 +7,9 @@ import argparse
 import re
 from pathlib import Path
 
+from _contract import ROOT, compact, normalized, require_for, require_single_a4_page
 
-def require(condition: bool, message: str) -> None:
-    if not condition:
-        raise SystemExit(f"Float contract FAIL: {message}")
+require = require_for("Float contract")
 
 
 def main() -> None:
@@ -25,8 +24,8 @@ def main() -> None:
     fls = stem.with_suffix(".fls").read_text(errors="replace")
     pdfinfo = stem.with_suffix(".pdfinfo").read_text(errors="replace")
     images = stem.with_suffix(".images").read_text(errors="replace")
-    compact_log = "".join(log.split())
-    normalized_text = " ".join(text.split())
+    compact_log = compact(log)
+    normalized_text = normalized(text)
 
     state_markers = (
         "NCKU-FLOAT-SINGLE-STATE:2.0/5/FloatSingleCaption/ncku:float:single/tbp/left/0.7",
@@ -76,8 +75,7 @@ def main() -> None:
     for warning in forbidden:
         require(re.search(warning, log, re.IGNORECASE) is None, f"log contains {warning}")
 
-    require(re.search(r"^Pages:\s+1$", pdfinfo, re.MULTILINE) is not None, "PDF is not one page")
-    require(re.search(r"^Page size:.*A4", pdfinfo, re.MULTILINE) is not None, "PDF is not A4")
+    require_single_a4_page(require, pdfinfo)
 
     visible_fragments = (
         "Figure 1.1: Float Single Caption",
@@ -157,9 +155,9 @@ def main() -> None:
     ):
         require(asset in fls, f"missing recorded image asset: {asset}")
 
-    figure_source = Path("thesis/template/command/cmd-figure.tex").read_text()
-    figures_source = Path("thesis/template/command/cmd-figures.tex").read_text()
-    table_source = Path("thesis/template/command/cmd-table.tex").read_text()
+    figure_source = (ROOT / "thesis/template/command/cmd-figure.tex").read_text()
+    figures_source = (ROOT / "thesis/template/command/cmd-figures.tex").read_text()
+    table_source = (ROOT / "thesis/template/command/cmd-table.tex").read_text()
     require(r"\begin{figure}[H]" in figure_source, "single figure no longer forces H")
     require(r"\begin{figure}[H]" in figures_source, "multi figure no longer forces H")
     require(r"\begin{table}[H]" in table_source, "table no longer forces H")

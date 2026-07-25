@@ -4,14 +4,11 @@
 from __future__ import annotations
 
 import argparse
-import re
 from pathlib import Path
 
+from _contract import ROOT, l3keys_block, normalized, require_for, require_single_a4_page
 
-def require(condition: bool, message: str) -> None:
-    if not condition:
-        raise SystemExit(message)
-
+require = require_for("Font option contract")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("build_dir", type=Path)
@@ -22,8 +19,8 @@ log = (build / "font-option-contract.log").read_text(errors="replace")
 text = (build / "font-option-contract.txt").read_text(errors="replace")
 pdfinfo = (build / "font-option-contract.pdfinfo").read_text(errors="replace")
 fonts = (build / "font-option-contract.fonts").read_text(errors="replace")
-source = Path("thesis/template/command/cmd-font.tex").read_text()
-normalized_log = re.sub(r"\s+", " ", log)
+source = (ROOT / "thesis/template/command/cmd-font.tex").read_text()
+normalized_log = normalized(log)
 
 markers = [
     "NCKU-FONT-OPTION-FULL: times.ttf|timesi.ttf|timesbd.ttf|timesbi.ttf",
@@ -43,8 +40,7 @@ for phrase in [
 ]:
     require(phrase in text, f"missing rendered font-option text: {phrase}")
 
-require(re.search(r"^Pages:\s+1$", pdfinfo, re.MULTILINE) is not None, "focused PDF is not one page")
-require(re.search(r"^Page size:.*A4", pdfinfo, re.MULTILINE) is not None, "focused PDF is not A4")
+require_single_a4_page(require, pdfinfo)
 for font_name in [
     "TimesNewRomanPSMT",
     "TimesNewRomanPS-ItalicMT",
@@ -73,15 +69,10 @@ require(
     r"\keys_set:nn { ncku / font-options } {#1}" in source,
     "font-option private seam does not route through l3keys",
 )
-font_block_match = re.search(
-    r"\\keys_define:nn \{ ncku / font-options \}(.*?)\\cs_new_protected:Npn \\ncku_font_options_set_keys:n",
-    source,
-    re.DOTALL,
-)
-if font_block_match is None:
-    raise SystemExit("cannot isolate font-option l3keys block")
+font_block = l3keys_block(source, "ncku / font-options", "ncku_font_options_set_keys:n")
+require(font_block is not None, "cannot isolate font-option l3keys block")
 require(
-    font_block_match.group(1).count(".tl_set_e:N") == 4,
+    font_block is not None and font_block.count(".tl_set_e:N") == 4,
     "font-option parser must preserve expanded storage for exactly four keys",
 )
 require(

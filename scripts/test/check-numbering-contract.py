@@ -7,10 +7,9 @@ import argparse
 import re
 from pathlib import Path
 
+from _contract import ROOT, compact, l3keys_block, normalized, require_for, require_single_a4_page
 
-def require(condition: bool, message: str) -> None:
-    if not condition:
-        raise SystemExit(f"Numbering contract FAIL: {message}")
+require = require_for("Numbering contract")
 
 
 def main() -> None:
@@ -22,8 +21,8 @@ def main() -> None:
     log = stem.with_suffix(".log").read_text(errors="replace")
     text = stem.with_suffix(".txt").read_text(errors="replace")
     pdfinfo = stem.with_suffix(".pdfinfo").read_text(errors="replace")
-    compact_log = "".join(log.split())
-    normalized_text = " ".join(text.split())
+    compact_log = compact(log)
+    normalized_text = normalized(text)
 
     markers = (
         "NCKU-CHAPTER-PARSER-EXPANDED:Macro[|]|Center|UpperRoman|:",
@@ -64,8 +63,7 @@ def main() -> None:
     for warning in forbidden:
         require(re.search(warning, log, re.IGNORECASE) is None, f"log contains {warning}")
 
-    require(re.search(r"^Pages:\s+1$", pdfinfo, re.MULTILINE) is not None, "PDF is not one page")
-    require(re.search(r"^Page size:.*A4", pdfinfo, re.MULTILINE) is not None, "PDF is not A4")
+    require_single_a4_page(require, pdfinfo)
 
     visible = (
         "Default general: Chapter 2/ 2.3/ 2.3.4/ / 2.3.4.5.",
@@ -83,7 +81,7 @@ def main() -> None:
     for fragment in visible:
         require(fragment in normalized_text, f"missing visible fragment: {fragment}")
 
-    source = Path("thesis/template/command/cmd-numbering.tex").read_text()
+    source = (ROOT / "thesis/template/command/cmd-numbering.tex").read_text()
     require(
         r"\cs_new_protected:Npn \NCKUPrivateSetRemainingNumberingKeys #1#2" in source,
         "remaining-numbering private parser seam is missing",
@@ -112,16 +110,15 @@ def main() -> None:
             rf"\keys_define:nn {{ ncku / numbering / {l3_family} }}" in source,
             f"l3keys family is missing for {family}",
         )
-        block_match = re.search(
-            rf"\\keys_define:nn \{{ ncku / numbering / {l3_family} \}}"
-            rf"(.*?)\\cs_new_protected:Npn \\ncku_numbering_{l3_family.replace('-', '_')}_set_keys:n",
+        block = l3keys_block(
             source,
-            re.DOTALL,
+            f"ncku / numbering / {l3_family}",
+            f"ncku_numbering_{l3_family.replace('-', '_')}_set_keys:n",
         )
-        if block_match is None:
+        if block is None:
             raise SystemExit(f"Numbering contract FAIL: cannot isolate l3keys block for {family}")
         require(
-            block_match.group(1).count(".tl_set_e:N") == key_count,
+            block.count(".tl_set_e:N") == key_count,
             f"{family} expanded-storage key count changed",
         )
         require(
@@ -140,15 +137,13 @@ def main() -> None:
         r"\keys_define:nn { ncku / chapter-title-format }" in source,
         "Chapter title-format l3keys family is missing",
     )
-    chapter_block_match = re.search(
-        r"\\keys_define:nn \{ ncku / chapter-title-format \}(.*?)\\cs_new_protected:Npn \\ncku_chapter_title_format_set_keys:n",
-        source,
-        re.DOTALL,
+    chapter_block = l3keys_block(
+        source, "ncku / chapter-title-format", "ncku_chapter_title_format_set_keys:n"
     )
-    if chapter_block_match is None:
+    if chapter_block is None:
         raise SystemExit("Numbering contract FAIL: cannot isolate Chapter title-format l3keys block")
     require(
-        chapter_block_match.group(1).count(".tl_set_e:N") == 5,
+        chapter_block.count(".tl_set_e:N") == 5,
         "Chapter parser must preserve expanded storage for exactly five keys",
     )
     require(

@@ -4,7 +4,38 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-EXPECTED = ('NCKU-NUMBERING-FAMILY-SETUPTITLENUMBERFORMATSTRING-EXPANDED:SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X|SetupTitleNumberFormatString-X', 'NCKU-NUMBERING-FAMILY-SETUPTITLENUMBERFORMATSTRING-PARTIAL:PARTIAL|||||||||||||', 'NCKU-NUMBERING-FAMILY-SETUPTITLENUMBERFORMATSTRING-OMITTED:|||||||||||||', 'NCKU-NUMBERING-FAMILY-STITLENUMBERFORMAT-EXPANDED:STitleNumberFormat-X|STitleNumberFormat-X|STitleNumberFormat-X|STitleNumberFormat-X|STitleNumberFormat-X|STitleNumberFormat-X|STitleNumberFormat-X', 'NCKU-NUMBERING-FAMILY-STITLENUMBERFORMAT-PARTIAL:PARTIAL||Left|Arabic|Arabic|.|.', 'NCKU-NUMBERING-FAMILY-STITLENUMBERFORMAT-OMITTED:||Left|Arabic|Arabic|.|.', 'NCKU-NUMBERING-FAMILY-SSTITLENUMBERFORMAT-EXPANDED:SSTitleNumberFormat-X|SSTitleNumberFormat-X|SSTitleNumberFormat-X|SSTitleNumberFormat-X|SSTitleNumberFormat-X|SSTitleNumberFormat-X|SSTitleNumberFormat-X|SSTitleNumberFormat-X|SSTitleNumberFormat-X', 'NCKU-NUMBERING-FAMILY-SSTITLENUMBERFORMAT-PARTIAL:PARTIAL||Left|Arabic|Arabic|Arabic|.|.|.', 'NCKU-NUMBERING-FAMILY-SSTITLENUMBERFORMAT-OMITTED:||Left|Arabic|Arabic|Arabic|.|.|.', 'NCKU-NUMBERING-FAMILY-SSSTITLENUMBERFORMAT-EXPANDED:SSSTitleNumberFormat-X|SSSTitleNumberFormat-X|SSSTitleNumberFormat-X|SSSTitleNumberFormat-X|SSSTitleNumberFormat-X|SSSTitleNumberFormat-X|SSSTitleNumberFormat-X|SSSTitleNumberFormat-X|SSSTitleNumberFormat-X|SSSTitleNumberFormat-X|SSSTitleNumberFormat-X', 'NCKU-NUMBERING-FAMILY-SSSTITLENUMBERFORMAT-PARTIAL:PARTIAL||Left|Arabic|Arabic|Arabic|Arabic|.|.|.|.', 'NCKU-NUMBERING-FAMILY-SSSTITLENUMBERFORMAT-OMITTED:||Left|Arabic|Arabic|Arabic|Arabic|.|.|.|.', 'NCKU-NUMBERING-FAMILY-APPENDIXCTITLENUMBERFORMAT-EXPANDED:AppendixCTitleNumberFormat-X|AppendixCTitleNumberFormat-X|AppendixCTitleNumberFormat-X|AppendixCTitleNumberFormat-X|AppendixCTitleNumberFormat-X', 'NCKU-NUMBERING-FAMILY-APPENDIXCTITLENUMBERFORMAT-PARTIAL:PARTIAL||Left|UpperAlph|.', 'NCKU-NUMBERING-FAMILY-APPENDIXCTITLENUMBERFORMAT-OMITTED:Appendix||Left|UpperAlph|.', 'NCKU-NUMBERING-FAMILY-APPENDIXSTITLENUMBERFORMAT-EXPANDED:AppendixSTitleNumberFormat-X|AppendixSTitleNumberFormat-X|AppendixSTitleNumberFormat-X|AppendixSTitleNumberFormat-X|AppendixSTitleNumberFormat-X|AppendixSTitleNumberFormat-X|AppendixSTitleNumberFormat-X', 'NCKU-NUMBERING-FAMILY-APPENDIXSTITLENUMBERFORMAT-PARTIAL:PARTIAL||Left|UpperAlph|Arabic|.|.', 'NCKU-NUMBERING-FAMILY-APPENDIXSTITLENUMBERFORMAT-OMITTED:||Left|UpperAlph|Arabic|.|.', 'NCKU-NUMBERING-FAMILY-APPENDIXSSTITLENUMBERFORMAT-EXPANDED:AppendixSSTitleNumberFormat-X|AppendixSSTitleNumberFormat-X|AppendixSSTitleNumberFormat-X|AppendixSSTitleNumberFormat-X|AppendixSSTitleNumberFormat-X|AppendixSSTitleNumberFormat-X|AppendixSSTitleNumberFormat-X|AppendixSSTitleNumberFormat-X|AppendixSSTitleNumberFormat-X', 'NCKU-NUMBERING-FAMILY-APPENDIXSSTITLENUMBERFORMAT-PARTIAL:PARTIAL||Left|UpperAlph|Arabic|Arabic|.|.|.', 'NCKU-NUMBERING-FAMILY-APPENDIXSSTITLENUMBERFORMAT-OMITTED:||Left|UpperAlph|Arabic|Arabic|.|.|.', 'NCKU-NUMBERING-FAMILY-APPENDIXSSSTITLENUMBERFORMAT-EXPANDED:AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X|AppendixSSSTitleNumberFormat-X', 'NCKU-NUMBERING-FAMILY-APPENDIXSSSTITLENUMBERFORMAT-PARTIAL:PARTIAL||Left|UpperAlph|Arabic|Arabic|Arabic|.|.|.|.', 'NCKU-NUMBERING-FAMILY-APPENDIXSSSTITLENUMBERFORMAT-OMITTED:||Left|UpperAlph|Arabic|Arabic|Arabic|.|.|.|.', 'NCKU-NUMBERING-FAMILY-SETUPGENERALAPPENDIXNUMBERFORMATSTRING-EXPANDED:SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X|SetupGeneralAppendixNumberFormatString-X', 'NCKU-NUMBERING-FAMILY-SETUPGENERALAPPENDIXNUMBERFORMATSTRING-PARTIAL:PARTIAL|||||||||||||.|||.|||.', 'NCKU-NUMBERING-FAMILY-SETUPGENERALAPPENDIXNUMBERFORMATSTRING-OMITTED:|||||||||||||.|||.|||.')
+# (family, expanded key count, OMITTED-state field values). The EXPANDED row
+# is always `<family>-X` repeated per key, and the PARTIAL row is the OMITTED
+# row with its first field replaced by the literal `PARTIAL`.
+FAMILIES = (
+    ("SetupTitleNumberFormatString", 14, "|" * 13),
+    ("STitleNumberFormat", 7, "||Left|Arabic|Arabic|.|."),
+    ("SSTitleNumberFormat", 9, "||Left|Arabic|Arabic|Arabic|.|.|."),
+    ("SSSTitleNumberFormat", 11, "||Left|Arabic|Arabic|Arabic|Arabic|.|.|.|."),
+    ("AppendixCTitleNumberFormat", 5, "Appendix||Left|UpperAlph|."),
+    ("AppendixSTitleNumberFormat", 7, "||Left|UpperAlph|Arabic|.|."),
+    ("AppendixSSTitleNumberFormat", 9, "||Left|UpperAlph|Arabic|Arabic|.|.|."),
+    ("AppendixSSSTitleNumberFormat", 11, "||Left|UpperAlph|Arabic|Arabic|Arabic|.|.|.|."),
+    ("SetupGeneralAppendixNumberFormatString", 20, "|" * 12 + "|.|||.|||."),
+)
+
+
+def family_markers(family: str, key_count: int, omitted: str) -> tuple[str, str, str]:
+    prefix = f"NCKU-NUMBERING-FAMILY-{family.upper()}"
+    partial = "PARTIAL|" + omitted.split("|", 1)[1]
+    return (
+        f"{prefix}-EXPANDED:" + "|".join([f"{family}-X"] * key_count),
+        f"{prefix}-PARTIAL:{partial}",
+        f"{prefix}-OMITTED:{omitted}",
+    )
+
+
+EXPECTED = tuple(
+    marker
+    for family, key_count, omitted in FAMILIES
+    for marker in family_markers(family, key_count, omitted)
+)
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()

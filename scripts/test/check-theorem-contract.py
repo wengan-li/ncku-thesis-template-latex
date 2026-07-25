@@ -7,10 +7,9 @@ import argparse
 import re
 from pathlib import Path
 
+from _contract import ROOT, compact, normalized, require_for, require_single_a4_page
 
-def require(condition: bool, message: str) -> None:
-    if not condition:
-        raise SystemExit(f"Theorem contract FAIL: {message}")
+require = require_for("Theorem contract")
 
 
 def main() -> None:
@@ -23,7 +22,7 @@ def main() -> None:
     aux = stem.with_suffix(".aux").read_text(errors="replace")
     text = stem.with_suffix(".txt").read_text(errors="replace")
     pdfinfo = stem.with_suffix(".pdfinfo").read_text(errors="replace")
-    source = Path("thesis/template/command/cmd-theorem.tex").read_text(errors="replace")
+    source = (ROOT / "thesis/template/command/cmd-theorem.tex").read_text(errors="replace")
 
     require(
         r"\keys_define:nn { ncku / insert-theorem }" in source,
@@ -51,7 +50,7 @@ def main() -> None:
         "NCKU-TEST-PASS: all 21 public theorem insertion helpers compiled" in log,
         "missing theorem pass marker",
     )
-    compact_log = "".join(log.split())
+    compact_log = compact(log)
     for marker in (
         "NCKU-THEOREM-KEY-DEFAULTS:/",
         "NCKU-THEOREM-KEY-EXPANDED:ExpandedTheoremTitle/ncku:theorem-expanded",
@@ -137,8 +136,7 @@ def main() -> None:
     for warning in forbidden_warnings:
         require(re.search(warning, log, re.IGNORECASE) is None, f"log contains {warning}")
 
-    require(re.search(r"^Pages:\s+1$", pdfinfo, re.MULTILINE) is not None, "PDF is not exactly one page")
-    require(re.search(r"^Page size:.*A4", pdfinfo, re.MULTILINE) is not None, "PDF is not A4")
+    require_single_a4_page(require, pdfinfo)
 
     expected_text = (
         "Definition I.1. NCKU Definition Body.",
@@ -166,9 +164,9 @@ def main() -> None:
         "Theorem II.1. NCKU Theorem Reset Body.",
         "References: I.1, I.1, I.2, II.1. Named reference: Named Theorem.",
     )
-    normalized_text = " ".join(text.split())
+    normalized_text = normalized(text)
     for fragment in expected_text:
-        require(" ".join(fragment.split()) in normalized_text, f"missing PDF text: {fragment}")
+        require(normalized(fragment) in normalized_text, f"missing PDF text: {fragment}")
     require("ncku:test:" not in text, "label key leaked into visible PDF text")
 
     labels = {

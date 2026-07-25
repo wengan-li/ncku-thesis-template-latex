@@ -8,10 +8,9 @@ import re
 from pathlib import Path
 from xml.etree import ElementTree
 
+from _contract import ROOT, compact, normalized, require_for, require_single_a4_page
 
-def require(condition: bool, message: str) -> None:
-    if not condition:
-        raise SystemExit(f"Theorem style/counter matrix FAIL: {message}")
+require = require_for("Theorem style/counter matrix")
 
 
 def main() -> None:
@@ -56,7 +55,7 @@ def main() -> None:
     )
     theorem_types = numbered_plain + numbered_definition + unnumbered_definition + optional_numbered_definition
 
-    compact_log = "".join(log.split())
+    compact_log = compact(log)
     parser_markers = (
         "NCKU-THEOREM-REGISTRY-EXPANDED:EnvExpandedDefinition/ExpandedDefinition/MatrixCustomCounter",
         "NCKU-THEOREM-REGISTRY-PARTIAL:EnvDefinition/PartialDefinition/Section",
@@ -74,7 +73,7 @@ def main() -> None:
         else:
             follow = ""
         marker = f"NCKU-TEST-MATRIX-{theorem_type}: EnvMatrix{theorem_type}/Matrix {theorem_type}/{follow}"
-        require("".join(marker.split()) in compact_log, f"missing or incorrect matrix marker: {theorem_type}")
+        require(compact(marker) in compact_log, f"missing or incorrect matrix marker: {theorem_type}")
     require(
         "NCKU-TEST-PASS: custom theorem style/counter matrix compiled" in log,
         "missing pass marker",
@@ -90,8 +89,7 @@ def main() -> None:
     for warning in forbidden_warnings:
         require(re.search(warning, log, re.IGNORECASE) is None, f"log contains {warning}")
 
-    require(re.search(r"^Pages:\s+1$", pdfinfo, re.MULTILINE) is not None, "PDF is not exactly one page")
-    require(re.search(r"^Page size:.*A4", pdfinfo, re.MULTILINE) is not None, "PDF is not A4")
+    require_single_a4_page(require, pdfinfo)
 
     expected_first = {
         "Definition": "1",
@@ -110,7 +108,7 @@ def main() -> None:
         "Note": "1",
         "Summary": "I.1",
     }
-    normalized_text = " ".join(text.split())
+    normalized_text = normalized(text)
     for theorem_type, number in expected_first.items():
         fragment = f"Matrix {theorem_type} {number}. MATRIX{theorem_type.upper()}BODYONE"
         require(fragment in normalized_text, f"missing numbered output: {fragment}")
@@ -144,7 +142,7 @@ def main() -> None:
         require(marker in styled, f"missing XML style token: {marker}")
         require(not styled[marker], f"definition theorem body became italic: {theorem_type}")
 
-    source = Path("thesis/template/command/cmd-theorem.tex").read_text()
+    source = (ROOT / "thesis/template/command/cmd-theorem.tex").read_text()
     require(
         r"\cs_new_protected:Npn \NCKUPrivateSetTheoremFormatKeys #1#2" in source,
         "dynamic theorem private parser seam is missing",

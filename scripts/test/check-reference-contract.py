@@ -7,10 +7,9 @@ import argparse
 import re
 from pathlib import Path
 
+from _contract import ROOT, compact, normalized, require_for, require_single_a4_page
 
-def require(condition: bool, message: str) -> None:
-    if not condition:
-        raise SystemExit(f"Reference contract FAIL: {message}")
+require = require_for("Reference contract")
 
 
 def main() -> None:
@@ -22,7 +21,7 @@ def main() -> None:
     log = stem.with_suffix(".log").read_text(errors="replace")
     text = stem.with_suffix(".txt").read_text(errors="replace")
     pdfinfo = stem.with_suffix(".pdfinfo").read_text(errors="replace")
-    source_path = Path("thesis/template/command/cmd-bibliography.tex")
+    source_path = ROOT / "thesis/template/command/cmd-bibliography.tex"
     source = source_path.read_text(errors="replace")
 
     require(
@@ -47,7 +46,7 @@ def main() -> None:
     )
     active_sources = [
         path
-        for path in Path("thesis").rglob("*")
+        for path in (ROOT / "thesis").rglob("*")
         if path.is_file() and path.suffix in {".tex", ".sty", ".cls"}
     ]
     require(
@@ -55,7 +54,7 @@ def main() -> None:
         "active thesis source introduced deprecated l3keys2e",
     )
 
-    compact_log = "".join(log.split())
+    compact_log = compact(log)
     expected_markers = (
         "NCKU-REFERENCE-INITIAL:References/plain",
         "NCKU-REFERENCE-KEY-DEFAULTS:References/plain",
@@ -74,9 +73,8 @@ def main() -> None:
     ):
         require(re.search(warning, log, re.IGNORECASE) is None, f"log contains {warning}")
 
-    require(re.search(r"^Pages:\s+1$", pdfinfo, re.MULTILINE) is not None, "PDF is not exactly one page")
-    require(re.search(r"^Page size:.*A4", pdfinfo, re.MULTILINE) is not None, "PDF is not A4")
-    normalized_text = " ".join(text.split())
+    require_single_a4_page(require, pdfinfo)
+    normalized_text = normalized(text)
     require("NCKU Contract References" in normalized_text, "custom bibliography title is missing")
     require("Google - Homepage" in normalized_text, "expected bibliography entry is missing")
 
