@@ -20,46 +20,57 @@ if [[ "$student_files" != "$expected_student_files" ]]; then
   exit 1
 fi
 
-grep -qx "${package_root}/README.md" <<< "$student_entries"
-grep -qx "${package_root}/README.en.md" <<< "$student_entries"
-grep -qx "${package_root}/thesis.tex" <<< "$student_entries"
-grep -qx "${package_root}/conf/conf.tex" <<< "$student_entries"
-grep -qx "${package_root}/conf/README.md" <<< "$student_entries"
-grep -qx "${package_root}/conf/README.en.md" <<< "$student_entries"
-grep -qx "${package_root}/example/abstract/extended.tex" <<< "$student_entries"
-grep -qx "${package_root}/template/configure.tex" <<< "$student_entries"
-grep -qx "${package_root}/template/compat/v1.tex" <<< "$student_entries"
-grep -qx "${package_root}/template/style/Customization.md" <<< "$student_entries"
-grep -qx "${package_root}/template/style/Customization.en.md" <<< "$student_entries"
-grep -qx "${package_root}/template/style/base/base.tex" <<< "$student_entries"
-grep -qx "${package_root}/template/style/ncku/ncku.tex" <<< "$student_entries"
-grep -qx "${package_root}/template/style/custom/custom.tex" <<< "$student_entries"
+require_entry() {
+  grep -qx "${package_root}/$1" <<< "$student_entries" || {
+    printf 'student ZIP is missing required entry: %s/%s\n' "$package_root" "$1" >&2
+    exit 1
+  }
+}
 
-student_readme=$(unzip -p "$student_zip" "${package_root}/README.md")
-grep -Fq '<!-- doc-pair: student-readme; lang: zh-Hant-TW;' <<< "$student_readme"
-grep -Fq '[繁體中文](README.md) | [English](README.en.md)' <<< "$student_readme"
-grep -Fq '## 由1.x升級' <<< "$student_readme"
-grep -Fq 'conf/README.md' <<< "$student_readme"
-grep -Fq 'docs/v1-to-v2-migration.md' <<< "$student_readme"
+for entry in \
+  README.md \
+  README.en.md \
+  thesis.tex \
+  conf/conf.tex \
+  conf/README.md \
+  conf/README.en.md \
+  example/abstract/extended.tex \
+  template/configure.tex \
+  template/compat/v1.tex \
+  template/style/Customization.md \
+  template/style/Customization.en.md \
+  template/style/base/base.tex \
+  template/style/ncku/ncku.tex \
+  template/style/custom/custom.tex; do
+  require_entry "$entry"
+done
 
-student_readme_en=$(unzip -p "$student_zip" "${package_root}/README.en.md")
-grep -Fq '<!-- doc-pair: student-readme; lang: en;' <<< "$student_readme_en"
-grep -Fq '[繁體中文](README.md) | [English](README.en.md)' <<< "$student_readme_en"
-grep -Fq '## Migrate from 1.x' <<< "$student_readme_en"
-grep -Fq 'conf/README.en.md' <<< "$student_readme_en"
-grep -Fq 'docs/v1-to-v2-migration.en.md' <<< "$student_readme_en"
+# Assert the shared doc-pair contract (metadata + reciprocal switcher), then
+# every additional per-document marker.
+require_doc_markers() {
+  local entry=$1 pair=$2 lang=$3
+  shift 3
+  local content marker
+  content=$(unzip -p "$student_zip" "${package_root}/${entry}")
+  for marker in \
+    "<!-- doc-pair: ${pair}; lang: ${lang};" \
+    '[繁體中文](README.md) | [English](README.en.md)' \
+    "$@"; do
+    grep -Fq "$marker" <<< "$content" || {
+      printf 'student ZIP %s is missing required marker: %s\n' "$entry" "$marker" >&2
+      exit 1
+    }
+  done
+}
 
-config_readme=$(unzip -p "$student_zip" "${package_root}/conf/README.md")
-grep -Fq '<!-- doc-pair: student-config; lang: zh-Hant-TW;' <<< "$config_readme"
-grep -Fq '[繁體中文](README.md) | [English](README.en.md)' <<< "$config_readme"
-grep -Fq '../README.md' <<< "$config_readme"
-grep -Fq '../template/style/Customization.md' <<< "$config_readme"
-
-config_readme_en=$(unzip -p "$student_zip" "${package_root}/conf/README.en.md")
-grep -Fq '<!-- doc-pair: student-config; lang: en;' <<< "$config_readme_en"
-grep -Fq '[繁體中文](README.md) | [English](README.en.md)' <<< "$config_readme_en"
-grep -Fq '../README.en.md' <<< "$config_readme_en"
-grep -Fq '../template/style/Customization.en.md' <<< "$config_readme_en"
+require_doc_markers README.md student-readme zh-Hant-TW \
+  '## 由1.x升級' 'conf/README.md' 'docs/v1-to-v2-migration.md'
+require_doc_markers README.en.md student-readme en \
+  '## Migrate from 1.x' 'conf/README.en.md' 'docs/v1-to-v2-migration.en.md'
+require_doc_markers conf/README.md student-config zh-Hant-TW \
+  '../README.md' '../template/style/Customization.md'
+require_doc_markers conf/README.en.md student-config en \
+  '../README.en.md' '../template/style/Customization.en.md'
 
 if grep -Eq "^${package_root}/(justfile|latexmkrc|tests/|scripts/|thesis/)" <<< "$student_entries"; then
   printf 'student ZIP contains repository tooling or a redundant thesis/ layer\n' >&2

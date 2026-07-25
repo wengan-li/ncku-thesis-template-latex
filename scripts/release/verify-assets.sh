@@ -9,13 +9,11 @@ package_root=ncku-thesis-template-latex-examples
 
 # shellcheck source=scripts/release/example-assets.sh
 source "$(dirname "$0")/example-assets.sh"
-sources=("${example_asset_sources[@]}")
-destinations=("${example_asset_destinations[@]}")
 
 required=(
   "$student_zip"
   "$examples_zip"
-  "${sources[@]}"
+  "${example_asset_sources[@]}"
 )
 
 for name in "${required[@]}"; do
@@ -42,12 +40,9 @@ check_pdf() {
   fi
 }
 
-check_pdf example-cover.pdf 2
-check_pdf example-thesis-chi.pdf +10
-check_pdf example-thesis-eng.pdf +10
-check_pdf example-thesis-full.pdf +100
-check_pdf example-legacy-defense-certificate-master.pdf 6
-check_pdf example-legacy-defense-certificate-phd.pdf 10
+for index in "${!example_asset_sources[@]}"; do
+  check_pdf "${example_asset_sources[$index]}" "${example_asset_pages[$index]}"
+done
 
 # An errexit-exempt `! grep` loop body can never fail the script; assert each
 # log explicitly so one bad build log aborts verification.

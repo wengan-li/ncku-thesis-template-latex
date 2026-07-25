@@ -64,13 +64,15 @@ profile = sys.argv[4]
 declaration = "\\NeedsTeXFormat{LaTeX2e}[2020-10-01]\n\\documentclass[12pt, a4paper, onecolumn]{report}\n"
 
 thesis_text = thesis.read_text(encoding="utf-8")
-thesis_needle = "% 基本設定 Basic configuration\n\\input{./template/configure}"
+# Anchor on the configure input line alone; the surrounding prose comment is
+# not part of the packaging contract and may be reworded freely.
+thesis_needle = "\\input{./template/configure}"
 if thesis_text.count(thesis_needle) != 1:
     raise SystemExit("expected one basic-configuration entry point in thesis.tex")
 thesis.write_text(
     thesis_text.replace(
         thesis_needle,
-        f"{declaration}\n% 基本設定 Basic configuration\n\\input{{./template/configure}}",
+        f"{declaration}\n{thesis_needle}",
     ),
     encoding="utf-8",
 )
