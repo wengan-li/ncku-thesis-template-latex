@@ -57,7 +57,7 @@ scripts/release/verify-student-archive.sh "${asset_dir}/${student_zip}"
 
 expected_example_entries=$(printf '%s\n' \
   "${package_root}/README.md" \
-  "${destinations[@]}" | sed "2,\$s#^#${package_root}/#" | sort)
+  "${example_asset_destinations[@]}" | sed "2,\$s#^#${package_root}/#" | sort)
 actual_example_entries=$(unzip -Z1 "${asset_dir}/${examples_zip}" | sed '/\/$/d' | sort)
 if [[ "$actual_example_entries" != "$expected_example_entries" ]]; then
   printf 'examples ZIP contents differ from the exact allowlist\nExpected:\n%s\nActual:\n%s\n' \
@@ -71,8 +71,9 @@ cleanup() {
 }
 trap cleanup EXIT
 unzip -q "${asset_dir}/${examples_zip}" -d "$extract_dir"
-for index in "${!sources[@]}"; do
-  cmp "${asset_dir}/${sources[$index]}" "${extract_dir}/${package_root}/${destinations[$index]}"
+for index in "${!example_asset_sources[@]}"; do
+  cmp "${asset_dir}/${example_asset_sources[$index]}" \
+    "${extract_dir}/${package_root}/${example_asset_destinations[$index]}"
 done
 
 grep -Fq "Version: \`${version}\`" "${extract_dir}/${package_root}/README.md"
