@@ -47,7 +47,12 @@ check: thesis
     ! grep -q 'doi:10.6844/ncku.latex.template' "{{ build_dir }}/thesis.txt"
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ log }}"
 
-# Run the required build and focused regression test gate.
+# Run the required build and focused regression test gate. Dependencies run
+# concurrently ([parallel] needs just >= 1.42; CI pins 1.57): every fixture
+# writes only its own build/tests/<jobname>.* files, and the two recipes that
+# read the canonical build/thesis.* artifacts declare that dependency below.
+# JUST_JOBS=1 restores serial execution when attributing interleaved failures.
+[parallel]
 test: check _test-bilingual-docs _test-test-layout _test-v1-api _test-v1-project-migration _test-release-student-archive _test-overleaf-gallery-package _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-type-routing _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Structural language-pair and first-party Markdown-link gate.
@@ -67,7 +72,7 @@ _test-v1-api:
 
 # Internal integration gate for an unchanged v1.8.2 student project on v2.
 [private]
-_test-v1-project-migration:
+_test-v1-project-migration: check
     python3 scripts/test/check-v1-project-migration.py
     test -s "{{ build_dir }}/thesis.fls"
     grep -Eq '^INPUT .*/thesis/thesis\.tex$' "{{ build_dir }}/thesis.fls"
@@ -114,7 +119,7 @@ _test-overleaf-gallery-package:
 
 # Internal regression budget for final canonical-build diagnostics.
 [private]
-_test-diagnostics:
+_test-diagnostics: thesis
     python3 scripts/test/check-diagnostics.py "{{ log }}"
 
 # Internal negative regression test for the XeLaTeX-only engine gate.

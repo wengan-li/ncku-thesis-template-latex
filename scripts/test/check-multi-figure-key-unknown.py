@@ -3,6 +3,7 @@
 from __future__ import annotations
 import argparse
 import subprocess
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -15,7 +16,8 @@ def main() -> None:
     build_dir = args.build_dir.resolve()
     build_dir.mkdir(parents=True, exist_ok=True)
     source_dir = ROOT / "thesis"
-    for level in ("top", "sub"):
+
+    def check_level(level: str) -> str | None:
         job = f"multi-figure-key-unknown-{level}"
         for old in build_dir.glob(f"{job}.*"):
             old.unlink()
@@ -30,10 +32,16 @@ def main() -> None:
             check=False,
         )
         if result.returncode == 0:
-            raise SystemExit(f"Multi-figure unknown-key FAIL: {level} compiled")
+            return f"{level} compiled"
         log = (build_dir / f"{job}.log").read_text(errors="replace")
         if "unsupported" not in log or "NCKU-TEST-FAIL" in log:
-            raise SystemExit(f"Multi-figure unknown-key FAIL: {level} diagnostic")
+            return f"{level} diagnostic"
+        return None
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        failures = [message for message in pool.map(check_level, ("top", "sub")) if message]
+    if failures:
+        raise SystemExit("Multi-figure unknown-key FAIL: " + "; ".join(failures))
     print("Multi-figure unknown-key PASS: 2/2 deterministic hard errors")
 
 

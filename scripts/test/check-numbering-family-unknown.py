@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -30,7 +32,7 @@ def main() -> None:
     build_dir.mkdir(parents=True, exist_ok=True)
     source_dir = ROOT / "thesis"
 
-    for family in FAMILIES:
+    def check_family(family: str) -> str | None:
         job = f"numbering-family-key-unknown-{family}"
         for old in build_dir.glob(f"{job}.*"):
             old.unlink()
@@ -53,18 +55,23 @@ def main() -> None:
             check=False,
         )
         if result.returncode == 0:
-            raise SystemExit(
-                f"Numbering family unknown-key FAIL: {family} unexpectedly compiled"
-            )
+            return f"{family} unexpectedly compiled"
         log = (build_dir / f"{job}.log").read_text(errors="replace")
         if "unsupported" not in log:
-            raise SystemExit(
-                f"Numbering family unknown-key FAIL: {family} missing unsupported diagnostic"
-            )
+            return f"{family} missing unsupported diagnostic"
         if "NCKU-TEST-FAIL" in log:
-            raise SystemExit(
-                f"Numbering family unknown-key FAIL: {family} reached failure marker"
-            )
+            return f"{family} reached failure marker"
+        return None
+
+    # The compiles are independent subprocess work; run them concurrently and
+    # report every failing family by name afterwards.
+    workers = min(len(FAMILIES), os.cpu_count() or 1)
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        failures = [message for message in pool.map(check_family, FAMILIES) if message]
+    if failures:
+        raise SystemExit(
+            "Numbering family unknown-key FAIL: " + "; ".join(failures)
+        )
 
     print(
         "Numbering family unknown-key PASS: 9/9 deterministic hard errors"

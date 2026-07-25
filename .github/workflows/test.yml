@@ -39,9 +39,14 @@ jobs:
           os: alpine
           scheme: full
           run: |
-            apk add --no-cache git just poppler-utils unzip zip
+            apk add --no-cache git poppler-utils unzip zip
+            # Pin just: the [parallel] gate attribute needs >= 1.42 and the
+            # Alpine stable repository can lag behind that.
+            wget -qO /tmp/just.tar.gz "https://github.com/casey/just/releases/download/1.57.0/just-1.57.0-x86_64-unknown-linux-musl.tar.gz"
+            echo "45b548094283cb9739af8f13273b8cddeee869f5b4ef2bb631b1f311cb566155  /tmp/just.tar.gz" | sha256sum -c -
+            tar -xzf /tmp/just.tar.gz -C /usr/local/bin just
             git config --global --add safe.directory "$GITHUB_WORKSPACE"
-            just test
+            JUST_JOBS=4 just test
 
       - name: Upload test PDF
         if: always()
