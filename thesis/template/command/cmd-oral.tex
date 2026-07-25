@@ -24,13 +24,18 @@
 \def \OralIndexHeader {Oral presentation document}
 % ----------------------------------------------------------------------------
 
+% The active institution profile owns any oral-template watermark decision;
+% these generic defaults apply none. See template/style/ncku/ncku.tex for the
+% NCKU legacy-certificate policy.
+\newcommand{\ApplyOralTemplateChiWatermarkPolicy}{}
+\newcommand{\ApplyOralTemplateEngWatermarkPolicy}{}
+
 \newcommand{\StartOralTemplateDocChi}
 {
-  % 由於中文版的watermark是用文字, 所以先把Logo版關掉
+  % 先清掉現有watermark, 再由profile policy決定這頁的樣式
   \ClearWatermarkStyle
   %
-  % 使用文字版watermark
-  \UseWatermarkTextStyle
+  \ApplyOralTemplateChiWatermarkPolicy
   %
   \singlespacing%
   %
@@ -48,8 +53,7 @@
   %
   \ClearWatermarkStyle
   %
-  % 使用學校浮水印 Watermark
-  \UseWatermarkFigureStyle
+  \ApplyOralTemplateEngWatermarkPolicy
   %
   \singlespacing%
   %

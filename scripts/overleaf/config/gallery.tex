@@ -3,12 +3,11 @@
 % The canonical student configuration remains unchanged.
 
 % Publish a clean final-state preview rather than a writing-stage draft.
-\renewcommand{\VarCoverDisplayDraft}{0}
+\DisableFlagDisplayDraft
 \SetWatermarkText{}
 
-% The public Gallery preview does not use an institutional logo watermark.
-% Clear the watermark already registered during template initialization and
-% prevent cover/oral helpers from adding it back later in the document.
+% The public Gallery preview does not use an institutional watermark. Clear
+% any registered style and neutralize the profile's oral-template policy.
 \ClearWatermarkStyle
-\renewcommand{\UseWatermarkFigureStyle}{\ClearWatermarkStyle}
-\renewcommand{\UseWatermarkTextStyle}{\ClearWatermarkStyle}
+\renewcommand{\ApplyOralTemplateChiWatermarkPolicy}{}
+\renewcommand{\ApplyOralTemplateEngWatermarkPolicy}{}

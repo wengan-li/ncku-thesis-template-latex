@@ -177,6 +177,11 @@
 %\UseWatermarkFigureStyle
 %\UseWatermarkTextStyle
 
+% NCKU legacy oral-template certificates carry the institutional watermark:
+% the text style on the Chinese page and the logo figure on the English page.
+\renewcommand{\ApplyOralTemplateChiWatermarkPolicy}{\UseWatermarkTextStyle}
+\renewcommand{\ApplyOralTemplateEngWatermarkPolicy}{\UseWatermarkFigureStyle}
+
 % ------------------------------------------------
 
 % NCKU uses the oral qualification date as the authoritative cover date.
