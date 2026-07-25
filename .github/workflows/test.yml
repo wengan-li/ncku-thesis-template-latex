@@ -22,7 +22,15 @@ jobs:
           fetch-depth: 2
 
       - name: Check committed whitespace
-        run: git show --check --format= HEAD
+        # A merge commit (pull_request merge ref, PR merges to main) has an
+        # empty combined diff, so `git show --check` validates nothing there.
+        # Diff the merge result against the mainline parent instead.
+        run: |
+          if git rev-parse -q --verify HEAD^2 >/dev/null; then
+            git diff --check HEAD^1 HEAD
+          else
+            git show --check --format= HEAD
+          fi
 
       - name: Run required test gate
         uses: xu-cheng/texlive-action@v3
