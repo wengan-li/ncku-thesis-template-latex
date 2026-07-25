@@ -7,6 +7,8 @@ import argparse
 import subprocess
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[2]
+
 FAMILIES = (
     "SetupTitleNumberFormatString",
     "STitleNumberFormat",
@@ -26,7 +28,7 @@ def main() -> None:
     args = parser.parse_args()
     build_dir = args.build_dir.resolve()
     build_dir.mkdir(parents=True, exist_ok=True)
-    source_dir = Path("thesis").resolve()
+    source_dir = ROOT / "thesis"
 
     for family in FAMILIES:
         job = f"numbering-family-key-unknown-{family}"
