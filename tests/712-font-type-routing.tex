@@ -1,0 +1,33 @@
+% Focused routing contract for \InitDefaultFontType and \UseDefaultFontType.
+% The custom font-type value is two digits, which a single-token \if comparison
+% can never match; this fixture pins numeric dispatch for all three font types
+% without loading any custom font file.
+\input{./template/configure}
+
+% Replace the style implementations with log probes so routing is observable
+% and no additional font files are required.
+\def\InitFontStyleTimesKaiu{\typeout{NCKU-FONT-ROUTE-INIT-TIMESKAIU}}
+\def\InitFontStyleNotoSansCJK{\typeout{NCKU-FONT-ROUTE-INIT-NOTOSANSCJK}}
+\def\InitFontStyleCustom{\typeout{NCKU-FONT-ROUTE-INIT-CUSTOM}}
+\def\UseFontStyleTimesKaiu{\typeout{NCKU-FONT-ROUTE-USE-TIMESKAIU}}
+\def\UseFontStyleNotoSansCJK{\typeout{NCKU-FONT-ROUTE-USE-NOTOSANSCJK}}
+\def\UseFontStyleCustom{\typeout{NCKU-FONT-ROUTE-USE-CUSTOM}}
+
+\SetFontUseType{\VarFontTypeTimesKaiu}
+\InitDefaultFontType
+\UseDefaultFontType
+
+\SetFontUseType{\VarFontTypeNotoSansCJK}
+\InitDefaultFontType
+\UseDefaultFontType
+
+% The public custom-file setters switch the active type to custom themselves.
+\SetCustomEngFontFiles[NormalFont=routing-probe.ttf]
+\typeout{NCKU-FONT-ROUTE-TYPE-AFTER-CUSTOM: \GetFontUseType}
+\InitDefaultFontType
+\UseDefaultFontType
+
+\begin{document}
+Font type routing contract.
+\typeout{NCKU-TEST-PASS: font type routing dispatches every registered type}
+\end{document}

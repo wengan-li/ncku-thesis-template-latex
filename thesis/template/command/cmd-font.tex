@@ -301,32 +301,34 @@
 
 % -------------------------------------------
 
+% \if compares one token at a time, so the two-digit \VarFontTypeCustom value
+% can never match itself there; \ifnum compares the complete numeric values.
 \newcommand{\UseDefaultFontType}
 {%
-  \if \GetFontUseType \VarFontTypeTimesKaiu%
+  \ifnum \GetFontUseType=\VarFontTypeTimesKaiu\relax%
     \UseFontStyleTimesKaiu%
   \fi%
 %
-  \if \GetFontUseType \VarFontTypeNotoSansCJK%
+  \ifnum \GetFontUseType=\VarFontTypeNotoSansCJK\relax%
     \UseFontStyleNotoSansCJK%
   \fi%
 
-  \if \GetFontUseType \VarFontTypeCustom%
+  \ifnum \GetFontUseType=\VarFontTypeCustom\relax%
     \UseFontStyleCustom%
   \fi%
 } % End of \newcommand{}
 
 \newcommand{\InitDefaultFontType}
 {%
-  \if \GetFontUseType \VarFontTypeTimesKaiu%
+  \ifnum \GetFontUseType=\VarFontTypeTimesKaiu\relax%
     \InitFontStyleTimesKaiu%
   \fi%
 %
-  \if \GetFontUseType \VarFontTypeNotoSansCJK%
+  \ifnum \GetFontUseType=\VarFontTypeNotoSansCJK\relax%
     \InitFontStyleNotoSansCJK%
   \fi%
 
-  \if \GetFontUseType \VarFontTypeCustom%
+  \ifnum \GetFontUseType=\VarFontTypeCustom\relax%
     \InitFontStyleCustom%
   \fi%
 } % End of \newcommand{}

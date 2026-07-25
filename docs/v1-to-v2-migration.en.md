@@ -120,6 +120,7 @@ This table is the normative migration contract and must be updated in both langu
 |Captions wrote mutable temporary tokens to metadata. |Rendered captions are frozen before labels; reference numbers remain unchanged. |Rebuild until auxiliary files converge. |
 |Reusable scratch aliases let later setup rewrite earlier numbering and repeated setup appended state. |Configuration is frozen while counter values remain dynamic; repeated setup is idempotent. | Custom numbering users should rebuild generated labels/lists. |
 |Counter chains depended on initializer order and cycles could overflow recursively. |Chains resolve to frozen terminals and cycles stop with a deterministic package error. |No source change; rebuild. |
+|The two-digit custom font-type value never matched in single-token `\if` dispatch, so font initialization after `\SetCustomEngFontFiles`/`\SetCustomChiFontFiles` was silently skipped and output fell back to engine default fonts. |Font-type dispatch compares complete numeric values with `\ifnum`; the custom type actually loads the configured files from `template/fonts/` and a missing file stops with a deterministic fontspec error. |Projects that call the custom font setters place the font files in `template/fonts/`, or remove those setters to keep default fonts. |
 
 ## Date migration
 

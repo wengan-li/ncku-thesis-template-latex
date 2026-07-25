@@ -116,6 +116,7 @@ template/command/cmd-department.tex     dormant direct-path wrapper
 | Figure/subfigure/table caption把mutable temporary寫入nameref metadata。 | 所有caption wrappers在寫label前freeze rendered caption；`\ref`number不變，`\nameref`回傳literal caption。 | 重建足夠次數更新auxiliary files。 |
 | Numbering getters保留shared scratch aliases，後續setup可改寫先前getter；repeated appendix equation setup亦會append。 | Prefix、separator及counter names被freeze，counter values保持dynamic；general/appendix setup可重複且idempotent。 | 自訂編號的使用者應重新產生labels及lists。 |
 | Forward/multi-hop theorem `FollowCounter`受initializer order影響，cycles可recursive overflow。 | Chains遞迴resolve至frozen terminal；numbered／optional／starred syntax一致，cycles以deterministic package error停止。 | 無需改source，重新build。 |
+| Custom font type值為兩位數，單token的`\if` dispatch永遠不成立；`\SetCustomEngFontFiles`／`\SetCustomChiFontFiles`後的字型初始化被靜默跳過，輸出回退到engine預設字型。 | Font-type dispatch改用`\ifnum`比較完整數值；custom type會實際載入`template/fonts/`中設定的字型檔，檔案缺失時以deterministic fontspec error停止。 | 有呼叫custom font setters的專案把字型檔放入`template/fonts/`，或移除該setters以保留預設字型。 |
 
 ## 日期升級
 
