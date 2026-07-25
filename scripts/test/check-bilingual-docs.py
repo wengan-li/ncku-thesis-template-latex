@@ -107,10 +107,17 @@ PAIR_META = re.compile(
 )
 CJK = re.compile(r"[\u3400-\u9fff]")
 VISIBLE_LANGUAGE_LABEL = re.compile(r"\*\*(?:繁體中文|English)\*\*")
+# Match "I" only in first-person pronoun contexts (contraction or a following
+# auxiliary/verb). A bare \bI\b would reject legitimate prose such as
+# "Part I", "Appendix I", or "Type I error".
 FORBIDDEN_PUBLIC_VOICE = re.compile(
     r"我|維護者|非本校|非成大|非NCKU|非 NCKU|非本維護者|外校|"
     r"不要從讀者語言推斷學校profile|"
-    r"\bI\b|\b[Mm]aintainers?\b|[Nn]on-NCKU|"
+    r"\bI(?:'m|'ve|'ll|'d)\b|"
+    r"\bI\s+(?:am|was|will|would|shall|should|can|could|may|might|must|"
+    r"have|had|do|did|think|believe|recommend|prefer|suggest|added|built|"
+    r"wrote|made|chose|decided|maintain|keep|use|used)\b|"
+    r"\b[Mm]aintainers?\b|[Nn]on-NCKU|"
     r"Do not infer an institution profile from the reader's language"
 )
 
