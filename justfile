@@ -89,6 +89,7 @@ _test-v1-project-migration:
 # Internal release gate: the student ZIP is the exact tracked thesis tree.
 [private]
 _test-release-student-archive:
+    @if [ -n "$(git status --porcelain -- thesis)" ]; then echo 'WARNING: thesis/ has uncommitted changes; this test verifies committed HEAD:thesis, not the working tree.' >&2; fi
     mkdir -p "{{ build_dir }}/tests"
     rm -f "{{ build_dir }}/tests/student-archive."*
     git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/tests/student-archive.zip" HEAD:thesis
@@ -121,6 +122,7 @@ _test-release-student-archive:
 # Internal regression test for the generated public Gallery package and overlay.
 [private]
 _test-overleaf-gallery-package:
+    @if [ -n "$(git status --porcelain -- thesis)" ]; then echo 'WARNING: thesis/ has uncommitted changes; this test packages committed HEAD:thesis, not the working tree.' >&2; fi
     rm -rf "{{ build_dir }}/tests/overleaf-gallery"
     scripts/overleaf/package-and-verify.sh "test" "{{ build_dir }}/tests/overleaf-gallery" gallery
 
