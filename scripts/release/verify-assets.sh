@@ -62,8 +62,13 @@ check_pdf example-thesis-full.pdf +100
 check_pdf example-legacy-defense-certificate-master.pdf 6
 check_pdf example-legacy-defense-certificate-phd.pdf 10
 
+# An errexit-exempt `! grep` loop body can never fail the script; assert each
+# log explicitly so one bad build log aborts verification.
 while IFS= read -r log; do
-  ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "$log"
+  if grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "$log"; then
+    printf 'unresolved reference or rerun warnings in %s\n' "$log" >&2
+    exit 1
+  fi
 done < <(find "$asset_dir" -maxdepth 1 -name '*.log' -type f -print)
 
 scripts/release/verify-student-archive.sh "${asset_dir}/${student_zip}"
