@@ -118,9 +118,8 @@ def main() -> None:
             source,
             re.DOTALL,
         )
-        require(block_match is not None, f"cannot isolate l3keys block for {family}")
         if block_match is None:
-            raise SystemExit(f"Numbering contract FAIL: cannot isolate {family}")
+            raise SystemExit(f"Numbering contract FAIL: cannot isolate l3keys block for {family}")
         require(
             block_match.group(1).count(".tl_set_e:N") == key_count,
             f"{family} expanded-storage key count changed",
@@ -146,7 +145,6 @@ def main() -> None:
         source,
         re.DOTALL,
     )
-    require(chapter_block_match is not None, "cannot isolate Chapter title-format l3keys block")
     if chapter_block_match is None:
         raise SystemExit("Numbering contract FAIL: cannot isolate Chapter title-format l3keys block")
     require(

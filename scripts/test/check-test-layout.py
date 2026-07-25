@@ -8,6 +8,7 @@ import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
+from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 NAME = re.compile(r"^(\d{3})-[a-z0-9][a-z0-9.-]*$")
@@ -22,7 +23,7 @@ EXPECTED_ANCHORS = {
 }
 
 
-def fail(message: str) -> None:
+def fail(message: str) -> NoReturn:
     raise AssertionError(message)
 
 
@@ -49,7 +50,6 @@ def main() -> int:
             match = NAME.fullmatch(name)
             if not match:
                 fail(f"test filename is not numerically prefixed: {relative}")
-            assert match is not None
             names.append(name)
             numbers.append(int(match.group(1)))
 

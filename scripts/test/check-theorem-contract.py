@@ -118,8 +118,7 @@ def main() -> None:
     )
     for theorem_type in theorem_types:
         follow = "section" if theorem_type in numbered_types else ""
-        source = theorem_type if theorem_type == "Definition" else "Definition"
-        marker = f"NCKU-TEST-COUNTER-ROUTE-{theorem_type}: {source}/{follow}"
+        marker = f"NCKU-TEST-COUNTER-ROUTE-{theorem_type}: Definition/{follow}"
         require(marker in log, f"missing counter target route: {theorem_type}")
     require(
         "NCKU-TEST-COUNTER-ROUTE-Section: Definition/section" in log,
