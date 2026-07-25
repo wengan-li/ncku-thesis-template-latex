@@ -12,7 +12,7 @@ on:
       - "v*"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -27,9 +27,13 @@ jobs:
 
       - name: Resolve and validate version
         shell: bash
+        # Pass the dispatch input through the environment instead of literal
+        # ${{ }} interpolation so it cannot inject into the shell script.
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
         run: |
-          if [[ -n "${{ inputs.version }}" ]]; then
-            VERSION="${{ inputs.version }}"
+          if [[ -n "$INPUT_VERSION" ]]; then
+            VERSION="$INPUT_VERSION"
           elif [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
             VERSION="${GITHUB_REF_NAME}"
           else
@@ -53,7 +57,14 @@ jobs:
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
 
       - name: Check committed whitespace
-        run: git show --check --format= HEAD
+        # A merge commit has an empty combined diff, so `git show --check`
+        # validates nothing there. Diff against the mainline parent instead.
+        run: |
+          if git rev-parse -q --verify HEAD^2 >/dev/null; then
+            git diff --check HEAD^1 HEAD
+          else
+            git show --check --format= HEAD
+          fi
 
       - name: Build and verify release assets
         uses: xu-cheng/texlive-action@v3
@@ -87,6 +98,10 @@ jobs:
     if: github.ref_type == 'tag'
     needs: build
     runs-on: ubuntu-24.04
+    # Only this job publishes; the build job keeps the read-only default.
+    permissions:
+      contents: write
+      actions: read
     steps:
       - name: Validate tag version
         shell: bash
