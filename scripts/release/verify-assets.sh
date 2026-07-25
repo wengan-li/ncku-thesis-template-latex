@@ -7,23 +7,10 @@ examples_zip=${3:-ncku-thesis-template-latex-examples-dev.zip}
 version=${4:-dev}
 package_root=ncku-thesis-template-latex-examples
 
-sources=(
-  example-cover.pdf
-  example-thesis-chi.pdf
-  example-thesis-eng.pdf
-  example-thesis-full.pdf
-  example-legacy-defense-certificate-master.pdf
-  example-legacy-defense-certificate-phd.pdf
-)
-
-destinations=(
-  cover.pdf
-  thesis-chi.pdf
-  thesis-eng.pdf
-  thesis-full.pdf
-  defense-certificate-master.pdf
-  defense-certificate-phd.pdf
-)
+# shellcheck source=scripts/release/example-assets.sh
+source "$(dirname "$0")/example-assets.sh"
+sources=("${example_asset_sources[@]}")
+destinations=("${example_asset_destinations[@]}")
 
 required=(
   "$student_zip"
