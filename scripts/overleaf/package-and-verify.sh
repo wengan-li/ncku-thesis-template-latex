@@ -187,7 +187,12 @@ if result.returncode:
 if not (root / "thesis.pdf").is_file():
     raise SystemExit("Overleaf package build did not produce thesis.pdf")
 log = (root / "thesis.log").read_text(encoding="utf-8", errors="replace")
-for pattern in ("undefined references", "undefined citations", "Rerun to get cross-references right"):
+for pattern in (
+    "undefined references",
+    "undefined citations",
+    "Rerun to get cross-references right",
+    "Rerun to get outlines right",
+):
     if pattern.lower() in log.lower():
         raise SystemExit(f"Overleaf package final log contains: {pattern}")
 if profile == "gallery":
