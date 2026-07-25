@@ -8,6 +8,13 @@
 
 ## 2.x
 
+### [v2.0.4.260725142839](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.4.260725142839) — 2026-07-25
+
+- 修正custom font type的兩位數dispatch及Noto Sans CJK中文字型檔案變數，讓自訂英文字型／中文字型設定實際載入指定檔案，缺少檔案時明確失敗。
+- 將口試範本的浮水印決定移至institution profile；NCKU legacy證明書保留既有文字／圖形浮水印，normal student、custom及Gallery輸出維持final-ready default。
+- 強化Test／Release workflows的version input、least-privilege token scope、merge-aware whitespace檢查、final-log convergence檢查及shared release asset manifest。
+- 將獨立fixtures平行執行，並共用contract-checker mechanics；完整public API、V1 migration input、學生ZIP及271頁A4 canonical integration contract保持通過。
+
 ### [v2.0.3.260719151234](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.3.260719151234) — 2026-07-19
 
 - 恢復本專案保存的歷史雙語標題，並補回學位論文上傳、列印及學位考試論文證明書指引；歷史查核不再被誤讀為現行學校認可。

@@ -11,6 +11,13 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
+### [v2.0.4.260725142839](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.4.260725142839) — 2026-07-25
+
+- Fixes two-digit custom-font-type dispatch and the Noto Sans CJK Chinese filename variables so custom English/Chinese font configuration loads the selected files and fails clearly when a file is missing.
+- Moves oral-template watermark decisions into the institution profile: NCKU legacy certificates retain their text/figure watermarks while normal student, custom-profile, and Gallery outputs remain final-ready by default.
+- Hardens Test/Release workflow version inputs, least-privilege token scopes, merge-aware whitespace checks, final-log convergence checks, and the shared release-asset manifest.
+- Runs independent fixtures in parallel and shares contract-checker mechanics while preserving the complete public API, pinned V1 migration inputs, student ZIP, and 271-page A4 canonical integration contract.
+
 ### [v2.0.3.260719151234](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.3.260719151234) — 2026-07-19
 
 - Restores the project's preserved historical bilingual title and expands thesis-upload, printing, and defense-certificate guidance without presenting historical checks as current university approval.
