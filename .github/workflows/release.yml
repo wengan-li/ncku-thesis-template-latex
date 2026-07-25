@@ -19,6 +19,8 @@ jobs:
     name: Build and verify release assets
     runs-on: ubuntu-24.04
     timeout-minutes: 45
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
       - name: Check out source
         uses: actions/checkout@v7
@@ -26,6 +28,7 @@ jobs:
           fetch-depth: 0
 
       - name: Resolve and validate version
+        id: version
         shell: bash
         # Pass the dispatch input through the environment instead of literal
         # ${{ }} interpolation so it cannot inject into the shell script.
@@ -55,6 +58,7 @@ jobs:
           fi
 
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Check committed whitespace
         # A merge commit has an empty combined diff, so `git show --check`
@@ -108,21 +112,19 @@ jobs:
       contents: write
       actions: read
     steps:
-      - name: Validate tag version
+      - name: Validate tag and resolve verified artifact version
         shell: bash
+        # The build job already fully validated the version it packaged;
+        # consume it as a job output so the artifact name cannot diverge.
+        # Keep the tag-format check as the release-creation guard.
+        env:
+          BUILD_VERSION: ${{ needs.build.outputs.version }}
         run: |
-          VERSION="$GITHUB_REF_NAME"
-          if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+\.[0-9]{12}$ ]]; then
-            echo "Invalid release tag: $VERSION" >&2
+          if [[ ! "$GITHUB_REF_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+\.[0-9]{12}$ ]]; then
+            echo "Invalid release tag: $GITHUB_REF_NAME" >&2
             exit 1
           fi
-          python3 - "${VERSION##*.}" <<'PY'
-          import datetime
-          import sys
-
-          datetime.datetime.strptime(sys.argv[1], "%y%m%d%H%M%S")
-          PY
-          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "VERSION=$BUILD_VERSION" >> "$GITHUB_ENV"
 
       - name: Download verified workflow artifact
         uses: actions/download-artifact@v8
