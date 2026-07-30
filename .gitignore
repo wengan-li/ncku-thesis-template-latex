@@ -19,3 +19,6 @@ thesis/*.pdf
 **/*~
 *.synctex(busy)
 /build/
+
+# CodeGraph local index
+.codegraph/
