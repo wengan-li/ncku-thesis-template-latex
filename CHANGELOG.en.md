@@ -11,7 +11,7 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
-### [v2.0.5.260821154037](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.5.260821154037) — 2026-08-21
+### [v2.0.5.260821154358](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.5.260821154358) — 2026-08-21
 
 - Ships the `LICENSE` text inside both the student package and the examples package, with the documented contents listings and verification scripts updated together.
 - Refreshes the teaching document: Releases-first download guidance, a source tree that matches the extracted package, corrected `Mircosoft`/`Departmment` typos and `LaTeX`/`BibTeX` casing, an era note on the installer walkthrough, and a historical-snapshot notice before each archived official document in the appendix.
