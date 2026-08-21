@@ -184,8 +184,8 @@ ncku-thesis-template-latex-examples-<version>.zip
 
 The student archive extracts to stable `ncku-thesis-template-latex/`; its regular
 files must exactly equal the tracked `HEAD:thesis` tree, including the
-student-facing README with concise offline migration guidance, v1 adapter, and
-base/NCKU/custom profiles. Keep a focused negative test that deletes the required
+student-facing README with concise offline migration guidance, the licence
+text, v1 adapter, and base/NCKU/custom profiles. Keep a focused negative test that deletes the required
 student README and proves the archive checker fails. The full migration reference
 lives at `docs/v1-to-v2-migration.md` in the complete repository.
 When this gate runs inside `xu-cheng/texlive-action`, configure
