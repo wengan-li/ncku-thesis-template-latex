@@ -700,9 +700,22 @@ def check_instruction_alias() -> None:
 
 
 def check_requirements_directory() -> None:
+    # Active requirements are numbered NN-slug.md files per the documented
+    # lifecycle; with no active requirement the directory holds exactly .gitkeep.
+    requirement_name = re.compile(r"\d{2}-[a-z0-9-]+\.md")
     entries = sorted(path.name for path in (ROOT / "docs/requirements").iterdir())
-    if entries != [".gitkeep"]:
-        fail(f"docs/requirements must contain only .gitkeep, found: {entries}")
+    active = [name for name in entries if requirement_name.fullmatch(name)]
+    stray = [name for name in entries if name != ".gitkeep" and name not in active]
+    if stray:
+        fail(
+            "docs/requirements allows only .gitkeep and NN-slug.md requirement "
+            f"files, found: {stray}"
+        )
+    if not active and entries != [".gitkeep"]:
+        fail(
+            "docs/requirements with no active requirement must contain exactly "
+            f".gitkeep, found: {entries}"
+        )
 
 
 def check_links() -> int:

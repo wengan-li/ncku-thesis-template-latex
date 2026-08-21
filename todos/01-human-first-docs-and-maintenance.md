@@ -16,26 +16,27 @@ Intent boundaries:
 - Validate each phase with the repository gates before moving on; visible-output
   changes additionally require a canonical rebuild and updated expectations.
 
-## Phase 1 — Skill and agent-setup hygiene
+## Phase 1 — Skill and agent-setup hygiene — DONE
 
-- [ ] List `unslop` in `.agents/skills/README.md` with a scope note: applies to
+- [x] List `unslop` in `.agents/skills/README.md` with a scope note: applies to
       conversational and commit prose; gate-checked public documentation keeps
       the repository third-person voice rules.
-- [ ] Add `unslop` to the repo-local skills list in `AGENTS.md`.
-- Validation: `python3 scripts/test/check-bilingual-docs.py`.
+- [x] Add `unslop` to the repo-local skills list in `AGENTS.md`.
+- Validation: `python3 scripts/test/check-bilingual-docs.py` PASS.
 
-## Phase 2 — Template comment English sweep (output-neutral)
+## Phase 2 — Template comment English sweep (output-neutral) — DONE
 
-- [ ] Fix the shared boilerplate header in 39 `thesis/template/**` files:
+- [x] Fix the shared boilerplate header in 39 `thesis/template/**` files:
       "is hold at" → "is hosted at"; "in the hope of usefuling to someone" →
       "in the hope that it will be useful to someone".
-- [ ] Fix `thesis/template/configure.tex` comments: "Initinal all theorem
+- [x] Fix `thesis/template/configure.tex` comments: "Initinal all theorem
       formats" → "Initialize all theorem formats"; stray comment casing.
-- [ ] Keep the historical project title string (including its `LaTex` form)
+- [x] Keep the historical project title string (including its `LaTex` form)
       unchanged wherever it appears.
-- [ ] Do not touch byte-pinned files.
-- Validation: `python3 scripts/test/check-v1-project-migration.py`,
-  `just thesis` (comment-only change; page count must stay identical).
+- [x] Do not touch byte-pinned files. (`\Initinal...` command name kept:
+      renaming a declared helper is an API change, out of scope.)
+- Validation: comment-only diff confirmed; migration manifest PASS; rebuild
+  stays 271 A4 pages with identical diagnostics budget.
 
 ## Phase 3 — Gate and tooling gap fixes
 
