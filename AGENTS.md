@@ -91,24 +91,9 @@ Generated master/doctoral defense-certificate examples may be published only ins
 
 Do not commit generated PDFs or release ZIPs to the source tree. Build them under ignored output directories and upload them as GitHub Release assets.
 
-## Sample repository migration
+## Retired sample repository
 
-Source repository to retire:
-
-```text
-https://github.com/wengan-li/ncku-thesis-template-latex-sample
-```
-
-Before archive/deletion:
-
-- record final sample commit and artifact SHA-256 values;
-- replace main README links with release-asset links;
-- verify every replacement PDF is generated from current tagged source;
-- never merge unrelated sample history into the main source lineage;
-- do not treat generated sample PDFs as source files;
-- explicitly acknowledge that deletion breaks old URLs and changes the public fork-network root.
-
-Archiving is safer than deletion. If deletion remains the explicit owner decision, complete every preservation and link-verification gate first.
+The old generated-sample repository (`wengan-li/ncku-thesis-template-latex-sample`) was deleted by the owner on 2026-07-12 after replacement release assets were publicly built and verified. Generated examples come only from GitHub Release assets now; do not resurrect a separate sample repository or treat generated PDFs as source. Details: `docs/features/release-and-distribution.en.md`.
 
 ## Build and output rules
 
