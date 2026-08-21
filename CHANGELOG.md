@@ -8,7 +8,7 @@
 
 ## 2.x
 
-### [v2.0.5.260821154037](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.5.260821154037) — 2026-08-21
+### [v2.0.5.260821154358](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.5.260821154358) — 2026-08-21
 
 - 學生套件與examples套件內附授權條款檔案`LICENSE`；兩個套件的內容清單與驗證腳本同步更新。
 - 更新教學文件：下載說明改以GitHub Releases學生套件為主、檔案結構改為解壓後的實際套件結構、修正`Mircosoft`／`Departmment`等錯字與`LaTeX`／`BibTeX`大小寫、標示安裝教學截圖的年代，並在附錄的歷史官方文件前註明以學校現行版本為準。
