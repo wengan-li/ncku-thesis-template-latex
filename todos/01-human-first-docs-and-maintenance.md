@@ -100,23 +100,19 @@ Intent boundaries:
       (full gate, six PDFs, both ZIPs verified; LICENSE present in both).
       Phase marked DONE.
 
-## Phase 9 — Teaching-example content refresh (visible output)
+## Phase 9 — Teaching-example content refresh (visible output) — DONE
 
-- [ ] `thesis/example/how-to/use/intro/intro.tex`: fix "Mircosoft"; describe
-      the current GitHub Releases download path instead of the front-page
-      Download ZIP flow.
-- [ ] `thesis/example/how-to/use/source-tree.tex`: correct `ChangeLog.md` →
-      `CHANGELOG.md`; describe the extracted student-package layout instead of
-      a repository tree with files the package does not contain.
-- [ ] `thesis/example/how-to/use/conf.tex`: fix the stale
-      "Departmment of Photonics" teaching-table row.
-- [ ] Sweep `LaTex` → `LaTeX` in example prose except the historical project
-      title.
-- [ ] Rebuild the canonical document; if the page count moves from 271, update
-      the `justfile` expectations and every documentation reference in the same
-      change.
-- Validation: `just test`, `just ci`, `pdfinfo build/thesis.pdf`, rendered
-  inspection of changed teaching pages.
+- [x] intro: Releases-first download guidance; "Mircosoft" fixed everywhere
+      (nine occurrences across the example corpus).
+- [x] source tree rewritten to the extracted student-package layout (with
+      LICENSE) and the correct `CHANGELOG.md` name.
+- [x] "Departmment of Photonics" teaching-table row fixed.
+- [x] `LaTex`/`Latex`/`XeLatex`/`BibTex` swept to exact casing in example
+      prose; historical project title untouched.
+- [x] Rebuild stayed 271 A4 pages with an identical diagnostics budget, so no
+      expectation updates were needed; pages 21, 23, and 55 rendered and
+      inspected.
+- Validation: final `just ci` run recorded in the status log.
 
 ## Phase 10 — Deferred candidates (need separate validation)
 
@@ -133,3 +129,9 @@ Intent boundaries:
 
 - 2026-08-21: todo created from full-repository review; baseline gate run
   started before any edit.
+- 2026-08-21: baseline `just test` passed (129 PASS lines). Phases 1–9
+  implemented and committed as nine slices on `feat/install-unslop-skill`;
+  every slice validated (docs gate, migration manifest, gallery packaging,
+  clean-tree `just release dev` end-to-end, canonical rebuild with rendered
+  page inspection). Phase 10 items remain deferred pending separate
+  validation or owner Intent.
