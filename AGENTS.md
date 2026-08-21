@@ -190,8 +190,12 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 - `AGENTS.md` is canonical.
 - `CLAUDE.md` points here and stays short.
 - Repo-local skills are `.agents/skills/idsd-workflow/`,
-  `.agents/skills/repo-maintenance/`, and
-  `.agents/skills/documentation-management/`.
+  `.agents/skills/repo-maintenance/`,
+  `.agents/skills/documentation-management/`, and
+  `.agents/skills/unslop/`.
+- `unslop` applies to conversational and commit prose. Gate-checked public
+  documentation keeps the repository third-person voice rules; its
+  first-person advice does not override them.
 - `.claude/skills` is a symlink to `../.agents/skills`.
 - `.claude/settings.json` contains only repo-safe Claude Code settings; never store credentials.
 
