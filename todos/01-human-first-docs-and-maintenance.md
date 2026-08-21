@@ -96,8 +96,9 @@ Intent boundaries:
       documented contents listing (root READMEs, release record, AGENTS.md,
       repo-maintenance skill) updated together.
 - [x] Student README (both languages) links its packaged `LICENSE`.
-- [ ] Validation: `just test` plus a local clean-tree `just release dev`
-      end-to-end run.
+- [x] Validation: local clean-tree `just release dev` passed end-to-end
+      (full gate, six PDFs, both ZIPs verified; LICENSE present in both).
+      Phase marked DONE.
 
 ## Phase 9 — Teaching-example content refresh (visible output)
 
