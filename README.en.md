@@ -122,7 +122,7 @@ Policy record: [release, certificate, and watermark policy](docs/features/releas
 
 ## Documentation and project work
 
-If you only need to write a thesis, start from the packaged README and configuration guide. Project architecture, validation, release, and Overleaf evidence are recorded in [`docs/README.en.md`](docs/README.en.md). The full repository uses [`just`](https://just.systems/) for project commands; the student package does not depend on `just`.
+If you only need to write a thesis, start from the packaged README and configuration guide. Project architecture, validation, release, and Overleaf evidence are recorded in [`docs/README.en.md`](docs/README.en.md); contributors over the years are listed in [`CONTRIBUTE`](CONTRIBUTE). The full repository uses [`just`](https://just.systems/) for project commands; the student package does not depend on `just`.
 
 ```bash
 just          # list commands
