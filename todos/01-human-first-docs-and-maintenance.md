@@ -38,36 +38,31 @@ Intent boundaries:
 - Validation: comment-only diff confirmed; migration manifest PASS; rebuild
   stays 271 A4 pages with identical diagnostics budget.
 
-## Phase 3 — Gate and tooling gap fixes
+## Phase 3 — Gate and tooling gap fixes — DONE
 
-- [ ] `scripts/test/check-bilingual-docs.py`: `check_requirements_directory`
-      currently fails on any file besides `.gitkeep`, contradicting the
-      documented requirements lifecycle. Accept `NN-slug.md` requirement files;
-      keep the empty state as exactly `.gitkeep`.
-- [ ] `scripts/overleaf/package-and-verify.sh`: enforce the documented 2 MB
-      per-editable-text-file Overleaf limit (currently only 50 MB/file and 7 MB
-      editable total are checked).
-- [ ] `.github/workflows/test.yml`: upload `build/tests` fixture logs on
-      failure so hosted fixture failures are debuggable.
-- Validation: `python3 scripts/test/check-bilingual-docs.py`,
-  `just overleaf-gallery` on a clean tree, YAML parse of the workflow.
+- [x] `scripts/test/check-bilingual-docs.py`: accept `NN-slug.md` requirement
+      files; the no-requirement state still demands exactly `.gitkeep`.
+      Probed both directions (NN-slug accepted, stray rejected).
+- [x] `scripts/overleaf/package-and-verify.sh`: enforce the documented 2 MB
+      per-editable-text-file Overleaf limit.
+- [x] `.github/workflows/test.yml`: upload `build/tests` fixture logs on
+      failure.
+- Validation: docs gate PASS; gallery package build + limits PASS
+  (cold XeLaTeX 3.24 s); workflow YAML parses.
 
 ## Phase 4 — Feature records rewritten for humans
 
-- [ ] `docs/features/v2-modernization.en.md`: restructure as what → how it
-      works → what stays compatible → what changed on purpose → boundary →
-      where the evidence lives. Keep all facts and links; move count/manifest
-      dumps behind the explanation.
-- [ ] `docs/features/validation-and-performance.en.md`: same treatment; keep
-      the `v2.0.2 production release read-back` heading anchor.
-- [ ] `docs/features/release-and-distribution.en.md`: same treatment; keep the
-      `Draft and watermark policy` heading anchor.
-- [ ] Rewrite the three Traditional-Chinese summaries as natural Chinese prose
-      (technical terms stay exact; sentence structure Chinese; at least five
-      summary bullets each per the structural gate).
-- [ ] Relax a content pin in the docs checker only where a rewrite genuinely
-      collides; record each relaxation in the commit message.
-- Validation: `python3 scripts/test/check-bilingual-docs.py`; manual read-through.
+- [x] `docs/features/v2-modernization.en.md`: restructured as what → how it is
+      organized → compatibility contract → fixed on purpose → hardened
+      internals → boundary → evidence pointers. All facts and links kept.
+- [x] `docs/features/validation-and-performance.en.md`: reframed with
+      explanatory intros; `v2.0.2 production release read-back` anchor kept.
+- [x] `docs/features/release-and-distribution.en.md`: reframed;
+      `Draft and watermark policy` anchor kept.
+- [x] The three Traditional-Chinese summaries rewritten as natural Chinese
+      prose with 6–7 summary bullets each.
+- [x] No checker relaxation was needed; the structural gate passed unchanged.
+- Validation: docs gate PASS (8 guide pairs, 3 summary pairs, 479 links).
 
 ## Phase 5 — Migration guide refocused on students
 

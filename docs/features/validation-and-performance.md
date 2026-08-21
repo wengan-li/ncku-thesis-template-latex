@@ -4,17 +4,17 @@
 
 # 驗證與效能
 
-狀態：正式證據已整合。
+狀態：正式證據已整合
 
 ## 摘要
 
-- Canonical production contract是XeLaTeX、271頁A4、40,823個normalized bbox words及271/271頁120-DPI raster identity。
-- `just test`／`just ci`保護public API、V1 byte-pinned project、profile、theorem、float、numbering、metadata及diagnostic contracts。
-- `tests/`採用flat三位數分組；[`tests/000-test-suite.md`](../../tests/000-test-suite.md)定義ranges，layout checker會拒絕未編號、nested path或重複編號。
-- Student ZIP必須等於committed `HEAD:thesis`完整regular-file tree，並在解壓project root以direct `latexmk -xelatex`成功建置。
-- v2.0.2 production release的兩個public assets已重新下載、核對SHA-256並與workflow artifact byte-identical；fresh student ZIP以package內canonical command直接建置271頁A4 PDF及SyncTeX。
-- Performance數字屬dated、same-host evidence；isolated/student改善不會被誇大為full-corpus speedup。
-- Rejected renderer/cache/preview experiments及P3 candidates保持inactive，除非新證據及owner Intent重開。
-- Current tests及source永遠優先於historical benchmark或一次性run ID。
+本記錄說明範本如何測試、正式輸出必須長什麼樣子，以及哪些效能決定有實際量測依據。歷史數字與現行測試不一致時，以現行測試與source為準。
+
+- 正式的整合輸出是XeLaTeX建置的271頁A4教學文件。輸出敏感的修改除了比對頁數與文字，還要比對正規化的文字座標、字型表、固定DPI點陣圖，並人工檢視受影響的頁面。
+- `just test`與`just ci`保護公開API、v1鎖定專案、profile隔離、theorem、float、編號、metadata與診斷預算等契約；測試檔案以三位數字首平放在`tests/`，由layout checker拒絕未編號或巢狀的路徑。
+- 學生ZIP必須與committed `HEAD:thesis`的檔案清單完全一致，並能在解壓後的目錄直接以`latexmk`建置完成。
+- v2.0.2發行的兩個公開資產已重新下載並核對SHA-256，與workflow artifact完全相同；下載的學生ZIP直接建置出271頁A4 PDF與SyncTeX，examples ZIP恰好包含README與六個PDF。
+- 效能數字屬於單一主機的當時量測：學生模式的小幅改善（清冷建置約-2.5%）是實測結果；整份271頁文件的建置時間受背景負載影響太大，不作全面加速的宣稱。寫作期間真正有效的加速是StudentMode與`latexmk -pvc`。
+- 量測後被否決的實驗（非TikZ框線、章節預覽模式、CI快取`build/`、Arm runner）與延後項目（class重寫、`l3build`、引擎更換、tagged PDF）維持不啟用，重啟需要新的owner核准Intent。
 
 完整英文technical record：[validation-and-performance.en.md](validation-and-performance.en.md)
