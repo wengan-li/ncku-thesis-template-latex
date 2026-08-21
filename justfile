@@ -476,14 +476,17 @@ release version="dev": test
     rm -rf "{{ build_dir }}/release"
     mkdir -p "{{ build_dir }}/release"
     cp "{{ artifact }}" "{{ build_dir }}/release/example-thesis-full.pdf"
-    just _release-pdf ../scripts/release/cover.tex example-cover
-    just _release-pdf ../scripts/release/thesis-chi.tex example-thesis-chi
-    just _release-pdf ../scripts/release/thesis-eng.tex example-thesis-eng
-    just _release-pdf ../scripts/release/defense-certificate-master.tex example-legacy-defense-certificate-master
-    just _release-pdf ../scripts/release/defense-certificate-phd.tex example-legacy-defense-certificate-phd
+    just _release-pdfs
     git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex-{{ version }}.zip" HEAD:thesis
     scripts/release/package-examples.sh "{{ build_dir }}/release" "ncku-thesis-template-latex-examples-{{ version }}.zip" "{{ version }}"
     scripts/release/verify-assets.sh "{{ build_dir }}/release" "ncku-thesis-template-latex-{{ version }}.zip" "ncku-thesis-template-latex-examples-{{ version }}.zip" "{{ version }}"
+
+# Build the five standalone release example PDFs. Each latexmk run uses its
+# own jobname inside build/release, so the dependencies run concurrently
+# ([parallel] honors JUST_JOBS; JUST_JOBS=1 restores serial execution).
+[private]
+[parallel]
+_release-pdfs: (_release-pdf "../scripts/release/cover.tex" "example-cover") (_release-pdf "../scripts/release/thesis-chi.tex" "example-thesis-chi") (_release-pdf "../scripts/release/thesis-eng.tex" "example-thesis-eng") (_release-pdf "../scripts/release/defense-certificate-master.tex" "example-legacy-defense-certificate-master") (_release-pdf "../scripts/release/defense-certificate-phd.tex" "example-legacy-defense-certificate-phd")
 
 # Internal helper: build one named release PDF from the thesis source directory.
 [private]
