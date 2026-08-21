@@ -63,6 +63,7 @@ ncku-thesis-template-latex-examples-<version>.zip
 
 ```text
 README.md
+LICENSE
 cover.pdf
 thesis-chi.pdf
 thesis-eng.pdf

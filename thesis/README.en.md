@@ -4,7 +4,7 @@
 
 # NCKU thesis-template student project
 
-This directory is the complete student project. The versioned GitHub Release student package places these files directly under one `ncku-thesis-template-latex/` directory; repository tests, release scripts, and repository-only tooling are intentionally excluded.
+This directory is the complete student project. The versioned GitHub Release student package places these files directly under one `ncku-thesis-template-latex/` directory; repository tests, release scripts, and repository-only tooling are intentionally excluded. The package licence is in [`LICENSE`](LICENSE).
 
 ## Start writing
 

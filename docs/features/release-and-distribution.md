@@ -12,7 +12,7 @@
 
 本記錄說明一次發行如何建置、兩個公開套件各包含什麼、發行後如何驗證，以及Overleaf與GitHub兩個通路的關係。兩者狀態互相獨立：GitHub的變更不會更新Overleaf，Overleaf的送審也不代表任何認可。
 
-- 每次正式發行只上架兩個公開資產：學生ZIP與含六個PDF的examples ZIP；鬆散的PDF只是建置中間產物，不另行發佈。
+- 每次正式發行只上架兩個公開資產：學生ZIP與含六個PDF的examples ZIP；兩個套件都附授權條款檔案，鬆散的PDF只是建置中間產物，不另行發佈。
 - 學生ZIP等於tagged `thesis/`檔案樹，解壓即可直接建置，不含repository工具、測試或多餘的`thesis/`外層。
 - 發行流程分兩段：build階段跑完整測試並產生已驗證的ZIP；promote階段只在對應的Git tag事件把同一份workflow artifact附加到GitHub Release。手動dispatch只build、不發行；已發佈的tag永不移動。
 - 發行後仍要重新下載公開資產，核對SHA-256並與workflow artifact逐位元比對；v2.0.2的read-back證據記錄在[驗證與效能](validation-and-performance.md)。

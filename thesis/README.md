@@ -4,7 +4,7 @@
 
 # 成大論文範本學生專案
 
-此目錄是可直接使用的學生專案。版本化的GitHub Release學生套件會將這些檔案放在單一`ncku-thesis-template-latex/`目錄內；完整儲存庫的測試、發行腳本及維護工具不會包含在學生套件中。
+此目錄是可直接使用的學生專案。版本化的GitHub Release學生套件會將這些檔案放在單一`ncku-thesis-template-latex/`目錄內；完整儲存庫的測試、發行腳本及維護工具不會包含在學生套件中。本套件的授權條款見[`LICENSE`](LICENSE)。
 
 ## 開始撰寫
 

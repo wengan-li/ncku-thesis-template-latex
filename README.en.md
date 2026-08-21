@@ -67,6 +67,7 @@ Examples package:
 
 ```text
 README.md
+LICENSE
 cover.pdf
 thesis-chi.pdf
 thesis-eng.pdf

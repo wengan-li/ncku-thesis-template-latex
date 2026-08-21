@@ -74,31 +74,30 @@ Intent boundaries:
       both files; fenced blocks identical across the pair.
 - Validation: docs gate PASS (484 links).
 
-## Phase 6 — AGENTS.md stale-content trim
+## Phase 6 — AGENTS.md stale-content trim — DONE
 
-- [ ] Replace the completed "Sample repository migration" checklist with a
-      two-line completion note pointing at the release-and-distribution record
-      (the sample repository was deleted 2026-07-12).
-- Validation: `python3 scripts/test/check-bilingual-docs.py`.
+- [x] Replaced the completed "Sample repository migration" checklist with a
+      short outcome note pointing at the release-and-distribution record.
+- Validation: docs gate PASS.
 
-## Phase 7 — README parity nits
+## Phase 7 — README parity nits — DONE
 
-- [ ] Root `README.md`: add the official-guidance "last checked" date line that
-      `README.en.md` already carries.
-- [ ] Link `CONTRIBUTE` from both root READMEs so the contributor list is
-      reachable.
-- [ ] Root README headings stay as-is (owner decision).
-- Validation: `python3 scripts/test/check-bilingual-docs.py`.
+- [x] Root `README.md` now carries the official-guidance "last checked" date
+      line that `README.en.md` already had.
+- [x] `CONTRIBUTE` linked from both root READMEs.
+- [x] Root README headings unchanged (owner decision).
+- Validation: docs gate PASS.
 
 ## Phase 8 — Licence file in shipped packages
 
-- [ ] Add a `LICENSE` copy under `thesis/` so the student ZIP carries licence
-      text (CC BY-NC-SA redistribution); extend the student-archive required
-      entries.
-- [ ] Include `LICENSE` in the examples ZIP and extend the examples allowlist
-      verification.
-- Validation: `just test` (student-archive and release-verifier fixtures),
-  plus a local `just release dev-check` if needed.
+- [x] `thesis/LICENSE` added so the student ZIP carries licence text;
+      student-archive required entries extended.
+- [x] Examples ZIP packages `LICENSE`; allowlist verification and every
+      documented contents listing (root READMEs, release record, AGENTS.md,
+      repo-maintenance skill) updated together.
+- [x] Student README (both languages) links its packaged `LICENSE`.
+- [ ] Validation: `just test` plus a local clean-tree `just release dev`
+      end-to-end run.
 
 ## Phase 9 — Teaching-example content refresh (visible output)
 

@@ -54,6 +54,7 @@ This package contains generated PDF examples from one verified source revision. 
 - \`thesis-full.pdf\` — complete teaching and integration example
 - \`defense-certificate-master.pdf\` — template-generated master's defense-certificate demonstration
 - \`defense-certificate-phd.pdf\` — template-generated doctoral defense-certificate demonstration
+- \`LICENSE\` — licence text for this package
 
 ## Defense-certificate notice
 
@@ -64,7 +65,14 @@ The two defense-certificate PDFs are unofficial template demonstrations and regr
 Download \`ncku-thesis-template-latex-${version}.zip\` from the same GitHub Release:
 
 <${repo_url}/releases>
+
+## Licence
+
+This package is distributed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International; see \`LICENSE\`. University watermarks, logos, and official certificates may remain owned by their respective rights holders.
 EOF
+
+license_source=$(git rev-parse --show-toplevel)/LICENSE
+cp "$license_source" "${package_dir}/LICENSE"
 
 rm -f "${asset_dir}/${examples_zip}"
 (

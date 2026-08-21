@@ -73,8 +73,8 @@ The student ZIP:
 - contains exactly the tracked regular files from `HEAD:thesis`;
 - places `thesis.tex`, `conf/`, `context/`, `example/`, and `template/`
   directly inside that root;
-- includes the student README with offline migration steps, the compatibility
-  adapter, and the base/NCKU/custom profiles;
+- includes the student README with offline migration steps, the licence text,
+  the compatibility adapter, and the base/NCKU/custom profiles;
 - excludes `justfile`, `AGENTS.md`, CI, tests, scripts, internal docs, and a
   redundant `thesis/` directory layer;
 - builds directly with the packaged canonical command
@@ -91,6 +91,7 @@ contains exactly:
 
 ```text
 README.md
+LICENSE
 cover.pdf
 thesis-chi.pdf
 thesis-eng.pdf
