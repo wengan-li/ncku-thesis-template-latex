@@ -15,6 +15,6 @@
 - 學生ZIP必須與committed `HEAD:thesis`的檔案清單完全一致，並能在解壓後的目錄直接以`latexmk`建置完成。
 - v2.0.2發行的兩個公開資產已重新下載並核對SHA-256，與workflow artifact完全相同；下載的學生ZIP直接建置出271頁A4 PDF與SyncTeX，examples ZIP恰好包含README與六個PDF。
 - 效能數字屬於單一主機的當時量測：學生模式的小幅改善（清冷建置約-2.5%）是實測結果；整份271頁文件的建置時間受背景負載影響太大，不作全面加速的宣稱。寫作期間真正有效的加速是StudentMode與`latexmk -pvc`。
-- 量測後被否決的實驗（非TikZ框線、章節預覽模式、CI快取`build/`、Arm runner）與延後項目（class重寫、`l3build`、引擎更換、tagged PDF）維持不啟用，重啟需要新的owner核准Intent。
+- 量測後被否決的實驗（非TikZ框線、章節預覽模式、CI快取`build/`、TeX container image快取、Arm runner）與延後項目（class重寫、`l3build`、引擎更換、tagged PDF）維持不啟用，重啟需要新的owner核准Intent。
 
 完整英文technical record：[validation-and-performance.en.md](validation-and-performance.en.md)

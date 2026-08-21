@@ -183,6 +183,10 @@ small isolated/student improvements, and unchanged output.
   bounded baseline-first slices.
 - Keep required Test and Release lanes clean rather than caching auxiliary TeX
   state into correctness gates.
+- Build the five standalone release example PDFs concurrently. Each case
+  writes only its own jobname files inside the release staging directory, the
+  measured cold segment dropped from 24.7 to 15.1 seconds on the reference
+  host, and `JUST_JOBS=1` restores serial execution.
 
 ### Measured and rejected
 
@@ -200,6 +204,15 @@ small isolated/student improvements, and unchanged output.
   prove a speedup.
 - Replacing retained transitive packages or all remaining `ifthen` calls was
   rejected without a bounded behavior and output contract.
+- Caching the hosted TeX container image was rejected after measuring Test run
+  [`32492812318`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32492812318):
+  the `ghcr.io/xu-cheng/texlive-alpine` pull took about 79 seconds of the
+  3-minute-51-second job, while an actions/cache round trip for the multi-GB
+  image tar plus `docker load` costs comparable time on a hit, pays a
+  save/upload penalty whenever the upstream image moves, and would move
+  environment plumbing into workflow YAML that deliberately owns environment
+  selection and promotion only. A repository-owned slim pinned image remains a
+  possible separate Intent.
 
 ### Deferred and inactive
 

@@ -114,12 +114,18 @@ Intent boundaries:
       inspected.
 - Validation: final `just ci` run recorded in the status log.
 
-## Phase 10 — Deferred candidates (need separate validation)
+## Phase 10 — Tooling and speed follow-ups
 
-- [ ] `justfile`: generalize repetitive fixture recipes (pure tooling).
-- [ ] Parallelize the five sequential release example-PDF builds.
-- [ ] CI TeX container caching or a smaller pinned scheme (needs hosted-run
-      experiments; the container pull dominates hosted time).
+- [x] `justfile`: fixture-build mechanics shared through four private
+      builder recipes (152 lines became 55); full gate green with every
+      fixture rebuilt deterministically.
+- [x] Release example PDFs build concurrently: cold segment 24.7 s -> 15.1 s
+      on the reference host; `JUST_JOBS=1` restores serial execution.
+- [x] CI TeX-container caching: measured and rejected. The image pull is
+      about 79 s of a 3 m 51 s hosted Test job (run 32492812318), so a cache
+      round trip for the multi-GB image saves nothing dependable; decision
+      recorded in the validation record. A repository-owned slim pinned image
+      would be a separate Intent.
 - [ ] Owner decision pending: move the v1.8.2 byte-pin from the live student
       files to test fixtures so `conf/conf.tex` and starter content can be
       rewritten cleanly; flips `\ExampleMode` default. Large slice; separate
@@ -135,3 +141,8 @@ Intent boundaries:
   clean-tree `just release dev` end-to-end, canonical rebuild with rendered
   page inspection). Phase 10 items remain deferred pending separate
   validation or owner Intent.
+- 2026-08-21: Phase 10 tooling items executed. Fixture-build dedupe validated
+  by a full gate run; parallel release-PDF builds measured 24.7 s -> 15.1 s
+  cold; TeX-container caching measured on hosted run 32492812318 and rejected
+  (pull is about 79 s of a 3 m 51 s job). The byte-pin move stays the one
+  open owner decision.
