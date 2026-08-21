@@ -110,6 +110,12 @@ its own migration contract.
   and `.blg` records. Files the historical configuration never loaded stay
   source-pinned without being misreported as runtime-loaded.
 
+The pin deliberately sits on the live student files rather than on fixture
+copies, so the packaged configuration keeps exactly the wording, defaults,
+and comments that 1.x students already know; moving the pin onto test
+fixtures to free those files for a rewrite was considered and declined on
+2026-08-21.
+
 The v1 adapter also keeps all 23 deprecated-command tombstones as literal
 declarations with their exact diagnostics and `\stop` behavior, so a bounded
 migration error can never turn into an undefined command. The active
