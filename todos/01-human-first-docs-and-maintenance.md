@@ -64,15 +64,15 @@ Intent boundaries:
 - [x] No checker relaxation was needed; the structural gate passed unchanged.
 - Validation: docs gate PASS (8 guide pairs, 3 summary pairs, 479 links).
 
-## Phase 5 — Migration guide refocused on students
+## Phase 5 — Migration guide refocused on students — DONE
 
-- [ ] `docs/v1-to-v2-migration.md` + `.en.md`: keep student steps (backup,
-      replace, build, compare) and the corrected-behavior table; compress
-      maintainer evidence (declaration counts, bbox words, raster identity)
-      into a short pointer to the validation record.
-- [ ] Keep the `corrected-behaviors` anchor used by the V2 feature record; keep
-      paired topics metadata, H2 counts, and identical fenced blocks.
-- Validation: `python3 scripts/test/check-bilingual-docs.py`.
+- [x] Both guides restructured: student steps and the corrected-behavior table
+      stay up front; the four evidence-heavy sections merged into one short
+      "Compatibility evidence" section that points at the validation record
+      (bbox/raster dumps removed from the student path).
+- [x] `corrected-behaviors` anchor kept; topics metadata now 10 stable IDs in
+      both files; fenced blocks identical across the pair.
+- Validation: docs gate PASS (484 links).
 
 ## Phase 6 — AGENTS.md stale-content trim
 
