@@ -1,17 +1,17 @@
-<!-- doc-pair: v1-v2-migration; lang: zh-Hant-TW; topics: before-you-start,compatibility-first-path,native-v2-path,stable-project-boundaries,public-helper-compatibility,byte-identical-v1-project-gate,v1-adapter-layout,corrected-behaviors,date-migration,migrate-another-institution-style-port,portable-verification,repository-verification,recovery-and-troubleshooting -->
+<!-- doc-pair: v1-v2-migration; lang: zh-Hant-TW; topics: before-you-start,compatibility-first-path,native-v2-path,stable-project-boundaries,corrected-behaviors,date-migration,migrate-another-institution-style-port,portable-verification,compatibility-evidence,recovery-and-troubleshooting -->
 
 [繁體中文](v1-to-v2-migration.md) | [English](v1-to-v2-migration.en.md)
 
 # 成大論文範本1.x至2.x升級指南
 
-V2透過完整2.x line的相容層，保留machine-audited 1.x LaTeX/xparse及literal `\def` declarations。既有專案可先升級template implementation、驗證NCKU輸出，再逐步採用native V2 profile架構。
+V2透過相容層保留全部已宣告的1.x指令，因此既有論文可以先升級範本實作、確認輸出無誤，再按自己的步調採用V2的profile架構。本指南以升級中的同學為主要讀者；相容承諾如何被機器驗證，文末的[相容性證據](#相容性證據)有簡短說明。
 
 ## 開始前
 
 1. Commit或封存完整、可正常建置的1.x專案。
-2. 再建置一次1.x PDF並保留作文字及視覺reference。
-3. 記錄XeLaTeX版本、頁數、紙張、封面／口試日期及所有刻意啟用的Draft／浮水印設定。
-4. 分清學生資料、template implementation及主文件；不要覆寫尚未commit的論文目錄後再依賴Git猜測原值。
+2. 再建置一次1.x PDF，保留作為文字與版面的比對基準。
+3. 記錄XeLaTeX版本、頁數、紙張、封面與口試日期，以及所有刻意啟用的Draft或浮水印設定。
+4. 分清楚下列三類檔案；不要先覆寫尚未commit的論文目錄，再期望Git幫忙找回原值。
 
 ```text
 Student-owned / 學生資料:
@@ -33,23 +33,19 @@ Root document / 主文件:
 
 ## 相容優先路徑
 
-此路徑適用於正在撰寫中的NCKU論文。保留`conf/conf.tex`、內容、圖片、書目資料及本地證明書；以V2學生套件替換template-owned檔案，並手動merge `thesis.tex`的本地修改。保留現有helper calls；V1 adapter會自動載入。每完成一小步便建置，最後逐項比較保存的1.x PDF。
+適用於正在撰寫中的成大論文。保留`conf/conf.tex`、內容、圖片、書目資料與本地證明書檔案；以V2學生套件替換範本實作檔案，並手動merge `thesis.tex`的本地修改。原有的helper呼叫全部保留，V1相容層會自動載入，不需要重新命名任何指令。每完成一小步就建置一次，最後逐項對照保存的1.x PDF。
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 ```
 
-No helper rename is required / 不需要重新命名helper。
-
 ## Native V2路徑
 
-此路徑適用於新論文或長期維護的institutional fork。由V2學生套件開始，複製論文內容、圖片、書目及證明書，再於`conf/conf.tex`重新輸入或有意識地merge metadata。成大專案保留預設`ncku` profile；其他學校的同學依照[`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md)建立並選擇一個profile。2.x期間可繼續使用相容helpers，不需要一次改寫全部source。
-
-每一個升級步驟後都要建置。
+適用於新論文或長期維護的institution fork。由V2學生套件開始，複製論文內容、圖片、書目與證明書檔案，再於`conf/conf.tex`重新輸入或有意識地merge論文資料。成大專案保留預設`ncku` profile；其他學校的同學依照[`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md)建立並選擇一個profile。2.x期間可以繼續使用相容helpers，不需要一次改寫全部內容。每個升級步驟後都建置一次。
 
 ## 穩定專案邊界
 
-2.x保持下列學生路徑穩定。`conf/`只存放學生論文資料。學校geometry、文字、catalogue、日期規則及assets放在`template/style/`；V2不新增`conf/style.tex`。文件語言、學校profile、封面語言、學位及內容模式是獨立決定。
+2.x保持下列學生路徑穩定。`conf/`只存放學生論文資料；學校的版面、文字、目錄資料、日期規則與資產放在`template/style/`，V2不新增`conf/style.tex`。文件語言、學校profile、封面語言、學位與內容模式是互相獨立的決定。
 
 ```text
 thesis.tex
@@ -66,42 +62,9 @@ template/
 | 學位 | `\MasterDegree`、`\PhdDegree` |
 | 內容 | 自己的context或`\ExampleMode`教學範例 |
 
-## Public helper相容性
-
-完整Git repository的`tests/100-v1-public-api.json`記錄597個runtime-visible 1.x LaTeX/xparse commands/environments及65個literal `\def`-style declarations；其名稱及完整argument shape在2.x均保留。另有22個declarations只存在於runtime-dead LaTeX `comment` environments，並由獨立audit記錄；它們不是被移除的public API。Native V2 internals可將舊helper委派到profile hooks，但相容層只保留正確contract，不重現已驗證的defect。
-
-```bash
-python3 scripts/test/check-v1-api.py
-```
-
-## Byte-identical V1專案gate
-
-`tests/102-v1-project-migration.json`將18個student-owned files、合共296,726 bytes，pin至immutable release `v1.8.2.260715154703`。範圍包括`thesis.tex`、`conf/conf.tex`、學生內容、書目資料及口試證明assets。Runtime evidence分為兩條：unchanged entry/configuration經V2 adapter、base及NCKU profile建置271頁A4 canonical result；StudentMode fixture則從`.fls`及`.blg`確認active content及三個bibliography databases。
-
-未被該V1 configuration載入的alternate abstracts及external certificate PDFs只作source pin，不會被誤稱為runtime-loaded。
-
-```text
-tests/102-v1-project-migration.json
-scripts/test/check-v1-project-migration.py
-```
-
-## V1 adapter佈局
-
-2.x相容性按照原本的NCKU使用情境保存：未修改的1.x專案繼續選擇預設`ncku` profile，因此原有NCKU college／department presets仍可使用。`template/compat/v1.tex`不再替每個profile載入NCKU catalogue；它只載入generic／deprecated adapter。`custom`及其他學校profile只取得generic institution API，並須在自己的`conf/conf.tex`以generic或學校prefix command取代原有NCKU department selection。
-
-```text
-template/compat/v1.tex
-  template/compat/deprecated.tex        23 deprecated-command tombstones
-template/style/ncku/ncku.tex            selected NCKU profile
-  template/style/ncku/college.tex       NCKU-owned data
-  template/style/ncku/department.tex    NCKU-owned data
-template/command/cmd-college.tex        dormant direct-path wrapper
-template/command/cmd-department.tex     dormant direct-path wrapper
-```
-
 ## 已修正行為
 
-下表是normative migration contract；每一個observable helper correction都必須同步更新兩份語言文件。相容性保留public API，不會保留已驗證的錯誤。
+下表是normative migration contract；每一個可觀察的helper修正都必須同步更新兩份語言文件。相容性保留公開API，不保留已驗證的錯誤。
 
 | 1.x行為 | 2.x行為 | 使用者動作 |
 | --- | --- | --- |
@@ -120,12 +83,14 @@ template/command/cmd-department.tex     dormant direct-path wrapper
 
 ## 日期升級
 
-Public setters不變。V2將raw input與profile-resolved display policy分開：`\GetRequestedCoverYear`／`\GetRequestedCoverMonth`回傳`\SetCoverDate`原始值，`\GetThesisYear`／`\GetThesisMonth`回傳profile解決後的封面值，oral getters保持獨立。NCKU profile仍以oral date作封面authoritative date，因此NCKU輸出不變。其他學校的profile預設使用explicit cover year/month，不借用oral day。
+公開setters不變。V2把原始輸入與profile解析後的顯示政策分開：`\GetRequestedCoverYear`／`\GetRequestedCoverMonth`回傳`\SetCoverDate`的原始值，`\GetThesisYear`／`\GetThesisMonth`回傳profile解析後的封面值，oral getters保持獨立。NCKU profile仍以口試日期作為封面的authoritative date，因此成大輸出不變；其他學校的profile預設使用明確的封面年月，不借用口試的day。
 
 ```tex
 \SetOralDate{2023}{12}{31}
 \SetCoverDate{2024}{7}
 ```
+
+Institution fork應override `\ApplyOralDatePolicy`、`\ApplyCoverDatePolicy`與profile擁有的Master／Doctoral date tokens，不要`\renewcommand`公開setters。
 
 ## 其他學校Style Port升級
 
@@ -140,9 +105,11 @@ Public setters不變。V2將raw input與profile-resolved display policy分開：
 9. 以故意不同的oral／cover dates建置cover及certificate，證明policy separation。
 10. 確認`.fls`沒有載入非預期institution asset。
 
+完整指南：[`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md)
+
 ## Portable驗證
 
-在解壓student ZIP或任何包含`thesis.tex`的migrated project root執行下列commands。檢查A4及預期頁數、學校／學院／系所／題目／作者／指導教授文字、cover/oral dates、目錄及references、書目收斂、Draft／watermark狀態，以及cover、front matter、正文及最後頁rendering。
+在解壓的學生ZIP或任何包含`thesis.tex`的migrated project root執行下列指令。檢查A4與預期頁數、學校／學院／系所／題目／作者／指導教授文字、cover/oral dates、目錄與references、書目收斂、Draft／watermark狀態，以及封面、前置頁、正文與最後頁的呈現。
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
@@ -150,30 +117,40 @@ pdfinfo thesis.pdf
 pdftotext thesis.pdf thesis.txt
 ```
 
-Use the saved 1.x PDF as the comparison reference / 以保存的1.x PDF作比較reference。
+以保存的1.x PDF作為比對基準。
 
-## 完整儲存庫驗證
+## 相容性證據
 
-下列commands需要完整Git checkout並從repository root執行，student ZIP不提供。Acceptance evidence包括597/597 runtime-visible declarations、65/65 literal-def declarations、22個dead-comment audit entries、18個byte-identical student inputs、exact-tree student archive、direct build、neutral/custom six-page fixture，以及canonical 271-page NCKU output identity。
+升級時不需要執行本節內容；它說明相容承諾在完整Git repository中如何被機器把關。三份manifest鎖定1.x的公開surface與學生檔案：
+
+```text
+tests/100-v1-public-api.json                     597 LaTeX/xparse + 65 literal \def declarations
+tests/101-v1-comment-environment-artifacts.json  22 declarations from dead comment environments
+tests/102-v1-project-migration.json              18 byte-pinned v1.8.2 student files
+```
+
+未修改的1.x專案仍選擇預設`ncku` profile，因此原有的NCKU college／department presets繼續可用；`custom`與其他學校的profile只取得generic institution API。相容層的載入方式如下：
+
+```text
+template/compat/v1.tex
+  template/compat/deprecated.tex        23 deprecated-command tombstones
+template/style/ncku/ncku.tex            selected NCKU profile
+  template/style/ncku/college.tex       NCKU-owned data
+  template/style/ncku/department.tex    NCKU-owned data
+template/command/cmd-college.tex        dormant direct-path wrapper
+template/command/cmd-department.tex     dormant direct-path wrapper
+```
+
+完整repository的測試會以未修改的v1.8.2專案建置出271頁A4的canonical輸出，並由StudentMode fixture的`.fls`／`.blg`記錄證明active content與三個書目資料庫。這些檢查與manifest刻意不放入學生ZIP：
 
 ```bash
-just _test-custom-style
 python3 scripts/test/check-v1-api.py
 python3 scripts/test/check-v1-project-migration.py
 just test
-just ci
-git diff --check
 ```
 
-```text
-pages:                 271
-paper:                 A4
-normalized bbox words: 40823
-text:                  identical
-fonts:                 identical
-raster:                271/271 identical at 120 DPI
-```
+完整的gate清單與輸出identity證據見[驗證與效能記錄](features/validation-and-performance.md)。
 
 ## 回復與故障處理
 
-如升級後輸出不符預期，停止繼續修改，不要刪除舊專案或baseline PDF。確認改動屬student data、template-owned files或本地`thesis.tex`merge；回到上一個可建置commit，然後一次重新套用一個變更。切換BibTeX style或遇到stale intermediates時，以`latexmk -C thesis.tex`清除後再build。不要修改compatibility manifests、降低expected counts或停用tests來隱藏差異。
+如升級後輸出不符預期，停止繼續修改，不要刪除舊專案或baseline PDF。先確認改動屬於學生資料、範本實作檔案，還是本地`thesis.tex`的merge；回到上一個可建置的commit，然後一次重新套用一個變更。切換BibTeX style或遇到stale intermediates時，先以`latexmk -C thesis.tex`清除再build。不要修改compatibility manifests、降低expected counts或停用tests來隱藏差異；已驗證的行為修正應記錄在上方的normative表格。

@@ -155,6 +155,14 @@ with ZipFile(archive) as zf:
     too_large = [item.filename for item in files if item.file_size > 50 * 1024 * 1024]
     if too_large:
         raise SystemExit(f"files exceed 50 MB: {too_large}")
+    editable_too_large = [
+        item.filename
+        for item in files
+        if Path(item.filename).suffix.lower() in editable_suffixes
+        and item.file_size > 2 * 1024 * 1024
+    ]
+    if editable_too_large:
+        raise SystemExit(f"editable text files exceed the 2 MB per-file limit: {editable_too_large}")
     editable = sum(item.file_size for item in files if Path(item.filename).suffix.lower() in editable_suffixes)
     if editable > 7 * 1024 * 1024:
         raise SystemExit(f"editable data is {editable} bytes; limit is 7 MB")

@@ -56,6 +56,38 @@ check: thesis
 [parallel]
 test: check _test-bilingual-docs _test-test-layout _test-v1-api _test-v1-project-migration _test-release-student-archive _test-overleaf-gallery-package _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-type-routing _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
+# Shared fixture builders. Every fixture clears its own build/tests/<job>.*
+# files first so grep-count assertions never read stale state, then compiles
+# ../tests/<fixture> from the source directory. Recipes keep their own
+# assertion lines; only the mechanical build step is shared.
+
+# Build one fixture with latexmk (BibTeX and reruns as needed).
+[private]
+_fixture-latexmk job fixture:
+    mkdir -p "{{ tests_dir }}"
+    rm -f "{{ tests_dir }}/{{ job }}."*
+    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname={{ job }} ../tests/{{ fixture }}
+
+# Build one fixture with a single halt-on-error XeLaTeX pass.
+[private]
+_fixture-xelatex job fixture *flags:
+    mkdir -p "{{ tests_dir }}"
+    rm -f "{{ tests_dir }}/{{ job }}."*
+    cd "{{ source_dir }}" && xelatex {{ flags }} -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname={{ job }} ../tests/{{ fixture }}
+
+# Build a latexmk fixture and extract the pdfinfo/layout-text inputs that the
+# fixture's Python contract checker reads.
+[private]
+_fixture-contract job fixture: (_fixture-latexmk job fixture)
+    pdfinfo "{{ tests_dir }}/{{ job }}.pdf" > "{{ tests_dir }}/{{ job }}.pdfinfo"
+    pdftotext -layout "{{ tests_dir }}/{{ job }}.pdf" "{{ tests_dir }}/{{ job }}.txt"
+
+# Single-pass XeLaTeX variant of the contract-input builder.
+[private]
+_fixture-contract-xelatex job fixture: (_fixture-xelatex job fixture)
+    pdfinfo "{{ tests_dir }}/{{ job }}.pdf" > "{{ tests_dir }}/{{ job }}.pdfinfo"
+    pdftotext -layout "{{ tests_dir }}/{{ job }}.pdf" "{{ tests_dir }}/{{ job }}.txt"
+
 # Structural language-pair and first-party Markdown-link gate.
 [private]
 _test-bilingual-docs:
@@ -133,16 +165,12 @@ _test-engine-gate:
 
 # Internal regression test for the legacy cover-date command.
 [private]
-_test-set-thesis-date:
-    mkdir -p "{{ tests_dir }}"
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=set-thesis-date ../tests/120-set-thesis-date.tex
+_test-set-thesis-date: (_fixture-xelatex "set-thesis-date" "120-set-thesis-date.tex")
     grep -q 'NCKU-TEST-PASS: legacy and current cover-date commands terminate safely' "{{ tests_dir }}/set-thesis-date.log"
 
 # Internal regression test for starred headings and numbered references.
 [private]
-_test-sectioning-numbering:
-    mkdir -p "{{ tests_dir }}"
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=sectioning-numbering ../tests/121-sectioning-numbering.tex
+_test-sectioning-numbering: (_fixture-latexmk "sectioning-numbering" "121-sectioning-numbering.tex")
     grep -q 'NCKU-TEST-PASS: Start section helpers preserve exact references' "{{ tests_dir }}/sectioning-numbering.log"
     ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right|Suppressing empty link' "{{ tests_dir }}/sectioning-numbering.log"
     grep -Eq 'newlabel\{ncku:test:chapter\}.*\{1\}\{' "{{ tests_dir }}/sectioning-numbering.aux"
@@ -157,20 +185,12 @@ _test-sectioning-numbering:
 
 # Internal general/appendix numbering state and repeatability contract.
 [private]
-_test-numbering-contract:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/numbering-contract."*
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=numbering-contract ../tests/200-numbering-contract.tex
-    pdfinfo "{{ tests_dir }}/numbering-contract.pdf" > "{{ tests_dir }}/numbering-contract.pdfinfo"
-    pdftotext -layout "{{ tests_dir }}/numbering-contract.pdf" "{{ tests_dir }}/numbering-contract.txt"
+_test-numbering-contract: (_fixture-contract "numbering-contract" "200-numbering-contract.tex")
     python3 scripts/test/check-numbering-contract.py "{{ tests_dir }}"
 
 # Expanded/reset/omitted parser-state contract for nine numbering families.
 [private]
-_test-numbering-family-contract:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/numbering-family-contract."*
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=numbering-family-contract ../tests/201-numbering-family-contract.tex
+_test-numbering-family-contract: (_fixture-xelatex "numbering-family-contract" "201-numbering-family-contract.tex")
     python3 scripts/test/check-numbering-family-contract.py "{{ tests_dir }}"
 
 # Shared negative gate: an unknown key in the fixture must abort the XeLaTeX
@@ -195,9 +215,7 @@ _test-numbering-family-key-unknown:
 
 # Internal regression test for helper values, state isolation, and equation labels.
 [private]
-_test-helper-values:
-    mkdir -p "{{ tests_dir }}"
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=helper-values ../tests/130-helper-values.tex
+_test-helper-values: (_fixture-latexmk "helper-values" "130-helper-values.tex")
     test "$(grep -c 'NCKU-TEST-PASS:' "{{ tests_dir }}/helper-values.log")" -eq 7
     ! grep -q 'NCKU-TEST-FAIL:' "{{ tests_dir }}/helper-values.log"
     ! grep -Eiq 'undefined references|Rerun to get (cross-references|outlines) right' "{{ tests_dir }}/helper-values.log"
@@ -210,10 +228,7 @@ _test-helper-values:
 
 # Internal runtime contract for all v1 deprecated public-command tombstones.
 [private]
-_test-deprecated-command-contract:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/deprecated-command-contract."*
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=deprecated-command-contract ../tests/131-deprecated-command-contract.tex
+_test-deprecated-command-contract: (_fixture-xelatex "deprecated-command-contract" "131-deprecated-command-contract.tex")
     test "$(grep -c 'NCKU-DEPRECATED-ERROR-PASS:' "{{ tests_dir }}/deprecated-command-contract.log")" -eq 23
     test "$(grep -c 'NCKU-DEPRECATED-STOP-PASS:' "{{ tests_dir }}/deprecated-command-contract.log")" -eq 23
     grep -Fq 'NCKU-TEST-PASS: deprecated command contract' "{{ tests_dir }}/deprecated-command-contract.log"
@@ -221,12 +236,7 @@ _test-deprecated-command-contract:
 
 # Internal figure/multi-figure/table runtime and metadata contract.
 [private]
-_test-float-contract:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/float-contract."*
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=float-contract ../tests/400-float-contract.tex
-    pdfinfo "{{ tests_dir }}/float-contract.pdf" > "{{ tests_dir }}/float-contract.pdfinfo"
-    pdftotext -layout "{{ tests_dir }}/float-contract.pdf" "{{ tests_dir }}/float-contract.txt"
+_test-float-contract: (_fixture-contract "float-contract" "400-float-contract.tex")
     pdfimages -list "{{ tests_dir }}/float-contract.pdf" > "{{ tests_dir }}/float-contract.images"
     python3 scripts/test/check-float-contract.py "{{ tests_dir }}"
 
@@ -245,20 +255,12 @@ _test-table-key-unknown: (_expect-unknown-key "table-key-unknown" "403-table-key
 
 # Internal SetupReference parser and rendered BibTeX contract.
 [private]
-_test-reference-contract:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/reference-contract."*
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=reference-contract ../tests/300-reference-contract.tex
-    pdfinfo "{{ tests_dir }}/reference-contract.pdf" > "{{ tests_dir }}/reference-contract.pdfinfo"
-    pdftotext -layout "{{ tests_dir }}/reference-contract.pdf" "{{ tests_dir }}/reference-contract.txt"
+_test-reference-contract: (_fixture-contract "reference-contract" "300-reference-contract.tex")
     python3 scripts/test/check-reference-contract.py "{{ tests_dir }}"
 
 # SetupReference apacite route must retain its preamble package side effect.
 [private]
-_test-reference-apacite-contract:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/reference-apacite-contract."*
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=reference-apacite-contract ../tests/301-reference-apacite-contract.tex
+_test-reference-apacite-contract: (_fixture-xelatex "reference-apacite-contract" "301-reference-apacite-contract.tex")
     grep -Fq 'NCKU-REFERENCE-APACITE-LOADED: yes' "{{ tests_dir }}/reference-apacite-contract.log"
     grep -Fq 'NCKU-REFERENCE-APACITE-OPTION: notocbib' "{{ tests_dir }}/reference-apacite-contract.log"
     grep -Fq 'NCKU-REFERENCE-APACITE-STATE: APA Contract References/apacite' "{{ tests_dir }}/reference-apacite-contract.log"
@@ -271,12 +273,7 @@ _test-reference-key-unknown: (_expect-unknown-key "reference-key-unknown" "302-r
 
 # Internal runtime contract for all 21 public theorem insertion helpers.
 [private]
-_test-theorem-contract:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/theorem-contract."*
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=theorem-contract ../tests/500-theorem-contract.tex
-    pdfinfo "{{ tests_dir }}/theorem-contract.pdf" > "{{ tests_dir }}/theorem-contract.pdfinfo"
-    pdftotext -layout "{{ tests_dir }}/theorem-contract.pdf" "{{ tests_dir }}/theorem-contract.txt"
+_test-theorem-contract: (_fixture-contract "theorem-contract" "500-theorem-contract.tex")
     python3 scripts/test/check-theorem-contract.py "{{ tests_dir }}"
 
 # Unknown theorem-content keys must remain deterministic hard errors.
@@ -289,12 +286,7 @@ _test-theorem-format-key-unknown: (_expect-unknown-key "theorem-format-key-unkno
 
 # Internal custom theorem style/counter matrix, including chained-empty counters.
 [private]
-_test-theorem-style-counter:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/theorem-style-counter."*
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=theorem-style-counter ../tests/503-theorem-style-counter.tex
-    pdfinfo "{{ tests_dir }}/theorem-style-counter.pdf" > "{{ tests_dir }}/theorem-style-counter.pdfinfo"
-    pdftotext -layout "{{ tests_dir }}/theorem-style-counter.pdf" "{{ tests_dir }}/theorem-style-counter.txt"
+_test-theorem-style-counter: (_fixture-contract "theorem-style-counter" "503-theorem-style-counter.tex")
     pdftohtml -xml -hidden -nodrm -i "{{ tests_dir }}/theorem-style-counter.pdf" "{{ tests_dir }}/theorem-style-counter"
     python3 scripts/test/check-theorem-style-counter.py "{{ tests_dir }}"
 
@@ -310,10 +302,7 @@ _test-theorem-counter-cycle:
 
 # Internal integration test for the neutral non-NCKU style profile.
 [private]
-_test-custom-style:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/custom-style."*
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=custom-style ../tests/600-custom-style.tex
+_test-custom-style: (_fixture-latexmk "custom-style" "600-custom-style.tex")
     grep -Fq 'NCKU-TEST-CUSTOM-PROFILE: custom' "{{ tests_dir }}/custom-style.log"
     grep -Fq 'NCKU-TEST-CUSTOM-COVER-DATE: 2024-7' "{{ tests_dir }}/custom-style.log"
     grep -Fq 'NCKU-TEST-CUSTOM-REQUESTED-DATE: 2024-7' "{{ tests_dir }}/custom-style.log"
@@ -356,10 +345,7 @@ _test-custom-style:
 
 # Focused generic institution API and prefixed-catalogue fixture.
 [private]
-_test-custom-institution-api:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/custom-institution-api."*
-    cd "{{ source_dir }}" && xelatex -recorder -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=custom-institution-api ../tests/603-custom-institution-api.tex
+_test-custom-institution-api: (_fixture-xelatex "custom-institution-api" "603-custom-institution-api.tex" "-recorder")
     test "$(grep -c 'NCKU-TEST-PASS: institution API' "{{ tests_dir }}/custom-institution-api.log")" -eq 8
     grep -Fq 'NCKU-TEST-PASS: custom profile excludes NCKU department presets' "{{ tests_dir }}/custom-institution-api.log"
     grep -Fq 'NCKU-TEST-PASS: custom profile excludes NCKU college presets' "{{ tests_dir }}/custom-institution-api.log"
@@ -372,25 +358,18 @@ _test-custom-institution-api:
 
 # Internal regression test for NCKU degree-specific committee-size policy.
 [private]
-_test-committee-size-policy:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/committee-size-policy."*
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=committee-size-policy ../tests/601-committee-size-policy.tex
+_test-committee-size-policy: (_fixture-xelatex "committee-size-policy" "601-committee-size-policy.tex")
     test "$(grep -c 'NCKU-TEST-PASS: committee request' "{{ tests_dir }}/committee-size-policy.log")" -eq 6
     ! grep -q 'NCKU-TEST-FAIL:' "{{ tests_dir }}/committee-size-policy.log"
 
 # Internal regression test for the oral-certificate default state.
 [private]
-_test-oral-default-state:
-    mkdir -p "{{ tests_dir }}"
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=oral-default-state ../tests/602-oral-default-state.tex
+_test-oral-default-state: (_fixture-xelatex "oral-default-state" "602-oral-default-state.tex")
     grep -q 'NCKU-TEST-PASS: oral certificate defaults to the external-image path' "{{ tests_dir }}/oral-default-state.log"
 
 # Internal regression test for Unicode PDF metadata and bookmarks.
 [private]
-_test-metadata-bookmark:
-    mkdir -p "{{ tests_dir }}"
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=metadata-bookmark ../tests/700-metadata-bookmark.tex
+_test-metadata-bookmark: (_fixture-latexmk "metadata-bookmark" "700-metadata-bookmark.tex")
     grep -q 'NCKU-TEST-PASS: Unicode metadata and bookmark strings compile cleanly' "{{ tests_dir }}/metadata-bookmark.log"
     ! grep -Eiq 'Token not allowed in a PDF string|already defined|destination with the same identifier' "{{ tests_dir }}/metadata-bookmark.log"
     pdfinfo "{{ tests_dir }}/metadata-bookmark.pdf" > "{{ tests_dir }}/metadata-bookmark.pdfinfo"
@@ -398,12 +377,7 @@ _test-metadata-bookmark:
 
 # Internal contract for custom-font filename key parsing and shared aliases.
 [private]
-_test-custom-font-files-contract:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/custom-font-files-contract."*
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=custom-font-files-contract ../tests/710-custom-font-files-contract.tex
-    pdfinfo "{{ tests_dir }}/custom-font-files-contract.pdf" > "{{ tests_dir }}/custom-font-files-contract.pdfinfo"
-    pdftotext -layout "{{ tests_dir }}/custom-font-files-contract.pdf" "{{ tests_dir }}/custom-font-files-contract.txt"
+_test-custom-font-files-contract: (_fixture-contract-xelatex "custom-font-files-contract" "710-custom-font-files-contract.tex")
     python3 scripts/test/check-custom-font-files-contract.py "{{ tests_dir }}"
 
 # Unknown custom-font filename keys remain deterministic hard errors.
@@ -412,12 +386,7 @@ _test-custom-font-files-key-unknown: (_expect-unknown-key "custom-font-files-key
 
 # Internal contract for font-option parser state and English/CJK loading routes.
 [private]
-_test-font-option-contract:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/font-option-contract."*
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=font-option-contract ../tests/720-font-option-contract.tex
-    pdfinfo "{{ tests_dir }}/font-option-contract.pdf" > "{{ tests_dir }}/font-option-contract.pdfinfo"
-    pdftotext -layout "{{ tests_dir }}/font-option-contract.pdf" "{{ tests_dir }}/font-option-contract.txt"
+_test-font-option-contract: (_fixture-contract-xelatex "font-option-contract" "720-font-option-contract.tex")
     pdffonts "{{ tests_dir }}/font-option-contract.pdf" > "{{ tests_dir }}/font-option-contract.fonts"
     python3 scripts/test/check-font-option-contract.py "{{ tests_dir }}"
 
@@ -427,10 +396,7 @@ _test-font-option-key-unknown: (_expect-unknown-key "font-option-key-unknown" "7
 
 # Internal routing contract for numeric font-type dispatch, including custom.
 [private]
-_test-font-type-routing:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/font-type-routing."*
-    cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=font-type-routing ../tests/712-font-type-routing.tex
+_test-font-type-routing: (_fixture-xelatex "font-type-routing" "712-font-type-routing.tex")
     test "$(grep -c 'NCKU-FONT-ROUTE-INIT-TIMESKAIU' "{{ tests_dir }}/font-type-routing.log")" -eq 1
     test "$(grep -c 'NCKU-FONT-ROUTE-INIT-NOTOSANSCJK' "{{ tests_dir }}/font-type-routing.log")" -eq 1
     test "$(grep -c 'NCKU-FONT-ROUTE-INIT-CUSTOM' "{{ tests_dir }}/font-type-routing.log")" -eq 1
@@ -443,9 +409,7 @@ _test-font-type-routing:
 
 # Internal regression test for bundled Latin/CJK font policy.
 [private]
-_test-font-cjk:
-    mkdir -p "{{ tests_dir }}"
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=font-cjk ../tests/730-font-cjk.tex
+_test-font-cjk: (_fixture-latexmk "font-cjk" "730-font-cjk.tex")
     grep -q 'NCKU-TEST-PASS: bundled Latin and CJK font policies compile' "{{ tests_dir }}/font-cjk.log"
     ! grep -q 'Unknown CJK family' "{{ tests_dir }}/font-cjk.log"
     grep -Eq "Font shape .*m/sc.*undefined" "{{ tests_dir }}/font-cjk.log"
@@ -454,9 +418,7 @@ _test-font-cjk:
 
 # Internal regression test for keyword helper equivalence.
 [private]
-_test-keyword-values:
-    mkdir -p "{{ tests_dir }}"
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=keyword-values ../tests/740-keyword-values.tex
+_test-keyword-values: (_fixture-latexmk "keyword-values" "740-keyword-values.tex")
     test "$(grep -c 'NCKU-TEST-PASS:' "{{ tests_dir }}/keyword-values.log")" -eq 4
     ! grep -q 'NCKU-TEST-FAIL:' "{{ tests_dir }}/keyword-values.log"
     pdfinfo "{{ tests_dir }}/keyword-values.pdf" > "{{ tests_dir }}/keyword-values.pdfinfo"
@@ -464,9 +426,7 @@ _test-keyword-values:
 
 # Internal integration test for the student-only dependency path.
 [private]
-_test-student-mode:
-    mkdir -p "{{ tests_dir }}"
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=student-mode ../tests/800-student-mode.tex
+_test-student-mode: (_fixture-latexmk "student-mode" "800-student-mode.tex")
     grep -q 'NCKU-TEST-PASS: student mode compiles without teaching examples' "{{ tests_dir }}/student-mode.log"
     grep -q 'NCKU-TEST-PASS: default diagonal draft watermark text is empty' "{{ tests_dir }}/student-mode.log"
     ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ tests_dir }}/student-mode.log"
@@ -489,9 +449,7 @@ _test-student-mode:
 
 # Internal regression test proving Draft and institutional watermark remain opt-in.
 [private]
-_test-draft-watermark-opt-in:
-    mkdir -p "{{ tests_dir }}"
-    cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=draft-watermark-opt-in ../tests/801-draft-watermark-opt-in.tex
+_test-draft-watermark-opt-in: (_fixture-latexmk "draft-watermark-opt-in" "801-draft-watermark-opt-in.tex")
     grep -q 'NCKU-TEST-PASS: draft and institutional watermark remain explicit opt-ins' "{{ tests_dir }}/draft-watermark-opt-in.log"
     grep -q 'NCKU-TEST-PASS: diagonal draft watermark text remains an explicit opt-in' "{{ tests_dir }}/draft-watermark-opt-in.log"
     pdftotext -f 1 -l 1 "{{ tests_dir }}/draft-watermark-opt-in.pdf" "{{ tests_dir }}/draft-watermark-opt-in-cover.txt"
@@ -518,14 +476,17 @@ release version="dev": test
     rm -rf "{{ build_dir }}/release"
     mkdir -p "{{ build_dir }}/release"
     cp "{{ artifact }}" "{{ build_dir }}/release/example-thesis-full.pdf"
-    just _release-pdf ../scripts/release/cover.tex example-cover
-    just _release-pdf ../scripts/release/thesis-chi.tex example-thesis-chi
-    just _release-pdf ../scripts/release/thesis-eng.tex example-thesis-eng
-    just _release-pdf ../scripts/release/defense-certificate-master.tex example-legacy-defense-certificate-master
-    just _release-pdf ../scripts/release/defense-certificate-phd.tex example-legacy-defense-certificate-phd
+    just _release-pdfs
     git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ build_dir }}/release/ncku-thesis-template-latex-{{ version }}.zip" HEAD:thesis
     scripts/release/package-examples.sh "{{ build_dir }}/release" "ncku-thesis-template-latex-examples-{{ version }}.zip" "{{ version }}"
     scripts/release/verify-assets.sh "{{ build_dir }}/release" "ncku-thesis-template-latex-{{ version }}.zip" "ncku-thesis-template-latex-examples-{{ version }}.zip" "{{ version }}"
+
+# Build the five standalone release example PDFs. Each latexmk run uses its
+# own jobname inside build/release, so the dependencies run concurrently
+# ([parallel] honors JUST_JOBS; JUST_JOBS=1 restores serial execution).
+[private]
+[parallel]
+_release-pdfs: (_release-pdf "../scripts/release/cover.tex" "example-cover") (_release-pdf "../scripts/release/thesis-chi.tex" "example-thesis-chi") (_release-pdf "../scripts/release/thesis-eng.tex" "example-thesis-eng") (_release-pdf "../scripts/release/defense-certificate-master.tex" "example-legacy-defense-certificate-master") (_release-pdf "../scripts/release/defense-certificate-phd.tex" "example-legacy-defense-certificate-phd")
 
 # Internal helper: build one named release PDF from the thesis source directory.
 [private]

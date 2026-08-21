@@ -11,6 +11,14 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
+### [v2.0.5.260821154037](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.5.260821154037) — 2026-08-21
+
+- Ships the `LICENSE` text inside both the student package and the examples package, with the documented contents listings and verification scripts updated together.
+- Refreshes the teaching document: Releases-first download guidance, a source tree that matches the extracted package, corrected `Mircosoft`/`Departmment` typos and `LaTeX`/`BibTeX` casing, an era note on the installer walkthrough, and a historical-snapshot notice before each archived official document in the appendix.
+- Rewrites the public records for human readers: the three feature records explain first and cite evidence second, the Traditional-Chinese summaries read as natural Chinese, and the migration guide leads with the student's upgrade steps; every contract, number, and link is preserved.
+- Tooling and tests: shared fixture-build recipes, concurrent release example-PDF builds, a requirements-directory gate that follows the documented lifecycle, a 2 MB editable-file check for Overleaf packages, and fixture-log upload when the hosted gate fails; TeX container image caching was measured and rejected.
+- No change to the XeLaTeX source, public API, student project shape, or PDF layout behavior; the canonical teaching document stays 271 A4 pages.
+
 ### [v2.0.4.260725142839](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.4.260725142839) — 2026-07-25
 
 - Fixes two-digit custom-font-type dispatch and the Noto Sans CJK Chinese filename variables so custom English/Chinese font configuration loads the selected files and fails clearly when a file is missing.

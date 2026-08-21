@@ -30,6 +30,7 @@ require_entry() {
 for entry in \
   README.md \
   README.en.md \
+  LICENSE \
   thesis.tex \
   conf/conf.tex \
   conf/README.md \

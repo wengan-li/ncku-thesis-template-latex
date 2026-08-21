@@ -61,7 +61,7 @@ just example         # build full teaching example document
 just test            # required local and CI test gate
 just check           # build and verify canonical artifacts
 just ci              # complete local CI gate
-just clean            # remove generated build output
+just clean           # remove generated build output
 ```
 
 `latexmk` is the internal XeLaTeX/BibTeX/rerun orchestrator behind `just`.
@@ -85,30 +85,15 @@ ncku-thesis-template-latex-examples-<version>.zip
 
 The custom release ZIP is the student-ready contents of `thesis/`, not a duplicate full-repository archive. It extracts to one `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/`, and `template/` directly inside. Repository tooling, tests, and a redundant `thesis/` wrapper must not be included; GitHub already provides automatic full-source archives.
 
-The examples ZIP extracts to one stable `ncku-thesis-template-latex-examples/` directory containing its public README and the six verified PDFs. The outer archive carries the version; inner filenames remain stable and omit a redundant `example-` prefix. Loose generated PDFs are build intermediates and must not also be published as Release assets.
+The examples ZIP extracts to one stable `ncku-thesis-template-latex-examples/` directory containing its public README, the licence file, and the six verified PDFs. The outer archive carries the version; inner filenames remain stable and omit a redundant `example-` prefix. Loose generated PDFs are build intermediates and must not also be published as Release assets.
 
 Generated master/doctoral defense-certificate examples may be published only inside the clearly documented generated-examples package. School-system-produced certificates are external official artifacts: do not regenerate, alter, or imply endorsement/ownership. The package README must tell current students to use the university degree-examination system's official files.
 
 Do not commit generated PDFs or release ZIPs to the source tree. Build them under ignored output directories and upload them as GitHub Release assets.
 
-## Sample repository migration
+## Retired sample repository
 
-Source repository to retire:
-
-```text
-https://github.com/wengan-li/ncku-thesis-template-latex-sample
-```
-
-Before archive/deletion:
-
-- record final sample commit and artifact SHA-256 values;
-- replace main README links with release-asset links;
-- verify every replacement PDF is generated from current tagged source;
-- never merge unrelated sample history into the main source lineage;
-- do not treat generated sample PDFs as source files;
-- explicitly acknowledge that deletion breaks old URLs and changes the public fork-network root.
-
-Archiving is safer than deletion. If deletion remains the explicit owner decision, complete every preservation and link-verification gate first.
+The old generated-sample repository (`wengan-li/ncku-thesis-template-latex-sample`) was deleted by the owner on 2026-07-12 after replacement release assets were publicly built and verified. Generated examples come only from GitHub Release assets now; do not resurrect a separate sample repository or treat generated PDFs as source. Details: `docs/features/release-and-distribution.en.md`.
 
 ## Build and output rules
 
@@ -190,8 +175,12 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 - `AGENTS.md` is canonical.
 - `CLAUDE.md` points here and stays short.
 - Repo-local skills are `.agents/skills/idsd-workflow/`,
-  `.agents/skills/repo-maintenance/`, and
-  `.agents/skills/documentation-management/`.
+  `.agents/skills/repo-maintenance/`,
+  `.agents/skills/documentation-management/`, and
+  `.agents/skills/unslop/`.
+- `unslop` applies to conversational and commit prose. Gate-checked public
+  documentation keeps the repository third-person voice rules; its
+  first-person advice does not override them.
 - `.claude/skills` is a symlink to `../.agents/skills`.
 - `.claude/settings.json` contains only repo-safe Claude Code settings; never store credentials.
 

@@ -12,6 +12,8 @@
 
 本專案並非國立成功大學官方軟體，也不代表學校、圖書館、學位考試系統或任何系所的現行認可。使用前必須核對當年度規定；官方規定永遠優先於本範本。
 
+以下官方指引由本專案最後查核於`2026-07-12`：
+
 - [成大博碩士論文系統](https://thesis.lib.ncku.edu.tw/)
 - [論文建檔說明](https://thesis.lib.ncku.edu.tw/help/aboutedit/)
 - [教務處課務組論文格式規範](https://cid-acad.ncku.edu.tw/p/412-1042-1378.php?Lang=zh-tw)
@@ -61,6 +63,7 @@ ncku-thesis-template-latex-examples-<version>.zip
 
 ```text
 README.md
+LICENSE
 cover.pdf
 thesis-chi.pdf
 thesis-eng.pdf
@@ -110,7 +113,7 @@ NCKU學生可查看完整[`9個學院／110個系所preset目錄`](thesis/templa
 
 ## 文件與專案工作
 
-如果你只需要撰寫論文，請由套件內README及configuration guide開始。本專案的architecture、validation、release及Overleaf evidence記錄於[`docs/README.md`](docs/README.md)。完整儲存庫使用[`just`](https://just.systems/)統一專案commands；學生套件不依賴`just`。
+如果你只需要撰寫論文，請由套件內README及configuration guide開始。本專案的architecture、validation、release及Overleaf evidence記錄於[`docs/README.md`](docs/README.md)；歷年貢獻者記錄於[`CONTRIBUTE`](CONTRIBUTE)。完整儲存庫使用[`just`](https://just.systems/)統一專案commands；學生套件不依賴`just`。
 
 ```bash
 just          # list commands

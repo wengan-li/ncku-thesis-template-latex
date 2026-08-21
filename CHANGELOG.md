@@ -8,6 +8,14 @@
 
 ## 2.x
 
+### [v2.0.5.260821154037](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.5.260821154037) — 2026-08-21
+
+- 學生套件與examples套件內附授權條款檔案`LICENSE`；兩個套件的內容清單與驗證腳本同步更新。
+- 更新教學文件：下載說明改以GitHub Releases學生套件為主、檔案結構改為解壓後的實際套件結構、修正`Mircosoft`／`Departmment`等錯字與`LaTeX`／`BibTeX`大小寫、標示安裝教學截圖的年代，並在附錄的歷史官方文件前註明以學校現行版本為準。
+- 公開文件改寫為以人為本的說明：三份feature records改為先解釋再列證據，繁中摘要改為自然中文，升級指南以同學的升級步驟為主；所有契約、數字與連結保留。
+- 工具與測試：fixture建置機制共用、release範例PDF並行建置、requirements目錄gate配合文件lifecycle、Overleaf套件加入2 MB可編輯檔案檢查、CI失敗時上傳fixture logs；TeX container image快取經量測後否決並記錄。
+- XeLaTeX source、public API、學生project shape與PDF版面行為沒有變更；canonical教學文件維持271頁A4。
+
 ### [v2.0.4.260725142839](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.4.260725142839) — 2026-07-25
 
 - 修正custom font type的兩位數dispatch及Noto Sans CJK中文字型檔案變數，讓自訂英文字型／中文字型設定實際載入指定檔案，缺少檔案時明確失敗。

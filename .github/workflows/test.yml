@@ -58,3 +58,12 @@ jobs:
             build/thesis.log
           if-no-files-found: warn
           retention-days: 7
+
+      - name: Upload fixture logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: thesis-test-fixture-logs
+          path: build/tests/*.log
+          if-no-files-found: ignore
+          retention-days: 7

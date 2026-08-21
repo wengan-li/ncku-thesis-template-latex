@@ -6,10 +6,12 @@
 
 Status: production evidence consolidated
 
-This record distinguishes current deterministic gates from dated benchmark and
-release evidence. Current tests and source win if a historical number drifts.
+This record explains how the template is tested, what the canonical outputs
+must look like, and which performance decisions were measured rather than
+assumed. Deterministic gates come first; dated benchmark and release evidence
+follows. When a historical number drifts, current tests and source win.
 
-## Canonical repository gates
+## How to check a change
 
 Run from the repository root:
 
@@ -28,7 +30,8 @@ For a clean committed release candidate:
 just release <version>
 ```
 
-For an extracted student project, run from the directory containing `thesis.tex`:
+For an extracted student project, run from the directory containing
+`thesis.tex`:
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
@@ -36,14 +39,14 @@ pdfinfo thesis.pdf
 pdftotext thesis.pdf thesis.txt
 ```
 
-The portable package path intentionally does not depend on repository `justfile`,
-root tests, scripts, or build directories.
+The packaged student project deliberately works without the repository
+`justfile`, root tests, scripts, or build directories.
 
-The tracked test-source inventory is flat and numerically grouped under `tests/`;
-[`tests/000-test-suite.md`](../../tests/000-test-suite.md) defines the sparse ranges
-and distinguishes executable fixtures from `900`-series historical references.
-`scripts/test/check-test-layout.py` rejects unnumbered files, nested test paths,
-duplicate numbers, empty reserved groups, and missing layout anchors.
+Test sources sit flat under `tests/` with three-digit sparse prefixes.
+[`tests/000-test-suite.md`](../../tests/000-test-suite.md) defines the ranges
+and separates executable fixtures from `900`-series historical references,
+and `scripts/test/check-test-layout.py` rejects unnumbered files, nested test
+paths, duplicate numbers, empty reserved groups, and missing layout anchors.
 
 ## What the gate protects
 
@@ -61,15 +64,38 @@ duplicate numbers, empty reserved groups, and missing layout anchors.
 | Draft/watermark | all three default-off layers plus explicit opt-in fixture and Gallery package defence in depth |
 | Diagnostics | bounded final-log budgets; zero unresolved references/citations and zero rerun-required state |
 
-Output-sensitive work requires layered proof. Page count and extracted text are not
-sufficient on their own; use normalized `pdftotext -bbox-layout` word tuples,
-`pdffonts`, fixed-DPI rasters, and visual inspection of affected pages. Raw bbox
-HTML is not byte-stable because PDF metadata such as creation time changes.
+## How output identity is proven
+
+Page count and extracted text alone cannot show that a layout stayed
+identical, so output-sensitive work layers its proof: normalized
+`pdftotext -bbox-layout` word tuples, `pdffonts` tables, fixed-DPI page
+rasters, and rendered inspection of the affected pages. Raw bbox HTML is not
+byte-stable because PDF metadata such as the creation time changes between
+runs.
+
+The V2 profile extraction and the bounded internal refactors retained:
+
+- the canonical 271-page A4 output;
+- complete extracted-text identity where output-neutrality was required;
+- normalized word-coordinate identity for focused and canonical comparisons;
+- fixed-DPI raster identity for all 271 pages during the final command-parser
+  migration, plus higher-DPI representative cover, float, theorem, and final
+  pages during focused slices;
+- meaningful font-table identity for the dependency/performance slice;
+- the exact student archive tree and direct-build behavior.
+
+The custom-profile proof covers Chinese/English Master covers, the Chinese
+oral certificate, Master/Doctoral English oral branches, and the Doctoral
+English cover. It keeps Gregorian custom dates distinct, does not borrow an
+oral day into a generic cover, uses custom degree wording without changing
+numeric degree semantics, and loads no NCKU watermark asset or
+college/department catalogue. The gate requires each `.fls` recorder file to
+exist before asserting that those paths are absent.
 
 ## v2.0.2 production release read-back
 
 The immutable tag `v2.0.2.260719120024` points to source commit
-`077323b1af173cfb564859dd360b959dd58ffaa5`. Exact merged-main Test run
+`077323b1af173cfb564859dd360b959dd58ffaa5`. The exact merged-main Test run
 [`29687020022`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/29687020022)
 passed before Release workflow
 [`29687321505`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/29687321505)
@@ -86,10 +112,10 @@ SHA-256 fe094390317bdeb23c5d55371e3c263cec06285cd01af4601e60158cd464b108
 ```
 
 The public bytes matched the successful workflow artifact. The downloaded
-student ZIP matched the tagged `thesis/` tree exactly and built with the packaged
-canonical `latexmk` command to a 271-page A4 PDF with SyncTeX and resolved
-references/citations. The examples ZIP
-contained exactly its README plus six expected A4 PDFs:
+student ZIP matched the tagged `thesis/` tree exactly and built with the
+packaged canonical `latexmk` command to a 271-page A4 PDF with SyncTeX and
+resolved references/citations. The examples ZIP contained exactly its README
+plus six expected A4 PDFs:
 
 | PDF | Pages |
 | --- | ---: |
@@ -103,30 +129,10 @@ contained exactly its README plus six expected A4 PDFs:
 Generated defense certificates are template demonstrations and regression
 outputs, not official school-system documents.
 
-## Output-identity evidence
-
-The V2 profile extraction and bounded internal refactors retained:
-
-- canonical 271-page A4 output;
-- complete extracted-text identity where output-neutrality was required;
-- normalized word-coordinate identity for focused and canonical comparisons;
-- fixed-DPI raster identity for all 271 pages during the final command-parser
-  migration, plus higher-DPI representative cover, float, theorem, and final
-  pages during focused slices;
-- meaningful font-table identity for the dependency/performance slice;
-- exact student archive tree and direct-build behavior.
-
-The custom profile proof covers Chinese/English Master covers, Chinese oral,
-Master/Doctoral English oral branches, and the Doctoral English cover. It keeps
-Gregorian custom dates distinct, does not borrow oral day into a generic cover,
-uses custom degree wording without changing numeric degree semantics, and loads
-no NCKU watermark asset or college/department catalogue. The gate requires each
-`.fls` recorder file to exist before asserting that those paths are absent.
-
 ## Dated performance evidence
 
-Benchmarks describe their tested host and workload; they are not universal speed
-promises.
+Benchmarks describe the host and workload they were measured on; they are not
+universal speed promises.
 
 ### Initial modernization review
 
@@ -139,16 +145,16 @@ promises.
 11-page student chapter edit:      1.45 s
 ```
 
-`latexmk` was already doing correct dependency tracking. The full-corpus edit
-cost was XeLaTeX layout and PDF generation, not unnecessary bibliography runs.
-StudentMode with teaching examples disabled is the primary writing optimization;
-`latexmk -pvc` adds automatic rebuild/viewer refresh without weakening final
-build semantics.
+`latexmk` was already doing correct dependency tracking: the full-corpus edit
+cost was XeLaTeX layout and PDF generation, not unnecessary bibliography
+runs. Writing with StudentMode (teaching examples disabled) is the primary
+speed optimization for a normal thesis, and `latexmk -pvc` adds automatic
+rebuilds without weakening final build semantics.
 
 ### Dependency simplification measurement
 
-A later same-host experiment compared three student clean runs, five no-change
-runs, and alternating isolated preamble runs:
+A later same-host experiment compared three student clean runs, five
+no-change runs, and alternating isolated preamble runs:
 
 ```text
 single-pass preamble median: 0.690 s -> 0.673 s (-2.37%)
@@ -156,9 +162,9 @@ student cold median:         6.861 s -> 6.685 s (-2.56%)
 canonical no-op median:      0.140 s -> 0.141 s (unchanged)
 ```
 
-The three-run 271-page cold median moved from 30.365 s to 33.694 s under changing
-background load. That is noisy and is not presented as a full-corpus speedup.
-The retained claim is narrower: fewer dependencies, simpler bounded dispatch,
+The three-run 271-page cold median moved from 30.365 s to 33.694 s under
+changing background load — too noisy to claim as a full-corpus speedup. The
+retained claim is narrower: fewer dependencies, simpler bounded dispatch,
 small isolated/student improvements, and unchanged output.
 
 ## Accepted, rejected, and deferred decisions
@@ -171,34 +177,49 @@ small isolated/student improvements, and unchanged output.
   remain fixture-protected.
 - Replace 21 sequential month comparisons with one native 12-way branch while
   preserving `1`/`01` through `12` and invalid-range empty output.
-- Keep `xparse` as an explicit dependency because protected `G{...}` signatures
-  are not supplied by the kernel document-command surface.
+- Keep `xparse` as an explicit dependency because protected `G{...}`
+  signatures are not supplied by the kernel document-command surface.
 - Move nineteen repository-owned command parser families to `l3keys` through
   bounded baseline-first slices.
 - Keep required Test and Release lanes clean rather than caching auxiliary TeX
   state into correctness gates.
+- Build the five standalone release example PDFs concurrently. Each case
+  writes only its own jobname files inside the release staging directory, the
+  measured cold segment dropped from 24.7 to 15.1 seconds on the reference
+  host, and `JUST_JOBS=1` restores serial execution.
 
 ### Measured and rejected
 
-- The default non-TikZ `mdframed` renderer removed TikZ from the active graph but
-  changed 271 pages to 270 and added a bad-break warning. It was fully rolled back
-  rather than retuning visible layout for a benchmark.
+- The default non-TikZ `mdframed` renderer removed TikZ from the active graph
+  but changed 271 pages to 270 and added a bad-break warning. It was fully
+  rolled back rather than retuning visible layout for a benchmark.
 - A separate chapter-preview entry point was rejected because the measured
   student chapter edit was about 1.45 seconds and another mode would add
   numbering/reference risk.
-- GitHub Actions cache for `build/` was rejected because the dominant hosted cost
-  was the TeX container pull and clean convergence is part of the required proof.
-- Changing the runner to Arm was rejected because the selected TeX container did
-  not provide a native Arm64 image; architecture labels alone do not prove a
-  speedup.
+- GitHub Actions cache for `build/` was rejected because the dominant hosted
+  cost was the TeX container pull and clean convergence is part of the
+  required proof.
+- Changing the runner to Arm was rejected because the selected TeX container
+  did not provide a native Arm64 image; architecture labels alone do not
+  prove a speedup.
 - Replacing retained transitive packages or all remaining `ifthen` calls was
   rejected without a bounded behavior and output contract.
+- Caching the hosted TeX container image was rejected after measuring Test run
+  [`32492812318`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32492812318):
+  the `ghcr.io/xu-cheng/texlive-alpine` pull took about 79 seconds of the
+  3-minute-51-second job, while an actions/cache round trip for the multi-GB
+  image tar plus `docker load` costs comparable time on a hit, pays a
+  save/upload penalty whenever the upstream image moves, and would move
+  environment plumbing into workflow YAML that deliberately owns environment
+  selection and promotion only. A repository-owned slim pinned image remains a
+  possible separate Intent.
 
 ### Deferred and inactive
 
-Class/package redesign, `l3build`, `latex-dev`, engine migration, broad control-flow
-rewrites, and tagged-PDF/PDF-UA work are not active requirements. Each needs a
-new owner-approved Intent, representative fixtures, and its own release boundary.
+Class/package redesign, `l3build`, `latex-dev`, engine migration, broad
+control-flow rewrites, and tagged-PDF/PDF-UA work are not active
+requirements. Each needs a new owner-approved Intent, representative
+fixtures, and its own release boundary.
 
 ## Maintenance rule
 
