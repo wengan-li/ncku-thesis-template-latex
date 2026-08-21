@@ -61,7 +61,7 @@ just example         # build full teaching example document
 just test            # required local and CI test gate
 just check           # build and verify canonical artifacts
 just ci              # complete local CI gate
-just clean            # remove generated build output
+just clean           # remove generated build output
 ```
 
 `latexmk` is the internal XeLaTeX/BibTeX/rerun orchestrator behind `just`.
