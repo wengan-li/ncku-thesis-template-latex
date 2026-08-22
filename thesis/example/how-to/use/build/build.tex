@@ -21,7 +21,7 @@
 % ------------------------------------------------
 \StartSubSection{方式一: Overleaf}
 
-Overleaf是線上的LaTeX環境, 本模版在Overleaf Gallery有公開範本\RefBib{web:overleaf:template}.
+Overleaf是線上的LaTeX環境, 本模版在Overleaf Gallery有公開範本, 連結放在本專案GitHub頁面\RefBib{web:this-project:github}的最上方.
 
 \begin{enumerate}
   \item 開啟範本頁面, 按`Open as Template', 範本會複製到你的Overleaf帳號.
@@ -38,10 +38,10 @@ Overleaf上的範本已經關閉`\verb|\ExampleMode|'和初稿標記, 直接填�
 
 \begin{description}
   \item[TeX Live (Windows / Linux)] \hfill\\
-    到TeX Live網頁\RefBib{web:texlive:website}下載安裝程式, 選擇完整安裝(full scheme), 就不會缺少套件. 完整安裝需要數GB的空間和一段時間.
+    到TeX Live網頁 (\url{https://www.tug.org/texlive/}) 下載安裝程式, 選擇完整安裝(full scheme), 就不會缺少套件. 完整安裝需要數GB的空間和一段時間.
 
   \item[MacTeX (macOS)] \hfill\\
-    到MacTeX網頁\RefBib{web:mactex:website}下載安裝, 內容就是macOS版的TeX Live完整安裝.
+    到MacTeX網頁 (\url{https://www.tug.org/mactex/}) 下載安裝, 內容就是macOS版的TeX Live完整安裝.
 
   \item[MiKTeX (Windows)] \hfill\\
     到MiKTeX網頁\RefBib{web:miktex:website}下載安裝. 安裝時把`Install missing packages on-the-fly'設為Yes, 第一次產生論文時MiKTeX會自動下載需要的套件, 所以會等比較久. 之後定期在MiKTeX Console按Update更新套件; 看到某個package太舊的錯誤訊息時, 就是要更新了.
@@ -83,7 +83,9 @@ Overleaf上的範本已經關閉`\verb|\ExampleMode|'和初稿標記, 直接填�
 
 \verb|-view=none|避免另外打開第二個viewer; 可繼續使用編輯器內置, 能自動重新載入的PDF viewer. 停止監察可按\texttt{Ctrl-C}.
 
-實際編寫自己論文時, 請在\verb|conf/conf.tex|關閉\verb|\ExampleMode|. 主文件會改用\verb|context/context.tex|; 完整教學範例包含大量圖片及附錄PDF, 重建時間會較長.
+實際編寫自己論文時, 請在\verb|conf/conf.tex|關閉\verb|\ExampleMode|.
+
+主文件會改用\verb|context/context.tex|; 完整教學範例包含大量圖片及附錄PDF, 重建時間會較長.
 
 如果auxiliary files損壞, 可執行\verb|latexmk -C thesis.tex|清除可重新產生的檔案, 再重新build. 不要把反覆刪檔及猜測XeLaTeX/BibTeX次序當成正常流程. 正式提交前應再執行一次普通\texttt{latexmk} build, 並檢查完整PDF, 頁碼, 目錄, 引用及參考文獻.
 

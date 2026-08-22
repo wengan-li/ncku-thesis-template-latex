@@ -22,7 +22,7 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
 \newpage
 \StartSubSection{轉換格式}
 
-不論用什麼工具畫圖, 目標都是得到一個PDF(向量圖), 或是解析度足夠的PNG/JPG(點陣圖). 常見的做法:
+不論用什麼工具畫圖, 目標都是得到一個 PDF (向量圖), 或是解析度足夠的 PNG 或 JPG (點陣圖). 常見的做法:
 
 \begin{description}
   \item[用程式畫圖 (Python matplotlib, R, MATLAB, gnuplot等)] \hfill\\
@@ -35,7 +35,9 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
     `檔案' -> `匯出' -> `建立PDF/XPS', 或`另存新檔'選PDF. 匯出的是整頁, 所以要再裁掉白邊.
 
   \item[裁掉PDF的白邊] \hfill\\
-    TeX發行版附有\texttt{pdfcrop}, 在終端機執行\verb|pdfcrop figure.pdf figure-cropped.pdf|即可; 或用PDF閱讀器的裁切工具.
+    TeX發行版附有\texttt{pdfcrop}, 在終端機執行\\
+    \verb|pdfcrop figure.pdf figure-cropped.pdf|\\
+    即可; 或用PDF閱讀器的裁切工具.
 
   \item[螢幕截圖或相片] \hfill\\
     保持PNG或JPG即可, 但解析度要足夠(印刷一般要300 dpi以上), 否則放大後會模糊.
