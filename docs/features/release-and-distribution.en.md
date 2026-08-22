@@ -126,7 +126,8 @@ A green workflow is not sufficient release proof. After publication:
 Release hashes and read-back evidence are recorded in the validation record
 for [v2.0.2](validation-and-performance.en.md#v202-production-release-read-back),
 [v2.0.5](validation-and-performance.en.md#v205-production-release-read-back),
-and [v2.0.6](validation-and-performance.en.md#v206-production-release-read-back).
+[v2.0.6](validation-and-performance.en.md#v206-production-release-read-back),
+and [v2.0.7](validation-and-performance.en.md#v207-production-release-read-back).
 
 ## Overleaf profiles
 

@@ -210,6 +210,46 @@ the root licence), and six A4 PDFs:
 | `defense-certificate-master.pdf` | 6 |
 | `defense-certificate-phd.pdf` | 10 |
 
+## v2.0.7 production release read-back
+
+The immutable tag `v2.0.7.260822120950` points to source commit
+`e2de6e6f13affaed3309d82fe8f6d5659a0db150`. The merged-main Test run
+[`32572515583`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32572515583)
+passed before Release workflow
+[`32572737060`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32572737060)
+built and promoted exactly two public assets. This is the first release whose
+GitHub Release notes were composed from the two changelog entries by
+`scripts/release/release-notes.py`, and the first after the teaching document
+was restructured, so the canonical page count below is 261 rather than 271.
+
+Public re-download checks recorded on 2026-08-22:
+
+```text
+ncku-thesis-template-latex-v2.0.7.260822120950.zip  (32,540,062 bytes)
+SHA-256 1bb8dd82eae6801c2f9ac0a3fedc96e40d1e67be61b0eb28393e8da5422e544b
+
+ncku-thesis-template-latex-examples-v2.0.7.260822120950.zip  (20,036,402 bytes)
+SHA-256 84bed73b3ed9570fd383d73cbcd0a4c613362ebc4b3790ac9764ad7f3aeccd0f
+```
+
+The public bytes matched the promoted workflow artifact. The downloaded
+student ZIP matched the tagged `thesis/` tree exactly (193 regular files),
+carried the 18 pinned v1.8.2 student inputs (296,726 bytes, zero mismatches)
+and a licence file byte-identical to the repository root `LICENSE`, and built
+with the packaged canonical `latexmk` command to a 261-page A4 PDF with
+SyncTeX, resolved references/citations, no Draft marker, and no institutional
+watermark asset. The examples ZIP contained exactly its README, `LICENSE`
+(also identical to the root licence), and six A4 PDFs:
+
+| PDF | Pages |
+| --- | ---: |
+| `cover.pdf` | 2 |
+| `thesis-chi.pdf` | 11 |
+| `thesis-eng.pdf` | 11 |
+| `thesis-full.pdf` | 261 |
+| `defense-certificate-master.pdf` | 6 |
+| `defense-certificate-phd.pdf` | 10 |
+
 ## Dated performance evidence
 
 Benchmarks describe the host and workload they were measured on; they are not
