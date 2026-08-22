@@ -8,6 +8,14 @@
 
 ## 2.x
 
+### [v2.0.7.260822120950](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.7.260822120950) — 2026-08-22
+
+- 教學文件重整：簡介之後直接是使用教學與編寫教學，「起因」移入附錄，「老師們的話」保留為正文最後一章；安裝截圖章改為Overleaf、終端機、編輯器三種方式並移除23張舊截圖；圖片轉檔改為「匯出PDF、以`pdfcrop`裁邊」；修正兩處教學文字錯誤。教學文件由271頁改為261頁A4，學生套件縮小約0.85 MB。
+- 學生文件：學生套件`README.md`新增`conf/conf.tex`必改清單（含行號與不改的後果）、`cover.tex`印刷封面步驟、Overleaf使用步驟、常見錯誤表及更完整的提交前檢查；根目錄與學生`README`及設定指南改以學生語言撰寫，設定指南每節標示必填／選填與行號；說明授權只涵蓋範本檔案，不涵蓋同學自己的論文內容。
+- 發行：GitHub Release說明改由兩份changelog的該版條目加上下載指引組成（`scripts/release/release-notes.py`）；`just release <version>`在缺少changelog條目時失敗；`just test`新增release notes檢查。
+- 專案：新增`student-first-run` skill、學生提問issue表單，並記錄Overleaf Gallery目前為v2.0.0時期來源及更新節奏。
+- XeLaTeX source、public API與學生project shape沒有變更；學生模式輸出（`thesis-chi.pdf`／`thesis-eng.pdf`各11頁）不變，只有教學文件的版面與頁數改變。
+
 ### [v2.0.6.260822064417](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.6.260822064417) — 2026-08-22
 
 - 學生套件與examples套件的內容不變；examples套件的`LICENSE`改為直接取自tagged source，兩個套件的授權檔案現在都會與repository根目錄的`LICENSE`逐位元核對。

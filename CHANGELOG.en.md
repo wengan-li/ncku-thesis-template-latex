@@ -11,6 +11,14 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
+### [v2.0.7.260822120950](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.7.260822120950) — 2026-08-22
+
+- Teaching document restructured: the usage and writing tutorials follow the introduction directly, the origin story moves into the appendix, and "words from professors" stays as the last body chapter; the installation screenshot chapter becomes a three-path section (Overleaf, terminal, editor) and 23 old screenshots are removed; figure conversion becomes "export PDF, crop with `pdfcrop`"; two teaching-text errors fixed. The document goes from 271 to 261 A4 pages and the student package shrinks by about 0.85 MB.
+- Student documentation: the student package `README.md` gains a `conf/conf.tex` must-change table (line numbers and the consequence of leaving each default), the `cover.tex` print-cover step, Overleaf steps, a common-errors table, and a fuller pre-submission checklist; the root and student READMEs and the configuration guide are rewritten in student terms, with every configuration section marked required/optional with line numbers; the licence is stated to cover the template files, not the student's own thesis content.
+- Release: GitHub Release notes are composed from both changelog entries plus a download guide (`scripts/release/release-notes.py`); `just release <version>` fails without a changelog entry; `just test` gains a release-notes check.
+- Project: new `student-first-run` skill, a student question issue form, and a record of the Overleaf Gallery's v2.0.0-era source and refresh cadence.
+- No change to the XeLaTeX source, public API, or student project shape; student-mode output (`thesis-chi.pdf` / `thesis-eng.pdf`, 11 pages each) is unchanged, only the teaching document's layout and page count change.
+
 ### [v2.0.6.260822064417](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.6.260822064417) — 2026-08-22
 
 - Student and examples package contents are unchanged; the examples package now takes `LICENSE` straight from the tagged source, and both packages' licence files are verified byte-identical to the repository root `LICENSE`.
