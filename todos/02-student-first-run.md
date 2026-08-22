@@ -141,7 +141,10 @@ disappears), keywords 224 and 246–248.
 - [x] A1/A4 Three build paths (Overleaf, terminal, editor) named in the root
       quick start, both languages.
 - [x] F2 Overleaf steps in `thesis/README.md` / `.en.md`.
-- [x] A6 Repository topics added on GitHub.
+- [ ] A6 Repository topics: needs an admin account (`tachikoma-agent` has push
+      only, the topics endpoint returns 404). Owner runs
+      `gh repo edit wengan-li/ncku-thesis-template-latex --add-topic latex --add-topic xelatex --add-topic thesis-template --add-topic thesis --add-topic dissertation --add-topic ncku --add-topic taiwan`
+      or sets them in the repository settings.
 - [x] Skill `student-first-run` written and registered in `AGENTS.md`,
       `.agents/skills/README.md`, `repo-maintenance`, and
       `documentation-management`.
