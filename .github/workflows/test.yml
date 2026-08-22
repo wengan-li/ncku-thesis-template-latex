@@ -48,7 +48,7 @@ jobs:
             git config --global --add safe.directory "$GITHUB_WORKSPACE"
             JUST_JOBS=4 just test
 
-      - name: Upload test PDF
+      - name: Upload build and fixture diagnostics
         if: always()
         uses: actions/upload-artifact@v7
         with:
@@ -56,14 +56,6 @@ jobs:
           path: |
             build/thesis.pdf
             build/thesis.log
+            build/tests/*.log
           if-no-files-found: warn
-          retention-days: 7
-
-      - name: Upload fixture logs on failure
-        if: failure()
-        uses: actions/upload-artifact@v7
-        with:
-          name: thesis-test-fixture-logs
-          path: build/tests/*.log
-          if-no-files-found: ignore
           retention-days: 7
