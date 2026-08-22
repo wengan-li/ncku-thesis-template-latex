@@ -169,6 +169,47 @@ institutional watermark asset. The examples ZIP contained exactly its README,
 | `defense-certificate-master.pdf` | 6 |
 | `defense-certificate-phd.pdf` | 10 |
 
+## v2.0.6 production release read-back
+
+The immutable tag `v2.0.6.260822064417` points to source commit
+`0bd86daea2b6db9dc80d9cf3214a4a5a33688716`. The merged-main Test run
+[`32557951306`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32557951306)
+passed before Release workflow
+[`32557957079`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32557957079)
+built and promoted exactly two public assets. An earlier tag string for this
+release was cut from a changelog merge whose checks were red (its wording
+tripped the public-voice gate); that Release build was cancelled before
+packaging, the tag was removed unreleased, and the corrected changelog was
+merged on green checks before the tag above was created.
+
+Public re-download checks recorded on 2026-08-22:
+
+```text
+ncku-thesis-template-latex-v2.0.6.260822064417.zip  (33,372,509 bytes)
+SHA-256 7b1fba3c2d12da23e85fad0318ddea79e4f17c738b37bd73de8f70a143d80b51
+
+ncku-thesis-template-latex-examples-v2.0.6.260822064417.zip  (20,770,690 bytes)
+SHA-256 f6b5ef8eb01dab3b7047ad84a09756db76a8359f3dd939389f5461054958f72c
+```
+
+The public bytes matched the promoted workflow artifact. The downloaded
+student ZIP matched the tagged `thesis/` tree exactly, carried the 18 pinned
+v1.8.2 student inputs (296,726 bytes, zero mismatches) and a licence file
+byte-identical to the repository root `LICENSE`, and built with the packaged
+canonical `latexmk` command to a 271-page A4 PDF with SyncTeX, resolved
+references/citations, no Draft marker, and no institutional watermark asset.
+The examples ZIP contained exactly its README, `LICENSE` (also identical to
+the root licence), and six A4 PDFs:
+
+| PDF | Pages |
+| --- | ---: |
+| `cover.pdf` | 2 |
+| `thesis-chi.pdf` | 11 |
+| `thesis-eng.pdf` | 11 |
+| `thesis-full.pdf` | 271 |
+| `defense-certificate-master.pdf` | 6 |
+| `defense-certificate-phd.pdf` | 10 |
+
 ## Dated performance evidence
 
 Benchmarks describe the host and workload they were measured on; they are not
