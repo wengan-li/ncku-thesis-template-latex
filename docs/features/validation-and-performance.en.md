@@ -129,6 +129,46 @@ plus six expected A4 PDFs:
 Generated defense certificates are template demonstrations and regression
 outputs, not official school-system documents.
 
+## v2.0.5 production release read-back
+
+The immutable tag `v2.0.5.260821154358` points to source commit
+`9350d1d35e501b20153f293f9057da09576d6643`. The merged-main Test run
+[`32499614687`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32499614687)
+passed before Release workflow
+[`32499622823`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32499622823)
+built and promoted exactly two public assets. An earlier tag string for this
+release failed the merge-aware whitespace gate before packaging (the packaged
+licence copy carried the root file's historical trailing whitespace), produced
+no release, and was removed; the fix landed through a separate pull request
+before the tag above was cut.
+
+Public re-download checks recorded on 2026-08-21:
+
+```text
+ncku-thesis-template-latex-v2.0.5.260821154358.zip  (33,372,825 bytes)
+SHA-256 116336d4928ed074506b352110deee0150bcf11920eb89e49202760035fe790a
+
+ncku-thesis-template-latex-examples-v2.0.5.260821154358.zip  (20,770,699 bytes)
+SHA-256 8d3e7d73c8fda73ba15af5d5556fd1df627910e2fecd8e3d45cb34bf13062b98
+```
+
+The public bytes matched the promoted workflow artifact. The downloaded
+student ZIP matched the tagged `thesis/` tree exactly, carried the 18 pinned
+v1.8.2 student inputs (296,726 bytes, zero mismatches) and the licence text,
+and built with the packaged canonical `latexmk` command to a 271-page A4 PDF
+with SyncTeX, resolved references/citations, no Draft marker, and no
+institutional watermark asset. The examples ZIP contained exactly its README,
+`LICENSE`, and six A4 PDFs:
+
+| PDF | Pages |
+| --- | ---: |
+| `cover.pdf` | 2 |
+| `thesis-chi.pdf` | 11 |
+| `thesis-eng.pdf` | 11 |
+| `thesis-full.pdf` | 271 |
+| `defense-certificate-master.pdf` | 6 |
+| `defense-certificate-phd.pdf` | 10 |
+
 ## Dated performance evidence
 
 Benchmarks describe the host and workload they were measured on; they are not
