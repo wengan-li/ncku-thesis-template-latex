@@ -254,7 +254,8 @@ small isolated/student improvements, and unchanged output.
 
 - Restructure the teaching document for first-time readers (2026-08-22): the
   usage and writing chapters follow the introduction directly; the origin
-  story and "words from professors" move into the appendix; the MiKTeX 2.9 /
+  story moves into the appendix, while "words from professors" stays in the
+  body as the last chapter (owner decision, 2026-08-22); the MiKTeX 2.9 /
   Texmaker screenshot chapter (23 PNGs, about 0.85 MB) is replaced by a
   three-path section (Overleaf, terminal, editor); the Adobe CS5 / Office 2013
   figure-conversion recipes shrink to "export PDF, crop with `pdfcrop`". The
