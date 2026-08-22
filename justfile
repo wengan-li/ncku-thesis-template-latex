@@ -54,7 +54,7 @@ check: thesis
 # read the canonical build/thesis.* artifacts declare that dependency below.
 # JUST_JOBS=1 restores serial execution when attributing interleaved failures.
 [parallel]
-test: check _test-bilingual-docs _test-test-layout _test-v1-api _test-v1-project-migration _test-release-student-archive _test-overleaf-gallery-package _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-type-routing _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-bilingual-docs _test-test-layout _test-release-notes _test-v1-api _test-v1-project-migration _test-release-student-archive _test-overleaf-gallery-package _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-type-routing _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Shared fixture builders. Every fixture clears its own build/tests/<job>.*
 # files first so grep-count assertions never read stale state, then compiles
@@ -103,6 +103,16 @@ _test-bilingual-docs:
 [private]
 _test-test-layout:
     python3 scripts/test/check-test-layout.py
+
+# Release notes must compose from both changelog entries of the newest release
+# and open with the student download guide.
+[private]
+_test-release-notes:
+    mkdir -p "{{ tests_dir }}"
+    python3 scripts/release/release-notes.py --newest --output "{{ tests_dir }}/release-notes.md"
+    grep -q 'ncku-thesis-template-latex-v[0-9].*\.zip' "{{ tests_dir }}/release-notes.md"
+    grep -q '^## 本版變更' "{{ tests_dir }}/release-notes.md"
+    grep -q '^## Changes in this release' "{{ tests_dir }}/release-notes.md"
 
 # Internal compatibility gate for every explicitly declared v1 command/environment.
 [private]
@@ -471,6 +481,7 @@ overleaf-gallery version="dev":
 # Build and verify the complete same-source release asset set.
 release version="dev": test
     test -z "$(git status --porcelain --untracked-files=all)" || { echo 'Release requires a clean Git worktree.' >&2; exit 1; }
+    case "{{ version }}" in dev|dev-*) ;; *) python3 scripts/release/release-notes.py "{{ version }}" > /dev/null ;; esac
     rm -rf "{{ build_dir }}/release"
     mkdir -p "{{ build_dir }}/release"
     cp "{{ artifact }}" "{{ build_dir }}/release/example-thesis-full.pdf"

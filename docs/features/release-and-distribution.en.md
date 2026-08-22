@@ -43,7 +43,11 @@ The Release workflow has two stages:
    Its declared `test` dependency runs the complete required gate once, then
    the job uploads two verified ZIPs as a temporary workflow artifact.
 2. **Promote** — only a matching Git tag event downloads that exact workflow
-   artifact and attaches it to a GitHub Release.
+   artifact and attaches it to a GitHub Release. The job composes the release
+   notes from the version's entries in `CHANGELOG.md` and `CHANGELOG.en.md`
+   plus a short download guide (`scripts/release/release-notes.py`), so the
+   Releases page tells a student which ZIP to download. `just release
+   <version>` fails early for a release version without a changelog entry.
 
 A manual dispatch is build-only and must not publish a release. A clean
 worktree is required so compiled PDFs and archives come from one committed
