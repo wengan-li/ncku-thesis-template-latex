@@ -121,35 +121,9 @@ pdftotext thesis.pdf thesis.txt
 
 ## 相容性證據
 
-升級時不需要執行本節內容；它說明相容承諾在完整Git repository中如何被機器把關。三份manifest鎖定1.x的公開surface與學生檔案：
+升級時不需要執行本節內容；它只說明相容承諾在完整Git repository中如何被機器把關。三份manifest鎖定1.x的公開指令surface、歷史的dead-comment宣告與v1.8.2學生檔案；未修改的1.x專案仍選擇預設`ncku` profile，因此原有的NCKU college／department presets繼續可用，`custom`與其他學校的profile只取得generic institution API；完整repository的測試會以未修改的v1.8.2專案建置出canonical輸出，並以StudentMode fixture證明active content與書目資料庫。這些檢查與manifest刻意不放入學生ZIP。
 
-```text
-tests/100-v1-public-api.json                     597 LaTeX/xparse + 65 literal \def declarations
-tests/101-v1-comment-environment-artifacts.json  22 declarations from dead comment environments
-tests/102-v1-project-migration.json              18 byte-pinned v1.8.2 student files
-```
-
-未修改的1.x專案仍選擇預設`ncku` profile，因此原有的NCKU college／department presets繼續可用；`custom`與其他學校的profile只取得generic institution API。相容層的載入方式如下：
-
-```text
-template/compat/v1.tex
-  template/compat/deprecated.tex        23 deprecated-command tombstones
-template/style/ncku/ncku.tex            selected NCKU profile
-  template/style/ncku/college.tex       NCKU-owned data
-  template/style/ncku/department.tex    NCKU-owned data
-template/command/cmd-college.tex        dormant direct-path wrapper
-template/command/cmd-department.tex     dormant direct-path wrapper
-```
-
-完整repository的測試會以未修改的v1.8.2專案建置出271頁A4的canonical輸出，並由StudentMode fixture的`.fls`／`.blg`記錄證明active content與三個書目資料庫。這些檢查與manifest刻意不放入學生ZIP：
-
-```bash
-python3 scripts/test/check-v1-api.py
-python3 scripts/test/check-v1-project-migration.py
-just test
-```
-
-完整的gate清單與輸出identity證據見[驗證與效能記錄](features/validation-and-performance.md)。
+manifest內容、宣告數量與相容層的載入方式由[V2現代化記錄](features/v2-modernization.md)擁有；完整的gate清單與輸出identity證據見[驗證與效能記錄](features/validation-and-performance.md)。
 
 ## 回復與故障處理
 

@@ -163,43 +163,20 @@ Use the saved 1.x PDF as the comparison reference.
 
 ## Compatibility evidence
 
-Nothing in this section is required during a migration; it explains how the
-compatibility promise is machine-checked in the full Git repository. Three
-manifests pin the 1.x public surface and student files:
+Nothing in this section is required during a migration; it only explains how
+the compatibility promise is machine-checked in the full Git repository. Three
+manifests pin the 1.x public command surface, the historical dead-comment
+declarations, and the v1.8.2 student files. An unchanged 1.x project keeps
+selecting the default `ncku` profile and therefore retains the historical NCKU
+college/department presets, while `custom` and other institution profiles
+receive only the generic institution API. The full repository builds the
+unchanged v1.8.2 project into the canonical output and proves the active
+content and bibliography databases through a StudentMode fixture. These checks
+and manifests are intentionally absent from the student ZIP.
 
-```text
-tests/100-v1-public-api.json                     597 LaTeX/xparse + 65 literal \def declarations
-tests/101-v1-comment-environment-artifacts.json  22 declarations from dead comment environments
-tests/102-v1-project-migration.json              18 byte-pinned v1.8.2 student files
-```
-
-An unchanged 1.x project keeps selecting the default `ncku` profile and
-therefore retains the historical NCKU college/department presets, while
-`custom` and other institution profiles receive only the generic institution
-API. The compatibility layer loads like this:
-
-```text
-template/compat/v1.tex
-  template/compat/deprecated.tex        23 deprecated-command tombstones
-template/style/ncku/ncku.tex            selected NCKU profile
-  template/style/ncku/college.tex       NCKU-owned data
-  template/style/ncku/department.tex    NCKU-owned data
-template/command/cmd-college.tex        dormant direct-path wrapper
-template/command/cmd-department.tex     dormant direct-path wrapper
-```
-
-The full repository builds the unchanged v1.8.2 project into the canonical
-271-page A4 output, and a StudentMode fixture proves the active content and
-all three bibliography databases through `.fls`/`.blg` records. These checks
-and manifests are intentionally absent from the student ZIP:
-
-```bash
-python3 scripts/test/check-v1-api.py
-python3 scripts/test/check-v1-project-migration.py
-just test
-```
-
-The complete gate list and output-identity evidence live in the
+The manifest contents, declaration counts, and compatibility-layer load order
+are owned by the [V2 modernization record](features/v2-modernization.en.md);
+the complete gate list and output-identity evidence live in the
 [validation and performance record](features/validation-and-performance.en.md).
 
 ## Recovery and troubleshooting
