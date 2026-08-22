@@ -70,6 +70,8 @@ DRIFT_PAIRS: tuple[tuple[str, str], ...] = (
     + (("CHANGELOG.md", "CHANGELOG.en.md"),)
 )
 PAIR_DRIFT_WARN_COMMITS = 2
+# Active requirements and todos use NN-slug.md names (documentation lifecycle).
+ACTIVE_WORK_NAME = re.compile(r"\d{2}-[a-z0-9-]+\.md")
 ENGLISH_USER_DOCS = tuple(pair[1] for pair in GUIDE_PAIRS + SUMMARY_PAIRS)
 CANTONESE_ONLY = ("呢個", "只係", "唔", "嘅", "喺", "咁樣")
 WRONG_PRODUCT_CASING = re.compile(r"\b(?:LaTex|Latex|XeLatex|Xelatex)\b")
@@ -709,23 +711,19 @@ def check_instruction_alias() -> None:
         fail("CLAUDE.md does not resolve to AGENTS.md")
 
 
-def check_requirements_directory() -> None:
-    # Active requirements are numbered NN-slug.md files per the documented
-    # lifecycle; with no active requirement the directory holds exactly .gitkeep.
-    requirement_name = re.compile(r"\d{2}-[a-z0-9-]+\.md")
-    entries = sorted(path.name for path in (ROOT / "docs/requirements").iterdir())
-    active = [name for name in entries if requirement_name.fullmatch(name)]
-    stray = [name for name in entries if name != ".gitkeep" and name not in active]
+def check_active_work_directory(relative: str, require_gitkeep: bool) -> None:
+    """Only .gitkeep and NN-slug.md items may live in an active-work directory.
+
+    `docs/requirements/` must keep `.gitkeep` when nothing is active; `todos/`
+    may simply be absent.
+    """
+    directory = ROOT / relative
+    entries = sorted(path.name for path in directory.iterdir()) if directory.is_dir() else []
+    stray = [name for name in entries if name != ".gitkeep" and not ACTIVE_WORK_NAME.fullmatch(name)]
     if stray:
-        fail(
-            "docs/requirements allows only .gitkeep and NN-slug.md requirement "
-            f"files, found: {stray}"
-        )
-    if not active and entries != [".gitkeep"]:
-        fail(
-            "docs/requirements with no active requirement must contain exactly "
-            f".gitkeep, found: {entries}"
-        )
+        fail(f"{relative} allows only .gitkeep and NN-slug.md files, found: {stray}")
+    if require_gitkeep and not entries:
+        fail(f"{relative} must keep .gitkeep when no item is active")
 
 
 def git_output(*args: str) -> str | None:
@@ -814,7 +812,8 @@ def main() -> int:
         check_changelog()
         check_package_routes()
         check_instruction_alias()
-        check_requirements_directory()
+        check_active_work_directory("docs/requirements", require_gitkeep=True)
+        check_active_work_directory("todos", require_gitkeep=False)
         links = check_links()
     except AssertionError as error:
         print(f"Language-separated documentation FAIL: {error}", file=sys.stderr)

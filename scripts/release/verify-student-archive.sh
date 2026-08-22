@@ -46,6 +46,13 @@ for entry in \
   require_entry "$entry"
 done
 
+# The packaged licence must be the root LICENSE at HEAD; the tracked thesis/
+# copy exists only so that git archive HEAD:thesis carries it.
+cmp -s <(git show HEAD:LICENSE) <(unzip -p "$student_zip" "${package_root}/LICENSE") || {
+  printf 'student ZIP LICENSE differs from root LICENSE at HEAD\n' >&2
+  exit 1
+}
+
 # Assert the shared doc-pair contract (metadata + reciprocal switcher), then
 # every additional per-document marker.
 require_doc_markers() {

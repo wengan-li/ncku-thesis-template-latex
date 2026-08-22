@@ -194,18 +194,9 @@ and install full Info-ZIP `unzip`/`zip`; BusyBox `unzip` does not support
 `unzip -Z1`, and the negative mutation requires `zip -d`. A local macOS pass
 is not sufficient evidence for this container-specific path.
 The examples archive extracts to stable `ncku-thesis-template-latex-examples/`
-and contains exactly:
-
-```text
-README.md
-LICENSE
-cover.pdf
-thesis-chi.pdf
-thesis-eng.pdf
-thesis-full.pdf
-defense-certificate-master.pdf
-defense-certificate-phd.pdf
-```
+and contains exactly the members listed under
+[Examples package](../../../docs/features/release-and-distribution.en.md#examples-package);
+`scripts/release/example-assets.sh` is the code owner of that list.
 
 The outer archives carry the version. Inner names remain stable and omit a
 redundant `example-` prefix. Loose generated PDFs are build intermediates, not

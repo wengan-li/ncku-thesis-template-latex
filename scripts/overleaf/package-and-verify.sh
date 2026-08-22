@@ -122,6 +122,17 @@ import sys
 archive = Path(sys.argv[1])
 profile = sys.argv[2]
 editable_suffixes = {".tex", ".bib", ".md", ".txt", ".sty", ".cls", ".cfg"}
+MIB = 1024 * 1024
+# Overleaf limits as checked from the official documentation on 2026-07-12
+# (also recorded in docs/features/release-and-distribution.en.md). Recheck the
+# live limits before changing any value.
+LIMITS = {
+    "files per upload": 180,
+    "bytes per file": 50 * MIB,
+    "editable bytes per file": 2 * MIB,
+    "editable bytes in total": 7 * MIB,
+    "archive bytes": 50 * MIB,
+}
 with ZipFile(archive) as zf:
     files = [item for item in zf.infolist() if not item.is_dir()]
     names = {item.filename for item in files}
@@ -150,24 +161,20 @@ with ZipFile(archive) as zf:
             raise SystemExit(f"Gallery package contains excluded institutional assets: {sorted(leaked)}")
         if "conf/gallery.tex" not in names or "\\input{./conf/gallery}" not in configure:
             raise SystemExit("Gallery package is missing its publication config overlay")
-    if len(files) > 180:
-        raise SystemExit(f"Overleaf package has {len(files)} files; limit is 180")
-    too_large = [item.filename for item in files if item.file_size > 50 * 1024 * 1024]
+    if len(files) > LIMITS["files per upload"]:
+        raise SystemExit(f"Overleaf package has {len(files)} files; limit is {LIMITS['files per upload']}")
+    too_large = [item.filename for item in files if item.file_size > LIMITS["bytes per file"]]
     if too_large:
-        raise SystemExit(f"files exceed 50 MB: {too_large}")
-    editable_too_large = [
-        item.filename
-        for item in files
-        if Path(item.filename).suffix.lower() in editable_suffixes
-        and item.file_size > 2 * 1024 * 1024
-    ]
+        raise SystemExit(f"files exceed {LIMITS['bytes per file'] // MIB} MB: {too_large}")
+    editable_files = [item for item in files if Path(item.filename).suffix.lower() in editable_suffixes]
+    editable_too_large = [item.filename for item in editable_files if item.file_size > LIMITS["editable bytes per file"]]
     if editable_too_large:
-        raise SystemExit(f"editable text files exceed the 2 MB per-file limit: {editable_too_large}")
-    editable = sum(item.file_size for item in files if Path(item.filename).suffix.lower() in editable_suffixes)
-    if editable > 7 * 1024 * 1024:
-        raise SystemExit(f"editable data is {editable} bytes; limit is 7 MB")
-    if archive.stat().st_size > 50 * 1024 * 1024:
-        raise SystemExit(f"archive is {archive.stat().st_size} bytes; upload limit is 50 MB")
+        raise SystemExit(f"editable text files exceed {LIMITS['editable bytes per file'] // MIB} MB each: {editable_too_large}")
+    editable = sum(item.file_size for item in editable_files)
+    if editable > LIMITS["editable bytes in total"]:
+        raise SystemExit(f"editable data is {editable} bytes; limit is {LIMITS['editable bytes in total'] // MIB} MB")
+    if archive.stat().st_size > LIMITS["archive bytes"]:
+        raise SystemExit(f"archive is {archive.stat().st_size} bytes; upload limit is {LIMITS['archive bytes'] // MIB} MB")
     print(f"Overleaf package limits passed: {len(files)} files, {editable} editable bytes, {archive.stat().st_size} ZIP bytes")
 PY
 

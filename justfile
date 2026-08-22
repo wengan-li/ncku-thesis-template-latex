@@ -61,32 +61,38 @@ test: check _test-bilingual-docs _test-test-layout _test-v1-api _test-v1-project
 # ../tests/<fixture> from the source directory. Recipes keep their own
 # assertion lines; only the mechanical build step is shared.
 
-# Build one fixture with latexmk (BibTeX and reruns as needed).
+# Clear one fixture's previous build/tests/<job>.* outputs. Every compile,
+# including the must-fail fixtures, runs through this so no recipe keeps its
+# own stale-file policy.
 [private]
-_fixture-latexmk job fixture:
+_fixture-clean job:
     mkdir -p "{{ tests_dir }}"
     rm -f "{{ tests_dir }}/{{ job }}."*
+
+# Build one fixture with latexmk (BibTeX and reruns as needed).
+[private]
+_fixture-latexmk job fixture: (_fixture-clean job)
     cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname={{ job }} ../tests/{{ fixture }}
 
 # Build one fixture with a single halt-on-error XeLaTeX pass.
 [private]
-_fixture-xelatex job fixture *flags:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/{{ job }}."*
+_fixture-xelatex job fixture *flags: (_fixture-clean job)
     cd "{{ source_dir }}" && xelatex {{ flags }} -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname={{ job }} ../tests/{{ fixture }}
 
-# Build a latexmk fixture and extract the pdfinfo/layout-text inputs that the
-# fixture's Python contract checker reads.
+# Extract the pdfinfo/layout-text inputs that a fixture's Python contract
+# checker reads.
 [private]
-_fixture-contract job fixture: (_fixture-latexmk job fixture)
+_fixture-extract job:
     pdfinfo "{{ tests_dir }}/{{ job }}.pdf" > "{{ tests_dir }}/{{ job }}.pdfinfo"
     pdftotext -layout "{{ tests_dir }}/{{ job }}.pdf" "{{ tests_dir }}/{{ job }}.txt"
+
+# Build with latexmk, then extract the contract-checker inputs.
+[private]
+_fixture-contract job fixture: (_fixture-latexmk job fixture) && (_fixture-extract job)
 
 # Single-pass XeLaTeX variant of the contract-input builder.
 [private]
-_fixture-contract-xelatex job fixture: (_fixture-xelatex job fixture)
-    pdfinfo "{{ tests_dir }}/{{ job }}.pdf" > "{{ tests_dir }}/{{ job }}.pdfinfo"
-    pdftotext -layout "{{ tests_dir }}/{{ job }}.pdf" "{{ tests_dir }}/{{ job }}.txt"
+_fixture-contract-xelatex job fixture: (_fixture-xelatex job fixture) && (_fixture-extract job)
 
 # Structural language-pair and first-party Markdown-link gate.
 [private]
@@ -126,10 +132,8 @@ _test-v1-project-migration: check
 
 # Internal release gate: the student ZIP is the exact tracked thesis tree.
 [private]
-_test-release-student-archive:
+_test-release-student-archive: (_fixture-clean "student-archive")
     @if [ -n "$(git status --porcelain -- thesis)" ]; then echo 'WARNING: thesis/ has uncommitted changes; this test verifies committed HEAD:thesis, not the working tree.' >&2; fi
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/student-archive."*
     git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ tests_dir }}/student-archive.zip" HEAD:thesis
     scripts/release/verify-student-archive.sh "{{ tests_dir }}/student-archive.zip"
     for doc in README.md conf/README.md README.en.md conf/README.en.md; do \
@@ -157,9 +161,7 @@ _test-diagnostics: thesis
 
 # Internal negative regression test for the XeLaTeX-only engine gate.
 [private]
-_test-engine-gate:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/engine-gate."*
+_test-engine-gate: (_fixture-clean "engine-gate")
     ! (cd "{{ source_dir }}" && pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname=engine-gate ../tests/110-engine-gate.tex)
     grep -q '請使用XeLaTeX來產生論文' "{{ tests_dir }}/engine-gate.log"
 
@@ -196,9 +198,7 @@ _test-numbering-family-contract: (_fixture-xelatex "numbering-family-contract" "
 # Shared negative gate: an unknown key in the fixture must abort the XeLaTeX
 # run with the parser's deterministic `unsupported` diagnostic.
 [private]
-_expect-unknown-key job fixture label:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/{{ job }}."*
+_expect-unknown-key job fixture label: (_fixture-clean job)
     if (cd "{{ source_dir }}" && xelatex -interaction=nonstopmode -halt-on-error -output-directory=../"{{ tests_dir }}" -jobname={{ job }} ../tests/{{ fixture }}); then echo "unknown {{ label }} key unexpectedly compiled"; exit 1; fi
     grep -Fq 'unsupported' "{{ tests_dir }}/{{ job }}.log"
     ! grep -Fq 'NCKU-TEST-FAIL' "{{ tests_dir }}/{{ job }}.log"
@@ -292,9 +292,7 @@ _test-theorem-style-counter: (_fixture-contract "theorem-style-counter" "503-the
 
 # Internal negative test for deterministic cyclic theorem-counter diagnostics.
 [private]
-_test-theorem-counter-cycle:
-    mkdir -p "{{ tests_dir }}"
-    rm -f "{{ tests_dir }}/theorem-counter-cycle."*
+_test-theorem-counter-cycle: (_fixture-clean "theorem-counter-cycle")
     if (cd "{{ source_dir }}" && latexmk -r ../latexmkrc -outdir=../"{{ tests_dir }}" -jobname=theorem-counter-cycle ../tests/504-theorem-counter-cycle.tex); then echo "theorem counter cycle unexpectedly compiled"; exit 1; fi
     grep -Fq "Cyclic theorem counter configuration" "{{ tests_dir }}/theorem-counter-cycle.log"
     ! grep -Fq "TeX capacity exceeded" "{{ tests_dir }}/theorem-counter-cycle.log"

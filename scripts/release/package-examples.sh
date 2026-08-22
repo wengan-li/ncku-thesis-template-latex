@@ -71,8 +71,7 @@ Download \`ncku-thesis-template-latex-${version}.zip\` from the same GitHub Rele
 This package is distributed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International; see \`LICENSE\`. University watermarks, logos, and official certificates may remain owned by their respective rights holders.
 EOF
 
-license_source=$(git rev-parse --show-toplevel)/LICENSE
-cp "$license_source" "${package_dir}/LICENSE"
+git show HEAD:LICENSE > "${package_dir}/LICENSE"
 
 rm -f "${asset_dir}/${examples_zip}"
 (
@@ -81,4 +80,5 @@ rm -f "${asset_dir}/${examples_zip}"
 )
 
 test -s "${asset_dir}/${examples_zip}"
-printf 'Packaged %d generated PDFs plus README in %s\n' "${#sources[@]}" "${asset_dir}/${examples_zip}"
+printf 'Packaged %d generated PDFs plus %d documents in %s\n' \
+  "${#sources[@]}" "${#example_package_documents[@]}" "${asset_dir}/${examples_zip}"
