@@ -1,4 +1,4 @@
-<!-- doc-pair: student-readme; lang: zh-Hant-TW; topics: start-writing,choose-independent-settings,configure-thesis-information,migrate-from-1-x,build-the-final-document,continuous-preview-and-editors,use-overleaf,draft-watermark-and-certificate,common-errors,before-submission,other-community-alternatives -->
+<!-- doc-pair: student-readme; lang: zh-Hant-TW; topics: start-writing,choose-independent-settings,configure-thesis-information,build-the-final-document,continuous-preview-and-editors,use-overleaf,draft-watermark-and-certificate,common-errors,before-submission,migrate-from-1-x,other-community-alternatives -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -33,24 +33,19 @@
 
 ## 選擇設定
 
-文件語言、學校樣式設定檔、封面語言、學位及內容模式互相獨立。國際學生可以使用成大`ncku` profile；其他學校的同學亦可建立自己學校的profile。不要因讀者語言而選擇學校profile。
+成大同學不需要選擇任何學校樣式，解壓後直接填寫`conf/conf.tex`即可；以下三個選擇都在該檔案內。其他學校的同學請先依[`template/style/Customization.md`](template/style/Customization.md)建立自己學校的樣式，再填寫論文資料。
 
 | 決定 | 選項 |
 | --- | --- |
-| 學校 | 成大同學使用預設`ncku`；其他學校的同學可使用custom profile |
 | 封面語言 | `\DisplayCoverInChi`或`\DisplayCoverInEng` |
 | 學位 | `\MasterDegree`或`\PhdDegree` |
-| 內容 | 自己的`context/context.tex`或`\ExampleMode`教學範例 |
+| 內容 | 註解`\ExampleMode`使用自己的`context/context.tex`；保留則建置教學範例 |
 
 ## 設定論文資料
 
-`conf/conf.tex`是從v1.8.2保留的相容設定檔。為確保既有1.x專案可安全升級，該檔案在2.x保持byte-identical，因此原有註解主要為中文。請使用套件內的繁中[`conf/README.md`](conf/README.md)逐項查閱設定；不要為了翻譯而更改macro名稱或新增`conf/style.tex`。
+`conf/conf.tex`內每個項目都有中文註解，逐項說明見[`conf/README.md`](conf/README.md)。只改指令的值，不要改指令名稱，也不要新增其他設定檔。論文資料只放在`conf/`；學校的版面、名稱與日期規則在`template/style/`內，成大同學不需要碰。
 
-## 由1.x升級
-
-V2透過相容層保留完整、經machine audit的1.x helper surface。升級進行中的論文前，先commit或封存完整1.x專案並保存最新PDF。保留`conf/conf.tex`、`context/`、圖片、書目資料及本地證明書檔案；以V2替換template-owned檔案，並有意識地merge對`thesis.tex`的本地修改。完成後，使用下方direct build command，逐項比較封面、日期、目錄、引用、參考文獻、正文及最後頁。
-
-完整指南：[`docs/v1-to-v2-migration.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.md)
+確定不再需要教學範例後，可以刪除`example/`資料夾以縮小專案；刪除後`\ExampleMode`必須保持註解，否則建置會失敗。
 
 ## 建置正式文件
 
@@ -127,6 +122,10 @@ Overleaf範本已關閉`\ExampleMode`與初稿標記，直接填寫`conf/conf.te
 7. 完整檢查頁碼、目錄、圖表清單、參考文獻、字型及最後頁。
 8. 核對當年度成大、圖書館及所屬系所的最新要求；現行官方規定永遠優先。
 9. 使用學校系統要求的正式證明書與提交流程。
+
+## 由1.x升級
+
+用1.x版本寫到一半的論文可以直接換到2.x，所有1.x的指令都保留，不需要重新命名。先備份整個1.x專案和最新的PDF；保留自己的`conf/conf.tex`、`context/`、圖片、書目及證明書檔案；用2.x套件的`template/`、`thesis.tex`及`cover.tex`替換原有檔案（曾修改`thesis.tex`的話，先記下修改再合併）；最後重新建置，逐項比較封面、日期、目錄、引用、參考文獻、正文及最後頁。完整指南：[`docs/v1-to-v2-migration.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.md)。
 
 ## 其他社群方案
 
