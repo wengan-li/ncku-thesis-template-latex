@@ -8,7 +8,7 @@
 
 ## 專案簡介
 
-本模版以XeLaTeX建置，供國立成功大學碩博士論文使用，可撰寫中文、英文或中英混合內容，並自動產生封面、目錄、圖表清單及其他前置頁面。本模版提供學生設定、可重用的LaTeX helpers、1.x相容層，以及讓其他學校的同學建立自己樣式的profile架構。
+本範本以XeLaTeX建置，供國立成功大學碩博士論文使用，可撰寫中文、英文或中英混合內容，並自動產生封面、目錄、圖表清單及其他前置頁面。論文資料只需填在一個設定檔；圖表、公式、引用的常用指令已備好；用1.x版本寫到一半的論文可以直接升級；其他學校的同學也可以建立自己學校的樣式。
 
 本專案並非國立成功大學官方軟體，也不代表學校、圖書館、學位考試系統或任何系所的現行認可。使用前必須核對當年度規定；官方規定永遠優先於本範本。
 
@@ -45,23 +45,25 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 
 ## 選擇正確設定
 
-文件語言、學校profile、封面語言、學位及內容模式是不同設定。成大同學無論使用中文或英文文件，都使用`ncku` profile；其他學校的同學如要建立自己的範本，可使用`custom`或另一個institution profile。
+成大同學不需要選擇任何學校樣式：解壓後直接填寫`conf/conf.tex`即可，封面語言、學位及內容模式都在該檔案內選擇。其他學校的同學請先依[`Customization.md`](thesis/template/style/Customization.md)建立自己學校的樣式，再填寫論文資料。
 
-| 決定 | 選項 |
+| 決定 | 在哪裡選 |
 | --- | --- |
-| 學校 | 成大同學使用預設`ncku`；其他學校的同學可使用custom profile |
-| 封面語言 | `\DisplayCoverInChi`或`\DisplayCoverInEng` |
-| 學位 | `\MasterDegree`或`\PhdDegree` |
-| 內容 | 自己的`context/context.tex`或`\ExampleMode`教學範例 |
+| 封面語言 | `conf/conf.tex`：`\DisplayCoverInChi`或`\DisplayCoverInEng` |
+| 學位 | `conf/conf.tex`：`\MasterDegree`或`\PhdDegree` |
+| 內容 | `conf/conf.tex`：註解`\ExampleMode`即使用自己的`context/context.tex` |
+| 學校樣式 | 成大同學保持預設；其他學校的同學見`Customization.md` |
 
 ## 下載內容與範例
 
-每個正式release提供兩個版本化下載。學生套件只包含可直接編輯的`thesis/`project tree，不包含`justfile`、CI、tests或release scripts。Examples套件包含由同一個immutable source revision產生並驗證的六個PDF，供預覽及regression evidence使用。GitHub自動產生的Source code ZIP則包含完整儲存庫。
+每個正式發行提供兩個下載：
 
 ```text
 ncku-thesis-template-latex-<version>.zip
 ncku-thesis-template-latex-examples-<version>.zip
 ```
+
+第一個是學生套件，解壓後就是可以直接建置的論文專案，不含測試與發行工具；撰寫論文下載這個。第二個是範例套件，內有用同一版本產生的六個PDF，用來預覽成品：
 
 ```text
 README.md
@@ -74,21 +76,21 @@ defense-certificate-master.pdf
 defense-certificate-phd.pdf
 ```
 
+範例套件內的證明書PDF只是示範，提交時請使用學校系統的正式文件。GitHub自動產生的「Source code」ZIP是完整儲存庫，包含測試與發行工具，一般同學不需要。
+
 ## 由1.x升級
 
-既有論文應先commit或封存完整1.x專案並保存最新PDF。保留`conf/conf.tex`、`context/`、圖片、書目資料及本地證明書；以V2替換template-owned檔案，並有意識地merge `thesis.tex`的本地修改。V2在完整2.x line保留經audit的1.x helper surface，compatibility-first path不要求重新命名helpers。
+用1.x版本寫到一半的論文可以直接換到2.x：所有1.x的指令都保留，不需要重新命名。先備份整個1.x專案和最新的PDF；保留自己的`conf/conf.tex`、`context/`、圖片、書目及證明書檔案；用2.x套件的`template/`、`thesis.tex`及`cover.tex`替換原有檔案（曾修改`thesis.tex`的話，先記下修改再合併）；最後重新建置，逐項比較封面、日期、目錄、引用、參考文獻、正文及最後頁。完整步驟見[`1.x至2.x升級指南`](docs/v1-to-v2-migration.md)。
 
 ## 其他學校樣式
 
-本模版將共用renderer、NCKU policy及其他學校port分成`base`、`ncku`及`custom`。學生論文資料仍放在`conf/conf.tex`；學校geometry、名稱、日期政策、文字及assets放在`template/style/<profile>/`。`custom`是neutral skeleton，不是任何學校的ready-to-submit profile；本專案目前亦沒有NTU profile。其他學校的同學可由`template/style/custom/`開始，不要直接修改共用renderer或先載入NCKU再覆寫。
-
-NCKU學生可查看完整[`9個學院／110個系所preset目錄`](thesis/template/style/ncku/README.md)；其他學校的同學則使用generic institution APIs，並參考[`Customization.md`](thesis/template/style/Customization.md)內明確標示為illustrative的NTU wiring例子。
+其他學校的同學可以沿用本範本的所有撰寫功能，只需要為自己的學校建立一個樣式。本範本把成大的版面、校名、日期規則及文字放在`template/style/ncku/`，論文資料則一律放在`conf/conf.tex`；建立新樣式時由中性骨架`template/style/custom/`複製一份，填入自己學校的資料即可。`custom`不是任何學校的正式格式，本專案目前也沒有其他學校的現成樣式。做法見[`Customization.md`](thesis/template/style/Customization.md)；成大同學可另外查看[`9個學院／110個系所指令目錄`](thesis/template/style/ncku/README.md)。
 
 ## Available to use 已被學校負責單位接受
 
-依本專案保存的歷史紀錄，本模版的格式／設計曾於2015年由成大圖書館系統管理組數位論文小組檢查；本模版當時產生的中英文學位考試論文證明書亦曾由教務處課務組檢查。2018年，課務組另指出本模版產生的中文版證明書未經授權。
+依本專案保存的歷史紀錄，本範本的格式／設計曾於2015年由成大圖書館系統管理組數位論文小組檢查；本範本當時產生的中英文學位考試論文證明書亦曾由教務處課務組檢查。2018年，課務組另指出本範本產生的中文版證明書未經授權。
 
-以上只屬歷史查核紀錄，不代表目前的學校、圖書館、學位考試系統或任何系所接受本模版的每項設定。資訊工程學系是本專案唯一有保存歷史使用紀錄的系所，但此紀錄亦不等於現行認可。使用前必須核對當年度學校及系所規定。
+以上只屬歷史查核紀錄，不代表目前的學校、圖書館、學位考試系統或任何系所接受本範本的每項設定。資訊工程學系是本專案唯一有保存歷史使用紀錄的系所，但此紀錄亦不等於現行認可。使用前必須核對當年度學校及系所規定。
 
 ## 學位論文上傳和列印說明
 
@@ -102,14 +104,14 @@ NCKU學生可查看完整[`9個學院／110個系所preset目錄`](thesis/templa
 
 ## 模版和學位考試系統的學位考試論文證明書的FAQ
 
-本專案保存的紀錄顯示，相關中英文證明書曾於2015年由教務處課務組檢查；當時的回覆不構成學校正式認可。2018年，課務組指出本模版產生的中文版證明書未經授權。歷史討論見[Issue #30：學位考試合格證明書與成大學校學位考試系統中列印的證明書並不相符](https://github.com/wengan-li/ncku-thesis-template-latex/issues/30)。
+本專案保存的紀錄顯示，相關中英文證明書曾於2015年由教務處課務組檢查；當時的回覆不構成學校正式認可。2018年，課務組指出本範本產生的中文版證明書未經授權。歷史討論見[Issue #30：學位考試合格證明書與成大學校學位考試系統中列印的證明書並不相符](https://github.com/wengan-li/ncku-thesis-template-latex/issues/30)。
 
 現行使用原則：
 
 1. 中文版學位考試論文證明書應優先使用學位考試系統產出的正式版本，並以當年度學校及系所規定為準。
-2. 本模版產生的證明書只供legacy／example及版面預覽，不代表正式文件或現行授權。
+2. 本範本產生的證明書只供legacy／example及版面預覽，不代表正式文件或現行授權。
 3. 英文版證明書的要求可能由系所另行規定；使用前須向系所確認版本、文字及簽名需求。
-4. 口試、簽名或提交前如有任何疑問，應先取得當期官方系統版本，不要只依賴本模版產生的證明書。
+4. 口試、簽名或提交前如有任何疑問，應先取得當期官方系統版本，不要只依賴本範本產生的證明書。
 
 延伸政策紀錄：[發行、證明書與浮水印政策](docs/features/release-and-distribution.md)。
 

@@ -8,7 +8,7 @@
 
 ## Project overview
 
-This XeLaTeX template supports Chinese, English, and mixed-language NCKU master's theses and doctoral dissertations. It generates the cover, contents, figure/table lists, and other front matter, and provides student configuration, reusable LaTeX helpers, a 1.x compatibility adapter, and profiles that students from other institutions can adapt.
+This XeLaTeX template supports Chinese, English, and mixed-language NCKU master's theses and doctoral dissertations. It generates the cover, contents, figure/table lists, and other front matter. Thesis data goes into one configuration file; figure, table, equation, and citation commands are ready to use; a thesis started with a 1.x release upgrades in place; and students from other institutions can build a style for their own school.
 
 This is not official NCKU software and does not represent current endorsement by the university, library, degree-examination system, or any department. Verify the current rules before use; official requirements always take precedence.
 
@@ -47,25 +47,25 @@ Use `thesis.tex` as the root/master document. `latexmk` handles XeLaTeX, BibTeX,
 
 ## Choose the correct setup
 
-Documentation language, institution profile, cover language, degree, and content mode are separate settings. NCKU students use the `ncku` profile whether they write in Chinese or English; students from other institutions can use `custom` or another institution profile.
+NCKU students do not choose an institution style: extract the package and fill in `conf/conf.tex`; cover language, degree, and content mode are all selected in that file. Students from other institutions first build a style for their own school by following [`Customization.en.md`](thesis/template/style/Customization.en.md), then enter their thesis data.
 
-| Decision | Choices |
+| Decision | Where to choose |
 | --- | --- |
-| Institution | default `ncku` for NCKU students; custom profile for students from another institution |
-| Cover language | `\DisplayCoverInChi` or `\DisplayCoverInEng` |
-| Degree | `\MasterDegree` or `\PhdDegree` |
-| Content | own `context/context.tex` or `\ExampleMode` teaching example |
+| Cover language | `conf/conf.tex`: `\DisplayCoverInChi` or `\DisplayCoverInEng` |
+| Degree | `conf/conf.tex`: `\MasterDegree` or `\PhdDegree` |
+| Content | `conf/conf.tex`: comment out `\ExampleMode` to use your own `context/context.tex` |
+| Institution style | NCKU students keep the default; students from other institutions see `Customization.en.md` |
 
 ## Downloads and examples
 
-Each production release provides two versioned downloads. The student package contains only the directly editable `thesis/` project tree, excluding `justfile`, CI, tests, and release scripts. The examples package contains six PDFs built and verified from the same immutable source revision for preview and regression evidence. GitHub's automatic Source code ZIP contains the complete repository.
+Each release provides two downloads:
 
 ```text
 ncku-thesis-template-latex-<version>.zip
 ncku-thesis-template-latex-examples-<version>.zip
 ```
 
-Examples package:
+The first is the student package: extracted, it is a thesis project ready to build, without the tests and release tooling. Download this one to write a thesis. The second is the examples package, six PDFs built from the same version for previewing the output:
 
 ```text
 README.md
@@ -78,19 +78,17 @@ defense-certificate-master.pdf
 defense-certificate-phd.pdf
 ```
 
-The generated certificate PDFs are unofficial demonstrations. Use current official documents for submission.
+The certificate PDFs in the examples package are demonstrations only; use the official documents from the university system for submission. GitHub's automatic "Source code" ZIP is the complete repository including tests and release tooling, which most students do not need.
 
 ## Migrate from 1.x
 
-Commit or archive the complete 1.x project and save its latest PDF before migrating. Preserve `conf/conf.tex`, `context/`, figures, bibliography data, and local certificate files; replace template-owned files with V2 and deliberately merge local changes to `thesis.tex`. V2 preserves the audited 1.x helper surface throughout 2.x, so the compatibility-first path requires no helper renaming.
+A thesis started with a 1.x release moves straight to 2.x: every 1.x command is kept, and nothing needs renaming. Back up the whole 1.x project and its latest PDF first; keep your own `conf/conf.tex`, `context/`, figures, bibliography, and certificate files; replace the old files with `template/`, `thesis.tex`, and `cover.tex` from the 2.x package (if `thesis.tex` had been edited, note the edits and merge them); then rebuild and compare the cover, dates, contents, citations, bibliography, body, and final pages one by one. Full steps: [`1.x to 2.x migration guide`](docs/v1-to-v2-migration.en.md).
 
 Complete guide: [`docs/v1-to-v2-migration.en.md`](docs/v1-to-v2-migration.en.md)
 
 ## Other institution profiles
 
-The template separates shared rendering, NCKU policy, and other-institution ports into `base`, `ncku`, and `custom`. Student thesis data remains in `conf/conf.tex`; institution geometry, names, date policy, wording, and assets belong under `template/style/<profile>/`. `custom` is a neutral skeleton, not a ready-to-submit profile for any named institution; this repository currently has no NTU profile. Students from other institutions start from `template/style/custom/` rather than editing the shared renderer or loading NCKU before overriding it.
-
-NCKU students can use the complete [`9-college / 110-department preset catalogue`](thesis/template/style/ncku/README.en.md). Students from other institutions use the generic institution APIs and can follow the explicitly illustrative NTU wiring in [`Customization.en.md`](thesis/template/style/Customization.en.md).
+Students from other institutions keep every writing feature of the template and only add a style for their own school. The template keeps NCKU's layout, university names, date rules, and wording under `template/style/ncku/`, while thesis data always stays in `conf/conf.tex`; a new style starts as a copy of the neutral skeleton `template/style/custom/` with the school's own data filled in. `custom` is not the official format of any school, and the repository currently has no ready-made style for another institution. See [`Customization.en.md`](thesis/template/style/Customization.en.md) for the steps; NCKU students can also browse the [`9-college / 110-department command catalogue`](thesis/template/style/ncku/README.en.md).
 
 Guide: [`thesis/template/style/Customization.en.md`](thesis/template/style/Customization.en.md)
 

@@ -364,18 +364,18 @@ def check_public_voice() -> None:
 
     required_third_person = {
         "README.md": (
-            "本模版以XeLaTeX建置",
-            "本模版將共用renderer",
+            "本範本以XeLaTeX建置",
+            "本範本把成大的版面",
         ),
         "README.en.md": (
             "This XeLaTeX template supports",
-            "The template separates shared rendering",
+            "The template keeps NCKU's layout",
         ),
         "docs/README.md": ("本目錄記錄",),
         "docs/README.en.md": ("This directory records",),
-        "thesis/conf/README.md": ("repository baseline及migration hash不會",),
+        "thesis/conf/README.md": ("本範本在2.x期間保留所有1.x的指令",),
         "thesis/conf/README.en.md": (
-            "the repository baseline and migration hash remain unchanged",
+            "The template keeps every 1.x command",
         ),
     }
     for relative, markers in required_third_person.items():

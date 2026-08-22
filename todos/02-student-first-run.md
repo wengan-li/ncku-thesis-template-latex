@@ -141,26 +141,30 @@ disappears), keywords 224 and 246–248.
 - [x] A1/A4 Three build paths (Overleaf, terminal, editor) named in the root
       quick start, both languages.
 - [x] F2 Overleaf steps in `thesis/README.md` / `.en.md`.
-- [ ] A6 Repository topics: needs an admin account (`tachikoma-agent` has push
-      only, the topics endpoint returns 404). Owner runs
-      `gh repo edit wengan-li/ncku-thesis-template-latex --add-topic latex --add-topic xelatex --add-topic thesis-template --add-topic thesis --add-topic dissertation --add-topic ncku --add-topic taiwan`
-      or sets them in the repository settings.
+- [x] A6 Repository topics set by the owner on 2026-08-22 (`tachikoma-agent`
+      has push only; the topics endpoint returned 404): dissertation, latex,
+      ncku, taiwan, thesis, thesis-template, xelatex.
 - [x] Skill `student-first-run` written and registered in `AGENTS.md`,
       `.agents/skills/README.md`, `repo-maintenance`, and
       `documentation-management`.
 
 ### P1 — documentation restructure
 
-- [ ] A2/A3 Remove maintainer vocabulary from the root README download,
-      upgrade, and profile sections; NCKU path never mentions profiles.
-- [ ] B1/B2 `thesis/README.md`: drop the byte-pin rationale, move the 1.x
-      upgrade section to the end.
-- [ ] C4 `thesis/conf/README.md`: mark each section required/optional and cite
-      `conf/conf.tex` line numbers.
-- [ ] C5 Department lookup hint (search the Chinese name in
-      `template/style/ncku/README.md`).
-- [ ] A7 One term for the template in new Chinese prose (`論文範本`).
-- [ ] G2 Say that `example/` can be deleted once `\ExampleMode` is off.
+- [x] A2/A3 Root README: overview, setup, downloads, upgrade, and
+      other-institution sections rewritten in student terms; the NCKU path no
+      longer mentions profiles, immutable revisions, or regression evidence.
+- [x] B1/B2 `thesis/README.md`: byte-pin rationale replaced by "change only the
+      values"; the 1.x upgrade section moved to the end and rewritten as steps.
+- [x] C4 `thesis/conf/README.md`: every section opens with a required/optional
+      line citing the `conf/conf.tex` line numbers; profile wording replaced by
+      plain NCKU statements.
+- [x] C5 Department lookup hint (search the Chinese name, copy the left
+      column) in `conf/README.md` and the must-change table.
+- [x] A7 `本範本` throughout the root README body and `conf/README.md`
+      (headings and the historical H1 untouched); the gate's third-person
+      markers updated to the new sentences.
+- [x] G2 `thesis/README.md` says `example/` can be deleted once `\ExampleMode`
+      stays commented out.
 
 ### P2 — owner decisions
 

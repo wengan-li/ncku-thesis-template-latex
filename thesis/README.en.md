@@ -1,4 +1,4 @@
-<!-- doc-pair: student-readme; lang: en; topics: start-writing,choose-independent-settings,configure-thesis-information,migrate-from-1-x,build-the-final-document,continuous-preview-and-editors,use-overleaf,draft-watermark-and-certificate,common-errors,before-submission,other-community-alternatives -->
+<!-- doc-pair: student-readme; lang: en; topics: start-writing,choose-independent-settings,configure-thesis-information,build-the-final-document,continuous-preview-and-editors,use-overleaf,draft-watermark-and-certificate,common-errors,before-submission,migrate-from-1-x,other-community-alternatives -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -35,28 +35,19 @@ The teaching example is useful as a reference but rebuilds more slowly than a no
 
 ## Choose independent settings
 
-Documentation language, institution profile, cover language, degree, and content mode are independent. An international student may use the NCKU `ncku` profile, while students from other institutions can create a profile for their own school. Do not select an institution profile from the reader's language.
+NCKU students do not choose an institution style: extract the package and fill in `conf/conf.tex`; the three choices below are all made in that file. Students from other institutions first build a style for their own school by following [`template/style/Customization.en.md`](template/style/Customization.en.md), then enter their thesis data.
 
 | Decision | Choices |
 | --- | --- |
-| Institution | default `ncku` for NCKU students; custom profile for students from another institution |
 | Cover language | `\DisplayCoverInChi` or `\DisplayCoverInEng` |
 | Degree | `\MasterDegree` or `\PhdDegree` |
-| Content | own `context/context.tex` or `\ExampleMode` teaching example |
-
-The default project selects the NCKU profile in `template/style/style.tex`. Students from other institutions can follow [`template/style/Customization.en.md`](template/style/Customization.en.md) to create their own institution profile.
+| Content | comment out `\ExampleMode` to use your own `context/context.tex`; leave it to build the teaching example |
 
 ## Configure thesis information
 
-`conf/conf.tex` is the compatibility-preserved configuration file from v1.8.2. It remains byte-identical throughout 2.x so existing projects can migrate safely, and its original comments are therefore mainly Chinese. Use the packaged English [`conf/README.en.md`](conf/README.en.md) for a field-by-field guide. Do not rename macros or add `conf/style.tex` merely for translation.
+Every item in `conf/conf.tex` carries a Chinese comment; the English field-by-field guide is [`conf/README.en.md`](conf/README.en.md). Change only the values: do not rename commands or add other configuration files. Thesis data lives only in `conf/`; the university's layout, names, and date rules live under `template/style/`, which NCKU students never need to touch.
 
-Student metadata belongs in `conf/`; institution geometry, wording, date policy, and assets belong under `template/style/<profile>/`.
-
-## Migrate from 1.x
-
-V2 preserves the complete machine-audited 1.x helper surface through a compatibility adapter. Before migrating a thesis in progress, commit or archive the complete 1.x project and save its latest PDF. Preserve `conf/conf.tex`, `context/`, figures, bibliography data, and local certificate files; replace template-owned files with V2 and deliberately merge local edits to `thesis.tex`. Then run the direct build command below and compare the cover, dates, contents, citations, bibliography, body, and final pages.
-
-The complete compatibility-first and native-v2 paths are maintained at [`docs/v1-to-v2-migration.en.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.en.md). Existing 1.x helper calls do not require renaming during 2.x.
+Once the teaching example is no longer needed, the `example/` directory can be deleted to shrink the project; after deleting it, `\ExampleMode` must stay commented out or the build fails.
 
 ## Build the final document
 
@@ -137,6 +128,10 @@ For final submission, use the defense-certificate document produced by the offic
 7. Review pagination, contents, figure/table lists, bibliography, fonts, and final pages.
 8. Check the current NCKU, library, and department requirements; current official rules always take precedence.
 9. Use the official certificate and submission workflow required by the university system.
+
+## Migrate from 1.x
+
+A thesis started with a 1.x release moves straight to 2.x: every 1.x command is kept, and nothing needs renaming. Back up the whole 1.x project and its latest PDF first; keep your own `conf/conf.tex`, `context/`, figures, bibliography, and certificate files; replace the old files with `template/`, `thesis.tex`, and `cover.tex` from the 2.x package (if `thesis.tex` had been edited, note the edits and merge them); then rebuild and compare the cover, dates, contents, citations, bibliography, body, and final pages one by one. Full guide: [`docs/v1-to-v2-migration.en.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.en.md).
 
 ## Other community alternatives
 
