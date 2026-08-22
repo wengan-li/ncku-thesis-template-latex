@@ -132,11 +132,22 @@ jobs:
           fi
           echo "VERSION=$BUILD_VERSION" >> "$GITHUB_ENV"
 
+      - name: Check out tagged source for the release notes
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
       - name: Download verified workflow artifact
         uses: actions/download-artifact@v8
         with:
           name: release-assets-${{ env.VERSION }}
           path: release-artifacts
+
+      - name: Compose release notes from both changelog entries
+        shell: bash
+        # Tells a student which ZIP to download, then reproduces the tagged
+        # version's Traditional Chinese and English changelog entries.
+        run: python3 scripts/release/release-notes.py "$GITHUB_REF_NAME" --output release-notes.md
 
       - name: Create or update GitHub Release
         env:
@@ -147,9 +158,10 @@ jobs:
           assets=(release-artifacts/*)
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
             gh release upload "$GITHUB_REF_NAME" "${assets[@]}" --clobber
+            gh release edit "$GITHUB_REF_NAME" --notes-file release-notes.md
           else
             gh release create "$GITHUB_REF_NAME" "${assets[@]}" \
               --verify-tag \
-              --generate-notes \
+              --notes-file release-notes.md \
               --title "$GITHUB_REF_NAME"
           fi

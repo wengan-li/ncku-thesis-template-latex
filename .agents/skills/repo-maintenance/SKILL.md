@@ -15,6 +15,9 @@ first. Keep general LaTeX knowledge outside this repository; this skill contains
 only project-specific rules and pointers.
 Load [`documentation-management`](../documentation-management/SKILL.md) for
 requirements, todos, documentation lifecycle, consolidation, or path repair.
+Load [`student-first-run`](../student-first-run/SKILL.md) before changing
+READMEs, `conf/` or `context/` defaults, the teaching example, release notes,
+or the Overleaf package.
 
 ## Source of Truth
 
@@ -201,6 +204,13 @@ and contains exactly the members listed under
 The outer archives carry the version. Inner names remain stable and omit a
 redundant `example-` prefix. Loose generated PDFs are build intermediates, not
 public Release assets.
+
+Release notes come from the version's entries in `CHANGELOG.md` and
+`CHANGELOG.en.md` plus a short download guide; `scripts/release/release-notes.py`
+composes them and the promote job attaches them to the GitHub Release. Write
+both changelog entries with the exact tag before tagging: `just release
+<version>` fails for a release version without them, and `just test` checks
+that the newest entry composes.
 
 Do not move an immutable tag or rebuild old tagged PDFs during an asset-only
 migration. Follow `docs/features/release-and-distribution.en.md` for download,
