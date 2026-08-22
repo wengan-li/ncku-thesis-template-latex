@@ -234,7 +234,9 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 - Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing and
   `論文範本` in new Chinese prose. Run
   `python3 scripts/test/check-bilingual-docs.py`; its structural result does not
-  replace human semantic-parity review.
+  replace human semantic-parity review. It also warns (without failing) when
+  one side of a language pair has accumulated commits since its companion last
+  changed, which is the usual sign that a translation went stale.
 - Load `documentation-management` for documentation creation, consolidation,
   requirements, todos, path repair, or lifecycle changes.
 

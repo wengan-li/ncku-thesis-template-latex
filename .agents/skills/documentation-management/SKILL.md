@@ -168,7 +168,12 @@ compatibility-manifest maintenance, and commit rollback workflow.
   merely to translate comments.
 - Mechanical checks prove structure, links, casing, and selected terminology
   only. Human review must still verify that warnings, actions, defaults, and
-  exceptions mean the same thing in both languages.
+  exceptions mean the same thing in both languages. The checker prints a
+  non-failing pair-drift warning when one side of a pair has changed in two or
+  more commits since its companion last changed; treat it as a prompt to
+  re-read both files, not as proof either way (shallow CI checkouts cannot see
+  enough history to warn).
+
 - Stable topic/H2 parity is necessary but cannot protect content deleted from
   both companions. Add positive checker anchors for the protected title, the
   three student sections, their current official routes, and public/internal

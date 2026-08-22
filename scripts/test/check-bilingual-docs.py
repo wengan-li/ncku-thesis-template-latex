@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import os
 import re
+import subprocess
 import sys
 import urllib.parse
 from pathlib import Path
@@ -60,6 +61,15 @@ SUMMARY_PAIRS: tuple[tuple[str, str], ...] = (
 CHINESE_USER_DOCS = tuple(pair[0] for pair in GUIDE_PAIRS + SUMMARY_PAIRS) + (
     "CHANGELOG.md",
 )
+# Every language pair whose two sides are expected to move together. A side
+# that keeps accumulating commits while its companion stays untouched is the
+# drift the structural checks cannot see; it is reported as a warning only.
+DRIFT_PAIRS: tuple[tuple[str, str], ...] = (
+    tuple((zh, en) for zh, en, _, _ in GUIDE_PAIRS)
+    + SUMMARY_PAIRS
+    + (("CHANGELOG.md", "CHANGELOG.en.md"),)
+)
+PAIR_DRIFT_WARN_COMMITS = 2
 ENGLISH_USER_DOCS = tuple(pair[1] for pair in GUIDE_PAIRS + SUMMARY_PAIRS)
 CANTONESE_ONLY = ("呢個", "只係", "唔", "嘅", "喺", "咁樣")
 WRONG_PRODUCT_CASING = re.compile(r"\b(?:LaTex|Latex|XeLatex|Xelatex)\b")
@@ -718,6 +728,42 @@ def check_requirements_directory() -> None:
         )
 
 
+def git_output(*args: str) -> str | None:
+    try:
+        result = subprocess.run(
+            ["git", *args], cwd=ROOT, capture_output=True, text=True, check=True
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return result.stdout.strip()
+
+
+def commits_since_companion_changed(changed: str, companion: str) -> int | None:
+    """Count commits touching `changed` after the last commit touching `companion`.
+
+    Returns None when history is unavailable (no Git, shallow clone without the
+    companion's last change, or an untracked file) so the caller can stay quiet.
+    """
+    last = git_output("log", "-1", "--format=%H", "--", companion)
+    if not last:
+        return None
+    count = git_output("rev-list", "--count", f"{last}..HEAD", "--", changed)
+    return int(count) if count and count.isdigit() else None
+
+
+def pair_drift_warnings() -> list[str]:
+    warnings: list[str] = []
+    for zh, en in DRIFT_PAIRS:
+        for changed, companion in ((en, zh), (zh, en)):
+            unmatched = commits_since_companion_changed(changed, companion)
+            if unmatched is not None and unmatched >= PAIR_DRIFT_WARN_COMMITS:
+                warnings.append(
+                    f"{changed} changed in {unmatched} commits since {companion} "
+                    "last changed; review the pair for semantic drift"
+                )
+    return warnings
+
+
 def check_links() -> int:
     issues: list[str] = []
     checked = 0
@@ -779,6 +825,8 @@ def main() -> int:
         f"{len(GUIDE_PAIRS)} complete guide pairs, "
         f"{len(SUMMARY_PAIRS)} summary pairs, {links} Markdown links"
     )
+    for warning in pair_drift_warnings():
+        print(f"Pair drift WARNING: {warning}", file=sys.stderr)
     print("Semantic translation parity remains a manual review gate.")
     return 0
 
