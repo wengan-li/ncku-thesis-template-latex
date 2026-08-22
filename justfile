@@ -131,7 +131,7 @@ _test-v1-project-migration: check
     grep -Fxq 'INPUT ./template/style/ncku/ncku.tex' "{{ build_dir }}/thesis.fls"
     grep -Fxq 'INPUT ./template/style/ncku/college.tex' "{{ build_dir }}/thesis.fls"
     grep -Fxq 'INPUT ./template/style/ncku/department.tex' "{{ build_dir }}/thesis.fls"
-    grep -Eq '^Pages:[[:space:]]+271$' "{{ build_dir }}/thesis.pdfinfo"
+    grep -Eq '^Pages:[[:space:]]+261$' "{{ build_dir }}/thesis.pdfinfo"
     grep -Eq '^Page size:.*A4' "{{ build_dir }}/thesis.pdfinfo"
     grep -Fq 'National Cheng Kung University' "{{ build_dir }}/thesis-cover.txt"
     grep -Fq 'Institute of Computer Science and' "{{ build_dir }}/thesis-cover.txt"

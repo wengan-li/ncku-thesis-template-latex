@@ -54,7 +54,7 @@ paths, duplicate numbers, empty reserved groups, and missing layout anchors.
 | --- | --- |
 | 1.x declarations | 597 LaTeX/xparse plus 65 literal `\def` entries; 22 runtime-dead comment-environment declarations audited separately |
 | Unchanged 1.x project | 18 student-owned files / 296,726 bytes pinned to v1.8.2; unchanged entry/config and active StudentMode runtime paths |
-| Canonical integration document | 271 A4 pages, converged references/citations, expected text and dependency records |
+| Canonical integration document | 261 A4 pages (271 before the 2026-08-22 teaching-document restructure), converged references/citations, expected text and dependency records |
 | Student package | regular-file list equals tracked `HEAD:thesis`; direct extracted XeLaTeX build; no repository-only tooling or redundant `thesis/` wrapper |
 | Profiles | default NCKU output plus six-page neutral/custom cover/oral matrix with no NCKU visible policy or watermark asset |
 | Numbering | all general/appendix selectors, seven counter styles, dynamic values, repeatability, unknown/empty no-ops |
@@ -252,6 +252,14 @@ small isolated/student improvements, and unchanged output.
 
 ### Accepted
 
+- Restructure the teaching document for first-time readers (2026-08-22): the
+  usage and writing chapters follow the introduction directly; the origin
+  story and "words from professors" move into the appendix; the MiKTeX 2.9 /
+  Texmaker screenshot chapter (23 PNGs, about 0.85 MB) is replaced by a
+  three-path section (Overleaf, terminal, editor); the Adobe CS5 / Office 2013
+  figure-conversion recipes shrink to "export PDF, crop with `pdfcrop`". The
+  canonical page count moved from 271 to 261; references and citations still
+  converge, and the `justfile` pin follows the new count.
 - Remove the legacy `fp` path for three numeric operations using the already
   loaded LaTeX programming layer. All 12 `fp` inputs (about 117 KB) leave the
   active graph while decimal, negative-modulo, expansion, and group semantics

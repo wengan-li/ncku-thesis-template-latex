@@ -4,7 +4,7 @@
 
 # 成大論文範本學生專案
 
-此目錄是可直接使用的學生專案。版本化的GitHub Release學生套件會將這些檔案放在單一`ncku-thesis-template-latex/`目錄內；完整儲存庫的測試、發行腳本及維護工具不會包含在學生套件中。本套件的授權條款見[`LICENSE`](LICENSE)。
+此目錄是可直接使用的學生專案。版本化的GitHub Release學生套件會將這些檔案放在單一`ncku-thesis-template-latex/`目錄內；完整儲存庫的測試、發行腳本及維護工具不會包含在學生套件中。本套件的授權條款見[`LICENSE`](LICENSE)；授權只涵蓋範本檔案，不涵蓋同學自己的論文內容。
 
 ## 開始撰寫
 
@@ -17,7 +17,7 @@
 
 | 項目 | `conf/conf.tex`行 | 要做的事 | 不改會怎樣 |
 | --- | --- | --- | --- |
-| 內容模式 | 13 | 在`\ExampleMode`行首加`%` | 建置出271頁教學文件，不是自己的論文 |
+| 內容模式 | 13 | 在`\ExampleMode`行首加`%` | 建置出整份教學文件，不是自己的論文 |
 | 封面語言 | 44 | 保留`\DisplayCoverInEng`或改為`\DisplayCoverInChi` | 封面語言不符系所要求 |
 | 題目 | 71–73 | `\SetTitle{中文題目}{English Title}`；圖書館要求中英文題目都要有 | 封面印出本範本的名稱 |
 | 學位 | 99 | 碩士改為`\MasterDegree`；博士保留`\PhdDegree` | 封面與證明書顯示錯誤學位 |
@@ -89,7 +89,7 @@ Set `thesis.tex` as the root/master document / 將`thesis.tex`設為主文件。
 2. 在Menu確認Compiler為XeLaTeX、Main document為`thesis.tex`。
 3. 按Recompile；需要完整重建時選「Recompile from scratch」。
 
-Overleaf範本已關閉`\ExampleMode`與初稿標記，直接填寫`conf/conf.tex`即可。免費方案有編譯時間限制，不要在Overleaf開啟`\ExampleMode`建置271頁教學文件。Overleaf範本與GitHub Releases是兩個獨立更新的來源，Overleaf的版本可能較舊；需要最新修正時請下載GitHub Releases的學生套件在本機建置。
+Overleaf範本已關閉`\ExampleMode`與初稿標記，直接填寫`conf/conf.tex`即可。免費方案有編譯時間限制，不要在Overleaf開啟`\ExampleMode`建置整份教學文件。Overleaf範本與GitHub Releases是兩個獨立更新的來源，Overleaf的版本可能較舊；需要最新修正時請下載GitHub Releases的學生套件在本機建置。
 
 ## 初稿、浮水印與證明書
 
@@ -101,7 +101,7 @@ Overleaf範本已關閉`\ExampleMode`與初稿標記，直接填寫`conf/conf.te
 
 | 看到的情況 | 原因 | 解法 |
 | --- | --- | --- |
-| 建置出271頁的教學文件 | `conf/conf.tex`第13行的`\ExampleMode`仍然啟用 | 在該行行首加`%`後重新建置 |
+| 建置出整份教學文件（兩百多頁） | `conf/conf.tex`第13行的`\ExampleMode`仍然啟用 | 在該行行首加`%`後重新建置 |
 | `! LaTeX Error: File 'xxx.sty' not found.` | TeX發行版缺少套件 | MiKTeX：在MiKTeX Console安裝或開啟自動安裝；TeX Live／MacTeX：`tlmgr install <套件名>`，或安裝完整scheme |
 | `! Undefined control sequence.`，下一行顯示`\SetDept...` | 系所指令打錯或不存在 | 在[`template/style/ncku/README.md`](template/style/ncku/README.md)查正確指令 |
 | `! fontspec error: "font-not-found"` | `template/fonts/`不完整，或不是在包含`thesis.tex`的目錄建置 | 重新解壓套件，並在專案根目錄執行建置指令 |

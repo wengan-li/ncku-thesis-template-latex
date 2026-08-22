@@ -2,225 +2,94 @@
 \StartSection{產生論文 Generate Thesis}{chapter:how-to:use:generate}
 % ------------------------------------------------
 
-這邊會簡單講解如何安裝基本的程式來產生你的論文.
+把LaTeX變成PDF有三種方式, 選一種即可. 三種方式產生的PDF相同, 差別只在於要不要安裝軟體, 以及習慣用什麼來編輯.
 
-注意: 本節的截圖與選單路徑來自MiKTeX 2.9與舊版Texmaker的年代, 現行版本的畫面會不同 (新版MiKTeX改用MiKTeX Console更新package). 其實只要發行版包含XeLaTeX, BibTeX與\texttt{latexmk}即可, MiKTeX, TeX Live或MacTeX都可以使用; 編輯器亦不限於Texmaker.
+\begin{DescriptionFrame}
+\begin{verbatim}
+方式一  Overleaf         不用安裝軟體, 在瀏覽器內編寫和產生
+方式二  本機安裝+終端機   TeX Live/MacTeX/MiKTeX, 一行指令產生
+方式三  本機安裝+編輯器   同方式二安裝, 再用Texmaker/TeXstudio產生
+\end{verbatim}
+\end{DescriptionFrame}
 
-\StartSubSection{MiKTeX安裝}
-首先我們需要MiKTeX來幫我們來轉LaTeX成PDF.
-
-  \InsertFigure
-    [scale=0.5,
-      caption={MiKTeX Logo}]
-    {./example/how-to/use/build/pic/miktex/logo.png}
-
-首先去MiKTeX的網頁\RefBib{web:miktex:website}來下載它回來, 它預設在`Recommended Download'是32-bit的, 所以如果你要下載64-bit的話, 就要按`Other Downloads'中的第一個.
-
-  \InsertFigure
-    [scale=0.25,
-      caption={Download MiKTeX}]
-    {./example/how-to/use/build/pic/miktex/mdownload.png}
-
-  \InsertFigure
-    [scale=0.4,
-      caption={安裝MiKTeX}]
-    {./example/how-to/use/build/pic/miktex/minstall.png}
-
-安裝MiKTeX其實沒有什麼需要太在意的東西, 但由獨有一個東西需要設定, 在不停按下一步時, 會出現fig \RefTo{fig:how-to:use:build:package-download}這個畫面, 在這邊推薦選擇`\textbf{Yes}', 因為這邊是用來設定自動幫你下載一些你需要使用的工具來產生論文.
-
-  \InsertFigure
-    [scale=0.4,
-      caption={Download Package},
-      label={fig:how-to:use:build:package-download}]
-    {./example/how-to/use/build/pic/miktex/auto-download.png}
-
-最後就要等待安裝, 由於內容滿多, 所以在這邊可能需要等待幾分鐘.
-
-  \InsertFigure
-    [scale=0.4,
-      caption={等待安裝完成}]
-    {./example/how-to/use/build/pic/miktex/installing.png}
-
-\newpage
-\StartSubSection{更新MiKTeX}
-  不管你是否第一次download MiKTeX, 都應該要定時去更新一些package的版本, 因為新package會可能有性能提升或提供新功能/內容, 如同這模版更新. 如果你看到類似的錯誤訊息, 或其他的寫法, 在說某某package太舊, 那就更加要更新.
-
-  \InsertFigure
-    [scale=0.4,
-      caption={例子: package<zhnumber>說package<expl3>版本太舊}]
-    {./example/how-to/use/build/pic/miktex/version-too-old.png}
-
-  如你在使用Windows的話, 使用路徑去找MiKTeX的Update程式 (必須是Admin那一個):\\
-  Start (開始) -> MiKTeX 2.9 -> Maintenance (Admin) -> Update (Admin)
-
-  \InsertFigure
-    [scale=0.95,
-      caption={在Windows中更新MiKTeX}]
-    {./example/how-to/use/build/pic/miktex/windows-start.png}
-
-\newpage
-  當開了Update程式後, 應該會看到這個畫面
-
-  \InsertFigure
-    [scale=0.65,
-      caption={Update程式畫面}]
-    {./example/how-to/use/build/pic/miktex/miktex-update-1.png}
-
-  理應直接`下一步'則可, 當然如果你有要求的話, 可選`Let me choose a remote package repository'去選地區來download packages. 不論哪一種, 按`下一步'都會顯示這畫面, 並要等待一些時間 (大約1~幾分鐘).
-
-  \InsertFigure
-    [scale=0.65,
-      caption={Searching packages}]
-    {./example/how-to/use/build/pic/miktex/miktex-update-2.png}
-
-\newpage
-  正常情況下, 你會看到所有package都會打勾, 之後你再`下一步'則可更新全部package. 但如果你看到如下圖的情況中, 你沒法選擇`Select All', 這應該是代表有部份miktex或package需優先update, 所以都不用擔心, 直接`下一步'即可. 但如果真的出現這情況, 即是你要更新2次.
-
-  \InsertFigure
-    [scale=0.6,
-      caption={Select package}]
-    {./example/how-to/use/build/pic/miktex/miktex-update-3.png}
-
-  假如你知道要只更新哪一個package即可, 那找你要的package再打勾就好了. 如剛剛的情況是package<expl3>太舊, 那只要更新<l3kernel>和<l3packages>.
-
-  \InsertFigure
-    [scale=0.6,
-      caption={package <l3kernel> and <l3packages>}]
-    {./example/how-to/use/build/pic/miktex/miktex-update-4.png}
-
-  之後就是等待它download和更新. 如果要更新的內容很多, 有可能會需要1小時或以上. 所以當看到正在download時, 你已經可以不用管了.
-
-  \InsertFigure
-    [scale=0.65,
-      caption={Downloading package}]
-    {./example/how-to/use/build/pic/miktex/miktex-update-5.png}
-
-  當update完, 它不會顯示說結束, 但你會看到畫面空掉, 而且有`下一步'可以按, 這代表已更新完了.
-
-  \InsertFigure
-    [scale=0.65,
-      caption={等待安裝完成}]
-    {./example/how-to/use/build/pic/miktex/miktex-update-6.png}
-
-  如果你要再次update, 即是重複這些步驟.
-
-% ------------------------------------------------
-\newpage
-\StartSubSection{Texmaker安裝}
-
-我們需要Texmaker來幫我們處理產生流程和看PDF用.
-
-  \InsertFigure
-    [scale=0.5,
-      caption={Texmaker Logo}]
-    {./example/how-to/use/build/pic/texmaker/logo.png}
-
-首先去Texmaker的網頁\RefBib{web:texmaker:website}來下載它回來, 推薦使用`Executable file for windows', 同時使用`Alternative download link' (因為這個line是使用Google Drive, 所以速度能有保證).
-
-  \InsertFigure
-    [scale=0.25,
-      caption={Download Texmaker}]
-    {./example/how-to/use/build/pic/texmaker/download.png}
-
-安裝Texmaker其實沒有什麼要設定的東西, 不停按下一步就行了.
-
-  \InsertFigure
-    [scale=0.35,
-      caption={安裝Texmaker}]
-    {./example/how-to/use/build/pic/texmaker/install.png}
-
-  \InsertFigure
-    [scale=0.35,
-      caption={安裝Texmaker}]
-    {./example/how-to/use/build/pic/texmaker/install-2.png}
-
-至於如果更新Texmaker的話, 去網頁download最新版, 之後重複這些步驟即可.
-
-% ------------------------------------------------
-\newpage
-\StartSubSection{產生論文和封面}
-
-當安裝完Texmaker和MiKTeX後, 直接點開`thesis.tex', 可以看到這個畫面(Fig \RefTo{fig:how-to:use:build:texmaker:thesis.tex}).
-
-  \InsertFigure
-    [scale=0.25,
-      caption={Texmaker打開thesis.tex畫面},
-      label={fig:how-to:use:build:texmaker:thesis.tex}]
-    {./example/how-to/use/build/pic/texmaker/1.png}
-
-建議將Texmaker的編譯命令設為：
-
-\begin{center}
-\verb|latexmk -xelatex -synctex=1 -interaction=nonstopmode %.tex|
-\end{center}
-
-並以`thesis.tex'作為主文件。\texttt{latexmk}會按需要自動執行XeLaTeX、BibTeX及重複編譯，不需要人手猜測次序。圖\RefTo{fig:how-to:use:build:texmaker:to_xelatex}所示的直接XeLaTeX模式仍可作基本相容用法，但正式文件應以\texttt{latexmk}完成所有引用及目錄收斂。(註: 第一次使用時MiKTeX可能會自動下載工具，所以會等待比較久。)
-
-  \InsertFigure
-    [scale=0.8,
-      caption={改使用XeLaTeX},
-      label={fig:how-to:use:build:texmaker:to_xelatex}]
-    {./example/how-to/use/build/pic/texmaker/2.png}
-
-\newpage
-之後只要等待下方出現一些結果(Fig \RefTo{fig:how-to:use:build:texmaker:gen_message})就是說明已產生完成.
-
-  \InsertFigure
-    [scale=1.0,
-      caption={處理的結果},
-      label={fig:how-to:use:build:texmaker:gen_message}]
-    {./example/how-to/use/build/pic/texmaker/2-5.png}
-
-如果PDF產生成功, 那接旁邊`瀏覽PDF'的箭頭, 會出現一個視窗(Fig \RefTo{fig:how-to:use:build:texmaker:new_pdf})來顯示那個PDF檔.
-
-  \InsertFigure
-    [scale=0.25,
-      caption={瀏覽PDF},
-      label={fig:how-to:use:build:texmaker:new_pdf}]
-    {./example/how-to/use/build/pic/texmaker/3.png}
-
-\newpage
-把以上的步驟用在`cover.tex'上(Fig \RefTo{fig:how-to:use:build:texmaker:cover.tex})就能去產生你的封面.
-
-  \InsertFigure
-    [scale=0.3,
-      caption={Texmaker打開cover.tex畫面},
-      label={fig:how-to:use:build:texmaker:cover.tex}]
-    {./example/how-to/use/build/pic/texmaker/4.png}
-
-當如果你已經把`thesis.tex'和`cover.tex'都產生了PDF, 你的資料夾應該會有這些檔案和資料夾(Fig \RefTo{fig:how-to:use:build:texmaker:dir}), 那2個PDF正是你需要的東西.
-
-  \InsertFigure
-    [scale=0.5,
-      caption={資料夾內容},
-      label={fig:how-to:use:build:texmaker:dir}]
-    {./example/how-to/use/build/pic/texmaker/5.png}
-
-% ------------------------------------------------
-
-\newpage
-\StartSubSection{產生PDF的流程}
-
-在編譯LaTeX成PDF時，必須讓目錄、交叉引用及參考文獻(例如\verb|\RefBib{}|)完成所需的多輪處理。請在專案目錄執行：
+不論哪一種方式, 正式產生論文的指令都是同一句. \texttt{latexmk}會自動執行XeLaTeX和BibTeX, 並重複到目錄, 引用和參考文獻都正確為止, 不需要自己猜要跑幾次:
 
 \begin{center}
 \verb|latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex|
 \end{center}
 
-\texttt{latexmk}會讀取dependency及auxiliary files，只執行當次需要的XeLaTeX及BibTeX passes；一般正文修改通常不需要重新執行BibTeX。
+% ------------------------------------------------
+\StartSubSection{方式一: Overleaf}
 
-寫作時可以保持continuous preview：
+Overleaf是線上的LaTeX環境, 本模版在Overleaf Gallery有公開範本\RefBib{web:overleaf:template}.
+
+\begin{enumerate}
+  \item 開啟範本頁面, 按`Open as Template', 範本會複製到你的Overleaf帳號.
+  \item 在左上角Menu確認Compiler是XeLaTeX, Main document是`thesis.tex'.
+  \item 按Recompile. 要完整重建時, 在Recompile旁的選單選`Recompile from scratch'.
+\end{enumerate}
+
+Overleaf上的範本已經關閉`\verb|\ExampleMode|'和初稿標記, 直接填寫`conf/conf.tex'即可. 免費方案有編譯時間限制, 所以不要在Overleaf開啟`\verb|\ExampleMode|'去產生這份教學文件. Overleaf範本和GitHub Releases是分開更新的, Overleaf上的版本可能較舊; 需要最新修正時, 請下載GitHub Releases的學生套件在本機產生.
+
+% ------------------------------------------------
+\StartSubSection{方式二: 本機安裝TeX}
+
+本機需要一個包含XeLaTeX, BibTeX和\texttt{latexmk}的TeX發行版, 以下三個都可以:
+
+\begin{description}
+  \item[TeX Live (Windows / Linux)] \hfill\\
+    到TeX Live網頁\RefBib{web:texlive:website}下載安裝程式, 選擇完整安裝(full scheme), 就不會缺少套件. 完整安裝需要數GB的空間和一段時間.
+
+  \item[MacTeX (macOS)] \hfill\\
+    到MacTeX網頁\RefBib{web:mactex:website}下載安裝, 內容就是macOS版的TeX Live完整安裝.
+
+  \item[MiKTeX (Windows)] \hfill\\
+    到MiKTeX網頁\RefBib{web:miktex:website}下載安裝. 安裝時把`Install missing packages on-the-fly'設為Yes, 第一次產生論文時MiKTeX會自動下載需要的套件, 所以會等比較久. 之後定期在MiKTeX Console按Update更新套件; 看到某個package太舊的錯誤訊息時, 就是要更新了.
+\end{description}
+
+安裝完後開一個終端機(Windows的命令提示字元或PowerShell, macOS的Terminal, Linux的任何終端機), 輸入\verb|latexmk --version|和\verb|xelatex --version|, 兩個都有顯示版本就代表安裝成功.
+
+要產生論文時, 在終端機切換到包含`thesis.tex'的資料夾, 執行上面那句\texttt{latexmk}指令, 就會產生`thesis.pdf'. 電子版只需要這個檔案, 它已包含封面內頁. 印刷版另外需要交給影印店的封面檔, 把指令中的`thesis.tex'換成`cover.tex'即可, 會產生`cover.pdf'.
+
+% ------------------------------------------------
+\StartSubSection{方式三: 編輯器}
+
+方式三同樣要先完成方式二的安裝, 之後在編輯器內按一個按鈕就能產生PDF並預覽.
+
+\begin{description}
+  \item[Texmaker / TeXstudio] \hfill\\
+    在Options (選項) -> Configure -> Commands, 把其中一個編譯指令(如LaTeX或Build)設為\\
+    \verb|latexmk -xelatex -synctex=1 -interaction=nonstopmode %.tex|\\
+    並把`thesis.tex'設為主文件(Master / Root document). 之後不論正在編輯哪個檔案, 按編譯都會產生整份論文.
+
+  \item[VS Code + LaTeX Workshop] \hfill\\
+    安裝LaTeX Workshop擴充功能, 在設定中新增一個recipe, 指令為\\
+    \verb|latexmk -xelatex -synctex=1 -interaction=nonstopmode %DOC%|\\
+    並以`thesis.tex'為root file.
+\end{description}
+
+編輯檔案時請用支援UTF-8的編輯器, 上述的編輯器都是. 用Windows內建記事本的舊版本儲存會變成ANSI編碼, 中文就會變成亂碼.
+
+% ------------------------------------------------
+\StartSubSection{產生PDF的流程}
+
+在編譯LaTeX成PDF時, 必須讓目錄, 交叉引用及參考文獻(例如\verb|\RefBib{}|)完成所需的多輪處理. \texttt{latexmk}會讀取dependency及auxiliary files, 只執行當次需要的XeLaTeX及BibTeX passes; 一般正文修改通常不需要重新執行BibTeX.
+
+寫作時可以保持continuous preview, 儲存任何被引用的TeX, BibTeX或圖片檔後, PDF會自動重建:
 
 \begin{center}
 \verb|latexmk -xelatex -pvc -view=none -synctex=1 thesis.tex|
 \end{center}
 
-儲存任何被引用的TeX、BibTeX或圖片檔後，PDF會自動重建。\verb|-view=none|避免另外打開第二個viewer；可繼續使用Texmaker或TeXstudio內置、能自動重新載入的PDF viewer。停止監察可按\texttt{Ctrl-C}。
+\verb|-view=none|避免另外打開第二個viewer; 可繼續使用編輯器內置, 能自動重新載入的PDF viewer. 停止監察可按\texttt{Ctrl-C}.
 
-實際編寫自己論文時，請在\verb|conf/conf.tex|關閉\verb|\ExampleMode|。
+實際編寫自己論文時, 請在\verb|conf/conf.tex|關閉\verb|\ExampleMode|. 主文件會改用\verb|context/context.tex|; 完整教學範例包含大量圖片及附錄PDF, 重建時間會較長.
 
-主文件會改用\verb|context/context.tex|；完整教學範例包含大量圖片及附錄PDF，重建時間會較長。
+如果auxiliary files損壞, 可執行\verb|latexmk -C thesis.tex|清除可重新產生的檔案, 再重新build. 不要把反覆刪檔及猜測XeLaTeX/BibTeX次序當成正常流程. 正式提交前應再執行一次普通\texttt{latexmk} build, 並檢查完整PDF, 頁碼, 目錄, 引用及參考文獻.
 
-如果auxiliary files損壞，可執行\verb|latexmk -C thesis.tex|清除可重新產生的檔案，再重新build。不要把反覆刪檔及猜測XeLaTeX/BibTeX次序當成正常流程。正式提交前應再執行一次普通\texttt{latexmk} build，並檢查完整PDF、頁碼、目錄、引用及參考文獻。
+% ------------------------------------------------
+\StartSubSection{遇到錯誤時}
+
+看log時先找第一個以`!'開頭的行, 那才是真正的錯誤; 後面的訊息多數只是連鎖反應. 常見的錯誤訊息, 原因和解法整理在學生套件的`README.md'中`常見錯誤'一節, 請先在那邊找.
 
 % ------------------------------------------------
