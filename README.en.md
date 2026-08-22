@@ -31,11 +31,13 @@ Official guidance last checked on `2026-07-12`:
 
 ## Quick start
 
+There are three ways to build; pick one. Use [Overleaf](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn) to avoid installing anything; run the command below in a terminal if TeX Live, MacTeX, or MiKTeX is installed; or set Texmaker or TeXstudio to compile with `latexmk` and `thesis.tex` as the main document. The student package [`README.en.md`](thesis/README.en.md) gives the steps for all three.
+
 1. Download `ncku-thesis-template-latex-<version>.zip` from [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases).
-2. Extract it and read [`README.en.md`](thesis/README.en.md) and [`conf/README.en.md`](thesis/conf/README.en.md) at the package root.
+2. Extract it and read [`README.en.md`](thesis/README.en.md) at the package root, then edit `conf/conf.tex` by its must-change table; [`conf/README.en.md`](thesis/conf/README.en.md) explains every field.
 3. Disable `\ExampleMode` in `conf/conf.tex` and enter thesis information.
 4. Select chapters in `context/context.tex` and write content under `context/`.
-5. Run the following command from the directory containing `thesis.tex`.
+5. Build with any of the three ways; the terminal command is:
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex

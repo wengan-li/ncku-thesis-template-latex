@@ -14,6 +14,7 @@ You must follow Intent-Driven Software Development (IDSD) for every task: clarif
 IDSD skill: `.agents/skills/idsd-workflow/SKILL.md`
 Repository maintenance skill: `.agents/skills/repo-maintenance/SKILL.md`
 Documentation management skill: `.agents/skills/documentation-management/SKILL.md`
+Student first-run skill: `.agents/skills/student-first-run/SKILL.md`
 
 # AGENTS.md
 
@@ -82,6 +83,8 @@ Every release must package artifacts from the exact tagged source. The intended 
 ncku-thesis-template-latex-<version>.zip
 ncku-thesis-template-latex-examples-<version>.zip
 ```
+
+Release notes are composed by `scripts/release/release-notes.py` from the version's entries in `CHANGELOG.md` and `CHANGELOG.en.md` plus a download guide; write both entries with the exact tag before tagging, because `just release <version>` fails for a release version without them.
 
 The custom release ZIP is the student-ready contents of `thesis/`, not a duplicate full-repository archive. It extracts to one `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/`, and `template/` directly inside. Repository tooling, tests, and a redundant `thesis/` wrapper must not be included; GitHub already provides automatic full-source archives.
 
@@ -176,8 +179,14 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 - `CLAUDE.md` points here and stays short.
 - Repo-local skills are `.agents/skills/idsd-workflow/`,
   `.agents/skills/repo-maintenance/`,
-  `.agents/skills/documentation-management/`, and
+  `.agents/skills/documentation-management/`,
+  `.agents/skills/student-first-run/`, and
   `.agents/skills/unslop/`.
+- Load `student-first-run` before changing anything a student sees before
+  their first build: root and package READMEs, `conf/` and `context/`
+  defaults, the teaching example, release notes, and the Overleaf package.
+  Design from the viewpoint of a student meeting the template for the first
+  time: what to change, where, and what happens otherwise.
 - `unslop` applies to conversational and commit prose. Gate-checked public
   documentation keeps the repository third-person voice rules; its
   first-person advice does not override them.

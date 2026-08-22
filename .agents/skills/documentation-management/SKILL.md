@@ -14,6 +14,10 @@ repairing documentation paths after a source or release change.
 Load the sibling [`idsd-workflow`](../idsd-workflow/SKILL.md) first. Load
 [`repo-maintenance`](../repo-maintenance/SKILL.md) when source, tests, packaging,
 CI, releases, or public distribution are involved.
+Load [`student-first-run`](../student-first-run/SKILL.md) when the change
+touches a page, default, teaching chapter, or release note that a student sees
+before their first build; it supplies the audience lens the pair and voice
+gates cannot check.
 
 ## Canonical surfaces
 

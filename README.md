@@ -31,11 +31,13 @@
 
 ## 快速開始
 
+建置方式有三種，選一種即可：不想安裝任何軟體就用[Overleaf](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn)；已安裝TeX Live、MacTeX或MiKTeX的在終端機執行下方指令；習慣Texmaker或TeXstudio的把編譯指令設為`latexmk`並以`thesis.tex`為主文件。三種方式的詳細步驟都在學生套件的[`README.md`](thesis/README.md)。
+
 1. 從[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases)下載`ncku-thesis-template-latex-<version>.zip`。
-2. 解壓後先閱讀套件根目錄的[`README.md`](thesis/README.md)及[`conf/README.md`](thesis/conf/README.md)。
+2. 解壓後先閱讀套件根目錄的[`README.md`](thesis/README.md)，按照其中的必改清單修改`conf/conf.tex`；每個欄位的說明見[`conf/README.md`](thesis/conf/README.md)。
 3. 在`conf/conf.tex`停用`\ExampleMode`並填寫論文資料。
 4. 在`context/context.tex`選擇章節，並於`context/`撰寫內容。
-5. 在包含`thesis.tex`的目錄執行下方指令。
+5. 用上述任何一種方式建置；終端機指令如下。
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
