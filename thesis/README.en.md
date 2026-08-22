@@ -4,7 +4,7 @@
 
 # NCKU thesis-template student project
 
-This directory is the complete student project. The versioned GitHub Release student package places these files directly under one `ncku-thesis-template-latex/` directory; repository tests, release scripts, and repository-only tooling are intentionally excluded. The package licence is in [`LICENSE`](LICENSE).
+This directory is the complete student project. The versioned GitHub Release student package places these files directly under one `ncku-thesis-template-latex/` directory; repository tests, release scripts, and repository-only tooling are intentionally excluded. The package licence is in [`LICENSE`](LICENSE); it covers the template files, not your own thesis content.
 
 ## Start writing
 
@@ -17,7 +17,7 @@ This directory is the complete student project. The versioned GitHub Release stu
 
 | Item | `conf/conf.tex` line | What to do | If left unchanged |
 | --- | --- | --- | --- |
-| Content mode | 13 | Put `%` in front of `\ExampleMode` | Builds the 271-page teaching document instead of your thesis |
+| Content mode | 13 | Put `%` in front of `\ExampleMode` | Builds the whole teaching document instead of your thesis |
 | Cover language | 44 | Keep `\DisplayCoverInEng` or switch to `\DisplayCoverInChi` | Cover language does not match the department rule |
 | Title | 71–73 | `\SetTitle{中文題目}{English Title}`; the library requires both titles | Cover prints the template's own name |
 | Degree | 99 | Master's students switch to `\MasterDegree`; doctoral students keep `\PhdDegree` | Cover and certificate show the wrong degree |
@@ -95,7 +95,7 @@ To avoid installing TeX, use the [public template on Overleaf](https://www.overl
 2. In the Menu, confirm Compiler is XeLaTeX and Main document is `thesis.tex`.
 3. Recompile; choose "Recompile from scratch" when a full rebuild is needed.
 
-The Overleaf template ships with `\ExampleMode` and the draft marker already off, so fill in `conf/conf.tex` directly. The free plan has a compile time limit; do not enable `\ExampleMode` on Overleaf to build the 271-page teaching document. The Overleaf template and GitHub Releases are updated independently and the Overleaf copy may be older; for the newest fixes, download the student package from GitHub Releases and build locally.
+The Overleaf template ships with `\ExampleMode` and the draft marker already off, so fill in `conf/conf.tex` directly. The free plan has a compile time limit; do not enable `\ExampleMode` on Overleaf to build the whole teaching document. The Overleaf template and GitHub Releases are updated independently and the Overleaf copy may be older; for the newest fixes, download the student package from GitHub Releases and build locally.
 
 ## Draft, watermark, and certificate
 
@@ -107,7 +107,7 @@ For final submission, use the defense-certificate document produced by the offic
 
 | What you see | Cause | Fix |
 | --- | --- | --- |
-| A 271-page teaching document is built | `\ExampleMode` on line 13 of `conf/conf.tex` is still active | Put `%` in front of that line and rebuild |
+| The whole teaching document (200+ pages) is built | `\ExampleMode` on line 13 of `conf/conf.tex` is still active | Put `%` in front of that line and rebuild |
 | `! LaTeX Error: File 'xxx.sty' not found.` | The TeX distribution lacks a package | MiKTeX: install it in MiKTeX Console or enable automatic installation; TeX Live/MacTeX: `tlmgr install <package>`, or install the full scheme |
 | `! Undefined control sequence.` followed by a `\SetDept...` line | The department command is misspelled or does not exist | Look up the command in [`template/style/ncku/README.md`](template/style/ncku/README.en.md) |
 | `! fontspec error: "font-not-found"` | `template/fonts/` is incomplete, or the build did not run from the directory containing `thesis.tex` | Re-extract the package and run the build command from the project root |

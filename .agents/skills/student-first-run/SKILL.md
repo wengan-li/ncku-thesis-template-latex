@@ -96,8 +96,8 @@ Run through this before opening a pull request that touches the student path:
 - Does the change keep the Overleaf, terminal, and editor paths in step?
 - Are both languages of every touched pair updated, with identical code blocks?
 - For teaching-example text: was the corrected sentence confirmed with
-  `pdftotext build/thesis.pdf -`, and does `just release dev` still verify the
-  271-page example?
+  `pdftotext build/thesis.pdf -`, and does `just release dev` still pass with
+  the teaching-document page count pinned in `justfile`?
 
 ## Evidence
 

@@ -105,7 +105,7 @@ its own migration contract.
   pins 18 student-owned files (296,726 bytes) to immutable release
   `v1.8.2.260715154703`. The gate builds that unchanged entry point and
   configuration through the V2 adapter, base layer, and NCKU profile into the
-  canonical 271-page A4 thesis, and a separate StudentMode run proves the
+  canonical 261-page A4 thesis, and a separate StudentMode run proves the
   active content and all three bibliography databases through exact `.fls`
   and `.blg` records. Files the historical configuration never loaded stay
   source-pinned without being misreported as runtime-loaded.

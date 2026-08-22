@@ -168,19 +168,28 @@ disappears), keywords 224 and 246–248.
 
 ### P2 — owner decisions
 
-- [ ] E1 Reorder the teaching example (usage and writing chapters first;
-      origin story and "words from professors" to the appendix). Changes the
-      271-page contract.
-- [ ] E2/E3 Replace the MiKTeX 2.9 / Texmaker screenshot chapter with a
-      three-path install section; shorten the Adobe CS5 / Office 2013 figure
-      conversion recipes to "export PDF, crop with `pdfcrop`".
-- [ ] F1 Record which release the Overleaf Gallery carries and decide an update
-      cadence (Gallery predates the v2.0.4 custom-font fix).
-- [ ] B5 Licence wording for the student's own thesis content.
+- [x] E1 Teaching document reordered (2026-08-22): introduction, usage
+      tutorial, writing tutorial; origin story and "words from professors"
+      moved to the appendix. 271 → 261 pages; `justfile` pin and records
+      updated.
+- [x] E2/E3 MiKTeX 2.9 / Texmaker screenshot chapter replaced by a three-path
+      section (Overleaf, terminal, editor) with a short "when it fails"
+      pointer to the README; 23 screenshots removed; figure conversion reduced
+      to "export PDF, crop with `pdfcrop`".
+- [x] F1 Gallery source (v2.0.0-era, uploaded 2026-07-18) and refresh cadence
+      recorded in the release record and the repo-maintenance skill. The
+      refresh itself needs the owner's Overleaf account.
+- [x] B5 Licence scope stated in the root README, the student README, and the
+      teaching introduction: the licence covers the template files; the
+      student's thesis content and generated PDF belong to the student.
 - [ ] D1/D2 `relatd` typo and the Chinese abstract placeholder live in pinned
-      `context/` files; only fixable by moving the pin.
-- [ ] G1 Issue template for student questions (Chinese and English, asks for
-      the log excerpt).
+      `context/` files. Fixing them means moving the v1.8.2 pin to fixture
+      copies, which reverses the 2026-08-21 decision to keep the live files
+      unchanged; left for an explicit owner go-ahead.
+- [x] G1 Issue form `.github/ISSUE_TEMPLATE/student-question.yml` (Chinese
+      and English, asks for the build method, version, steps, and the first
+      `!` line of the log) plus contact links to the README and the NCKU
+      thesis system.
 
 ## Learnings
 

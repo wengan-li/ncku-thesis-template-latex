@@ -212,6 +212,12 @@ both changelog entries with the exact tag before tagging: `just release
 <version>` fails for a release version without them, and `just test` checks
 that the newest entry composes.
 
+After a release that changes `thesis/template/**`, `thesis/thesis.tex`, or the
+student build path, run `just overleaf-gallery <version>` and hand the package
+to the owner for the original Overleaf project; documentation-only releases do
+not need it. Record each refresh with its source tag under "Recorded Gallery
+state" in the release record.
+
 Do not move an immutable tag or rebuild old tagged PDFs during an asset-only
 migration. Follow `docs/features/release-and-distribution.en.md` for download,
 digest, public read-back, byte-comparison, and exact-allowlist gates.
@@ -288,7 +294,7 @@ are gone. Manual Release dispatch must not promote a GitHub Release.
 ## Pitfalls
 
 - Mixing student instructions with maintainer-only `just` or CI commands.
-- Treating the 271-page teaching document as the normal student rebuild cost.
+- Treating the full teaching document as the normal student rebuild cost.
 - Caching LaTeX auxiliary state in required clean test/release lanes.
 - Switching to an Arm runner while the selected TeX container is amd64-only.
 - Treating Overleaf's accepted community-maintained Gallery listing as NCKU

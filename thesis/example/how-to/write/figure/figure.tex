@@ -22,58 +22,28 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
 \newpage
 \StartSubSection{轉換格式}
 
-以下為一些已知的方式可把圖像轉成向量圖格式, 按鈕的位置有可能不一樣, 但應該都會在那些地方中. (以下使用工具版本為: Adobe Acrobat XI Pro, Adobe Illustor CS5, Adobe Photoshop CS5, Microsoft Visio Professional 2013, Microsoft Office Professional 2013 [Excel/PowerPoint])
+不論用什麼工具畫圖, 目標都是得到一個 PDF (向量圖), 或是解析度足夠的 PNG 或 JPG (點陣圖). 常見的做法:
 
 \begin{description}
-  \item[SVG - > PDF] \hfill\\
-    如果你有安裝學校的Adobe Acrobat Pro (沒有的話都推薦你安裝. 因為交給圖書館的電子檔時, 你起碼要對PDF檔上鎖), 直接對那個SVG檔右鍵, 就會有`轉換成Adobe PDF' 這個選項.
+  \item[用程式畫圖 (Python matplotlib, R, MATLAB, gnuplot等)] \hfill\\
+    直接存成PDF, 例如matplotlib的\verb|plt.savefig('figure.pdf')|, 不要先存成PNG再轉.
 
-  \item[Adobe Illustor - > EMF] \hfill\\
-    `檔案' -> `轉存' -> 格式拉到最下面就有了.
+  \item[向量繪圖工具 (draw.io, Inkscape, Illustrator等)] \hfill\\
+    用`匯出'或`另存新檔'選PDF. 手上只有SVG檔時, 用Inkscape開啟再匯出成PDF.
 
-  \item[Adobe Illustor - > PDF] \hfill\\
-    `檔案' -> `另存新檔' -> 在格式中間位置 -> 如果你的是成品的話, 則可考慮把 `保留Illustrator編輯能力', `內嵌頁面縮圖'都拿掉以減少PDF檔的大小.
+  \item[PowerPoint / Excel / Word] \hfill\\
+    `檔案' -> `匯出' -> `建立PDF/XPS', 或`另存新檔'選PDF. 匯出的是整頁, 所以要再裁掉白邊.
 
-  \item[Adobe Illustor - > SVG] \hfill\\
-    `檔案' -> `另存新檔' -> 在格式最底的位置 -> 如果你想不到有什麼設定, 直接按`確定'就好了. 同時都推薦在`影像'的選項設定為`嵌入'以去掉任何影像有位置不對而造成SVG檔有什麼問題.
+  \item[裁掉PDF的白邊] \hfill\\
+    TeX發行版附有\texttt{pdfcrop}, 在終端機執行\\
+    \verb|pdfcrop figure.pdf figure-cropped.pdf|\\
+    即可; 或用PDF閱讀器的裁切工具.
 
-  \item[Adobe Photoshop - > PDF] \hfill\\
-    `檔案' -> `另存新檔' -> 在格式中下的位置 -> 如果你的是成品的話, 則可考慮把 `保留Photoshop編輯能力'拿掉以減少PDF檔的大小.
-
-  \item[Visio - > PDF] \hfill\\
-    `檔案' -> `匯出' -> `建立PDF/XPS'.
-
-  \item[Visio - > SVG] \hfill\\
-    `檔案' -> `匯出' -> `變更檔案類型' -> `SVG可縮放向量圖形' -> 下面的`另存新檔'.
-
-  \item[Visio - > EMF] \hfill\\
-    `檔案' -> `匯出' -> `變更檔案類型' -> `EMF 增加型中繼檔' -> 下面的`另存新檔'.
-
-  \newpage
-  \item[PowerPoint - > EMF] \hfill
-    \begin{enumerate}
-      \item `檔案' -> `匯出' -> `變更檔案類型' -> `儲存成其他檔案類型'
-      \item 下面的`另存新檔' -> 在格式最底部位置選擇`Windows增加型中繼檔' -> `僅此投影片'即可.
-      \item 當然都可選擇`所有投影片', 只是`僅此投影片'即可儲存跟PowerPoint同檔名的EMF檔. 而`所有投影片'會把多張的EMF檔放在一個資料夾中.
-    \end{enumerate}
-
-  \item[Excel - > PDF] Excel可以把所做出來的圖表轉成PDF內容.
-    \begin{enumerate}
-      \item 在Excel中對某個圖表按一下左鍵, 之後 `檔案' -> `匯出' -> `建立PDF/XPS'.
-      \item 所做出來的PDF應該是一張A4, 所以要做裁切. 打開那個PDF, 右上方有一個`工具' -> 右邊多了一個工具列.
-      \item 按`裁切', 之後在圖中的任何地方按2下左鍵, 把`移除白色邊距'打勾 (如右圖中沒任何反應, 重新打勾一下看看), 之後按`確定'即可.
-      \item 按`Ctrl + S'來儲存即可.
-    \end{enumerate}
-
-  \item[Excel - > EMF] Excel沒有任何直接方式把圖表轉成EMF, 但有方法來間接轉換.
-    \begin{enumerate}
-      \item 先做一次\textbf{Excel - > PDF}的方法.
-      \item `檔案' -> `另存新檔' -> 在格式中間位置選擇`PowerPoint簡報(*.pptx)'.
-      \item 之後做一次\textbf{PowerPoint - > EMF}的方法即可.
-    \end{enumerate}
+  \item[螢幕截圖或相片] \hfill\\
+    保持PNG或JPG即可, 但解析度要足夠(印刷一般要300 dpi以上), 否則放大後會模糊.
 \end{description}
 
-\noindent \textbf{注意:} 一些系所可能會使用自己的程式或一些工具以製造出SVG檔, 但以我經驗發現有時候有些工具所產出的SVG檔並不能在日常的工具或瀏覽器正常顯示 (應該是SVG中的XML有某程度的內容跟公認的內容不太一樣所造成的). 所以我會推薦先檢查這SVG檔是否在手上的工具或程式都顯示正常, 之後再把這SVG轉成PDF, 以方便匯入到論文之中, 同時能保證這SVG中的內容沒有出現任何變型或錯誤.
+\noindent \textbf{注意:} 有些工具產出的SVG在其他程式中會顯示不正常. 先確認SVG在瀏覽器或Inkscape中顯示正確, 再轉成PDF, 以保證內容沒有變形或缺漏.
 
 % ------------------------------------------------
 \newpage

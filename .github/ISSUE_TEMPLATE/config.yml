@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 學生套件 README 的「常見錯誤」 / Common errors in the student README
+    url: https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/thesis/README.md
+    about: 建置失敗時先在這裡找原因和解法 / Look up the cause and fix here first when a build fails
+  - name: 成大博碩士論文系統 / NCKU thesis system
+    url: https://thesis.lib.ncku.edu.tw/
+    about: 上傳、證明書與格式規定以學校系統為準 / Upload steps, certificates, and format rules follow the university system

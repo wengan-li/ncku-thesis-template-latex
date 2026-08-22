@@ -1,0 +1,48 @@
+name: 問題求助 / Ask a question
+description: 使用本範本撰寫論文時遇到問題 / Something went wrong while using the template
+title: "[問題] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        先看學生套件 `README.md` 的「常見錯誤」一節；找不到答案再填這份表。學校及系所的現行規定永遠優先於本範本。
+
+        Check the "Common errors" section of the student package `README.md` first. Current university and department rules take precedence over the template.
+  - type: dropdown
+    id: method
+    attributes:
+      label: 建置方式 / Build method
+      options:
+        - Overleaf
+        - 本機終端機 / Local terminal
+        - Texmaker、TeXstudio 等編輯器 / Editor
+        - 其他 / Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 版本 / Version
+      description: 下載的 ZIP 檔名（例如 ncku-thesis-template-latex-v2.0.6.260822064417.zip）；用 Overleaf 請寫 Overleaf / The ZIP file name, or "Overleaf"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 做了什麼 / What you did
+      description: 改了 conf/conf.tex 的哪些行、執行了什麼指令 / Which lines of conf/conf.tex you changed and what command you ran
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: 錯誤訊息 / Error message
+      description: 貼上 log 中第一個以「!」開頭的行及其後約 20 行；Overleaf 請貼 Logs and output files 的內容 / Paste the first line starting with "!" in the log plus about 20 lines after it; on Overleaf, paste from "Logs and output files"
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: rules
+    attributes:
+      label: 相關的系所或學校規定 / Related department or university rule (optional)
+      description: 問題與格式規定有關時，請附上規定的連結或檔名 / Link or file name of the rule when the question is about format requirements
