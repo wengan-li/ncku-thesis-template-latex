@@ -169,9 +169,9 @@ disappears), keywords 224 and 246–248.
 ### P2 — owner decisions
 
 - [x] E1 Teaching document reordered (2026-08-22): introduction, usage
-      tutorial, writing tutorial; origin story and "words from professors"
-      moved to the appendix. 271 → 261 pages; `justfile` pin and records
-      updated.
+      tutorial, writing tutorial, "words from professors" (kept in the body
+      as the last chapter by owner decision); origin story moved to the
+      appendix. 271 → 261 pages; `justfile` pin and records updated.
 - [x] E2/E3 MiKTeX 2.9 / Texmaker screenshot chapter replaced by a three-path
       section (Overleaf, terminal, editor) with a short "when it fails"
       pointer to the README; 23 screenshots removed; figure conversion reduced
