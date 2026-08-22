@@ -188,6 +188,15 @@ settings, or plan-specific timeout behavior.
 - The durable state is therefore **approved and publicly read back**. GitHub
   Releases remains the canonical versioned download path, while the Gallery
   is the approved public Overleaf editing route.
+- Source carried: the package uploaded on 2026-07-18 came from the v2.0.0-era
+  source (v2.0.0 was tagged 2026-07-17). Releases v2.0.1 through v2.0.6,
+  including the v2.0.4 custom-font dispatch fix, are not in the Gallery;
+  `thesis/README.md` tells students that the Overleaf copy may be older.
+- Refresh cadence (decided 2026-08-22): after any release that changes
+  `thesis/template/**`, `thesis/thesis.tex`, or the student build path,
+  rebuild `just overleaf-gallery <version>` and hand the package to the owner
+  for the original Overleaf project; documentation-only releases do not need
+  a refresh. Record each refresh here with its source tag.
 
 Before reporting a newer Overleaf state, inspect the live page, public PDF,
 and `Open as Template` route. Preserve the original project as the update
