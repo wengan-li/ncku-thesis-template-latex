@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+# shellcheck disable=SC2034  # arrays are consumed by the sourcing scripts
 # Shared release example-PDF manifest, sourced by package-examples.sh and
 # verify-assets.sh so packaging and verification cannot drift apart.
 # Index N of example_asset_sources is packaged as index N of

@@ -718,7 +718,13 @@ def check_active_work_directory(relative: str, require_gitkeep: bool) -> None:
     may simply be absent.
     """
     directory = ROOT / relative
-    entries = sorted(path.name for path in directory.iterdir()) if directory.is_dir() else []
+    # Hidden files other than .gitkeep are editor or OS metadata (.DS_Store),
+    # never work items; ignore them so a browsed folder does not fail the gate.
+    entries = sorted(
+        path.name
+        for path in (directory.iterdir() if directory.is_dir() else ())
+        if path.name == ".gitkeep" or not path.name.startswith(".")
+    )
     stray = [name for name in entries if name != ".gitkeep" and not ACTIVE_WORK_NAME.fullmatch(name)]
     if stray:
         fail(f"{relative} allows only .gitkeep and NN-slug.md files, found: {stray}")
@@ -824,7 +830,13 @@ def main() -> int:
         f"{len(GUIDE_PAIRS)} complete guide pairs, "
         f"{len(SUMMARY_PAIRS)} summary pairs, {links} Markdown links"
     )
-    for warning in pair_drift_warnings():
+    # Advisory only: the drift scan must never turn a structural PASS into a
+    # failure, whatever Git or the filesystem does.
+    try:
+        drift = pair_drift_warnings()
+    except Exception as error:  # noqa: BLE001 - advisory path, report and continue
+        drift = [f"pair drift scan skipped: {error}"]
+    for warning in drift:
         print(f"Pair drift WARNING: {warning}", file=sys.stderr)
     print("Semantic translation parity remains a manual review gate.")
     return 0
