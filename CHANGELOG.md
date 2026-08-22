@@ -8,6 +8,14 @@
 
 ## 2.x
 
+### [v2.0.6.260822063838](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.6.260822063838) — 2026-08-22
+
+- 學生套件與examples套件的內容不變；examples套件的`LICENSE`改為直接取自tagged source，兩個套件的授權檔案現在都會與repository根目錄的`LICENSE`逐位元核對。
+- 教學文件附錄的歷史文件註記改由單一macro產生，輸出與前一版完全一致。
+- 文件：升級指南的相容性證據一節改為連結至擁有該數字的記錄，維護者skill不再重複examples套件清單，並加入v2.0.5公開read-back紀錄。
+- 工具與測試：fixture建置共用clean／extract recipes，requirements與todos目錄規則統一，Overleaf上傳限制集中於一處，雙語文件gate新增非阻斷的語言pair drift警告並忽略作業系統metadata檔案，release腳本通過shellcheck。
+- XeLaTeX source、public API、學生project shape與PDF版面行為沒有變更；canonical教學文件維持271頁A4。
+
 ### [v2.0.5.260821154358](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.5.260821154358) — 2026-08-21
 
 - 學生套件與examples套件內附授權條款檔案`LICENSE`；兩個套件的內容清單與驗證腳本同步更新。

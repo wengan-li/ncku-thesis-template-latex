@@ -11,6 +11,14 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
+### [v2.0.6.260822063838](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.6.260822063838) — 2026-08-22
+
+- Student and examples package contents are unchanged; the examples package now takes `LICENSE` straight from the tagged source, and both packages' licence files are verified byte-identical to the repository root `LICENSE`.
+- The archived-document notice in the teaching appendix is produced by one macro; output is identical to the previous release.
+- Documentation: the migration guide's compatibility-evidence section links to the records that own the numbers, the maintainer skill no longer restates the examples-package list, and the v2.0.5 public read-back is recorded.
+- Tooling and tests: fixture builds share clean/extract recipes, the requirements and todos directory rule is unified, Overleaf upload limits live in one table, the bilingual docs gate adds a non-failing language-pair drift warning and ignores OS metadata files, and the release scripts pass shellcheck.
+- No change to the XeLaTeX source, public API, student project shape, or PDF layout behavior; the canonical teaching document stays 271 A4 pages.
+
 ### [v2.0.5.260821154358](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.5.260821154358) — 2026-08-21
 
 - Ships the `LICENSE` text inside both the student package and the examples package, with the documented contents listings and verification scripts updated together.
