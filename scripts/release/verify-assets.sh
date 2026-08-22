@@ -56,9 +56,8 @@ done < <(find "$asset_dir" -maxdepth 1 -name '*.log' -type f -print)
 scripts/release/verify-student-archive.sh "${asset_dir}/${student_zip}"
 
 expected_example_entries=$(printf '%s\n' \
-  "${package_root}/README.md" \
-  "${package_root}/LICENSE" \
-  "${example_asset_destinations[@]}" | sed "3,\$s#^#${package_root}/#" | sort)
+  "${example_package_documents[@]}" \
+  "${example_asset_destinations[@]}" | sed "s#^#${package_root}/#" | sort)
 actual_example_entries=$(unzip -Z1 "${asset_dir}/${examples_zip}" | sed '/\/$/d' | sort)
 if [[ "$actual_example_entries" != "$expected_example_entries" ]]; then
   printf 'examples ZIP contents differ from the exact allowlist\nExpected:\n%s\nActual:\n%s\n' \
@@ -76,9 +75,11 @@ for index in "${!example_asset_sources[@]}"; do
   cmp "${asset_dir}/${example_asset_sources[$index]}" \
     "${extract_dir}/${package_root}/${example_asset_destinations[$index]}"
 done
+cmp <(git show HEAD:LICENSE) "${extract_dir}/${package_root}/LICENSE"
 
 grep -Fq "Version: \`${version}\`" "${extract_dir}/${package_root}/README.md"
 grep -Fq 'Current students must use the official files produced by the university degree-examination system' \
   "${extract_dir}/${package_root}/README.md"
 
-printf 'Verified 6 generated example PDFs and 2 release ZIP packages in %s\n' "$asset_dir"
+printf 'Verified %d generated example PDFs and 2 release ZIP packages in %s\n' \
+  "${#example_asset_sources[@]}" "$asset_dir"
