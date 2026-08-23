@@ -176,9 +176,11 @@ disappears), keywords 224 and 246–248.
       section (Overleaf, terminal, editor) with a short "when it fails"
       pointer to the README; 23 screenshots removed; figure conversion reduced
       to "export PDF, crop with `pdfcrop`".
-- [x] F1 Gallery source (v2.0.0-era, uploaded 2026-07-18) and refresh cadence
-      recorded in the release record and the repo-maintenance skill. The
-      refresh itself needs the owner's Overleaf account.
+- [x] F1 Gallery source and refresh cadence recorded; the owner refreshed the
+      Gallery from `v2.0.7.260822120950` on 2026-08-22 and the public PDF was
+      read back on 2026-08-23 (text identical to the local package build).
+      Open: the listing's licence field says CC BY 4.0 while the repository is
+      CC BY-NC-SA 4.0.
 - [x] B5 Licence scope stated in the root README, the student README, and the
       teaching introduction: the licence covers the template files; the
       student's thesis content and generated PDF belong to the student.
