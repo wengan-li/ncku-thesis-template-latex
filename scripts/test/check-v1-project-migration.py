@@ -71,9 +71,15 @@ def main() -> int:
             raise SystemExit(f"Migration manifest must list {required}")
 
     tag = source["tag"]
-    resolved = subprocess.run(
-        ["git", "rev-parse", f"{tag}^{{commit}}"], cwd=ROOT, check=True, capture_output=True, text=True
-    ).stdout.strip()
+    lookup = subprocess.run(
+        ["git", "rev-parse", "--verify", "--quiet", f"{tag}^{{commit}}"], cwd=ROOT, capture_output=True, text=True
+    )
+    if lookup.returncode != 0:
+        raise SystemExit(
+            f"tag {tag} is not available in this clone; fetch tags first "
+            "(the Test workflow checks out with fetch-tags: true)"
+        )
+    resolved = lookup.stdout.strip()
     failures: list[str] = []
     if resolved != source["commit"]:
         failures.append(f"tag {tag} resolves to {resolved}, manifest expects {source['commit']}")

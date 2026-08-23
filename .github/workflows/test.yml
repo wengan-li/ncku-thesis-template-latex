@@ -20,6 +20,9 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 2
+          # The v1 migration gate materializes the v1.8.2 student project
+          # from its immutable tag, so the tag must exist in the clone.
+          fetch-tags: true
 
       - name: Check committed whitespace
         # A merge commit (pull_request merge ref, PR merges to main) has an
