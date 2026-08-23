@@ -14,7 +14,7 @@ V2重新整理了範本的內部架構，但同學看到的東西不變：同樣
 
 - 通用機制放在`template/command/`與`template/style/base/`；成大的版面、文字、日期政策、浮水印資產，以及9個學院與110個系所preset，只屬於`ncku` profile。`custom`是給其他學校起步的中性骨架，不會載入任何成大資料。
 - 載入順序是行為契約：先載入通用指令，再載入唯一選定的profile，然後才讀學生的`conf/conf.tex`，最後填入PDF metadata。未修改的1.x成大專案因此照樣能呼叫`\SetDeptCSIE`等preset指令。
-- 相容性由機器把關：597個runtime可見的LaTeX/xparse宣告、65個literal `\def`宣告與18個v1.8.2學生檔案全部鎖定；23個已停用指令保留原本的錯誤訊息與`\stop`行為。整個2.x期間，公開指令的名稱與參數形狀都不會改變。這個鎖定刻意放在學生檔案本身而非測試副本，讓套件內的設定檔與1.x同學熟悉的內容、預設值與註解完全相同；把鎖定移到fixture以便改寫這些檔案的做法已於2026-08-21考慮後否決。
+- 相容性由機器把關：597個runtime可見的LaTeX/xparse宣告、65個literal `\def`宣告與18個v1.8.2學生檔案在immutable tag的bytes全部記錄；測試會由tag實體化這個未修改的1.x專案，配上現行範本建置教學文件與學生模式兩條路徑；23個已停用指令保留原本的錯誤訊息與`\stop`行為。整個2.x期間，公開指令的名稱與參數形狀都不會改變。2026-08-23前這個鎖定放在學生檔案本身（移到fixture的做法曾於2026-08-21否決）；2026-08-23起owner把鎖定移到由tag實體化的fixture，讓套件內`context/`的placeholder與錯字可以修正，`conf/conf.tex`與`thesis.tex`維持不變，學生文件引用的`conf/conf.tex`行號另有檢查保護。
 - 已證實的錯誤（theorem label、編號重複設定、DPS英文拼字、封面日期組合、委員人數範圍、自訂字型載入等）在不改公開簽名的前提下修正；完整的前後對照與使用者動作記錄在[升級指南](../v1-to-v2-migration.md)。
 - 範本自有的指令解析全部改用19個`l3keys` family；`pgfkeys`不再用於指令解析，只會經由`mdframed`的TikZ框線間接載入。`xparse`仍明確保留，因為受保護的公開簽名使用kernel未提供的`G{...}`參數型態。
 - V2到此為止：class重寫、引擎更換、tagged PDF等項目都未啟動，需要新的owner核准Intent才會展開。

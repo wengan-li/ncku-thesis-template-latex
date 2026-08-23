@@ -102,19 +102,23 @@ its own migration contract.
   and the checker refuses to regenerate the baseline from current V2 just to
   make a deletion pass.
 - [`tests/102-v1-project-migration.json`](../../tests/102-v1-project-migration.json)
-  pins 18 student-owned files (296,726 bytes) to immutable release
-  `v1.8.2.260715154703`. The gate builds that unchanged entry point and
-  configuration through the V2 adapter, base layer, and NCKU profile into the
-  canonical 261-page A4 thesis, and a separate StudentMode run proves the
-  active content and all three bibliography databases through exact `.fls`
-  and `.blg` records. Files the historical configuration never loaded stay
-  source-pinned without being misreported as runtime-loaded.
+  records the 18 student-owned files (296,726 bytes) of immutable release
+  `v1.8.2.260715154703` with their tag bytes. The gate materializes them from
+  the tag next to the current template and builds that unchanged entry point
+  and configuration through the V2 adapter, base layer, and NCKU profile into
+  the 261-page A4 teaching document, and a StudentMode run of the same
+  project proves its content and all three bibliography databases through
+  exact `.fls` and `.blg` records. The live `thesis/` files are no longer
+  required to match the tag.
 
-The pin deliberately sits on the live student files rather than on fixture
-copies, so the packaged configuration keeps exactly the wording, defaults,
-and comments that 1.x students already know; moving the pin onto test
-fixtures to free those files for a rewrite was considered and declined on
-2026-08-21.
+Until 2026-08-23 the pin sat on the live student files, so the packaged
+configuration kept exactly the wording, defaults, and comments that 1.x
+students already know; moving it was considered and declined on 2026-08-21.
+On 2026-08-23 the owner moved the pin onto the tag-materialized fixture so
+that placeholders and typos in the packaged `context/` files could be fixed.
+`conf/conf.tex` and `thesis.tex` were left unchanged, and
+`scripts/test/check-conf-line-references.py` now keeps every `conf/conf.tex`
+line number cited by the student guides truthful.
 
 The v1 adapter also keeps all 23 deprecated-command tombstones as literal
 declarations with their exact diagnostics and `\stop` behavior, so a bounded

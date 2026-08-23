@@ -53,7 +53,8 @@ paths, duplicate numbers, empty reserved groups, and missing layout anchors.
 | Boundary | Deterministic evidence |
 | --- | --- |
 | 1.x declarations | 597 LaTeX/xparse plus 65 literal `\def` entries; 22 runtime-dead comment-environment declarations audited separately |
-| Unchanged 1.x project | 18 student-owned files / 296,726 bytes pinned to v1.8.2; unchanged entry/config and active StudentMode runtime paths |
+| Unchanged 1.x project | 18 student-owned files / 296,726 bytes materialized from the v1.8.2 tag and built through the current template on the teaching-example path (261 pages) and in StudentMode with exact `.fls`/`.blg` records; the live files may differ |
+| Student guide line citations | every `conf/conf.tex` line number cited by the four student guides still holds the command the guide describes, and no guide cites an unchecked line |
 | Canonical integration document | 261 A4 pages (271 before the 2026-08-22 teaching-document restructure), converged references/citations, expected text and dependency records |
 | Student package | regular-file list equals tracked `HEAD:thesis`; direct extracted XeLaTeX build; no repository-only tooling or redundant `thesis/` wrapper |
 | Profiles | default NCKU output plus six-page neutral/custom cover/oral matrix with no NCKU visible policy or watermark asset |
@@ -292,6 +293,16 @@ small isolated/student improvements, and unchanged output.
 
 ### Accepted
 
+- Move the v1.8.2 pin from the live student files to a tag-materialized
+  fixture (owner decision, 2026-08-23, reversing 2026-08-21). The manifest
+  still records the 18 files' tag bytes; `just test` now materializes them
+  from `v1.8.2.260715154703` next to the current template and builds them on
+  the teaching-example path and in StudentMode. This freed the packaged
+  `context/` placeholders (the `relatd` typo and the Chinese abstract that
+  shipped with instructions as body text) without weakening the proof that
+  an unchanged 1.x project builds on 2.x. `conf/conf.tex` and `thesis.tex`
+  stay unchanged, and a new check keeps the line numbers cited by the student
+  guides truthful.
 - Restructure the teaching document for first-time readers (2026-08-22): the
   usage and writing chapters follow the introduction directly; the origin
   story moves into the appendix, while "words from professors" stays in the
