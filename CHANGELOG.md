@@ -8,6 +8,15 @@
 
 ## 2.x
 
+### [v2.0.8.260823035006](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.8.260823035006) — 2026-08-23
+
+- 學生套件內容修正：`context/related-work/related-work.tex`的佔位文字錯字（`relatd`）已更正；`context/abstract/chi.tex`改為真正的中文摘要佔位文字，學校的摘要規定改以`%`註解保留，與英文摘要檔案一致。`conf/conf.tex`與`thesis.tex`沒有變更，學生指南引用的行號維持有效。
+- 1.x相容性證明改由不可變的`v1.8.2.260715154703` tag取得：`just test`從該tag還原18個v1.8.2學生檔案到`build/tests/v1-project/`，連同現行範本於教學範例路徑（261頁A4）及學生模式各建置一次；套件內的`context/`檔案自此不再須與1.8.2逐位元相同。
+- 新增`conf/conf.tex`行號檢查：四份學生指南引用的36個行號必須仍對應所述指令，新增引用也必須在檢查範圍內。
+- 持續整合：Test workflow取得tags，供上述tag還原使用。
+- 記錄：v2.0.7公開發行讀回、Overleaf Gallery更新為v2.0.7來源及其讀回、Gallery採用CC BY 4.0與repository採用CC BY-NC-SA 4.0的雙授權決定。
+- XeLaTeX source與public API沒有變更；教學文件（261頁）不變，學生模式輸出（`thesis-chi.pdf`／`thesis-eng.pdf`各11頁）只在佔位文字上改變。
+
 ### [v2.0.7.260822120950](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.7.260822120950) — 2026-08-22
 
 - 教學文件重整：簡介之後直接是使用教學與編寫教學，「起因」移入附錄，「老師們的話」保留為正文最後一章；安裝截圖章改為Overleaf、終端機、編輯器三種方式並移除23張舊截圖；圖片轉檔改為「匯出PDF、以`pdfcrop`裁邊」；修正兩處教學文字錯誤。教學文件由271頁改為261頁A4，學生套件縮小約0.85 MB。
