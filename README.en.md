@@ -149,7 +149,7 @@ The following community projects are maintained by their respective authors and 
 
 This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International licence; see [`LICENSE`](LICENSE). NCKU watermarks, logos, official certificates, and other institution assets may remain owned by their respective rights holders, and the repository-wide licence does not automatically authorize unrelated use or redistribution. Verify provenance and rights before reuse.
 
-The licence covers the template's own files only. A thesis written with the template, including its text, figures, data, and the generated PDF, belongs to its author; the project claims no rights in it and does not require the thesis to carry the same licence. Submit and publish it under the university's rules.
+The copy on the Overleaf Gallery is offered under CC BY 4.0, the only choice Overleaf's publish form allows; the project on GitHub and the release packages stay under CC BY-NC-SA 4.0. The licence covers the template's own files only. A thesis written with the template, including its text, figures, data, and the generated PDF, belongs to its author; the project claims no rights in it and does not require the thesis to carry the same licence. Submit and publish it under the university's rules.
 
 <p align="center">
   <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons BY-NC-SA 4.0" />

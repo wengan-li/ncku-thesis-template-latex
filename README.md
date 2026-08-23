@@ -141,7 +141,7 @@ just clean    # remove rebuildable artifacts
 
 本專案採用Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International授權；完整條款見[`LICENSE`](LICENSE)。成大浮水印、logo、官方證明書及其他institution assets可能由各自權利人擁有，repository-wide licence不會自動授權其他用途。使用或再發佈前請確認來源及權利。
 
-這個授權只涵蓋本範本本身的檔案。同學用本範本撰寫的論文內容、圖表、資料及產生出來的論文PDF都屬於同學自己；本專案不對其主張任何權利，也不要求論文採用相同的授權，提交與發佈依學校規定即可。
+Overleaf Gallery上的範本依Overleaf發佈表單的唯一選項以CC BY 4.0提供，GitHub上的本專案與發行套件維持CC BY-NC-SA 4.0。這個授權只涵蓋本範本本身的檔案。同學用本範本撰寫的論文內容、圖表、資料及產生出來的論文PDF都屬於同學自己；本專案不對其主張任何權利，也不要求論文採用相同的授權，提交與發佈依學校規定即可。
 
 <p align="center">
   <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons BY-NC-SA 4.0" />
