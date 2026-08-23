@@ -212,10 +212,13 @@ settings, or plan-specific timeout behavior.
   with no Draft marker and no institutional watermark. Until 2026-08-23
   02:27 UTC the public PDF still carried the 2026-07-18 bytes, so a refresh
   becomes visible with a delay after approval.
-- The public listing shows "Creative Commons CC BY 4.0" in Overleaf's licence
-  field while the repository declares CC BY-NC-SA 4.0; the field was not
-  changed during this refresh, and whether to align it is an open owner
-  decision.
+- Licence field (owner decision, 2026-08-23): Overleaf's publish form offers
+  only "Creative Commons CC BY 4.0" for this listing, so the Gallery copy is
+  offered by the owner under CC BY 4.0 while the GitHub repository and both
+  release packages stay under CC BY-NC-SA 4.0. This is deliberate dual
+  licensing by the copyright holder, not a discrepancy to fix; it does not
+  extend to third-party fonts or institutional assets (see Overleaf limits and
+  licensing below).
 - Refresh cadence (decided 2026-08-22): after any release that changes
   `thesis/template/**`, `thesis/thesis.tex`, or the student build path,
   rebuild `just overleaf-gallery <version>` and hand the package to the owner
@@ -233,9 +236,10 @@ The packaging verifier uses the limits checked from Overleaf documentation on
 individual upload, 7 MB editable project data, and 2 MB per editable text
 file. Recheck live official limits before changing the verifier.
 
-The repository declares CC BY-NC-SA 4.0. That project-level declaration does
-not prove redistribution rights for every third-party font, logo, certificate,
-or watermark asset. The Gallery profile removes the institutional logo
+The repository declares CC BY-NC-SA 4.0; the Overleaf Gallery copy is offered
+under CC BY 4.0 because Overleaf's publish form allows no other choice (owner
+decision, 2026-08-23). Neither project-level declaration proves redistribution
+rights for every third-party font, logo, certificate, or watermark asset. The Gallery profile removes the institutional logo
 watermark and example oral PDFs but still depends on bundled fonts. Do not
 claim institutional endorsement or silently relicense those files. Any
 requested font/licensing change needs a separate output-regression-tested
