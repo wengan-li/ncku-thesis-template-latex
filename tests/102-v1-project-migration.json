@@ -73,7 +73,7 @@
       "size": 572
     }
   },
-  "policy": "These student-owned project inputs remain byte-identical to v1.8.2. Runtime gates separately build the unchanged canonical entry/configuration and the active StudentMode content path through v2.",
+  "policy": "These student-owned inputs are recorded with the bytes they had at the immutable v1.8.2 tag. Runtime gates materialize them from that tag and build them through the current template, once on the teaching-example path their configuration selects and once in StudentMode over their own content. The live thesis/ files may evolve; they matched the tag byte for byte until 2026-08-23.",
   "schema": 1,
   "source": {
     "commit": "2c9557a74983023bba7a8f0cf233e1eb812edec7",

@@ -54,7 +54,7 @@ check: thesis
 # read the canonical build/thesis.* artifacts declare that dependency below.
 # JUST_JOBS=1 restores serial execution when attributing interleaved failures.
 [parallel]
-test: check _test-bilingual-docs _test-test-layout _test-release-notes _test-v1-api _test-v1-project-migration _test-release-student-archive _test-overleaf-gallery-package _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-type-routing _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-bilingual-docs _test-test-layout _test-release-notes _test-conf-line-references _test-v1-api _test-v1-project-migration _test-release-student-archive _test-overleaf-gallery-package _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-type-routing _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Shared fixture builders. Every fixture clears its own build/tests/<job>.*
 # files first so grep-count assertions never read stale state, then compiles
@@ -121,24 +121,71 @@ _test-v1-api:
 
 # Internal integration gate for an unchanged v1.8.2 student project on v2.
 [private]
-_test-v1-project-migration: check
-    python3 scripts/test/check-v1-project-migration.py
-    test -s "{{ build_dir }}/thesis.fls"
-    grep -Eq '^INPUT .*/thesis/thesis\.tex$' "{{ build_dir }}/thesis.fls"
-    grep -Fxq 'INPUT ./conf/conf.tex' "{{ build_dir }}/thesis.fls"
-    grep -Fxq 'INPUT ./template/compat/v1.tex' "{{ build_dir }}/thesis.fls"
-    grep -Fxq 'INPUT ./template/style/base/base.tex' "{{ build_dir }}/thesis.fls"
-    grep -Fxq 'INPUT ./template/style/ncku/ncku.tex' "{{ build_dir }}/thesis.fls"
-    grep -Fxq 'INPUT ./template/style/ncku/college.tex' "{{ build_dir }}/thesis.fls"
-    grep -Fxq 'INPUT ./template/style/ncku/department.tex' "{{ build_dir }}/thesis.fls"
-    grep -Eq '^Pages:[[:space:]]+261$' "{{ build_dir }}/thesis.pdfinfo"
-    grep -Eq '^Page size:.*A4' "{{ build_dir }}/thesis.pdfinfo"
-    grep -Fq 'National Cheng Kung University' "{{ build_dir }}/thesis-cover.txt"
-    grep -Fq 'Institute of Computer Science and' "{{ build_dir }}/thesis-cover.txt"
-    grep -Fq 'Advisor： Dr. A' "{{ build_dir }}/thesis-cover.txt"
-    grep -Fq '31 December 2023' "{{ build_dir }}/thesis-cover.txt"
-    ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ build_dir }}/thesis-cover.txt"
-    ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right|Suppressing empty link' "{{ log }}"
+[parallel]
+_test-v1-project-migration: _test-v1-project-example _test-v1-project-student
+
+# Materialize the v1.8.2 student project from its immutable tag next to links
+# to the current template and teaching example. The live thesis/ files are not
+# compared; the tag bytes are.
+[private]
+_v1-project-materialize:
+    rm -rf "{{ tests_dir }}/v1-project"
+    python3 scripts/test/check-v1-project-migration.py "{{ tests_dir }}/v1-project"
+
+# The unchanged v1.8.2 entry point and configuration (which select the
+# teaching example) must build through the current template.
+[private]
+_test-v1-project-example: _v1-project-materialize
+    cd "{{ tests_dir }}/v1-project" && latexmk -r ../../../latexmkrc -jobname=v1-project-example thesis.tex
+    pdfinfo "{{ tests_dir }}/v1-project/v1-project-example.pdf" > "{{ tests_dir }}/v1-project/v1-project-example.pdfinfo"
+    pdftotext -f 1 -l 1 "{{ tests_dir }}/v1-project/v1-project-example.pdf" "{{ tests_dir }}/v1-project/v1-project-example-cover.txt"
+    test -s "{{ tests_dir }}/v1-project/v1-project-example.fls"
+    grep -Eq '^INPUT (.*/v1-project/)?thesis\.tex$' "{{ tests_dir }}/v1-project/v1-project-example.fls"
+    grep -Fxq 'INPUT ./conf/conf.tex' "{{ tests_dir }}/v1-project/v1-project-example.fls"
+    grep -Fxq 'INPUT ./template/compat/v1.tex' "{{ tests_dir }}/v1-project/v1-project-example.fls"
+    grep -Fxq 'INPUT ./template/style/base/base.tex' "{{ tests_dir }}/v1-project/v1-project-example.fls"
+    grep -Fxq 'INPUT ./template/style/ncku/ncku.tex' "{{ tests_dir }}/v1-project/v1-project-example.fls"
+    grep -Fxq 'INPUT ./template/style/ncku/college.tex' "{{ tests_dir }}/v1-project/v1-project-example.fls"
+    grep -Fxq 'INPUT ./template/style/ncku/department.tex' "{{ tests_dir }}/v1-project/v1-project-example.fls"
+    grep -Eq '^Pages:[[:space:]]+261$' "{{ tests_dir }}/v1-project/v1-project-example.pdfinfo"
+    grep -Eq '^Page size:.*A4' "{{ tests_dir }}/v1-project/v1-project-example.pdfinfo"
+    grep -Fq 'National Cheng Kung University' "{{ tests_dir }}/v1-project/v1-project-example-cover.txt"
+    grep -Fq 'Institute of Computer Science and' "{{ tests_dir }}/v1-project/v1-project-example-cover.txt"
+    grep -Fq 'Advisor： Dr. A' "{{ tests_dir }}/v1-project/v1-project-example-cover.txt"
+    grep -Fq '31 December 2023' "{{ tests_dir }}/v1-project/v1-project-example-cover.txt"
+    ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ tests_dir }}/v1-project/v1-project-example-cover.txt"
+    ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right|Suppressing empty link' "{{ tests_dir }}/v1-project/v1-project-example.log"
+
+# The same v1.8.2 project in StudentMode must load its own content and all
+# three bibliography databases through the current template.
+[private]
+_test-v1-project-student: _v1-project-materialize
+    cd "{{ tests_dir }}/v1-project" && latexmk -r ../../../latexmkrc -jobname=v1-project-student ../../../tests/103-v1-project-student-mode.tex
+    grep -q 'NCKU-TEST-PASS: v1.8.2 student project compiles in student mode' "{{ tests_dir }}/v1-project/v1-project-student.log"
+    ! grep -Eiq 'undefined references|undefined citations|Rerun to get (cross-references|outlines) right' "{{ tests_dir }}/v1-project/v1-project-student.log"
+    test -s "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    ! grep -F '/example/' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'INPUT ./conf/conf.tex' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'INPUT ./context/context.tex' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'INPUT ./context/abstract/eng.tex' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'INPUT ./context/acknowledgments/eng.tex' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'INPUT ./context/nomenclature/nomenclature.tex' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'INPUT ./context/introduction/introduction.tex' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'INPUT ./context/related-work/related-work.tex' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'INPUT ./context/conclusion/conclusion.tex' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'INPUT ./context/references/references.tex' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+    grep -Fxq 'Database file #1: context/references/paper.bib' "{{ tests_dir }}/v1-project/v1-project-student.blg"
+    grep -Fxq 'Database file #2: context/references/misc.bib' "{{ tests_dir }}/v1-project/v1-project-student.blg"
+    grep -Fxq 'Database file #3: context/references/book.bib' "{{ tests_dir }}/v1-project/v1-project-student.blg"
+    pdftotext -f 1 -l 1 "{{ tests_dir }}/v1-project/v1-project-student.pdf" "{{ tests_dir }}/v1-project/v1-project-student-cover.txt"
+    ! grep -Eiq '\(Draft\)|\(初稿\)' "{{ tests_dir }}/v1-project/v1-project-student-cover.txt"
+    ! grep -F 'template/style/ncku/watermark-20160509_v2-a4.pdf' "{{ tests_dir }}/v1-project/v1-project-student.fls"
+
+# The conf/conf.tex line numbers cited by the student guides must still point
+# at the commands they describe.
+[private]
+_test-conf-line-references:
+    python3 scripts/test/check-conf-line-references.py
 
 # Internal release gate: the student ZIP is the exact tracked thesis tree.
 [private]

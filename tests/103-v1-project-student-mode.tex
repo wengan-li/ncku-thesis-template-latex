@@ -1,0 +1,10 @@
+% Migration fixture: the unchanged v1.8.2 student project, materialized from
+% the immutable tag by scripts/test/check-v1-project-migration.py, built in
+% StudentMode through the current template. latexmk runs this file from
+% build/tests/v1-project, where conf/, context/, and thesis.tex carry the
+% v1.8.2 bytes and template/ and example/ link to the current source.
+\input{./template/configure}
+\StudentMode
+
+\typeout{NCKU-TEST-PASS: v1.8.2 student project compiles in student mode through the current template}
+\CreateThesis
