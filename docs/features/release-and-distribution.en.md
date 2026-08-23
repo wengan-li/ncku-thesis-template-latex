@@ -4,8 +4,9 @@
 
 # Release and distribution
 
-Status: GitHub production release verified; Overleaf Gallery V2 update approved
-and independently read back from the public page, source, and PDF on 2026-07-21.
+Status: GitHub production release verified; Overleaf Gallery refreshed from the
+v2.0.7 source, approved, and independently read back from the public page and
+PDF on 2026-08-23 (previous read-back 2026-07-21).
 
 - Public Overleaf template:
   <https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn>
@@ -189,10 +190,32 @@ settings, or plan-specific timeout behavior.
 - The durable state is therefore **approved and publicly read back**. GitHub
   Releases remains the canonical versioned download path, while the Gallery
   is the approved public Overleaf editing route.
-- Source carried: the package uploaded on 2026-07-18 came from the v2.0.0-era
-  source (v2.0.0 was tagged 2026-07-17). Releases v2.0.1 through v2.0.6,
-  including the v2.0.4 custom-font dispatch fix, are not in the Gallery;
-  `thesis/README.md` tells students that the Overleaf copy may be older.
+- Source history: the package uploaded on 2026-07-18 came from the v2.0.0-era
+  source (v2.0.0 was tagged 2026-07-17), so releases v2.0.1 through v2.0.6,
+  including the v2.0.4 custom-font dispatch fix, were absent from the Gallery
+  until the refresh below. `thesis/README.md` still tells students that the
+  Overleaf copy may be older than GitHub Releases.
+- Refresh 2026-08-22 (source tag `v2.0.7.260822120950`, commit `e2de6e6`):
+  `just overleaf-gallery v2.0.7.260822120950` produced a 77-file, 4,733,358-byte
+  package (SHA-256
+  `b63d2413ab7a7ab84390b15bce997baeda145a18d6514175317c9918d0584722`) whose
+  cold local XeLaTeX build passed in 3.28 s; the owner uploaded it into the
+  original Overleaf project, resubmitted, and reported approval. Public
+  read-back on 2026-08-23: the listing shows "Last Updated" within the
+  previous day; the `Open as Template` route carries the `xelatex` compiler,
+  `mainFile=thesis.tex`, and `texlive-full:2026.1`; the public PDF is 95,410
+  bytes, SHA-256
+  `8dc25970752b95c849f38b7cb9c81016bd30e5d6850094d7b542e8f23c988eb7`, 11 A4
+  pages, produced by xdvipdfmx 20260317 with a creation time of 2026-08-22
+  20:48:57 HKT, and its extracted text is identical to the local cold build
+  of the same package. The rendered cover shows the shipped placeholder data
+  with no Draft marker and no institutional watermark. Until 2026-08-23
+  02:27 UTC the public PDF still carried the 2026-07-18 bytes, so a refresh
+  becomes visible with a delay after approval.
+- The public listing shows "Creative Commons CC BY 4.0" in Overleaf's licence
+  field while the repository declares CC BY-NC-SA 4.0; the field was not
+  changed during this refresh, and whether to align it is an open owner
+  decision.
 - Refresh cadence (decided 2026-08-22): after any release that changes
   `thesis/template/**`, `thesis/thesis.tex`, or the student build path,
   rebuild `just overleaf-gallery <version>` and hand the package to the owner
