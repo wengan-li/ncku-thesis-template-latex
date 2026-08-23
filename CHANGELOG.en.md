@@ -11,6 +11,15 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
+### [v2.0.8.260823035006](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.8.260823035006) — 2026-08-23
+
+- Student package content fixes: the placeholder typo in `context/related-work/related-work.tex` (`relatd`) is corrected, and `context/abstract/chi.tex` becomes a real Chinese abstract placeholder with the university's abstract rules kept as `%` comments, matching the English abstract file. `conf/conf.tex` and `thesis.tex` are unchanged, so the line numbers cited by the student guides stay valid.
+- The 1.x compatibility proof now comes from the immutable `v1.8.2.260715154703` tag: `just test` materializes the 18 v1.8.2 student files from that tag into `build/tests/v1-project/` and builds them with the current template on the teaching-example path (261 A4 pages) and in student mode; the packaged `context/` files no longer need to match 1.8.2 byte for byte.
+- New `conf/conf.tex` line-reference check: the 36 line numbers cited by the four student guides must still hold the commands they describe, and any new citation must be covered by the check.
+- Continuous integration: the Test workflow fetches tags for the materialization above.
+- Records: the v2.0.7 public release read-back, the Overleaf Gallery refresh to the v2.0.7 source with its read-back, and the dual-licensing decision (Gallery under CC BY 4.0, repository under CC BY-NC-SA 4.0).
+- No change to the XeLaTeX source or public API; the teaching document (261 pages) is unchanged, and student-mode output (`thesis-chi.pdf` / `thesis-eng.pdf`, 11 pages each) changes only in placeholder text.
+
 ### [v2.0.7.260822120950](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.7.260822120950) — 2026-08-22
 
 - Teaching document restructured: the usage and writing tutorials follow the introduction directly, the origin story moves into the appendix, and "words from professors" stays as the last body chapter; the installation screenshot chapter becomes a three-path section (Overleaf, terminal, editor) and 23 old screenshots are removed; figure conversion becomes "export PDF, crop with `pdfcrop`"; two teaching-text errors fixed. The document goes from 271 to 261 A4 pages and the student package shrinks by about 0.85 MB.
