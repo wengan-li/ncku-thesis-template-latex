@@ -118,7 +118,9 @@ A green workflow is not sufficient release proof. After publication:
 2. require the exact two-asset allowlist and ZIP integrity;
 3. compare public bytes with the promoted workflow artifact;
 4. compare the student regular-file list with the tagged `thesis/` tree;
-5. verify the pinned V1 student inputs;
+5. (retired 2026-08-23) the byte check of the V1 student inputs inside the
+   package; the v1.8.2 migration proof now runs in `just test` from the
+   immutable tag, and step 4 already proves the package equals the tagged tree;
 6. extract and directly build the downloaded student project;
 7. verify A4 dimensions, page count, SyncTeX, convergence, default
    Draft/watermark state, example allowlist, README, and six PDF page

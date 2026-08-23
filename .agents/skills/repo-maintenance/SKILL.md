@@ -101,7 +101,8 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   a particular department.
 - Keep `\TemplateConfigurationFile` defaulted to `./conf/conf`. Repository-only
   custom-profile fixtures may override it with a generic test configuration so
-  they do not mutate the byte-pinned V1 `conf/conf.tex`. Require every negative
+  they do not mutate the shipped `conf/conf.tex`, whose cited line numbers are
+  gate-checked. Require every negative
   `.fls` assertion to first prove that the recorder file exists and is non-empty.
 - Preserve `template/configure.tex` load order as a behavior contract: generic
   commands plus compatibility, base plus exactly one selected profile, student

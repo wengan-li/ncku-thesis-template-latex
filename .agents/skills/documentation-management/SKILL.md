@@ -167,9 +167,12 @@ compatibility-manifest maintenance, and commit rollback workflow.
 - Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing outside
   the exact protected historical root title above. Use `論文範本` in new Chinese
   prose. Avoid Cantonese-only wording in shipped docs.
-- Keep `thesis/conf/conf.tex` byte-identical throughout 2.x. Its bilingual
-  companion is `thesis/conf/README.md`; never refresh the V1 migration baseline
-  merely to translate comments.
+- Keep `thesis/conf/conf.tex` unchanged unless a fix is deliberate: the student
+  guides cite its line numbers and `scripts/test/check-conf-line-references.py`
+  fails when a cited line moves. Its bilingual companion is
+  `thesis/conf/README.md`; never edit the file merely to translate comments, and
+  never regenerate the V1 migration manifest from current files — it records
+  the v1.8.2 tag.
 - Mechanical checks prove structure, links, casing, and selected terminology
   only. Human review must still verify that warnings, actions, defaults, and
   exceptions mean the same thing in both languages. The checker prints a

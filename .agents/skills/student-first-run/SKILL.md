@@ -12,8 +12,8 @@ successful build:
 
 - `README.md` / `README.en.md` at the repository root
 - `thesis/README.md`, `thesis/conf/README.md`, and their English companions
-- `thesis/conf/conf.tex` comments, `thesis/context/**` placeholders (both are
-  byte-pinned; see below), and `thesis/template/style/ncku/README.md`
+- `thesis/conf/conf.tex` comments, `thesis/context/**` placeholders (see
+  rule 3), and `thesis/template/style/ncku/README.md`
 - `thesis/example/how-to/**` and the other teaching chapters
 - GitHub Release notes, `CHANGELOG.md`, `CHANGELOG.en.md`
 - the Overleaf package and its quick start
@@ -51,17 +51,20 @@ step is not finished.
    needs the word "profile"; students from other institutions get one sentence
    and a link to `thesis/template/style/Customization.md`.
 2. **Every shipped default that prints wrong data is listed with its line and
-   consequence.** `thesis/conf/conf.tex` is byte-pinned to v1.8.2, so its line
-   numbers are stable and may be cited. The shipped file enables
+   consequence.** `thesis/conf/conf.tex` is kept unchanged by policy and
+   `scripts/test/check-conf-line-references.py` fails when a cited line moves,
+   so its line numbers may be cited. The shipped file enables
    `\ExampleMode`, selects `\PhdDegree`, dates the oral exam 2023-12-31, sets
    three placeholder advisors that the cover prints whenever non-empty, and
    enables `\DisplayOralImage` with the file names commented out. The
    must-change table in `thesis/README.md` owns that list; update it when a
    default or its effect changes.
-3. **Fix the experience around pinned files, never inside them.** Typos and
-   placeholders in `thesis/conf/conf.tex`, `thesis/thesis.tex`, and
-   `thesis/context/**` are recorded, not edited, unless the owner moves the pin
-   (`tests/102-v1-project-migration.json`).
+3. **Edit the shipped student files deliberately.** Since 2026-08-23 the
+   v1.8.2 migration proof builds from the immutable tag
+   (`tests/102-v1-project-migration.json`), so placeholders and typos in
+   `thesis/context/**` may be fixed. Keep `thesis/conf/conf.tex` and
+   `thesis/thesis.tex` unchanged unless the line-reference check and the
+   guides are updated in the same slice.
 4. **Every known failure gets an entry in the common-errors section** of
    `thesis/README.md` with the exact message a student sees, the cause, and the
    fix. When an issue or a session uncovers a new one, add it in the same
@@ -101,8 +104,9 @@ Run through this before opening a pull request that touches the student path:
 
 ## Evidence
 
-- Walk-through findings and the P0/P1/P2 backlog: `todos/02-student-first-run.md`
-  while active; afterwards the owning feature record under `docs/features/`.
+- Walk-through decisions: `docs/features/validation-and-performance.en.md`
+  (Accepted decisions) and `docs/features/release-and-distribution.en.md`
+  (Recorded Gallery state).
 - Shipped-default facts: `thesis/conf/conf.tex`,
   `thesis/template/cover/cover-chi.tex`, `thesis/template/style/ncku/ncku.tex`.
 - Gates: `python3 scripts/test/check-bilingual-docs.py`, `just ci`,

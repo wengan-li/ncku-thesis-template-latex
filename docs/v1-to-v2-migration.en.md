@@ -165,13 +165,15 @@ Use the saved 1.x PDF as the comparison reference.
 
 Nothing in this section is required during a migration; it only explains how
 the compatibility promise is machine-checked in the full Git repository. Three
-manifests pin the 1.x public command surface, the historical dead-comment
-declarations, and the v1.8.2 student files. An unchanged 1.x project keeps
+manifests record the 1.x public command surface, the historical dead-comment
+declarations, and the v1.8.2 student files as they exist at the immutable
+tag. An unchanged 1.x project keeps
 selecting the default `ncku` profile and therefore retains the historical NCKU
 college/department presets, while `custom` and other institution profiles
-receive only the generic institution API. The full repository builds the
-unchanged v1.8.2 project into the canonical output and proves the active
-content and bibliography databases through a StudentMode fixture. These checks
+receive only the generic institution API. The full repository materializes the
+unchanged v1.8.2 project from the tag, builds it through the current template
+on the teaching-example path and in StudentMode, and so proves its entry
+point, configuration, active content, and bibliography databases. These checks
 and manifests are intentionally absent from the student ZIP.
 
 The manifest contents, declaration counts, and compatibility-layer load order
