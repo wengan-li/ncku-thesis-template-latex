@@ -9,6 +9,10 @@ In repositories indexed by CodeGraph (a `.codegraph/` directory exists at the re
 If there is no `.codegraph/` directory, skip CodeGraph entirely — indexing is the user's decision.
 <!-- CODEGRAPH_END -->
 
+Run `codegraph sync` at the start of a session and after large changes. The
+index goes stale when its daemon idles, and a stale index answers from old code
+without saying so.
+
 You must follow Intent-Driven Software Development (IDSD) for every task: clarify intent, expectations, and context first, and use the repo-local IDSD and repository-maintenance skills before implementation.
 
 IDSD skill: `.agents/skills/idsd-workflow/SKILL.md`
