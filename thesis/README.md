@@ -4,7 +4,7 @@
 
 # 成大論文範本學生專案
 
-此目錄是可直接使用的學生專案。版本化的GitHub Release學生套件會將這些檔案放在單一`ncku-thesis-template-latex/`目錄內；完整儲存庫的測試、發行腳本及維護工具不會包含在學生套件中。本套件的授權條款見[`LICENSE`](LICENSE)；授權只涵蓋範本檔案，不涵蓋同學自己的論文內容。
+先填寫論文資料，再於 `context/` 撰寫內容，並以 `thesis.tex` 建置。本目錄是可直接使用的完整學生專案。套件授權見 [`LICENSE`](LICENSE)，只涵蓋範本檔案，不涵蓋同學自己的論文內容。
 
 ## 開始撰寫
 
@@ -12,6 +12,10 @@
 2. 按照[`conf/README.md`](conf/README.md)填寫題目、姓名、學位、日期、系所、指導教授及其他論文資料。
 3. 在`context/context.tex`選擇章節，並於`context/`內撰寫內容。
 4. 始終以`thesis.tex`作為主文件。
+
+需要章節、圖表、公式或引用的用法時，請閱讀[內容寫作指南](context/README.md)。完整教學 PDF 位於 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 的範例套件中，檔名為 `thesis-full.pdf`。
+
+使用 AI 協助時，請它先讀取[寫作技能](.agents/skills/ncku-thesis-writing/SKILL.md)；若用戶端未自動辨識，明確提供此路徑即可。搬移專案時，先保存目的地資料，再複製整個專案，包含隱藏 `.agents/`、`.claude/` 與相對連結。請從含有 `thesis.tex` 的目錄建置。
 
 `conf/conf.tex`出廠時是教學範例的設定，以下各行必須改成自己的資料（行號固定，可直接跳到該行）：
 
@@ -30,8 +34,6 @@
 | 關鍵字 | 224、246–248 | 改成自己的關鍵字 | PDF屬性與摘要顯示範本的關鍵字 |
 
 撰寫中文論文時，另外在`context/context.tex`取消中文摘要、英文延伸摘要及中文誌謝的`\input`註解；出廠設定只啟用英文版。
-
-完整寫作教學保留在原有 example/how-to 來源及教學 PDF；[內容入口](context/README.md)提供教學與代理路由，不另維護語法手冊。使用代理時，明確讀取[寫作技能](.agents/skills/ncku-thesis-writing/SKILL.md)及其共用來源產生的英文參考；若用戶端未自動辨識，須明確讀取。請複製完整可建置專案，包含隱藏 `.agents/`、`.claude/` 與相對連結；`.claude/skills -> ../.agents/skills` 指向同一份技能，並由含有 `thesis.tex` 的目錄建置。
 
 ## 選擇設定
 
@@ -128,7 +130,15 @@ Overleaf範本已關閉`\ExampleMode`與初稿標記，直接填寫`conf/conf.te
 
 ## 由1.x升級
 
-用1.x版本寫到一半的論文可以直接換到2.x，所有1.x的指令都保留，不需要重新命名。先備份整個1.x專案和最新的PDF；保留自己的`conf/conf.tex`、`context/`、圖片、書目及證明書檔案；用2.x套件的`template/`、`thesis.tex`及`cover.tex`替換原有檔案（曾修改`thesis.tex`的話，先記下修改再合併）；最後重新建置，逐項比較封面、日期、目錄、引用、參考文獻、正文及最後頁。完整指南：[`docs/v1-to-v2-migration.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.md)。
+2.x 保留既有的 1.x 指令，不需重新命名。升級時保留舊專案，另開目錄操作：
+
+1. 備份完整的 1.x 專案及最新 PDF，包括自行加入的字型。
+2. 將 2.x 學生套件解壓到新目錄，保留新版 `template/`，不要用舊目錄覆蓋。
+3. 搬入自己的 `conf/conf.tex`、`context/`、圖片、書目及正式證明書；自行加入的字型放回 `template/fonts/`。
+4. 若改過 `thesis.tex` 或 `cover.tex`，逐項合併修改，不要直接覆蓋新版檔案。
+5. 建置後對照舊 PDF，核對封面、日期、證明書、目錄、圖表、引用、參考文獻、正文及最後一頁。保留舊專案供回復。
+
+完整指南：[`docs/v1-to-v2-migration.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.md)。
 
 ## 其他社群方案
 

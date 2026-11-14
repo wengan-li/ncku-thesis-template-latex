@@ -1,16 +1,20 @@
 # Repository-local skills
 
-Only focused, public, repository-safe skills are installed here:
+For every repository task, read [IDSD](idsd-workflow/SKILL.md) and then
+[repository maintenance](repo-maintenance/SKILL.md) before implementation.
+Load each additional owner when its task applies:
 
-- [`idsd-workflow`](idsd-workflow/SKILL.md) — separate Intent, Expectations, and Context; deliver the smallest validated useful slice.
-- [`repo-maintenance`](repo-maintenance/SKILL.md) — maintain, test, package, and release this repository within its compatibility and policy boundaries.
-- [`documentation-management`](documentation-management/SKILL.md) — govern requirements, todos, shipped feature records, audience boundaries, consolidation, and documentation validation.
-- [`student-first-run`](student-first-run/SKILL.md) — design student-facing pages, defaults, teaching text, and release notes from the viewpoint of a student meeting the template for the first time.
-- [`unslop`](unslop/SKILL.md) — cut AI-writing patterns from prose. Scope: see `AGENTS.md` § Agent setup.
-- [`codegraph`](codegraph/SKILL.md) — verify maintainer Python/YAML index scope, freshness and source queries; keep student writing and TeX discovery on their appropriate paths.
+| Owner | Detailed responsibility |
+| --- | --- |
+| [repo-maintenance](repo-maintenance/SKILL.md) | Compatibility, Git/action authority, package/release contracts and general validation |
+| [documentation-management](documentation-management/SKILL.md) | Language, public voice, current-document lifecycle, protected title and guide pairs |
+| [student-first-run](student-first-run/SKILL.md) | Student defaults, journeys, audience review and human/agent guidance |
+| [codegraph](codegraph/SKILL.md) | Maintainer graph scope, readiness, synchronization, lookup and recovery boundaries |
+| [unslop](unslop/SKILL.md) | Prose editing, subject to documentation management's public voice rules |
 
-Student writing knowledge is separately packaged under
-[`thesis/.agents/skills/ncku-thesis-writing/`](../../thesis/.agents/skills/ncku-thesis-writing/SKILL.md).
-It is not a copy of the repository maintenance skills.
-
-Do not add unrelated product, company, persona, or private-workspace skills.
+Student thesis writing uses the separately packaged
+[writing skill](../../thesis/.agents/skills/ncku-thesis-writing/SKILL.md).
+It grants no maintainer authority and contains no copies of maintenance skills.
+Root CLAUDE.md and skill-directory aliases remain relative; maintenance owns
+[their topology](repo-maintenance/SKILL.md#git-and-external-actions).
+Do not add unrelated product, company, persona or private-workspace skills.

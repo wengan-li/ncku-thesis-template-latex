@@ -102,7 +102,7 @@ For final submission, prefer certificate images produced by the official degree-
 
 **Required**: line 224 PDF keywords, lines 246–248 abstract keywords. **Optional**: lines 264–265 index language, lines 273–279 index titles, lines 288 and 297 figure/table names.
 
-`\SetKeywords` sets PDF metadata keywords. Chinese, English, and extended-English abstracts have separate `\SetAbstractChiKeywords`, `\SetAbstractEngKeywords`, and `\SetAbstractExtKeywords` calls; omit a call when that abstract does not exist. `\IndexChiMode` / `\IndexEngMode` select default table-of-contents, list-of-figures, and list-of-tables title language, while the corresponding title setters override wording. Use `\SetCustomFigureName` and `\SetCustomTableName` only when a custom label is required.
+`\SetKeywords` sets keywords in the PDF properties. Chinese, English, and extended-English abstracts have separate `\SetAbstractChiKeywords`, `\SetAbstractEngKeywords`, and `\SetAbstractExtKeywords` calls; omit a call when that abstract does not exist. `\IndexChiMode` / `\IndexEngMode` select default table-of-contents, list-of-figures, and list-of-tables title language, while the corresponding title setters override wording. Use `\SetCustomFigureName` and `\SetCustomTableName` only when a custom label is required.
 
 ```tex
 \SetKeywords{thesis template}{XeLaTeX}{NCKU}
@@ -128,7 +128,7 @@ For final submission, prefer certificate images produced by the official degree-
 
 **Optional**: section numbering from line 564, theorems from line 629; ignore unless a format is required.
 
-Keep the default numbering and theorem styles unless an explicit requirement says otherwise. `\SetNumberingFormat[<type>]{...}` independently configures normal/appendix Chapter, Section, SubSection, and SubSubSection formats, with Arabic, Roman, alphabetic, `ChiNum`, and `Tiangan` styles. `\SetTheoremFormat[<type>]{...}` sets visible text and counter relationships. Unknown keys fail hard, so change one family at a time and build immediately.
+Keep the default numbering and theorem styles unless an explicit requirement says otherwise. `\SetNumberingFormat[<type>]{...}` independently configures normal/appendix Chapter, Section, SubSection, and SubSubSection formats, with Arabic, Roman, alphabetic, `ChiNum`, and `Tiangan` styles. `\SetTheoremFormat[<type>]{...}` sets visible text and counter relationships. An unknown option stops the build. Change one group of settings at a time, then build to check it.
 
 ```tex
 \SetNumberingFormat[Chapter]{
@@ -141,9 +141,9 @@ Keep the default numbering and theorem styles unless an explicit requirement say
 
 Do not rename public commands during 2.x; the compatibility adapter preserves existing projects.
 
-## Other institution profiles
+## Settings for other institutions
 
-`conf/conf.tex` stores thesis data; it must not own institution geometry, names, date policy, wording, or assets. `template/style/custom/` is a neutral skeleton, not a formal profile for any named institution. This repository currently has no NTU profile; students from other institutions can follow the illustrative NTU wiring in [`../template/style/Customization.en.md`](../template/style/Customization.en.md) to create an independent profile. After the profile defines a reusable catalogue, replace the original NCKU `\SetDept...` selection in `conf/conf.tex` with the new institution-prefixed command. Documentation or cover language never selects an institution profile automatically.
+`conf/conf.tex` stores thesis data; it must not own institution geometry, names, date policy, wording, or assets. `template/style/custom/` is a neutral skeleton, not a formal profile for any named institution. This repository currently has no NTU profile; students from other institutions can follow the illustrative NTU wiring in [`../template/style/Customization.en.md`](../template/style/Customization.en.md) to create an independent profile. After the profile defines reusable department commands, replace the original NCKU `\SetDept...` selection in `conf/conf.tex` with the new command named for that institution. Documentation or cover language never selects an institution profile automatically.
 
 Exactly one profile is loaded by `template/style/style.tex`; the default remains `ncku`.
 

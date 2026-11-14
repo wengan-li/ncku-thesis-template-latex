@@ -103,39 +103,33 @@ small topical set with one owner per fact. Do not retain the same release comman
 compatibility number, or publication status in several active documents unless
 one is a short link/routing sentence.
 
-## Audience and package boundary
+## Public routes and audience
 
-- Students receive the exact `thesis/` subtree as their package. Direct compiler,
-  editor, configuration, and migration-start instructions must be available
-  there without repository-only tooling.
-- Repository-only commands, tests, benchmarks, workflow details, and internal evidence
-  stay outside the student ZIP. The named student-only `AGENTS.md` routers,
-  adjacent relative `CLAUDE.md -> AGENTS.md` aliases and project-root writing
-  skill are intentional exceptions to the maintainer-instruction exclusion;
-  they grant no repository publication or template-maintenance authority.
-- Existing `thesis/example/how-to/` teaching sources and their PDF own human
-  instruction. Marked teaching code feeds the single generated portable reference
-  `thesis/.agents/skills/ncku-thesis-writing/references/template-usage.md`;
-  `just writing-reference` regenerates it and `--check` detects drift. Do not
-  maintain a second usage handbook. Agent-facing `AGENTS.md`, `SKILL.md` and
-  references use English only; project/content README routers remain bilingual.
-  The skill owns agent workflow, discovery, edit boundaries and recovery. Preserve
-  explicit loading guidance for clients that do not auto-discover nested skills,
-  and validate links after copying the complete student project without `example/`.
-  Preserve hidden `.agents/`, `.claude/` and relative links, including the exact
-  `.claude/skills -> ../.agents/skills` directory alias. Context is student content,
-  not an independently bundled agent project. Build beside `thesis.tex`.
-  Feature records distinguish approved/in-progress design, local validation and
-  actual release publication rather than describing an unshipped capability as
-  already released.
-- Root README provides the public overview; `docs/README.md` routes students and
-  readers to current guides and shipped project records.
-- Public landing pages and indexes are ordered by reader need: overview, a
-  task-oriented start table, direct student routes, then deeper project records.
-  Keep active-work state, branch mechanics, and implementation chronology out of
-  those public indexes.
-- GitHub Release state and Overleaf state are independent. Never turn submitted
-  into approved without live public read-back.
+For student defaults, journeys, human/agent guidance and audience review, load
+[student-first-run](../student-first-run/SKILL.md#human-and-agent-guidance).
+For exact student-package topology and action authority, follow mandatory
+[repository maintenance](../repo-maintenance/SKILL.md#student-package-topology).
+Do not duplicate those detailed instructions here.
+
+Root README provides the project overview; `docs/README.md` is the public
+project-documentation index. Order public indexes by reader tasks and student
+routes before technical records. Keep active-work state, branch mechanics,
+release promotion narration and implementation chronology in internal governance.
+`docs/v1-to-v2-migration.md` owns the complete migration guide; the packaged
+`thesis/README.md` retains concise offline steps and `thesis/conf/README.md`
+explains each configuration field. Keep their actions consistent.
+
+Student/public pages must be usable without repository-only tools. Packaged
+customization guidance retains direct `latexmk`, A4/output checks, runtime
+errors and recovery; omit repository test commands, `.fls` assertions, expected
+counts, manifest upkeep and commit rollback mechanics. Public landing pages
+retain GitHub Release and Overleaf entry points, not branch/PR or review-state
+procedures. Current source/tests win on drift; a deferred experiment is not an
+active requirement without a new owner-approved Intent.
+
+GitHub Release state and Overleaf state are independent. Describe source,
+local validation and publication accurately; never turn submitted into approved
+without live public read-back.
 
 ### Protected root README contract
 
@@ -150,6 +144,9 @@ National Cheng Kung University (NCKU) Thesis/Dissertation Template in LaTex
 The historical `LaTex` spelling is allowed only inside that exact title. Do not
 reorder, translate, split it into three lines, or normalize its spelling without
 explicit owner direction; all current prose still uses `LaTeX`.
+
+Agent routers, skills and references use English only. Human guides follow the
+bilingual model below.
 
 Root `README.md` and `README.en.md` must retain equivalent student sections for:
 
@@ -261,8 +258,10 @@ Also validate mechanically:
 
 Run `just test`/`just ci` when repository policy requires the exact committed tree
 or when package-facing paths, scripts, tests, or source are touched. If a gate
-reads `HEAD`, validate the staged tree in a temporary commit/worktree before the
-real commit rather than weakening the gate.
+reads `HEAD`, it requires the intended source to be checkpointed before it can
+validate those bytes. Follow the explicit Git authorization rules in maintenance;
+a temporary commit/worktree also needs that authorization. Do not weaken the gate
+or report an old HEAD archive as validation of uncommitted changes.
 
 ## Non-blocking reminder
 

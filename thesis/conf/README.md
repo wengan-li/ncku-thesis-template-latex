@@ -16,7 +16,7 @@
 
 **必改**：第13行`\ExampleMode`。**選填**：第20行DOI（現行流程不需要）、第29行行距。
 
-啟用`\ExampleMode`會使用`example/context.tex`編譯完整教學文件。撰寫自己的論文時，請將該行註解，專案便會使用`context/context.tex`。現行ETDS流程不需要自行加入DOI、浮水印或PDF保全；只有其他明確規定要求時才使用legacy/custom `\ShowDOI{...}`。`\SetLineStretch{...}`可調整行距，預設為`1.2`。
+啟用`\ExampleMode`會使用`example/context.tex`編譯完整教學文件。撰寫自己的論文時，請將該行註解，專案便會使用`context/context.tex`。現行ETDS流程不需要自行加入DOI、浮水印或PDF保全；只有其他明確規定要求時才使用保留的舊版或自訂 `\ShowDOI{...}` 功能。`\SetLineStretch{...}`可調整行距，預設為`1.2`。
 
 ```tex
 % \ExampleMode
@@ -30,7 +30,7 @@
 
 封面語言只決定封面用中文還是英文，與論文內容的語言無關。使用`\DisplayCoverInChi`或`\DisplayCoverInEng`選擇一項；`\DisplayCoverPeoplesBothNames`可讓封面同時顯示中英文姓名。
 
-圖書館流程通常要求中英文題目都存在，建議使用`\SetTitle{中文題目}{English Title}`。姓名亦可用`\SetMyName{中文姓名}{English Name}`一次設定兩種語言；只有一種資料時才使用分開的Chinese/English setter。
+圖書館流程通常要求中英文題目都存在，建議使用`\SetTitle{中文題目}{English Title}`。姓名亦可用`\SetMyName{中文姓名}{English Name}`一次設定兩種語言；只有一種資料時才使用分開設定中文或英文的指令。需要強制換行時才使用 `\\`，並檢查 PDF 屬性中的題目。
 
 ```tex
 \DisplayCoverInEng
@@ -43,7 +43,7 @@
 
 **選填**：第80、84、89行；正式輸出前全部保持註解。
 
-三個狀態互相獨立：`\DisplayDraft`控制封面`(初稿)`／`(Draft)`標記；`\SetWatermarkText{...}`控制斜向文字層；`\UseWatermarkFigureStyle`控制學校logo／圖片層。正式輸出預設全部關閉。只有在撰寫或審閱階段確實需要時才啟用，提交前再次關閉並核對學校規定。
+三個狀態互相獨立：`\DisplayDraft`控制封面`(初稿)`／`(Draft)`標記；`\SetWatermarkText{...}`控制斜向文字層；`\UseWatermarkFigureStyle`控制學校標誌／圖片層。正式輸出預設全部關閉。只有在撰寫或審閱階段確實需要時才啟用，提交前再次關閉並核對學校規定。
 
 ```tex
 % \DisplayDraft
@@ -79,11 +79,11 @@
 
 ## 學位考試證明書與委員
 
-**必填**：第204–206行證明書檔名。第176–193行只在使用legacy範例證明書時才需要。
+**必填**：第204–206行證明書檔名。第176–193行只在使用舊版範例證明書時才需要。
 
-正式提交應優先使用學位考試系統產出的證明書圖片，透過`\DisplayOralImage`及`\SetOralImageChi`／`\SetOralImageEng`載入`context/oral/`內檔案。`\DisplayOralTemplate`產生的版本只供legacy/example及regression用途，並非官方文件。
+正式提交應優先使用學位考試系統產出的證明書圖片，透過`\DisplayOralImage`及`\SetOralImageChi`／`\SetOralImageEng`載入`context/oral/`內檔案。`\DisplayOralTemplate` 產生的版本只供舊版範例、示範與測試，並非官方文件。
 
-`\SetCommitteeSize{n}`包括指導教授。成大的規定是碩士3至5人、博士5至9人，範本會按學位自動限制範圍，所以先設定學位再設定人數。這個人數只在使用legacy範例證明書時才有作用。
+`\SetCommitteeSize{n}`包括指導教授。成大的規定是碩士3至5人、博士5至9人，範本會按學位自動限制範圍，所以先設定學位再設定人數。這個人數只在使用舊版範例證明書時才有作用。
 
 ```tex
 \DisplayOralImage
@@ -96,7 +96,7 @@
 
 **必填**：第224行PDF關鍵字、第246–248行摘要關鍵字。**選填**：第264–265行目錄語言、第273–279行目錄標題、第288與297行圖表名稱。
 
-`\SetKeywords`設定PDF metadata keywords。中文、英文及英文延伸摘要可分別使用`\SetAbstractChiKeywords`、`\SetAbstractEngKeywords`及`\SetAbstractExtKeywords`；沒有資料的版本不需呼叫。`\IndexChiMode`／`\IndexEngMode`控制目錄、圖目錄及表目錄的預設標題語言，亦可用對應title setter覆寫文字。`\SetCustomFigureName`及`\SetCustomTableName`只在確實需要自訂label時使用。
+`\SetKeywords` 設定 PDF 屬性中的關鍵字。中文、英文及英文延伸摘要可分別使用`\SetAbstractChiKeywords`、`\SetAbstractEngKeywords`及`\SetAbstractExtKeywords`；沒有資料的版本不需呼叫。`\IndexChiMode`／`\IndexEngMode`控制目錄、圖目錄及表目錄的預設標題語言，亦可用對應的標題設定指令修改文字。`\SetCustomFigureName`及`\SetCustomTableName`只在需要修改圖、表名稱時使用。
 
 ```tex
 \SetKeywords{thesis template}{XeLaTeX}{NCKU}
@@ -109,7 +109,7 @@
 
 **選填**：第362–365行；沒有特殊要求時保留預設。
 
-`\SetupReference`設定參考文獻標題及BibTeX style。沒有特殊格式要求時可保留預設。由`abbrv`／`plain`切換至`apacite`時，舊`.aux`、`.bbl`等中間檔可能不相容；先執行`latexmk -C thesis.tex`，再重新build。書目資料放在`context/references/`並由現有context選取。
+`\SetupReference` 設定參考文獻標題及 BibTeX 樣式。沒有特殊格式要求時可保留預設。由`abbrv`／`plain`切換至`apacite`時，舊`.aux`、`.bbl`等中間檔可能不相容；先執行`latexmk -C thesis.tex`，再重新建置。書目資料放在 `context/references/`，並由現有內容檔載入。
 
 ```tex
 \SetupReference{
@@ -122,7 +122,7 @@
 
 **選填**：第564行起的章節編號、第629行起的定理；沒有格式要求時不用理會。
 
-沒有明確格式要求時，保留預設編號及theorem style。`\SetNumberingFormat[<type>]{...}`可分別調整一般／附錄的Chapter、Section、SubSection及SubSubSection；支援`Arabic`、Roman、alphabetic、`ChiNum`及`Tiangan`等number style。`\SetTheoremFormat[<type>]{...}`設定顯示文字與counter關係。未知key會hard fail，因此每次只修改一個family並立即build。
+沒有明確格式要求時，保留預設編號及定理樣式。`\SetNumberingFormat[<type>]{...}` 可分別調整一般章節及附錄的 Chapter、Section、SubSection 與 SubSubSection 編號，支援 `Arabic`、羅馬數字、英文字母、`ChiNum` 及 `Tiangan` 等樣式。`\SetTheoremFormat[<type>]{...}` 設定顯示文字及計數器之間的關係。選項名稱不正確會停止建置；每次只改一組設定，隨即建置檢查。
 
 ```tex
 \SetNumberingFormat[Chapter]{
@@ -133,13 +133,13 @@
 \SetTheoremFormat[Theorem]{ShowText = {Theorem}}
 ```
 
-## 其他學校的同學如何使用Profile
+## 其他學校的同學如何設定學校樣式
 
-`conf/conf.tex`只保存論文資料，不應承擔學校geometry、校名、日期政策、institution wording或assets。`template/style/custom/`只是neutral skeleton，不代表任何學校的正式格式。本專案目前沒有NTU profile；其他學校的同學可跟隨[`../template/style/Customization.md`](../template/style/Customization.md)內的illustrative NTU wiring建立獨立profile。Profile定義可重用catalogue後，請在`conf/conf.tex`以新學校的prefixed command取代原有NCKU `\SetDept...` selection。文件語言或封面語言不會自動選擇profile。
+`conf/conf.tex` 只放論文資料。學校版面、校名、日期規則、文字與圖片放在 `template/style/`。`template/style/custom/` 是起始範例，不是任何學校的正式格式；本專案目前也沒有可直接使用的臺大樣式。其他學校的同學可依[自訂指南](../template/style/Customization.md)建立自己的樣式，參考其中的臺大設定示範。建立學校專用的系所指令後，在 `conf/conf.tex` 用它取代原有成大 `\SetDept...` 指令。文件語言、封面語言及學校樣式分別設定；`template/style/style.tex` 每次只載入一種樣式，預設為 `ncku`。
 
 ## 建置與故障排除
 
-每次小幅修改後，在包含`thesis.tex`的目錄執行direct build。出現引用或書目不收斂時，先查看log；切換BibTeX style或遇到stale intermediates時才清除後重建。不要以手動重複XeLaTeX/BibTeX次數取代`latexmk`。常見錯誤訊息與解法見[`../README.md`](../README.md)的「常見錯誤」一節。
+每次小幅修改後，在包含`thesis.tex`的目錄執行建置。若引用或參考文獻仍有警告，先查看建置記錄；切換 BibTeX 樣式或舊輔助檔造成問題時，才清除後重建。不要以手動重複XeLaTeX/BibTeX次數取代`latexmk`。常見錯誤訊息與解法見[`../README.md`](../README.md)的「常見錯誤」一節。
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
