@@ -27,7 +27,7 @@ Official guidance last checked on `2026-07-12`:
 | Upgrade a 1.x project | [1.x-to-2.x migration guide](docs/v1-to-v2-migration.en.md) |
 | Create a style for another institution | [`Customization.en.md`](thesis/template/style/Customization.en.md) |
 | Upload, print, and choose the official certificate | [Thesis upload and printing](#thesis-upload-and-printing) |
-| Review architecture, validation, releases, and Overleaf records | [`docs/README.en.md`](docs/README.en.md) |
+| Understand architecture, validation, distribution, and writing features | [`docs/README.en.md`](docs/README.en.md) |
 
 ## Quick start
 
@@ -123,7 +123,7 @@ Policy record: [release, certificate, and watermark policy](docs/features/releas
 
 ## Documentation and project work
 
-If you only need to write a thesis, start from the packaged README and configuration guide. Project architecture, validation, release, and Overleaf evidence are recorded in [`docs/README.en.md`](docs/README.en.md); contributors over the years are listed in [`CONTRIBUTE`](CONTRIBUTE). The full repository uses [`just`](https://just.systems/) for project commands; the student package does not depend on `just`.
+If you only need to write a thesis, start from the packaged README and configuration guide. Current architecture, validation, distribution, and writing features are described in [`docs/README.en.md`](docs/README.en.md); contributors over the years are listed in [`CONTRIBUTE`](CONTRIBUTE). The full repository uses [`just`](https://just.systems/) for project commands; the student package does not depend on `just`.
 
 ```bash
 just          # list commands

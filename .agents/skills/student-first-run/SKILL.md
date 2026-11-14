@@ -117,9 +117,10 @@ Run through this before opening a pull request that touches the student path:
 
 ## Evidence
 
-- Walk-through decisions: `docs/features/validation-and-performance.en.md`
-  (Accepted decisions) and `docs/features/release-and-distribution.en.md`
-  (Recorded Gallery state).
+- Current student workflow, package and distribution contracts:
+  `docs/features/validation-and-performance.en.md` and
+  `docs/features/release-and-distribution.en.md`. Keep historical walkthroughs,
+  publication timelines and execution receipts in Git history, not current docs.
 - Shipped-default facts: `thesis/conf/conf.tex`,
   `thesis/template/cover/cover-chi.tex`, `thesis/template/style/ncku/ncku.tex`.
 - Gates: `python3 scripts/test/check-bilingual-docs.py`, `just ci`,

@@ -56,6 +56,7 @@ Never include graph state in student or Overleaf archives. Do not map `.tex` to
 an unrelated language parser to manufacture coverage. CLI query readiness does
 not establish MCP registration or a client's runtime discovery.
 
-Executed pilot evidence and limitations belong in
-[the feature record](../../../docs/features/student-writing-and-agent-skills.en.md),
-not in repeated release/version claims here.
+Current coverage boundaries and supported feature behavior belong in
+[the feature description](../../../docs/features/student-writing-and-agent-skills.en.md).
+Keep execution receipts, index snapshots and session chronology out of current
+feature documentation; Git history preserves prior versions.

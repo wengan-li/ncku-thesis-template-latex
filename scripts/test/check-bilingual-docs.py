@@ -492,6 +492,74 @@ def check_language_local_routes() -> None:
             fail(f"{relative}: missing language-local routes: {', '.join(missing)}")
 
 
+CURRENT_DOC_ANCHORS = {
+    "docs/features/v2-modernization.en.md": (
+        "template/configure.tex", "template/compat/v1.tex", "\\TemplateConfigurationFile",
+        "\\FillInPDFData", "\\ApplyCommitteeSizePolicy", "\\GetRequestedCoverYear",
+        "\\GetThesisYear", "XeLaTeX", "2.x", "untagged",
+    ),
+    "docs/features/v2-modernization.md": (
+        "template/style/", "conf/style.tex", "\\GetRequestedCoverYear", "\\GetThesisYear", "2.x",
+    ),
+    "docs/features/validation-and-performance.en.md": (
+        "just test", "just ci", "HEAD:thesis", "261", "SyncTeX", "check-diagnostics.py",
+        "check-student-agent-skills.py", "pdftotext", "tests/000-test-suite.md",
+    ),
+    "docs/features/validation-and-performance.md": (
+        "just test", "just ci", "HEAD:thesis", "261", "SyncTeX", ".fls",
+    ),
+    "docs/features/release-and-distribution.en.md": (
+        "ncku-thesis-template-latex-<version>.zip",
+        "ncku-thesis-template-latex-examples-<version>.zip",
+        "\\TemplateConfigurationFile", "manual dispatch", "CC BY 4.0", "CC BY-NC-SA 4.0",
+        "degree-examination", "\\DisplayDraft", "\\SetWatermarkText", "\\UseWatermarkFigureStyle",
+    ),
+    "docs/features/release-and-distribution.md": (
+        "CC BY 4.0", "CC BY-NC-SA 4.0", "SHA-256", "CLAUDE.md -> AGENTS.md", "Overleaf",
+    ),
+    "docs/features/student-writing-and-agent-skills.en.md": (
+        "thesis/context/usage/", "English only", "CLAUDE.md -> AGENTS.md",
+        "template/configure.tex", "requested content", "verified repository root", "orphan",
+        "without example/", "CodeGraph", "Python", "YAML", "check-student-agent-skills.py",
+    ),
+    "docs/features/student-writing-and-agent-skills.md": (
+        "thesis/context/usage/", "CLAUDE.md -> AGENTS.md", "template/configure.tex", "CodeGraph",
+    ),
+}
+# Protect current contracts while excluding execution receipts and plan diaries.
+# Dates, compatibility versions, official-policy links and checksum *commands*
+# remain valid. CHANGELOGs and active requirements are outside this scope.
+HISTORICAL_DOC_PATTERNS = (
+    ("execution digest", re.compile(r"\b[0-9a-fA-F]{40}(?:[0-9a-fA-F]{24})?\b")),
+    ("workflow-run receipt", re.compile(r"https?://[^\s)]+/actions/runs/\d+")),
+    ("private execution trace", re.compile(
+        r"/Users/|/private/tmp/|\.hermes/(?:cache|state)/|candidate-manifest|"
+        r"candidate_commit|candidate_tree|private scratch", re.I)),
+    ("chronology or plan heading", re.compile(
+        r"^#{1,6}\s+(?:v\d[^\n]*production release read-back|Dated performance evidence|"
+        r"Recorded Gallery state|Executed local evidence|Package provenance|"
+        r"Accepted, rejected, and deferred decisions|Intent|Expectations|Context and ownership|"
+        r"Current feature design|本次功能設計|已發行記錄)\s*$", re.I | re.M)),
+)
+
+
+def check_current_doc_text(relative: str, text: str) -> None:
+    for label, pattern in HISTORICAL_DOC_PATTERNS:
+        if pattern.search(text):
+            fail(f"{relative}: historical {label} belongs outside current documentation")
+    for marker in CURRENT_DOC_ANCHORS.get(relative, ()):
+        if marker not in text:
+            fail(f"{relative}: missing current-feature contract: {marker}")
+
+
+def check_current_docs() -> None:
+    for path in (ROOT / "docs").rglob("*.md"):
+        relative = path.relative_to(ROOT).as_posix()
+        if relative.startswith("docs/requirements/"):
+            continue
+        check_current_doc_text(relative, path.read_text(encoding="utf-8"))
+
+
 def check_institution_profile_docs() -> None:
     department_source = read("thesis/template/style/ncku/department.tex")
     college_source = read("thesis/template/style/ncku/college.tex")
@@ -830,6 +898,7 @@ def main() -> int:
         check_public_voice()
         check_project_index_scope()
         check_language_local_routes()
+        check_current_docs()
         check_institution_profile_docs()
         check_changelog()
         check_package_routes()

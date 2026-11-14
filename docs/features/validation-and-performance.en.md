@@ -4,34 +4,45 @@
 
 # Validation and performance
 
-Status: production evidence consolidated
+The validation system checks public compatibility, output, student portability and packaging. Current source, fixtures and `justfile` define the executable contracts.
 
-This record explains how the template is tested, what the canonical outputs
-must look like, and which performance decisions were measured rather than
-assumed. Deterministic gates come first; dated benchmark and release evidence
-follows. When a historical number drifts, current tests and source win.
+## Run the checks
 
-## How to check a change
-
-Run from the repository root:
+From the repository root:
 
 ```bash
+python3 scripts/test/check-bilingual-docs.py
+python3 scripts/test/check-test-layout.py
 python3 scripts/test/check-v1-api.py
-python3 scripts/test/check-v1-project-migration.py
 just test
 just ci
 git diff --check
-git status --short
 ```
 
-For a clean committed release candidate:
+`just test` builds the canonical thesis and runs focused fixtures. `just ci` includes that gate and repository hygiene checks. CI runs `just test`; a local pass does not establish a hosted run or publication.
 
-```bash
-just release <version>
-```
+The [test inventory](../../tests/000-test-suite.md) groups flat, uniquely numbered sources under `tests/`. Focused fixtures are the normal fast gate; the complete teaching document supplies integration coverage.
 
-For an extracted student project, run from the directory containing
-`thesis.tex`:
+## Protected behavior
+
+| Concern | Current contract |
+| --- | --- |
+| Public API and migration | Declared 1.x names/argument shapes, explicit deprecated-command diagnostics, and an unchanged v1.8.2 fixture built through the current runtime |
+| Student configuration | Cited conf/conf.tex line numbers still point to the documented commands |
+| Canonical output | 261 A4 pages, PDF plus SyncTeX, expected text and dependencies, converged references/citations |
+| Institution profiles | Correct load order, one selected profile, independent oral/cover dates, degree-specific policy, no NCKU data/assets in custom output |
+| Helpers | Numbering state, theorem counter chains/cycles, reference metadata, float captions/options, fonts, keywords and PDF metadata |
+| Diagnostics | Reviewed warning budgets in `scripts/test/check-diagnostics.py`; no unresolved references/citations or rerun-required state |
+| Student knowledge | Published guide snippets, English-only agent payload, bounded links, aliases, root discovery and copied-context builds in `scripts/test/check-student-agent-skills.py` |
+| Packages | Exact HEAD:thesis inventory and bytes, required members, safe symlink extraction, generated examples and Overleaf cold builds |
+
+Negative cases must fail for their intended reason. Missing recorder files cannot prove dependency absence: require a nonempty `.fls` before testing that an institution asset or teaching file was not loaded. Keep API, archive and page-count assertions meaningful when changing source or fixtures.
+
+## Check output and portability
+
+For output-sensitive changes, compare page count, text, normalized word coordinates from `pdftotext -bbox-layout`, meaningful `pdffonts` rows and fixed-DPI page renders. Inspect affected covers, front matter, figures and pagination. Raw PDF bytes and unnormalized metadata are not portable identity guarantees across operating systems, TeX Live versions or fonts.
+
+From an extracted student project containing `thesis.tex`:
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
@@ -39,380 +50,14 @@ pdfinfo thesis.pdf
 pdftotext thesis.pdf thesis.txt
 ```
 
-The packaged student project deliberately works without the repository
-`justfile`, root tests, scripts, or build directories.
+Overleaf uses XeLaTeX and `thesis.tex` as the main document. Editors use the same root and XeLaTeX/BibTeX build chain. Repository `just`, tests and scripts are not student prerequisites. Check the final log and expected content; a PDF alone does not prove convergence.
 
-Test sources sit flat under `tests/` with three-digit sparse prefixes.
-[`tests/000-test-suite.md`](../../tests/000-test-suite.md) defines the ranges
-and separates executable fixtures from `900`-series historical references,
-and `scripts/test/check-test-layout.py` rejects unnumbered files, nested test
-paths, duplicate numbers, empty reserved groups, and missing layout anchors.
+Archive gates read committed `HEAD:thesis`. If student sources are uncommitted, those gates describe committed package bytes, while working-tree checks describe the edits. [Distribution](release-and-distribution.en.md) defines release and public verification.
 
-## What the gate protects
+## Performance characteristics
 
-| Boundary | Deterministic evidence |
-| --- | --- |
-| 1.x declarations | 597 LaTeX/xparse plus 65 literal `\def` entries; 22 runtime-dead comment-environment declarations audited separately |
-| Unchanged 1.x project | 18 student-owned files / 296,726 bytes materialized from the v1.8.2 tag and built through the current template on the teaching-example path (261 pages) and in StudentMode with exact `.fls`/`.blg` records; the live files may differ |
-| Student guide line citations | every `conf/conf.tex` line number cited by the four student guides still holds the command the guide describes, and no guide cites an unchecked line |
-| Canonical integration document | 261 A4 pages (271 before the 2026-08-22 teaching-document restructure), converged references/citations, expected text and dependency records |
-| Student package | regular-file list equals tracked `HEAD:thesis`; direct extracted XeLaTeX build; no repository-only tooling or redundant `thesis/` wrapper |
-| Profiles | default NCKU output plus six-page neutral/custom cover/oral matrix with no NCKU visible policy or watermark asset |
-| Numbering | all general/appendix selectors, seven counter styles, dynamic values, repeatability, unknown/empty no-ops |
-| Theorems | 21 public routes, labels, `ref`/`nameref`, styles, counter chains, optional numbering, and deterministic cycles |
-| Floats | single/multi/subfigure and table paths, caption order, labels/names, assets, scale/opacity, and compatibility key behavior |
-| Metadata and fonts | Unicode metadata/bookmarks, CJK/Latin routes, exact meaningful `pdffonts` rows for output-neutral refactors |
-| Draft/watermark | all three default-off layers plus explicit opt-in fixture and Gallery package defence in depth |
-| Diagnostics | bounded final-log budgets; zero unresolved references/citations and zero rerun-required state |
+Own-thesis mode avoids rebuilding the teaching corpus: comment out `\ExampleMode` and write under `context/`. `latexmk` tracks dependencies and reruns XeLaTeX/BibTeX as needed; `just watch` uses continuous rebuilding. A warm no-change build does less work than a clean build, but its time is not a clean-build benchmark.
 
-## How output identity is proven
+Build times depend on document size, figures, bibliography, fonts, hardware, TeX installation and concurrent load. Hosted container startup and Overleaf timeout limits are separate costs. Local timing cannot promise hosted completion or a universal speedup. Preserve clean convergence in required test/release lanes; generated auxiliary state must not substitute for cold-build proof. `JUST_JOBS=1` permits serial execution when diagnosing interleaved fixture failures.
 
-Page count and extracted text alone cannot show that a layout stayed
-identical, so output-sensitive work layers its proof: normalized
-`pdftotext -bbox-layout` word tuples, `pdffonts` tables, fixed-DPI page
-rasters, and rendered inspection of the affected pages. Raw bbox HTML is not
-byte-stable because PDF metadata such as the creation time changes between
-runs.
-
-The V2 profile extraction and the bounded internal refactors retained:
-
-- the canonical 271-page A4 output;
-- complete extracted-text identity where output-neutrality was required;
-- normalized word-coordinate identity for focused and canonical comparisons;
-- fixed-DPI raster identity for all 271 pages during the final command-parser
-  migration, plus higher-DPI representative cover, float, theorem, and final
-  pages during focused slices;
-- meaningful font-table identity for the dependency/performance slice;
-- the exact student archive tree and direct-build behavior.
-
-The custom-profile proof covers Chinese/English Master covers, the Chinese
-oral certificate, Master/Doctoral English oral branches, and the Doctoral
-English cover. It keeps Gregorian custom dates distinct, does not borrow an
-oral day into a generic cover, uses custom degree wording without changing
-numeric degree semantics, and loads no NCKU watermark asset or
-college/department catalogue. The gate requires each `.fls` recorder file to
-exist before asserting that those paths are absent.
-
-## v2.0.2 production release read-back
-
-The immutable tag `v2.0.2.260719120024` points to source commit
-`077323b1af173cfb564859dd360b959dd58ffaa5`. The exact merged-main Test run
-[`29687020022`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/29687020022)
-passed before Release workflow
-[`29687321505`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/29687321505)
-built and promoted exactly two public assets.
-
-Public re-download checks recorded:
-
-```text
-ncku-thesis-template-latex-v2.0.2.260719120024.zip
-SHA-256 5ddc1e32680c596090a25d1c028abdabd5dd653f754fe03819b64fbc90447079
-
-ncku-thesis-template-latex-examples-v2.0.2.260719120024.zip
-SHA-256 fe094390317bdeb23c5d55371e3c263cec06285cd01af4601e60158cd464b108
-```
-
-The public bytes matched the successful workflow artifact. The downloaded
-student ZIP matched the tagged `thesis/` tree exactly and built with the
-packaged canonical `latexmk` command to a 271-page A4 PDF with SyncTeX and
-resolved references/citations. The examples ZIP contained exactly its README
-plus six expected A4 PDFs:
-
-| PDF | Pages |
-| --- | ---: |
-| `cover.pdf` | 2 |
-| `thesis-chi.pdf` | 11 |
-| `thesis-eng.pdf` | 11 |
-| `thesis-full.pdf` | 271 |
-| `defense-certificate-master.pdf` | 6 |
-| `defense-certificate-phd.pdf` | 10 |
-
-Generated defense certificates are template demonstrations and regression
-outputs, not official school-system documents.
-
-## v2.0.5 production release read-back
-
-The immutable tag `v2.0.5.260821154358` points to source commit
-`9350d1d35e501b20153f293f9057da09576d6643`. The merged-main Test run
-[`32499614687`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32499614687)
-passed before Release workflow
-[`32499622823`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32499622823)
-built and promoted exactly two public assets. An earlier tag string for this
-release failed the merge-aware whitespace gate before packaging (the packaged
-licence copy carried the root file's historical trailing whitespace), produced
-no release, and was removed; the fix landed through a separate pull request
-before the tag above was cut.
-
-Public re-download checks recorded on 2026-08-21:
-
-```text
-ncku-thesis-template-latex-v2.0.5.260821154358.zip  (33,372,825 bytes)
-SHA-256 116336d4928ed074506b352110deee0150bcf11920eb89e49202760035fe790a
-
-ncku-thesis-template-latex-examples-v2.0.5.260821154358.zip  (20,770,699 bytes)
-SHA-256 8d3e7d73c8fda73ba15af5d5556fd1df627910e2fecd8e3d45cb34bf13062b98
-```
-
-The public bytes matched the promoted workflow artifact. The downloaded
-student ZIP matched the tagged `thesis/` tree exactly, carried the 18 pinned
-v1.8.2 student inputs (296,726 bytes, zero mismatches) and the licence text,
-and built with the packaged canonical `latexmk` command to a 271-page A4 PDF
-with SyncTeX, resolved references/citations, no Draft marker, and no
-institutional watermark asset. The examples ZIP contained exactly its README,
-`LICENSE`, and six A4 PDFs:
-
-| PDF | Pages |
-| --- | ---: |
-| `cover.pdf` | 2 |
-| `thesis-chi.pdf` | 11 |
-| `thesis-eng.pdf` | 11 |
-| `thesis-full.pdf` | 271 |
-| `defense-certificate-master.pdf` | 6 |
-| `defense-certificate-phd.pdf` | 10 |
-
-## v2.0.6 production release read-back
-
-The immutable tag `v2.0.6.260822064417` points to source commit
-`0bd86daea2b6db9dc80d9cf3214a4a5a33688716`. The merged-main Test run
-[`32557951306`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32557951306)
-passed before Release workflow
-[`32557957079`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32557957079)
-built and promoted exactly two public assets. An earlier tag string for this
-release was cut from a changelog merge whose checks were red (its wording
-tripped the public-voice gate); that Release build was cancelled before
-packaging, the tag was removed unreleased, and the corrected changelog was
-merged on green checks before the tag above was created.
-
-Public re-download checks recorded on 2026-08-22:
-
-```text
-ncku-thesis-template-latex-v2.0.6.260822064417.zip  (33,372,509 bytes)
-SHA-256 7b1fba3c2d12da23e85fad0318ddea79e4f17c738b37bd73de8f70a143d80b51
-
-ncku-thesis-template-latex-examples-v2.0.6.260822064417.zip  (20,770,690 bytes)
-SHA-256 f6b5ef8eb01dab3b7047ad84a09756db76a8359f3dd939389f5461054958f72c
-```
-
-The public bytes matched the promoted workflow artifact. The downloaded
-student ZIP matched the tagged `thesis/` tree exactly, carried the 18 pinned
-v1.8.2 student inputs (296,726 bytes, zero mismatches) and a licence file
-byte-identical to the repository root `LICENSE`, and built with the packaged
-canonical `latexmk` command to a 271-page A4 PDF with SyncTeX, resolved
-references/citations, no Draft marker, and no institutional watermark asset.
-The examples ZIP contained exactly its README, `LICENSE` (also identical to
-the root licence), and six A4 PDFs:
-
-| PDF | Pages |
-| --- | ---: |
-| `cover.pdf` | 2 |
-| `thesis-chi.pdf` | 11 |
-| `thesis-eng.pdf` | 11 |
-| `thesis-full.pdf` | 271 |
-| `defense-certificate-master.pdf` | 6 |
-| `defense-certificate-phd.pdf` | 10 |
-
-## v2.0.7 production release read-back
-
-The immutable tag `v2.0.7.260822120950` points to source commit
-`e2de6e6f13affaed3309d82fe8f6d5659a0db150`. The merged-main Test run
-[`32572515583`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32572515583)
-passed before Release workflow
-[`32572737060`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32572737060)
-built and promoted exactly two public assets. This is the first release whose
-GitHub Release notes were composed from the two changelog entries by
-`scripts/release/release-notes.py`, and the first after the teaching document
-was restructured, so the canonical page count below is 261 rather than 271.
-
-Public re-download checks recorded on 2026-08-22:
-
-```text
-ncku-thesis-template-latex-v2.0.7.260822120950.zip  (32,540,062 bytes)
-SHA-256 1bb8dd82eae6801c2f9ac0a3fedc96e40d1e67be61b0eb28393e8da5422e544b
-
-ncku-thesis-template-latex-examples-v2.0.7.260822120950.zip  (20,036,402 bytes)
-SHA-256 84bed73b3ed9570fd383d73cbcd0a4c613362ebc4b3790ac9764ad7f3aeccd0f
-```
-
-The public bytes matched the promoted workflow artifact. The downloaded
-student ZIP matched the tagged `thesis/` tree exactly (193 regular files),
-carried the 18 pinned v1.8.2 student inputs (296,726 bytes, zero mismatches)
-and a licence file byte-identical to the repository root `LICENSE`, and built
-with the packaged canonical `latexmk` command to a 261-page A4 PDF with
-SyncTeX, resolved references/citations, no Draft marker, and no institutional
-watermark asset. The examples ZIP contained exactly its README, `LICENSE`
-(also identical to the root licence), and six A4 PDFs:
-
-| PDF | Pages |
-| --- | ---: |
-| `cover.pdf` | 2 |
-| `thesis-chi.pdf` | 11 |
-| `thesis-eng.pdf` | 11 |
-| `thesis-full.pdf` | 261 |
-| `defense-certificate-master.pdf` | 6 |
-| `defense-certificate-phd.pdf` | 10 |
-
-## v2.0.8 production release read-back
-
-The immutable tag `v2.0.8.260823035006` points to source commit
-`9abc5d2a99709fd975d8ec990a1e3fcdcb4a1e66`. The merged-main Test run
-[`32616584726`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32616584726)
-passed before Release workflow
-[`32616598736`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32616598736)
-built and promoted exactly two public assets. This is the first release after
-the v1.8.2 pin moved onto the tag-materialized fixture, so the student ZIP is
-checked only against the tagged `thesis/` tree: its `context/` placeholders
-carry the corrected text, and `conf/conf.tex` is byte-identical to the
-previous release.
-
-Public re-download checks recorded on 2026-08-23:
-
-```text
-ncku-thesis-template-latex-v2.0.8.260823035006.zip  (32,540,043 bytes)
-SHA-256 28a9db5ceeb7a116e88a25ffcea7f26d8c0c2e3f4ec65370b936d3dbdecf88bc
-
-ncku-thesis-template-latex-examples-v2.0.8.260823035006.zip  (20,028,658 bytes)
-SHA-256 3298872a222be56228b37d556ad451b99e69755624ebd90599bcfa2090887a78
-```
-
-The public bytes matched the promoted workflow artifact. The downloaded
-student ZIP matched the tagged `thesis/` tree exactly (193 regular files),
-carried a licence file byte-identical to the repository root `LICENSE`, and
-built with the packaged canonical `latexmk` command to a 261-page A4 PDF with
-SyncTeX, resolved references/citations, no Draft marker, and no institutional
-watermark asset. The GitHub Release page carried the composed notes (download
-guide plus both changelog entries). The examples ZIP contained exactly its
-README, `LICENSE` (also identical to the root licence), and six A4 PDFs:
-
-| PDF | Pages |
-| --- | ---: |
-| `cover.pdf` | 2 |
-| `thesis-chi.pdf` | 11 |
-| `thesis-eng.pdf` | 11 |
-| `thesis-full.pdf` | 261 |
-| `defense-certificate-master.pdf` | 6 |
-| `defense-certificate-phd.pdf` | 10 |
-
-## Dated performance evidence
-
-Benchmarks describe the host and workload they were measured on; they are not
-universal speed promises.
-
-### Initial modernization review
-
-```text
-271-page clean build:             31.34 s
-271-page warm no-change build:     0.10–0.33 s
-271-page real dependency edit:    12.51–12.93 s
-11-page student clean build:       3.84 s
-11-page student no-change build:   0.07 s
-11-page student chapter edit:      1.45 s
-```
-
-`latexmk` was already doing correct dependency tracking: the full-corpus edit
-cost was XeLaTeX layout and PDF generation, not unnecessary bibliography
-runs. Writing with StudentMode (teaching examples disabled) is the primary
-speed optimization for a normal thesis, and `latexmk -pvc` adds automatic
-rebuilds without weakening final build semantics.
-
-### Dependency simplification measurement
-
-A later same-host experiment compared three student clean runs, five
-no-change runs, and alternating isolated preamble runs:
-
-```text
-single-pass preamble median: 0.690 s -> 0.673 s (-2.37%)
-student cold median:         6.861 s -> 6.685 s (-2.56%)
-canonical no-op median:      0.140 s -> 0.141 s (unchanged)
-```
-
-The three-run 271-page cold median moved from 30.365 s to 33.694 s under
-changing background load — too noisy to claim as a full-corpus speedup. The
-retained claim is narrower: fewer dependencies, simpler bounded dispatch,
-small isolated/student improvements, and unchanged output.
-
-## Accepted, rejected, and deferred decisions
-
-### Accepted
-
-- Move the v1.8.2 pin from the live student files to a tag-materialized
-  fixture (owner decision, 2026-08-23, reversing 2026-08-21). The manifest
-  still records the 18 files' tag bytes; `just test` now materializes them
-  from `v1.8.2.260715154703` next to the current template and builds them on
-  the teaching-example path and in StudentMode. This freed the packaged
-  `context/` placeholders (the `relatd` typo and the Chinese abstract that
-  shipped with instructions as body text) without weakening the proof that
-  an unchanged 1.x project builds on 2.x. `conf/conf.tex` and `thesis.tex`
-  stay unchanged, and a new check keeps the line numbers cited by the student
-  guides truthful.
-- Restructure the teaching document for first-time readers (2026-08-22): the
-  usage and writing chapters follow the introduction directly; the origin
-  story moves into the appendix, while "words from professors" stays in the
-  body as the last chapter (owner decision, 2026-08-22); the MiKTeX 2.9 /
-  Texmaker screenshot chapter (23 PNGs, about 0.85 MB) is replaced by a
-  three-path section (Overleaf, terminal, editor); the Adobe CS5 / Office 2013
-  figure-conversion recipes shrink to "export PDF, crop with `pdfcrop`". The
-  canonical page count moved from 271 to 261; references and citations still
-  converge, and the `justfile` pin follows the new count.
-- Remove the legacy `fp` path for three numeric operations using the already
-  loaded LaTeX programming layer. All 12 `fp` inputs (about 117 KB) leave the
-  active graph while decimal, negative-modulo, expansion, and group semantics
-  remain fixture-protected.
-- Replace 21 sequential month comparisons with one native 12-way branch while
-  preserving `1`/`01` through `12` and invalid-range empty output.
-- Keep `xparse` as an explicit dependency because protected `G{...}`
-  signatures are not supplied by the kernel document-command surface.
-- Move nineteen repository-owned command parser families to `l3keys` through
-  bounded baseline-first slices.
-- Keep required Test and Release lanes clean rather than caching auxiliary TeX
-  state into correctness gates.
-- Build the five standalone release example PDFs concurrently. Each case
-  writes only its own jobname files inside the release staging directory, the
-  measured cold segment dropped from 24.7 to 15.1 seconds on the reference
-  host, and `JUST_JOBS=1` restores serial execution.
-
-### Measured and rejected
-
-- The default non-TikZ `mdframed` renderer removed TikZ from the active graph
-  but changed 271 pages to 270 and added a bad-break warning. It was fully
-  rolled back rather than retuning visible layout for a benchmark.
-- A separate chapter-preview entry point was rejected because the measured
-  student chapter edit was about 1.45 seconds and another mode would add
-  numbering/reference risk.
-- GitHub Actions cache for `build/` was rejected because the dominant hosted
-  cost was the TeX container pull and clean convergence is part of the
-  required proof.
-- Changing the runner to Arm was rejected because the selected TeX container
-  did not provide a native Arm64 image; architecture labels alone do not
-  prove a speedup.
-- Replacing retained transitive packages or all remaining `ifthen` calls was
-  rejected without a bounded behavior and output contract.
-- Caching the hosted TeX container image was rejected after measuring Test run
-  [`32492812318`](https://github.com/wengan-li/ncku-thesis-template-latex/actions/runs/32492812318):
-  the `ghcr.io/xu-cheng/texlive-alpine` pull took about 79 seconds of the
-  3-minute-51-second job, while an actions/cache round trip for the multi-GB
-  image tar plus `docker load` costs comparable time on a hit, pays a
-  save/upload penalty whenever the upstream image moves, and would move
-  environment plumbing into workflow YAML that deliberately owns environment
-  selection and promotion only. A repository-owned slim pinned image remains a
-  possible separate Intent.
-
-### Deferred and inactive
-
-Class/package redesign, `l3build`, `latex-dev`, engine migration, broad
-control-flow rewrites, and tagged-PDF/PDF-UA work are not active
-requirements. Each needs a new owner-approved Intent, representative
-fixtures, and its own release boundary.
-
-## Maintenance rule
-
-For every future output-sensitive slice:
-
-1. add or extend the focused fixture before the source change;
-2. preserve public declarations and student-owned migration inputs;
-3. run focused checks and `just test`/`just ci`;
-4. compare page count, text, normalized geometry, fonts, relevant rasters,
-   diagnostics, references, and dependencies;
-5. verify the exact extracted student package when its surface is touched;
-6. keep generated artifacts outside source Git.
-
-The [student writing and agent skills record](student-writing-and-agent-skills.en.md) owns the unpublished portable knowledge design, published-snippet checks, English-only agent contract and exact-candidate package evidence.
+See [student writing and agent skills](student-writing-and-agent-skills.en.md) for the writing-contract coverage and [architecture](v2-modernization.en.md) for runtime responsibilities.

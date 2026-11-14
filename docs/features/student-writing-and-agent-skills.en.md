@@ -4,105 +4,54 @@
 
 # Student writing and portable agent skills
 
-Status: local implementation and acceptance complete, unpublished. No release or hosted agent execution is claimed.
+Students and agents use one set of writing knowledge under `thesis/context/`. The [human writing entry](../../thesis/context/README.en.md) routes to task guides; the single [agent skill](../../thesis/context/.agents/skills/ncku-thesis-writing/SKILL.md) loads only the relevant English guide. These descriptions apply to current source. Published package availability is determined by [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases).
 
-## Intent
+## Knowledge and language ownership
 
-Students receive task-oriented writing knowledge with their thesis content. One skill at `thesis/context/.agents/skills/ncku-thesis-writing/SKILL.md` routes to English human usage guides under `thesis/context/usage/`. Those guides have Traditional-Chinese companions outside `.agents/`. The agent tree and both new student AGENTS routers are English only, with no language switchers. Copying the entire `context/` directory preserves this knowledge offline. It does not supply the template runtime.
+`thesis/context/usage/` owns paired Traditional-Chinese and English guides, including executable examples. Agent-facing AGENTS.md, SKILL.md and any skill sidecars use English only, without language switchers. The skill does not duplicate an English handbook inside `.agents/`.
 
-Preserve XeLaTeX, BibTeX, existing entry/configuration bytes, public commands, normal defaults and visible layout. Student agents edit requested thesis content, preserve scientific claims and cite only supplied sources. No hooks, installation, client settings, network service or CodeGraph dependency enters the student package.
+| Task | Human English guide under context/usage/ | Runtime owner under template/command/ |
+| --- | --- | --- |
+| Own thesis, chapters, text, front matter, appendices | project-and-chapters.en.md | cmd-thesis, cmd-chapter, cmd-abstract, cmd-acknowledgments, cmd-nomenclature, cmd-appendix |
+| Images, captions and tables | figures-and-tables.en.md | cmd-figure, cmd-figures, cmd-table |
+| Equations, theorems and proofs | equations-and-theorems.en.md | cmd-equation, cmd-theorem |
+| Citation keys and BibTeX databases | references-and-bibliography.en.md | cmd-ref, cmd-bibliography |
+| Builds and diagnostics | build-and-diagnostics.en.md | template/configure.tex and the student build path |
 
-Failure includes incorrect command syntax, a broken local reference, missing hidden payload, escaping aliases, invented citations, an unconverged pilot or a package claim based only on uncommitted source.
+Chapter/section labels and equation labels use optional braced arguments. Figure pos/align and multi/subfigure align are accepted compatibility keys without placement/alignment effects. Table pos controls caption order; the float remains `[H]`. The guides distinguish actual behavior from accepted syntax.
 
-## Expectations
+## Discovery and copy contract
 
-The acceptance boundary includes a real own-thesis chapter/section, supplied image/caption/label, cross-reference and existing real BibTeX entry. Compile the published snippets themselves, from an extracted student package without `example/`. Rehearse a full `context/` copy into another matching template. Check missing payload, sidecar, unsafe links, wrong aliases, omitted hidden files and corrupted references. Run the bilingual, API, flat-layout and complete repository gates on an exact committed scratch candidate.
+`thesis/AGENTS.md` and `thesis/context/AGENTS.md` are thin student routers. Each adjacent alias is exactly `CLAUDE.md -> AGENTS.md`. Nested skills are not automatically registered by every client; explicitly read the named SKILL.md when discovery does not occur.
 
-The two student routers are exactly `thesis/AGENTS.md` and `thesis/context/AGENTS.md`. Each adjacent `CLAUDE.md` is a relative symlink to `AGENTS.md`. They carry no repository authority. ZIP validation checks Unix mode, link payload, extraction target and content independently. The root repository alias remains unchanged.
+Start from the requested content file/directory and inspect its ancestors, resolving relative targets from cwd. Without a target, inspect cwd and its ancestors. At a verified repository root, consider only its `thesis/` child. A matching runtime requires `thesis.tex`, `conf/` and `template/configure.tex` together. An explicit orphan target cannot borrow a runtime merely because cwd has another project.
 
-Recovery removes the new documentation/tooling slice; existing thesis sources remain usable. Publication, real-index staging, branches, worktrees, commits in this checkout, uploads and hosted agent evaluation are outside authorization. Scratch fixture Git is explicitly permitted for package proof.
+Copy the entire `context/` with a tool preserving hidden `.agents/` and relative symlinks. Content carries knowledge and student material, not the template/compiler runtime. Preserve existing destination work before replacement, and use a matching complete template. The guides remain readable without example/, repository maintenance skills, CodeGraph or a network. Ordinary TeX builds do not load agent instructions or Markdown guides.
 
-## Context and ownership
+## Writing and authority boundaries
 
-The source baseline is `7a42edb9ff69317af08f610eb15029ec22d7521e`. The approved external handoff supersedes the original plan's proposed status. Completed requirement/todo 03 have been retired after local acceptance. This record owns design and durable evidence.
+Agents edit requested student files and preserve research claims, labels, bibliography and unrelated work. Supply images and verified citation metadata; missing input must be reported rather than invented. Keep XeLaTeX/BibTeX and the existing layout/configuration boundary. A writing request does not authorize template optimization, installation, global/client configuration, Git publication, upload or account access.
 
-`context/README*` is a task router. Paired `context/usage/` guides own usage knowledge and executable snippets. Agent references are unnecessary: the English-only skill links directly to English human guides. `SKILL.md` owns agent workflow and safeguards. Existing first-run/configuration guides remain authoritative for student data. Nested skill discovery varies by client; routers prescribe an explicit read fallback. No universal agent behavior claim follows from deterministic checks.
+Use official school-system certificate files. The community template does not imply institutional endorsement. Report actual build commands/results or missing tools; editing a file is not successful compilation, and deterministic payload checks do not prove every agent's behavior.
 
-Project discovery starts from the requested content file/directory and its ancestors, resolving relative targets from cwd. Without a target, inspect cwd and its ancestors. At a verified repository root, consider only its thesis/ child and require thesis.tex, conf/ and template/configure.tex together. Do not recursively search unrelated children or attach explicit orphan content to the runtime near cwd. Contract cases cover repository-root entry, relative target files/directories, nested cwd, orphan content and an unverified directory containing a runtime child.
+## Validation and recovery
 
-## Source-to-guide coverage
+From the repository root:
 
-The published snippets and existing family fixtures listed below passed local acceptance. The matrix is bounded usage coverage, not a claim that every v1 API is recommended or individually documented.
+```bash
+python3 scripts/test/check-student-agent-skills.py
+just test
+just ci
+```
 
-| Family | Definition under thesis/template/command/ | Human guide under thesis/context/usage/ | Verification |
-| --- | --- | --- | --- |
-| Own content, chapters, sections, text/lists | cmd-thesis.tex, cmd-chapter.tex, cmd-list.tex | project-and-chapters | Published pilot, 121 sectioning, 800 StudentMode |
-| Single/multiple figures, captions, labels | cmd-figure.tex, cmd-figures.tex | figures-and-tables | Published snippets, 400 floats, 402 unknown keys |
-| Tables and caption position | cmd-table.tex | figures-and-tables | Published snippet, 400 floats, 403 unknown keys |
-| Equations and reference wrappers | cmd-equation.tex, cmd-ref.tex | equations-and-theorems | Published snippet, 300 references |
-| Theorems/proofs | cmd-theorem.tex | equations-and-theorems | Published snippet, 500/503 theorem routes |
-| BibTeX and convergence | cmd-bibliography.tex, cmd-ref.tex | references-and-bibliography | Published entry/citation, 300/301 references |
-| Abstracts, acknowledgments, nomenclature, appendices | cmd-abstract.tex, cmd-acknowledgments.tex, cmd-nomenclature.tex, cmd-appendix.tex | project-and-chapters | Source reconciliation; pilot front matter and appendix |
-| Build and diagnostics | template/configure.tex, package README | build-and-diagnostics | Extracted/copy/Overleaf cold builds |
+The required gate compiles the published human-guide snippets with a supplied image and existing real BibTeX entry. It checks chapter/section/figure labels, captions, references, bibliography convergence, PDF text, copied-context builds and runtime isolation. Student builds remain direct `latexmk` builds; Overleaf and editors use XeLaTeX with `thesis.tex`, as described in the [build guide](../../thesis/context/usage/build-and-diagnostics.en.md).
 
-Chapter/section labels are optional braced arguments. Equation labels use `G{\empty}`, not square brackets. Figure `pos` and `align`, multiple-figure `align` and subfigure `align` are accepted compatibility keys without placement/alignment effects. Tables use `pos=top` for an above-table caption and another value for below; their float remains `[H]`. Do not advertise inactive controls or republish the full v1 manifest as recommended usage.
+Negative contracts cover missing entrypoints/guides, malformed metadata, unsafe links, omitted hidden files, extra maintenance instructions, Chinese agent prose, wrong alias type/target, missing runtime, unverified child discovery, and broken labels/citation keys. Chinese human guides are a positive case. Archive checks inspect ZIP symlink mode, literal target payload and actual extraction separately from resolved AGENTS content.
 
-## Accepted language decision
+If discovery fails, explicitly read the skill and check the requested content path. If the runtime is absent, obtain the matching complete template. If copying broke links, restore the whole content directory with hidden files and relative aliases. For build errors, follow the human diagnostic guide before changing template internals.
 
-The owner correction supersedes the original bilingual-agent-reference layout. All new SKILL.md, agent sidecars and student AGENTS.md prose is English only. Human usage documentation remains bilingual under `context/usage/`, outside `.agents/`. Preserve `CLAUDE.md -> AGENTS.md` symlinks. The earlier bilingual-agent scratch candidate is historical validation only and cannot establish corrected acceptance. Explicit language mutations cover the skill, a sidecar and both student routers; a positive case preserves Chinese human guidance.
+## CodeGraph for repository tooling
 
-## Independent CodeGraph pilot
+CodeGraph is optional assistance for maintained Python symbols and YAML file nodes. Configuration excludes student content, TeX templates, fixtures, documentation, instructions and generated output. It supplies no native LaTeX macro/include graph. Use direct TeX source, public API manifests, focused fixtures and nonempty `.fls` records for that work.
 
-CodeGraph remains optional and local to repository tooling. Installed CLI 1.6.1 supports Python symbols and YAML file nodes; it has no extension mapping for TeX, BibTeX, shell or Markdown. Native LaTeX semantic coverage and custom parsers are outside this scope. Before init, inspect watcher fallback because `--yes` may install Git hooks. No hook, client/global configuration or daemon mutation is authorized. Record any blocker independently of the student feature.
-
-## Executed local evidence
-
-The corrected implementation, including the acceptance review's runtime-discovery fix, was snapshotted from the existing checkout without changing its index or refs. The exact tested scratch source is commit `6389fa14ca515a9296eb6a3ef75538c9ca91601c`, tree `57bd92a9aae68e3096fceac86b97ffd136522580`, based on `7a42edb9ff69317af08f610eb15029ec22d7521e`. A retained path/mode/SHA-256 manifest authenticates every tracked candidate file and intended new file, including parent-owned maintenance-skill updates. Build output, local graph state and unrelated files were excluded. The historical migration tag was imported read-only into the isolated scratch Git fixture. No real repository staging, commit, branch, worktree or publication occurred.
-
-| Check | Executed result |
-| --- | --- |
-| `python3 scripts/test/check-student-agent-skills.py --build` | PASS, exact human-guide snippets, supplied image and source-pinned real MapReduce entry |
-| English-only and portable-payload contracts | PASS, skill and both routers English only, all human guide links bounded inside copied context |
-| Repository/target discovery | PASS from verified repository root, requested content file/directory and nested cwd; orphan targets and unverified child runtimes rejected |
-| Negative cases | PASS, 19 payload/language/alias/runtime/reference/citation mutations, plus seven required-member deletions in the archive gate |
-| `python3 scripts/test/check-bilingual-docs.py` | PASS, 14 complete human-guide pairs and 4 summary pairs; action/default/exception parity reviewed |
-| `python3 scripts/test/check-test-layout.py` | PASS, 46 tracked flat numbered artifacts in the committed candidate, including 802 |
-| `python3 scripts/test/check-v1-api.py` | PASS, 597 LaTeX/xparse and 65 literal def declarations retained |
-| `just test` / `just ci` | Both PASS on the corrected candidate, 92.37 / 80.13 seconds |
-| Direct extracted default build | PASS using `latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex`, 261 A4 pages plus SyncTeX, final references/citations converged |
-| Extracted own-thesis pilot and whole-context copy | PASS without example/ or repository maintenance files; expected PDF text, caption, labels and real citation; corrupted reference and citation reject, restored content passes |
-| Visual inspection | Pilot pages 6/7 inspected for image/subimages, table, equation, theorem/proof and references; no clipping observed |
-| Runtime isolation | Nonempty recorder files confirm neither agent instructions nor human usage guides are TeX inputs |
-| `git diff --check` and immutable student inputs | PASS; thesis.tex/conf/conf.tex unchanged, real index digest preserved |
-
-The two-image helper retains its existing 8pt overfull hbox diagnostic; representative output was readable. The default teaching build also emits inherited xdvipdfmx duplicate-object console diagnostics. These observations do not authorize a template/layout refactor; the unchanged canonical warning-budget gate passed. No warning-free or cross-platform byte-identical PDF claim is made.
-
-The bundled stock skill validator could not run with the existing Python because PyYAML is absent. Nothing was installed. The repository's new frontmatter/link/language/payload checker uses the standard library and passed the full gate.
-
-## Package provenance
-
-All three packages below came from the exact corrected scratch commit. The student verifier checks the complete HEAD:thesis inventory and every member's bytes, separately checking symlink mode, literal target payload and actual Info-ZIP extraction. Symlink payload is never compared with resolved AGENTS text. The two aliases are exactly `CLAUDE.md -> AGENTS.md` and `context/CLAUDE.md -> AGENTS.md`; unexpected instruction trees and escaping links reject.
-
-| Package | Files | Editable bytes | ZIP bytes | SHA-256 |
-| --- | ---: | ---: | ---: | --- |
-| Student | 210 | 671764 | 32562640 | a18cfe6f44a98137f8fb890618036ced664f31e25915072dda5a62e0e9ddb423 |
-| Overleaf student | 96 | 433832 | 5039619 | b2cb8d51916f534ce97026ccb9aee033007e234427cde7e8aaae9451e10ccd30 |
-| Overleaf Gallery | 94 | 434420 | 4755511 | 8947ef5ee746f7ea801469520e8d4f97c108ebfa7f2dd3dbd1c41d0a2a503cac |
-
-Both generated Overleaf profiles passed local cold builds, hidden-skill/alias extraction and file/byte limits. Official [upload limits](https://docs.overleaf.com/managing-projects-and-files/uploading-a-project) and [plan limits](https://docs.overleaf.com/getting-started/free-and-premium-plans/plan-limits) were rechecked on 2026-11-14. The root README is augmented only in generated Overleaf packages; source defaults remain intact. Local checks establish no hosted Overleaf execution or client-specific symlink/discovery guarantee.
-
-Full logs, manifests, graph inventory, package receipts and rendered pilot pages remain in private scratch. The completed acceptance tracker was consolidated here; subsequent documentation-only closure is structurally rechecked separately. The student subtree and test/tooling bytes are unchanged by that closure.
-
-## CodeGraph result and procedure
-
-The launcher changed externally from 1.6.1 to 1.6.2 during the session; this implementation performed no install or upgrade. Init/watch-policy source was inspected before execution. On this native filesystem the watcher policy returned null, so init did not invoke its hook fallback. Snapshotted instructions, settings and hook bytes were unchanged after initialization. Telemetry/update environment flags were set per command. Generated state remains ignored.
-
-The actual 1.6.2 index contains 24 files: 19 Python validators plus the Python release-notes script, and four YAML workflow/issue-template files. Current inventory and status are retained with the private receipts. The final sync reported 328 nodes, 964 edges, Python/YAML only and zero pending changes. Queries for check_guide_pair and check_active_work_directory matched 153 current on-disk source lines. An isolated fixture proved exact function removal/addition after sync and returned the replacement source.
-
-A query-only deletion assertion initially failed because lexical matching returned a symbol sharing a name segment. Exact database membership proved freshness; an empty/fuzzy response is not a semantic absence test. InsertFigure returned no indexed result, and the actual extension registry has no .tex/.sty/.cls/.bib/.sh/.md mapping. The configured thesis exclusion independently keeps student content outside the graph. Use direct TeX source, API manifests, focused fixtures and nonempty .fls evidence for that work. No custom parser, extension spoofing, MCP registration, hook installation, live-daemon stop or unlock was performed.
-
-The scoped [CodeGraph skill](../../.agents/skills/codegraph/SKILL.md) owns the reusable procedure. It stays outside student archives. CLI readiness is separate from any client integration.
-
-## Remaining authority boundaries
-
-The local implementation scope is complete and unpublished. Hosted agent behavior, authenticated Overleaf execution, release/publication and any future policy/compliance change need their own authorized work. No universal client discovery, institutional endorsement or official certificate generation is claimed.
+Synchronize before queries and compare results with current source. Lexical matching may return shared-word symbols; fuzzy results are not semantic absence tests. A missing or busy index does not authorize initialization, installs, hook changes, client/MCP setup, daemon stops or unlocking. Generated `.codegraph/` state stays ignored and outside every package. See the [CodeGraph skill](../../.agents/skills/codegraph/SKILL.md) for the scoped procedure. CLI readiness and client integration are separate.
