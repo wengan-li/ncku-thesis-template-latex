@@ -11,9 +11,12 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
-### Unreleased
+### [v2.1.1.261114160926](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.1.1.261114160926) — 2026-11-14
 
-- Moves the writing guidance to the thesis project root and adds a Claude skill-directory link.
+- Fixes the writing-guidance location and Claude skill-directory link so copying the complete `thesis/` project retains the guidance.
+- Simplifies configuration and migration instructions and adds the settings needed for a first build with another school's style.
+
+Existing teaching content and thesis layout are unchanged.
 
 ### [v2.1.0.261114095130](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.1.0.261114095130) — 2026-11-14
 

@@ -8,9 +8,12 @@
 
 ## 2.x
 
-### Unreleased
+### [v2.1.1.261114160926](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.1.1.261114160926) — 2026-11-14
 
-- 將 AI 寫作指引移至論文專案根目錄，新增 Claude 技能目錄連結。
+- 修正 AI 寫作指引位置及 Claude 技能目錄連結，完整複製 `thesis/` 即可保留指引。
+- 簡化設定與升級說明，補齊自訂學校首次建置的必要設定。
+
+既有教學內容與論文版面不變。
 
 ### [v2.1.0.261114095130](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.1.0.261114095130) — 2026-11-14
 
