@@ -198,6 +198,9 @@ compatibility-manifest maintenance, and commit rollback workflow.
   `the project` wording; general workflow remains role-neutral. Refer to Chinese
   cross-institution readers as `其他學校的同學` and English readers as `students
   from other institutions`.
+- These operational-guide voice rules do not authorize rewriting the original
+  teaching PDF's personal prose. Preserve that author's voice under
+  [student-first-run](../student-first-run/SKILL.md#preserve-the-teaching-authors-voice).
 - Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing outside
   the exact protected historical root title above. Use `論文範本` in new Chinese
   prose. Avoid Cantonese-only wording in shipped docs.
