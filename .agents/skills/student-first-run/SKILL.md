@@ -19,6 +19,20 @@ successful build:
 - the Overleaf package and its quick start
 - any default value in `thesis/conf/conf.tex` or `thesis/context/context.tex`
   that a new thesis would inherit
+- student `AGENTS.md` routers, relative `CLAUDE.md -> AGENTS.md` symlinks, and
+  `thesis/context/.agents/skills/ncku-thesis-writing/`. Agent-facing instructions
+  and skill sidecars use English only. Existing teaching source/PDF owns human
+  instruction; `references/template-usage.md` is generated from marked shared
+  teaching code. Bilingual project/content READMEs stay thin routers rather than
+  another handbook. These instructions are not copies of maintainer skills.
+
+For ordinary thesis-writing assistance, read the content-local writing skill
+and only the needed section of its generated shared-source reference. Preserve scientific
+claims and supplied sources, edit student content rather than template internals,
+and report actual build evidence or missing prerequisites. Copying `context/`
+must include its hidden `.agents/` payload and relative aliases; it still requires
+a matching thesis template. Do not promise automatic nested-skill discovery for
+every agent client.
 
 Load [`idsd-workflow`](../idsd-workflow/SKILL.md) first as usual, and
 [`documentation-management`](../documentation-management/SKILL.md) for pair,
@@ -104,9 +118,10 @@ Run through this before opening a pull request that touches the student path:
 
 ## Evidence
 
-- Walk-through decisions: `docs/features/validation-and-performance.en.md`
-  (Accepted decisions) and `docs/features/release-and-distribution.en.md`
-  (Recorded Gallery state).
+- Current student workflow, package and distribution contracts:
+  `docs/features/validation-and-performance.en.md` and
+  `docs/features/release-and-distribution.en.md`. Keep historical walkthroughs,
+  publication timelines and execution receipts in Git history, not current docs.
 - Shipped-default facts: `thesis/conf/conf.tex`,
   `thesis/template/cover/cover-chi.tex`, `thesis/template/style/ncku/ncku.tex`.
 - Gates: `python3 scripts/test/check-bilingual-docs.py`, `just ci`,

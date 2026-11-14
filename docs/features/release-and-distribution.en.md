@@ -4,95 +4,42 @@
 
 # Release and distribution
 
-Status: GitHub production release verified; Overleaf Gallery refreshed from the
-v2.0.7 source, approved, and independently read back from the public page and
-PDF on 2026-08-23 (previous read-back 2026-07-21).
+[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) is the authority for versioned downloads. The [public Overleaf Gallery listing](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn) is a separate editing route. Repository source, a locally generated package, an upload, a submission and public approval are distinct states. A GitHub update does not update the Gallery or prove that its source matches the repository.
 
-- Public Overleaf template:
-  <https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn>
+## Version and publication contract
 
-This record explains how a release is built, what the two public packages
-contain, how a published release is verified after the fact, and how the
-Overleaf listing relates to GitHub. The two distribution channels are
-independent states: a GitHub change does not update Overleaf, and an Overleaf
-submission is not an approval.
-
-## Version contract
-
-Release tags use:
+Release tags use an immutable annotated tag with a valid UTC timestamp:
 
 ```text
 vMAJOR.MINOR.PATCH.YYMMDDhhmmss
 ```
 
-The final 12 digits are a valid UTC timestamp (`YYMMDDhhmmss`). This is a
-repository convention rather than strict three-component Semantic Versioning.
-Candidate strings can be generated with, for example:
+Never move a published tag. Use the [changelog](../../CHANGELOG.en.md) for version changes and GitHub Releases for available artifacts, rather than inferring publication from source documentation.
 
-```bash
-date -u +v2.0.2.%y%m%d%H%M%S
-```
-
-Tags are annotated and immutable. Never move a published tag to a different
-commit.
-
-## How a release is built and promoted
-
-The Release workflow has two stages:
-
-1. **Build** — a tag push or manual dispatch runs `just release <version>`.
-   Its declared `test` dependency runs the complete required gate once, then
-   the job uploads two verified ZIPs as a temporary workflow artifact.
-2. **Promote** — only a matching Git tag event downloads that exact workflow
-   artifact and attaches it to a GitHub Release. The job composes the release
-   notes from the version's entries in `CHANGELOG.md` and `CHANGELOG.en.md`
-   plus a short download guide (`scripts/release/release-notes.py`), so the
-   Releases page tells a student which ZIP to download. `just release
-   <version>` fails early for a release version without a changelog entry.
-
-A manual dispatch is build-only and must not publish a release. A clean
-worktree is required so compiled PDFs and archives come from one committed
-source revision.
-
-The workflow owns environment and promotion only. TeX case entry points live
-in `scripts/release/*.tex`, and `just release` owns the build and verification
-logic; case behavior is not duplicated in workflow YAML.
+The Release workflow builds with `just release <version>` from clean committed source. Its test dependency runs the required gate. Only a matching Git tag event promotes the exact workflow artifact to a Release; manual dispatch is build-only. Both changelogs must contain the exact version entry. `scripts/release/release-notes.py` composes those entries with the student download guide. The workflow owns environment and promotion; `justfile` and `scripts/release/` own case builds and verification.
 
 ## Public asset contract
 
-Every release promotes exactly two custom assets:
+Each release has exactly two custom public assets:
 
 ```text
 ncku-thesis-template-latex-<version>.zip
 ncku-thesis-template-latex-examples-<version>.zip
 ```
 
-GitHub's automatic source archives are separate contributor artifacts and are
-not part of this custom allowlist.
+GitHub's automatic full-source archives are separate. Loose generated PDFs are intermediates, not additional Release assets.
 
 ### Student package
 
-The student ZIP:
+The student ZIP extracts to one `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/` and `template/` directly inside. Its complete member inventory and bytes equal `HEAD:thesis`; for publication, that source is the release tag. It includes the student README, licence, compatibility adapter and base/NCKU/custom profiles.
 
-- expands to stable `ncku-thesis-template-latex/`;
-- contains exactly the tracked regular files from `HEAD:thesis`;
-- places `thesis.tex`, `conf/`, `context/`, `example/`, and `template/`
-  directly inside that root;
-- includes the student README with offline migration steps, the licence text,
-  the compatibility adapter, and the base/NCKU/custom profiles;
-- excludes `justfile`, `AGENTS.md`, CI, tests, scripts, internal docs, and a
-  redundant `thesis/` directory layer;
-- builds directly with the packaged canonical command
-  `latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex` outside
-  repository tooling.
+Repository tests, scripts, CI and maintenance instructions stay outside the package. The precise student-instruction exceptions are `AGENTS.md`, `context/AGENTS.md`, adjacent relative `CLAUDE.md -> AGENTS.md` aliases and the single content-local writing skill. [Student knowledge](student-writing-and-agent-skills.en.md) defines the payload and copy contract. There is no redundant `thesis/` wrapper.
 
-The exact-tree checker has a negative mutation test: removing a required
-packaged file such as `README.md` must make verification fail.
+`scripts/release/verify-student-archive.sh` checks inventory, bytes, required content and extracted symlink mode/target/content. Missing-member mutations must fail. The extracted project builds directly with XeLaTeX/BibTeX through `latexmk`, without repository tooling; Overleaf and editors select `thesis.tex` and XeLaTeX.
 
 ### Examples package
 
-The examples ZIP expands to stable `ncku-thesis-template-latex-examples/` and
-contains exactly:
+The examples ZIP extracts to `ncku-thesis-template-latex-examples/` with exactly:
 
 ```text
 README.md
@@ -105,191 +52,45 @@ defense-certificate-master.pdf
 defense-certificate-phd.pdf
 ```
 
-The outer archive carries the version, so inner names stay stable. Loose PDFs
-are build intermediates, not separate release assets. The package README
-records the source revision and version and clearly labels the generated
-defense certificates as unofficial demonstrations and regression outputs.
+The outer filename carries the version; inner filenames stay stable. `scripts/release/example-assets.sh` owns this list. The README identifies source and licence and labels generated certificates as unofficial demonstrations. Generated examples come only from Release assets; they are not source files.
 
-## Public verification
+## Verify publication
 
-A green workflow is not sufficient release proof. After publication:
+After an authorized publication, download the public assets, check ZIP integrity and the exact two-asset allowlist, and compare SHA-256 digests and bytes with the promoted workflow artifacts. Compare the student package with the tagged thesis tree, extract it, and run the direct student build. Check A4, expected pages, SyncTeX, references/citations, default Draft/watermark state, licence and the six example-PDF contracts. A green workflow alone does not establish the public bytes.
 
-1. download the public assets again;
-2. require the exact two-asset allowlist and ZIP integrity;
-3. compare public bytes with the promoted workflow artifact;
-4. compare the student regular-file list with the tagged `thesis/` tree;
-5. (retired 2026-08-23) the byte check of the V1 student inputs inside the
-   package; the v1.8.2 migration proof now runs in `just test` from the
-   immutable tag, and step 4 already proves the package equals the tagged tree;
-6. extract and directly build the downloaded student project;
-7. verify A4 dimensions, page count, SyncTeX, convergence, default
-   Draft/watermark state, example allowlist, README, and six PDF page
-   contracts.
-
-Release hashes and read-back evidence are recorded in the validation record
-for [v2.0.2](validation-and-performance.en.md#v202-production-release-read-back),
-[v2.0.5](validation-and-performance.en.md#v205-production-release-read-back),
-[v2.0.6](validation-and-performance.en.md#v206-production-release-read-back),
-[v2.0.7](validation-and-performance.en.md#v207-production-release-read-back),
-and [v2.0.8](validation-and-performance.en.md#v208-production-release-read-back).
+Do not change tags or rebuild old tagged PDFs to repair an asset-only distribution issue. A local package check is not an upload or public verification.
 
 ## Overleaf profiles
-
-Overleaf packages are repository/import artifacts under ignored build storage;
-they are not additional GitHub Release assets.
 
 ```bash
 just overleaf <version>
 just overleaf-gallery <version>
 ```
 
-- The editable package keeps StudentMode and the student project surface.
-- The Gallery package loads an independent publication overlay, clears the
-  cover Draft marker, diagonal text layer, and figure watermark, removes
-  unused institutional/example PDFs, and retains dummy metadata.
-- Both packages contain one unambiguous root `thesis.tex` with an active
-  `\documentclass`; nested configuration must not be auto-detected as the
-  main document.
-- Both are extracted and cold-built with XeLaTeX before use.
-- The Gallery overlay is injected immediately after
-  `\input{\TemplateConfigurationFile}` so it stays compatible with the
-  default-preserving configuration seam. The required `just test` gate
-  cold-builds the generated Gallery package so this source/package contract
-  cannot drift silently.
+These import packages live under ignored build storage and are not extra GitHub Release assets. Both omit `example/` and `cover.tex`, default to StudentMode, preserve the hidden writing payload and relative aliases, and provide one root `thesis.tex` with a direct documentclass declaration. Both are extracted and cold-built locally.
 
-Required Overleaf settings:
+The student profile keeps the editable project surface. The Gallery profile adds a publication overlay immediately after `\input{\TemplateConfigurationFile}`, clears every Draft/watermark layer and omits unused institutional/example PDFs while retaining dummy student metadata. `just test` checks that generated Gallery path.
 
-```text
-Main document: thesis.tex
-Compiler:      XeLaTeX
-TeX Live:      latest compatible version
-Editor:        Code Editor recommended
-```
+Overleaf must use `thesis.tex`, XeLaTeX and a compatible TeX Live version. A ZIP cannot carry all account/compiler settings. Local cold builds do not establish hosted timeout behavior, authenticated fresh-project compilation or client handling of agent aliases. Verify those separately when needed.
 
-A ZIP cannot carry the Overleaf compiler setting. A successful local build
-proves source portability, but not main-document auto-detection, project
-settings, or plan-specific timeout behavior.
+The verifier enforces an upload budget of 180 files, 50 MiB per archive/file, 2 MiB per editable file and 7 MiB total editable text. Consult the official [upload guidance](https://docs.overleaf.com/managing-projects-and-files/uploading-a-project) and [plan limits](https://docs.overleaf.com/getting-started/free-and-premium-plans/plan-limits) before changing limits. Platform limits and the verifier's configured budget are distinct.
 
-### Recorded Gallery state
+Update the original Overleaf project rather than creating a replacement listing. Source/runtime or student-build-path releases require a fresh Gallery package; documentation-only releases do not. Confirm the live listing, PDF and Open as Template route before reporting a publication change. Submission does not imply approval or institutional endorsement.
 
-- The community-maintained template was submitted on 2026-07-12 and the
-  initial public listing was approved and published on 2026-07-15.
-- On 2026-07-18 the verified V2 Gallery package was reported as uploaded to
-  the original Overleaf project and resubmitted for review.
-- On 2026-07-21 the owner supplied Overleaf's approval notice and the public
-  listing was independently read back. The public `View Source` entry point
-  has one direct root `\documentclass` and loads `./template/configure`,
-  matching the generated V2 Overleaf entry-point contract.
-- The public `Open as Template` route specifies XeLaTeX, root `thesis.tex`,
-  and TeX Live 2025.1. The isolated verification browser reached the Overleaf
-  login before project creation, so this checkpoint verifies the public route
-  parameters without claiming an authenticated fresh-project compile.
-- The public PDF read back on 2026-07-21 is 95,410 bytes, SHA-256
-  `4797e63c70f8a76c0dea6bd0142b039b0280151d1fb12e48c53c01b09f1e1c6c`,
-  11 A4 pages, with a recorded creation time of 2026-07-18 09:42:38 HKT.
-  Rendered inspection of the cover, abstract, and acknowledgements found
-  complete readable content with no clipping, overlap, Draft marker, or
-  institutional watermark.
-- The durable state is therefore **approved and publicly read back**. GitHub
-  Releases remains the canonical versioned download path, while the Gallery
-  is the approved public Overleaf editing route.
-- Source history: the package uploaded on 2026-07-18 came from the v2.0.0-era
-  source (v2.0.0 was tagged 2026-07-17), so releases v2.0.1 through v2.0.6,
-  including the v2.0.4 custom-font dispatch fix, were absent from the Gallery
-  until the refresh below. `thesis/README.md` still tells students that the
-  Overleaf copy may be older than GitHub Releases.
-- Refresh 2026-08-22 (source tag `v2.0.7.260822120950`, commit `e2de6e6`):
-  `just overleaf-gallery v2.0.7.260822120950` produced a 77-file, 4,733,358-byte
-  package (SHA-256
-  `b63d2413ab7a7ab84390b15bce997baeda145a18d6514175317c9918d0584722`) whose
-  cold local XeLaTeX build passed in 3.28 s; the owner uploaded it into the
-  original Overleaf project, resubmitted, and reported approval. Public
-  read-back on 2026-08-23: the listing shows "Last Updated" within the
-  previous day; the `Open as Template` route carries the `xelatex` compiler,
-  `mainFile=thesis.tex`, and `texlive-full:2026.1`; the public PDF is 95,410
-  bytes, SHA-256
-  `8dc25970752b95c849f38b7cb9c81016bd30e5d6850094d7b542e8f23c988eb7`, 11 A4
-  pages, produced by xdvipdfmx 20260317 with a creation time of 2026-08-22
-  20:48:57 HKT, and its extracted text is identical to the local cold build
-  of the same package. The rendered cover shows the shipped placeholder data
-  with no Draft marker and no institutional watermark. Until 2026-08-23
-  02:27 UTC the public PDF still carried the 2026-07-18 bytes, so a refresh
-  becomes visible with a delay after approval.
-- Licence field (owner decision, 2026-08-23): Overleaf's publish form offers
-  only "Creative Commons CC BY 4.0" for this listing, so the Gallery copy is
-  offered by the owner under CC BY 4.0 while the GitHub repository and both
-  release packages stay under CC BY-NC-SA 4.0. This is deliberate dual
-  licensing by the copyright holder, not a discrepancy to fix; it does not
-  extend to third-party fonts or institutional assets (see Overleaf limits and
-  licensing below).
-- Refresh cadence (decided 2026-08-22): after any release that changes
-  `thesis/template/**`, `thesis/thesis.tex`, or the student build path,
-  rebuild `just overleaf-gallery <version>` and hand the package to the owner
-  for the original Overleaf project; documentation-only releases do not need
-  a refresh. Record each refresh here with its source tag.
+## Licensing and institutional documents
 
-Before reporting a newer Overleaf state, inspect the live page, public PDF,
-and `Open as Template` route. Preserve the original project as the update
-identity; do not submit a replacement project to work around moderation.
+The repository and custom Release packages use CC BY-NC-SA 4.0. The Gallery copy is offered under CC BY 4.0. These project-level licences do not grant rights to third-party fonts, logos, certificates or watermark assets. Keep that distinction when redistributing files; do not silently relicense bundled assets. The project claims no rights in students' original thesis text, figures, data or PDF.
 
-### Overleaf limits and licensing
-
-The packaging verifier uses the limits checked from Overleaf documentation on
-2026-07-12: 180 files per upload, 2,000 files per project, 50 MB per
-individual upload, 7 MB editable project data, and 2 MB per editable text
-file. Recheck live official limits before changing the verifier.
-
-The repository declares CC BY-NC-SA 4.0; the Overleaf Gallery copy is offered
-under CC BY 4.0 because Overleaf's publish form allows no other choice (owner
-decision, 2026-08-23). Neither project-level declaration proves redistribution
-rights for every third-party font, logo, certificate, or watermark asset. The Gallery profile removes the institutional logo
-watermark and example oral PDFs but still depends on bundled fonts. Do not
-claim institutional endorsement or silently relicense those files. Any
-requested font/licensing change needs a separate output-regression-tested
-decision.
+Students must use current school-system degree-examination certificate files and follow current university/department rules. The template-generated certificate PDFs are examples, not official documents or substitutes for the university system. See the [student guide](../../thesis/README.en.md) and [official ETDS guidance](https://thesis.lib.ncku.edu.tw/help/aboutedit/).
 
 ## Draft and watermark policy
 
-Three independent mechanisms exist:
+Three independent APIs remain opt-in:
 
-1. `\DisplayDraft` controls only `(Draft)` / `(初稿)` on the cover.
-2. `\SetWatermarkText{...}` controls the third-party diagonal text layer.
-3. `\UseWatermarkFigureStyle` registers the bundled NCKU seal/logo PDF as a
-   page background.
+- `\DisplayDraft` adds the cover Draft marker.
+- `\SetWatermarkText{...}` controls diagonal text.
+- `\UseWatermarkFigureStyle` registers the NCKU logo background.
 
-Normal StudentMode and teaching/example builds are final-ready by default:
-all three are off. Each API remains an explicit opt-in, and the Gallery
-overlay clears all three again as defence in depth. Tests assert package
-state and `.fls` asset absence because graphical watermark text may not
-appear reliably in `pdftotext`.
+Normal StudentMode and teaching builds leave all three off; the Gallery overlay clears them again. ETDS output adds no internal watermark, DOI overlay, encryption or security processing. Follow current official upload instructions for school-system processing. Tests check state and nonempty recorder files because PDF text extraction alone cannot establish graphical watermark absence.
 
-`v1.8.2.260715154703` was the first immutable release with these corrected
-safe defaults. Current students must follow current
-university/library/department instructions rather than historical template
-watermark behavior.
-
-## Retired sample repository
-
-The old generated-sample repository
-`wengan-li/ncku-thesis-template-latex-sample` had an independent history and
-was deleted by the owner on 2026-07-12 after replacement assets were publicly
-built and verified. The owner accepted broken old links and rejected extra
-bundle, NAS, off-machine archive, redirect, or grace-period requirements.
-
-The source repository and timestamped GitHub Releases are now the only
-maintained sources for editable projects and generated examples. Historical
-school-system certificate PDFs from the retired repository were not adopted
-as generated release assets; students must obtain current official documents
-from the school system.
-
-## Operational sources
-
-- `justfile` — canonical local command surface.
-- `scripts/release/` — maintained release cases and package verification.
-- `.github/workflows/release.yml` — build/promote environment boundary.
-- `scripts/overleaf/` — Overleaf package generation and verification.
-- `thesis/README.md` — student-facing package instructions.
-- [`v1-to-v2-migration.en.md`](../v1-to-v2-migration.en.md) — full migration
-  contract.
-- [`validation-and-performance.en.md`](validation-and-performance.en.md) —
-  release hashes, direct-build proof, and engineering gates.
+[Validation](validation-and-performance.en.md) describes the live gates; [migration](../v1-to-v2-migration.en.md) covers existing student projects.

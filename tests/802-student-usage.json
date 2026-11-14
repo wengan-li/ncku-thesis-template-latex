@@ -1,0 +1,67 @@
+{
+  "schema": 2,
+  "snippets": [
+    "chapter-open",
+    "sections",
+    "chapter-close",
+    "front-matter",
+    "appendix",
+    "basic-text",
+    "figure",
+    "multi-figure",
+    "table",
+    "equation",
+    "theorems",
+    "references",
+    "citation",
+    "bibliography-entry",
+    "bibliography-registration",
+    "direct-build"
+  ],
+  "body": [
+    "chapter-open",
+    "sections",
+    "basic-text",
+    "figure",
+    "multi-figure",
+    "table",
+    "equation",
+    "theorems",
+    "references",
+    "citation",
+    "chapter-close"
+  ],
+  "labels": [
+    "shared:chapter-open",
+    "shared:section",
+    "shared:subsection",
+    "shared:subsubsection",
+    "fig:little-man-no.1",
+    "fig:example:mi3:mfig",
+    "fig:example:mi3:fig1",
+    "fig:example:mi3:fig2",
+    "fig:example:mi3:fig3",
+    "fig:example:mi3:fig4",
+    "eq:example:eq1",
+    "shared:nomenclature",
+    "shared:appendix"
+  ],
+  "text": [
+    "Title",
+    "Little man No.1",
+    "4 figures and 2 figures per row",
+    "Hello World in C",
+    "Theorem here.",
+    "Proof here.",
+    "MapReduce",
+    "Write your abstract here.",
+    "Thanks someone you want in here."
+  ],
+  "image_source": "thesis/example/how-to/write/figure/pic/Cc-by_new.png",
+  "bibliography_source": "thesis/example/references/paper.bib",
+  "family_contracts": {
+    "float_label_and_nameref_options": "tests/400-float-contract.tex",
+    "theorem_label_title_and_counter_options": "tests/500-theorem-contract.tex",
+    "reference_wrappers": "tests/300-reference-contract.tex"
+  }
+}

@@ -15,10 +15,12 @@ Nomenclature在定義一些在整份論文中所會用到的變數是很常用�
 \StartSubSection{使用方式}
 
 如果是指是在Chapter 1之前的一大張的Nomenclature table, 為Nomenclature Chapter.
+% writing-snippet-begin: nomenclature-shapes
   \begin{verbatim}
   \StartNomChapter{ NAME }{ LABEL }
   \EndNomChapter
   \end{verbatim}
+% writing-snippet-end: nomenclature-shapes
 Nomenclature Chapter跟一般Chapter的使用方式是一樣的, 但差別在於不會出現`Chapter'這字眼. 而由於大家的Nomenclature Chapter name可能不一樣, 故跟Chapter一樣可設定自行的name.
 
 而如果是在文章當中的Nomenclature table. 基本上就是使用同一個的`\verb|\InsertTable|', 但還可以使用`nomtitle'來設定標題. `nomtitle'跟`caption'的差別是, 使用`nomtitle'所顯示出來的標題是沒有`Table XX:'為開頭, 同樣都是使用`pos'來控制題目的位置.

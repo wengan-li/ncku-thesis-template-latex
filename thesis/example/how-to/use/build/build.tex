@@ -15,7 +15,9 @@
 不論哪一種方式, 正式產生論文的指令都是同一句. \texttt{latexmk}會自動執行XeLaTeX和BibTeX, 並重複到目錄, 引用和參考文獻都正確為止, 不需要自己猜要跑幾次:
 
 \begin{center}
+% writing-snippet-begin: direct-build
 \verb|latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex|
+% writing-snippet-end: direct-build
 \end{center}
 
 % ------------------------------------------------

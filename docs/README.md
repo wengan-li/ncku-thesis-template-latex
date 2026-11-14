@@ -1,4 +1,4 @@
-<!-- doc-pair: project-index; lang: zh-Hant-TW; topics: start-here,student-guides,project-records,releases-and-downloads -->
+<!-- doc-pair: project-index; lang: zh-Hant-TW; topics: start-here,student-guides,current-features,releases-and-downloads -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -6,34 +6,33 @@
 
 ## 文件入口
 
-本目錄記錄已發行成大論文範本的migration、architecture、validation、release及Overleaf evidence。如果只需要撰寫論文，請由學生套件內的`README.md`及`conf/README.md`開始；root [`README.md`](../README.md)提供專案概覽及下載入口。
+本目錄記錄論文範本的現行架構、相容性、驗證與分發方式。撰寫論文請先閱讀學生專案內的 README、設定說明與內容指南；[專案首頁](../README.md)提供概覽及下載入口。此處描述現行來源，已發行套件以 GitHub Releases 為準。
 
 ## 學生文件
 
-| 用途 | 文件 |
+| 任務 | 文件 |
 | --- | --- |
-| 建置及編輯論文 | [`thesis/README.md`](../thesis/README.md) |
-| 填寫學生設定 | [`thesis/conf/README.md`](../thesis/conf/README.md) |
-| 查看NCKU學院及系所preset | [`thesis/template/style/ncku/README.md`](../thesis/template/style/ncku/README.md) |
-| 從1.x升級至2.x | [`v1-to-v2-migration.md`](v1-to-v2-migration.md) |
-| 其他學校的同學建立institution profile | [`thesis/template/style/Customization.md`](../thesis/template/style/Customization.md) |
-| 查看版本變更 | [`CHANGELOG.md`](../CHANGELOG.md) |
+| 建置及編輯論文 | [學生專案指南](../thesis/README.md) |
+| 填寫題目、學位與姓名等資料 | [設定指南](../thesis/conf/README.md) |
+| 查閱教學及代理寫作入口 | [內容寫作指南](../thesis/context/README.md) |
+| 選擇成大學院及系所 | [NCKU 系所目錄](../thesis/template/style/ncku/README.md) |
+| 升級既有 1.x 專案 | [1.x 至 2.x 升級指南](v1-to-v2-migration.md) |
+| 其他學校的同學建立學校設定 | [自訂指南](../thesis/template/style/Customization.md) |
 
-每份完整guide使用一個主要語言，並於頁首提供繁體中文及英文equivalent page連結。文件語言、institution profile、封面語言、學位及內容模式是獨立設定。
+完整指南在頁首提供繁中與英文切換。文件語言、學校設定、封面語言、學位及內容模式彼此獨立。
 
-## 專案記錄
+## 範本功能
 
 | 主題 | 文件 |
 | --- | --- |
-| V2架構及相容邊界 | [`features/v2-modernization.md`](features/v2-modernization.md) |
-| 測試、輸出及效能 | [`features/validation-and-performance.md`](features/validation-and-performance.md) |
-| 發行、下載及Overleaf | [`features/release-and-distribution.md`](features/release-and-distribution.md) |
-| 全部已發行功能記錄 | [`features/README.md`](features/README.md) |
-
-Feature records保存已發行architecture、驗證結果及公開狀態。
+| 載入順序、學校政策及公開相容性 | [架構與 2.x 相容性](features/v2-modernization.md) |
+| 測試、輸出及效能限制 | [驗證與效能](features/validation-and-performance.md) |
+| 套件、Overleaf、授權及正式文件 | [發行與分發](features/release-and-distribution.md) |
+| 寫作知識、代理入口與內容複製 | [學生寫作與代理技能](features/student-writing-and-agent-skills.md) |
+| 依需求查找全部功能 | [功能索引](features/README.md) |
 
 ## 發行與下載
 
-本模版使用XeLaTeX及direct `latexmk`學生build。正式學生套件與generated examples請由[GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases)下載；各次發行的使用者可見變更記錄於[`CHANGELOG.md`](../CHANGELOG.md)。
+學生套件與產生的範例由 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 提供，版本變更保留在[變更記錄](../CHANGELOG.md)。本模版使用 XeLaTeX，學生可直接以 `latexmk` 建置。
 
-既有Overleaf Gallery頁面仍可公開使用。GitHub Releases與Overleaf publication是獨立狀態；詳細記錄見[`features/release-and-distribution.md`](features/release-and-distribution.md)。
+[Overleaf Gallery](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn)為獨立入口，不能假設其來源與儲存庫或某次發行完全相同。上傳、送審與公開核准的界線見[分發說明](features/release-and-distribution.md)。

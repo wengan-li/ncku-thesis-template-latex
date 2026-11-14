@@ -23,9 +23,9 @@ gates cannot check.
 
 | Surface | Role |
 | --- | --- |
-| [`docs/README.md`](../../../docs/README.md) | Public documentation index and release/evidence routing. |
+| [`docs/README.md`](../../../docs/README.md) | Current documentation index and student/maintainer navigation. |
 | [`docs/v1-to-v2-migration.md`](../../../docs/v1-to-v2-migration.md) | Current 1.x to 2.x user migration contract. |
-| [`docs/features/`](../../../docs/features/) | Consolidated shipped architecture, evidence, and operating decisions. |
+| [`docs/features/`](../../../docs/features/) | Current feature descriptions, usage, architecture, validation procedures, limitations and recovery. |
 | `docs/requirements/<NN>-<slug>.md` | Active owner-approved what/why promise only. |
 | `todos/<NN>-<slug>.md` | Active implementation progress only. |
 | [`thesis/README.md`](../../../thesis/README.md) | Instructions that ship inside the student ZIP. |
@@ -64,6 +64,24 @@ When all acceptance and validation gates pass:
 6. let Git history retain checklists, temporary branch boundaries, per-commit run
    IDs, and superseded implementation narratives.
 
+## Current-state documentation contract
+
+Keep every current document under `docs/` focused on the latest feature behavior,
+usage, architecture, supported validation procedure, limitations and recovery.
+Do not retain release-by-release read-backs, completed plans, patch chronology,
+dated benchmark narratives, commit/run identifiers, checksum receipts, local
+scratch paths or agent-session reports there. Do not move removed chronology to
+another docs archive: Git history is the record. Preserve current compatibility,
+migration/recovery steps, official-source authority and safety boundaries even
+when a past defect originally motivated them. Root changelogs remain the separate
+release ledger; this contract does not authorize rewriting Git history.
+
+After accepted work, graduate the current capability description to its feature
+owner and remove the completed todo/requirement. Keep `todos/` free of completed
+items and `docs/requirements/` at exactly `.gitkeep` when no promise is active.
+An empty queue is not permission to discard genuinely unfinished work. Do not
+recreate a tracker solely to narrate documentation cleanup.
+
 ## Heavy consolidation
 
 Classify every source document before deleting it:
@@ -72,9 +90,10 @@ Classify every source document before deleting it:
   changelog;
 - **current project contract** — preserve in a topical feature/operation
   record and repo-maintenance skill;
-- **durable shipped evidence** — summarize in the owning feature record;
-- **measured rejected/deferred decision** — retain the conclusion and reopening
-  gate, not the whole progress log;
+- **current validation and limitations** — describe the supported checks and
+  present boundaries in the owning feature record, without execution receipts;
+- **historical measurements and rejected experiments** — retain their chronology
+  in Git; preserve only still-applicable operating limits as current contracts;
 - **implementation chronology** — leave to Git history after durable knowledge is
   promoted;
 - **stale duplicate** — remove after repairing backlinks.
@@ -90,7 +109,22 @@ one is a short link/routing sentence.
   editor, configuration, and migration-start instructions must be available
   there without repository-only tooling.
 - Repository-only commands, tests, benchmarks, workflow details, and internal evidence
-  stay outside the student ZIP.
+  stay outside the student ZIP. The named student-only `AGENTS.md` routers,
+  adjacent relative `CLAUDE.md -> AGENTS.md` aliases and content-local writing
+  skill are intentional exceptions to the maintainer-instruction exclusion;
+  they grant no repository publication or template-maintenance authority.
+- Existing `thesis/example/how-to/` teaching sources and their PDF own human
+  instruction. Marked teaching code feeds the single generated portable reference
+  `thesis/context/.agents/skills/ncku-thesis-writing/references/template-usage.md`;
+  `just writing-reference` regenerates it and `--check` detects drift. Do not
+  maintain a second usage handbook. Agent-facing `AGENTS.md`, `SKILL.md` and
+  references use English only; project/content README routers remain bilingual.
+  The skill owns agent workflow, discovery, edit boundaries and recovery. Preserve
+  explicit loading guidance for clients that do not auto-discover nested skills,
+  and validate links after copying the entire `context/` tree without `example/`.
+  Feature records distinguish approved/in-progress design, local validation and
+  actual release publication rather than describing an unshipped capability as
+  already released.
 - Root README provides the public overview; `docs/README.md` routes students and
   readers to current guides and shipped project records.
 - Public landing pages and indexes are ordered by reader need: overview, a

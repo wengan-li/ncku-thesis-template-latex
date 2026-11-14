@@ -31,6 +31,8 @@
 
 撰寫中文論文時，另外在`context/context.tex`取消中文摘要、英文延伸摘要及中文誌謝的`\input`註解；出廠設定只啟用英文版。
 
+完整寫作教學保留在原有 example/how-to 來源及教學 PDF；[內容入口](context/README.md)提供教學與代理路由，不另維護語法手冊。使用代理時，明確讀取[寫作技能](context/.agents/skills/ncku-thesis-writing/SKILL.md)及其共用來源產生的英文參考；巢狀技能不一定自動註冊。
+
 ## 選擇設定
 
 成大同學不需要選擇任何學校樣式，解壓後直接填寫`conf/conf.tex`即可；以下三個選擇都在該檔案內。其他學校的同學請先依[`template/style/Customization.md`](template/style/Customization.md)建立自己學校的樣式，再填寫論文資料。
@@ -101,6 +103,7 @@ Overleaf範本已關閉`\ExampleMode`與初稿標記，直接填寫`conf/conf.te
 
 | 看到的情況 | 原因 | 解法 |
 | --- | --- | --- |
+| `A matching complete thesis template containing thesis.tex, conf/ and template/configure.tex is required.` | 只複製了內容目錄，缺少相符的論文範本執行環境 | 先取得完整學生專案，再複製包含隱藏 `.agents/` 與相對別名的完整 `context/`；保留目的地既有內容 |
 | 建置出整份教學文件（兩百多頁） | `conf/conf.tex`第13行的`\ExampleMode`仍然啟用 | 在該行行首加`%`後重新建置 |
 | `! LaTeX Error: File 'xxx.sty' not found.` | TeX發行版缺少套件 | MiKTeX：在MiKTeX Console安裝或開啟自動安裝；TeX Live／MacTeX：`tlmgr install <套件名>`，或安裝完整scheme |
 | `! Undefined control sequence.`，下一行顯示`\SetDept...` | 系所指令打錯或不存在 | 在[`template/style/ncku/README.md`](template/style/ncku/README.md)查正確指令 |

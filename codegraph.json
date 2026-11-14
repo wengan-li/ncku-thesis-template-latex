@@ -1,0 +1,11 @@
+{
+  "exclude": [
+    "thesis/",
+    "tests/",
+    "docs/",
+    "todos/",
+    ".agents/",
+    ".claude/",
+    "build/"
+  ]
+}

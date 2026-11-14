@@ -1,4 +1,4 @@
-<!-- doc-pair: project-index; lang: en; topics: start-here,student-guides,project-records,releases-and-downloads -->
+<!-- doc-pair: project-index; lang: en; topics: start-here,student-guides,current-features,releases-and-downloads -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -6,34 +6,33 @@
 
 ## Start here
 
-This directory records migration, architecture, validation, release, and Overleaf evidence for the released NCKU thesis template. To write a thesis, start from `README.en.md` and `conf/README.en.md` inside the student package; root [`README.en.md`](../README.en.md) provides the project overview and download routes.
+This directory records the template's current architecture, compatibility, validation and distribution. To write a thesis, start with the student project's README, configuration guide and writing guide. The [project overview](../README.en.md) provides download routes. These pages describe current source; GitHub Releases determines available published packages.
 
 ## Student guides
 
 | Task | Document |
 | --- | --- |
-| Build and edit a thesis | [`thesis/README.en.md`](../thesis/README.en.md) |
-| Enter student configuration | [`thesis/conf/README.en.md`](../thesis/conf/README.en.md) |
-| Review NCKU college and department presets | [`thesis/template/style/ncku/README.en.md`](../thesis/template/style/ncku/README.en.md) |
-| Migrate from 1.x to 2.x | [`v1-to-v2-migration.en.md`](v1-to-v2-migration.en.md) |
-| Create an institution profile for students from other institutions | [`thesis/template/style/Customization.en.md`](../thesis/template/style/Customization.en.md) |
-| Review version changes | [`CHANGELOG.en.md`](../CHANGELOG.en.md) |
+| Build and edit a thesis | [Student project guide](../thesis/README.en.md) |
+| Enter title, degree, names and other data | [Configuration guide](../thesis/conf/README.en.md) |
+| Find teaching and agent writing guidance | [Content writing guide](../thesis/context/README.en.md) |
+| Select an NCKU college and department | [NCKU catalogue](../thesis/template/style/ncku/README.en.md) |
+| Upgrade an existing 1.x project | [1.x-to-2.x migration](v1-to-v2-migration.en.md) |
+| Create a school configuration for students from other institutions | [Customization guide](../thesis/template/style/Customization.en.md) |
 
-Each complete guide uses one predominant language and links to its equivalent Traditional-Chinese or English page at the top. Documentation language, institution profile, cover language, degree, and content mode are independent settings.
+Complete guides provide a Traditional-Chinese/English switcher at the top. Documentation language, institution profile, cover language, degree and content mode are independent.
 
-## Project records
+## Template features
 
 | Topic | Document |
 | --- | --- |
-| V2 architecture and compatibility boundary | [`features/v2-modernization.en.md`](features/v2-modernization.en.md) |
-| Tests, output, and performance | [`features/validation-and-performance.en.md`](features/validation-and-performance.en.md) |
-| Releases, downloads, and Overleaf | [`features/release-and-distribution.en.md`](features/release-and-distribution.en.md) |
-| All shipped feature records | [`features/README.en.md`](features/README.en.md) |
-
-Feature records preserve shipped architecture, validation results, and public state.
+| Load order, institution policy and public compatibility | [Architecture and 2.x compatibility](features/v2-modernization.en.md) |
+| Tests, output and performance limits | [Validation and performance](features/validation-and-performance.en.md) |
+| Packages, Overleaf, licensing and official documents | [Release and distribution](features/release-and-distribution.en.md) |
+| Writing knowledge, agent entry and content copying | [Student writing and agent skills](features/student-writing-and-agent-skills.en.md) |
+| Find all features by need | [Feature index](features/README.en.md) |
 
 ## Releases and downloads
 
-The template uses XeLaTeX and a direct `latexmk` student build. Download production student packages and generated examples from [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases); [`CHANGELOG.en.md`](../CHANGELOG.en.md) records the user-visible changes for each release.
+Download student packages and generated examples from [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases). The [changelog](../CHANGELOG.en.md) retains version changes. The template uses XeLaTeX and supports a direct student `latexmk` build.
 
-The existing Overleaf Gallery page remains public. GitHub Releases and Overleaf publication are independent states; see [`features/release-and-distribution.en.md`](features/release-and-distribution.en.md) for the detailed record.
+The [Overleaf Gallery](https://www.overleaf.com/latex/templates/national-cheng-kung-university-thesis-and-dissertation-template-xelatex/kzgwjvvptktn) is independent. Do not assume its source equals the repository or a particular release. [Distribution](features/release-and-distribution.en.md) explains upload, submission and public-approval boundaries.

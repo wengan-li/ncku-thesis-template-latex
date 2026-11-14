@@ -13,7 +13,7 @@ import subprocess
 import sys
 import urllib.parse
 from pathlib import Path
-from typing import NoReturn
+from typing import Iterator, NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -43,6 +43,10 @@ GUIDE_PAIRS: tuple[tuple[str, str, str, int], ...] = (
     ),
 )
 
+# Human workflow routers stay bilingual; the generated agent reference is
+# English only and is checked by the student-skill/projection contracts.
+GUIDE_PAIRS += (("thesis/context/README.md", "thesis/context/README.en.md", "student-writing", 2),)
+
 SUMMARY_PAIRS: tuple[tuple[str, str], ...] = (
     (
         "docs/features/v2-modernization.md",
@@ -57,6 +61,9 @@ SUMMARY_PAIRS: tuple[tuple[str, str], ...] = (
         "docs/features/release-and-distribution.en.md",
     ),
 )
+
+SUMMARY_PAIRS += (("docs/features/student-writing-and-agent-skills.md",
+                   "docs/features/student-writing-and-agent-skills.en.md"),)
 
 CHINESE_USER_DOCS = tuple(pair[0] for pair in GUIDE_PAIRS + SUMMARY_PAIRS) + (
     "CHANGELOG.md",
@@ -253,12 +260,31 @@ def check_summary_pair(zh_relative: str, en_relative: str) -> None:
         fail(f"{en_relative}: old inline-language section survived")
 
 
+def markdown_paths(directory: Path | None = None) -> Iterator[Path]:
+    """Walk source Markdown without entering generated or symlink directories."""
+    def source_error(error: OSError) -> NoReturn:
+        raise error
+
+    for parent, directories, files in os.walk(
+        ROOT if directory is None else directory,
+        topdown=True, followlinks=False, onerror=source_error,
+    ):
+        base = Path(parent)
+        directories[:] = sorted(
+            name for name in directories
+            if name not in {".git", "build"} and not (base / name).is_symlink()
+        )
+        for name in sorted(files):
+            path = base / name
+            if name.endswith(".md") and not path.is_symlink():
+                yield path
+
+
 def check_no_legacy_locale_suffixes() -> None:
     failures = sorted(
         str(path.relative_to(ROOT))
-        for path in ROOT.rglob("*.zh-TW.md")
-        if not any(part in {".git", "build"} for part in path.parts)
-        and not path.is_symlink()
+        for path in markdown_paths()
+        if path.name.endswith(".zh-TW.md")
     )
     if failures:
         fail("legacy .zh-TW.md paths remain: " + ", ".join(failures))
@@ -266,9 +292,7 @@ def check_no_legacy_locale_suffixes() -> None:
 
 def check_no_repeated_language_labels() -> None:
     failures: list[str] = []
-    for path in ROOT.rglob("*.md"):
-        if any(part in {".git", "build"} for part in path.parts) or path.is_symlink():
-            continue
+    for path in markdown_paths():
         if VISIBLE_LANGUAGE_LABEL.search(path.read_text(encoding="utf-8")):
             failures.append(str(path.relative_to(ROOT)))
     if failures:
@@ -333,7 +357,7 @@ def check_protected_public_contract() -> None:
 
 def check_no_mutable_release_labels() -> None:
     failures: list[str] = []
-    for path in (ROOT / "docs").rglob("*.md"):
+    for path in markdown_paths(ROOT / "docs"):
         for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             if MUTABLE_RELEASE_LABEL.search(line):
                 failures.append(f"{path.relative_to(ROOT)}:{number}")
@@ -342,15 +366,16 @@ def check_no_mutable_release_labels() -> None:
 
 
 def public_markdown_paths() -> tuple[Path, ...]:
-    paths = [
+    roots = [
         ROOT / "README.md",
         ROOT / "README.en.md",
         ROOT / "CHANGELOG.md",
         ROOT / "CHANGELOG.en.md",
     ]
-    paths.extend((ROOT / "docs").rglob("*.md"))
-    paths.extend((ROOT / "thesis").rglob("*.md"))
-    return tuple(sorted(set(path for path in paths if path.is_file())))
+    paths = [path for path in roots if not path.is_symlink() and path.is_file()]
+    paths.extend(markdown_paths(ROOT / "docs"))
+    paths.extend(markdown_paths(ROOT / "thesis"))
+    return tuple(sorted(set(paths)))
 
 
 def check_public_voice() -> None:
@@ -474,6 +499,74 @@ def check_language_local_routes() -> None:
         missing = [route for route in routes if route not in text]
         if missing:
             fail(f"{relative}: missing language-local routes: {', '.join(missing)}")
+
+
+CURRENT_DOC_ANCHORS = {
+    "docs/features/v2-modernization.en.md": (
+        "template/configure.tex", "template/compat/v1.tex", "\\TemplateConfigurationFile",
+        "\\FillInPDFData", "\\ApplyCommitteeSizePolicy", "\\GetRequestedCoverYear",
+        "\\GetThesisYear", "XeLaTeX", "2.x", "untagged",
+    ),
+    "docs/features/v2-modernization.md": (
+        "template/style/", "conf/style.tex", "\\GetRequestedCoverYear", "\\GetThesisYear", "2.x",
+    ),
+    "docs/features/validation-and-performance.en.md": (
+        "just test", "just ci", "HEAD:thesis", "261", "SyncTeX", "check-diagnostics.py",
+        "check-student-agent-skills.py", "pdftotext", "tests/000-test-suite.md",
+    ),
+    "docs/features/validation-and-performance.md": (
+        "just test", "just ci", "HEAD:thesis", "261", "SyncTeX", ".fls",
+    ),
+    "docs/features/release-and-distribution.en.md": (
+        "ncku-thesis-template-latex-<version>.zip",
+        "ncku-thesis-template-latex-examples-<version>.zip",
+        "\\TemplateConfigurationFile", "manual dispatch", "CC BY 4.0", "CC BY-NC-SA 4.0",
+        "degree-examination", "\\DisplayDraft", "\\SetWatermarkText", "\\UseWatermarkFigureStyle",
+    ),
+    "docs/features/release-and-distribution.md": (
+        "CC BY 4.0", "CC BY-NC-SA 4.0", "SHA-256", "CLAUDE.md -> AGENTS.md", "Overleaf",
+    ),
+    "docs/features/student-writing-and-agent-skills.en.md": (
+        "references/template-usage.md", "English only", "CLAUDE.md -> AGENTS.md",
+        "template/configure.tex", "requested content", "verified repository root", "orphan",
+        "without example/", "CodeGraph", "Python", "YAML", "check-student-agent-skills.py",
+    ),
+    "docs/features/student-writing-and-agent-skills.md": (
+        "references/template-usage.md", "CLAUDE.md -> AGENTS.md", "template/configure.tex", "CodeGraph",
+    ),
+}
+# Protect current contracts while excluding execution receipts and plan diaries.
+# Dates, compatibility versions, official-policy links and checksum *commands*
+# remain valid. CHANGELOGs and active requirements are outside this scope.
+HISTORICAL_DOC_PATTERNS = (
+    ("execution digest", re.compile(r"\b[0-9a-fA-F]{40}(?:[0-9a-fA-F]{24})?\b")),
+    ("workflow-run receipt", re.compile(r"https?://[^\s)]+/actions/runs/\d+")),
+    ("private execution trace", re.compile(
+        r"/Users/|/private/tmp/|\.hermes/(?:cache|state)/|candidate-manifest|"
+        r"candidate_commit|candidate_tree|private scratch", re.I)),
+    ("chronology or plan heading", re.compile(
+        r"^#{1,6}\s+(?:v\d[^\n]*production release read-back|Dated performance evidence|"
+        r"Recorded Gallery state|Executed local evidence|Package provenance|"
+        r"Accepted, rejected, and deferred decisions|Intent|Expectations|Context and ownership|"
+        r"Current feature design|本次功能設計|已發行記錄)\s*$", re.I | re.M)),
+)
+
+
+def check_current_doc_text(relative: str, text: str) -> None:
+    for label, pattern in HISTORICAL_DOC_PATTERNS:
+        if pattern.search(text):
+            fail(f"{relative}: historical {label} belongs outside current documentation")
+    for marker in CURRENT_DOC_ANCHORS.get(relative, ()):
+        if marker not in text:
+            fail(f"{relative}: missing current-feature contract: {marker}")
+
+
+def check_current_docs() -> None:
+    for path in markdown_paths(ROOT / "docs"):
+        relative = path.relative_to(ROOT).as_posix()
+        if relative.startswith("docs/requirements/"):
+            continue
+        check_current_doc_text(relative, path.read_text(encoding="utf-8"))
 
 
 def check_institution_profile_docs() -> None:
@@ -771,9 +864,7 @@ def pair_drift_warnings() -> list[str]:
 def check_links() -> int:
     issues: list[str] = []
     checked = 0
-    for path in ROOT.rglob("*.md"):
-        if any(part in {".git", "build"} for part in path.parts) or path.is_symlink():
-            continue
+    for path in markdown_paths():
         text = strip_fenced_blocks(path.read_text(encoding="utf-8"))
         for raw in INLINE_LINK.findall(text):
             target = raw.strip().strip("<>")
@@ -814,6 +905,7 @@ def main() -> int:
         check_public_voice()
         check_project_index_scope()
         check_language_local_routes()
+        check_current_docs()
         check_institution_profile_docs()
         check_changelog()
         check_package_routes()

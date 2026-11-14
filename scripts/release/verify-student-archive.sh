@@ -35,6 +35,14 @@ for entry in \
   conf/conf.tex \
   conf/README.md \
   conf/README.en.md \
+  AGENTS.md \
+  CLAUDE.md \
+  context/AGENTS.md \
+  context/CLAUDE.md \
+  context/README.md \
+  context/README.en.md \
+  context/.agents/skills/ncku-thesis-writing/SKILL.md \
+  context/.agents/skills/ncku-thesis-writing/references/template-usage.md \
   example/abstract/extended.tex \
   template/configure.tex \
   template/compat/v1.tex \
@@ -45,6 +53,25 @@ for entry in \
   template/style/custom/custom.tex; do
   require_entry "$entry"
 done
+
+# Validate the generated reference, relative alias mode/target and actual extracted payload.
+# Symlink ZIP bytes are the target name, not the resolved AGENTS.md contents.
+python3 scripts/test/check-student-agent-skills.py --zip "$student_zip"
+
+python3 - "$student_zip" "$package_root" <<'PY'
+import subprocess
+import sys
+from zipfile import ZipFile
+
+with ZipFile(sys.argv[1]) as archive:
+    for item in archive.infolist():
+        if item.is_dir():
+            continue
+        relative = item.filename[len(sys.argv[2]) + 1:]
+        expected = subprocess.check_output(["git", "show", f"HEAD:thesis/{relative}"])
+        if archive.read(item) != expected:
+            raise SystemExit(f"student ZIP bytes differ from HEAD:thesis/{relative}")
+PY
 
 # The packaged licence must be the root LICENSE at HEAD; the tracked thesis/
 # copy exists only so that git archive HEAD:thesis carries it.

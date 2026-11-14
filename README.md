@@ -24,10 +24,11 @@
 | --- | --- |
 | 立即開始撰寫論文 | [快速開始](#快速開始)及學生套件[`README.md`](thesis/README.md) |
 | 填寫姓名、題目、學位及系所 | [`conf/README.md`](thesis/conf/README.md) |
+| 查閱完整教學或使用寫作代理 | [內容與代理入口](thesis/context/README.md) |
 | 由1.x專案升級 | [`1.x至2.x升級指南`](docs/v1-to-v2-migration.md) |
 | 為其他學校建立樣式 | [`Customization.md`](thesis/template/style/Customization.md) |
 | 上傳論文、列印及選擇正式證明書 | [學位論文上傳和列印說明](#學位論文上傳和列印說明) |
-| 查看架構、驗證、發行及Overleaf記錄 | [`docs/README.md`](docs/README.md) |
+| 了解架構、驗證、分發及寫作功能 | [`docs/README.md`](docs/README.md) |
 
 ## 快速開始
 
@@ -117,7 +118,7 @@ defense-certificate-phd.pdf
 
 ## 文件與專案工作
 
-如果你只需要撰寫論文，請由套件內README及configuration guide開始。本專案的architecture、validation、release及Overleaf evidence記錄於[`docs/README.md`](docs/README.md)；歷年貢獻者記錄於[`CONTRIBUTE`](CONTRIBUTE)。完整儲存庫使用[`just`](https://just.systems/)統一專案commands；學生套件不依賴`just`。
+如果你只需要撰寫論文，請由套件內README及configuration guide開始。本專案現行的架構、驗證、分發及寫作功能說明見[`docs/README.md`](docs/README.md)；歷年貢獻者記錄於[`CONTRIBUTE`](CONTRIBUTE)。完整儲存庫使用[`just`](https://just.systems/)統一專案commands；學生套件不依賴`just`。
 
 ```bash
 just          # list commands

@@ -18,6 +18,9 @@ requirements, todos, documentation lifecycle, consolidation, or path repair.
 Load [`student-first-run`](../student-first-run/SKILL.md) before changing
 READMEs, `conf/` or `context/` defaults, the teaching example, release notes,
 or the Overleaf package.
+Load [`codegraph`](../codegraph/SKILL.md) for maintainer graph readiness and
+source queries. Keep the root index scoped to supported tooling; use direct
+source/API/runtime evidence for LaTeX and the portable student skill for writing.
 
 ## Source of Truth
 
@@ -30,9 +33,10 @@ Read only the focused sources needed for the task:
 4. [`docs/features/v2-modernization.en.md`](../../../docs/features/v2-modernization.en.md)
    — shipped architecture and compatibility boundary.
 5. [`docs/features/validation-and-performance.en.md`](../../../docs/features/validation-and-performance.en.md)
-   — current gates, artifact proof, benchmarks, and rejected/deferred decisions.
+   — current validation gates, artifact checks, performance characteristics and
+   limitations.
 6. [`docs/features/release-and-distribution.en.md`](../../../docs/features/release-and-distribution.en.md)
-   — release, package, Overleaf, sample-retirement, and watermark contracts.
+   — current release, package, Overleaf, certificate and watermark contracts.
 7. [`docs/v1-to-v2-migration.md`](../../../docs/v1-to-v2-migration.md) — current
    user migration and institution-port contract.
 
@@ -169,8 +173,23 @@ Keep audiences separate:
 - direct compiler, editor, configuration, and writing guidance belongs in the
   packaged `thesis/` project and teaching content;
 - root `README.md` routes both audiences without exposing unnecessary internals;
-- the student ZIP must not contain `justfile`, `AGENTS.md`, CI, tests, scripts,
-  internal docs, or a redundant `thesis/` wrapper.
+- the student ZIP must not contain repository-maintainer instructions, `justfile`,
+  CI, tests, scripts, internal docs, or a redundant `thesis/` wrapper;
+- the exact student-only routers `thesis/AGENTS.md` and
+  `thesis/context/AGENTS.md`, their adjacent relative `CLAUDE.md -> AGENTS.md`
+  symlinks, and `thesis/context/.agents/skills/ncku-thesis-writing/` are intentional
+  student-package content. Do not replace the symlinks with regular pointer files
+  or copy root maintainer skills into the package. Ordinary writing tasks load
+  that student skill; repository maintenance continues to use this skill.
+  The complete `context/` directory, including hidden files, transports writing
+  knowledge into another matching template, not the template runtime itself.
+
+Keep human teaching in the existing example source and its PDF. The content-local
+skill owns agent workflow and links to a compact generated reference derived from
+marked teaching code. Regenerate with `just writing-reference`; keep generation
+drift, actual snippet compilation and copied-content portability in the required
+gate. Do not restore a second hand-maintained usage handbook or make the generator
+a student build prerequisite.
 
 Generated defense-certificate PDFs are unofficial demonstrations and regression
 outputs. Current students must use files produced by the university
@@ -216,8 +235,9 @@ that the newest entry composes.
 After a release that changes `thesis/template/**`, `thesis/thesis.tex`, or the
 student build path, run `just overleaf-gallery <version>` and hand the package
 to the owner for the original Overleaf project; documentation-only releases do
-not need it. Record each refresh with its source tag under "Recorded Gallery
-state" in the release record.
+not need it. Keep the supported procedure and truthful current publication
+boundaries in the distribution feature description. Do not append a refresh
+timeline, per-run receipts or source-tag diary to current documentation.
 
 Do not move an immutable tag or rebuild old tagged PDFs during an asset-only
 migration. Follow `docs/features/release-and-distribution.en.md` for download,

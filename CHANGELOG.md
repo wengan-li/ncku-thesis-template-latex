@@ -8,6 +8,16 @@
 
 ## 2.x
 
+### [v2.1.0.261114095130](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.1.0.261114095130) — 2026-11-14
+
+- 新增可隨`context/`攜帶的AI輔助論文寫作指引。複製完整目錄並保留隱藏檔案，即可將英文寫作skill及其reference帶到另一個相容的範本專案。專案與內容入口均附相對`CLAUDE.md -> AGENTS.md`連結。
+- 完整人讀教學仍以既有教學source及PDF為準；精簡agent reference由同一批教學片段產生，避免另行維護第二套用法手冊。一般學生寫作建置不需要generator或教學範例目錄。
+- 寫作skill說明如何判定專案位置、組織章節、使用提供的圖片與引用資料、實際驗證建置及處理錯誤。既有研究主張、學生內容與學校規定仍須保留及遵循。
+- 新增reference更新、同源片段變更、內容複製及學生套件解壓驗證，涵蓋遺漏指引、錯誤連結、不安全路徑及未解析的交叉引用或文獻引用。Markdown檢查先排除產物目錄再遍歷，避免平行封裝清理中斷驗證，仍會回報來源檔案的錯誤。
+- 整理現行feature文件，將已完成工作移出active requirements／todos，同時保留changelog及Git歷史；另修正貢獻者名單的對齊。
+- 新增選用的CodeGraph指引，限於Python維護工具與YAML檔案查找；不代表LaTeX語意分析，不是學生相依工具，亦不隨套件派發生成的graph database。
+- XeLaTeX／BibTeX、public LaTeX API、學生預設與261頁A4教學版面保持不變；教學檔案只新增抽取用的註解標記。GitHub與Overleaf仍分開發佈，本次release不更新Gallery專案。
+
 ### [v2.0.8.260823035006](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.8.260823035006) — 2026-08-23
 
 - 學生套件內容修正：`context/related-work/related-work.tex`的佔位文字錯字（`relatd`）已更正；`context/abstract/chi.tex`改為真正的中文摘要佔位文字，學校的摘要規定改以`%`註解保留，與英文摘要檔案一致。`conf/conf.tex`與`thesis.tex`沒有變更，學生指南引用的行號維持有效。
