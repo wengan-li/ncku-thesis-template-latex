@@ -18,3 +18,5 @@
 - 量測後被否決的實驗（非TikZ框線、章節預覽模式、CI快取`build/`、TeX container image快取、Arm runner）與延後項目（class重寫、`l3build`、引擎更換、tagged PDF）維持不啟用，重啟需要新的owner核准Intent。
 
 完整英文technical record：[validation-and-performance.en.md](validation-and-performance.en.md)
+
+尚未發行的可攜式寫作知識、英文代理指示、文件片段與套件驗證，統一記錄於[學生寫作與代理技能](student-writing-and-agent-skills.md)。

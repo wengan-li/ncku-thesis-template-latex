@@ -21,3 +21,5 @@
 - 舊的sample repository已於2026-07-12由owner刪除退役，generated examples改由同一source revision建置的release assets提供。
 
 完整英文technical record：[release-and-distribution.en.md](release-and-distribution.en.md)
+
+尚未發行的可攜式寫作知識、英文代理指示、文件片段與套件驗證，統一記錄於[學生寫作與代理技能](student-writing-and-agent-skills.md)。

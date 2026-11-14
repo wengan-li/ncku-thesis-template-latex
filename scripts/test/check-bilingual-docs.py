@@ -43,6 +43,19 @@ GUIDE_PAIRS: tuple[tuple[str, str, str, int], ...] = (
     ),
 )
 
+# Human usage guides live outside the English-only machine skill tree.
+WRITING_REFERENCES = (
+    ("project-and-chapters", 4), ("figures-and-tables", 3),
+    ("equations-and-theorems", 2), ("references-and-bibliography", 3),
+    ("build-and-diagnostics", 2),
+)
+WRITING_BASE = "thesis/context/usage"
+GUIDE_PAIRS += (("thesis/context/README.md", "thesis/context/README.en.md", "student-writing", 2),)
+GUIDE_PAIRS += tuple(
+    (f"{WRITING_BASE}/{name}.md", f"{WRITING_BASE}/{name}.en.md", f"writing-{name}", count)
+    for name, count in WRITING_REFERENCES
+)
+
 SUMMARY_PAIRS: tuple[tuple[str, str], ...] = (
     (
         "docs/features/v2-modernization.md",
@@ -57,6 +70,9 @@ SUMMARY_PAIRS: tuple[tuple[str, str], ...] = (
         "docs/features/release-and-distribution.en.md",
     ),
 )
+
+SUMMARY_PAIRS += (("docs/features/student-writing-and-agent-skills.md",
+                   "docs/features/student-writing-and-agent-skills.en.md"),)
 
 CHINESE_USER_DOCS = tuple(pair[0] for pair in GUIDE_PAIRS + SUMMARY_PAIRS) + (
     "CHANGELOG.md",

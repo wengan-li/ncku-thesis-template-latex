@@ -90,7 +90,20 @@ one is a short link/routing sentence.
   editor, configuration, and migration-start instructions must be available
   there without repository-only tooling.
 - Repository-only commands, tests, benchmarks, workflow details, and internal evidence
-  stay outside the student ZIP.
+  stay outside the student ZIP. The named student-only `AGENTS.md` routers,
+  adjacent relative `CLAUDE.md -> AGENTS.md` aliases and content-local writing
+  skill are intentional exceptions to the maintainer-instruction exclusion;
+  they grant no repository publication or template-maintenance authority.
+- Writing guidance has one portable human-readable owner under
+  `thesis/context/usage/`, with Traditional-Chinese and English companion guides.
+  Agent-facing `AGENTS.md`, `SKILL.md` and all skill sidecars use English only;
+  the content-local writing skill routes to the English human guides instead of
+  copying or translating them into `.agents/`. Preserve
+  explicit loading guidance for clients that do not auto-discover nested skills,
+  and validate links after copying the entire `context/` tree without `example/`.
+  Feature records distinguish approved/in-progress design, local validation and
+  actual release publication rather than describing an unshipped capability as
+  already released.
 - Root README provides the public overview; `docs/README.md` routes students and
   readers to current guides and shipped project records.
 - Public landing pages and indexes are ordered by reader need: overview, a

@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "snippets": {
+    "pilot-chapter": "project-and-chapters",
+    "basic-text": "project-and-chapters",
+    "front-matter": "project-and-chapters",
+    "appendix": "project-and-chapters",
+    "multi-figure": "figures-and-tables",
+    "table": "figures-and-tables",
+    "equations-theorems": "equations-and-theorems",
+    "bibliography-entry": "references-and-bibliography",
+    "bibliography-registration": "references-and-bibliography",
+    "direct-build": "build-and-diagnostics"
+  },
+  "body": [
+    "pilot-chapter",
+    "basic-text",
+    "multi-figure",
+    "table",
+    "equations-theorems"
+  ],
+  "labels": [
+    "chap:writing-pilot",
+    "sec:writing-pilot",
+    "fig:writing-pilot",
+    "fig:pilot-views",
+    "fig:pilot-first",
+    "fig:pilot-second",
+    "tab:pilot-symbols",
+    "eq:pilot-identity",
+    "thm:pilot-identity",
+    "chap:pilot-nomenclature",
+    "chap:pilot-appendix"
+  ],
+  "text": [
+    "Writing pilot",
+    "Supplied pilot image",
+    "Two supplied views",
+    "Illustrative symbols",
+    "MapReduce",
+    "Simplified Data Processing",
+    "Supplement"
+  ],
+  "image_source": "thesis/example/how-to/write/figure/pic/Cc-by_new.png",
+  "bibliography_source": "thesis/example/references/paper.bib"
+}

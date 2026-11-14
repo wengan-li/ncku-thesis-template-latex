@@ -414,3 +414,5 @@ For every future output-sensitive slice:
    diagnostics, references, and dependencies;
 5. verify the exact extracted student package when its surface is touched;
 6. keep generated artifacts outside source Git.
+
+The [student writing and agent skills record](student-writing-and-agent-skills.en.md) owns the unpublished portable knowledge design, published-snippet checks, English-only agent contract and exact-candidate package evidence.

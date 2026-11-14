@@ -180,7 +180,11 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 ## Agent setup
 
 - `AGENTS.md` is canonical.
-- `CLAUDE.md` points here and stays short.
+- Root `CLAUDE.md` remains a relative symlink to canonical `AGENTS.md`.
+- Student-only routers are `thesis/AGENTS.md` and `thesis/context/AGENTS.md`;
+  each adjacent `CLAUDE.md` is exactly a relative symlink to `AGENTS.md`.
+  Their single writing skill lives under `thesis/context/.agents/skills/`;
+  repository maintenance skills never enter the student payload.
 - Repo-local skills are `.agents/skills/idsd-workflow/`,
   `.agents/skills/repo-maintenance/`,
   `.agents/skills/documentation-management/`,

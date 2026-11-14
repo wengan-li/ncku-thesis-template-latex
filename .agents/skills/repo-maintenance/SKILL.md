@@ -18,6 +18,9 @@ requirements, todos, documentation lifecycle, consolidation, or path repair.
 Load [`student-first-run`](../student-first-run/SKILL.md) before changing
 READMEs, `conf/` or `context/` defaults, the teaching example, release notes,
 or the Overleaf package.
+Load [`codegraph`](../codegraph/SKILL.md) for maintainer graph readiness and
+source queries. Keep the root index scoped to supported tooling; use direct
+source/API/runtime evidence for LaTeX and the portable student skill for writing.
 
 ## Source of Truth
 
@@ -169,8 +172,16 @@ Keep audiences separate:
 - direct compiler, editor, configuration, and writing guidance belongs in the
   packaged `thesis/` project and teaching content;
 - root `README.md` routes both audiences without exposing unnecessary internals;
-- the student ZIP must not contain `justfile`, `AGENTS.md`, CI, tests, scripts,
-  internal docs, or a redundant `thesis/` wrapper.
+- the student ZIP must not contain repository-maintainer instructions, `justfile`,
+  CI, tests, scripts, internal docs, or a redundant `thesis/` wrapper;
+- the exact student-only routers `thesis/AGENTS.md` and
+  `thesis/context/AGENTS.md`, their adjacent relative `CLAUDE.md -> AGENTS.md`
+  symlinks, and `thesis/context/.agents/skills/ncku-thesis-writing/` are intentional
+  student-package content. Do not replace the symlinks with regular pointer files
+  or copy root maintainer skills into the package. Ordinary writing tasks load
+  that student skill; repository maintenance continues to use this skill.
+  The complete `context/` directory, including hidden files, transports writing
+  knowledge into another matching template, not the template runtime itself.
 
 Generated defense-certificate PDFs are unofficial demonstrations and regression
 outputs. Current students must use files produced by the university

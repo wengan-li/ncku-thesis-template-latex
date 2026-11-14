@@ -112,7 +112,7 @@ PY
 rm -f "$output_dir_abs/$archive_name"
 (
   cd "$source_dir"
-  zip -qr "$output_dir_abs/$archive_name" .
+  zip -qry "$output_dir_abs/$archive_name" .
 )
 
 python3 - "$output_dir_abs/$archive_name" "$profile" <<'PY'
@@ -123,7 +123,9 @@ archive = Path(sys.argv[1])
 profile = sys.argv[2]
 editable_suffixes = {".tex", ".bib", ".md", ".txt", ".sty", ".cls", ".cfg"}
 MIB = 1024 * 1024
-# Overleaf limits as checked from the official documentation on 2026-07-12
+# Overleaf limits rechecked from official upload/plan documentation on 2026-11-14
+# https://docs.overleaf.com/managing-projects-and-files/uploading-a-project
+# https://docs.overleaf.com/getting-started/free-and-premium-plans/plan-limits
 # (also recorded in docs/features/release-and-distribution.en.md). Recheck the
 # live limits before changing any value.
 LIMITS = {
@@ -179,6 +181,7 @@ with ZipFile(archive) as zf:
 PY
 
 unzip -q "$output_dir_abs/$archive_name" -d "$build_dir"
+python3 "$repo_root/scripts/test/check-student-agent-skills.py" --zip "$output_dir_abs/$archive_name" --prefix ''
 python3 - "$build_dir" "$profile" <<'PY'
 from pathlib import Path
 import subprocess

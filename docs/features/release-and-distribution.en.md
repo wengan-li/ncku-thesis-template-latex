@@ -293,3 +293,5 @@ from the school system.
   contract.
 - [`validation-and-performance.en.md`](validation-and-performance.en.md) —
   release hashes, direct-build proof, and engineering gates.
+
+The [student writing and agent skills record](student-writing-and-agent-skills.en.md) owns the unpublished portable knowledge design, published-snippet checks, English-only agent contract and exact-candidate package evidence.

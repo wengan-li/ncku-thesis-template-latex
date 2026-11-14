@@ -33,6 +33,8 @@ For a Chinese-language thesis, also uncomment the Chinese abstract, the extended
 
 The teaching example is useful as a reference but rebuilds more slowly than a normal thesis.
 
+For chapters, images, equations and citations, use the [content writing guide](context/README.en.md). When using an agent, explicitly read the [writing skill](context/.agents/skills/ncku-thesis-writing/SKILL.md); nested skills may not register automatically.
+
 ## Choose independent settings
 
 NCKU students do not choose an institution style: extract the package and fill in `conf/conf.tex`; the three choices below are all made in that file. Students from other institutions first build a style for their own school by following [`template/style/Customization.en.md`](template/style/Customization.en.md), then enter their thesis data.
@@ -107,6 +109,7 @@ For final submission, use the defense-certificate document produced by the offic
 
 | What you see | Cause | Fix |
 | --- | --- | --- |
+| `A matching complete thesis template containing thesis.tex, conf/ and template/configure.tex is required.` | A content-only copy has no matching template runtime | Obtain the complete student project first, then copy the entire `context/` including hidden `.agents/` and relative aliases; preserve existing destination content |
 | The whole teaching document (200+ pages) is built | `\ExampleMode` on line 13 of `conf/conf.tex` is still active | Put `%` in front of that line and rebuild |
 | `! LaTeX Error: File 'xxx.sty' not found.` | The TeX distribution lacks a package | MiKTeX: install it in MiKTeX Console or enable automatic installation; TeX Live/MacTeX: `tlmgr install <package>`, or install the full scheme |
 | `! Undefined control sequence.` followed by a `\SetDept...` line | The department command is misspelled or does not exist | Look up the command in [`template/style/ncku/README.md`](template/style/ncku/README.en.md) |

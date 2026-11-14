@@ -54,7 +54,7 @@ check: thesis
 # read the canonical build/thesis.* artifacts declare that dependency below.
 # JUST_JOBS=1 restores serial execution when attributing interleaved failures.
 [parallel]
-test: check _test-bilingual-docs _test-test-layout _test-release-notes _test-conf-line-references _test-v1-api _test-v1-project-migration _test-release-student-archive _test-overleaf-gallery-package _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-type-routing _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
+test: check _test-student-agent-skills _test-bilingual-docs _test-test-layout _test-release-notes _test-conf-line-references _test-v1-api _test-v1-project-migration _test-release-student-archive _test-overleaf-gallery-package _test-diagnostics _test-engine-gate _test-set-thesis-date _test-sectioning-numbering _test-numbering-contract _test-numbering-family-contract _test-chapter-title-format-key-unknown _test-numbering-family-key-unknown _test-helper-values _test-deprecated-command-contract _test-float-contract _test-multi-figure-key-unknown _test-figure-key-unknown _test-table-key-unknown _test-reference-contract _test-reference-apacite-contract _test-reference-key-unknown _test-theorem-contract _test-theorem-key-unknown _test-theorem-format-key-unknown _test-theorem-style-counter _test-theorem-counter-cycle _test-custom-style _test-custom-institution-api _test-committee-size-policy _test-oral-default-state _test-metadata-bookmark _test-custom-font-files-contract _test-custom-font-files-key-unknown _test-font-option-contract _test-font-option-key-unknown _test-font-type-routing _test-font-cjk _test-keyword-values _test-student-mode _test-draft-watermark-opt-in
 
 # Shared fixture builders. Every fixture clears its own build/tests/<job>.*
 # files first so grep-count assertions never read stale state, then compiles
@@ -98,6 +98,12 @@ _fixture-contract-xelatex job fixture: (_fixture-xelatex job fixture) && (_fixtu
 [private]
 _test-bilingual-docs:
     python3 scripts/test/check-bilingual-docs.py
+
+# Portable student payload and the actual published writing examples.
+[private]
+_test-student-agent-skills:
+    rm -rf "{{ tests_dir }}/student-usage"
+    python3 scripts/test/check-student-agent-skills.py --build
 
 # Flat three-digit test-source layout and reserved group ranges.
 [private]
@@ -193,7 +199,7 @@ _test-release-student-archive: (_fixture-clean "student-archive")
     @if [ -n "$(git status --porcelain -- thesis)" ]; then echo 'WARNING: thesis/ has uncommitted changes; this test verifies committed HEAD:thesis, not the working tree.' >&2; fi
     git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ tests_dir }}/student-archive.zip" HEAD:thesis
     scripts/release/verify-student-archive.sh "{{ tests_dir }}/student-archive.zip"
-    for doc in README.md conf/README.md README.en.md conf/README.en.md; do \
+    for doc in README.md conf/README.md README.en.md conf/README.en.md context/.agents/skills/ncku-thesis-writing/SKILL.md context/usage/figures-and-tables.en.md context/CLAUDE.md; do \
       cp "{{ tests_dir }}/student-archive.zip" "{{ tests_dir }}/student-archive-negative.zip"; \
       zip -dq "{{ tests_dir }}/student-archive-negative.zip" "ncku-thesis-template-latex/$doc"; \
       if scripts/release/verify-student-archive.sh "{{ tests_dir }}/student-archive-negative.zip" > "{{ tests_dir }}/student-archive-negative.log" 2>&1; then \

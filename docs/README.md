@@ -13,6 +13,7 @@
 | 用途 | 文件 |
 | --- | --- |
 | 建置及編輯論文 | [`thesis/README.md`](../thesis/README.md) |
+| 撰寫章節、圖表與引用 | [`thesis/context/README.md`](../thesis/context/README.md) |
 | 填寫學生設定 | [`thesis/conf/README.md`](../thesis/conf/README.md) |
 | 查看NCKU學院及系所preset | [`thesis/template/style/ncku/README.md`](../thesis/template/style/ncku/README.md) |
 | 從1.x升級至2.x | [`v1-to-v2-migration.md`](v1-to-v2-migration.md) |
@@ -31,6 +32,8 @@
 | 全部已發行功能記錄 | [`features/README.md`](features/README.md) |
 
 Feature records保存已發行architecture、驗證結果及公開狀態。
+
+學生寫作知識的設計與尚未發行狀態見[學生寫作與代理技能](features/student-writing-and-agent-skills.md)。
 
 ## 發行與下載
 

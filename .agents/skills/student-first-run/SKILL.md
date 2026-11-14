@@ -19,6 +19,19 @@ successful build:
 - the Overleaf package and its quick start
 - any default value in `thesis/conf/conf.tex` or `thesis/context/context.tex`
   that a new thesis would inherit
+- student `AGENTS.md` routers, relative `CLAUDE.md -> AGENTS.md` symlinks, and
+  `thesis/context/.agents/skills/ncku-thesis-writing/`. Agent-facing instructions
+  and skill sidecars use English only; bilingual human usage guides live outside
+  `.agents/`, under `thesis/context/usage/`. These student instructions are not
+  copies of maintainer skills.
+
+For ordinary thesis-writing assistance, read the content-local writing skill
+and only the topic references needed for the requested task. Preserve scientific
+claims and supplied sources, edit student content rather than template internals,
+and report actual build evidence or missing prerequisites. Copying `context/`
+must include its hidden `.agents/` payload and relative aliases; it still requires
+a matching thesis template. Do not promise automatic nested-skill discovery for
+every agent client.
 
 Load [`idsd-workflow`](../idsd-workflow/SKILL.md) first as usual, and
 [`documentation-management`](../documentation-management/SKILL.md) for pair,

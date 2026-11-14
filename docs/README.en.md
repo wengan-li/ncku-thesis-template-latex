@@ -13,6 +13,7 @@ This directory records migration, architecture, validation, release, and Overlea
 | Task | Document |
 | --- | --- |
 | Build and edit a thesis | [`thesis/README.en.md`](../thesis/README.en.md) |
+| Write chapters, figures and citations | [`thesis/context/README.en.md`](../thesis/context/README.en.md) |
 | Enter student configuration | [`thesis/conf/README.en.md`](../thesis/conf/README.en.md) |
 | Review NCKU college and department presets | [`thesis/template/style/ncku/README.en.md`](../thesis/template/style/ncku/README.en.md) |
 | Migrate from 1.x to 2.x | [`v1-to-v2-migration.en.md`](v1-to-v2-migration.en.md) |
@@ -31,6 +32,8 @@ Each complete guide uses one predominant language and links to its equivalent Tr
 | All shipped feature records | [`features/README.en.md`](features/README.en.md) |
 
 Feature records preserve shipped architecture, validation results, and public state.
+
+The [student writing and agent skills record](features/student-writing-and-agent-skills.en.md) describes the design and its unpublished status.
 
 ## Releases and downloads
 

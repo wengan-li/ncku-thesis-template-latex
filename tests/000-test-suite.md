@@ -29,3 +29,9 @@ All test files stay directly under `tests/`; do not add a second directory layer
 
 The `900` range is documented in
 [`900-reference-fixtures.md`](900-reference-fixtures.md).
+
+The `802-student-usage.json` manifest inventories published writing snippets.
+`scripts/test/check-student-agent-skills.py` extracts the paired guide blocks
+and builds those exact bytes, including a real supplied bibliography entry.
+It checks portable payloads/aliases, missing-runtime diagnostics, negative
+mutations, actual PDF/citation/label convergence and a copied-context build.

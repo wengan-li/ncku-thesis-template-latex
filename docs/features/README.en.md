@@ -1,4 +1,4 @@
-<!-- doc-pair: feature-index; lang: en; topics: choose-by-need,shipped-records,student-routes -->
+<!-- doc-pair: feature-index; lang: en; topics: choose-by-need,shipped-records,current-design,student-routes -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -21,6 +21,10 @@ Feature records preserve production behavior, durable architecture decisions, an
 - [`v2-modernization.en.md`](v2-modernization.en.md) — product intent, compatibility, architecture, hardened subsystems, and completion boundary.
 - [`validation-and-performance.en.md`](validation-and-performance.en.md) — tests, artifact proof, benchmarks, and accepted/rejected/deferred decisions.
 - [`release-and-distribution.en.md`](release-and-distribution.en.md) — versioning, packages, GitHub Release, Overleaf, retired sample repository, and Draft/watermark policy.
+
+## Current feature design
+
+[Student writing and agent skills](student-writing-and-agent-skills.en.md) records locally completed implementation and validation of portable writing knowledge. It is unpublished.
 
 ## Student routes
 

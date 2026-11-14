@@ -1,4 +1,4 @@
-<!-- doc-pair: feature-index; lang: zh-Hant-TW; topics: choose-by-need,shipped-records,student-routes -->
+<!-- doc-pair: feature-index; lang: zh-Hant-TW; topics: choose-by-need,shipped-records,current-design,student-routes -->
 
 [繁體中文](README.md) | [English](README.en.md)
 
@@ -21,6 +21,10 @@ Feature records保存production behavior、durable architecture decisions及mach
 - [`v2-modernization.md`](v2-modernization.md) — 產品目標、相容性、架構及完成邊界。
 - [`validation-and-performance.md`](validation-and-performance.md) — 測試、artifact proof、benchmark及工程決定。
 - [`release-and-distribution.md`](release-and-distribution.md) — 版本、套件、發行、Overleaf及提交政策。
+
+## 本次功能設計
+
+[學生寫作與代理技能](student-writing-and-agent-skills.md)記錄已完成本機實作及驗收的可攜式寫作知識，尚未發行。
 
 ## 學生入口
 
