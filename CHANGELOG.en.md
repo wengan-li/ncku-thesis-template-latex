@@ -11,6 +11,16 @@ Current university and department requirements always override template guidance
 
 ## 2.x
 
+### [v2.1.0.261114095130](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.1.0.261114095130) — 2026-11-14
+
+- Adds portable AI-assisted thesis-writing guidance inside `context/`. Copying the complete directory, including hidden files, carries the English writing skill and its reference into another matching template project. Project and content entry instructions include relative `CLAUDE.md -> AGENTS.md` aliases.
+- Keeps the existing teaching sources and PDF as the human tutorial. The compact agent reference is generated from those same teaching snippets, avoiding a second hand-maintained usage handbook. Students do not need the generator or teaching corpus for normal writing builds.
+- Explains project discovery, chapter assembly, supplied images and citation metadata, actual build verification and error recovery in the writing skill. Existing scientific claims, student content and institutional rules remain authoritative.
+- Adds checks for reference freshness, shared-source changes, copied content and extracted student packages, including missing guidance, broken aliases, unsafe paths and unresolved references or citations.
+- Consolidates current feature documentation and removes completed work from active requirement/todo queues while preserving changelogs and Git history. Contributor-list spacing is also corrected.
+- Adds optional CodeGraph guidance for Python maintenance tooling and YAML file discovery. It is not a LaTeX semantic graph or a student dependency, and no generated graph database is distributed.
+- Preserves XeLaTeX/BibTeX, the public LaTeX API, student defaults and the 261-page A4 teaching layout. Existing teaching files gain comment-only extraction markers. GitHub and Overleaf remain separate publication channels; this release does not update the Gallery project.
+
 ### [v2.0.8.260823035006](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.8.260823035006) — 2026-08-23
 
 - Student package content fixes: the placeholder typo in `context/related-work/related-work.tex` (`relatd`) is corrected, and `context/abstract/chi.tex` becomes a real Chinese abstract placeholder with the university's abstract rules kept as `%` comments, matching the English abstract file. `conf/conf.tex` and `thesis.tex` are unchanged, so the line numbers cited by the student guides stay valid.
