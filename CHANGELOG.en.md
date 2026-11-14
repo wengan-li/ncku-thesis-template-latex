@@ -22,126 +22,76 @@ Current university and department requirements always override template guidance
 
 ### [v2.0.8.260823035006](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.8.260823035006) — 2026-08-23
 
-- Student package content fixes: the placeholder typo in `context/related-work/related-work.tex` (`relatd`) is corrected, and `context/abstract/chi.tex` becomes a real Chinese abstract placeholder with the university's abstract rules kept as `%` comments, matching the English abstract file. `conf/conf.tex` and `thesis.tex` are unchanged, so the line numbers cited by the student guides stay valid.
-- The 1.x compatibility proof now comes from the immutable `v1.8.2.260715154703` tag: `just test` materializes the 18 v1.8.2 student files from that tag into `build/tests/v1-project/` and builds them with the current template on the teaching-example path (261 A4 pages) and in student mode; the packaged `context/` files no longer need to match 1.8.2 byte for byte.
-- New `conf/conf.tex` line-reference check: the 36 line numbers cited by the four student guides must still hold the commands they describe, and any new citation must be covered by the check.
-- Continuous integration: the Test workflow fetches tags for the materialization above.
-- Records: the v2.0.7 public release read-back, the Overleaf Gallery refresh to the v2.0.7 source with its read-back, and the dual-licensing decision (Gallery under CC BY 4.0, repository under CC BY-NC-SA 4.0).
-- No change to the XeLaTeX source or public API; the teaching document (261 pages) is unchanged, and student-mode output (`thesis-chi.pdf` / `thesis-eng.pdf`, 11 pages each) changes only in placeholder text.
+- Fixes a typo in the related-work placeholder and replaces the Chinese abstract with editable sample text, keeping university requirements in comments.
+- Records the licensing difference between distribution channels: CC BY 4.0 for the Overleaf Gallery template and CC BY-NC-SA 4.0 for the GitHub template.
 
 ### [v2.0.7.260822120950](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.7.260822120950) — 2026-08-22
 
-- Teaching document restructured: the usage and writing tutorials follow the introduction directly, the origin story moves into the appendix, and "words from professors" stays as the last body chapter; the installation screenshot chapter becomes a three-path section (Overleaf, terminal, editor) and 23 old screenshots are removed; figure conversion becomes "export PDF, crop with `pdfcrop`"; two teaching-text errors fixed. The document goes from 271 to 261 A4 pages and the student package shrinks by about 0.85 MB.
-- Student documentation: the student package `README.md` gains a `conf/conf.tex` must-change table (line numbers and the consequence of leaving each default), the `cover.tex` print-cover step, Overleaf steps, a common-errors table, and a fuller pre-submission checklist; the root and student READMEs and the configuration guide are rewritten in student terms, with every configuration section marked required/optional with line numbers; the licence is stated to cover the template files, not the student's own thesis content.
-- Release: GitHub Release notes are composed from both changelog entries plus a download guide (`scripts/release/release-notes.py`); `just release <version>` fails without a changelog entry; `just test` gains a release-notes check.
-- Project: new `student-first-run` skill, a student question issue form, and a record of the Overleaf Gallery's v2.0.0-era source and refresh cadence.
-- No change to the XeLaTeX source, public API, or student project shape; student-mode output (`thesis-chi.pdf` / `thesis-eng.pdf`, 11 pages each) is unchanged, only the teaching document's layout and page count change.
+- Reorganizes the tutorial, updates installation and figure-preparation guidance, and removes outdated screenshots.
+- Adds required-setting, print-cover, Overleaf, common-error and pre-submission guidance.
+- Clarifies that the template licence covers template files, not the student's own thesis content.
 
 ### [v2.0.6.260822064417](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.6.260822064417) — 2026-08-22
 
-- Student and examples package contents are unchanged; the examples package now takes `LICENSE` straight from the tagged source, and both packages' licence files are verified byte-identical to the repository root `LICENSE`.
-- The archived-document notice in the teaching appendix is produced by one macro; output is identical to the previous release.
-- Documentation: the migration guide's compatibility-evidence section links to the records that own the numbers, the repo-maintenance skill no longer restates the examples-package list, and the v2.0.5 public read-back is recorded.
-- Tooling and tests: fixture builds share clean/extract recipes, the requirements and todos directory rule is unified, Overleaf upload limits live in one table, the bilingual docs gate adds a non-failing language-pair drift warning and ignores OS metadata files, and the release scripts pass shellcheck.
-- No change to the XeLaTeX source, public API, student project shape, or PDF layout behavior; the canonical teaching document stays 271 A4 pages.
+- Takes the examples package's `LICENSE` directly from the release source. Thesis content and layout are unchanged.
 
 ### [v2.0.5.260821154358](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.5.260821154358) — 2026-08-21
 
-- Ships the `LICENSE` text inside both the student package and the examples package, with the documented contents listings and verification scripts updated together.
-- Refreshes the teaching document: Releases-first download guidance, a source tree that matches the extracted package, corrected `Mircosoft`/`Departmment` typos and `LaTeX`/`BibTeX` casing, an era note on the installer walkthrough, and a historical-snapshot notice before each archived official document in the appendix.
-- Rewrites the public records for human readers: the three feature records explain first and cite evidence second, the Traditional-Chinese summaries read as natural Chinese, and the migration guide leads with the student's upgrade steps; every contract, number, and link is preserved.
-- Tooling and tests: shared fixture-build recipes, concurrent release example-PDF builds, a requirements-directory gate that follows the documented lifecycle, a 2 MB editable-file check for Overleaf packages, and fixture-log upload when the hosted gate fails; TeX container image caching was measured and rejected.
-- No change to the XeLaTeX source, public API, student project shape, or PDF layout behavior; the canonical teaching document stays 271 A4 pages.
+- Includes the `LICENSE` text in both student and examples packages.
+- Updates download, installation and migration instructions, fixes text errors, and marks archived official documents as historical rather than current requirements.
 
 ### [v2.0.4.260725142839](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.4.260725142839) — 2026-07-25
 
-- Fixes two-digit custom-font-type dispatch and the Noto Sans CJK Chinese filename variables so custom English/Chinese font configuration loads the selected files and fails clearly when a file is missing.
-- Moves oral-template watermark decisions into the institution profile: NCKU legacy certificates retain their text/figure watermarks while normal student, custom-profile, and Gallery outputs remain final-ready by default.
-- Hardens Test/Release workflow version inputs, least-privilege token scopes, merge-aware whitespace checks, final-log convergence checks, and the shared release-asset manifest.
-- Runs independent fixtures in parallel and shares contract-checker mechanics while preserving the complete public API, pinned V1 migration inputs, student ZIP, and 271-page A4 canonical integration contract.
+- Fixes custom English and Chinese fonts not loading the selected files, with clear errors for missing font files.
+- Keeps watermarks on legacy NCKU certificate examples without adding them to normal theses.
 
 ### [v2.0.3.260719151234](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.3.260719151234) — 2026-07-19
 
-- Restores the project's preserved historical bilingual title and expands thesis-upload, printing, and defense-certificate guidance without presenting historical checks as current university approval.
-- Routes public documentation through stable GitHub Releases and complete changelog links instead of repeating mutable current/latest release identifiers across files.
-- Gives `CHANGELOG.md` a version-neutral title and language switcher while keeping the complete V1 release history in both changelog companions.
-- Does not change XeLaTeX source, public APIs, the student project shape, or PDF layout behavior.
+- Restores upload, printing and certificate guidance, distinguishing historical adoption from current university approval.
+- Restores the historical bilingual project name and standardizes download and full-changelog links.
 
 ### [v2.0.2.260719120024](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.2.260719120024) — 2026-07-19
 
-- Organizes student and public documentation into eight complete
-  Traditional-Chinese/English guide pairs and three Chinese-summary/English-
-  technical-record pairs; Chinese owns default `.md` paths, English uses
-  `.en.md`, and no `.zh-TW.md` paths remain.
-- Preserves generic institution metadata APIs while making the selected `ncku`
-  profile the sole runtime owner of 9 college and 110 department presets;
-  `custom` no longer loads the NCKU catalogue.
-- Documents and machine-checks command, selected-profile, student-configuration,
-  and metadata-initialization load order so students from other institutions can
-  port the neutral custom skeleton without inheriting NCKU data.
-- Keeps 597 LaTeX/xparse and 65 literal def-style V1 declarations, byte-pinned V1
-  migration inputs, the 271-page A4 canonical output, and the direct student-ZIP
-  build contract.
+- Completes Traditional-Chinese and English versions of the student guides and public documentation.
+- Keeps NCKU college and department data within the NCKU style, so students from other institutions can start with a custom style free of NCKU data.
 
 ### [v2.0.1.260719010734](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.1.260719010734) — 2026-07-19
 
-- Replaces all repository-owned generic `pgfkeys` command parsers with 19 native
-  `l3keys` families while preserving the complete audited 1.x public API.
-- Preserves parser defaults, macro expansion, repeated-call resets, omission
-  behavior, unknown-key failures, theorem registries, numbering, and float routes.
-- Keeps the canonical NCKU teaching document at 271 A4 pages with identical text,
-  normalized word geometry, font table, and 271/271 fixed-DPI page rasters.
-- Removes the redundant explicit `pgfkeys` load; PGF/TikZ remains available
-  transitively for existing visual framing rather than command parsing.
+- Replaces `pgfkeys` option parsing with `l3keys`, preserving existing commands, configuration and thesis layout.
 
 ### [v2.0.0.260717130231](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v2.0.0.260717130231) — 2026-07-17
 
-V2 modernizes the template architecture while preserving XeLaTeX, the established
-NCKU output, the student project shape, and the complete audited 1.x public API.
-See the [1.x → 2.x migration guide](docs/v1-to-v2-migration.en.md) and the
-[V2 modernization record](docs/features/v2-modernization.en.md) for detailed contracts and evidence.
+- Updates the template architecture while keeping XeLaTeX, existing 1.x commands and the NCKU thesis layout.
+- Separates shared typesetting from university rules to support customization for other institutions.
+- Fixes theorem numbering and labels, caption `\nameref` references and repeated numbering setup.
 
-- Preserves existing 1.x projects through the compatibility adapter without helper renames.
-- Separates generic rendering, NCKU policy, and custom institution ports into base, `ncku`, and `custom` style profiles.
-- Fixes theorem labels and counter chains, caption `\nameref` metadata, and repeatable numbering setup.
-- Removes the legacy `fp` runtime dependency while preserving public command signatures.
-- Keeps the canonical NCKU teaching document at 271 A4 pages with verified text, geometry, raster, and font identity.
-- Publishes one editable student ZIP and one six-PDF examples ZIP from the immutable release tag.
+See the [1.x to 2.x migration guide](docs/v1-to-v2-migration.en.md) and [architecture guide](docs/features/v2-modernization.en.md).
 
 ## 1.8.x
 
 ### [v1.8.2.260715154703](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v1.8.2.260715154703) — 2026-07-15
 
-- Makes normal StudentMode and teaching examples final-ready by default, without Draft markers or template watermarks.
-- Preserves the existing Draft and watermark commands as explicit opt-in APIs.
-- Fixes three teaching-guide examples that visibly overflowed the page boundary.
-- Adds focused default-off and explicit-opt-in regression coverage.
-- Tightens the full-document overfull-box diagnostic budget from 21 to 18.
-- Records the historical behavior and current policy in
-  [`docs/features/release-and-distribution.en.md`](docs/features/release-and-distribution.en.md#draft-and-watermark-policy).
+- Turns off draft markers and watermarks for normal theses and teaching examples by default; they remain available when explicitly enabled.
+- Fixes three tutorial examples that overflowed the page.
+
+See the [draft and watermark policy](docs/features/release-and-distribution.en.md#draft-and-watermark-policy).
 
 ### [v1.8.1.260715130936](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v1.8.1.260715130936) — 2026-07-15
 
-- Adds the approved public Overleaf Gallery entry to the root README.
-- Does not change the XeLaTeX source, public APIs, or generated PDF output.
+- Adds the Overleaf Gallery template link to the project homepage.
 
 ### [v1.8.0.260712123948](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v1.8.0.260712123948) — 2026-07-12
 
-- Adds final-log diagnostic budgets and focused metadata, bookmark, font, engine, keyword, and StudentMode fixtures.
-- Removes display-only line breaks from PDF metadata while preserving cover layout.
-- Makes `\StudentMode` symmetric and removes teaching-example dependencies from the student content path.
-- Consolidates repeated private caption, label, and keyword helpers without changing public wrappers.
-- Standardizes public distribution as a student ZIP plus an examples ZIP containing six generated PDFs.
-- Adds the reproducible Overleaf import-package workflow and documents the unofficial-template boundary.
+- Removes unwanted line breaks from PDF metadata without changing the cover layout.
+- Improves `\StudentMode` switching and removes teaching-example dependencies from student chapters.
+- Separates editable thesis files from a six-PDF examples package and adds Overleaf import instructions. This remains an unofficial community template.
 
 ### [v1.8.0.260712074004](https://github.com/wengan-li/ncku-thesis-template-latex/releases/tag/v1.8.0.260712074004) — 2026-07-12
 
-- Adds the root `justfile`, isolated `latexmk` output, GitHub Actions tests, and generated-file ignore rules.
-- Introduces immutable tag-driven build, verification, artifact promotion, and GitHub Release publication.
-- Fixes A4 height, legacy thesis-date recursion, the NCKU cover-date signature, and example source paths.
-- Removes the default DOI overlay and keeps generated defense certificates outside normal thesis examples.
-- Keeps `just demo` and `\DemoMode` as compatibility aliases while standardizing on `example` naming.
-- Records artifact provenance and student-package boundaries for the retired sample repository.
+- Adds `just` build commands, automated tests and tag-based package releases.
+- Fixes A4 paper height, date configuration and tutorial source paths.
+- Removes the default DOI overlay and separates defense-certificate examples from normal thesis examples.
+- Keeps `just demo` and `\DemoMode` working while standardizing on the `example` name.
 
 ## 1.7.x
 

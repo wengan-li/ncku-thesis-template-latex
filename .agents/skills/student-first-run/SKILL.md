@@ -90,7 +90,11 @@ step is not finished.
 6. **Release notes speak to students.** They say which ZIP to download and what
    changed in plain words, in both languages, generated from the changelog
    entries by `scripts/release/release-notes.py`. A release version without a
-   changelog entry must not build.
+   changelog entry must not build. Use a few short user-facing changes, not a
+   fixed bullet quota. Keep test inventories, CI receipts and implementation
+   diaries out of release prose; retain compatibility, licensing, official-file
+   warnings and required user action. Editorial changes to past notes must not
+   move tags, replace packages or attribute later fixes to an earlier release.
 7. **Consequences before features.** Explain what a student gets and what goes
    wrong before explaining how the mechanism works. Word analogies (`.tex` is to
    LaTeX what `.doc` is to Word) are welcome on the student path.
