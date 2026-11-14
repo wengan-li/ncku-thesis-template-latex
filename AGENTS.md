@@ -183,8 +183,11 @@ Render and inspect affected pages when cover, margins, pagination, front matter,
 - Root `CLAUDE.md` remains a relative symlink to canonical `AGENTS.md`.
 - Student-only routers are `thesis/AGENTS.md` and `thesis/context/AGENTS.md`;
   each adjacent `CLAUDE.md` is exactly a relative symlink to `AGENTS.md`.
-  Their single writing skill lives under `thesis/context/.agents/skills/`;
-  repository maintenance skills never enter the student payload.
+  Their single writing skill lives under `thesis/.agents/skills/`;
+  `thesis/.claude/skills` is exactly `../.agents/skills`, a relative directory
+  symlink to that writing payload. Copy the whole buildable student project,
+  including hidden files and links. Repository maintenance skills never enter
+  the student payload.
 - Repo-local skills are `.agents/skills/idsd-workflow/`,
   `.agents/skills/repo-maintenance/`,
   `.agents/skills/documentation-management/`,

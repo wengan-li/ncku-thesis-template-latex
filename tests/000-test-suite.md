@@ -41,4 +41,4 @@ The standard-library writing-reference generator projects marked existing
 teaching code; --check rejects stale output and the checker mutates both
 canonical teaching input and generated reference to verify drift detection.
 It checks portable payloads/aliases, missing-runtime diagnostics, negative
-mutations, actual PDF/citation/label convergence and a copied-context build.
+mutations, actual PDF/citation/label convergence and a complete-project copy build.

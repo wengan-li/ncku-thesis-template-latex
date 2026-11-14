@@ -14,4 +14,4 @@
 - 影響版面時應比對文字、正規化座標、字型及固定解析度的頁面圖片，並人工檢視受影響頁面。不宣稱不同系統、TeX Live 或字型下的 PDF 逐位元相同。判斷未載入某資產前，須先確認 `.fls` 存在且非空。
 - 解壓後可直接用 `latexmk` 建置；Overleaf 與編輯器同樣指定 XeLaTeX 及 `thesis.tex`。學生不需要儲存庫測試工具，PDF 存在也不代表引用已完成。
 - 寫作時關閉 `\ExampleMode`，避免重建整份教學內容；`latexmk` 依依賴關係重跑，`just watch` 提供持續預覽。建置時間受文件、圖片、環境與負載影響，不提供通用加速或 Overleaf 時限保證；必要測試及發行保留乾淨建置。
-- 寫作片段、英文代理指示、複製內容與根目錄辨識的檢查見[學生寫作與代理技能](student-writing-and-agent-skills.md)，公開資產驗證見[發行與分發](release-and-distribution.md)。
+- 寫作片段、英文代理指示、完整專案複製與根目錄辨識的檢查見[學生寫作與代理技能](student-writing-and-agent-skills.md)，公開資產驗證見[發行與分發](release-and-distribution.md)。

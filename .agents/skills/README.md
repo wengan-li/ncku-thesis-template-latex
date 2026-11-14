@@ -10,7 +10,7 @@ Only focused, public, repository-safe skills are installed here:
 - [`codegraph`](codegraph/SKILL.md) — verify maintainer Python/YAML index scope, freshness and source queries; keep student writing and TeX discovery on their appropriate paths.
 
 Student writing knowledge is separately packaged under
-[`thesis/context/.agents/skills/ncku-thesis-writing/`](../../thesis/context/.agents/skills/ncku-thesis-writing/SKILL.md).
+[`thesis/.agents/skills/ncku-thesis-writing/`](../../thesis/.agents/skills/ncku-thesis-writing/SKILL.md).
 It is not a copy of the repository maintenance skills.
 
 Do not add unrelated product, company, persona, or private-workspace skills.

@@ -209,7 +209,7 @@ _test-release-student-archive: (_fixture-clean "student-archive")
     @if [ -n "$(git status --porcelain -- thesis)" ]; then echo 'WARNING: thesis/ has uncommitted changes; this test verifies committed HEAD:thesis, not the working tree.' >&2; fi
     git archive --format=zip --prefix=ncku-thesis-template-latex/ --output="{{ tests_dir }}/student-archive.zip" HEAD:thesis
     scripts/release/verify-student-archive.sh "{{ tests_dir }}/student-archive.zip"
-    for doc in README.md conf/README.md README.en.md conf/README.en.md context/.agents/skills/ncku-thesis-writing/SKILL.md context/.agents/skills/ncku-thesis-writing/references/template-usage.md context/CLAUDE.md; do \
+    for doc in README.md conf/README.md README.en.md conf/README.en.md .agents/skills/ncku-thesis-writing/SKILL.md .agents/skills/ncku-thesis-writing/references/template-usage.md context/CLAUDE.md .claude/skills; do \
       cp "{{ tests_dir }}/student-archive.zip" "{{ tests_dir }}/student-archive-negative.zip"; \
       zip -dq "{{ tests_dir }}/student-archive-negative.zip" "ncku-thesis-template-latex/$doc"; \
       if scripts/release/verify-student-archive.sh "{{ tests_dir }}/student-archive-negative.zip" > "{{ tests_dir }}/student-archive-negative.log" 2>&1; then \

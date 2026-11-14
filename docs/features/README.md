@@ -13,7 +13,7 @@
 | 2.x 相容性與學校設定如何運作 | [範本架構](v2-modernization.md) |
 | 如何檢查建置、版面及效能限制 | [驗證與效能](validation-and-performance.md) |
 | 如何封裝、下載及處理 Overleaf 與正式文件 | [發行與分發](release-and-distribution.md) |
-| 如何讓寫作知識及代理指示隨內容複製 | [學生寫作與代理技能](student-writing-and-agent-skills.md) |
+| 如何讓寫作知識及代理指示隨完整專案複製 | [學生寫作與代理技能](student-writing-and-agent-skills.md) |
 
 ## 現行功能
 

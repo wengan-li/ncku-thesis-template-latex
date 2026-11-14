@@ -2,8 +2,7 @@
 """Check portable student knowledge; compile the published snippets themselves.
 
 Default: source contracts and negative mutations. --build adds a cold pilot and
-copied-context build. --project validates an extracted project; --context checks
-readable content without claiming that a template runtime exists.
+complete-project copy build. --project validates an extracted project.
 Only the Python standard library is required. Build logs remain under build/.
 """
 
@@ -28,7 +27,8 @@ ROOT = Path(__file__).resolve().parents[2]
 SKILL = Path('.agents/skills/ncku-thesis-writing')
 REFERENCE = SKILL / 'references/template-usage.md'
 GENERATOR = ROOT / 'scripts/docs/generate-writing-reference.py'
-ALIASES = ('CLAUDE.md', 'context/CLAUDE.md')
+ALIASES = {'CLAUDE.md': 'AGENTS.md', 'context/CLAUDE.md': 'AGENTS.md',
+           '.claude/skills': '../.agents/skills'}
 LINK = re.compile(r'!?\[[^\]]*\]\(([^)]+)\)')
 CJK = re.compile(r'[\u3400-\u9fff]')
 SNIPPET = re.compile(r'<!-- student-snippet: ([a-z-]+) -->\n```(\w+)\n(.*?)\n```', re.S)
@@ -86,18 +86,36 @@ def find_project(cwd: Path, target: Path | None = None) -> Path | None:
 
 
 def check_context(context: Path) -> None:
-    base = context / SKILL
-    required = ['README.md', 'README.en.md', 'AGENTS.md', str(SKILL / 'SKILL.md')]
-    required += [str(REFERENCE)]
     require(not (context / 'usage').exists(), 'duplicate usage handbook must not be packaged')
-    for relative in required:
-        path = context / relative
-        require(path.is_file() and not path.is_symlink(), f'missing regular payload file: {relative}')
-    for path in (context / '.agents').rglob('*'):
-        if path.is_file() or path.is_symlink():
-            require(path.is_relative_to(base), f'unapproved student skill: {path}')
+    require(not (context / '.agents').exists() and not (context / '.claude').exists(),
+            'context must not contain a duplicate agent project')
+    for name in ('README.md', 'README.en.md', 'AGENTS.md'):
+        path = context / name
+        require(path.is_file() and not path.is_symlink(), f'missing regular content file: {name}')
     alias(context)
     english_agent(context / 'AGENTS.md')
+
+
+def skill_alias(project: Path) -> None:
+    path = project / '.claude/skills'
+    require(path.is_symlink(), 'Claude skill alias must be a symlink')
+    require(os.readlink(path) == '../.agents/skills', 'Claude skill alias target must be relative ../.agents/skills')
+    require(path.is_dir(), 'Claude skill alias is broken')
+    require(path.resolve() == (project / '.agents/skills').resolve(), 'Claude skill alias escapes its project')
+    for canonical in (project / '.agents/skills').rglob('SKILL.md'):
+        exposed = path / canonical.relative_to(project / '.agents/skills')
+        require(exposed.samefile(canonical), 'Claude skill alias resolves to a different skill')
+
+
+def check_knowledge(project: Path) -> None:
+    base = project / SKILL
+    for relative in (SKILL / 'SKILL.md', REFERENCE):
+        path = project / relative
+        require(path.is_file() and not path.is_symlink(), f'missing regular payload file: {relative}')
+    for path in (project / '.agents').rglob('*'):
+        if path.is_file() or path.is_symlink():
+            require(path.is_relative_to(base), f'unapproved student skill: {path}')
+    skill_alias(project)
     skill = (base / 'SKILL.md').read_text(encoding='utf-8')
     front = re.match(r'\A---\n(.*?)\n---\n', skill, re.S)
     require(front is not None, 'missing skill frontmatter')
@@ -108,7 +126,8 @@ def check_context(context: Path) -> None:
     require(fields.get('name') == 'ncku-thesis-writing', 'wrong skill name')
     require(bool(fields.get('description', '').strip()), 'missing skill description')
     require('references/template-usage.md' in skill, 'unrouted generated reference')
-    for path in ([context / name for name in ('README.md', 'README.en.md', 'AGENTS.md')]
+    for path in ([project / name for name in ('AGENTS.md', 'context/README.md',
+                                              'context/README.en.md', 'context/AGENTS.md')]
                  + list(base.rglob('*'))):
         if path.is_dir():
             continue
@@ -128,9 +147,9 @@ def check_context(context: Path) -> None:
             require(not parts.path.startswith(('/', '\\')) and '\\' not in parts.path,
                     f'unsafe path: {target}')
             destination = (path.parent / parts.path).resolve()
-            require(destination.is_relative_to(context.resolve()), f'escaping dependency: {target}')
+            require(destination.is_relative_to(project.resolve()), f'escaping dependency: {target}')
             require(destination.is_file(), f'missing sidecar: {target}')
-    print(f'Student context payload PASS: {context}')
+    print(f'Student project knowledge PASS: {project}')
 
 
 def check_project(project: Path) -> None:
@@ -139,12 +158,12 @@ def check_project(project: Path) -> None:
             'template/configure.tex is required.')
     require((project / 'AGENTS.md').is_file(), 'missing student project router')
     english_agent(project / 'AGENTS.md')
-    require(not (project / '.agents').exists(), 'repository skills leaked into student root')
     for path in project.rglob('AGENTS.md'):
         require(path.relative_to(project).as_posix() in ('AGENTS.md', 'context/AGENTS.md'),
                 f'unapproved agent router: {path}')
     alias(project)
     check_context(project / 'context')
+    check_knowledge(project)
 
 
 def check_zip(archive: Path, prefix: str) -> None:
@@ -159,21 +178,23 @@ def check_zip(archive: Path, prefix: str) -> None:
             require(item.filename.startswith(prefix), f'path outside ZIP root: {item.filename}')
             relative = item.filename[len(prefix):]
             if '.agents' in PurePosixPath(relative).parts:
-                require(relative in ('context/.agents/', 'context/.agents/skills/') or
-                        relative.startswith('context/.agents/skills/ncku-thesis-writing/'),
+                require(relative in ('.agents/', '.agents/skills/') or
+                        relative.startswith('.agents/skills/ncku-thesis-writing/'),
                         f'unapproved ZIP skill tree: {relative}')
             mode = item.external_attr >> 16
             if stat.S_ISLNK(mode):
                 require(relative in ALIASES, f'unexpected ZIP symlink: {relative}')
-                require(zf.read(item) == b'AGENTS.md', f'wrong ZIP alias target: {relative}')
+                require(zf.read(item) == ALIASES[relative].encode(), f'wrong ZIP alias target: {relative}')
             if relative in ALIASES:
                 require(stat.S_ISLNK(mode), f'ZIP alias lost symlink mode: {relative}')
             if relative.endswith(('AGENTS.md', 'CLAUDE.md')):
-                require(relative in ('AGENTS.md', 'context/AGENTS.md') + ALIASES,
+                require(relative in ('AGENTS.md', 'context/AGENTS.md') + tuple(ALIASES),
                         f'unapproved agent router: {relative}')
-            require(not any(part in {'.codegraph', '.git', '.claude'} for part in path.parts),
+            if '.claude' in PurePosixPath(relative).parts:
+                require(relative in ('.claude/', '.claude/skills'), f'unapproved ZIP client state: {relative}')
+            require(not any(part in {'.codegraph', '.git'} for part in path.parts),
                     f'local state in ZIP: {item.filename}')
-        for relative in ALIASES + ('context/' + str(SKILL / 'SKILL.md'),):
+        for relative in tuple(ALIASES) + (str(SKILL / 'SKILL.md'), str(REFERENCE)):
             require(prefix + relative in names, f'missing ZIP payload: {relative}')
         # Extract only after paths and symlink payloads were checked. Python's
         # zipfile does not restore symlinks; Info-ZIP does and is the public gate.
@@ -183,9 +204,9 @@ def check_zip(archive: Path, prefix: str) -> None:
     print(f'Student ZIP aliases and extracted payload PASS: {archive}')
 
 
-def published(context: Path) -> dict[str, str]:
+def published(project: Path) -> dict[str, str]:
     snippets: dict[str, str] = {}
-    for name, _, code in SNIPPET.findall((context / REFERENCE).read_text(encoding='utf-8')):
+    for name, _, code in SNIPPET.findall((project / REFERENCE).read_text(encoding='utf-8')):
         require(name not in snippets, f'duplicate generated snippet: {name}')
         snippets[name] = code
     return snippets
@@ -245,10 +266,13 @@ def source_contract() -> tuple[dict, dict[str, str]]:
     print('Student positive PASS: repository root, target content file/directory and nested cwd discovery')
     manifest = json.loads((ROOT / 'tests/802-student-usage.json').read_text())
     require(manifest.get('schema') == 2, 'unsupported shared-source manifest schema')
+    require(manifest.get('project_skill') == str(SKILL / 'SKILL.md'), 'project skill inventory drift')
+    require(manifest.get('skill_alias') == {'.claude/skills': ALIASES['.claude/skills']},
+            'Claude skill alias inventory drift')
     generated = projection_module().render(ROOT)
-    require((ROOT / 'thesis/context' / REFERENCE).read_text() == generated,
+    require((ROOT / 'thesis' / REFERENCE).read_text() == generated,
             'Generated writing reference drift: run just writing-reference')
-    snippets = published(ROOT / 'thesis/context')
+    snippets = published(ROOT / 'thesis')
     require(set(snippets) == set(manifest['snippets']), 'published snippet inventory drift')
     source = (ROOT / manifest['bibliography_source']).read_text()
     require(snippets['bibliography-entry'] in source, 'published bibliography entry differs from supplied source')
@@ -261,17 +285,25 @@ def negative_contracts() -> None:
     """Mutate copies, and require the intended diagnostic for each failure."""
     cases = ('entrypoint', 'sidecar', 'frontmatter', 'absolute', 'escape', 'alias-file',
              'alias-target', 'hidden', 'maintenance-skill', 'chinese-skill',
-             'chinese-sidecar', 'chinese-context-router', 'duplicate-handbook')
+             'chinese-sidecar', 'chinese-context-router', 'duplicate-handbook',
+             'claude-missing', 'claude-broken', 'claude-escape', 'claude-dereferenced',
+             'duplicate-context-skill')
     with tempfile.TemporaryDirectory(prefix='student-negatives-') as temporary:
         for case in cases:
-            context = Path(temporary) / case
-            shutil.copytree(ROOT / 'thesis/context', context, symlinks=True)
-            base = context / SKILL
+            project = Path(temporary) / case
+            # Use real payload bytes with tiny runtime sentinels for non-build tests.
+            shutil.copytree(ROOT / 'thesis', project, symlinks=True,
+                            ignore=shutil.ignore_patterns('example', 'template', 'conf'))
+            (project / 'conf').mkdir()
+            (project / 'template').mkdir()
+            (project / 'template/configure.tex').write_text('runtime sentinel')
+            context = project / 'context'
+            base = project / SKILL
             expected = ''
             if case == 'entrypoint':
                 (base / 'SKILL.md').unlink(); expected = 'missing regular payload'
             elif case == 'sidecar':
-                (context / REFERENCE).unlink(); expected = 'missing regular payload'
+                (project / REFERENCE).unlink(); expected = 'missing regular payload'
             elif case == 'frontmatter':
                 path = base / 'SKILL.md'
                 path.write_text(path.read_text().replace('name: ncku-thesis-writing', 'name: wrong-name'))
@@ -287,16 +319,29 @@ def negative_contracts() -> None:
                     expected = 'alias must be a symlink'
                 else:
                     (context / 'CLAUDE.md').symlink_to('../AGENTS.md'); expected = 'alias target'
+            elif case.startswith('claude-'):
+                link = project / '.claude/skills'
+                link.unlink()
+                if case == 'claude-dereferenced':
+                    shutil.copytree(project / '.agents/skills', link)
+                elif case == 'claude-broken':
+                    link.symlink_to('../missing-skills', target_is_directory=True)
+                elif case == 'claude-escape':
+                    link.symlink_to('../../outside-skills', target_is_directory=True)
+                expected = 'Claude skill alias must be a symlink' if case in ('claude-missing', 'claude-dereferenced') else 'Claude skill alias target'
             elif case == 'hidden':
-                shutil.rmtree(context / '.agents'); expected = 'missing regular payload'
+                shutil.rmtree(project / '.agents'); expected = 'missing regular payload'
             elif case == 'maintenance-skill':
-                path = context / '.agents/skills/repo-maintenance/SKILL.md'
+                path = project / '.agents/skills/repo-maintenance/SKILL.md'
                 path.parent.mkdir()
                 path.write_text('Repository maintenance instructions')
                 expected = 'unapproved student skill'
             elif case == 'duplicate-handbook':
                 (context / 'usage').mkdir()
                 expected = 'duplicate usage handbook'
+            elif case == 'duplicate-context-skill':
+                shutil.copytree(project / '.agents', context / '.agents')
+                expected = 'context must not contain a duplicate agent project'
             else:
                 path = (base / 'SKILL.md' if case == 'chinese-skill' else
                         base / 'sidecar.md' if case == 'chinese-sidecar' else context / 'AGENTS.md')
@@ -304,7 +349,7 @@ def negative_contracts() -> None:
                     stream.write('\n學生寫作指示。\n')
                 expected = 'English only'
             try:
-                check_context(context)
+                check_project(project)
             except AssertionError as error:
                 require(expected in str(error), f'{case}: wrong failure: {error}')
             else:
@@ -331,7 +376,6 @@ def negative_contracts() -> None:
         print('Student negative PASS: chinese-project-router')
         orphan = Path(temporary) / 'orphan/context'
         shutil.copytree(ROOT / 'thesis/context', orphan, symlinks=True)
-        check_context(orphan)
         require(find_project(orphan) is None, 'orphan content unexpectedly discovered a runtime')
         require(find_project(ROOT, orphan / 'context.tex') is None,
                 'explicit orphan target borrowed the repository runtime')
@@ -351,13 +395,15 @@ def negative_contracts() -> None:
         print('Student negative PASS: missing matching runtime')
         # These malformed archives fail before extraction; a valid actual
         # git-archive ZIP is checked separately by the required release gate.
-        for case, mode, data, expected in (
-            ('zip-alias-mode', stat.S_IFREG | 0o644, b'AGENTS.md', 'lost symlink mode'),
-            ('zip-alias-escape', stat.S_IFLNK | 0o777, b'../../AGENTS.md', 'wrong ZIP alias target'),
+        for case, member, mode, data, expected in (
+            ('zip-alias-mode', 'CLAUDE.md', stat.S_IFREG | 0o644, b'AGENTS.md', 'lost symlink mode'),
+            ('zip-alias-escape', 'CLAUDE.md', stat.S_IFLNK | 0o777, b'../../AGENTS.md', 'wrong ZIP alias target'),
+            ('zip-claude-mode', '.claude/skills', stat.S_IFREG | 0o644, b'../.agents/skills', 'lost symlink mode'),
+            ('zip-claude-escape', '.claude/skills', stat.S_IFLNK | 0o777, b'../../outside-skills', 'wrong ZIP alias target'),
         ):
             archive = Path(temporary) / (case + '.zip')
             with ZipFile(archive, 'w') as zf:
-                item = ZipInfo('ncku-thesis-template-latex/CLAUDE.md')
+                item = ZipInfo('ncku-thesis-template-latex/' + member)
                 item.create_system = 3
                 item.external_attr = mode << 16
                 zf.writestr(item, data)
@@ -372,7 +418,7 @@ def negative_contracts() -> None:
 
 def validate_build(project: Path, manifest: dict) -> None:
     check_project(project)
-    result = subprocess.run(shlex.split(published(project / 'context')['direct-build']),
+    result = subprocess.run(shlex.split(published(project)['direct-build']),
                             cwd=project, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     (project / 'pilot-build.log').write_bytes(result.stdout)
     require(result.returncode == 0, f'published pilot build failed; see {project}/pilot-build.log')
@@ -383,7 +429,7 @@ def validate_build(project: Path, manifest: dict) -> None:
     recorder = project / 'thesis.fls'
     require(recorder.is_file() and recorder.stat().st_size > 0, 'pilot recorder is missing')
     require(not (project / 'example').exists(), 'portable pilot unexpectedly contains teaching corpus')
-    require(not any('example/' in line or '.agents/' in line
+    require(not any('example/' in line or '.agents/' in line or '.claude/' in line
                     for line in recorder.read_text().splitlines() if line.startswith('INPUT ')),
             'portable pilot loaded teaching or agent instructions as runtime input')
     aux = (project / 'thesis.aux').read_text()
@@ -404,7 +450,7 @@ def build_pilot(source_project: Path, output: Path, manifest: dict) -> None:
     shutil.copytree(source_project, project, symlinks=True,
                     ignore=shutil.ignore_patterns('example', '*.aux', '*.log', '*.bbl', '*.blg', '*.fdb_latexmk',
                                                   '*.fls', '*.synctex.gz', '*.toc', '*.lof', '*.lot', '*.out', '*.xdv'))
-    snippets = published(project / 'context')
+    snippets = published(project)
     config = project / 'conf/conf.tex'
     text = config.read_text()
     require(text.count('\n\\ExampleMode\n') == 1, 'unexpected shipped content-mode declaration')
@@ -422,12 +468,12 @@ def build_pilot(source_project: Path, output: Path, manifest: dict) -> None:
         '\\input{./context/pilot/pilot}\n' + snippets['bibliography-registration'] + '\n' + snippets['appendix'] + '\n')
     validate_build(project, manifest)
     copied = output / 'copied'
+    # Copy the complete own-thesis project, including both hidden skill roots
+    # and relative links, while omitting only generated build intermediates.
     shutil.copytree(project, copied, symlinks=True,
-                    ignore=shutil.ignore_patterns('context', 'thesis.*', 'pilot*'))
-    # Restore the immutable entry point; directory copy includes hidden skills
-    # and preserves relative aliases. The matching runtime is a separate copy.
-    shutil.copyfile(source_project / 'thesis.tex', copied / 'thesis.tex')
-    shutil.copytree(project / 'context', copied / 'context', symlinks=True)
+                    ignore=shutil.ignore_patterns('*.aux', '*.log', '*.bbl', '*.blg', '*.fdb_latexmk',
+                                                  '*.fls', '*.synctex.gz', '*.toc', '*.lof', '*.lot',
+                                                  '*.out', '*.xdv', 'thesis.pdf', 'pilot.txt'))
     validate_build(copied, manifest)
     # Corrupt a published label reference. TeX may exit 0 but convergence must fail.
     content = copied / 'context/pilot/pilot.tex'
@@ -459,7 +505,6 @@ def build_pilot(source_project: Path, output: Path, manifest: dict) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--project', type=Path)
-    parser.add_argument('--context', type=Path)
     parser.add_argument('--zip', type=Path)
     parser.add_argument('--prefix', default='ncku-thesis-template-latex/')
     parser.add_argument('--build', action='store_true')
@@ -471,8 +516,6 @@ def main() -> int:
             check_zip(args.zip, args.prefix)
         elif args.project:
             check_project(args.project)
-        elif args.context:
-            check_context(args.context)
         else:
             manifest, _ = source_contract()
             generation_contracts()

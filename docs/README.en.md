@@ -28,7 +28,7 @@ Complete guides provide a Traditional-Chinese/English switcher at the top. Docum
 | Load order, institution policy and public compatibility | [Architecture and 2.x compatibility](features/v2-modernization.en.md) |
 | Tests, output and performance limits | [Validation and performance](features/validation-and-performance.en.md) |
 | Packages, Overleaf, licensing and official documents | [Release and distribution](features/release-and-distribution.en.md) |
-| Writing knowledge, agent entry and content copying | [Student writing and agent skills](features/student-writing-and-agent-skills.en.md) |
+| Writing knowledge, agent entry and project copying | [Student writing and agent skills](features/student-writing-and-agent-skills.en.md) |
 | Find all features by need | [Feature index](features/README.en.md) |
 
 ## Releases and downloads

@@ -177,14 +177,16 @@ Keep audiences separate:
   CI, tests, scripts, internal docs, or a redundant `thesis/` wrapper;
 - the exact student-only routers `thesis/AGENTS.md` and
   `thesis/context/AGENTS.md`, their adjacent relative `CLAUDE.md -> AGENTS.md`
-  symlinks, and `thesis/context/.agents/skills/ncku-thesis-writing/` are intentional
+  symlinks, and `thesis/.agents/skills/ncku-thesis-writing/` are intentional
   student-package content. Do not replace the symlinks with regular pointer files
   or copy root maintainer skills into the package. Ordinary writing tasks load
   that student skill; repository maintenance continues to use this skill.
-  The complete `context/` directory, including hidden files, transports writing
-  knowledge into another matching template, not the template runtime itself.
+  Copy the complete buildable student project, including hidden `.agents/`,
+  `.claude/` and relative links. The student `.claude/skills -> ../.agents/skills`
+  alias exposes the canonical writing skill. Context holds student content, not
+  an independently bundled agent project. Build beside `thesis.tex`.
 
-Keep human teaching in the existing example source and its PDF. The content-local
+Keep human teaching in the existing example source and its PDF. The project-root
 skill owns agent workflow and links to a compact generated reference derived from
 marked teaching code. Regenerate with `just writing-reference`; keep generation
 drift, actual snippet compilation and copied-content portability in the required

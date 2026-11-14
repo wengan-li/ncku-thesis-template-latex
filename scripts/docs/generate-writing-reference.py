@@ -14,7 +14,7 @@ import textwrap
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-OUTPUT = Path('thesis/context/.agents/skills/ncku-thesis-writing/references/template-usage.md')
+OUTPUT = Path('thesis/.agents/skills/ncku-thesis-writing/references/template-usage.md')
 SOURCES = {
     'chapter-shapes': 'how-to/write/chapter/chapter.tex',
     'ordered-list': 'how-to/write/basic/list.tex',

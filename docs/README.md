@@ -28,7 +28,7 @@
 | 載入順序、學校政策及公開相容性 | [架構與 2.x 相容性](features/v2-modernization.md) |
 | 測試、輸出及效能限制 | [驗證與效能](features/validation-and-performance.md) |
 | 套件、Overleaf、授權及正式文件 | [發行與分發](features/release-and-distribution.md) |
-| 寫作知識、代理入口與內容複製 | [學生寫作與代理技能](features/student-writing-and-agent-skills.md) |
+| 寫作知識、代理入口與專案複製 | [學生寫作與代理技能](features/student-writing-and-agent-skills.md) |
 | 依需求查找全部功能 | [功能索引](features/README.md) |
 
 ## 發行與下載

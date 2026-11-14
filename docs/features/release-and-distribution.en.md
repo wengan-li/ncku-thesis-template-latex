@@ -33,7 +33,7 @@ GitHub's automatic full-source archives are separate. Loose generated PDFs are i
 
 The student ZIP extracts to one `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/` and `template/` directly inside. Its complete member inventory and bytes equal `HEAD:thesis`; for publication, that source is the release tag. It includes the student README, licence, compatibility adapter and base/NCKU/custom profiles.
 
-Repository tests, scripts, CI and maintenance instructions stay outside the package. The precise student-instruction exceptions are `AGENTS.md`, `context/AGENTS.md`, adjacent relative `CLAUDE.md -> AGENTS.md` aliases and the single content-local writing skill. [Student knowledge](student-writing-and-agent-skills.en.md) defines the payload and copy contract. There is no redundant `thesis/` wrapper.
+Repository tests, scripts, CI and maintenance instructions stay outside the package. The precise student-instruction exceptions are `AGENTS.md`, `context/AGENTS.md`, adjacent relative `CLAUDE.md -> AGENTS.md` aliases and the single project-root writing skill with `.claude/skills -> ../.agents/skills`. [Student knowledge](student-writing-and-agent-skills.en.md) defines the payload and copy contract. There is no redundant `thesis/` wrapper.
 
 `scripts/release/verify-student-archive.sh` checks inventory, bytes, required content and extracted symlink mode/target/content. Missing-member mutations must fail. The extracted project builds directly with XeLaTeX/BibTeX through `latexmk`, without repository tooling; Overleaf and editors select `thesis.tex` and XeLaTeX.
 

@@ -33,7 +33,7 @@ The [test inventory](../../tests/000-test-suite.md) groups flat, uniquely number
 | Institution profiles | Correct load order, one selected profile, independent oral/cover dates, degree-specific policy, no NCKU data/assets in custom output |
 | Helpers | Numbering state, theorem counter chains/cycles, reference metadata, float captions/options, fonts, keywords and PDF metadata |
 | Diagnostics | Reviewed warning budgets in `scripts/test/check-diagnostics.py`; no unresolved references/citations or rerun-required state |
-| Student knowledge | Published guide snippets, English-only agent payload, bounded links, aliases, root discovery and copied-context builds in `scripts/test/check-student-agent-skills.py` |
+| Student knowledge | Published guide snippets, English-only agent payload, bounded links, aliases, root discovery and complete-project copy builds in `scripts/test/check-student-agent-skills.py` |
 | Packages | Exact HEAD:thesis inventory and bytes, required members, safe symlink extraction, generated examples and Overleaf cold builds |
 
 Negative cases must fail for their intended reason. Missing recorder files cannot prove dependency absence: require a nonempty `.fls` before testing that an institution asset or teaching file was not loaded. Keep API, archive and page-count assertions meaningful when changing source or fixtures.

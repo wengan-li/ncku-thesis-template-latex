@@ -93,7 +93,7 @@ class MarkdownDiscoveryTests(unittest.TestCase):
              docs.check_no_legacy_locale_suffixes, "legacy .zh-TW.md paths remain"),
             (".agents/skills/live.md", "**English**\n",
              docs.check_no_repeated_language_labels, "visible per-section language labels remain"),
-            ("thesis/context/.agents/live.md", "[bad](missing.md)\n",
+            ("thesis/.agents/live.md", "[bad](missing.md)\n",
              docs.check_links, "Markdown link failures"),
             ("docs/untracked.md", "Latest production release: v9.0.0\n",
              docs.check_no_mutable_release_labels, "mutable current/latest release labels remain"),
@@ -114,12 +114,12 @@ class MarkdownDiscoveryTests(unittest.TestCase):
             (self.root / "docs/alias.md").symlink_to(external / "bad.md")
             (self.root / "docs/alias-directory").symlink_to(external, target_is_directory=True)
             (self.root / "docs/broken.md").symlink_to(external / "missing.md")
-            self.write("thesis/context/.agents/skills/reference.md", "[live](../../../live.md)\n")
+            self.write("thesis/.agents/skills/reference.md", "[live](../../live.md)\n")
             docs.check_no_repeated_language_labels()
             self.assertEqual(docs.check_links(), 1)
             public = {path.relative_to(self.root).as_posix() for path in docs.public_markdown_paths()}
             self.assertEqual(public, {"docs/live.md", "thesis/live.md",
-                                     "thesis/context/.agents/skills/reference.md"})
+                                     "thesis/.agents/skills/reference.md"})
 
     def test_source_traversal_errors_are_not_swallowed(self):
         scandir = os.scandir

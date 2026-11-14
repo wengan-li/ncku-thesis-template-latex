@@ -63,5 +63,9 @@
     "float_label_and_nameref_options": "tests/400-float-contract.tex",
     "theorem_label_title_and_counter_options": "tests/500-theorem-contract.tex",
     "reference_wrappers": "tests/300-reference-contract.tex"
+  },
+  "project_skill": ".agents/skills/ncku-thesis-writing/SKILL.md",
+  "skill_alias": {
+    ".claude/skills": "../.agents/skills"
   }
 }
