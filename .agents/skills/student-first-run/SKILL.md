@@ -64,6 +64,26 @@ does not prove automatic client invocation; retain the explicit read-SKILL.md
 fallback. Agent language and human guide pairs follow
 [documentation management](../documentation-management/SKILL.md#bilingual-documentation-model).
 
+## Preserve the teaching author's voice
+
+The original teaching PDF intentionally carries the author's personal voice.
+Preserve its first-person wording, conversational explanations, comparisons and
+asides. Length, age and informality alone are not slop. Do not apply an
+operational guide's third-person voice to that teaching prose or turn it into
+an impersonal manual.
+
+Default improvements target scripts, builds and code, not the teaching
+narrative. A technical change does not authorize incidental prose cleanup.
+Shortening legacy introductions, including Word/LaTeX comparisons, is not an
+active task or a default cleanup goal. Changes to teaching prose or its
+intentional presentation require separate explicit owner approval.
+
+Keep factual accuracy separate from style. If an old passage may imply current
+university approval or guarantees, identify the exact claim and supporting
+evidence for the owner first. Propose only the smallest needed clarification
+or dated note; do not silently rewrite the original text or invent compliance.
+Saving these rules does not authorize edits from an old review list.
+
 ## The Lens
 
 Before writing, walk the path a student actually takes and read what they read,
