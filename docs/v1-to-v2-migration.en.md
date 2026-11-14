@@ -1,106 +1,27 @@
-<!-- doc-pair: v1-v2-migration; lang: en; topics: before-you-start,compatibility-first-path,new-project-path,stable-project-boundaries,current-helper-behavior,date-configuration,institution-port,build-and-compare,compatibility-boundary,recovery-and-troubleshooting -->
+<!-- doc-pair: v1-v2-migration; lang: en; topics: before-you-start,compatibility-first-path,build-and-compare,new-project-path,stable-project-boundaries,current-helper-behavior,date-configuration,institution-port,compatibility-boundary,recovery-and-troubleshooting -->
 
 [繁體中文](v1-to-v2-migration.md) | [English](v1-to-v2-migration.en.md)
 
 # NCKU thesis template 1.x-to-2.x migration guide
 
-The automatically loaded compatibility layer preserves declared 1.x public command names and argument shapes throughout 2.x. Upgrade the template, verify output, then adopt institution profiles gradually. A source-wide thesis rewrite is not required.
+A thesis started with 1.x can move to 2.x without rewriting its content. Keep the original project, upgrade in a new directory, and compare with the old PDF. Version 2.x still uses XeLaTeX.
 
 ## Before you start
 
-Keep a complete buildable 1.x project and PDF. Record XeLaTeX version, paper size, page count, cover/oral dates and deliberately enabled watermarks. Separate data from template implementation rather than overwriting the only thesis copy. Back up official school-system certificates and locally added fonts too.
+Back up the complete 1.x project and its latest PDF, including your figures, bibliography, added fonts and official certificates. Record the XeLaTeX version, page count, cover and oral dates, and any enabled watermarks for comparison. Do not overwrite your only thesis copy.
 
-```text
-Student-owned:
-  conf/conf.tex
-  context/
-  local figures, bibliography and official certificate files
-  locally added fonts under template/fonts/
+## Upgrade with your existing configuration
 
-Template-owned:
-  template/ (merge locally added fonts deliberately)
-  packaged examples and build configuration
+1. Download the 2.x student package from [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) and extract it into a new directory.
+2. Copy in your old `conf/conf.tex`, `context/` content, figures, bibliography and official certificates, replacing sample files with your own files of the same name.
+3. Copy your added fonts into `template/fonts/`. Do not replace the new `template/` directory with the old one.
+4. If you edited `thesis.tex` or `cover.tex`, merge those edits into the new files instead of overwriting them.
 
-Root document:
-  thesis.tex (merge local edits deliberately)
-```
-
-## Compatibility-first path
-
-For an NCKU thesis in progress, preserve student data, figures, bibliography and certificates. Update template-owned files from the 2.x student package, deliberately merge `thesis.tex` edits and locally added fonts, and keep existing helper calls. `template/compat/v1.tex` loads automatically. Build after each small step and compare with the saved PDF.
-
-```bash
-latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
-```
-
-In Overleaf select XeLaTeX and main document `thesis.tex`. Editors use the same root and a XeLaTeX/BibTeX latexmk chain.
-
-## New-project path
-
-Start from the 2.x student package, copy content, figures, bibliography and certificates, then deliberately merge `conf/conf.tex` data. NCKU projects retain default ncku; students from other institutions create/select one profile using the [customization guide](../thesis/template/style/Customization.en.md). Compatibility helpers remain available throughout 2.x. When moving the project, preserve the root hidden `.agents/`, `.claude/` and relative links; context/ holds student content. See the [writing guide](../thesis/context/README.en.md).
-
-## Stable project boundaries
-
-conf/ holds student thesis data only. Institution geometry, catalogues, dates and assets belong under `template/style/`, never `conf/style.tex`. Documentation language, institution profile, cover language, degree and content mode are independent.
-
-```text
-thesis.tex
-conf/conf.tex
-context/
-example/
-template/
-```
-
-| Axis | Choices |
-| --- | --- |
-| Institution | ncku, custom or another registered profile |
-| Cover language | `\DisplayCoverInChi`, `\DisplayCoverInEng` |
-| Degree | `\MasterDegree`, `\PhdDegree` |
-| Content | own `context/` or the `\ExampleMode` teaching example |
-
-## Current helper behavior
-
-Check these current behaviors and actions after upgrading. Public argument shapes remain compatible; do not rely on incorrect output or effects that an accepted option does not implement.
-
-| Command or feature | Current behavior | Migration check |
-| --- | --- | --- |
-| `\StartSubSubSection{title}{label}` | Labels retain a stable hierarchy even when the heading hides its number. | Keep calls and rebuild references. |
-| `\GetOralYearInTaiwanYear`, `\SetOralEngDate` | Oral state does not mutate thesis-year state; English date input synchronizes oral Taiwan-year state. | Check both oral and cover dates. |
-| `\SetDeptName{chi}{short}{full}` | `\GetDeptEngShortName` returns the abbreviation; `\GetDeptEngName` returns the full name. `\SetDeptDPS` uses Department of Photonics. | Check custom metadata and cover output. |
-| English oral-certificate date | Uses oral day, month and year. | Do not substitute cover data; students use official system files. |
-| English cover date | Generic profiles use cover month/year; NCKU supplies oral-date policy explicitly. | Other institutions customize policy without borrowing unrelated data. |
-| `\SetCommitteeSize` | NCKU Master 3–5, Doctoral 5–9; generic/custom 2–9. | Select `\MasterDegree` or `\PhdDegree` first. |
-| Theorem title and label | Option signatures remain stable; labels and nameref metadata are retained. | Keep calls and rebuild. |
-| Figure, subfigure and table captions | Labels store actual caption text independently of later setup. | Rerun until auxiliary data converges. |
-| Custom numbering | Prefixes/separators are fixed while counter values stay dynamic; repeated setup is idempotent. | Rebuild labels and contents. |
-| Theorem FollowCounter | Resolves forward/multi-hop chains; cycles stop with an explicit error. | Remove cycles rather than relying on initializer order. |
-| `\SetCustomEngFontFiles`, `\SetCustomChiFontFiles` | Configured files are loaded; a missing file produces a fontspec error. | Put fonts in `template/fonts/` or remove custom setters to retain defaults. |
-
-## Date configuration
-
-`\GetRequestedCoverYear`/`\GetRequestedCoverMonth` expose raw input; `\GetThesisYear`/`\GetThesisMonth` expose profile-resolved cover values. Oral state remains independent. NCKU derives the cover from the oral date; generic profiles use explicit cover month/year.
-
-```tex
-\SetOralDate{2023}{12}{31}
-\SetCoverDate{2024}{7}
-```
-
-Profiles use `\ApplyOralDatePolicy`, `\ApplyCoverDatePolicy` and degree date tokens instead of replacing public setters.
-
-## Port another institution's style
-
-1. Start from `template/style/custom/`; do not load NCKU merely to undo it.
-2. Put institution geometry, names, watermarks, dates and certificate wording in `<profile>/<profile>.tex`.
-3. Call `\RegisterTemplateStyle{<profile>}` exactly once and select it with `\TemplateStyleName` in `template/style/style.tex`.
-4. Use policy hooks for dates and degree-specific committee ranges; preserve public `\SetOralDate`, `\SetCoverDate` and `\SetCommitteeSize` signatures.
-5. Use generic `\SetCollName`/`\SetDeptName` or an institution-prefixed catalogue. Profiles define entries before student configuration selects one.
-6. Test distinct oral/cover dates across languages and degrees. Require a nonempty `.fls` before asserting that unintended institution assets are absent.
-
-Neither custom nor the NTU wiring example guarantees a ready-to-submit profile. Follow the [customization guide](../thesis/template/style/Customization.en.md); current official rules override the template.
+Build and compare as described below before continuing to edit the thesis.
 
 ## Build and compare
 
-Build from the student project root containing `thesis.tex`. Check A4, expected pages, names, department, advisors, dates, contents, references, bibliography and watermark state. Inspect cover, front matter, body and final pages against the saved 1.x PDF. File creation alone is insufficient.
+Build from the directory containing `thesis.tex`:
 
 ```bash
 latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
@@ -108,14 +29,72 @@ pdfinfo thesis.pdf
 pdftotext thesis.pdf thesis.txt
 ```
 
-Overleaf and editors use the same XeLaTeX root and BibTeX workflow; recompile from scratch when necessary.
+In Overleaf, select XeLaTeX and set `thesis.tex` as the main document. Editors use the same main document and XeLaTeX/BibTeX workflow.
 
-## Compatibility boundary
+Compare with the old PDF: A4 paper, page count, cover data and dates, certificate, contents, figures, citations, bibliography and final page. Resolve undefined references and unexpected watermarks. Producing a PDF alone does not complete the upgrade.
 
-Declared 1.x public command/environment names and argument shapes remain available throughout 2.x. Deprecated commands have explicit diagnostics; `\RefTo{label}` remains active. Default ncku preserves existing NCKU presets; other profiles load only the generic metadata contract.
+## Start with the new configuration
 
-Current output is untagged, without PDF/UA or institution-compliance claims. [Architecture](features/v2-modernization.en.md) explains runtime responsibilities and [validation](features/validation-and-performance.en.md) explains repository checks; student migration does not require repository test tooling.
+To reorganize your settings, keep the 2.x `conf/conf.tex` and enter your data using the [configuration guide](../thesis/conf/README.en.md). Comment out `\ExampleMode` to build your own thesis rather than the tutorial.
+
+When moving the complete project, preserve its hidden `.agents/`, `.claude/` and relative links. See the [content and writing guide](../thesis/context/README.en.md) for writing assistance.
+
+## Where files belong
+
+- `conf/conf.tex` contains thesis data; `context/` contains your chapters.
+- `template/` contains the template implementation; `example/` contains the tutorial.
+- University layout and rules belong in `template/style/`, not a new `conf/style.tex`.
+
+NCKU students keep the default `ncku` setting. Cover language, degree and tutorial mode are separate choices. An English cover does not require a different university style.
+
+## Changes to check after upgrading
+
+| Item | What to check |
+| --- | --- |
+| Section references | With `\StartSubSubSection{title}{label}`, references still get the section number when the heading hides it. Rebuild and check those references. |
+| English department names | With `\SetDeptName{chi}{short}{full}`, check the abbreviation and full name. `\SetDeptDPS` uses Department of Photonics. |
+| Committee size | Select `\MasterDegree` or `\PhdDegree` before calling `\SetCommitteeSize`. NCKU uses 3–5 members for Master's and 5–9 for doctoral degrees; generic settings allow 2–9. |
+| Theorem and caption references | Rebuild and check `\ref` and `\nameref`. Figure and table labels are no longer overwritten by later caption settings. |
+| Custom numbering | Check prefixes, separators and contents. Repeated setup should not accumulate prefixes; counter values still update. |
+| Theorem `FollowCounter` | References may point forward or follow several counters. Remove circular dependencies if a cycle error appears. |
+| Custom fonts | `\SetCustomEngFontFiles` and `\SetCustomChiFontFiles` now load the specified files. Supply missing files in `template/fonts/`, or remove custom settings to use the defaults. |
+
+## Date settings
+
+NCKU derives the cover date from the oral date. Generic settings for other institutions use the cover month and year you enter. Keep the two dates distinct:
+
+```tex
+\SetOralDate{2023}{12}{31}
+\SetCoverDate{2024}{7}
+```
+
+Check both dates after upgrading. `\GetOralYearInTaiwanYear` no longer changes the thesis year, and `\SetOralEngDate` updates the oral Taiwan-year value too. English certificate examples use the oral day, month and year. Use the official university-system certificate for submission.
+
+To change a university's date rules, follow the [customization guide](../thesis/template/style/Customization.en.md) rather than redefining `\SetOralDate` or `\SetCoverDate`.
+
+## Students from other institutions
+
+Start with `template/style/custom/` rather than loading NCKU settings and undoing them. Set university names, departments, layout, dates, watermarks and certificate wording in the school style. Keep student data in `conf/conf.tex`.
+
+Use the [customization guide](../thesis/template/style/Customization.en.md) to register and select the style. Replace NCKU department calls with generic `\SetCollName` and `\SetDeptName` calls or your university's commands. Test different oral and cover dates, both languages and both degrees, and check that no NCKU names or assets remain.
+
+Neither `custom` nor the NTU wiring example is a ready-to-submit format. Check your university's and department's current requirements.
+
+## Old commands and limitations
+
+Version 2.x preserves declared 1.x public command and environment names and their arguments. `template/compat/v1.tex` loads automatically. Deprecated commands still report errors; `\RefTo{label}` remains usable. NCKU department shortcuts are available under the default `ncku` setting only.
+
+The PDF is untagged, with no PDF/UA or university-approval claim. See [architecture](features/v2-modernization.en.md) and [validation](features/validation-and-performance.en.md) for technical details. Normal migration does not require repository test tools.
 
 ## Recovery and troubleshooting
 
-If output differs unexpectedly, stop adding changes and preserve the original project/PDF. Identify whether the problem is student data, template files or the `thesis.tex` merge. Return to a buildable version and reapply one change at a time. For stale auxiliary data or a BibTeX style change, run `latexmk -C thesis.tex` before rebuilding. Supply missing custom fonts or remove the custom settings rather than hiding errors. Use the [student troubleshooting guide](../thesis/README.en.md) for other failures.
+If output differs unexpectedly, stop editing and keep the failing version for comparison. Return to a buildable backup, then check copied data, fonts and merged `thesis.tex` edits one at a time.
+
+For stale auxiliary files or errors after changing BibTeX styles, clean and rebuild:
+
+```bash
+latexmk -C thesis.tex
+latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
+```
+
+Supply missing custom fonts or remove the custom settings rather than ignoring errors. See the [student troubleshooting guide](../thesis/README.en.md) for other failures.
