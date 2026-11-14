@@ -13,7 +13,7 @@ Feature pages describe capabilities, usage and limits in current source. Traditi
 | How 2.x compatibility and institution profiles work | [Template architecture](v2-modernization.en.md) |
 | How to check builds, layout and performance limits | [Validation and performance](validation-and-performance.en.md) |
 | How packaging, downloads, Overleaf and official documents work | [Release and distribution](release-and-distribution.en.md) |
-| How writing knowledge and agent instructions travel with content | [Student writing and agent skills](student-writing-and-agent-skills.en.md) |
+| How writing knowledge and agent instructions travel with the complete project | [Student writing and agent skills](student-writing-and-agent-skills.en.md) |
 
 ## Current features
 

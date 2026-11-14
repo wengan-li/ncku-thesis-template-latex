@@ -10,7 +10,7 @@ description: Use for maintainer source lookup and CodeGraph readiness in this re
 CodeGraph is optional local assistance for maintained Python validation tooling
 and file-level YAML discovery. It is not a LaTeX macro/include graph, a required
 student dependency, or a selective-test correctness oracle. Ordinary writing
-uses the [portable student skill](../../../thesis/context/.agents/skills/ncku-thesis-writing/SKILL.md).
+uses the [portable student skill](../../../thesis/.agents/skills/ncku-thesis-writing/SKILL.md).
 
 Read root `AGENTS.md` and the [repository maintenance skill](../repo-maintenance/SKILL.md)
 first. Root `codegraph.json` excludes student content, templates, fixtures,

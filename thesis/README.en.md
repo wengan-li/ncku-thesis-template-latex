@@ -33,7 +33,7 @@ For a Chinese-language thesis, also uncomment the Chinese abstract, the extended
 
 The teaching example is useful as a reference but rebuilds more slowly than a normal thesis.
 
-The existing example/how-to sources and teaching PDF own the full writing tutorial. The [content entry](context/README.en.md) routes to teaching and agents rather than a second handbook. Explicitly read the [writing skill](context/.agents/skills/ncku-thesis-writing/SKILL.md) and its English reference generated from shared teaching code; nested skills may not register automatically.
+The existing example/how-to sources and teaching PDF own the full writing tutorial. The [content entry](context/README.en.md) routes to teaching and agents rather than a second handbook. Explicitly read the [writing skill](.agents/skills/ncku-thesis-writing/SKILL.md) and its English reference generated from shared teaching code; explicit skill loading may be needed. Copy the complete buildable project, including hidden `.agents/`, `.claude/` and relative links. `.claude/skills -> ../.agents/skills` exposes the same skill; build from the directory containing `thesis.tex`.
 
 ## Choose independent settings
 
@@ -109,7 +109,7 @@ For final submission, use the defense-certificate document produced by the offic
 
 | What you see | Cause | Fix |
 | --- | --- | --- |
-| `A matching complete thesis template containing thesis.tex, conf/ and template/configure.tex is required.` | A content-only copy has no matching template runtime | Obtain the complete student project first, then copy the entire `context/` including hidden `.agents/` and relative aliases; preserve existing destination content |
+| `A matching complete thesis template containing thesis.tex, conf/ and template/configure.tex is required.` | A content-only copy has no matching template runtime | Obtain and copy the complete student project, including hidden `.agents/`, `.claude/` and relative links; preserve existing destination work and build beside `thesis.tex` |
 | The whole teaching document (200+ pages) is built | `\ExampleMode` on line 13 of `conf/conf.tex` is still active | Put `%` in front of that line and rebuild |
 | `! LaTeX Error: File 'xxx.sty' not found.` | The TeX distribution lacks a package | MiKTeX: install it in MiKTeX Console or enable automatic installation; TeX Live/MacTeX: `tlmgr install <package>`, or install the full scheme |
 | `! Undefined control sequence.` followed by a `\SetDept...` line | The department command is misspelled or does not exist | Look up the command in [`template/style/ncku/README.md`](template/style/ncku/README.en.md) |

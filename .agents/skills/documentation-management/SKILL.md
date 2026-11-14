@@ -110,18 +110,21 @@ one is a short link/routing sentence.
   there without repository-only tooling.
 - Repository-only commands, tests, benchmarks, workflow details, and internal evidence
   stay outside the student ZIP. The named student-only `AGENTS.md` routers,
-  adjacent relative `CLAUDE.md -> AGENTS.md` aliases and content-local writing
+  adjacent relative `CLAUDE.md -> AGENTS.md` aliases and project-root writing
   skill are intentional exceptions to the maintainer-instruction exclusion;
   they grant no repository publication or template-maintenance authority.
 - Existing `thesis/example/how-to/` teaching sources and their PDF own human
   instruction. Marked teaching code feeds the single generated portable reference
-  `thesis/context/.agents/skills/ncku-thesis-writing/references/template-usage.md`;
+  `thesis/.agents/skills/ncku-thesis-writing/references/template-usage.md`;
   `just writing-reference` regenerates it and `--check` detects drift. Do not
   maintain a second usage handbook. Agent-facing `AGENTS.md`, `SKILL.md` and
   references use English only; project/content README routers remain bilingual.
   The skill owns agent workflow, discovery, edit boundaries and recovery. Preserve
   explicit loading guidance for clients that do not auto-discover nested skills,
-  and validate links after copying the entire `context/` tree without `example/`.
+  and validate links after copying the complete student project without `example/`.
+  Preserve hidden `.agents/`, `.claude/` and relative links, including the exact
+  `.claude/skills -> ../.agents/skills` directory alias. Context is student content,
+  not an independently bundled agent project. Build beside `thesis.tex`.
   Feature records distinguish approved/in-progress design, local validation and
   actual release publication rather than describing an unshipped capability as
   already released.

@@ -37,7 +37,7 @@ In Overleaf select XeLaTeX and main document `thesis.tex`. Editors use the same 
 
 ## New-project path
 
-Start from the 2.x student package, copy content, figures, bibliography and certificates, then deliberately merge `conf/conf.tex` data. NCKU projects retain default ncku; students from other institutions create/select one profile using the [customization guide](../thesis/template/style/Customization.en.md). Compatibility helpers remain available throughout 2.x. Copy `context/` with hidden files and relative aliases; see the [writing guide](../thesis/context/README.en.md).
+Start from the 2.x student package, copy content, figures, bibliography and certificates, then deliberately merge `conf/conf.tex` data. NCKU projects retain default ncku; students from other institutions create/select one profile using the [customization guide](../thesis/template/style/Customization.en.md). Compatibility helpers remain available throughout 2.x. When moving the project, preserve the root hidden `.agents/`, `.claude/` and relative links; context/ holds student content. See the [writing guide](../thesis/context/README.en.md).
 
 ## Stable project boundaries
 

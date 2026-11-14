@@ -39,10 +39,11 @@ for entry in \
   CLAUDE.md \
   context/AGENTS.md \
   context/CLAUDE.md \
+  .claude/skills \
   context/README.md \
   context/README.en.md \
-  context/.agents/skills/ncku-thesis-writing/SKILL.md \
-  context/.agents/skills/ncku-thesis-writing/references/template-usage.md \
+  .agents/skills/ncku-thesis-writing/SKILL.md \
+  .agents/skills/ncku-thesis-writing/references/template-usage.md \
   example/abstract/extended.tex \
   template/configure.tex \
   template/compat/v1.tex \

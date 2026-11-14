@@ -37,7 +37,7 @@ Overleaf 選擇 XeLaTeX 與主文件 `thesis.tex`；編輯器亦使用相同根�
 
 ## 新專案路徑
 
-由 2.x 學生套件開始，複製內容、圖片、文獻及證明書，再審慎合併 `conf/conf.tex` 資料。NCKU 專案保留預設 `ncku`；其他學校的同學依[自訂指南](../thesis/template/style/Customization.md)建立並選擇一個學校設定。可在整個 2.x 期間沿用相容指令。複製 `context/` 時包含隱藏檔及相對別名，詳見[寫作指南](../thesis/context/README.md)。
+由 2.x 學生套件開始，複製內容、圖片、文獻及證明書，再審慎合併 `conf/conf.tex` 資料。NCKU 專案保留預設 `ncku`；其他學校的同學依[自訂指南](../thesis/template/style/Customization.md)建立並選擇一個學校設定。可在整個 2.x 期間沿用相容指令。搬移專案時保留專案根目錄的隱藏 `.agents/`、`.claude/` 與相對連結；context/ 只放學生內容，詳見[寫作指南](../thesis/context/README.md)。
 
 ## 穩定專案邊界
 
