@@ -10,6 +10,13 @@ The source bytes and stable rule IDs are preserved. Archived frontmatter does
 not configure this skill or its client. Source metadata is in [source.json](source.json).
 
 The source is MIT licensed, copyright 2026 Lauren Tan. The full
-[pstack/LICENSE text](LICENSE) accompanies the checklist. The active wrapper
-retains repository voice and factual-preservation rules without adding client
-settings or unconditional invocation policy.
+[pstack/LICENSE text](LICENSE) accompanies the checklist.
+
+The active [SKILL.md](../SKILL.md) is a verbatim upstream copy, not a local
+wrapper. [SOURCE.md](../SOURCE.md) records its reviewed revision and digest;
+[source.json](source.json) records the archived reference revision above.
+
+Repository voice and teaching-content preservation rules live separately in
+[student-first-run](../../student-first-run/SKILL.md#preserve-the-teaching-authors-voice)
+and [documentation management](../../documentation-management/SKILL.md#bilingual-documentation-model).
+Installation does not grant publication authority or change client settings.
