@@ -13,7 +13,7 @@ import subprocess
 import sys
 import urllib.parse
 from pathlib import Path
-from typing import NoReturn
+from typing import Iterator, NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -260,12 +260,31 @@ def check_summary_pair(zh_relative: str, en_relative: str) -> None:
         fail(f"{en_relative}: old inline-language section survived")
 
 
+def markdown_paths(directory: Path | None = None) -> Iterator[Path]:
+    """Walk source Markdown without entering generated or symlink directories."""
+    def source_error(error: OSError) -> NoReturn:
+        raise error
+
+    for parent, directories, files in os.walk(
+        ROOT if directory is None else directory,
+        topdown=True, followlinks=False, onerror=source_error,
+    ):
+        base = Path(parent)
+        directories[:] = sorted(
+            name for name in directories
+            if name not in {".git", "build"} and not (base / name).is_symlink()
+        )
+        for name in sorted(files):
+            path = base / name
+            if name.endswith(".md") and not path.is_symlink():
+                yield path
+
+
 def check_no_legacy_locale_suffixes() -> None:
     failures = sorted(
         str(path.relative_to(ROOT))
-        for path in ROOT.rglob("*.zh-TW.md")
-        if not any(part in {".git", "build"} for part in path.parts)
-        and not path.is_symlink()
+        for path in markdown_paths()
+        if path.name.endswith(".zh-TW.md")
     )
     if failures:
         fail("legacy .zh-TW.md paths remain: " + ", ".join(failures))
@@ -273,9 +292,7 @@ def check_no_legacy_locale_suffixes() -> None:
 
 def check_no_repeated_language_labels() -> None:
     failures: list[str] = []
-    for path in ROOT.rglob("*.md"):
-        if any(part in {".git", "build"} for part in path.parts) or path.is_symlink():
-            continue
+    for path in markdown_paths():
         if VISIBLE_LANGUAGE_LABEL.search(path.read_text(encoding="utf-8")):
             failures.append(str(path.relative_to(ROOT)))
     if failures:
@@ -340,7 +357,7 @@ def check_protected_public_contract() -> None:
 
 def check_no_mutable_release_labels() -> None:
     failures: list[str] = []
-    for path in (ROOT / "docs").rglob("*.md"):
+    for path in markdown_paths(ROOT / "docs"):
         for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             if MUTABLE_RELEASE_LABEL.search(line):
                 failures.append(f"{path.relative_to(ROOT)}:{number}")
@@ -349,15 +366,16 @@ def check_no_mutable_release_labels() -> None:
 
 
 def public_markdown_paths() -> tuple[Path, ...]:
-    paths = [
+    roots = [
         ROOT / "README.md",
         ROOT / "README.en.md",
         ROOT / "CHANGELOG.md",
         ROOT / "CHANGELOG.en.md",
     ]
-    paths.extend((ROOT / "docs").rglob("*.md"))
-    paths.extend((ROOT / "thesis").rglob("*.md"))
-    return tuple(sorted(set(path for path in paths if path.is_file())))
+    paths = [path for path in roots if not path.is_symlink() and path.is_file()]
+    paths.extend(markdown_paths(ROOT / "docs"))
+    paths.extend(markdown_paths(ROOT / "thesis"))
+    return tuple(sorted(set(paths)))
 
 
 def check_public_voice() -> None:
@@ -544,7 +562,7 @@ def check_current_doc_text(relative: str, text: str) -> None:
 
 
 def check_current_docs() -> None:
-    for path in (ROOT / "docs").rglob("*.md"):
+    for path in markdown_paths(ROOT / "docs"):
         relative = path.relative_to(ROOT).as_posix()
         if relative.startswith("docs/requirements/"):
             continue
@@ -846,9 +864,7 @@ def pair_drift_warnings() -> list[str]:
 def check_links() -> int:
     issues: list[str] = []
     checked = 0
-    for path in ROOT.rglob("*.md"):
-        if any(part in {".git", "build"} for part in path.parts) or path.is_symlink():
-            continue
+    for path in markdown_paths():
         text = strip_fenced_blocks(path.read_text(encoding="utf-8"))
         for raw in INLINE_LINK.findall(text):
             target = raw.strip().strip("<>")

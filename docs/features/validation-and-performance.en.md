@@ -38,6 +38,12 @@ The [test inventory](../../tests/000-test-suite.md) groups flat, uniquely number
 
 Negative cases must fail for their intended reason. Missing recorder files cannot prove dependency absence: require a nonempty `.fls` before testing that an institution asset or teaching file was not loaded. Keep API, archive and page-count assertions meaningful when changing source or fixtures.
 
+Markdown discovery prunes `build/`, `.git/` and symlink directories before descent,
+and excludes symlink files. Hidden source documentation remains checked. The
+documentation gate tests excluded-directory removal during discovery alongside
+live-source validation and error propagation, so parallel package cleanup cannot
+race traversal of generated output.
+
 ## Check output and portability
 
 For output-sensitive changes, compare page count, text, normalized word coordinates from `pdftotext -bbox-layout`, meaningful `pdffonts` rows and fixed-DPI page renders. Inspect affected covers, front matter, figures and pagination. Raw PDF bytes and unnormalized metadata are not portable identity guarantees across operating systems, TeX Live versions or fonts.

@@ -97,6 +97,7 @@ _fixture-contract-xelatex job fixture: (_fixture-xelatex job fixture) && (_fixtu
 # Structural language-pair and first-party Markdown-link gate.
 [private]
 _test-bilingual-docs:
+    python3 tests/104-doc-discovery.py
     python3 scripts/test/check-bilingual-docs.py
 
 # Rebuild the sole portable reference from shared teaching snippets.
