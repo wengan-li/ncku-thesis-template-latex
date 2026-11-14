@@ -4,15 +4,12 @@
 
 # 學生寫作與可攜式代理技能
 
-完整的人用教學由既有 `thesis/example/how-to/` 來源及教學 PDF 提供；學生專案與[內容入口](../../thesis/context/README.md)保持精簡雙語路由，不另維護重複語法手冊。可下載內容以 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 為準。
+寫作教學見[內容指南](../../thesis/context/README.md)及教學 PDF；需要 AI 協助時，請代理先讀取[寫作技能](../../thesis/.agents/skills/ncku-thesis-writing/SKILL.md)。可下載套件以 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 為準。
 
-- 代理的工作流程、執行環境辨識、編輯界線、驗證與復原集中在英文 `SKILL.md`；代理路由及所有附帶參考檔僅用英文。
-- `references/template-usage.md` 是唯一產生的可攜式參考。標記區段取自教學實際使用的程式碼，產生器只選取英文或 LaTeX、移除註解並綁定示範標籤與資料路徑，不自動翻譯教學文字。
-- 教學來源同時提供章節、前置頁、圖表、公式、定理、引用、真實 BibTeX 資料及建置命令。`just writing-reference` 更新參考檔；`--check` 遇到過期輸出會失敗，不自行覆寫。一般學生建置不需要產生器。
-- 技能位於 `thesis/.agents/skills/ncku-thesis-writing/`，`thesis/.claude/skills -> ../.agents/skills` 為相對目錄符號連結，指向同一份技能。兩個學生路由保留 `CLAUDE.md -> AGENTS.md` 相對別名。複製完整可建置專案時包含隱藏 .agents/、.claude/ 與連結，先保存目的地內容，再由含有 thesis.tex 的目錄建置；缺少教學目錄也能使用參考。
-- 指定內容的祖先須能找到 thesis.tex、conf/ 及 template/configure.tex。在已確認的儲存庫根目錄另僅檢查 thesis/，孤立內容不能借用無關專案；context/ 只放學生內容，不是獨立代理專案，也不攜帶寫作技能、完整範本或編譯器。
-- 測試直接編譯產生的參考片段，驗證 PDF、SyncTeX、文字、標籤、文獻收斂及完整專案複製；修改共用來源須反映在新參考中。既有圖表、定理與引用案例繼續保護選項及中繼資料行為。
-- 反向案例保留缺檔、不安全路徑、語言、別名、執行環境及錯誤引用，另檢查 Claude 技能別名遺失、斷裂、越界或被解參照複製，以及重複的內容技能。別名解析不代表用戶端自動呼叫已驗證。封裝仍以已提交的 HEAD:thesis 為準，不能以未提交來源的建置宣稱正式封裝已通過。
-- 代理不得虛構研究資料、引用或建置成功，也不取得安裝、發行、上傳或機構授權。CodeGraph 僅用於儲存庫 Python／YAML，TeX 語意仍以來源、API 契約及重點案例為準。
-
-建置排錯與操作見[寫作技能](../../thesis/.agents/skills/ncku-thesis-writing/SKILL.md)，技術責任與驗證程序詳見英文頁。
+- 完整教學保留在既有教學來源與 PDF。技能中的 `references/template-usage.md` 取自教學實際使用的程式碼，不另維護一份用法手冊。一般學生建置不需要產生器或教學目錄。
+- 英文技能說明章節組織、圖表、引用、建置及排錯。代理路由及參考檔也只使用英文；學生專案與內容指南維持雙語。
+- 搬移時先保存目的地資料，再複製完整專案，包含隱藏 `.agents/`、`.claude/` 及相對連結。兩個學生路由保留 `CLAUDE.md -> AGENTS.md`；Claude 技能別名指向專案根目錄的同一份技能。若用戶端沒有自動找到技能，請明確提供 SKILL.md 路徑。
+- 從含有 `thesis.tex` 的目錄建置。相符專案須同時包含 `conf/` 及 `template/configure.tex`；只有 `context/` 內容並不足夠，代理不得借用無關專案。
+- 建置須產生 PDF 與 SyncTeX，並確認引用及文獻已完成更新。參考片段、專案複製、缺檔及不安全連結均有檢查；詳細程序及復原方式由英文技術頁說明。檔案連結可用不代表已驗證所有用戶端的自動呼叫。
+- 代理須保留研究主張及已提供的來源，不得虛構資料、引用或建置成功。寫作不授予安裝、改寫範本、發行或上傳權限；正式證明書及提交仍依學校規定。
+- CodeGraph 只協助查找儲存庫內的 Python／YAML 維護工具，不分析 LaTeX 語意，也不是學生寫作的必要工具。封裝驗證與未提交來源的檢查分開處理，不能以本機建置宣稱已正式發行。

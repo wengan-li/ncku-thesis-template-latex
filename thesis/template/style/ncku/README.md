@@ -2,15 +2,17 @@
 
 [繁體中文](README.md) | [English](README.en.md)
 
-# NCKU學院與系所API目錄
+# 成大學院與系所指令查詢
 
 ## 適用範圍
 
-本目錄由目前tracked source整理：[`college.tex`](college.tex)提供9個NCKU學院presets，[`department.tex`](department.tex)提供110個NCKU系所presets。API名稱中的department是封面metadata slot；catalogue實際包含系、研究所、學位學程及中心，不代表單一組織類型。每個preset會同時設定該單位的中英文值及一個NCKU學院；它們是本模版保存的NCKU convenience catalogue，不代表學校當年度官方組織清單。使用前仍須核對成大及所屬單位的現行名稱與規定。
+先在本頁搜尋自己的中文系所名稱，複製對應指令，再到 `conf/conf.tex` 取代原有系所指令。每個系所指令也會一併設定所屬學院。
 
-## 通用Institution API
+下表依現行來源整理：[`college.tex`](college.tex) 提供 9 個學院指令，[`department.tex`](department.tex) 提供 110 個系所指令。名稱涵蓋系、研究所、學位學程與中心，皆填入封面的系所欄位。這是範本提供的名稱清單，不是學校當年度的官方組織名錄；使用前仍須核對成大及所屬單位的現行名稱與規定。
 
-以下API定義於共用command layer，可供任何profile使用。
+## 直接設定校名與系所
+
+以下指令可直接設定校名、學院與系所，任何學校樣式均可使用。
 
 | Setter | 寫入內容 | Getter |
 | --- | --- | --- |
@@ -18,9 +20,9 @@
 | `\SetCollName{中文學院}{English college name}` | 學院中英文名稱 | `\GetCollChiName`、`\GetCollEngName` |
 | `\SetDeptName{中文系所}{英文縮寫}{English full name}` | 系所中文名稱、英文縮寫及英文全名 | `\GetDeptChiName`、`\GetDeptEngShortName`、`\GetDeptEngName` |
 
-NCKU presets只是將上述generic setters包成shortcut。`\SetDeptName`第二個參數會由`\GetDeptEngShortName`回傳；第三個參數由`\GetDeptEngName`回傳。
+成大指令會代為填入上述資料。`\SetDeptName`第二個參數會由`\GetDeptEngShortName`回傳；第三個參數由`\GetDeptEngName`回傳。
 
-## NCKU學院Presets
+## 成大學院指令
 
 | Command | 中文值 | English value |
 | --- | --- | --- |
@@ -34,9 +36,9 @@ NCKU presets只是將上述generic setters包成shortcut。`\SetDeptName`第二�
 | `\SetCollegeBioscienceAndBiotechnology` | `生物科學與科技學院` | `College of Bioscience and Biotechnology` |
 | `\SetCollegeMedicine` | `醫學院` | `College of Medicine` |
 
-## NCKU系所Presets
+## 成大系所指令
 
-呼叫以下任何一個command都會寫入department values並呼叫表內的學院preset。
+在所屬學院的表格中選擇系所指令，即可同時設定該系所名稱及學院。
 
 ### 文學院（`\SetCollegeLiberalArts`）— 8個
 
@@ -195,4 +197,4 @@ NCKU presets只是將上述generic setters包成shortcut。`\SetDeptName`第二�
 
 ## 其他學校的同學
 
-以上NCKU commands只由`ncku` profile載入；`custom`及其他學校profile只使用generic setters。如需可重用catalogue，使用帶學校prefix的新command（例如`\SetNTUDept...`），不要沿用NCKU `\SetDept...` names。完整流程及illustrative NTU wiring見[`../Customization.md`](../Customization.md)。
+以上成大指令只在預設 `ncku` 學校樣式下提供。`custom` 及其他學校樣式使用通用設定指令。若要建立其他學校的系所清單，請以該校名稱作為指令前綴，例如 `\SetNTUDept...`，不要沿用成大 `\SetDept...` 名稱。完整流程及臺大設定示範見[自訂指南](../Customization.md)。

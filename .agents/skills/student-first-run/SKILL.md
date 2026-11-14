@@ -26,20 +26,43 @@ successful build:
   teaching code. Bilingual project/content READMEs stay thin routers rather than
   another handbook. These instructions are not copies of maintainer skills.
 
-For ordinary thesis-writing assistance, read the project-root writing skill
-and only the needed section of its generated shared-source reference. Preserve scientific
-claims and supplied sources, edit student content rather than template internals,
-and report actual build evidence or missing prerequisites. Copy the complete buildable student project, including hidden `.agents/`,
-`.claude/` and relative links. The exact `.claude/skills -> ../.agents/skills`
-directory alias exposes the canonical writing skill. Context holds student content
-and is not an independently bundled agent project. Build beside `thesis.tex`;
-reject orphan content without a matching runtime. Alias identity does not prove
-automatic skill invocation for every client.
+Load [IDSD](../idsd-workflow/SKILL.md) and mandatory
+[repository maintenance](../repo-maintenance/SKILL.md) first for repository work.
+Load [documentation management](../documentation-management/SKILL.md) for language,
+voice, guide pairs and lifecycle. This skill owns student defaults, journeys,
+audience review and the human/agent distinction below.
 
-Load [`idsd-workflow`](../idsd-workflow/SKILL.md) first as usual, and
-[`documentation-management`](../documentation-management/SKILL.md) for pair,
-voice, and lifecycle rules. This skill adds the audience lens those two do not
-check.
+## Human and agent guidance
+
+Human instruction belongs in the existing `thesis/example/how-to/` teaching
+sources and teaching PDF. Project/content READMEs lead with writing actions,
+teaching-PDF access, explicit skill loading and complete-project copying; do not
+create another handbook or fill those pages with generator/discovery/proof
+mechanics.
+
+The single project-root [writing skill](../../../thesis/.agents/skills/ncku-thesis-writing/SKILL.md)
+owns agent workflow, target/runtime discovery, edit boundaries, validation and
+recovery. Its English reference is generated from code actually used by the
+teaching document. Maintainers regenerate with `just writing-reference` and retain
+drift, exact-snippet compilation and whole-project-copy coverage in the required
+gate. Normal student builds require neither generator nor teaching corpus.
+Do not edit the generated reference or maintain a second syntax handbook.
+
+For ordinary writing, load the skill and only the needed reference section.
+Preserve claims and supplied sources; report actual build evidence or missing
+prerequisites, never invent data, citations or successful builds. Use official
+school-system certificate files. Student writing grants no installations,
+client/global configuration, template rewrite, Git publication, uploads or
+account authority.
+
+The [package topology](../repo-maintenance/SKILL.md#student-package-topology)
+is owned by maintenance. In human copy instructions, preserve destination work,
+copy the complete project including hidden `.agents/`, `.claude/` and relative
+links, and build beside `thesis.tex`. Context is student content, not a separate
+agent project. Reject orphan content without a matching runtime. Alias identity
+does not prove automatic client invocation; retain the explicit read-SKILL.md
+fallback. Agent language and human guide pairs follow
+[documentation management](../documentation-management/SKILL.md#bilingual-documentation-model).
 
 ## The Lens
 
@@ -99,7 +122,7 @@ step is not finished.
    wrong before explaining how the mechanism works. Word analogies (`.tex` is to
    LaTeX what `.doc` is to Word) are welcome on the student path.
 8. **One predominant language per page, student first.** Keep the pair rules
-   from `AGENTS.md`; a new section exists in both languages of a guide pair in
+   from [documentation management](../documentation-management/SKILL.md#bilingual-documentation-model); a new section exists in both languages of a guide pair in
    the same commit, with the topic list updated on both sides.
 9. **Official rules win, and the template says so where it matters**: next to
    the certificate, the cover date, the abstracts, and the upload steps, not

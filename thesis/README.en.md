@@ -4,7 +4,7 @@
 
 # NCKU thesis-template student project
 
-This directory is the complete student project. The versioned GitHub Release student package places these files directly under one `ncku-thesis-template-latex/` directory; repository tests, release scripts, and repository-only tooling are intentionally excluded. The package licence is in [`LICENSE`](LICENSE); it covers the template files, not your own thesis content.
+Enter thesis information, write under `context/`, and build with `thesis.tex` as the main document. This directory is the complete student project. The package licence in [`LICENSE`](LICENSE) covers the template files, not your own thesis content.
 
 ## Start writing
 
@@ -12,6 +12,10 @@ This directory is the complete student project. The versioned GitHub Release stu
 2. Follow [`conf/README.en.md`](conf/README.en.md) to enter the title, names, degree, dates, department, advisors, and other thesis information.
 3. Select chapters in `context/context.tex` and write your content under `context/`.
 4. Always use `thesis.tex` as the root document.
+
+For chapter, figure, equation and citation help, use the [content writing guide](context/README.en.md). The full teaching PDF is `thesis-full.pdf` in the examples package on [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases).
+
+For AI assistance, ask the agent to read the [writing skill](.agents/skills/ncku-thesis-writing/SKILL.md) first. If the client does not find it automatically, provide that path explicitly. Before moving the project, preserve destination work, then copy the entire project, including hidden `.agents/`, `.claude/` and relative links. Build from the directory containing `thesis.tex`.
 
 `conf/conf.tex` ships configured for the teaching example. Change the following lines to your own data (line numbers are fixed, so jump straight to them):
 
@@ -32,8 +36,6 @@ This directory is the complete student project. The versioned GitHub Release stu
 For a Chinese-language thesis, also uncomment the Chinese abstract, the extended English abstract, and the Chinese acknowledgements `\input` lines in `context/context.tex`; only the English versions are enabled as shipped.
 
 The teaching example is useful as a reference but rebuilds more slowly than a normal thesis.
-
-The existing example/how-to sources and teaching PDF own the full writing tutorial. The [content entry](context/README.en.md) routes to teaching and agents rather than a second handbook. Explicitly read the [writing skill](.agents/skills/ncku-thesis-writing/SKILL.md) and its English reference generated from shared teaching code; explicit skill loading may be needed. Copy the complete buildable project, including hidden `.agents/`, `.claude/` and relative links. `.claude/skills -> ../.agents/skills` exposes the same skill; build from the directory containing `thesis.tex`.
 
 ## Choose independent settings
 
@@ -134,7 +136,15 @@ For final submission, use the defense-certificate document produced by the offic
 
 ## Migrate from 1.x
 
-A thesis started with a 1.x release moves straight to 2.x: every 1.x command is kept, and nothing needs renaming. Back up the whole 1.x project and its latest PDF first; keep your own `conf/conf.tex`, `context/`, figures, bibliography, and certificate files; replace the old files with `template/`, `thesis.tex`, and `cover.tex` from the 2.x package (if `thesis.tex` had been edited, note the edits and merge them); then rebuild and compare the cover, dates, contents, citations, bibliography, body, and final pages one by one. Full guide: [`docs/v1-to-v2-migration.en.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.en.md).
+Version 2.x keeps existing 1.x commands, so they do not need renaming. Keep the old project and upgrade in a separate directory:
+
+1. Back up the complete 1.x project and latest PDF, including any added fonts.
+2. Extract the 2.x student package into a new directory. Keep its new `template/`; do not overwrite it with the old directory.
+3. Copy in your `conf/conf.tex`, `context/`, figures, bibliography and official certificates. Put added fonts back under `template/fonts/`.
+4. If you edited `thesis.tex` or `cover.tex`, merge those changes into the new files rather than overwriting them.
+5. Build and compare with the old PDF: cover, dates, certificate, contents, figures, citations, bibliography, body and final page. Retain the old project for recovery.
+
+Full guide: [`docs/v1-to-v2-migration.en.md`](https://github.com/wengan-li/ncku-thesis-template-latex/blob/main/docs/v1-to-v2-migration.en.md).
 
 ## Other community alternatives
 

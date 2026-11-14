@@ -6,11 +6,13 @@
 
 ## Scope
 
-This catalogue is derived from the current tracked source: [`college.tex`](college.tex) provides 9 NCKU college presets and [`department.tex`](department.tex) provides 110 NCKU department presets. “Department” is the cover metadata slot name; the catalogue actually includes departments, graduate institutes, degree programs, and centers rather than one strict organization type. Each preset sets the unit values and one NCKU college. These commands are the template's preserved NCKU convenience catalogue, not an authoritative current university organization list. Verify current NCKU and unit names and rules before use.
+Search this page for your Chinese department name, copy its command, and replace the existing department command in `conf/conf.tex`. Each department command also sets its college.
+
+The tables follow the current source: [`college.tex`](college.tex) defines 9 college commands and [`department.tex`](department.tex) defines 110 department commands. The names include departments, graduate institutes, degree programs and centers because all use the department field on the cover. This is a list of names supplied by the template, not an official current university directory. Check your unit's current name and rules before use.
 
 ## Generic institution API
 
-The shared command layer defines these APIs for every profile.
+Use these commands to enter university, college and department names directly. They are available for every institution style.
 
 | Setter | Stored values | Getters |
 | --- | --- | --- |
@@ -18,7 +20,7 @@ The shared command layer defines these APIs for every profile.
 | `\SetCollName{Chinese college name}{English college name}` | Chinese and English college names | `\GetCollChiName`, `\GetCollEngName` |
 | `\SetDeptName{Chinese department name}{English abbreviation}{English full name}` | Chinese department name, English abbreviation, and English full name | `\GetDeptChiName`, `\GetDeptEngShortName`, `\GetDeptEngName` |
 
-NCKU presets are shortcuts around these generic setters. The second `\SetDeptName` argument is returned by `\GetDeptEngShortName`; the third is returned by `\GetDeptEngName`.
+The NCKU commands fill in these same values for you. The second `\SetDeptName` argument is returned by `\GetDeptEngShortName`; the third is returned by `\GetDeptEngName`.
 
 ## NCKU college presets
 
@@ -36,7 +38,7 @@ NCKU presets are shortcuts around these generic setters. The second `\SetDeptNam
 
 ## NCKU department presets
 
-Each command below writes the department values and calls the listed college preset.
+Choose the command under your college. It sets the department names and the listed college together.
 
 ### College of Liberal Arts (`\SetCollegeLiberalArts`) — 8 presets
 
@@ -195,4 +197,4 @@ Each command below writes the department values and calls the listed college pre
 
 ## Students from other institutions
 
-Only the `ncku` profile loads these NCKU commands; `custom` and another institution profile use the generic setters directly. A reusable catalogue uses institution-prefixed commands (for example, `\SetNTUDept...`) rather than reusing NCKU `\SetDept...` names. See [`../Customization.en.md`](../Customization.en.md) for the complete workflow and illustrative NTU wiring.
+Only the `ncku` profile loads these NCKU commands; `custom` and another institution profile use the generic setters directly. A reusable list for another institution uses commands named for that institution (for example, `\SetNTUDept...`) rather than reusing NCKU `\SetDept...` names. See [`../Customization.en.md`](../Customization.en.md) for the complete workflow and illustrative NTU wiring.

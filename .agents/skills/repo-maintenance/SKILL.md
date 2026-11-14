@@ -22,26 +22,28 @@ Load [`codegraph`](../codegraph/SKILL.md) for maintainer graph readiness and
 source queries. Keep the root index scoped to supported tooling; use direct
 source/API/runtime evidence for LaTeX and the portable student skill for writing.
 
+## Project and change scope
+
+This community-maintained NCKU template is not officially endorsed university
+software. Current university and department rules take precedence. A version
+change does not authorize a one-shot rewrite or unverified visual redesign.
+Use small validated changes and preserve the compatibility contracts below.
+
 ## Source of Truth
 
-Read only the focused sources needed for the task:
+Read current [AGENTS.md](../../../AGENTS.md), the canonical
+[justfile](../../../justfile) and the [documentation index](../../../docs/README.md).
+Choose the technical owner for the change:
 
-1. [`AGENTS.md`](../../../AGENTS.md) — canonical project rules and boundaries.
-2. [`justfile`](../../../justfile) — canonical maintainer command surface.
-3. [`docs/README.md`](../../../docs/README.md) — public documentation index and
-   release/evidence routing.
-4. [`docs/features/v2-modernization.en.md`](../../../docs/features/v2-modernization.en.md)
-   — shipped architecture and compatibility boundary.
-5. [`docs/features/validation-and-performance.en.md`](../../../docs/features/validation-and-performance.en.md)
-   — current validation gates, artifact checks, performance characteristics and
-   limitations.
-6. [`docs/features/release-and-distribution.en.md`](../../../docs/features/release-and-distribution.en.md)
-   — current release, package, Overleaf, certificate and watermark contracts.
-7. [`docs/v1-to-v2-migration.md`](../../../docs/v1-to-v2-migration.md) — current
-   user migration and institution-port contract.
+| Concern | Current record |
+| --- | --- |
+| Architecture and compatibility | [2.x architecture](../../../docs/features/v2-modernization.en.md) |
+| Gates, artifacts and performance | [Validation](../../../docs/features/validation-and-performance.en.md) |
+| Releases, packages, Overleaf and official files | [Distribution](../../../docs/features/release-and-distribution.en.md) |
+| Existing-project upgrades and school ports | [Migration](../../../docs/v1-to-v2-migration.md) |
 
-Inspect current source and Git state before trusting historical notes. When a
-rule changes, update its canonical repository source in the same slice.
+Current source and Git state take precedence over historical notes. Update the
+owning rule in the same slice when behavior changes.
 
 ## Canonical Commands
 
@@ -70,9 +72,13 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
 ## Compatibility Boundary
 
 - XeLaTeX remains the supported v2 engine; do not silently migrate engines.
-- Preserve `thesis.tex`, `conf/conf.tex`, every entry in
+- Preserve `thesis.tex`, `conf/conf.tex`, every declared 1.x name and argument shape in
   `tests/100-v1-public-api.json`, and the visible NCKU layout unless a focused
   fixture and authoritative evidence justify a documented correction.
+- Correct proven bugs rather than preserving them. Document behavior changes in
+  `docs/v1-to-v2-migration.md` and keep concise offline migration steps in
+  `thesis/README.md`. Do not migrate bibliography systems as part of v2 profile
+  extraction.
 - Keep `tests/102-v1-project-migration.json` passing. It pins the v1.8.2
   student-owned inputs byte-for-byte; `just test` separately proves the unchanged
   entry/configuration path and active StudentMode content/BibTeX dependencies.
@@ -160,47 +166,51 @@ latexmk -xelatex -synctex=1 -interaction=nonstopmode thesis.tex
   scanner strips them, the runtime baseline is corrected, and every comment-only
   or overlapping declaration is retained in the separate audit artifact; compare
   names and signatures.
-- Do not claim tagged PDF or PDF/UA compliance from metadata alone.
+- Current output is untagged. Do not claim tagged PDF or PDF/UA compliance;
+  metadata alone does not establish either.
 - Current university and department requirements override template guidance.
+  For compliance changes, record the official policy URL and checked date.
+- Do not add a watermark, DOI overlay, encryption or PDF security to the ETDS
+  upload when current official guidance assigns that processing to the school
+  system. Prefer the official school-system certificate as an external file;
+  never regenerate, alter or imply ownership or endorsement of that artifact.
 
-## Documentation and Package Boundaries
+## Student package topology
 
-Keep audiences separate:
+The student payload is exactly `thesis/`, extracted under one
+`ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`,
+`example/` and `template/` directly inside. Exclude repository tooling, tests,
+CI, internal docs, maintainer skills and a redundant `thesis/` wrapper.
 
-- repository commands, CI, release scripts, benchmarks, and architectural
-  decisions belong in internal documentation;
-- `docs/README.md` routes readers to current guides and shipped feature records;
-- direct compiler, editor, configuration, and writing guidance belongs in the
-  packaged `thesis/` project and teaching content;
-- root `README.md` routes both audiences without exposing unnecessary internals;
-- the student ZIP must not contain repository-maintainer instructions, `justfile`,
-  CI, tests, scripts, internal docs, or a redundant `thesis/` wrapper;
-- the exact student-only routers `thesis/AGENTS.md` and
-  `thesis/context/AGENTS.md`, their adjacent relative `CLAUDE.md -> AGENTS.md`
-  symlinks, and `thesis/.agents/skills/ncku-thesis-writing/` are intentional
-  student-package content. Do not replace the symlinks with regular pointer files
-  or copy root maintainer skills into the package. Ordinary writing tasks load
-  that student skill; repository maintenance continues to use this skill.
-  Copy the complete buildable student project, including hidden `.agents/`,
-  `.claude/` and relative links. The student `.claude/skills -> ../.agents/skills`
-  alias exposes the canonical writing skill. Context holds student content, not
-  an independently bundled agent project. Build beside `thesis.tex`.
+The allowed student instructions are `thesis/AGENTS.md`,
+`thesis/context/AGENTS.md`, each adjacent relative `CLAUDE.md -> AGENTS.md`,
+and the single `thesis/.agents/skills/ncku-thesis-writing/` payload with its
+reference. `thesis/.claude/skills -> ../.agents/skills` is a relative directory
+symlink to that payload. Preserve link modes and targets rather than replacing
+links with pointer files or dereferenced copies. Whole-project copies include
+hidden files and links; build beside `thesis.tex`. Never copy maintainer skills
+into this package.
 
-Keep human teaching in the existing example source and its PDF. The project-root
-skill owns agent workflow and links to a compact generated reference derived from
-marked teaching code. Regenerate with `just writing-reference`; keep generation
-drift, actual snippet compilation and copied-content portability in the required
-gate. Do not restore a second hand-maintained usage handbook or make the generator
-a student build prerequisite.
+Load [student-first-run](../student-first-run/SKILL.md#human-and-agent-guidance)
+for human/agent guidance, copy behavior and student audience review. Load
+[documentation-management](../documentation-management/SKILL.md) for public
+routes, language/voice and documentation lifecycle. Those owners are mandatory
+when changing the corresponding surfaces.
 
-Generated defense-certificate PDFs are unofficial demonstrations and regression
-outputs. Current students must use files produced by the university
-degree-examination system and follow current university/department guidance.
+## Build outputs
+
+Keep source under `thesis/` and generated local output under ignored `build/`
+or release staging directories. Canonical outputs require both PDF and SyncTeX,
+with no unresolved references/citations or rerun request. Out-of-tree builds
+must resolve TeX inputs, BibTeX databases, figures, includes and external PDFs.
+Use small focused fixtures for the fast gate and the full teaching document for
+integration coverage. Do not claim byte-identical PDFs across operating systems,
+TeX Live versions or installed fonts.
 
 ## Release Contract
 
-A release promotes exactly two custom, versioned packages from one verified
-source revision:
+A release promotes exactly two custom, versioned packages from the exact
+immutable tagged source:
 
 ```text
 ncku-thesis-template-latex-<version>.zip
@@ -218,6 +228,10 @@ When this gate runs inside `xu-cheng/texlive-action`, configure
 and install full Info-ZIP `unzip`/`zip`; BusyBox `unzip` does not support
 `unzip -Z1`, and the negative mutation requires `zip -d`. A local macOS pass
 is not sufficient evidence for this container-specific path.
+Generated certificates may appear only in the clearly documented generated-examples
+package. Its public README must direct students to the official university
+degree-examination-system files; generated certificates are legacy/example
+outputs, never official documents.
 The examples archive extracts to stable `ncku-thesis-template-latex-examples/`
 and contains exactly the members listed under
 [Examples package](../../../docs/features/release-and-distribution.en.md#examples-package);
@@ -225,7 +239,9 @@ and contains exactly the members listed under
 
 The outer archives carry the version. Inner names remain stable and omit a
 redundant `example-` prefix. Loose generated PDFs are build intermediates, not
-public Release assets.
+public Release assets. The examples package contains its public README, licence
+and six verified PDFs. Generated examples come only from Release assets; do not
+restore the retired separate sample repository or treat PDFs as source.
 
 Release notes come from the version's entries in `CHANGELOG.md` and
 `CHANGELOG.en.md` plus a short download guide; `scripts/release/release-notes.py`
@@ -281,22 +297,44 @@ pdfinfo build/thesis.pdf
 pdftotext build/thesis.pdf -
 ```
 
-After pushing, verify the exact GitHub Actions run. After publishing or changing
+GitHub Actions must run `just test` before maintenance or a release is considered
+valid. After an authorized push, verify the exact GitHub Actions run. After publishing or changing
 Release assets, download them from their public URLs and verify the public state;
 a local or workflow artifact alone is insufficient.
 
-## Development Branch and Hosted Test Gate
+## Git and external actions
 
-The Test workflow push filter covers `main` and `feat/**`. Create short-lived
-development branches as `feat/<short-name>` from current `main` so every pushed
-update automatically enters the required hosted test gate. Merge through a pull
-request, then delete local and remote feature refs after proving that the branch
-has no commits unique to `main`. Keep `main` as the only persistent development
-branch. A bare version-shaped branch such as `v2.x` does not match the workflow
-filter and a long-lived version integration branch is not part of the current
-post-release policy.
+Stay in the existing checkout and current branch. Creating, switching or deleting
+a branch/worktree, or handing work to another checkout, requires an explicit
+request in the current conversation. A dirty/shared checkout, concurrency, release
+isolation or safer validation is not permission. Preserve unrelated edits; stop
+and ask before an unsafe Git topology change. Use subagents only when the user
+explicitly requests them.
 
-After every feature-branch push:
+When a branch lifecycle is explicitly requested, use short-lived
+`feat/<short-name>` branches from current `main`; the Test push filter covers
+`main` and `feat/**`. `main` is the only persistent development branch. Do not
+retain long-lived version integration branches or bare version-shaped branches
+such as `v2.x`. Merge through a pull request only when authorized. Branch cleanup
+also requires the explicit request and proof that local/remote refs have no
+commits unique to `main`. These lifecycle conventions never override the
+existing-checkout and explicit-request rules above.
+
+Before authorized staging, inspect `git status --short` and select only intended
+source/config/docs files. Exclude generated PDFs, ZIPs, logs, SyncTeX, auxiliary
+files, caches, secrets and machine-specific configuration. Use Conventional
+Commits; keep visible-output fixes separate from pure tooling/refactors. Push
+validated completed slices only within the user's publication authorization.
+Do not infer permission for installations, global/client settings, hooks,
+uploads or account changes from an ordinary source/documentation task.
+
+Keep root `CLAUDE.md -> AGENTS.md` and `.claude/skills -> ../.agents/skills`
+relative. `.claude/settings.json` may contain only repository-safe settings,
+never credentials. The [skill index](../README.md) lists the focused local skills.
+
+### Hosted test gate
+
+After every authorized feature-branch push:
 
 1. find the Test run whose `headSha` exactly matches the pushed commit;
 2. wait for that run to complete successfully;
@@ -309,15 +347,14 @@ update.
 
 For GitHub Actions dependency maintenance, enumerate every repository-owned
 `uses:` reference across all workflow files and check each action's official
-latest stable release plus `action.yml` runtime. After pushing, run the normal
-Test workflow and a manual build-only Release workflow, then inspect job
+latest stable release plus `action.yml` runtime. After an authorized push, run the normal
+Test workflow and, when dispatch is authorized, a manual build-only Release
+workflow, then inspect job
 annotations; a green status alone does not prove runtime deprecation warnings
 are gone. Manual Release dispatch must not promote a GitHub Release.
 
 ## Pitfalls
 
-- Mixing student instructions with maintainer-only `just` or CI commands.
-- Treating the full teaching document as the normal student rebuild cost.
 - Caching LaTeX auxiliary state in required clean test/release lanes.
 - Switching to an Arm runner while the selected TeX container is amd64-only.
 - Treating Overleaf's accepted community-maintained Gallery listing as NCKU
@@ -331,7 +368,6 @@ are gone. Manual Release dispatch must not promote a GitHub Release.
 - Using macOS-only `shasum` in package verification that also runs in Alpine CI.
   Compute SHA-256 with Python `hashlib` (already required by the verifier) so the
   same script remains portable without another container package.
-- Publishing loose example PDFs in addition to the examples ZIP.
 - Using `legacy` in a public filename when `generated` plus a clear package
   notice communicates the institutional-document boundary more accurately.
 - Letting imported Python test modules leave unignored `__pycache__`/`*.pyc`

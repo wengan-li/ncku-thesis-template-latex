@@ -8,7 +8,7 @@
 
 ## Project overview
 
-This XeLaTeX template supports Chinese, English, and mixed-language NCKU master's theses and doctoral dissertations. It generates the cover, contents, figure/table lists, and other front matter. Thesis data goes into one configuration file; figure, table, equation, and citation commands are ready to use; a thesis started with a 1.x release upgrades in place; and students from other institutions can build a style for their own school.
+This XeLaTeX template supports Chinese, English, and mixed-language NCKU master's theses and doctoral dissertations. It generates the cover, contents, figure/table lists, and other front matter. Thesis data goes into one configuration file; figure, table, equation, and citation commands are ready to use; a thesis started with a 1.x release can move to 2.x without renaming commands; and students from other institutions can build a style for their own school.
 
 This is not official NCKU software and does not represent current endorsement by the university, library, degree-examination system, or any department. Verify the current rules before use; official requirements always take precedence.
 
@@ -83,15 +83,11 @@ The certificate PDFs in the examples package are demonstrations only; use the of
 
 ## Migrate from 1.x
 
-A thesis started with a 1.x release moves straight to 2.x: every 1.x command is kept, and nothing needs renaming. Back up the whole 1.x project and its latest PDF first; keep your own `conf/conf.tex`, `context/`, figures, bibliography, and certificate files; replace the old files with `template/`, `thesis.tex`, and `cover.tex` from the 2.x package (if `thesis.tex` had been edited, note the edits and merge them); then rebuild and compare the cover, dates, contents, citations, bibliography, body, and final pages one by one. Full steps: [`1.x to 2.x migration guide`](docs/v1-to-v2-migration.en.md).
-
-Complete guide: [`docs/v1-to-v2-migration.en.md`](docs/v1-to-v2-migration.en.md)
+Back up the complete old project and latest PDF, then extract the 2.x student package into a new directory. Copy in your configuration, content, figures, bibliography and official certificates while keeping the new `template/`. Restore added fonts and carefully merge edits to `thesis.tex` and `cover.tex`. Build, compare with the old PDF, and retain the old project for recovery. Existing 1.x commands need no renaming. Follow the [1.x-to-2.x migration guide](docs/v1-to-v2-migration.en.md) for the steps.
 
 ## Other institution profiles
 
 Students from other institutions keep every writing feature of the template and only add a style for their own school. The template keeps NCKU's layout, university names, date rules, and wording under `template/style/ncku/`, while thesis data always stays in `conf/conf.tex`; a new style starts as a copy of the neutral skeleton `template/style/custom/` with the school's own data filled in. `custom` is not the official format of any school, and the repository currently has no ready-made style for another institution. See [`Customization.en.md`](thesis/template/style/Customization.en.md) for the steps; NCKU students can also browse the [`9-college / 110-department command catalogue`](thesis/template/style/ncku/README.en.md).
-
-Guide: [`thesis/template/style/Customization.en.md`](thesis/template/style/Customization.en.md)
 
 ## Available to use / historical acceptance
 

@@ -81,7 +81,7 @@ defense-certificate-phd.pdf
 
 ## 由1.x升級
 
-用1.x版本寫到一半的論文可以直接換到2.x：所有1.x的指令都保留，不需要重新命名。先備份整個1.x專案和最新的PDF；保留自己的`conf/conf.tex`、`context/`、圖片、書目及證明書檔案；用2.x套件的`template/`、`thesis.tex`及`cover.tex`替換原有檔案（曾修改`thesis.tex`的話，先記下修改再合併）；最後重新建置，逐項比較封面、日期、目錄、引用、參考文獻、正文及最後頁。完整步驟見[`1.x至2.x升級指南`](docs/v1-to-v2-migration.md)。
+先備份完整舊專案及最新 PDF，再將 2.x 學生套件解壓到新目錄。搬入自己的設定、內容、圖片、書目及正式證明書，保留新版 `template/`；另補回自訂字型，審慎合併 `thesis.tex` 與 `cover.tex` 的修改。建置後逐項對照舊 PDF，並保留舊專案供回復。既有 1.x 指令不需重新命名；詳細步驟見[1.x 至 2.x 升級指南](docs/v1-to-v2-migration.md)。
 
 ## 其他學校樣式
 

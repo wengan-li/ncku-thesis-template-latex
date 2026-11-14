@@ -13,260 +13,38 @@ Run `codegraph sync` at the start of a session and after large changes. The
 index goes stale when its daemon idles, and a stale index answers from old code
 without saying so.
 
-You must follow Intent-Driven Software Development (IDSD) for every task: clarify intent, expectations, and context first, and use the repo-local IDSD and repository-maintenance skills before implementation.
+# Repository instructions
 
-IDSD skill: `.agents/skills/idsd-workflow/SKILL.md`
-Repository maintenance skill: `.agents/skills/repo-maintenance/SKILL.md`
-Documentation management skill: `.agents/skills/documentation-management/SKILL.md`
-Student first-run skill: `.agents/skills/student-first-run/SKILL.md`
+Before implementation on every repository task, read
+[IDSD](.agents/skills/idsd-workflow/SKILL.md), then
+[repository maintenance](.agents/skills/repo-maintenance/SKILL.md).
+Repository maintenance is the mandatory operating owner for compatibility,
+validation, packaging, releases and action authority. Gather the current source
+and the task's Intent, Expectations and Context before making changes.
 
-# AGENTS.md
+Read the following owners whenever their tasks apply:
 
-## Project
+| Task | Required instructions |
+| --- | --- |
+| Documentation, requirements, todos, translation or path changes | [Documentation management](.agents/skills/documentation-management/SKILL.md) |
+| Student-facing READMEs, defaults, teaching, release notes or packages | [Student first run](.agents/skills/student-first-run/SKILL.md) |
+| Maintainer source lookup and graph readiness | [CodeGraph](.agents/skills/codegraph/SKILL.md) |
+| Writing or revising conversational, documentation or commit prose | [Unslop](.agents/skills/unslop/SKILL.md), with the public voice rules in documentation management |
 
-`ncku-thesis-template-latex` is a community-maintained XeLaTeX thesis/dissertation template for National Cheng Kung University.
+The [skill index](.agents/skills/README.md) routes these responsibilities.
+For ordinary thesis writing, use the student project's
+[writing skill](thesis/.agents/skills/ncku-thesis-writing/SKILL.md).
 
-- It is not an officially endorsed NCKU software project.
-- Current department and university rules override template guidance.
-- Preserve existing `thesis.tex`, `conf/conf.tex`, public commands, and visible layout unless a verified bug or official rule requires a documented change.
-- XeLaTeX remains the supported engine for the 2.x line.
+Work in the existing checkout and current branch. Branch/worktree creation,
+switching, deletion or handoff to another checkout requires an explicit request
+in the current conversation; a dirty/shared checkout is not authorization.
+Preserve unrelated changes. If the work cannot proceed safely, stop before a
+Git topology change and ask. Use subagents only when explicitly requested by
+the user. Detailed Git and publication rules are mandatory in
+[maintenance](.agents/skills/repo-maintenance/SKILL.md#git-and-external-actions).
 
-## V2 modernization outcome
-
-V2 skipped a separate v1.9 release and delivered a compatibility-preserving
-architecture that:
-
-1. keeps the visible NCKU layout and top-level student project structure;
-2. preserves every explicitly declared v1 command/environment throughout 2.x;
-3. fixes proven helper defects with focused regression fixtures;
-4. separates generic mechanisms from NCKU policy and institutional data;
-5. restores the v1.5.0 other-institution customization boundary under
-   `template/style/`, not `conf/`;
-6. ships documented and tested 1.x-to-2.x migration steps;
-7. keeps direct XeLaTeX and Overleaf builds authoritative.
-
-Implement this outcome as small validated commits. A v2 version line does not
-authorize a one-shot rewrite or an unverified visual redesign.
-
-Post-release maintenance uses short-lived `feat/<short-name>` branches created
-from current `main`. Merge each validated branch through a pull request, then
-delete its local and remote refs after proving it has no commits unique to
-`main`. `main` is the only persistent development branch; do not retain a
-long-lived version integration branch.
-
-## Canonical commands
-
-Use `just`, not Makefile or ad-hoc public shell commands:
-
-```bash
-just                 # list recipes
-just thesis          # build canonical thesis PDF + SyncTeX
-just watch           # continuously rebuild changed thesis dependencies
-just example         # build full teaching example document
-just test            # required local and CI test gate
-just check           # build and verify canonical artifacts
-just ci              # complete local CI gate
-just clean           # remove generated build output
-```
-
-`latexmk` is the internal XeLaTeX/BibTeX/rerun orchestrator behind `just`.
-
-GitHub Actions must run:
-
-```bash
-just test
-```
-
-before a maintenance change or release is considered valid.
-
-## Release asset contract
-
-Every release must package artifacts from the exact tagged source. The intended custom public assets are exactly:
-
-```text
-ncku-thesis-template-latex-<version>.zip
-ncku-thesis-template-latex-examples-<version>.zip
-```
-
-Release notes are composed by `scripts/release/release-notes.py` from the version's entries in `CHANGELOG.md` and `CHANGELOG.en.md` plus a download guide; write both entries with the exact tag before tagging, because `just release <version>` fails for a release version without them.
-
-The custom release ZIP is the student-ready contents of `thesis/`, not a duplicate full-repository archive. It extracts to one `ncku-thesis-template-latex/` directory with `thesis.tex`, `conf/`, `context/`, `example/`, and `template/` directly inside. Repository tooling, tests, and a redundant `thesis/` wrapper must not be included; GitHub already provides automatic full-source archives.
-
-The examples ZIP extracts to one stable `ncku-thesis-template-latex-examples/` directory containing its public README, the licence file, and the six verified PDFs. The outer archive carries the version; inner filenames remain stable and omit a redundant `example-` prefix. Loose generated PDFs are build intermediates and must not also be published as Release assets.
-
-Generated master/doctoral defense-certificate examples may be published only inside the clearly documented generated-examples package. School-system-produced certificates are external official artifacts: do not regenerate, alter, or imply endorsement/ownership. The package README must tell current students to use the university degree-examination system's official files.
-
-Do not commit generated PDFs or release ZIPs to the source tree. Build them under ignored output directories and upload them as GitHub Release assets.
-
-## Retired sample repository
-
-The old generated-sample repository (`wengan-li/ncku-thesis-template-latex-sample`) was deleted by the owner on 2026-07-12 after replacement release assets were publicly built and verified. Generated examples come only from GitHub Release assets now; do not resurrect a separate sample repository or treat generated PDFs as source. Details: `docs/features/release-and-distribution.en.md`.
-
-## Build and output rules
-
-- Source lives under `thesis/`.
-- Generated local output lives under ignored `build/` or release staging directories.
-- PDF and SyncTeX are required canonical outputs.
-- A complete build must have no unresolved citations/references or rerun-required warning.
-- Out-of-tree build paths must support TeX, BibTeX, figures, includes, and external PDFs.
-- The full teaching document is integration coverage; small focused fixtures should be the normal fast test gate.
-- Do not claim byte-identical PDFs across operating systems, TeX Live versions, or font installations.
-
-## Compatibility and policy boundaries
-
-- Do not silently switch to LuaLaTeX.
-- Keep `tests/100-v1-public-api.json` passing; old commands may delegate to new
-  internals, but their names and argument shapes remain available throughout
-  2.x.
-- Correct proven bugs rather than preserving them; document behavior changes in
-  `docs/v1-to-v2-migration.md` and keep concise offline migration guidance in
-  the packaged `thesis/README.md`.
-- Keep `conf/` for student thesis data. Institution-level ports and style
-  profiles remain under `template/style/`.
-- NCKU college and department presets are runtime-owned by the selected `ncku`
-  profile. Unchanged 1.x NCKU projects keep those commands through the default
-  profile; `custom` and other institution profiles load only the generic
-  institution metadata contract and must not inherit NCKU catalogue data.
-- Preserve the configuration load order: generic commands and compatibility,
-  then base plus exactly one selected profile, then student configuration, then
-  PDF metadata and remaining initialization. Profiles define reusable
-  catalogues; student configuration selects an entry.
-- Do not migrate bibliography systems as part of the v2 profile extraction.
-- Do not claim tagged PDF or PDF/UA compliance; current output is untagged.
-- The ETDS upload path should not add internal watermark, DOI overlay, encryption, or security when current official guidance says the school system applies required processing.
-- Prefer inserting the school-system defense certificate as an external file; keep generated certificate templates explicitly legacy/example only.
-- Record official policy URL and checked date for any compliance change.
-
-## Test source layout
-
-- [`tests/000-test-suite.md`](tests/000-test-suite.md) is the test-inventory index.
-- Keep every tracked test artifact directly under `tests/` with a unique
-  three-digit sparse prefix. Use the documented `100–899` concern ranges for
-  executable fixtures and manifests.
-- The `900–999` range contains historical standalone investigation inputs. Those
-  files are reference evidence, not automatic `just test` entrypoints.
-- Keep semantic `just` recipe and output job names unnumbered. When a source file
-  moves, update every script, document, and recipe path in the same change, then
-  run `python3 scripts/test/check-test-layout.py` and `just test`.
-
-## Verification
-
-For source/build changes, run at minimum:
-
-```bash
-just test
-just ci
-git diff --check
-```
-
-For PDF-affecting changes also verify:
-
-```bash
-pdfinfo build/thesis.pdf
-pdftotext build/thesis.pdf -
-```
-
-Render and inspect affected pages when cover, margins, pagination, front matter, certificate placement, or other visual layout can change.
-
-## Git and artifact hygiene
-
-- Check `git status --short` before staging.
-- Stage only intended source/config/docs files.
-- Do not commit generated PDFs, ZIPs, logs, SyncTeX, auxiliary files, local caches, secrets, or machine-specific config.
-- Use Conventional Commits.
-- Keep visible-output fixes separate from pure tooling/refactor commits.
-- Push verified completed slices to the feature branch.
-
-## Agent setup
-
-- `AGENTS.md` is canonical.
-- Root `CLAUDE.md` remains a relative symlink to canonical `AGENTS.md`.
-- Student-only routers are `thesis/AGENTS.md` and `thesis/context/AGENTS.md`;
-  each adjacent `CLAUDE.md` is exactly a relative symlink to `AGENTS.md`.
-  Their single writing skill lives under `thesis/.agents/skills/`;
-  `thesis/.claude/skills` is exactly `../.agents/skills`, a relative directory
-  symlink to that writing payload. Copy the whole buildable student project,
-  including hidden files and links. Repository maintenance skills never enter
-  the student payload.
-- Repo-local skills are `.agents/skills/idsd-workflow/`,
-  `.agents/skills/repo-maintenance/`,
-  `.agents/skills/documentation-management/`,
-  `.agents/skills/student-first-run/`, and
-  `.agents/skills/unslop/`.
-- Load `student-first-run` before changing anything a student sees before
-  their first build: root and package READMEs, `conf/` and `context/`
-  defaults, the teaching example, release notes, and the Overleaf package.
-  Design from the viewpoint of a student meeting the template for the first
-  time: what to change, where, and what happens otherwise.
-- `unslop` applies to conversational and commit prose. Gate-checked public
-  documentation keeps the repository third-person voice rules; its
-  first-person advice does not override them.
-- `.claude/skills` is a symlink to `../.agents/skills`.
-- `.claude/settings.json` contains only repo-safe Claude Code settings; never store credentials.
-
-## Documentation Standard
-
-- `docs/README.md` is the public project-documentation index and audience router.
-  Public indexes use task-oriented, student-first routes before deeper technical
-  records; active-work state and branch mechanics stay in internal governance.
-- `docs/v1-to-v2-migration.md` is the current 1.x-to-2.x migration guide;
-  `thesis/README.md` keeps concise offline steps and `thesis/conf/README.md`
-  keeps field-by-field configuration guidance inside the student ZIP.
-- `docs/features/` contains consolidated shipped architecture, validation, and
-  operating decisions. Do not keep one active document per branch, commit, todo,
-  parser, or bugfix; Git history preserves that chronology.
-- `docs/requirements/` contains active owner-approved what/why promises only.
-  When none are active, it contains exactly `.gitkeep`.
-- `todos/` contains active how/progress only. On completion, promote durable
-  knowledge into the owning feature record and remove the requirement/todo.
-- Current source and tests win on drift. Deferred experiments are not active
-  requirements without a new owner-approved Intent.
-- Student/public journeys are complete in formal Taiwan Traditional Chinese and
-  natural technical English. Use one predominant language per file with a
-  top-of-page text switcher to the equivalent language file; do not use repeated
-  per-section language labels or flags.
-- Traditional Chinese owns each default `<name>.md` path and English uses the
-  adjacent `<name>.en.md` companion, including technical records and changelogs.
-  Keep `zh-Hant-TW` in metadata only; tracked `*.zh-TW.md` paths are forbidden.
-- Public project actions use third-person `本模版` / `本專案` and `the template` /
-  `the project` wording. General processes use role-neutral wording. Chinese references
-  to cross-institution readers use `其他學校的同學`; English uses `students from
-  other institutions`.
-- Paired user guides carry hidden stable topic IDs. Keep paired executable code
-  blocks identical and validate links in both files so split-language pages do
-  not silently drift.
-- Maintainer feature records use a canonical English technical record plus a
-  separate Traditional-Chinese executive-summary companion. Do not duplicate
-  hashes, run IDs, or benchmark transcripts merely to claim line-by-line
-  translation. The English record still uses the `.en.md` filename even when it
-  remains the more detailed technical source.
-- `CHANGELOG.md` and `CHANGELOG.en.md` both contain the complete release history.
-  Traditional Chinese owns the default path; preserve historical mixed-language
-  entries rather than rewriting old release evidence solely for translation.
-- Keep mutable release identity centralized. Public guides and feature summaries
-  link to GitHub Releases and the complete changelog instead of repeating a
-  "current" or "latest" tag that must change after every publication. Exact tags
-  remain appropriate in changelog entries, version-specific migration facts,
-  immutable checksum/read-back evidence, and release artifact names.
-- Documentation language, institution profile, cover language, degree, and
-  content mode are independent axes. Do not map English readers to `custom` or
-  Traditional-Chinese readers to `ncku`.
-- Use exact `LaTeX`, `XeLaTeX`, `BibTeX`, `latexmk`, and `SyncTeX` casing and
-  `論文範本` in new Chinese prose. Run
-  `python3 scripts/test/check-bilingual-docs.py`; its structural result does not
-  replace human semantic-parity review. It also warns (without failing) when
-  one side of a language pair has accumulated commits since its companion last
-  changed, which is the usual sign that a translation went stale.
-- Load `documentation-management` for documentation creation, consolidation,
-  requirements, todos, path repair, or lifecycle changes.
-
-## Git checkout and branch scope
-
-- Work in the existing checkout and its currently checked-out branch by default.
-- Do not create a branch, create a worktree, switch branches, or hand work off to another checkout unless the user explicitly requests that Git operation in the current conversation.
-- A dirty or shared checkout, concurrent-agent activity, release isolation, or safer validation is not permission to create a branch or worktree. Preserve unrelated changes and stay within the current checkout.
-- If the requested work cannot be completed safely in the current checkout, stop before changing Git topology and ask the user for explicit approval.
-
-## Agent delegation
-
-- Only use subagents if the user explicitly requests them.
+AGENTS.md is canonical. Keep root CLAUDE.md as its relative symlink. Student
+instructions grant no maintenance or publication authority; their package
+[topology](.agents/skills/repo-maintenance/SKILL.md#student-package-topology)
+and [audience rules](.agents/skills/student-first-run/SKILL.md#human-and-agent-guidance)
+remain separate.
