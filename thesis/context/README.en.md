@@ -2,24 +2,14 @@
 
 [繁體中文](README.md) | [English](README.en.md)
 
-# Write thesis content
+# Thesis content and writing entry
 
-## Choose a task
+## Learn to write
 
-First comment out `\ExampleMode` in `conf/conf.tex` in the complete student project. `context/context.tex` selects the files to include. Leaving ExampleMode active builds the teaching document. Paths in the references are relative to the student project root.
-
-| Task | Read |
-| --- | --- |
-| Add chapters, text, front matter or appendices | [Project and chapters](usage/project-and-chapters.en.md) |
-| Add supplied images or tables | [Figures and tables](usage/figures-and-tables.en.md) |
-| Write equations, theorems or proofs | [Equations and theorems](usage/equations-and-theorems.en.md) |
-| Add real sources and citations | [References and bibliography](usage/references-and-bibliography.en.md) |
-| Build or diagnose an error | [Build and diagnostics](usage/build-and-diagnostics.en.md) |
+The existing example/how-to sources and generated teaching PDF own the full tutorial for chapters, figures, tables, equations, theorems, bibliography and front matter. This page provides routes rather than another syntax handbook. ExampleMode builds the teaching document in a complete project; for an own thesis, turn that mode off following the student project README and select content in context/context.tex. Packages without teaching source can use the full teaching PDF from the release packages.
 
 ## Use an agent or copy content
 
-Ask the agent to explicitly read [SKILL.md](.agents/skills/ncku-thesis-writing/SKILL.md), then the needed topic page. Nested skills are not automatically registered by every client. Supply research material, images and source metadata; missing inputs must not be invented. Human-only builds do not load agent instructions.
+Ask the agent to explicitly read [SKILL.md](.agents/skills/ncku-thesis-writing/SKILL.md), then the relevant section of its [generated English reference](.agents/skills/ncku-thesis-writing/references/template-usage.md). This small reference comes from code actually consumed by the teaching document, rather than another human handbook. It is readable without the teaching directory or a network. Nested skills are not automatically registered in every client.
 
-Copy the entire `context/` directory with a directory-copy tool that preserves hidden files and relative symlinks, including `.agents/`, `AGENTS.md` and `CLAUDE.md -> AGENTS.md`. Copying only visible files or *.tex loses the knowledge. Replace the destination content directory only after preserving its existing work. The destination still needs a matching complete template with `thesis.tex`, `conf/` and `template/configure.tex`; content alone cannot compile. If those are missing, obtain the matching complete student project first. Update its content assembly and configuration deliberately. No teaching examples or network are needed to read these references.
-
-An agent locates the project through the requested content file/directory and its ancestors, or through cwd and its ancestors when no target was supplied. At a verified repository root, it also checks only the thesis/ child for all three runtime markers. It does not recursively search other directories or attach orphan content to an unrelated template.
+Copy the entire context/, including hidden .agents/, the generated reference and the relative CLAUDE.md -> AGENTS.md aliases. Preserve existing destination work first. Content alone includes neither the template nor compiler; a matching complete project must contain thesis.tex, conf/ and template/configure.tex together. The agent inspects the requested content path's ancestors, or cwd when no target is supplied, and only the thesis/ child at a verified repository root. Orphan content must not borrow an unrelated runtime. Ordinary builds read no agent instructions and require no generator.

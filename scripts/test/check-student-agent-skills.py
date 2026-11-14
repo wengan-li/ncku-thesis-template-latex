@@ -11,6 +11,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import importlib.util
+import shlex
 import os
 import re
 import shutil
@@ -24,8 +26,8 @@ from zipfile import ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[2]
 SKILL = Path('.agents/skills/ncku-thesis-writing')
-TOPICS = ('project-and-chapters', 'figures-and-tables', 'equations-and-theorems',
-          'references-and-bibliography', 'build-and-diagnostics')
+REFERENCE = SKILL / 'references/template-usage.md'
+GENERATOR = ROOT / 'scripts/docs/generate-writing-reference.py'
 ALIASES = ('CLAUDE.md', 'context/CLAUDE.md')
 LINK = re.compile(r'!?\[[^\]]*\]\(([^)]+)\)')
 CJK = re.compile(r'[\u3400-\u9fff]')
@@ -86,8 +88,8 @@ def find_project(cwd: Path, target: Path | None = None) -> Path | None:
 def check_context(context: Path) -> None:
     base = context / SKILL
     required = ['README.md', 'README.en.md', 'AGENTS.md', str(SKILL / 'SKILL.md')]
-    required += [str(Path('usage') / (topic + suffix))
-                 for topic in TOPICS for suffix in ('.md', '.en.md')]
+    required += [str(REFERENCE)]
+    require(not (context / 'usage').exists(), 'duplicate usage handbook must not be packaged')
     for relative in required:
         path = context / relative
         require(path.is_file() and not path.is_symlink(), f'missing regular payload file: {relative}')
@@ -105,18 +107,18 @@ def check_context(context: Path) -> None:
     require(len(front[1].splitlines()) == len(fields) == 2, 'duplicate or missing frontmatter fields')
     require(fields.get('name') == 'ncku-thesis-writing', 'wrong skill name')
     require(bool(fields.get('description', '').strip()), 'missing skill description')
-    for topic in TOPICS:
-        require(f'../../../usage/{topic}.en.md' in skill, f'unrouted English usage guide: {topic}')
+    require('references/template-usage.md' in skill, 'unrouted generated reference')
     for path in ([context / name for name in ('README.md', 'README.en.md', 'AGENTS.md')]
-                 + list(base.rglob('*')) + list((context / 'usage').glob('*.md'))):
+                 + list(base.rglob('*'))):
         if path.is_dir():
             continue
         require(not path.is_symlink(), f'payload dependency is a symlink: {path}')
         require(path.suffix == '.md', f'unexpected payload file: {path}')
         if path.is_relative_to(base):
             english_agent(path)
+            require('example/' not in path.read_text(), f'nonportable teaching dependency: {path}')
         text = path.read_text(encoding='utf-8')
-        for forbidden in ('/Users/', 'scripts/test/', 'just test', 'example/', 'codegraph explore',
+        for forbidden in ('/Users/', 'scripts/test/', 'just test', 'codegraph explore',
                           'docs/features/', '.claude/settings', 'mcpServers'):
             require(forbidden not in text, f'nonportable dependency {forbidden}: {path}')
         for raw in LINK.findall(text):
@@ -183,14 +185,54 @@ def check_zip(archive: Path, prefix: str) -> None:
 
 def published(context: Path) -> dict[str, str]:
     snippets: dict[str, str] = {}
-    for topic in TOPICS:
-        zh = (context / 'usage' / (topic + '.md')).read_text(encoding='utf-8')
-        en = (context / 'usage' / (topic + '.en.md')).read_text(encoding='utf-8')
-        require(SNIPPET.findall(zh) == SNIPPET.findall(en), f'paired snippet drift: {topic}')
-        for name, _, code in SNIPPET.findall(en):
-            require(name not in snippets, f'duplicate snippet: {name}')
-            snippets[name] = code
+    for name, _, code in SNIPPET.findall((context / REFERENCE).read_text(encoding='utf-8')):
+        require(name not in snippets, f'duplicate generated snippet: {name}')
+        snippets[name] = code
     return snippets
+
+
+def projection_module():
+    spec = importlib.util.spec_from_file_location('writing_projection', GENERATOR)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def generation_contracts() -> None:
+    generator = projection_module()
+    with tempfile.TemporaryDirectory(prefix='writing-generation-') as temporary:
+        fixture = Path(temporary)
+        for name in set(generator.SOURCES.values()):
+            target = fixture / 'thesis/example' / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / 'thesis/example' / name, target)
+
+        def run(check: bool, expected: int, diagnostic: str) -> None:
+            command = [sys.executable, str(GENERATOR), '--root', str(fixture)]
+            if check:
+                command.append('--check')
+            result = subprocess.run(command, capture_output=True, text=True)
+            require(result.returncode == expected and diagnostic in result.stdout + result.stderr,
+                    f'projection mutation failed for wrong reason: {result.stdout}{result.stderr}')
+
+        run(False, 0, 'Generated writing reference:')
+        run(True, 0, 'Shared teaching projection PASS:')
+        source_files = {Path('thesis/example') / name for name in set(generator.SOURCES.values())}
+        actual_files = {path.relative_to(fixture) for path in fixture.rglob('*') if path.is_file()}
+        require(actual_files - source_files == {generator.OUTPUT}, 'unexpected generated artifact')
+        output = fixture / generator.OUTPUT
+        output.write_text(output.read_text() + '\nStale generated bytes.\n')
+        run(True, 1, 'Generated writing reference drift:')
+        print('Student negative PASS: stale generated reference')
+        run(False, 0, 'Generated writing reference:')
+        source = fixture / 'thesis/example/how-to/write/figure/figure.tex'
+        source.write_text(source.read_text().replace('Little man No.1', 'Changed canonical caption', 1))
+        run(True, 1, 'Generated writing reference drift:')
+        run(False, 0, 'Generated writing reference:')
+        require('Changed canonical caption' in output.read_text(), 'canonical change did not flow into reference')
+        run(True, 0, 'Shared teaching projection PASS:')
+        print('Student negative PASS: changed canonical teaching source')
+        print('Student positive PASS: deterministic regeneration follows teaching bytes')
 
 
 def source_contract() -> tuple[dict, dict[str, str]]:
@@ -202,6 +244,10 @@ def source_contract() -> tuple[dict, dict[str, str]]:
             'nested relative target discovery failed')
     print('Student positive PASS: repository root, target content file/directory and nested cwd discovery')
     manifest = json.loads((ROOT / 'tests/802-student-usage.json').read_text())
+    require(manifest.get('schema') == 2, 'unsupported shared-source manifest schema')
+    generated = projection_module().render(ROOT)
+    require((ROOT / 'thesis/context' / REFERENCE).read_text() == generated,
+            'Generated writing reference drift: run just writing-reference')
     snippets = published(ROOT / 'thesis/context')
     require(set(snippets) == set(manifest['snippets']), 'published snippet inventory drift')
     source = (ROOT / manifest['bibliography_source']).read_text()
@@ -215,7 +261,7 @@ def negative_contracts() -> None:
     """Mutate copies, and require the intended diagnostic for each failure."""
     cases = ('entrypoint', 'sidecar', 'frontmatter', 'absolute', 'escape', 'alias-file',
              'alias-target', 'hidden', 'maintenance-skill', 'chinese-skill',
-             'chinese-sidecar', 'chinese-context-router')
+             'chinese-sidecar', 'chinese-context-router', 'duplicate-handbook')
     with tempfile.TemporaryDirectory(prefix='student-negatives-') as temporary:
         for case in cases:
             context = Path(temporary) / case
@@ -225,7 +271,7 @@ def negative_contracts() -> None:
             if case == 'entrypoint':
                 (base / 'SKILL.md').unlink(); expected = 'missing regular payload'
             elif case == 'sidecar':
-                (context / 'usage/figures-and-tables.en.md').unlink(); expected = 'missing regular payload'
+                (context / REFERENCE).unlink(); expected = 'missing regular payload'
             elif case == 'frontmatter':
                 path = base / 'SKILL.md'
                 path.write_text(path.read_text().replace('name: ncku-thesis-writing', 'name: wrong-name'))
@@ -248,6 +294,9 @@ def negative_contracts() -> None:
                 path.parent.mkdir()
                 path.write_text('Repository maintenance instructions')
                 expected = 'unapproved student skill'
+            elif case == 'duplicate-handbook':
+                (context / 'usage').mkdir()
+                expected = 'duplicate usage handbook'
             else:
                 path = (base / 'SKILL.md' if case == 'chinese-skill' else
                         base / 'sidecar.md' if case == 'chinese-sidecar' else context / 'AGENTS.md')
@@ -262,7 +311,7 @@ def negative_contracts() -> None:
                 raise AssertionError(f'negative mutation unexpectedly passed: {case}')
             print(f'Student negative PASS: {case}')
         # Chinese belongs in human guides and remains a supported positive case.
-        require(CJK.search((ROOT / 'thesis/context/usage/project-and-chapters.md').read_text()) is not None,
+        require(CJK.search((ROOT / 'thesis/context/README.md').read_text()) is not None,
                 'Traditional-Chinese human guide is missing')
         print('Student positive PASS: Chinese human guide outside .agents')
         project = Path(temporary) / 'chinese-project-router'
@@ -323,7 +372,7 @@ def negative_contracts() -> None:
 
 def validate_build(project: Path, manifest: dict) -> None:
     check_project(project)
-    result = subprocess.run(['latexmk', '-xelatex', '-synctex=1', '-interaction=nonstopmode', 'thesis.tex'],
+    result = subprocess.run(shlex.split(published(project / 'context')['direct-build']),
                             cwd=project, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     (project / 'pilot-build.log').write_bytes(result.stdout)
     require(result.returncode == 0, f'published pilot build failed; see {project}/pilot-build.log')
@@ -331,6 +380,12 @@ def validate_build(project: Path, manifest: dict) -> None:
             'pilot lacks PDF/SyncTeX')
     log = (project / 'thesis.log').read_text(errors='replace')
     require(not BAD_LOG.search(log), f'pilot did not converge: {project}')
+    recorder = project / 'thesis.fls'
+    require(recorder.is_file() and recorder.stat().st_size > 0, 'pilot recorder is missing')
+    require(not (project / 'example').exists(), 'portable pilot unexpectedly contains teaching corpus')
+    require(not any('example/' in line or '.agents/' in line
+                    for line in recorder.read_text().splitlines() if line.startswith('INPUT ')),
+            'portable pilot loaded teaching or agent instructions as runtime input')
     aux = (project / 'thesis.aux').read_text()
     for label in manifest['labels']:
         require('\\newlabel{' + label + '}' in aux, f'published label missing: {label}')
@@ -376,7 +431,7 @@ def build_pilot(source_project: Path, output: Path, manifest: dict) -> None:
     validate_build(copied, manifest)
     # Corrupt a published label reference. TeX may exit 0 but convergence must fail.
     content = copied / 'context/pilot/pilot.tex'
-    content.write_text(content.read_text().replace('\\RefFigure{fig:writing-pilot}', '\\RefFigure{fig:missing-pilot}'))
+    content.write_text(content.read_text().replace('\\RefTo{fig:little-man-no.1}', '\\RefTo{fig:missing-pilot}'))
     try:
         validate_build(copied, manifest)
     except AssertionError as error:
@@ -384,7 +439,7 @@ def build_pilot(source_project: Path, output: Path, manifest: dict) -> None:
     else:
         raise AssertionError('corrupted published label unexpectedly passed')
     print('Student negative PASS: corrupted published reference')
-    content.write_text(content.read_text().replace('\\RefFigure{fig:missing-pilot}', '\\RefFigure{fig:writing-pilot}'))
+    content.write_text(content.read_text().replace('\\RefTo{fig:missing-pilot}', '\\RefTo{fig:little-man-no.1}'))
     validate_build(copied, manifest)
     content.write_text(content.read_text().replace('\\RefBib{testpage:bib:paper:mapreduce}',
                                                  '\\RefBib{missing-supplied-source}'))
@@ -420,10 +475,11 @@ def main() -> int:
             check_context(args.context)
         else:
             manifest, _ = source_contract()
+            generation_contracts()
             negative_contracts()
             if args.build:
                 build_pilot(args.source_project or ROOT / 'thesis', args.output, manifest)
-    except (AssertionError, OSError, subprocess.CalledProcessError) as error:
+    except (AssertionError, OSError, ValueError, subprocess.CalledProcessError) as error:
         print(f'Student agent skills FAIL: {error}', file=sys.stderr)
         return 1
     return 0

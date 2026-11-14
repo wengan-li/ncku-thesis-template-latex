@@ -20,7 +20,7 @@ Feature pages describe capabilities, usage and limits in current source. Traditi
 - [Architecture and compatibility](v2-modernization.en.md) defines generic mechanisms, institution policy, student data and public interfaces.
 - [Validation and performance](validation-and-performance.en.md) describes required tests, output checks, portability and build-cost limits.
 - [Release and distribution](release-and-distribution.en.md) defines the two Release assets, Overleaf packages, licensing and watermark policy.
-- [Student writing and agent skills](student-writing-and-agent-skills.en.md) describes bilingual human guides, English agent instructions, relative aliases and runtime discovery.
+- [Student writing and agent skills](student-writing-and-agent-skills.en.md) describes shared teaching code, generated English references and agent workflow, relative aliases and runtime discovery.
 
 ## Student routes
 

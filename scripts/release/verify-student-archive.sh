@@ -42,6 +42,7 @@ for entry in \
   context/README.md \
   context/README.en.md \
   context/.agents/skills/ncku-thesis-writing/SKILL.md \
+  context/.agents/skills/ncku-thesis-writing/references/template-usage.md \
   example/abstract/extended.tex \
   template/configure.tex \
   template/compat/v1.tex \
@@ -53,7 +54,7 @@ for entry in \
   require_entry "$entry"
 done
 
-# Validate every topic, relative alias mode/target and actual extracted payload.
+# Validate the generated reference, relative alias mode/target and actual extracted payload.
 # Symlink ZIP bytes are the target name, not the resolved AGENTS.md contents.
 python3 scripts/test/check-student-agent-skills.py --zip "$student_zip"
 

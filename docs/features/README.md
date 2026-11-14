@@ -20,7 +20,7 @@
 - [架構與相容性](v2-modernization.md)定義通用機制、學校政策、學生資料及公開指令的邊界。
 - [驗證與效能](validation-and-performance.md)說明必要測試、輸出檢查、可攜性與建置成本的限制。
 - [發行與分發](release-and-distribution.md)定義兩個 Release 資產、Overleaf 套件、授權及浮水印政策。
-- [學生寫作與代理技能](student-writing-and-agent-skills.md)說明雙語人用指南、英文代理技能、相對別名與執行環境辨識。
+- [學生寫作與代理技能](student-writing-and-agent-skills.md)說明共用教學來源、產生的英文參考、代理流程、相對別名與執行環境辨識。
 
 ## 學生入口
 

@@ -13,22 +13,37 @@ Start from the requested content file or directory and inspect that path and its
 
 Check the existing configuration and content assembly before editing. The default enables `\ExampleMode`; own-thesis mode uses the student's `context/context.tex`. Do not change `thesis.tex`, template internals, engine, bibliography system or institutional style during ordinary writing. Change student configuration only when the requested task needs it.
 
-## Load only the needed reference
+## Use the shared teaching reference
 
-The English human usage guides own the exact examples. Load only the relevant page; do not duplicate the handbook here.
+Read only the relevant section of [template-usage.md](references/template-usage.md). It is generated from the same code blocks used by the teaching document. Do not maintain a second handbook or edit the generated file. The full human tutorial remains in the teaching sources/PDF; the portable reference remains usable when that corpus is absent.
 
-| Task | English usage guide |
+The reference covers chapter/section shapes, front matter, appendices, lists, single/multiple figures, tables, equations, theorem/proof wrappers, references, a real BibTeX entry, database registration and the direct build command. Its titles/labels are illustrative. Preserve existing user labels or choose unique ones, then update every matching reference. Demo entries belong in a thesis only when its research actually cites them.
+
+## Apply the requested change
+
+- For own-thesis writing, comment out the active \ExampleMode in conf/conf.tex when the task calls for switching modes. Otherwise it compiles the teaching document. Keep the student's data and remaining settings.
+- Write a new chapter under context/, pair the chapter opening/closing commands, and add its input in context/context.tex before the bibliography. Order input lines to order chapters. Preserve enabled abstract/acknowledgment/nomenclature wrappers and choose their existing language files. Appendices follow the bibliography; ending an appendix does not restore ordinary chapter mode.
+- Supply image files first. Paths are relative to the project root, even when authoring a nested chapter. Replace the reference's figure.png with the actual supplied asset path. Put captions with commas in braces, pair labels with numbered captions, and check that figures fit.
+- Keep optional/braced syntax exactly as shown. Chapter/section and equation labels use optional braced arguments. Figure pos/align and multi/subfigure align are accepted compatibility keys without placement/alignment effects. Table pos changes caption order, while these floats retain forced [H] placement.
+- Put supplied, verified BibTeX metadata in an already registered database under context/references/. Preserve citation keys, reject duplicates and check registration before adding another database. Keep the existing BibTeX style/system. Do not invent authors, dates, DOIs, data or experimental results.
+
+## Validate and recover
+
+Run the reference's direct latexmk command from the matching project root when tools are available. Overleaf uses XeLaTeX with thesis.tex as the main document; editors use the same root and a XeLaTeX/BibTeX latexmk chain. Do not install missing tools or change global settings as part of writing.
+
+Start with the first actual error in the log:
+
+| Error or symptom | Check and recovery |
 | --- | --- |
-| Own thesis, chapters, text, front matter and appendices | [Project and chapters](../../../usage/project-and-chapters.en.md) |
-| Supplied images, captions, tables and labels | [Figures and tables](../../../usage/figures-and-tables.en.md) |
-| Equations, theorem statements and proofs | [Equations and theorems](../../../usage/equations-and-theorems.en.md) |
-| Citation keys and BibTeX files | [References and bibliography](../../../usage/references-and-bibliography.en.md) |
-| Compilation and error recovery | [Build and diagnostics](../../../usage/build-and-diagnostics.en.md) |
+| File ... not found | Root directory, relative path, letter case and extension; request a missing asset |
+| Undefined control sequence | Spelling, supported XeLaTeX engine and matching template runtime |
+| Missing $ inserted | Unescaped text underscores or an incorrect math boundary |
+| Citation ... undefined | Exact key, registered database and BibTeX convergence |
+| I couldn't open database file | Registered database path, without guessing another source |
+| Unknown option/key | Supported helper options and spelling; do not patch template internals |
+| Teaching output instead of own content | Active ExampleMode and context assembly |
+| Broken copied instructions | Restore the complete hidden payload and relative aliases |
 
-## Complete the requested edit
+A PDF alone is insufficient. Require PDF and SyncTeX, no undefined citations/references or rerun requests in the final log, and expected text/captions/references/bibliography in the PDF. Inspect affected pages for clipping and pagination. For stale auxiliary state or a requested bibliography-style change, clean generated intermediates with latexmk and rebuild; do not delete student input. Preserve the last buildable thesis and reapply a failed edit in small steps.
 
-Use the exact optional/braced syntax in the relevant reference. Paths are relative to the student project root. Reuse supplied labels and citation keys; detect collisions before adding new ones. Edit requested student content only. Do not invent experimental results, sources or successful compilation.
-
-Build when tools are available, inspect the final log for unresolved citations/references and rerun requests, and report the actual command, result and changed files. If compilation cannot run, state the missing tool or runtime. File editing alone is not build success.
-
-Current university and department rules override this community template. Use university-system certificate files; do not create an official certificate or imply institutional endorsement. Writing tasks do not authorize installation, permission changes, hooks, client settings, Git publication, network upload or account access.
+Report actual changed files, command and result, or the exact unavailable tool/runtime. File editing alone is not build success. Current university/department rules override the community template. Use university-system certificate files; never create an official certificate or imply endorsement. Writing does not authorize installations, permissions, hooks, client/MCP settings, Git publication, uploads or account access.

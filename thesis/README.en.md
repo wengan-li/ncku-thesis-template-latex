@@ -33,7 +33,7 @@ For a Chinese-language thesis, also uncomment the Chinese abstract, the extended
 
 The teaching example is useful as a reference but rebuilds more slowly than a normal thesis.
 
-For chapters, images, equations and citations, use the [content writing guide](context/README.en.md). When using an agent, explicitly read the [writing skill](context/.agents/skills/ncku-thesis-writing/SKILL.md); nested skills may not register automatically.
+The existing example/how-to sources and teaching PDF own the full writing tutorial. The [content entry](context/README.en.md) routes to teaching and agents rather than a second handbook. Explicitly read the [writing skill](context/.agents/skills/ncku-thesis-writing/SKILL.md) and its English reference generated from shared teaching code; nested skills may not register automatically.
 
 ## Choose independent settings
 

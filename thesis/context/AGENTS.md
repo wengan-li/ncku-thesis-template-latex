@@ -1,5 +1,5 @@
 # Student thesis content
 
-Read [the writing skill](.agents/skills/ncku-thesis-writing/SKILL.md) before editing content, then load only the needed English usage guide. Explicitly read that file when the client does not discover nested skills. [Writing guide](README.en.md).
+Read [the writing skill](.agents/skills/ncku-thesis-writing/SKILL.md) before editing content, then load only the relevant section of its generated English reference. Explicitly read that file when the client does not discover nested skills. [Writing guide](README.en.md).
 
 Copy this entire directory, including hidden .agents/ and the relative CLAUDE.md alias. Content alone does not contain the compiler/template runtime. Before building, inspect the requested content path and its ancestors, or cwd and its ancestors when no target was supplied, for thesis.tex, conf/ and template/configure.tex together. At a verified repository root, also consider only its thesis/ child when all three markers exist. Reject an orphan target instead of attaching it to an unrelated runtime. If absent, report that a matching complete thesis template is required. Preserve supplied research and bibliography; do not invent missing inputs. Writing does not grant installation, publication or upload authority.

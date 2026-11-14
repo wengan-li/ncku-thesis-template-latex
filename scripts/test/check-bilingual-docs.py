@@ -43,18 +43,9 @@ GUIDE_PAIRS: tuple[tuple[str, str, str, int], ...] = (
     ),
 )
 
-# Human usage guides live outside the English-only machine skill tree.
-WRITING_REFERENCES = (
-    ("project-and-chapters", 4), ("figures-and-tables", 3),
-    ("equations-and-theorems", 2), ("references-and-bibliography", 3),
-    ("build-and-diagnostics", 2),
-)
-WRITING_BASE = "thesis/context/usage"
+# Human workflow routers stay bilingual; the generated agent reference is
+# English only and is checked by the student-skill/projection contracts.
 GUIDE_PAIRS += (("thesis/context/README.md", "thesis/context/README.en.md", "student-writing", 2),)
-GUIDE_PAIRS += tuple(
-    (f"{WRITING_BASE}/{name}.md", f"{WRITING_BASE}/{name}.en.md", f"writing-{name}", count)
-    for name, count in WRITING_REFERENCES
-)
 
 SUMMARY_PAIRS: tuple[tuple[str, str], ...] = (
     (
@@ -518,12 +509,12 @@ CURRENT_DOC_ANCHORS = {
         "CC BY 4.0", "CC BY-NC-SA 4.0", "SHA-256", "CLAUDE.md -> AGENTS.md", "Overleaf",
     ),
     "docs/features/student-writing-and-agent-skills.en.md": (
-        "thesis/context/usage/", "English only", "CLAUDE.md -> AGENTS.md",
+        "references/template-usage.md", "English only", "CLAUDE.md -> AGENTS.md",
         "template/configure.tex", "requested content", "verified repository root", "orphan",
         "without example/", "CodeGraph", "Python", "YAML", "check-student-agent-skills.py",
     ),
     "docs/features/student-writing-and-agent-skills.md": (
-        "thesis/context/usage/", "CLAUDE.md -> AGENTS.md", "template/configure.tex", "CodeGraph",
+        "references/template-usage.md", "CLAUDE.md -> AGENTS.md", "template/configure.tex", "CodeGraph",
     ),
 }
 # Protect current contracts while excluding execution receipts and plan diaries.

@@ -113,11 +113,13 @@ one is a short link/routing sentence.
   adjacent relative `CLAUDE.md -> AGENTS.md` aliases and content-local writing
   skill are intentional exceptions to the maintainer-instruction exclusion;
   they grant no repository publication or template-maintenance authority.
-- Writing guidance has one portable human-readable owner under
-  `thesis/context/usage/`, with Traditional-Chinese and English companion guides.
-  Agent-facing `AGENTS.md`, `SKILL.md` and all skill sidecars use English only;
-  the content-local writing skill routes to the English human guides instead of
-  copying or translating them into `.agents/`. Preserve
+- Existing `thesis/example/how-to/` teaching sources and their PDF own human
+  instruction. Marked teaching code feeds the single generated portable reference
+  `thesis/context/.agents/skills/ncku-thesis-writing/references/template-usage.md`;
+  `just writing-reference` regenerates it and `--check` detects drift. Do not
+  maintain a second usage handbook. Agent-facing `AGENTS.md`, `SKILL.md` and
+  references use English only; project/content README routers remain bilingual.
+  The skill owns agent workflow, discovery, edit boundaries and recovery. Preserve
   explicit loading guidance for clients that do not auto-discover nested skills,
   and validate links after copying the entire `context/` tree without `example/`.
   Feature records distinguish approved/in-progress design, local validation and

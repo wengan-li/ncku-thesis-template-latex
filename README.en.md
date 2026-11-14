@@ -24,6 +24,7 @@ Official guidance last checked on `2026-07-12`:
 | --- | --- |
 | Start writing a thesis now | [Quick start](#quick-start) and the student-package [`README.en.md`](thesis/README.en.md) |
 | Enter names, titles, degree, and department | [`conf/README.en.md`](thesis/conf/README.en.md) |
+| Find teaching or use a writing agent | [Content and agent entry](thesis/context/README.en.md) |
 | Upgrade a 1.x project | [1.x-to-2.x migration guide](docs/v1-to-v2-migration.en.md) |
 | Create a style for another institution | [`Customization.en.md`](thesis/template/style/Customization.en.md) |
 | Upload, print, and choose the official certificate | [Thesis upload and printing](#thesis-upload-and-printing) |

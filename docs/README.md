@@ -14,7 +14,7 @@
 | --- | --- |
 | 建置及編輯論文 | [學生專案指南](../thesis/README.md) |
 | 填寫題目、學位與姓名等資料 | [設定指南](../thesis/conf/README.md) |
-| 撰寫章節、圖表、公式及引用 | [內容寫作指南](../thesis/context/README.md) |
+| 查閱教學及代理寫作入口 | [內容寫作指南](../thesis/context/README.md) |
 | 選擇成大學院及系所 | [NCKU 系所目錄](../thesis/template/style/ncku/README.md) |
 | 升級既有 1.x 專案 | [1.x 至 2.x 升級指南](v1-to-v2-migration.md) |
 | 其他學校的同學建立學校設定 | [自訂指南](../thesis/template/style/Customization.md) |

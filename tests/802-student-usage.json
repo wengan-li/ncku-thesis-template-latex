@@ -1,46 +1,67 @@
 {
-  "schema": 1,
-  "snippets": {
-    "pilot-chapter": "project-and-chapters",
-    "basic-text": "project-and-chapters",
-    "front-matter": "project-and-chapters",
-    "appendix": "project-and-chapters",
-    "multi-figure": "figures-and-tables",
-    "table": "figures-and-tables",
-    "equations-theorems": "equations-and-theorems",
-    "bibliography-entry": "references-and-bibliography",
-    "bibliography-registration": "references-and-bibliography",
-    "direct-build": "build-and-diagnostics"
-  },
-  "body": [
-    "pilot-chapter",
+  "schema": 2,
+  "snippets": [
+    "chapter-open",
+    "sections",
+    "chapter-close",
+    "front-matter",
+    "appendix",
     "basic-text",
+    "figure",
     "multi-figure",
     "table",
-    "equations-theorems"
+    "equation",
+    "theorems",
+    "references",
+    "citation",
+    "bibliography-entry",
+    "bibliography-registration",
+    "direct-build"
+  ],
+  "body": [
+    "chapter-open",
+    "sections",
+    "basic-text",
+    "figure",
+    "multi-figure",
+    "table",
+    "equation",
+    "theorems",
+    "references",
+    "citation",
+    "chapter-close"
   ],
   "labels": [
-    "chap:writing-pilot",
-    "sec:writing-pilot",
-    "fig:writing-pilot",
-    "fig:pilot-views",
-    "fig:pilot-first",
-    "fig:pilot-second",
-    "tab:pilot-symbols",
-    "eq:pilot-identity",
-    "thm:pilot-identity",
-    "chap:pilot-nomenclature",
-    "chap:pilot-appendix"
+    "shared:chapter-open",
+    "shared:section",
+    "shared:subsection",
+    "shared:subsubsection",
+    "fig:little-man-no.1",
+    "fig:example:mi3:mfig",
+    "fig:example:mi3:fig1",
+    "fig:example:mi3:fig2",
+    "fig:example:mi3:fig3",
+    "fig:example:mi3:fig4",
+    "eq:example:eq1",
+    "shared:nomenclature",
+    "shared:appendix"
   ],
   "text": [
-    "Writing pilot",
-    "Supplied pilot image",
-    "Two supplied views",
-    "Illustrative symbols",
+    "Title",
+    "Little man No.1",
+    "4 figures and 2 figures per row",
+    "Hello World in C",
+    "Theorem here.",
+    "Proof here.",
     "MapReduce",
-    "Simplified Data Processing",
-    "Supplement"
+    "Write your abstract here.",
+    "Thanks someone you want in here."
   ],
   "image_source": "thesis/example/how-to/write/figure/pic/Cc-by_new.png",
-  "bibliography_source": "thesis/example/references/paper.bib"
+  "bibliography_source": "thesis/example/references/paper.bib",
+  "family_contracts": {
+    "float_label_and_nameref_options": "tests/400-float-contract.tex",
+    "theorem_label_title_and_counter_options": "tests/500-theorem-contract.tex",
+    "reference_wrappers": "tests/300-reference-contract.tex"
+  }
 }

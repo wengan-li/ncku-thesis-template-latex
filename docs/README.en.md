@@ -14,7 +14,7 @@ This directory records the template's current architecture, compatibility, valid
 | --- | --- |
 | Build and edit a thesis | [Student project guide](../thesis/README.en.md) |
 | Enter title, degree, names and other data | [Configuration guide](../thesis/conf/README.en.md) |
-| Write chapters, figures, equations and citations | [Content writing guide](../thesis/context/README.en.md) |
+| Find teaching and agent writing guidance | [Content writing guide](../thesis/context/README.en.md) |
 | Select an NCKU college and department | [NCKU catalogue](../thesis/template/style/ncku/README.en.md) |
 | Upgrade an existing 1.x project | [1.x-to-2.x migration](v1-to-v2-migration.en.md) |
 | Create a school configuration for students from other institutions | [Customization guide](../thesis/template/style/Customization.en.md) |

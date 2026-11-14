@@ -24,6 +24,7 @@
 | --- | --- |
 | 立即開始撰寫論文 | [快速開始](#快速開始)及學生套件[`README.md`](thesis/README.md) |
 | 填寫姓名、題目、學位及系所 | [`conf/README.md`](thesis/conf/README.md) |
+| 查閱完整教學或使用寫作代理 | [內容與代理入口](thesis/context/README.md) |
 | 由1.x專案升級 | [`1.x至2.x升級指南`](docs/v1-to-v2-migration.md) |
 | 為其他學校建立樣式 | [`Customization.md`](thesis/template/style/Customization.md) |
 | 上傳論文、列印及選擇正式證明書 | [學位論文上傳和列印說明](#學位論文上傳和列印說明) |

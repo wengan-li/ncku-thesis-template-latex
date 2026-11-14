@@ -4,51 +4,61 @@
 
 # Student writing and portable agent skills
 
-Students and agents use one set of writing knowledge under `thesis/context/`. The [human writing entry](../../thesis/context/README.en.md) routes to task guides; the single [agent skill](../../thesis/context/.agents/skills/ncku-thesis-writing/SKILL.md) loads only the relevant English guide. These descriptions apply to current source. Published package availability is determined by [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases).
+The existing `thesis/example/how-to/` teaching sources and generated teaching PDF own human instruction. The [content entry](../../thesis/context/README.en.md) and student README are concise routes. Agent workflow belongs in the single [writing skill](../../thesis/context/.agents/skills/ncku-thesis-writing/SKILL.md). Published package availability is determined by [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases).
 
-## Knowledge and language ownership
+## Shared source and generated reference
 
-`thesis/context/usage/` owns paired Traditional-Chinese and English guides, including executable examples. Agent-facing AGENTS.md, SKILL.md and any skill sidecars use English only, without language switchers. The skill does not duplicate an English handbook inside `.agents/`.
+`references/template-usage.md` under the writing skill is the sole generated portable reference. Comment-delimited regions of existing teaching inputs supply its code. The teaching PDF consumes those same inputs as verbatim examples or runtime front matter/BibTeX; there is no independently maintained Markdown syntax handbook.
 
-| Task | Human English guide under context/usage/ | Runtime owner under template/command/ |
-| --- | --- | --- |
-| Own thesis, chapters, text, front matter, appendices | project-and-chapters.en.md | cmd-thesis, cmd-chapter, cmd-abstract, cmd-acknowledgments, cmd-nomenclature, cmd-appendix |
-| Images, captions and tables | figures-and-tables.en.md | cmd-figure, cmd-figures, cmd-table |
-| Equations, theorems and proofs | equations-and-theorems.en.md | cmd-equation, cmd-theorem |
-| Citation keys and BibTeX databases | references-and-bibliography.en.md | cmd-ref, cmd-bibliography |
-| Builds and diagnostics | build-and-diagnostics.en.md | template/configure.tex and the student build path |
+`scripts/docs/generate-writing-reference.py` projects a finite set of English/LaTeX fragments. It strips TeX comments/formatting wrappers, selects code-only command shapes from mixed-language blocks and binds illustrative labels, empty caption placeholders, image paths and bibliography directories. It does not translate prose or infer arbitrary TeX syntax. Existing English captions and example text stay source-owned. The generated artifact allowlist contains exactly `thesis/context/.agents/skills/ncku-thesis-writing/references/template-usage.md`.
 
-Chapter/section labels and equation labels use optional braced arguments. Figure pos/align and multi/subfigure align are accepted compatibility keys without placement/alignment effects. Table pos controls caption order; the float remains `[H]`. The guides distinguish actual behavior from accepted syntax.
-
-## Discovery and copy contract
-
-`thesis/AGENTS.md` and `thesis/context/AGENTS.md` are thin student routers. Each adjacent alias is exactly `CLAUDE.md -> AGENTS.md`. Nested skills are not automatically registered by every client; explicitly read the named SKILL.md when discovery does not occur.
-
-Start from the requested content file/directory and inspect its ancestors, resolving relative targets from cwd. Without a target, inspect cwd and its ancestors. At a verified repository root, consider only its `thesis/` child. A matching runtime requires `thesis.tex`, `conf/` and `template/configure.tex` together. An explicit orphan target cannot borrow a runtime merely because cwd has another project.
-
-Copy the entire `context/` with a tool preserving hidden `.agents/` and relative symlinks. Content carries knowledge and student material, not the template/compiler runtime. Preserve existing destination work before replacement, and use a matching complete template. The guides remain readable without example/, repository maintenance skills, CodeGraph or a network. Ordinary TeX builds do not load agent instructions or Markdown guides.
-
-## Writing and authority boundaries
-
-Agents edit requested student files and preserve research claims, labels, bibliography and unrelated work. Supply images and verified citation metadata; missing input must be reported rather than invented. Keep XeLaTeX/BibTeX and the existing layout/configuration boundary. A writing request does not authorize template optimization, installation, global/client configuration, Git publication, upload or account access.
-
-Use official school-system certificate files. The community template does not imply institutional endorsement. Report actual build commands/results or missing tools; editing a file is not successful compilation, and deterministic payload checks do not prove every agent's behavior.
-
-## Validation and recovery
+| Coverage | Canonical teaching inputs under thesis/example/ |
+| --- | --- |
+| Chapter/section shapes and lists | how-to/write/chapter/chapter.tex and basic/list.tex |
+| Front matter and appendix boundaries | abstract/eng.tex, acknowledgments/eng.tex, how-to/write/nomenclature/nomenclature.tex, appendix/appendix.tex |
+| Figures, multi-figures and tables | how-to/write/figure/figure.tex and table/table.tex |
+| Equations, theorems and references | how-to/write/equation/equation.tex, how-to/use/conf.tex, how-to/write/basic/label.tex |
+| Real citation and database registration | content-test/ref-cite.tex and references/ |
+| Direct build command | how-to/use/build/build.tex |
 
 From the repository root:
 
 ```bash
-python3 scripts/test/check-student-agent-skills.py
+just writing-reference
+python3 scripts/docs/generate-writing-reference.py --check
+```
+
+Regeneration is a maintenance action. `--check` fails on stale generated bytes and never writes them. Normal student and Overleaf builds require neither generator nor teaching source. Agent instructions and all references use English only; human project/content READMEs remain bilingual.
+
+## Discovery and copy contract
+
+`thesis/AGENTS.md` and `thesis/context/AGENTS.md` are thin English routers. Each adjacent alias is exactly `CLAUDE.md -> AGENTS.md`. Explicitly read SKILL.md when a client does not discover nested skills automatically.
+
+Inspect the requested content file/directory and its ancestors, resolving relative targets from cwd. Without a target, inspect cwd and its ancestors. At a verified repository root, consider only its thesis/ child. A matching runtime requires thesis.tex, conf/ and template/configure.tex together. An explicit orphan target cannot borrow an unrelated runtime near cwd.
+
+Copy the entire context/ with hidden .agents/, the generated reference and relative aliases, preserving destination work first. Content carries student material and knowledge, not the template/compiler. The reference remains readable and the pilot builds without example/, repository maintenance skills, CodeGraph or a network. Ordinary TeX builds load no Markdown or agent instructions.
+
+## Writing workflow and boundaries
+
+The skill owns mode selection, content assembly, edit boundaries, supplied assets/citation keys, actual validation and error recovery. It preserves research claims, public helpers, XeLaTeX/BibTeX, student defaults and institution policy. Missing research material must be reported rather than invented. Forced float placement and accepted-but-inactive compatibility options must not be advertised as functional controls.
+
+Use official school-system certificate files. Writing grants no install, global/client configuration, template rewrite, Git publication, upload or account authority. Deterministic checks establish neither universal agent behavior nor institutional endorsement.
+
+## Validation and recovery
+
+```bash
+python3 scripts/test/check-student-agent-skills.py --build
 just test
 just ci
 ```
 
-The required gate compiles the published human-guide snippets with a supplied image and existing real BibTeX entry. It checks chapter/section/figure labels, captions, references, bibliography convergence, PDF text, copied-context builds and runtime isolation. Student builds remain direct `latexmk` builds; Overleaf and editors use XeLaTeX with `thesis.tex`, as described in the [build guide](../../thesis/context/usage/build-and-diagnostics.en.md).
+The required gate checks deterministic generation and mutates both stale generated output and canonical teaching input. Regeneration must propagate the actual changed caption, not merely update a hash. It compiles the exact reference fragments with a supplied image and existing real BibTeX entry, then checks PDF/SyncTeX, text, labels/citations and convergence in an own-thesis project and full-context copy.
 
-Negative contracts cover missing entrypoints/guides, malformed metadata, unsafe links, omitted hidden files, extra maintenance instructions, Chinese agent prose, wrong alias type/target, missing runtime, unverified child discovery, and broken labels/citation keys. Chinese human guides are a positive case. Archive checks inspect ZIP symlink mode, literal target payload and actual extraction separately from resolved AGENTS content.
+Existing reference, float and theorem fixtures retain label-option, nameref and counter coverage beyond the bounded extracted examples. Negative cases retain missing entrypoint/sidecar, unsafe path, omitted hidden files, extra maintenance instructions, Chinese agent prose, wrong alias mode/target, missing runtime, unverified child discovery and corrupted references/citations. Chinese human README content remains valid.
 
-If discovery fails, explicitly read the skill and check the requested content path. If the runtime is absent, obtain the matching complete template. If copying broke links, restore the whole content directory with hidden files and relative aliases. For build errors, follow the human diagnostic guide before changing template internals.
+Archive checks compare the committed HEAD:thesis inventory and bytes, then inspect symlink mode, literal target and actual extraction separately from resolved content. Uncommitted source validation is distinct from that archive gate. [Validation](validation-and-performance.en.md) and [distribution](release-and-distribution.en.md) define those boundaries.
+
+If the generated reference is stale, regenerate from teaching source. If discovery fails, explicitly read the skill and verify the target/runtime. Restore a complete hidden payload and relative aliases after a broken copy. Follow the skill's diagnostic recovery before editing template internals.
 
 ## CodeGraph for repository tooling
 

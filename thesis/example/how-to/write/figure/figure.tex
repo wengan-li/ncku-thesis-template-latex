@@ -162,12 +162,14 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
   \item
   {
     增加標簽
+% writing-snippet-begin: single-figure
     \begin{verbatim}
     \InsertFigure
       [caption={Little man No.1},
         label={fig:little-man-no.1}]
       {./figure.png}
     \end{verbatim}
+% writing-snippet-end: single-figure
 
     之後可以使用\verb| \RefTo |去引用 \verb| \RefTo{fig:little-man-no.1} |
     \InsertFigure
@@ -457,6 +459,7 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
   {
     插入4張圖片, 2張圖一列, 只有主圖做了標簽.\\
     如果需要不填內容, 但需要圖片的編號的話, 就在caption填寫`{ }'(有空格在中間), 而`{}'則會被認為沒有填寫.
+% writing-snippet-begin: multi-figure
     \begin{verbatim}
     \InsertFigures
     [perrow = 2,
@@ -479,6 +482,7 @@ PDF可同時為點陣圖或向量圖, 主要是看你提供什麼圖片格式來
       {./figure.png}
     }
     \end{verbatim}
+% writing-snippet-end: multi-figure
 
     \InsertFigures
     [perrow = 2,

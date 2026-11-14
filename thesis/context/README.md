@@ -2,24 +2,14 @@
 
 [繁體中文](README.md) | [English](README.en.md)
 
-# 撰寫論文內容
+# 論文內容與寫作入口
 
-## 按任務閱讀
+## 學習寫作
 
-先在完整學生專案的 `conf/conf.tex` 將 `\ExampleMode` 註解掉；`context/context.tex` 決定載入哪些檔案。保留 ExampleMode 會建置教學文件。參考頁中的路徑均由學生專案根目錄計算。
+完整教學由專案原有的 example/how-to 來源及產生的教學 PDF 提供，涵蓋章節、圖表、公式、定理、文獻與前置頁。本頁只提供入口，不另維護一份語法手冊。完整專案的 ExampleMode 可建置教學文件；自己的論文則依學生專案 README 關閉該模式，並由 context/context.tex 選擇內容。若套件未包含教學來源，可使用發行套件提供的完整教學 PDF。
 
-| 任務 | 文件 |
-| --- | --- |
-| 新增章節、文字、前置頁或附錄 | [專案與章節](usage/project-and-chapters.md) |
-| 插入提供的圖片或表格 | [圖片與表格](usage/figures-and-tables.md) |
-| 撰寫公式、定理或證明 | [公式、定理與證明](usage/equations-and-theorems.md) |
-| 加入真實文獻及引用 | [引用與文獻](usage/references-and-bibliography.md) |
-| 建置或排除錯誤 | [建置與診斷](usage/build-and-diagnostics.md) |
+## 使用代理與複製內容
 
-## 使用代理或複製內容
+請代理明確讀取 [SKILL.md](.agents/skills/ncku-thesis-writing/SKILL.md)，再按任務讀取其[產生的英文參考片段](.agents/skills/ncku-thesis-writing/references/template-usage.md)。這份精簡參考取自教學實際使用的程式碼，不是另一份人用手冊；不需要教學目錄或網路即可閱讀。不同用戶端不一定會自動辨識巢狀技能。
 
-請代理先明確讀取 [SKILL.md](.agents/skills/ncku-thesis-writing/SKILL.md)，再讀取任務所需參考頁。不同用戶端不一定會自動註冊巢狀技能。應提供研究資料、圖片與文獻資訊，不得虛構缺少的輸入。一般人工編寫與建置不會載入代理指示。
-
-複製時以能保留隱藏檔案及相對符號連結的目錄複製工具，帶走整個 `context/`，包括 `.agents/`、`AGENTS.md` 與 `CLAUDE.md -> AGENTS.md`。只複製可見檔案或 *.tex 會遺失知識。替換目的地內容目錄之前，先保存既有研究內容。目的地仍須有相符的完整論文範本，包含 `thesis.tex`、`conf/` 及 `template/configure.tex`；只有內容目錄無法編譯。若缺少，先取得相符的完整學生專案，再審慎調整其內容組裝與設定。閱讀這些參考文件不需教學範例或網路。
-
-代理先從指定內容檔案或目錄向上尋找同時含 `thesis.tex`、`conf/` 及 `template/configure.tex` 的專案；未指定內容時才從工作目錄向上找。在經確認的儲存庫根目錄，另僅檢查 `thesis/` 子目錄是否具備三項條件，不遞迴搜尋其他目錄。孤立的內容不能因工作目錄附近有其他範本就被誤認為可編譯。
+複製時帶走整個 context/，包括隱藏 .agents/、產生的參考檔及 CLAUDE.md -> AGENTS.md 相對符號連結，並先保存目的地既有內容。內容目錄不含範本或編譯器，仍須有同時包含 thesis.tex、conf/ 與 template/configure.tex 的相符完整專案。代理由指定內容的祖先尋找執行環境；未指定時才從工作目錄尋找，在已確認的儲存庫根目錄另僅檢查 thesis/。孤立內容不得借用無關專案。一般建置不讀取代理指示，也不需要產生器。

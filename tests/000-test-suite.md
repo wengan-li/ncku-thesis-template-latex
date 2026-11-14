@@ -30,8 +30,11 @@ All test files stay directly under `tests/`; do not add a second directory layer
 The `900` range is documented in
 [`900-reference-fixtures.md`](900-reference-fixtures.md).
 
-The `802-student-usage.json` manifest inventories published writing snippets.
-`scripts/test/check-student-agent-skills.py` extracts the paired guide blocks
+The `802-student-usage.json` manifest inventories projected shared teaching snippets.
+`scripts/test/check-student-agent-skills.py` extracts the generated reference blocks
 and builds those exact bytes, including a real supplied bibliography entry.
+The standard-library writing-reference generator projects marked existing
+teaching code; --check rejects stale output and the checker mutates both
+canonical teaching input and generated reference to verify drift detection.
 It checks portable payloads/aliases, missing-runtime diagnostics, negative
 mutations, actual PDF/citation/label convergence and a copied-context build.

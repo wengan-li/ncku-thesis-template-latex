@@ -31,7 +31,7 @@
 
 撰寫中文論文時，另外在`context/context.tex`取消中文摘要、英文延伸摘要及中文誌謝的`\input`註解；出廠設定只啟用英文版。
 
-章節、圖片、公式與文獻寫法見[內容寫作指南](context/README.md)。使用代理時，明確讀取[寫作技能](context/.agents/skills/ncku-thesis-writing/SKILL.md)；巢狀技能不一定自動註冊。
+完整寫作教學保留在原有 example/how-to 來源及教學 PDF；[內容入口](context/README.md)提供教學與代理路由，不另維護語法手冊。使用代理時，明確讀取[寫作技能](context/.agents/skills/ncku-thesis-writing/SKILL.md)及其共用來源產生的英文參考；巢狀技能不一定自動註冊。
 
 ## 選擇設定
 

@@ -4,15 +4,15 @@
 
 # 學生寫作與可攜式代理技能
 
-本專案讓學生與代理共用 `thesis/context/` 內的寫作知識。[寫作入口](../../thesis/context/README.md)依任務導向指南，代理則由單一技能載入英文用法。功能描述以現行來源為準，發行套件內容以 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 為準。
+完整的人用教學由既有 `thesis/example/how-to/` 來源及教學 PDF 提供；學生專案與[內容入口](../../thesis/context/README.md)保持精簡雙語路由，不另維護重複語法手冊。可下載內容以 [GitHub Releases](https://github.com/wengan-li/ncku-thesis-template-latex/releases) 為準。
 
-- `thesis/context/usage/` 保存繁中及英文人用指南與可執行範例。代理的 `AGENTS.md`、`SKILL.md` 及技能附帶參考檔僅用英文，不放語言切換器或重複手冊。
-- 學生專案及 `context/` 各有一份精簡路由；相鄰別名必須為 `CLAUDE.md -> AGENTS.md`。用戶端未自動辨識巢狀技能時，明確讀取指定技能檔。
-- 代理先從指定內容檔案或目錄向上尋找執行環境；未指定時才從工作目錄向上找。在已確認的儲存庫根目錄，另僅檢查 `thesis/`。相符專案須同時有 `thesis.tex`、`conf/` 及 `template/configure.tex`，不能把孤立內容接到無關專案。
-- 複製完整 `context/` 時須保留隱藏 `.agents/` 與相對符號連結，並先保存目的地既有內容。內容目錄不含範本執行環境；閱讀指南不需要教學範例、網路、CodeGraph 或儲存庫技能。
-- 代理保留研究主張、標籤及文獻，只修改要求的學生資料；不能虛構輸入、引用、編譯成功或機構核可。寫作不授予安裝、發行、上傳或帳號操作權限；證明書使用學校系統正式檔案。
-- 驗證直接編譯指南片段，檢查圖說、標籤、引用、文獻收斂與整份內容複製。反向案例涵蓋缺檔、不安全路徑、語言、別名、執行環境及錯誤引用；繁中人用指南則為有效正向案例。
-- ZIP 檢查分別驗證符號連結模式、目標字串及解壓後內容。辨識失敗時先明確載入技能；缺少執行環境時取得完整範本，不自行產生替代環境。
-- CodeGraph 僅輔助儲存庫 Python／YAML 查詢，不提供原生 LaTeX 語意圖，也不是學生需求。TeX 問題使用原始碼、API 契約、重點案例及非空 `.fls`；索引與用戶端整合是不同事項。
+- 代理的工作流程、執行環境辨識、編輯界線、驗證與復原集中在英文 `SKILL.md`；代理路由及所有附帶參考檔僅用英文。
+- `references/template-usage.md` 是唯一產生的可攜式參考。標記區段取自教學實際使用的程式碼，產生器只選取英文或 LaTeX、移除註解並綁定示範標籤與資料路徑，不自動翻譯教學文字。
+- 教學來源同時提供章節、前置頁、圖表、公式、定理、引用、真實 BibTeX 資料及建置命令。`just writing-reference` 更新參考檔；`--check` 遇到過期輸出會失敗，不自行覆寫。一般學生建置不需要產生器。
+- 兩個學生路由保留 `CLAUDE.md -> AGENTS.md` 相對別名。複製完整 context/ 時包含隱藏 .agents/ 與產生的參考檔，並先保存目的地內容；缺少教學目錄也能閱讀及使用參考。
+- 指定內容的祖先須能找到 thesis.tex、conf/ 及 template/configure.tex。在已確認的儲存庫根目錄另僅檢查 thesis/，孤立內容不能借用無關專案；內容目錄本身不含完整範本或編譯器。
+- 測試直接編譯產生的參考片段，驗證 PDF、SyncTeX、文字、標籤、文獻收斂及整份內容複製；修改共用來源須反映在新參考中。既有圖表、定理與引用案例繼續保護選項及中繼資料行為。
+- 反向案例保留缺檔、不安全路徑、語言、別名、執行環境及錯誤引用。封裝仍以已提交的 HEAD:thesis 為準，不能以未提交來源的建置宣稱正式封裝已通過。
+- 代理不得虛構研究資料、引用或建置成功，也不取得安裝、發行、上傳或機構授權。CodeGraph 僅用於儲存庫 Python／YAML，TeX 語意仍以來源、API 契約及重點案例為準。
 
-操作、檢查命令與限制詳見英文頁，學生建置排錯見[人用指南](../../thesis/context/usage/build-and-diagnostics.md)。
+建置排錯與操作見[寫作技能](../../thesis/context/.agents/skills/ncku-thesis-writing/SKILL.md)，技術責任與驗證程序詳見英文頁。

@@ -184,6 +184,13 @@ Keep audiences separate:
   The complete `context/` directory, including hidden files, transports writing
   knowledge into another matching template, not the template runtime itself.
 
+Keep human teaching in the existing example source and its PDF. The content-local
+skill owns agent workflow and links to a compact generated reference derived from
+marked teaching code. Regenerate with `just writing-reference`; keep generation
+drift, actual snippet compilation and copied-content portability in the required
+gate. Do not restore a second hand-maintained usage handbook or make the generator
+a student build prerequisite.
+
 Generated defense-certificate PDFs are unofficial demonstrations and regression
 outputs. Current students must use files produced by the university
 degree-examination system and follow current university/department guidance.
